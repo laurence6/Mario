@@ -87,7 +87,7 @@ namespace MarioPirates
             controllers.ForEach(c => c.Update());
             Sprite?.Update();
 
-            base.Update(gameTime);
+            // base.Update(gameTime);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace MarioPirates
             Sprite?.Draw(spriteBatch, texture);
             spriteBatch.End();
 
-            base.Draw(gameTime);
+            // base.Draw(gameTime);
         }
     }
 }
