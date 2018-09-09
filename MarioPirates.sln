@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2016
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarioPirates", "Sprint0\MarioPirates.csproj", "{02BA8B5E-1C80-4746-8708-7CD7259C2405}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarioPirates", "MarioPirates\MarioPirates.csproj", "{02BA8B5E-1C80-4746-8708-7CD7259C2405}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
