@@ -13,8 +13,7 @@ namespace MarioPirates
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        public ISprite Sprite { get; set; }
-
+        private List<ISprite> sprites = new List<ISprite>();
         private List<IController> controllers = new List<IController>();
         private Texture2D texture;
 
@@ -32,27 +31,15 @@ namespace MarioPirates
         /// </summary>
         protected override void Initialize()
         {
-            // Initialize commands.
-            var spriteSettingCommandMarioSpriteW = new SpriteSettingCommand<MarioSpriteW>(this);
-            var spriteSettingCommandMarioSpriteE = new SpriteSettingCommand<MarioSpriteE>(this);
-            var spriteSettingCommandMarioSpriteR = new SpriteSettingCommand<MarioSpriteR>(this);
-            var spriteSettingCommandMarioSpriteT = new SpriteSettingCommand<MarioSpriteT>(this);
+            sprites.Add(new MarioSprite());
 
             // Initialize controllers.
             var keyboardController = new KeyboardController();
             keyboardController.AddCommandMapping(Keys.Q, new QuittingCommand(this));
-            keyboardController.AddCommandMapping(Keys.W, spriteSettingCommandMarioSpriteW);
-            keyboardController.AddCommandMapping(Keys.E, spriteSettingCommandMarioSpriteE);
-            keyboardController.AddCommandMapping(Keys.R, spriteSettingCommandMarioSpriteR);
-            keyboardController.AddCommandMapping(Keys.T, spriteSettingCommandMarioSpriteT);
             controllers.Add(keyboardController);
 
             var gamePadController = new GamePadController();
             gamePadController.AddCommandMapping(Buttons.Start, new QuittingCommand(this));
-            gamePadController.AddCommandMapping(Buttons.A, spriteSettingCommandMarioSpriteW);
-            gamePadController.AddCommandMapping(Buttons.B, spriteSettingCommandMarioSpriteE);
-            gamePadController.AddCommandMapping(Buttons.X, spriteSettingCommandMarioSpriteR);
-            gamePadController.AddCommandMapping(Buttons.Y, spriteSettingCommandMarioSpriteT);
             controllers.Add(gamePadController);
 
             base.Initialize();
@@ -87,9 +74,7 @@ namespace MarioPirates
         protected override void Update(GameTime gameTime)
         {
             controllers.ForEach(c => c.Update());
-            Sprite?.Update();
-
-            // base.Update(gameTime);
+            sprites.ForEach(s => s.Update());
         }
 
         /// <summary>
@@ -101,10 +86,8 @@ namespace MarioPirates
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-            Sprite?.Draw(spriteBatch, texture);
+            sprites.ForEach(s => s.Draw(spriteBatch, texture));
             spriteBatch.End();
-
-            // base.Draw(gameTime);
         }
     }
 }
