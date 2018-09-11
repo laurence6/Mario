@@ -111,4 +111,8 @@ namespace MarioPirates
             frameCount++;
         }
     }
+    public abstract class EnemySprite
+    {
+
+    }
 }
