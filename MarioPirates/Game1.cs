@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 
-namespace Sprint0
+namespace MarioPirates
 {
     /// <summary>
     /// This is the main type for your game.
@@ -89,7 +89,7 @@ namespace Sprint0
             controllers.ForEach(c => c.Update());
             Sprite?.Update();
 
-            base.Update(gameTime);
+            // base.Update(gameTime);
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace Sprint0
             Sprite?.Draw(spriteBatch, texture);
             spriteBatch.End();
 
-            base.Draw(gameTime);
+            // base.Draw(gameTime);
         }
     }
 }

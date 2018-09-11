@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sprint0
+namespace MarioPirates
 {
 #if WINDOWS || LINUX
     /// <summary>

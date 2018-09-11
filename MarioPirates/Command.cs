@@ -1,4 +1,4 @@
-﻿namespace Sprint0
+﻿namespace MarioPirates
 {
     interface ICommand
     {
