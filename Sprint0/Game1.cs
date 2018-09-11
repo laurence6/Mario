@@ -32,11 +32,13 @@ namespace Sprint0
         /// </summary>
         protected override void Initialize()
         {
+            // Initialize commands.
             var spriteSettingCommandMarioSpriteW = new SpriteSettingCommand<MarioSpriteW>(this);
             var spriteSettingCommandMarioSpriteE = new SpriteSettingCommand<MarioSpriteE>(this);
             var spriteSettingCommandMarioSpriteR = new SpriteSettingCommand<MarioSpriteR>(this);
             var spriteSettingCommandMarioSpriteT = new SpriteSettingCommand<MarioSpriteT>(this);
 
+            // Initialize controllers.
             var keyboardController = new KeyboardController();
             keyboardController.AddCommandMapping(Keys.Q, new QuittingCommand(this));
             keyboardController.AddCommandMapping(Keys.W, spriteSettingCommandMarioSpriteW);
