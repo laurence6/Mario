@@ -78,4 +78,37 @@ namespace MarioPirates
             dst.X = (dst.X < screenWidth) ? dst.X + 3 : -marioWidth * zoom;
         }
     }
+
+    public class MarioSpriteGettingBigger : MarioSprite, ISprite
+    {
+        private uint frameCount = 0;
+        private int originalX;
+        private int originalY;
+
+        public void Update()
+        {
+            if (frameCount == 0)
+            {
+                // trivial under current structure
+                originalX = dst.X;
+                originalY = dst.Y;
+            }
+            if (frameCount > 120) frameCount = 0;
+            if (frameCount == 15 || frameCount == 30)
+            {
+                dst.X -= dst.Width / 4;
+                dst.Y -= dst.Height / 2;
+                dst.Width *= 2;
+                dst.Height *= 2;
+            }
+            else if (frameCount == 120)
+            {
+                dst.Width /= 4;
+                dst.Height /= 4;
+                dst.X = originalX;
+                dst.Y = originalY;
+            }
+            frameCount++;
+        }
+    }
 }
