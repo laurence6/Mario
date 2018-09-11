@@ -113,6 +113,23 @@ namespace MarioPirates
     }
     public abstract class EnemySprite
     {
+        
+    }
+    public class GoombaSprite: EnemySprite, ISprite
+    {
+        //easier to handle collisions in Enemy classes
+        //I think The SAT (Sepearate axis theorem) would be a good way to implement
+        private void CheckForCollisions()
+        {
 
+        }
+        public void update()
+        {
+
+        }
+        public void Draw(SpriteBatch spriteBatch, Texture2D texture)
+        {
+
+        }
     }
 }
