@@ -9,14 +9,14 @@
     <ProjectGuid>{02BA8B5E-1C80-4746-8708-7CD7259C2405}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Sprint0</RootNamespace>
-    <AssemblyName>Sprint0</AssemblyName>
+    <RootNamespace>MarioPirates</RootNamespace>
+    <AssemblyName>MarioPirates</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MonoGamePlatform>Windows</MonoGamePlatform>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -41,12 +42,17 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Command\QuittingCommand.cs" />
+    <Compile Include="Controller\GamePadController.cs" />
+    <Compile Include="Controller\KeyboardController.cs" />
+    <Compile Include="Sprite\Mario.cs" />
+    <Compile Include="Sprite\Goomba.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="Controller.cs" />
-    <Compile Include="Command.cs" />
+    <Compile Include="Controller\IController.cs" />
+    <Compile Include="Command\ICommand.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sprite.cs" />
+    <Compile Include="Sprite\ISprite.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

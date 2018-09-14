@@ -3,14 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MarioPirates
 {
-    public interface ISprite
-    {
-        void Update();
-
-        void Draw(SpriteBatch spriteBatch, Texture2D texture);
-    }
-
-    public class MarioSprite : ISprite
+    public class Mario : ISprite
     {
         public enum State
         {
@@ -49,31 +42,6 @@ namespace MarioPirates
         public void TransitState(State newState)
         {
             state = newState;
-        }
-    }
-
-    public abstract class EnemySprite
-    {
-
-    }
-
-    public class GoombaSprite : EnemySprite, ISprite
-    {
-        // easier to handle collisions in Enemy classes
-        // I think The SAT (Sepearate axis theorem) would be a good way to implement
-        private void CheckForCollisions()
-        {
-
-        }
-
-        public void Update()
-        {
-
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Texture2D texture)
-        {
-
         }
     }
 }

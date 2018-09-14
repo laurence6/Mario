@@ -31,7 +31,7 @@ namespace MarioPirates
         /// </summary>
         protected override void Initialize()
         {
-            sprites.Add(new MarioSprite());
+            sprites.Add(new Mario());
 
             // Initialize controllers.
             var keyboardController = new KeyboardController();

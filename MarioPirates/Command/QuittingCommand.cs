@@ -1,10 +1,5 @@
 ﻿namespace MarioPirates
 {
-    interface ICommand
-    {
-        void Execute();
-    }
-
     class QuittingCommand : ICommand
     {
         private Game1 game;
