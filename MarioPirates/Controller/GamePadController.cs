@@ -6,11 +6,11 @@ namespace MarioPirates
 {
     class GamePadController : IController
     {
-        private Dictionary<Buttons, Commands.ICommand> mapping = new Dictionary<Buttons, Commands.ICommand>();
+        private Dictionary<Buttons, Command.ICommand> mapping = new Dictionary<Buttons, Command.ICommand>();
 
         private GamePadState prevState = GamePad.GetState(PlayerIndex.One);
 
-        public void AddCommandMapping(Commands.ICommand command, params Buttons[] buttons)
+        public void AddCommandMapping(Command.ICommand command, params Buttons[] buttons)
         {
             foreach (var b in buttons)
             {

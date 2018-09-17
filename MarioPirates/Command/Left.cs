@@ -1,4 +1,4 @@
-﻿namespace MarioPirates.Commands
+﻿namespace MarioPirates.Command
 {
     public class Left : ICommand
     {

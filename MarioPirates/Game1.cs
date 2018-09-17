@@ -50,19 +50,19 @@ namespace MarioPirates
             sprites.Add(mario);
 
             var keyboardController = new KeyboardController();
-            keyboardController.AddCommandMapping(new Commands.Quit(this), Keys.Q);
-            keyboardController.AddCommandMapping(new Commands.Up(mario), Keys.Up, Keys.W);
-            keyboardController.AddCommandMapping(new Commands.Down(mario), Keys.Down, Keys.S);
-            keyboardController.AddCommandMapping(new Commands.Left(mario), Keys.Left, Keys.A);
-            keyboardController.AddCommandMapping(new Commands.Right(mario), Keys.Right, Keys.D);
-            keyboardController.AddCommandMapping(new Commands.Small(mario), Keys.Y);
-            keyboardController.AddCommandMapping(new Commands.Big(mario), Keys.U);
-            keyboardController.AddCommandMapping(new Commands.Fire(mario), Keys.I);
-            keyboardController.AddCommandMapping(new Commands.Dead(mario), Keys.O);
+            keyboardController.AddCommandMapping(new Command.Quit(this), Keys.Q);
+            keyboardController.AddCommandMapping(new Command.Up(mario), Keys.Up, Keys.W);
+            keyboardController.AddCommandMapping(new Command.Down(mario), Keys.Down, Keys.S);
+            keyboardController.AddCommandMapping(new Command.Left(mario), Keys.Left, Keys.A);
+            keyboardController.AddCommandMapping(new Command.Right(mario), Keys.Right, Keys.D);
+            keyboardController.AddCommandMapping(new Command.Small(mario), Keys.Y);
+            keyboardController.AddCommandMapping(new Command.Big(mario), Keys.U);
+            keyboardController.AddCommandMapping(new Command.Fire(mario), Keys.I);
+            keyboardController.AddCommandMapping(new Command.Dead(mario), Keys.O);
             controllers.Add(keyboardController);
 
             var gamePadController = new GamePadController();
-            gamePadController.AddCommandMapping(new Commands.Quit(this), Buttons.Start);
+            gamePadController.AddCommandMapping(new Command.Quit(this), Buttons.Start);
             controllers.Add(gamePadController);
 
             base.Initialize();
