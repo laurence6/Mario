@@ -207,7 +207,7 @@ namespace MarioPirates
 
         public override void Update()
         {
-            mario.DrawSrc.X = 30;
+            mario.DrawSrc.X = 0;
             mario.DrawSrc.Y = 0;
         }
     }
