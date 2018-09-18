@@ -12,13 +12,11 @@ namespace MarioPirates
         private EnemySpriteFactory()
         { }
 
-        public void LoadTextures(ContentManager content)
-        {
-        }
+       
 
-        public ISprite CreateGoombaSprite()
+        public ISprite CreateGoombaSprite(int locationX, int locationY)
         {
-            return null;
+            return new GoombaSprite(locationX,locationY);
         }
     }
 }
