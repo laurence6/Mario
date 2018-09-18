@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace MarioPirates
 {
@@ -6,6 +7,6 @@ namespace MarioPirates
     {
         void Update();
 
-        void Draw(SpriteBatch spriteBatch, Texture2D texture);
+        void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures);
     }
 }

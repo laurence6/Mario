@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MarioPirates
 {
@@ -15,7 +16,21 @@ namespace MarioPirates
 
         private List<ISprite> sprites = new List<ISprite>();
         private List<IController> controllers = new List<IController>();
-        private Texture2D texture;
+        private Dictionary<string, Texture2D> textures = new Dictionary<string, Texture2D> {
+            { "blocks", null },
+            { "blocks4", null },
+            { "brick1", null },
+            { "brick2", null },
+            { "brick3", null },
+            { "coins", null },
+            { "flower", null },
+            { "mario", null },
+            { "mashroom", null },
+            { "mashroomenemies", null },
+            { "pipeline", null },
+            { "stars", null },
+            { "turtles", null },
+        };
 
         public Game1()
         {
@@ -31,7 +46,7 @@ namespace MarioPirates
         /// </summary>
         protected override void Initialize()
         {
-            Mario mario = new Mario();
+            var mario = new Mario();
             sprites.Add(mario);
 
             var keyboardController = new KeyboardController();
@@ -61,7 +76,7 @@ namespace MarioPirates
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            texture = Content.Load<Texture2D>("mario");
+            textures.Keys.ToList().ForEach(name => textures[name] = Content.Load<Texture2D>(name));
         }
 
         /// <summary>
@@ -93,7 +108,7 @@ namespace MarioPirates
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-            sprites.ForEach(s => s.Draw(spriteBatch, texture));
+            sprites.ForEach(s => s.Draw(spriteBatch, textures));
             spriteBatch.End();
         }
     }

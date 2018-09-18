@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace MarioPirates
 {
@@ -34,9 +35,9 @@ namespace MarioPirates
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Texture2D texture)
+        public void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
         {
-            spriteBatch.Draw(texture, dst, src, Color.White);
+            spriteBatch.Draw(textures["mario"], dst, src, Color.White);
         }
 
         public void TransitState(State newState)
