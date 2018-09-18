@@ -11,10 +11,10 @@ namespace MarioPirates
         protected const int textureFrameCount = 4;
 
         public Rectangle DrawDst = new Rectangle(
-            (screenWidth - marioWidth * zoom) / 2,
-            (screenHeight - marioHeight * zoom) / 2,
-            marioWidth * zoom, marioHeight * zoom);
-        public Rectangle DrawSrc = new Rectangle(180, 0, 30, 15);
+            (screenWidth - MarioState.marioWidth * zoom) / 2,
+            (screenHeight - MarioState.marioHeight * zoom) / 2,
+            MarioState.marioWidth * zoom, MarioState.marioHeight * zoom);
+        public Rectangle DrawSrc = new Rectangle(180, 0, MarioState.marioWidth, MarioState.marioHeight);
 
         public MarioState State;
 
@@ -30,15 +30,15 @@ namespace MarioPirates
 
         public void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
         {
-            state.Draw(spriteBatch, textures);
+            State.Draw(spriteBatch, textures);
         }
     }
 
     public abstract class MarioState
     {
-        protected const int marioWidth = 30, marioHeight = 15;
-        protected const int bigMarioWidth = 30, bigmMarioHeight = 22;
-        protected const int deadMarioWidth = 15, deadMarioHeight = 14;
+        public const int marioWidth = 30, marioHeight = 15;
+        public const int bigMarioWidth = 30, bigMarioHeight = 22;
+        public const int deadMarioWidth = 15, deadMarioHeight = 14;
         
         protected Mario mario;
 
@@ -120,6 +120,8 @@ namespace MarioPirates
         {
             mario.DrawSrc.X = 150;
             mario.DrawSrc.Y = 0;
+            mario.DrawSrc.Width = marioWidth;
+            mario.DrawSrc.Height = marioHeight;
         }
     }
 
@@ -175,6 +177,8 @@ namespace MarioPirates
                         break;
                 }
             }
+            mario.DrawSrc.Width = marioWidth;
+            mario.DrawSrc.Height = marioHeight;
         }
     }
 
@@ -198,6 +202,8 @@ namespace MarioPirates
         {
             mario.DrawSrc.X = 30;
             mario.DrawSrc.Y = 0;
+            mario.DrawSrc.Width = marioWidth;
+            mario.DrawSrc.Height = marioHeight;
         }
     }
 
@@ -221,6 +227,8 @@ namespace MarioPirates
         {
             mario.DrawSrc.X = 0;
             mario.DrawSrc.Y = 0;
+            mario.DrawSrc.Width = marioWidth;
+            mario.DrawSrc.Height = marioHeight;
         }
     }
 
@@ -249,6 +257,8 @@ namespace MarioPirates
         {
             mario.DrawSrc.X = 180;
             mario.DrawSrc.Y = 0;
+            mario.DrawSrc.Width = marioWidth;
+            mario.DrawSrc.Height = marioHeight;
         }
     }
 
@@ -304,6 +314,8 @@ namespace MarioPirates
                         break;
                 }
             }
+            mario.DrawSrc.Width = marioWidth;
+            mario.DrawSrc.Height = marioHeight;
         }
     }
 
@@ -327,6 +339,8 @@ namespace MarioPirates
         {
             mario.DrawSrc.X = 300;
             mario.DrawSrc.Y = 0;
+            mario.DrawSrc.Width = marioWidth;
+            mario.DrawSrc.Height = marioHeight;
         }
     }
 
@@ -350,6 +364,8 @@ namespace MarioPirates
         {
             mario.DrawSrc.X = 330;
             mario.DrawSrc.Y = 0;
+            mario.DrawSrc.Width = marioWidth;
+            mario.DrawSrc.Height = marioHeight;
         }
     }
 
@@ -367,6 +383,8 @@ namespace MarioPirates
         {
             mario.DrawSrc.X = 180;
             mario.DrawSrc.Y = 0;
+            mario.DrawSrc.Width = marioWidth;
+            mario.DrawSrc.Height = marioHeight;
         }
 
         public override void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
@@ -389,6 +407,8 @@ namespace MarioPirates
         {
             mario.DrawSrc.X = 180;
             mario.DrawSrc.Y = 0;
+            mario.DrawSrc.Width = bigMarioWidth;
+            mario.DrawSrc.Height = bigMarioHeight;
         }
 
         public override void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
@@ -411,6 +431,8 @@ namespace MarioPirates
         {
             mario.DrawSrc.X = 180;
             mario.DrawSrc.Y = 0;
+            mario.DrawSrc.Width = bigMarioWidth;
+            mario.DrawSrc.Height = bigMarioHeight;
         }
 
         public override void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
@@ -449,6 +471,8 @@ namespace MarioPirates
         {
             mario.DrawSrc.X = 0;
             mario.DrawSrc.Y = 0;
+            mario.DrawSrc.Width = deadMarioWidth;
+            mario.DrawSrc.Height = deadMarioHeight;
         }
 
         public override void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
