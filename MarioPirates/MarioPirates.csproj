@@ -42,7 +42,15 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Command\QuittingCommand.cs" />
+    <Compile Include="Command\Dead.cs" />
+    <Compile Include="Command\Fire.cs" />
+    <Compile Include="Command\Big.cs" />
+    <Compile Include="Command\Small.cs" />
+    <Compile Include="Command\Right.cs" />
+    <Compile Include="Command\Left.cs" />
+    <Compile Include="Command\Down.cs" />
+    <Compile Include="Command\Up.cs" />
+    <Compile Include="Command\Quit.cs" />
     <Compile Include="Controller\GamePadController.cs" />
     <Compile Include="Controller\KeyboardController.cs" />
     <Compile Include="Sprite\Mario.cs" />

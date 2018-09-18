@@ -1,10 +1,10 @@
-﻿namespace MarioPirates
+﻿namespace MarioPirates.Commands
 {
-    class QuittingCommand : ICommand
+    class Quit : ICommand
     {
         private Game1 game;
 
-        public QuittingCommand(Game1 game)
+        public Quit(Game1 game)
         {
             this.game = game;
         }

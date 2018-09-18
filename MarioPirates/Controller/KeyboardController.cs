@@ -5,11 +5,11 @@ namespace MarioPirates
 {
     class KeyboardController : IController
     {
-        private Dictionary<Keys, ICommand> mapping = new Dictionary<Keys, ICommand>();
+        private Dictionary<Keys, Commands.ICommand> mapping = new Dictionary<Keys, Commands.ICommand>();
 
         private KeyboardState prevState = Keyboard.GetState();
 
-        public void AddCommandMapping(ICommand command, params Keys[] keys)
+        public void AddCommandMapping(Commands.ICommand command, params Keys[] keys)
         {
             foreach (var k in keys)
             {

@@ -31,14 +31,23 @@ namespace MarioPirates
         /// </summary>
         protected override void Initialize()
         {
-            sprites.Add(new Mario());
+            Mario mario = new Mario();
+            sprites.Add(mario);
 
             var keyboardController = new KeyboardController();
-            keyboardController.AddCommandMapping(new QuittingCommand(this), Keys.Q);
+            keyboardController.AddCommandMapping(new Commands.Quit(this), Keys.Q);
+            keyboardController.AddCommandMapping(new Commands.Up(mario), Keys.Up, Keys.W);
+            keyboardController.AddCommandMapping(new Commands.Down(mario), Keys.Down, Keys.S);
+            keyboardController.AddCommandMapping(new Commands.Left(mario), Keys.Left, Keys.A);
+            keyboardController.AddCommandMapping(new Commands.Right(mario), Keys.Right, Keys.D);
+            keyboardController.AddCommandMapping(new Commands.Small(mario), Keys.Y);
+            keyboardController.AddCommandMapping(new Commands.Big(mario), Keys.U);
+            keyboardController.AddCommandMapping(new Commands.Fire(mario), Keys.I);
+            keyboardController.AddCommandMapping(new Commands.Dead(mario), Keys.O);
             controllers.Add(keyboardController);
 
             var gamePadController = new GamePadController();
-            gamePadController.AddCommandMapping(new QuittingCommand(this), Buttons.Start);
+            gamePadController.AddCommandMapping(new Commands.Quit(this), Buttons.Start);
             controllers.Add(gamePadController);
 
             base.Initialize();
