@@ -141,27 +141,30 @@ namespace MarioPirates
 
         public override void Update()
         {
-            if (frameCount == 0)
-            {
-                mario.DrawSrc.X = 120;
-                mario.DrawSrc.Y = 0;
-            }
-            else if (frameCount == framesPerSprite || frameCount == framesPerSprite * 3)
-            {
-                mario.DrawSrc.X = 90;
-                mario.DrawSrc.Y = 0;
-            }
-            else if (frameCount == framesPerSprite * 2)
-            {
-                mario.DrawSrc.X = 60;
-                mario.DrawSrc.Y = 0;
-            }
-
-            frameCount++;
-
-            if (frameCount >= framesPerSprite * 4)
+            if (frameCount++ / framesPerSprite >= 4)
             {
                 frameCount = 0;
+            }
+            if (frameCount % framesPerSprite == 0)
+            {
+                switch (frameCount / framesPerSprite)
+                {
+                    case 0:
+                        mario.DrawSrc.X = 120;
+                        mario.DrawSrc.Y = 0;
+                        break;
+                    case 1:
+                    case 3:
+                        mario.DrawSrc.X = 90;
+                        mario.DrawSrc.Y = 0;
+                        break;
+                    case 2:
+                        mario.DrawSrc.X = 60;
+                        mario.DrawSrc.Y = 0;
+                        break;
+                    default:
+                        break;
+                }
             }
         }
     }
@@ -267,27 +270,30 @@ namespace MarioPirates
 
         public override void Update()
         {
-            if (frameCount == 0)
-            {
-                mario.DrawSrc.X = 210;
-                mario.DrawSrc.Y = 0;
-            }
-            else if (frameCount == framesPerSprite || frameCount == framesPerSprite * 3)
-            {
-                mario.DrawSrc.X = 240;
-                mario.DrawSrc.Y = 0;
-            }
-            else if (frameCount == framesPerSprite * 2)
-            {
-                mario.DrawSrc.X = 270;
-                mario.DrawSrc.Y = 0;
-            }
-
-            frameCount++;
-
-            if (frameCount >= framesPerSprite * 4)
+            if (frameCount++ / framesPerSprite >= 4)
             {
                 frameCount = 0;
+            }
+            if (frameCount % framesPerSprite == 0)
+            {
+                switch (frameCount / framesPerSprite)
+                {
+                    case 0:
+                        mario.DrawSrc.X = 210;
+                        mario.DrawSrc.Y = 0;
+                        break;
+                    case 1:
+                    case 3:
+                        mario.DrawSrc.X = 240;
+                        mario.DrawSrc.Y = 0;
+                        break;
+                    case 2:
+                        mario.DrawSrc.X = 270;
+                        mario.DrawSrc.Y = 0;
+                        break;
+                    default:
+                        break;
+                }
             }
         }
     }
