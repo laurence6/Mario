@@ -9,9 +9,12 @@ namespace MarioPirates
 
         private KeyboardState prevState = Keyboard.GetState();
 
-        public void AddCommandMapping(Keys k, ICommand command)
+        public void AddCommandMapping(ICommand command, params Keys[] keys)
         {
-            mapping.Add(k, command);
+            foreach (var k in keys)
+            {
+                mapping.Add(k, command);
+            }
         }
 
         public void Update()

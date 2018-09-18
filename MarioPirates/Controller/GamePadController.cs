@@ -10,9 +10,12 @@ namespace MarioPirates
 
         private GamePadState prevState = GamePad.GetState(PlayerIndex.One);
 
-        public void AddCommandMapping(Buttons b, ICommand command)
+        public void AddCommandMapping(ICommand command, params Buttons[] buttons)
         {
-            mapping.Add(b, command);
+            foreach (var b in buttons)
+            {
+                mapping.Add(b, command);
+            }
         }
 
         public void Update()

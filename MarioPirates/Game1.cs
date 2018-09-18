@@ -33,13 +33,12 @@ namespace MarioPirates
         {
             sprites.Add(new Mario());
 
-            // Initialize controllers.
             var keyboardController = new KeyboardController();
-            keyboardController.AddCommandMapping(Keys.Q, new QuittingCommand(this));
+            keyboardController.AddCommandMapping(new QuittingCommand(this), Keys.Q);
             controllers.Add(keyboardController);
 
             var gamePadController = new GamePadController();
-            gamePadController.AddCommandMapping(Buttons.Start, new QuittingCommand(this));
+            gamePadController.AddCommandMapping(new QuittingCommand(this), Buttons.Start);
             controllers.Add(gamePadController);
 
             base.Initialize();
@@ -51,7 +50,6 @@ namespace MarioPirates
         /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             texture = Content.Load<Texture2D>("mario");
