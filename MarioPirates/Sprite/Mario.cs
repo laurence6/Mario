@@ -7,14 +7,14 @@ namespace MarioPirates
     public class Mario : ISprite
     {
         protected const int screenWidth = 800, screenHeight = 480;
-        protected const int marioWidth = 30, marioHeight = 15, zoom = 4;
+        protected const int zoom = 4;
         protected const int textureFrameCount = 4;
 
         public Rectangle DrawDst = new Rectangle(
             (screenWidth - marioWidth * zoom) / 2,
             (screenHeight - marioHeight * zoom) / 2,
             marioWidth * zoom, marioHeight * zoom);
-        public Rectangle DrawSrc = new Rectangle(180, 0, marioWidth, marioHeight);
+        public Rectangle DrawSrc = new Rectangle(180, 0, 30, 15);
 
         public MarioState State;
 
@@ -30,12 +30,16 @@ namespace MarioPirates
 
         public void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
         {
-            spriteBatch.Draw(textures["mario"], DrawDst, DrawSrc, Color.White);
+            state.Draw(spriteBatch, textures);
         }
     }
 
     public abstract class MarioState
     {
+        protected const int marioWidth = 30, marioHeight = 15;
+        protected const int bigMarioWidth = 30, bigmMarioHeight = 22;
+        protected const int deadMarioWidth = 15, deadMarioHeight = 14;
+        
         protected Mario mario;
 
         protected MarioState(Mario mario)
@@ -84,6 +88,11 @@ namespace MarioPirates
         }
 
         public abstract void Update();
+
+        public virtual void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
+        {
+            spriteBatch.Draw(textures["mario"], mario.DrawDst, mario.DrawSrc, Color.White);
+        }
     }
 
     public class MarioStateLeftIdle : MarioState
@@ -356,8 +365,13 @@ namespace MarioPirates
 
         public override void Update()
         {
-            mario.DrawSrc.X = 0;
+            mario.DrawSrc.X = 180;
             mario.DrawSrc.Y = 0;
+        }
+
+        public override void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
+        {
+            spriteBatch.Draw(textures["mario"], mario.DrawDst, mario.DrawSrc, Color.White);
         }
     }
 
@@ -373,8 +387,13 @@ namespace MarioPirates
 
         public override void Update()
         {
-            mario.DrawSrc.X = 0;
+            mario.DrawSrc.X = 180;
             mario.DrawSrc.Y = 0;
+        }
+
+        public override void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
+        {
+            spriteBatch.Draw(textures["bigmario"], mario.DrawDst, mario.DrawSrc, Color.White);
         }
     }
 
@@ -390,8 +409,13 @@ namespace MarioPirates
 
         public override void Update()
         {
-            mario.DrawSrc.X = 0;
+            mario.DrawSrc.X = 180;
             mario.DrawSrc.Y = 0;
+        }
+
+        public override void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
+        {
+            spriteBatch.Draw(textures["biggermario"], mario.DrawDst, mario.DrawSrc, Color.White);
         }
     }
 
@@ -425,6 +449,11 @@ namespace MarioPirates
         {
             mario.DrawSrc.X = 0;
             mario.DrawSrc.Y = 0;
+        }
+
+        public override void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
+        {
+            spriteBatch.Draw(textures["deadmario"], mario.DrawDst, mario.DrawSrc, Color.White);
         }
     }
 }
