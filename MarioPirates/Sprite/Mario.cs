@@ -58,9 +58,16 @@ namespace MarioPirates
             spriteBatch.Draw(textures["mario"], dst, src, Color.White);
         }
 
-        public void TransitState(IMarioState newState)
+        public IMarioState State
         {
-            this.state = newState;
+            get
+            {
+                return this.state;
+            }
+            set
+            {
+                this.state = value;
+            }
         }
 
         public IntVector2 SourceRectangleXY
@@ -88,42 +95,42 @@ namespace MarioPirates
 
         public virtual void Left()
         {
-            this.mario.TransitState(new MarioStateLeftIdle(this.mario));
+            this.mario.State = new MarioStateLeftIdle(this.mario);
         }
 
         public virtual void Right()
         {
-            this.mario.TransitState(new MarioStateRightIdle(this.mario));
+            this.mario.State = new MarioStateRightIdle(this.mario);
         }
 
         public virtual void Jump()
         {
-            this.mario.TransitState(new MarioStateRightJump(this.mario));
+            this.mario.State = new MarioStateRightJump(this.mario);
         }
 
         public virtual void Crouch()
         {
-            this.mario.TransitState(new MarioStateRightCrouch(this.mario));
+            this.mario.State = new MarioStateRightCrouch(this.mario);
         }
 
         public virtual void Small()
         {
-            this.mario.TransitState(new MarioStateSmall(this.mario));
+            this.mario.State = new MarioStateSmall(this.mario);
         }
 
         public virtual void Big()
         {
-            this.mario.TransitState(new MarioStateBig(this.mario));
+            this.mario.State = new MarioStateBig(this.mario);
         }
 
         public virtual void Fire()
         {
-            this.mario.TransitState(new MarioStateFire(this.mario));
+            this.mario.State = new MarioStateFire(this.mario);
         }
 
         public virtual void Dead()
         {
-            this.mario.TransitState(new MarioStateDead(this.mario));
+            this.mario.State = new MarioStateDead(this.mario);
         }
 
         public abstract void Update();
@@ -138,17 +145,17 @@ namespace MarioPirates
 
         public override void Left()
         {
-            base.mario.TransitState(new MarioStateLeftRun(base.mario));
+            base.mario.State = new MarioStateLeftRun(base.mario);
         }
 
         public override void Jump()
         {
-            base.mario.TransitState(new MarioStateLeftJump(base.mario));
+            base.mario.State = new MarioStateLeftJump(base.mario);
         }
 
         public override void Crouch()
         {
-            base.mario.TransitState(new MarioStateLeftCrouch(base.mario));
+            base.mario.State = new MarioStateLeftCrouch(base.mario);
         }
 
         public override void Update()
@@ -170,17 +177,17 @@ namespace MarioPirates
 
         public override void Left()
         {
-            base.mario.TransitState(new MarioStateLeftIdle(base.mario));
+            base.mario.State = new MarioStateLeftIdle(base.mario);
         }
 
         public override void Jump()
         {
-            base.mario.TransitState(new MarioStateLeftJump(base.mario));
+            base.mario.State = new MarioStateLeftJump(base.mario);
         }
 
         public override void Crouch()
         {
-            base.mario.TransitState(new MarioStateLeftCrouch(base.mario));
+            base.mario.State = new MarioStateLeftCrouch(base.mario);
         }
 
         public override void Update()
@@ -216,12 +223,12 @@ namespace MarioPirates
 
         public override void Jump()
         {
-            base.mario.TransitState(new MarioStateLeftJump(base.mario));
+            base.mario.State = new MarioStateLeftJump(base.mario);
         }
 
         public override void Crouch()
         {
-            base.mario.TransitState(new MarioStateLeftIdle(base.mario));
+            base.mario.State = new MarioStateLeftIdle(base.mario);
         }
 
         public override void Update()
@@ -239,12 +246,12 @@ namespace MarioPirates
 
         public override void Jump()
         {
-            base.mario.TransitState(new MarioStateLeftIdle(base.mario));
+            base.mario.State = new MarioStateLeftIdle(base.mario);
         }
 
         public override void Crouch()
         {
-            base.mario.TransitState(new MarioStateLeftCrouch(base.mario));
+            base.mario.State = new MarioStateLeftCrouch(base.mario);
         }
 
         public override void Update()
@@ -262,17 +269,17 @@ namespace MarioPirates
 
         public override void Right()
         {
-            base.mario.TransitState(new MarioStateRightRun(base.mario));
+            base.mario.State = new MarioStateRightRun(base.mario);
         }
 
         public override void Jump()
         {
-            base.mario.TransitState(new MarioStateRightJump(base.mario));
+            base.mario.State = new MarioStateRightJump(base.mario);
         }
 
         public override void Crouch()
         {
-            base.mario.TransitState(new MarioStateRightCrouch(base.mario));
+            base.mario.State = new MarioStateRightCrouch(base.mario);
         }
 
         public override void Update()
@@ -294,17 +301,17 @@ namespace MarioPirates
 
         public override void Right()
         {
-            base.mario.TransitState(new MarioStateRightIdle(base.mario));
+            base.mario.State = new MarioStateRightIdle(base.mario);
         }
 
         public override void Jump()
         {
-            base.mario.TransitState(new MarioStateRightJump(base.mario));
+            base.mario.State = new MarioStateRightJump(base.mario);
         }
 
         public override void Crouch()
         {
-            base.mario.TransitState(new MarioStateRightCrouch(base.mario));
+            base.mario.State = new MarioStateRightCrouch(base.mario);
         }
 
         public override void Update()
@@ -340,12 +347,12 @@ namespace MarioPirates
 
         public override void Jump()
         {
-            base.mario.TransitState(new MarioStateRightJump(base.mario));
+            base.mario.State = new MarioStateRightJump(base.mario);
         }
 
         public override void Crouch()
         {
-            base.mario.TransitState(new MarioStateRightIdle(base.mario));
+            base.mario.State = new MarioStateRightIdle(base.mario);
         }
 
         public override void Update()
@@ -363,12 +370,12 @@ namespace MarioPirates
 
         public override void Jump()
         {
-            base.mario.TransitState(new MarioStateRightIdle(base.mario));
+            base.mario.State = new MarioStateRightIdle(base.mario);
         }
 
         public override void Crouch()
         {
-            base.mario.TransitState(new MarioStateRightCrouch(base.mario));
+            base.mario.State = new MarioStateRightCrouch(base.mario);
         }
 
         public override void Update()
