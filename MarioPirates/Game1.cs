@@ -49,6 +49,9 @@ namespace MarioPirates
             var mario = new Mario();
             sprites.Add(mario);
 
+            var pipe = new Pipe(200, 200);
+            sprites.Add(pipe);
+
             var keyboardController = new KeyboardController();
             keyboardController.AddCommandMapping(new Command.Quit(this), Keys.Q);
             keyboardController.AddCommandMapping(new Command.Up(mario), Keys.Up, Keys.W);

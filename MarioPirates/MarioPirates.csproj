@@ -43,6 +43,9 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Sprite\Blocks.cs" />
+    <Compile Include="Sprite\Items.cs" />
+    <Compile Include="Sprite\Pipe.cs" />
     <Compile Include="Command\Dead.cs" />
     <Compile Include="Command\Fire.cs" />
     <Compile Include="Command\Big.cs" />
