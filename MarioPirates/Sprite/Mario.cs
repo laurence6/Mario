@@ -106,6 +106,11 @@ namespace MarioPirates
             mario.State = new MarioStateLeftRun(mario);
         }
 
+        public override void Right()
+        {
+            mario.State = new MarioStateRightIdle(mario);
+        }
+
         public override void Jump()
         {
             mario.State = new MarioStateLeftJump(mario);
@@ -138,6 +143,10 @@ namespace MarioPirates
         }
 
         public override void Left()
+        {
+        }
+
+        public override void Right()
         {
             mario.State = new MarioStateLeftIdle(mario);
         }
@@ -246,6 +255,11 @@ namespace MarioPirates
         {
         }
 
+        public override void Left()
+        {
+            mario.State = new MarioStateLeftIdle(mario);
+        }
+
         public override void Right()
         {
             mario.State = new MarioStateRightRun(mario);
@@ -282,9 +296,13 @@ namespace MarioPirates
             frameCount = 0;
         }
 
-        public override void Right()
+        public override void Left()
         {
             mario.State = new MarioStateRightIdle(mario);
+        }
+
+        public override void Right()
+        {
         }
 
         public override void Jump()
