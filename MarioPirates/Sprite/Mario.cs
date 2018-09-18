@@ -15,7 +15,7 @@ namespace MarioPirates
             y = n2;
         }
     }
-    
+
     public interface IMarioState
     {
         void Left();
@@ -292,7 +292,7 @@ namespace MarioPirates
     {
         private const uint framesPerSprite = 15;
         private uint frameCount;
-        
+
         public MarioStateRightRun(Mario mario)
             : base(mario)
         {
