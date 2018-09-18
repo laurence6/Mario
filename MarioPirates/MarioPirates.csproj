@@ -54,6 +54,7 @@
     <Compile Include="Command\Quit.cs" />
     <Compile Include="Controller\GamePadController.cs" />
     <Compile Include="Controller\KeyboardController.cs" />
+    <Compile Include="Sprite\EnemySpriteFactory.cs" />
     <Compile Include="Sprite\Mario.cs" />
     <Compile Include="Sprite\Goomba.cs" />
     <Compile Include="Game1.cs" />
