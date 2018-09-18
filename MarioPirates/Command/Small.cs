@@ -11,7 +11,7 @@
 
         public void Execute()
         {
-            throw new System.NotImplementedException();
+            mario.State.Small();
         }
     }
 }
