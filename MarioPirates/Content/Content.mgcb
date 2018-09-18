@@ -181,7 +181,7 @@
 /processorParam:TextureFormat=Color
 /build:brick1.png
 
-#begin goomba.png
+#begin greenmushroom.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -191,9 +191,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:goomba.png
+/build:greenmushroom.png
 
-#begin mushroom.png
+#begin redmushroom.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -203,5 +203,5 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:mushroom.png
+/build:redmushroom.png
 
