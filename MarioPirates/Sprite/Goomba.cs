@@ -1,79 +1,60 @@
-﻿
-using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 
 namespace MarioPirates
-
 {
     public class GoombaSprite : ISprite
     {
-        public GoombaSprite(int locationX, int locationY)
-        {
-            dst.X = locationX;
-            dst.Y = locationY;
-        }
-
         private const int screenWidth = 800, screenHeight = 480;
         private const int goombaWidth = 30, goombaHeight = 20, zoom = 3;
-        protected const int textureFrameCount = 3;
-        protected int frameCount = 0;
-        protected const short framesPerSprite = 15;
-        private enum Status { normal, flipped, stomped };
-        private enum Direction { left, right };
-        private Direction direction = Direction.right;
-        private Status status = Status.normal;
-        protected Rectangle dst = new Rectangle(
-            0, 0,
-            goombaWidth * zoom, goombaHeight * zoom);
+        private const int textureFrameCount = 3;
+
+        private const int framesPerSprite = 15;
+
+        private enum State { normal, flipped, stomped };
+
+        private State state = State.normal;
+
+        protected Rectangle dst = new Rectangle(0, 0, goombaWidth * zoom, goombaHeight * zoom);
         protected Rectangle src = new Rectangle(0, 0, goombaWidth, goombaHeight);
-        //easier to handle collisions in Enemy classes
-        //I think The SAT (Sepearate axis theorem) would be a good way to implement
 
-        private void CheckForCollisions()
+        private int frameCount = 0;
+        private int vx = 1;
+
+        public GoombaSprite(int x, int y)
         {
-
+            dst.X = x;
+            dst.Y = y;
         }
 
         public void Update()
         {
-            if (status == Status.normal)
+            if (state == State.normal)
             {
-                if (frameCount == 0)
-                {
-                    src.X = 0;
-                    src.Y = 0;
-                }
-                else if (frameCount == framesPerSprite)
-                {
-                    src.X = 30;
-                    src.Y = 0;
-                }
-                frameCount++;
-                if (direction == Direction.right)
-                {
-                    dst.X++;
-                }
-                else
-                {
-                    dst.X--;
-                }
-                if (dst.X == 0)
-                {
-                    direction = Direction.right;
-                }
-                else if (dst.X == 752)
-                {
-                    direction = Direction.left;
-                }
-                if (frameCount >= framesPerSprite * 2)
+                if (frameCount++ / framesPerSprite >= 2)
                 {
                     frameCount = 0;
                 }
+
+                if (frameCount % framesPerSprite == 0)
+                {
+                    switch (frameCount / framesPerSprite)
+                    {
+                        case 0:
+                            src.X = 0;
+                            src.Y = 0;
+                            break;
+                        case 1:
+                            src.X = 30;
+                            src.Y = 0;
+                            break;
+                    }
+                }
             }
+
+            vx = (dst.X == 0) ? 1 : (dst.X == screenWidth - 48) ? -1 : vx;
+            dst.X += vx;
         }
 
         public void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
@@ -82,4 +63,3 @@ namespace MarioPirates
         }
     }
 }
-
