@@ -53,8 +53,42 @@ namespace MarioPirates
             var mario = new Mario();
             sprites.Add(mario);
 
+            var block = new Block(100, 50);
+            sprites.Add(block);
+
+            block = new Block(100, 100);
+            block.state.changeToBlocks4();
+            sprites.Add(block);
+
+            block = new Block(100, 150);
+            block.state.changeToBrick1();
+            sprites.Add(block);
+
+            block = new Block(100, 200);
+            block.state.changeToBrick2();
+            sprites.Add(block);
+
+            block = new Block(100, 250);
+            block.state.changeToBrick3();
+            sprites.Add(block);
+
             var pipe = new Pipe(200, 200);
             sprites.Add(pipe);
+
+            var flower = new Flower(300, 300);
+            sprites.Add(flower);
+
+            var coin = new Coin(200, 300);
+            sprites.Add(coin);
+
+            var star = new Star(100, 300);
+            sprites.Add(star);
+
+            var redMush = new RedMushroom(400, 100);
+            sprites.Add(redMush);
+
+            var greenMush = new GreenMushroom(300, 100);
+            sprites.Add(greenMush);
 
             var goomba1 = EnemySpriteFactory.Instance.CreateGoombaSprite(400, 300);
             sprites.Add(goomba1);
