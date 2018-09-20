@@ -9,6 +9,7 @@ namespace MarioPirates
         public BlockState state;
 
         public Rectangle src, dst;
+        public bool hidden = false;
 
         public Block(int dstX, int dstY)
         {
@@ -24,7 +25,8 @@ namespace MarioPirates
 
         public void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
         {
-            state.Draw(spriteBatch, textures);
+            if (!hidden)
+                state.Draw(spriteBatch, textures);
         }
     }
 
@@ -46,9 +48,9 @@ namespace MarioPirates
             block.state = new Block1(block);
         }
 
-        public virtual void ChangeToBlocks4()
+        public virtual void ChangeToBrick4()
         {
-            block.state = new Blocks4(block);
+            block.state = new Brick4(block);
         }
 
         public virtual void ChangeToBrick1()
@@ -64,6 +66,11 @@ namespace MarioPirates
         public virtual void ChangeToBrick3()
         {
             block.state = new Brick3(block);
+        }
+
+        public virtual void SetHide(bool hidden)
+        {
+            block.hidden = hidden;
         }
 
         public virtual void Update()
@@ -89,19 +96,19 @@ namespace MarioPirates
         }
     }
 
-    public class Blocks4 : BlockState
+    public class Brick4 : BlockState
     {
-        public Blocks4(Block block) : base(block)
+        public Brick4(Block block) : base(block)
         {
         }
 
-        public override void ChangeToBlocks4()
+        public override void ChangeToBrick4()
         {
         }
 
         public override void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
         {
-            spriteBatch.Draw(textures["blocks4"], block.dst, block.src, Color.White);
+            spriteBatch.Draw(textures["brick4"], block.dst, block.src, Color.White);
         }
     }
 

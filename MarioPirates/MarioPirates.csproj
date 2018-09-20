@@ -43,6 +43,9 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Command\Reset.cs" />
+    <Compile Include="Command\SetBlockHidden.cs" />
+    <Compile Include="Command\QuestionBlockUsed.cs" />
     <Compile Include="Sprite\GreenMushroom.cs" />
     <Compile Include="Sprite\Block.cs" />
     <Compile Include="Sprite\Coin.cs" />
