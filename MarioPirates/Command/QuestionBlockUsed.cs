@@ -11,7 +11,7 @@
 
         public void Execute()
         {
-            block.state.ChangeToBrick4();
+            block.State.ChangeToBrick4();
         }
     }
 }

@@ -115,27 +115,27 @@ namespace MarioPirates
             sprites.Add(mario);
 
             var hiddenBlock = new Block(100, 0);
-            hiddenBlock.state.SetHide(true);
-            hiddenBlock.state.ChangeToBrick4();
+            hiddenBlock.State.SetHide(true);
+            hiddenBlock.State.ChangeToBrick4();
             sprites.Add(hiddenBlock);
 
             var block = new Block(100, 50);
             sprites.Add(block);
 
             var brick1 = new Block(100, 150);
-            brick1.state.ChangeToBrick1();
+            brick1.State.ChangeToBrick1();
             sprites.Add(brick1);
 
             var brick2 = new Block(100, 200);
-            brick2.state.ChangeToBrick2();
+            brick2.State.ChangeToBrick2();
             sprites.Add(brick2);
 
             var brick3 = new Block(100, 250);
-            brick3.state.ChangeToBrick3();
+            brick3.State.ChangeToBrick3();
             sprites.Add(brick3);
 
             var brick4 = new Block(100, 100);
-            brick4.state.ChangeToBrick4();
+            brick4.State.ChangeToBrick4();
             sprites.Add(brick4);
 
             var pipe = new Pipe(200, 200);

@@ -13,7 +13,7 @@
 
         public void Execute()
         {
-            block.state.SetHide(hidden);
+            block.State.SetHide(hidden);
         }
     }
 }
