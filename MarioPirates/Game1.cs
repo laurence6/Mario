@@ -50,7 +50,7 @@ namespace MarioPirates
         /// </summary>
         protected override void Initialize()
         {
-            var mario = new Mario();
+            var mario = new Mario(600, 200);
             sprites.Add(mario);
 
             var block = new Block(100, 50);
@@ -90,7 +90,7 @@ namespace MarioPirates
             var greenMush = new GreenMushroom(300, 100);
             sprites.Add(greenMush);
 
-            var goomba1 = EnemySpriteFactory.Instance.CreateGoombaSprite(400, 300);
+            var goomba1 = EnemySpriteFactory.Instance.CreateGoombaSprite(0, 400);
             sprites.Add(goomba1);
 
             var keyboardController = new KeyboardController();

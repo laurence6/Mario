@@ -9,17 +9,16 @@ namespace MarioPirates
         protected const int screenWidth = 800, screenHeight = 480;
         protected const int textureFrameCount = 4;
 
-        public Rectangle DrawDst = new Rectangle(
-            (screenWidth - MarioState.marioWidth * MarioState.zoom) / 2,
-            (screenHeight - MarioState.marioHeight * MarioState.zoom) / 2,
-            MarioState.marioWidth * MarioState.zoom, MarioState.marioHeight * MarioState.zoom);
-        public Rectangle DrawSrc = new Rectangle(180, 0, MarioState.marioWidth, MarioState.marioHeight);
-
         public MarioState State;
 
-        public Mario()
+        public Rectangle DrawSrc = new Rectangle(180, 0, MarioState.marioWidth, MarioState.marioHeight);
+        public Rectangle DrawDst = new Rectangle(0, 0, MarioState.marioWidth * MarioState.zoom, MarioState.marioHeight * MarioState.zoom);
+
+        public Mario(int dstX, int dstY)
         {
             State = new MarioStateRightIdle(this);
+            DrawDst.X = dstX;
+            DrawDst.Y = dstY;
         }
 
         public void Update()
@@ -39,7 +38,7 @@ namespace MarioPirates
         public const int bigMarioWidth = 30, bigMarioHeight = 32;
         public const int deadMarioWidth = 15, deadMarioHeight = 14;
         public const int zoom = 4;
-        
+
         protected Mario mario;
 
         protected MarioState(Mario mario)
