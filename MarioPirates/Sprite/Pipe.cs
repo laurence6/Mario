@@ -6,8 +6,9 @@ namespace MarioPirates
 {
     public class Pipe : ISprite
     {
-        private Rectangle src, dst;
         private const int pipeWidth = 64, pipeHeight = 46, zoom = 2;
+
+        private Rectangle src, dst;
 
         public Pipe(int dstX, int dstY)
         {

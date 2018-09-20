@@ -6,14 +6,15 @@ namespace MarioPirates
 {
     public class Block : ISprite
     {
-        public Rectangle src, dst;
         public BlockState state;
+
+        public Rectangle src, dst;
 
         public Block(int dstX, int dstY)
         {
+            state = new Block1(this);
             dst.X = dstX;
             dst.Y = dstY;
-            state = new Block1(this);
         }
 
         public void Update()
@@ -32,35 +33,43 @@ namespace MarioPirates
         public const int blockWidth = 16, blockHeight = 16, zoom = 2;
 
         protected Block block;
+
         protected BlockState(Block block)
         {
             this.block = block;
             block.src = new Rectangle(0, 0, blockWidth, blockHeight);
             block.dst = new Rectangle(block.dst.X, block.dst.Y, blockWidth * zoom, blockHeight * zoom);
         }
-        public virtual void changeToBlock1()
+
+        public virtual void ChangeToBlock1()
         {
             block.state = new Block1(block);
         }
-        public virtual void changeToBlocks4()
+
+        public virtual void ChangeToBlocks4()
         {
             block.state = new Blocks4(block);
         }
-        public virtual void changeToBrick1()
+
+        public virtual void ChangeToBrick1()
         {
             block.state = new Brick1(block);
         }
-        public virtual void changeToBrick2()
+
+        public virtual void ChangeToBrick2()
         {
             block.state = new Brick2(block);
         }
-        public virtual void changeToBrick3()
+
+        public virtual void ChangeToBrick3()
         {
             block.state = new Brick3(block);
         }
+
         public virtual void Update()
         {
         }
+
         public abstract void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures);
     }
 
@@ -70,7 +79,7 @@ namespace MarioPirates
         {
         }
 
-        public override void changeToBlock1()
+        public override void ChangeToBlock1()
         {
         }
 
@@ -86,7 +95,7 @@ namespace MarioPirates
         {
         }
 
-        public override void changeToBlocks4()
+        public override void ChangeToBlocks4()
         {
         }
 
@@ -102,7 +111,7 @@ namespace MarioPirates
         {
         }
 
-        public override void changeToBrick1()
+        public override void ChangeToBrick1()
         {
         }
 
@@ -118,7 +127,7 @@ namespace MarioPirates
         {
         }
 
-        public override void changeToBrick2()
+        public override void ChangeToBrick2()
         {
         }
 
@@ -134,7 +143,7 @@ namespace MarioPirates
         {
         }
 
-        public override void changeToBrick3()
+        public override void ChangeToBrick3()
         {
         }
 
@@ -143,6 +152,5 @@ namespace MarioPirates
             spriteBatch.Draw(textures["brick3"], block.dst, block.src, Color.White);
         }
     }
-
 }
 

@@ -6,18 +6,17 @@ namespace MarioPirates
 {
     public class Star : ISprite
     {
-        private Rectangle src, dest;
         private const int starHeight = 24, starWidth = 30, zoom = 3;
-        protected const int textureFrameCount = 4, framesPerSprite = 15;
-        private int frameCount, frame;
+        private const int textureFrameCount = 4, framesPerSprite = 15;
 
-        public Star(int destX, int destY)
+        private Rectangle src, dst;
+
+        private int frameCount = 0;
+
+        public Star(int dstX, int dstY)
         {
             src = new Rectangle(0, 0, starWidth, starHeight);
-            dest = new Rectangle(destX, destY, starWidth * zoom, starHeight * zoom);
-
-            frameCount = 0;
-            frame = 0;
+            dst = new Rectangle(dstX, dstY, starWidth * zoom, starHeight * zoom);
         }
 
         public void Update()
@@ -28,28 +27,13 @@ namespace MarioPirates
             }
             if (frameCount % framesPerSprite == 0)
             {
-                switch (frameCount / framesPerSprite)
-                {
-                    case 0:
-                        frame = 0;
-                        break;
-                    case 1:
-                        frame = 1;
-                        break;
-                    case 2:
-                        frame = 2;
-                        break;
-                    case 3:
-                        frame = 3;
-                        break;
-                }
+                src.X = starWidth * frameCount / framesPerSprite;
             }
         }
 
         public void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
         {
-            src = new Rectangle(starWidth * frame, 0, starWidth, starHeight);
-            spriteBatch.Draw(textures["stars"], dest, src, Color.White);
+            spriteBatch.Draw(textures["stars"], dst, src, Color.White);
         }
     }
 }

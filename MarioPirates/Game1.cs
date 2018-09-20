@@ -56,20 +56,20 @@ namespace MarioPirates
             var block = new Block(100, 50);
             sprites.Add(block);
 
-            block = new Block(100, 100);
-            block.state.changeToBlocks4();
-            sprites.Add(block);
-
             block = new Block(100, 150);
-            block.state.changeToBrick1();
+            block.state.ChangeToBrick1();
             sprites.Add(block);
 
             block = new Block(100, 200);
-            block.state.changeToBrick2();
+            block.state.ChangeToBrick2();
             sprites.Add(block);
 
             block = new Block(100, 250);
-            block.state.changeToBrick3();
+            block.state.ChangeToBrick3();
+            sprites.Add(block);
+
+            block = new Block(100, 100);
+            block.state.ChangeToBlocks4();
             sprites.Add(block);
 
             var pipe = new Pipe(200, 200);
