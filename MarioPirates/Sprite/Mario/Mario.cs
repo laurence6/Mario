@@ -11,12 +11,12 @@ namespace MarioPirates
 
         public MarioState State;
 
-        public Rectangle DrawSrc = new Rectangle(180, 0, MarioState.marioWidth, MarioState.marioHeight);
-        public Rectangle DrawDst = new Rectangle(0, 0, MarioState.marioWidth * MarioState.zoom, MarioState.marioHeight * MarioState.zoom);
+        public Rectangle DrawSrc = new Rectangle(180, 0, MarioStateSmall.marioWidth, MarioStateSmall.marioHeight);
+        public Rectangle DrawDst = new Rectangle(0, 0, MarioStateSmall.marioWidth * MarioState.zoom, MarioStateSmall.marioHeight * MarioState.zoom);
 
         public Mario(int dstX, int dstY)
         {
-            State = new MarioStateRightIdle(this);
+            State = new MarioStateSmallRightIdle(this);
             DrawDst.X = dstX;
             DrawDst.Y = dstY;
         }

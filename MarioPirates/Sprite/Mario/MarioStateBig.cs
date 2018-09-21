@@ -5,24 +5,30 @@ using System.Collections.Generic;
 namespace MarioPirates
 {
 
-    public class MarioStateBig : MarioState
+    public abstract class MarioStateBig : MarioState
     {
+        public const int marioWidth = 30, marioHeight = 32;
+
         public MarioStateBig(Mario mario) : base(mario)
         {
         }
 
-        public override void Big()
+        public override void Left()
         {
+            mario.State = new MarioStateBigLeftIdle(mario);
+        }
+
+        public override void Right()
+        {
+            mario.State = new MarioStateBigRightIdle(mario);
         }
 
         public override void Update()
         {
-            mario.DrawSrc.X = 180;
-            mario.DrawSrc.Y = 0;
-            mario.DrawSrc.Width = bigMarioWidth;
-            mario.DrawSrc.Height = bigMarioHeight;
-            mario.DrawDst.Width = bigMarioWidth * zoom;
-            mario.DrawDst.Height = bigMarioHeight * zoom;
+            mario.DrawSrc.Width = marioWidth;
+            mario.DrawSrc.Height = marioHeight;
+            mario.DrawDst.Width = marioWidth * zoom;
+            mario.DrawDst.Height = marioHeight * zoom;
         }
 
         public override void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)

@@ -1,33 +1,47 @@
 namespace MarioPirates
 {
 
-    public class MarioStateLeftRun : MarioState
+    public class MarioStateSmallRightRun : MarioStateSmall
     {
         private const uint framesPerSprite = 15;
         private uint frameCount;
 
-        public MarioStateLeftRun(Mario mario) : base(mario)
+        public MarioStateSmallRightRun(Mario mario) : base(mario)
         {
             frameCount = 0;
         }
 
         public override void Left()
         {
+            mario.State = new MarioStateSmallRightIdle(mario);
         }
 
         public override void Right()
         {
-            mario.State = new MarioStateLeftIdle(mario);
         }
 
         public override void Jump()
         {
-            mario.State = new MarioStateLeftJump(mario);
+            mario.State = new MarioStateSmallRightJump(mario);
         }
 
         public override void Crouch()
         {
-            mario.State = new MarioStateLeftCrouch(mario);
+            mario.State = new MarioStateSmallRightCrouch(mario);
+        }
+
+        public override void Small()
+        {
+        }
+
+        public override void Big()
+        {
+            mario.State = new MarioStateBigRightRun(mario);
+        }
+
+        public override void Fire()
+        {
+            mario.State = new MarioStateFireRightRun(mario);
         }
 
         public override void Update()
@@ -41,16 +55,16 @@ namespace MarioPirates
                 switch (frameCount / framesPerSprite)
                 {
                     case 0:
-                        mario.DrawSrc.X = 120;
+                        mario.DrawSrc.X = 210;
                         mario.DrawSrc.Y = 0;
                         break;
                     case 1:
                     case 3:
-                        mario.DrawSrc.X = 90;
+                        mario.DrawSrc.X = 240;
                         mario.DrawSrc.Y = 0;
                         break;
                     case 2:
-                        mario.DrawSrc.X = 60;
+                        mario.DrawSrc.X = 270;
                         mario.DrawSrc.Y = 0;
                         break;
                     default:

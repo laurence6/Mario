@@ -6,9 +6,6 @@ namespace MarioPirates
 {
     public abstract class MarioState
     {
-        public const int marioWidth = 30, marioHeight = 15;
-        public const int bigMarioWidth = 30, bigMarioHeight = 32;
-        public const int deadMarioWidth = 15, deadMarioHeight = 14;
         public const int zoom = 4;
 
         protected Mario mario;
@@ -18,40 +15,19 @@ namespace MarioPirates
             this.mario = mario;
         }
 
-        public virtual void Left()
-        {
-            mario.State = new MarioStateLeftIdle(mario);
-        }
+        public abstract void Left();
 
-        public virtual void Right()
-        {
-            mario.State = new MarioStateRightIdle(mario);
-        }
+        public abstract void Right();
 
-        public virtual void Jump()
-        {
-            mario.State = new MarioStateRightJump(mario);
-        }
+        public abstract void Jump();
 
-        public virtual void Crouch()
-        {
-            mario.State = new MarioStateRightCrouch(mario);
-        }
+        public abstract void Crouch();
 
-        public virtual void Small()
-        {
-            mario.State = new MarioStateSmall(mario);
-        }
+        public abstract void Small();
 
-        public virtual void Big()
-        {
-            mario.State = new MarioStateBig(mario);
-        }
+        public abstract void Big();
 
-        public virtual void Fire()
-        {
-            mario.State = new MarioStateFire(mario);
-        }
+        public abstract void Fire();
 
         public virtual void Dead()
         {
@@ -60,9 +36,6 @@ namespace MarioPirates
 
         public abstract void Update();
 
-        public virtual void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
-        {
-            spriteBatch.Draw(textures["mario"], mario.DrawDst, mario.DrawSrc, Color.White);
-        }
+        public abstract void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures);
     }
 }

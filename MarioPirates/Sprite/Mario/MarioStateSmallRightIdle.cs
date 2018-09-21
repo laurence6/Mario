@@ -1,37 +1,34 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
-
 namespace MarioPirates
 {
 
-    public class MarioStateDead : MarioState
+    public class MarioStateSmallRightIdle : MarioStateSmall
     {
-        public const int marioWidth = 15, marioHeight = 14;
-
-        public MarioStateDead(Mario mario) : base(mario)
+        public MarioStateSmallRightIdle(Mario mario) : base(mario)
         {
         }
 
         public override void Left()
         {
+            mario.State = new MarioStateSmallLeftIdle(mario);
         }
 
         public override void Right()
         {
+            mario.State = new MarioStateSmallRightRun(mario);
         }
 
         public override void Jump()
         {
+            mario.State = new MarioStateSmallRightJump(mario);
         }
 
         public override void Crouch()
         {
+            mario.State = new MarioStateSmallRightCrouch(mario);
         }
 
         public override void Small()
         {
-            mario.State = new MarioStateSmallRightIdle(mario);
         }
 
         public override void Big()
@@ -44,23 +41,14 @@ namespace MarioPirates
             mario.State = new MarioStateFireRightIdle(mario);
         }
 
-        public override void Dead()
-        {
-        }
-
         public override void Update()
         {
-            mario.DrawSrc.X = 0;
+            mario.DrawSrc.X = 180;
             mario.DrawSrc.Y = 0;
             mario.DrawSrc.Width = marioWidth;
             mario.DrawSrc.Height = marioHeight;
             mario.DrawDst.Width = marioWidth * zoom;
             mario.DrawDst.Height = marioHeight * zoom;
-        }
-
-        public override void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
-        {
-            spriteBatch.Draw(textures["deadmario"], mario.DrawDst, mario.DrawSrc, Color.White);
         }
     }
 

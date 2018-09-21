@@ -1,20 +1,33 @@
 namespace MarioPirates
 {
 
-    public class MarioStateRightCrouch : MarioState
+    public class MarioStateSmallRightCrouch : MarioStateSmall
     {
-        public MarioStateRightCrouch(Mario mario) : base(mario)
+        public MarioStateSmallRightCrouch(Mario mario) : base(mario)
         {
         }
 
         public override void Jump()
         {
-            mario.State = new MarioStateRightIdle(mario);
+            mario.State = new MarioStateSmallRightIdle(mario);
         }
 
         public override void Crouch()
         {
-            mario.State = new MarioStateRightCrouch(mario);
+        }
+
+        public override void Small()
+        {
+        }
+
+        public override void Big()
+        {
+            mario.State = new MarioStateBigRightCrouch(mario);
+        }
+
+        public override void Fire()
+        {
+            mario.State = new MarioStateFireRightCrouch(mario);
         }
 
         public override void Update()
