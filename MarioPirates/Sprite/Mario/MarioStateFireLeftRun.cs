@@ -37,7 +37,7 @@ namespace MarioPirates
 
         public override void Big()
         {
-            mario.State = new MarioStateFireLeftRun(mario);
+            mario.State = new MarioStateBigLeftRun(mario);
         }
 
         public override void Fire()
@@ -55,16 +55,16 @@ namespace MarioPirates
                 switch (frameCount / framesPerSprite)
                 {
                     case 0:
-                        mario.DrawSrc.X = 120;
+                        mario.DrawSrc.X = 129;
                         mario.DrawSrc.Y = 0;
                         break;
                     case 1:
                     case 3:
-                        mario.DrawSrc.X = 90;
+                        mario.DrawSrc.X = 103;
                         mario.DrawSrc.Y = 0;
                         break;
                     case 2:
-                        mario.DrawSrc.X = 60;
+                        mario.DrawSrc.X = 77;
                         mario.DrawSrc.Y = 0;
                         break;
                     default:

@@ -55,16 +55,16 @@ namespace MarioPirates
                 switch (frameCount / framesPerSprite)
                 {
                     case 0:
-                        mario.DrawSrc.X = 210;
+                        mario.DrawSrc.X = 206;
                         mario.DrawSrc.Y = 0;
                         break;
                     case 1:
                     case 3:
-                        mario.DrawSrc.X = 240;
+                        mario.DrawSrc.X = 231;
                         mario.DrawSrc.Y = 0;
                         break;
                     case 2:
-                        mario.DrawSrc.X = 270;
+                        mario.DrawSrc.X = 257;
                         mario.DrawSrc.Y = 0;
                         break;
                     default:
