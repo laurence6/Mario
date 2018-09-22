@@ -34,10 +34,7 @@ namespace MarioPirates
         {
             mario.DrawSrc.X = 300;
             mario.DrawSrc.Y = 0;
-            mario.DrawSrc.Width = marioWidth;
-            mario.DrawSrc.Height = marioHeight;
-            mario.DrawDst.Width = marioWidth * zoom;
-            mario.DrawDst.Height = marioHeight * zoom;
+            base.Update();
         }
     }
 

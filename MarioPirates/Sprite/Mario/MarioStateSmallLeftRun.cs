@@ -4,11 +4,10 @@ namespace MarioPirates
     public class MarioStateSmallLeftRun : MarioStateSmall
     {
         private const uint framesPerSprite = 15;
-        private uint frameCount;
+        private uint frameCount = 0;
 
         public MarioStateSmallLeftRun(Mario mario) : base(mario)
         {
-            frameCount = 0;
         }
 
         public override void Left()
@@ -46,10 +45,6 @@ namespace MarioPirates
 
         public override void Update()
         {
-            if (frameCount++ / framesPerSprite >= 4)
-            {
-                frameCount = 0;
-            }
             if (frameCount % framesPerSprite == 0)
             {
                 switch (frameCount / framesPerSprite)
@@ -71,10 +66,8 @@ namespace MarioPirates
                         break;
                 }
             }
-            mario.DrawSrc.Width = marioWidth;
-            mario.DrawSrc.Height = marioHeight;
-            mario.DrawDst.Width = marioWidth * zoom;
-            mario.DrawDst.Height = marioHeight * zoom;
+            base.Update();
+            frameCount++;
         }
     }
 
