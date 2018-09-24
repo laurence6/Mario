@@ -9,15 +9,11 @@ namespace MarioPirates
     {
         public Brick1(Block block) : base(block)
         {
+            block.sprite = SpriteFactory.Instance.CreateSprite("brick1");
         }
 
         public override void ChangeToBrick1()
         {
-        }
-
-        public override void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
-        {
-            spriteBatch.Draw(textures["brick1"], block.dst, block.src, Color.White);
         }
     }
 

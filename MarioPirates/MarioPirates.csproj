@@ -46,12 +46,13 @@
     <Compile Include="Command\Reset.cs" />
     <Compile Include="Command\SetBlockHidden.cs" />
     <Compile Include="Command\QuestionBlockUsed.cs" />
-    <Compile Include="Object\Block\Block1.cs" />
     <Compile Include="Object\Block\BlockState.cs" />
     <Compile Include="Object\Block\Brick1.cs" />
     <Compile Include="Object\Block\Brick2.cs" />
     <Compile Include="Object\Block\Brick3.cs" />
     <Compile Include="Object\Block\Brick4.cs" />
+    <Compile Include="Object\Block\Brick5.cs" />
+    <Compile Include="Object\Block\HiddenBlock.cs" />
     <Compile Include="Object\GameObject.cs" />
     <Compile Include="Object\Item\GreenMushroom.cs" />
     <Compile Include="Object\Block\Block.cs" />

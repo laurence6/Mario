@@ -4,21 +4,22 @@ using System.Collections.Generic;
 
 namespace MarioPirates
 {
-    public class Block : ISprite
+    public class Block : GameObject
     {
         public BlockState State;
-
-        public Rectangle src, dst;
         public bool hidden = false;
 
         public Block(int dstX, int dstY)
         {
-            State = new Block(this);
-            dst.X = dstX;
-            dst.Y = dstY;
+            location.X = dstX;
+            location.Y = dstY;
+            size = new Point(16, 16);
+            sprite = SpriteFactory.Instance.CreateSprite("brick5");
+
+            State = new Brick1(this);
         }
 
-        public void Update()
+        public override void Update()
         {
             State.Update();
         }

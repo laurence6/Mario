@@ -7,15 +7,11 @@ namespace MarioPirates
 
     public abstract class BlockState
     {
-        public const int blockWidth = 16, blockHeight = 16, zoom = 2;
-
         protected Block block;
 
         protected BlockState(Block block)
         {
             this.block = block;
-            block.src = new Rectangle(0, 0, blockWidth, blockHeight);
-            block.dst = new Rectangle(block.dst.X, block.dst.Y, blockWidth * zoom, blockHeight * zoom);
         }
 
         public virtual void ChangeToBrick5()
@@ -51,8 +47,6 @@ namespace MarioPirates
         public virtual void Update()
         {
         }
-
-        public abstract void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures);
     }
 
 }

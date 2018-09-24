@@ -1,24 +1,20 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace MarioPirates
 {
-
-    public class Brick5 : BlockState
+    class Brick5 : BlockState
     {
         public Brick5(Block block) : base(block)
         {
+            block.sprite = SpriteFactory.Instance.CreateSprite("brick5");
         }
 
         public override void ChangeToBrick5()
         {
         }
-
-        public override void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
-        {
-            spriteBatch.Draw(textures["brick5"], block.dst, block.src, Color.White);
-        }
     }
-
 }
