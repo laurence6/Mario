@@ -11,7 +11,7 @@ namespace MarioPirates
         {
         }
 
-        public override void ChangeToBlock1()
+        public override void ChangeToBrick5()
         {
         }
 

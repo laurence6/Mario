@@ -18,9 +18,9 @@ namespace MarioPirates
             block.dst = new Rectangle(block.dst.X, block.dst.Y, blockWidth * zoom, blockHeight * zoom);
         }
 
-        public virtual void ChangeToBlock1()
+        public virtual void ChangeToBrick5()
         {
-            block.State = new Block1(block);
+            block.State = new Brick5(block);
         }
 
         public virtual void ChangeToBrick4()
