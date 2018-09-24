@@ -5,9 +5,9 @@ using System.Collections.Generic;
 namespace MarioPirates
 {
 
-    public class Block1 : BlockState
+    public class Brick5 : BlockState
     {
-        public Block1(Block block) : base(block)
+        public Brick5(Block block) : base(block)
         {
         }
 
@@ -17,7 +17,7 @@ namespace MarioPirates
 
         public override void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
         {
-            spriteBatch.Draw(textures["blocks"], block.dst, block.src, Color.White);
+            spriteBatch.Draw(textures["brick5"], block.dst, block.src, Color.White);
         }
     }
 
