@@ -7,7 +7,7 @@ namespace MarioPirates
 
     public abstract class MarioStateFire : MarioState
     {
-        public const int marioWidth = 26, marioHeight = 31;
+        public const int marioWidth = 30, marioHeight = 32;
 
         public MarioStateFire(Mario mario) : base(mario)
         {
