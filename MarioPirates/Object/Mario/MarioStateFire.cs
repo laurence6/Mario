@@ -15,12 +15,12 @@ namespace MarioPirates
 
         public override void Left()
         {
-            mario.State = new MarioStateBigLeftIdle(mario);
+            mario.State = new MarioStateFireLeftIdle(mario);
         }
 
         public override void Right()
         {
-            mario.State = new MarioStateBigRightIdle(mario);
+            mario.State = new MarioStateFireRightIdle(mario);
         }
 
         public override void Update()
