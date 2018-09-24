@@ -32,7 +32,7 @@ namespace MarioPirates
 
         public override void Update()
         {
-            mario.DrawSrc.X = 26;
+            mario.DrawSrc.X = 30;
             mario.DrawSrc.Y = 0;
             base.Update();
         }
