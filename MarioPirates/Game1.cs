@@ -15,7 +15,7 @@ namespace MarioPirates
         SpriteBatch spriteBatch;
 
         private Dictionary<string, Texture2D> textures = new Dictionary<string, Texture2D> {
-            { "blocks", null },
+            { "brick5", null },
             { "brick1", null },
             { "brick2", null },
             { "brick3", null },
@@ -119,8 +119,6 @@ namespace MarioPirates
             hiddenBlock.State.ChangeToBrick4();
             sprites.Add(hiddenBlock);
 
-            var block = new Block(100, 50);
-            sprites.Add(block);
 
             var brick1 = new Block(100, 150);
             brick1.State.ChangeToBrick1();
@@ -137,6 +135,9 @@ namespace MarioPirates
             var brick4 = new Block(100, 100);
             brick4.State.ChangeToBrick4();
             sprites.Add(brick4);
+
+            var brick5 = new Block(100, 50);
+            sprites.Add(brick5);
 
             var pipe = new Pipe(200, 200);
             sprites.Add(pipe);
@@ -173,7 +174,7 @@ namespace MarioPirates
             keyboardController.AddCommandMapping(new Command.Fire(mario), Keys.I);
             keyboardController.AddCommandMapping(new Command.Dead(mario), Keys.O);
             keyboardController.AddCommandMapping(new Command.QuestionBlockUsed(brick1), Keys.Z);
-            keyboardController.AddCommandMapping(new Command.SetBlockHidden(block, true), Keys.X);
+            keyboardController.AddCommandMapping(new Command.SetBlockHidden(brick5, true), Keys.X);
             keyboardController.AddCommandMapping(new Command.SetBlockHidden(hiddenBlock, false), Keys.C);
             controllers.Add(keyboardController);
 

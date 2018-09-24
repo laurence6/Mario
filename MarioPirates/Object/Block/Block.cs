@@ -13,7 +13,7 @@ namespace MarioPirates
 
         public Block(int dstX, int dstY)
         {
-            State = new Brick5(this);
+            State = new Block(this);
             dst.X = dstX;
             dst.Y = dstY;
         }
