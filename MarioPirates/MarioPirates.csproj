@@ -58,7 +58,6 @@
     <Compile Include="Object\Block\Block.cs" />
     <Compile Include="Object\Item\Coin.cs" />
     <Compile Include="Object\Item\Flower.cs" />
-    <Compile Include="Object\Item\Item.cs" />
     <Compile Include="Object\Mario\MarioState.cs" />
     <Compile Include="Object\Mario\MarioStateBig.cs" />
     <Compile Include="Object\Mario\MarioStateBigLeftCrouch.cs" />
