@@ -47,7 +47,7 @@ namespace MarioPirates
         {
             if (frameCount % framesPerSprite == 0)
             {
-                switch (frameCount / framesPerSprite)
+                switch (frameCount / framesPerSprite % 4)
                 {
                     case 0:
                         mario.DrawSrc.X = 206;
