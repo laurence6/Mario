@@ -159,6 +159,8 @@ namespace MarioPirates
             var goomba1 = new Goomba(0, 400);
             sprites.Add(goomba1);
 
+            var koopa1 = new Koopa(0, 350, Direction.right);
+            sprites.Add(koopa1);
             var keyboardController = new KeyboardController();
             keyboardController.AddCommandMapping(new Command.Quit(this), Keys.Q);
             keyboardController.AddCommandMapping(new Command.Reset(this), Keys.R);
