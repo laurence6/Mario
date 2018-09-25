@@ -2,19 +2,12 @@
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
-namespace MarioPirates.Object
+namespace MarioPirates
 {
     public abstract class GameObject
     {
-        public ISprite sprite;
+        public Sprite sprite;
         public Point location, size;
-
-        public GameObject(ISprite sprite, Point location, Point size)
-        {
-            this.sprite = sprite;
-            this.location = location;
-            this.size = size;
-        }
 
         public virtual void Update() { }
 
