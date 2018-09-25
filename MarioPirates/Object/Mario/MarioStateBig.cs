@@ -6,10 +6,11 @@ namespace MarioPirates
     public abstract class MarioStateBig : MarioState
     {
         public const int marioWidth = 120, marioHeight = 128;
+        public const int marioCrouchWidth = 64, marioCrouchHeight = 88;
 
         protected MarioStateBig(Mario mario) : base(mario)
         {
-            mario.size = new Point(marioHeight, marioWidth);
+            mario.size = new Point(marioWidth, marioHeight);
         }
 
         public override void Left()
