@@ -23,19 +23,6 @@ namespace MarioPirates
         {
             mario.State = new MarioStateBigRightIdle(mario, location.X, location.Y);
         }
-
-        public override void Update()
-        {
-            mario.DrawSrc.Width = marioWidth;
-            mario.DrawSrc.Height = marioHeight;
-            mario.DrawDst.Width = marioWidth * zoom;
-            mario.DrawDst.Height = marioHeight * zoom;
-        }
-
-        public override void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
-        {
-            spriteBatch.Draw(textures["bigmario"], mario.DrawDst, mario.DrawSrc, Color.White);
-        }
     }
 
 }

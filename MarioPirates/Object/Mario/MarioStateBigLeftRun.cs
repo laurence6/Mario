@@ -43,33 +43,6 @@ namespace MarioPirates
         {
             mario.State = new MarioStateFireLeftRun(mario);
         }
-
-        public override void Update()
-        {
-            if (frameCount % framesPerSprite == 0)
-            {
-                switch (frameCount / framesPerSprite % 4)
-                {
-                    case 0:
-                        mario.DrawSrc.X = 120;
-                        mario.DrawSrc.Y = 0;
-                        break;
-                    case 1:
-                    case 3:
-                        mario.DrawSrc.X = 90;
-                        mario.DrawSrc.Y = 0;
-                        break;
-                    case 2:
-                        mario.DrawSrc.X = 60;
-                        mario.DrawSrc.Y = 0;
-                        break;
-                    default:
-                        break;
-                }
-            }
-            base.Update();
-            frameCount++;
-        }
     }
 
 }

@@ -30,13 +30,6 @@ namespace MarioPirates
         {
             mario.State = new MarioStateFireRightJump(mario, location.X, location.Y);
         }
-
-        public override void Update()
-        {
-            mario.DrawSrc.X = 300;
-            mario.DrawSrc.Y = 0;
-            base.Update();
-        }
     }
 
 }

@@ -34,9 +34,6 @@ namespace MarioPirates
         {
             mario.State = new MarioStateDead(mario);
         }
-
-        public abstract void Update();
-
-        public abstract void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures);
     }
+
 }

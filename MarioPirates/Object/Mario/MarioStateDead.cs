@@ -49,21 +49,6 @@ namespace MarioPirates
         public override void Dead()
         {
         }
-
-        public override void Update()
-        {
-            mario.DrawSrc.X = 0;
-            mario.DrawSrc.Y = 0;
-            mario.DrawSrc.Width = marioWidth;
-            mario.DrawSrc.Height = marioHeight;
-            mario.DrawDst.Width = marioWidth * zoom;
-            mario.DrawDst.Height = marioHeight * zoom;
-        }
-
-        public override void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
-        {
-            spriteBatch.Draw(textures["deadmario"], mario.DrawDst, mario.DrawSrc, Color.White);
-        }
     }
 
 }

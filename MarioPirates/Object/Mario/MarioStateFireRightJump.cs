@@ -30,13 +30,6 @@ namespace MarioPirates
         public override void Fire()
         {
         }
-
-        public override void Update()
-        {
-            mario.DrawSrc.X = 300;
-            mario.DrawSrc.Y = 0;
-            base.Update();
-        }
     }
 
 }
