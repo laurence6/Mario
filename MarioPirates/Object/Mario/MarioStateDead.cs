@@ -4,7 +4,7 @@ namespace MarioPirates
 {
     internal class MarioStateDead : MarioState
     {
-        public const int marioWidth = 60, marioHeight = 56;
+        protected const int marioWidth = 60, marioHeight = 56;
 
         public MarioStateDead(Mario mario) : base(mario)
         {
