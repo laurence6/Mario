@@ -88,7 +88,7 @@
     <Compile Include="Object\Mario\MarioStateSmallRightJump.cs" />
     <Compile Include="Object\Mario\MarioStateSmallRightRun.cs" />
     <Compile Include="Object\Item\RedMushroom.cs" />
-    <Compile Include="Object\Block\Pipe.cs" />
+    <Compile Include="Object\Item\Pipe.cs" />
     <Compile Include="Command\Dead.cs" />
     <Compile Include="Command\Fire.cs" />
     <Compile Include="Command\Big.cs" />
