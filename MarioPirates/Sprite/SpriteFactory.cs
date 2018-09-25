@@ -24,7 +24,55 @@ namespace MarioPirates
 
                 case "stars": return new Sprite("stars", new Point(30, 24), GenerateFrameLocationArray(new Point(0, 0), new Point(30, 0), 4));
 
-                case "mario_big_idle_left": return new Sprite("bigmario", new Point(30, 32), new Point(150, 0));
+                case "mario_small_crouch_left": return new Sprite("smallmario", new Point(30, 15), new Point(0, 0));
+
+                case "mario_small_jump_left": return new Sprite("smallmario", new Point(30, 15), new Point(30, 0));
+
+                case "mario_small_run_left": return new Sprite("smallmario", new Point(30, 15), GenerateFrameLocationArray(new Point(60, 0), new Point(30, 0), 3));
+
+                case "mario_small_idle_left": return new Sprite("smallmario", new Point(30, 15), new Point(150, 0));
+
+                case "mario_small_idle_right": return new Sprite("smallmario", new Point(30, 15), new Point(180, 0));
+
+                case "mario_small_run_right": return new Sprite("smallmario", new Point(30, 15), GenerateFrameLocationArray(new Point(210, 0), new Point(30, 0), 3));
+
+                case "mario_small_jump_right": return new Sprite("smallmario", new Point(30, 15), new Point(300, 0));
+
+                case "mario_small_crouch_right": return new Sprite("smallmario", new Point(30, 15), new Point(150, 0));
+
+                case "mario_big_crouch_left": return new Sprite("bigmario", new Point(30, 33), new Point(0, 0));
+
+                case "mario_big_jump_left": return new Sprite("bigmario", new Point(30, 33), new Point(30, 0));
+
+                case "mario_big_run_left": return new Sprite("bigmario", new Point(30, 33), GenerateFrameLocationArray(new Point(60, 0), new Point(30, 0), 3));
+
+                case "mario_big_idle_left": return new Sprite("bigmario", new Point(30, 33), new Point(330, 0));
+
+                case "mario_big_idle_right": return new Sprite("bigmario", new Point(30, 33), new Point(180, 0));
+
+                case "mario_big_run_right": return new Sprite("bigmario", new Point(30, 33), GenerateFrameLocationArray(new Point(210, 0), new Point(30, 0), 3));
+
+                case "mario_big_jump_right": return new Sprite("bigmario", new Point(30, 33), new Point(300, 0));
+
+                case "mario_big_crouch_right": return new Sprite("bigmario", new Point(30, 33), new Point(330, 0));
+
+                case "mario_fire_crouch_left": return new Sprite("firemario", new Point(30, 33), new Point(0, 0));
+
+                case "mario_fire_jump_left": return new Sprite("firemario", new Point(30, 33), new Point(30, 0));
+
+                case "mario_fire_run_left": return new Sprite("firemario", new Point(30, 33), GenerateFrameLocationArray(new Point(60, 0), new Point(30, 0), 3));
+
+                case "mario_fire_idle_left": return new Sprite("firemario", new Point(30, 33), new Point(330, 0));
+
+                case "mario_fire_idle_right": return new Sprite("firemario", new Point(30, 33), new Point(180, 0));
+
+                case "mario_fire_run_right": return new Sprite("firemario", new Point(30, 33), GenerateFrameLocationArray(new Point(210, 0), new Point(30, 0), 3));
+
+                case "mario_fire_jump_right": return new Sprite("firemario", new Point(30, 33), new Point(300, 0));
+
+                case "mario_fire_crouch_right": return new Sprite("firemario", new Point(30, 33), new Point(330, 0));
+
+                case "mario_dead": return new Sprite("deadmario", new Point(15, 14), new Point(0, 0));
 
                 case "brickblock": return new Sprite("brickblock", new Point(16, 16), new Point(0, 0));
 
