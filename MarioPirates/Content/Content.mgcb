@@ -229,7 +229,7 @@
 /processorParam:TextureFormat=Color
 /build:brickblock.png
 
-#begin leftcouchbigmario.png
+#begin leftcrouchbigmario.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -239,9 +239,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:leftcouchbigmario.png
+/build:leftcrouchbigmario.png
 
-#begin leftcouchfiremario.png
+#begin leftcrouchfiremario.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -251,9 +251,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:leftcouchfiremario.png
+/build:leftcrouchfiremario.png
 
-#begin rightcouchbigmario.png
+#begin rightcrouchbigmario.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -263,9 +263,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:rightcouchbigmario.png
+/build:rightcrouchbigmario.png
 
-#begin rightcouchfiremario.png
+#begin rightcrouchfiremario.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -275,5 +275,5 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:rightcouchfiremario.png
+/build:rightcrouchfiremario.png
 
