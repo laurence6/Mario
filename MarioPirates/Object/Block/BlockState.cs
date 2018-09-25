@@ -14,29 +14,29 @@ namespace MarioPirates
             this.block = block;
         }
 
-        public virtual void ChangeToBrick5()
+        public virtual void ChangeToBrickBlock()
         {
-            block.State = new Brick5(block);
+            block.State = new BrickBlock(block);
         }
 
-        public virtual void ChangeToBrick4()
+        public virtual void ChangeToBrownBlock()
         {
-            block.State = new Brick4(block);
+            block.State = new BrownBlock(block);
         }
 
-        public virtual void ChangeToBrick1()
+        public virtual void ChangeToQuestionBlock()
         {
-            block.State = new Brick1(block);
+            block.State = new QuestionBlock(block);
         }
 
-        public virtual void ChangeToBrick2()
+        public virtual void ChangeToBrokenBlock()
         {
-            block.State = new Brick2(block);
+            block.State = new BrokenBlock(block);
         }
 
-        public virtual void ChangeToBrick3()
+        public virtual void ChangeToOrangeBlock()
         {
-            block.State = new Brick3(block);
+            block.State = new OrangeBlock(block);
         }
 
         public virtual void SetHide(bool hidden)

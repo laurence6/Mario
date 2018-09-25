@@ -16,18 +16,12 @@ namespace MarioPirates
             size = new Point(16, 16);
             sprite = SpriteFactory.Instance.CreateSprite("brick5");
 
-            State = new Brick1(this);
+            State = new QuestionBlock(this);
         }
 
         public override void Update()
         {
             State.Update();
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
-        {
-            if (!hidden)
-                State.Draw(spriteBatch, textures);
         }
     }
 
