@@ -2,7 +2,7 @@
 {
     public class Mario : GameObject
     {
-        public MarioState State;
+        public MarioState State { get; set; }
 
         public Mario(int dstX, int dstY)
         {
