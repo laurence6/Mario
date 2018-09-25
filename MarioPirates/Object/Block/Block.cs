@@ -13,7 +13,6 @@ namespace MarioPirates
             location.X = dstX;
             location.Y = dstY;
             size = new Point(blockWidth * 2, blockHeight * 2);
-            sprite = SpriteFactory.Instance.CreateSprite("orangeblock");
 
             State = new OrangeBlock(this);
         }
