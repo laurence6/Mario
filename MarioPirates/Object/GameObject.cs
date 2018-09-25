@@ -9,7 +9,10 @@ namespace MarioPirates
         public Sprite sprite;
         public Point location, size;
 
-        public virtual void Update() { }
+        public virtual void Update()
+        {
+            sprite?.Update();
+        }
 
         public virtual void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures, Rectangle drawDst)
         {
