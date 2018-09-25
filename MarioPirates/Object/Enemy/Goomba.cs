@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace MarioPirates
 {
-    public class GoombaSprite : ISprite
+    public class Goomba : ISprite
     {
         private const int screenWidth = 800, screenHeight = 480;
         private const int goombaWidth = 30, goombaHeight = 20, zoom = 3;
@@ -22,7 +22,7 @@ namespace MarioPirates
         private int frameCount = 0;
         private int vx = 1;
 
-        public GoombaSprite(int x, int y)
+        public Goomba(int x, int y)
         {
             dst.X = x;
             dst.Y = y;

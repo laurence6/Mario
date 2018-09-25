@@ -156,7 +156,7 @@ namespace MarioPirates
             var greenMush = new GreenMushroom(300, 100);
             sprites.Add(greenMush);
 
-            var goomba1 = EnemySpriteFactory.Instance.CreateGoombaSprite(0, 400);
+            var goomba1 = new Goomba(0, 400);
             sprites.Add(goomba1);
 
             var keyboardController = new KeyboardController();
