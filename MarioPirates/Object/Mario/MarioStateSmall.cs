@@ -9,7 +9,7 @@ namespace MarioPirates
 
         protected MarioStateSmall(Mario mario) : base(mario)
         {
-            mario.size = new Point(marioHeight, marioWidth);
+            mario.size = new Point(marioWidth, marioHeight);
         }
 
         public override void Left()
