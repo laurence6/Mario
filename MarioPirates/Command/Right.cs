@@ -1,6 +1,6 @@
 ﻿namespace MarioPirates.Command
 {
-    public class Right : ICommand
+    internal class Right : ICommand
     {
         private Mario mario;
 

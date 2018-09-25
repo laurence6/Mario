@@ -1,6 +1,6 @@
 ﻿namespace MarioPirates
 {
-    class BrickBlock : BlockState
+    internal class BrickBlock : BlockState
     {
         public BrickBlock(Block block) : base(block)
         {

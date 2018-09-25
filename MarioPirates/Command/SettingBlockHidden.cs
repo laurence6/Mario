@@ -1,6 +1,6 @@
 ﻿namespace MarioPirates.Command
 {
-    public class SettingBlockHidden : ICommand
+    internal class SettingBlockHidden : ICommand
     {
         private Block block;
 

@@ -2,7 +2,7 @@
 
 namespace MarioPirates
 {
-    public class Flower : GameObject
+    internal class Flower : GameObject
     {
         private const int flowerWidth = 30, flowerHeight = 16;
         public Flower(int dstX, int dstY)

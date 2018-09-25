@@ -1,10 +1,10 @@
 ﻿namespace MarioPirates.Command
 {
-    class Reset : ICommand
+    internal class Resetting : ICommand
     {
         private Game1 game;
 
-        public Reset(Game1 game)
+        public Resetting(Game1 game)
         {
             this.game = game;
         }

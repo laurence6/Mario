@@ -1,7 +1,6 @@
 namespace MarioPirates
 {
-
-    public class MarioStateFireLeftIdle : MarioStateFire
+    internal class MarioStateFireLeftIdle : MarioStateFire
     {
         public MarioStateFireLeftIdle(Mario mario) : base(mario)
         {

@@ -1,6 +1,6 @@
 ﻿namespace MarioPirates.Command
 {
-    interface ICommand
+    public interface ICommand
     {
         void Execute();
     }

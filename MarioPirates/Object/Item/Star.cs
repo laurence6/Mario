@@ -2,7 +2,7 @@
 
 namespace MarioPirates
 {
-    public class Star : GameObject
+    internal class Star : GameObject
     {
         private const int starWidth = 30, starHeight = 24;
         public Star(int dstX, int dstY)

@@ -2,7 +2,7 @@
 
 namespace MarioPirates
 {
-    public class Coin : GameObject
+    internal class Coin : GameObject
     {
         private const int coinWidth = 30, coinHeight = 14;
         public Coin(int dstX, int dstY)

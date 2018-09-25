@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace MarioPirates
 {
-    class GamePadController : IController
+    internal class GamePadController : IController
     {
         private Dictionary<Buttons, Command.ICommand> mapping = new Dictionary<Buttons, Command.ICommand>();
 

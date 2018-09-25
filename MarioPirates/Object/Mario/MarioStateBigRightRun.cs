@@ -1,7 +1,6 @@
 namespace MarioPirates
 {
-
-    public class MarioStateBigRightRun : MarioStateBig
+    internal class MarioStateBigRightRun : MarioStateBig
     {
         public MarioStateBigRightRun(Mario mario) : base(mario)
         {

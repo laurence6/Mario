@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace MarioPirates
 {
-    public abstract class GameObject
+    internal abstract class GameObject
     {
         public Sprite sprite;
         public Point location, size;

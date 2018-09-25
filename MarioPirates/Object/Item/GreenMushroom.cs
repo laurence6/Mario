@@ -2,7 +2,7 @@
 
 namespace MarioPirates
 {
-    class GreenMushroom : GameObject
+    internal class GreenMushroom : GameObject
     {
         private const int greenMushroomWidth = 30, greenMushroomHeight = 24;
         public GreenMushroom(int dstX, int dstY)

@@ -1,6 +1,6 @@
 ﻿namespace MarioPirates
 {
-    class HiddenBlock : BlockState
+    internal class HiddenBlock : BlockState
     {
         public HiddenBlock(Block block) : base(block)
         {

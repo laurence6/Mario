@@ -1,6 +1,6 @@
 ﻿namespace MarioPirates
 {
-    interface IController
+    internal interface IController
     {
         void Update();
     }

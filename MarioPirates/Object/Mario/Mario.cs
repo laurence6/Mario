@@ -1,6 +1,6 @@
 ﻿namespace MarioPirates
 {
-    public class Mario : GameObject
+    internal class Mario : GameObject
     {
         public MarioState State { get; set; }
 

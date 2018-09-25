@@ -9,7 +9,7 @@ namespace MarioPirates
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
-    public class Game1 : Game
+    internal class Game1 : Game
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
@@ -167,8 +167,8 @@ namespace MarioPirates
             gameObjects.Add(goomba);
 
             var keyboardController = new KeyboardController();
-            keyboardController.AddCommandMapping(new Command.Quit(this), Keys.Q);
-            keyboardController.AddCommandMapping(new Command.Reset(this), Keys.R);
+            keyboardController.AddCommandMapping(new Command.Quitting(this), Keys.Q);
+            keyboardController.AddCommandMapping(new Command.Resetting(this), Keys.R);
             keyboardController.AddCommandMapping(new Command.Up(mario), Keys.Up, Keys.W);
             keyboardController.AddCommandMapping(new Command.Down(mario), Keys.Down, Keys.S);
             keyboardController.AddCommandMapping(new Command.Left(mario), Keys.Left, Keys.A);
@@ -183,7 +183,7 @@ namespace MarioPirates
             controllers.Add(keyboardController);
 
             var gamePadController = new GamePadController();
-            gamePadController.AddCommandMapping(new Command.Quit(this), Buttons.Start);
+            gamePadController.AddCommandMapping(new Command.Quitting(this), Buttons.Start);
             controllers.Add(gamePadController);
         }
     }

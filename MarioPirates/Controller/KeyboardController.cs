@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace MarioPirates
 {
-    class KeyboardController : IController
+    internal class KeyboardController : IController
     {
         private Dictionary<Keys, Command.ICommand> mapping = new Dictionary<Keys, Command.ICommand>();
 

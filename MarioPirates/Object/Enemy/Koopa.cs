@@ -1,7 +1,6 @@
 ﻿namespace MarioPirates
 {
-
-    class Koopa : GameObject
+    internal class Koopa : GameObject
     {
         public Koopa(int x, int y)
         {

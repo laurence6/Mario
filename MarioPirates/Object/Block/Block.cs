@@ -2,7 +2,7 @@
 
 namespace MarioPirates
 {
-    public class Block : GameObject
+    internal class Block : GameObject
     {
         public BlockState State { get; set; }
 

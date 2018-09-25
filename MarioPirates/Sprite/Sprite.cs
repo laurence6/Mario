@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace MarioPirates
 {
-    public class Sprite
+    internal class Sprite
     {
         private const uint frameUpdateInterval = 15;
 

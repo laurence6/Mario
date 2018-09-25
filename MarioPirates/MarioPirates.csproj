@@ -43,7 +43,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Command\Reset.cs" />
+    <Compile Include="Command\Resetting.cs" />
     <Compile Include="Command\SettingBlockHidden.cs" />
     <Compile Include="Command\SettingBlockUsed.cs" />
     <Compile Include="Object\Block\BlockState.cs" />
@@ -98,7 +98,7 @@
     <Compile Include="Command\Left.cs" />
     <Compile Include="Command\Down.cs" />
     <Compile Include="Command\Up.cs" />
-    <Compile Include="Command\Quit.cs" />
+    <Compile Include="Command\Quitting.cs" />
     <Compile Include="Controller\GamePadController.cs" />
     <Compile Include="Controller\KeyboardController.cs" />
     <Compile Include="Object\Mario\Mario.cs" />

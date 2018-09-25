@@ -1,6 +1,6 @@
 ﻿namespace MarioPirates
 {
-    public class Goomba : GameObject
+    internal class Goomba : GameObject
     {
         private int vx = 1;
 

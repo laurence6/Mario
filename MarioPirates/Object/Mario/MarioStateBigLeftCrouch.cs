@@ -2,8 +2,7 @@ using Microsoft.Xna.Framework;
 
 namespace MarioPirates
 {
-
-    public class MarioStateBigLeftCrouch : MarioStateBig
+    internal class MarioStateBigLeftCrouch : MarioStateBig
     {
         public MarioStateBigLeftCrouch(Mario mario) : base(mario)
         {

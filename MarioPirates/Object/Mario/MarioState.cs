@@ -1,6 +1,6 @@
 namespace MarioPirates
 {
-    public abstract class MarioState
+    internal abstract class MarioState
     {
         protected Mario mario;
 

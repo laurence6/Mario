@@ -1,7 +1,6 @@
 namespace MarioPirates
 {
-
-    public class OrangeBlock : BlockState
+    internal class OrangeBlock : BlockState
     {
         public OrangeBlock(Block block) : base(block)
         {

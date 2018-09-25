@@ -2,7 +2,7 @@
 
 namespace MarioPirates
 {
-    public class RedMushroom : GameObject
+    internal class RedMushroom : GameObject
     {
         private const int redMushroomWidth = 30, redMushroomHeight = 24;
         public RedMushroom(int dstX, int dstY)

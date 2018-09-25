@@ -2,8 +2,7 @@ using Microsoft.Xna.Framework;
 
 namespace MarioPirates
 {
-
-    public class MarioStateDead : MarioState
+    internal class MarioStateDead : MarioState
     {
         public const int marioWidth = 60, marioHeight = 56;
 

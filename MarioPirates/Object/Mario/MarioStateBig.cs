@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 namespace MarioPirates
 {
 
-    public abstract class MarioStateBig : MarioState
+    internal abstract class MarioStateBig : MarioState
     {
         public const int marioWidth = 120, marioHeight = 128;
         public const int marioCrouchWidth = 64, marioCrouchHeight = 88;

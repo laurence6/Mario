@@ -1,6 +1,6 @@
 ﻿namespace MarioPirates.Command
 {
-    public class Dead : ICommand
+    internal class Dead : ICommand
     {
         private Mario mario;
 
