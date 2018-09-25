@@ -34,5 +34,10 @@ namespace MarioPirates
         {
             block.State = new OrangeBlock(block);
         }
+
+        public virtual void ChangeToHiddenBlock()
+        {
+            block.State = new HiddenBlock(block);
+        }
     }
 }

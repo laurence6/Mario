@@ -4,7 +4,11 @@
     {
         public HiddenBlock(Block block) : base(block)
         {
-            block.sprite = SpriteFactory.Instance.CreateSprite(null);
+            block.sprite = null;
+        }
+
+        public override void ChangeToHiddenBlock()
+        {
         }
     }
 }
