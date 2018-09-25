@@ -52,6 +52,7 @@
     <Compile Include="Object\Block\Brick2.cs" />
     <Compile Include="Object\Block\Brick3.cs" />
     <Compile Include="Object\Block\Brick4.cs" />
+    <Compile Include="Object\GameObject.cs" />
     <Compile Include="Object\Item\GreenMushroom.cs" />
     <Compile Include="Object\Block\Block.cs" />
     <Compile Include="Object\Item\Coin.cs" />
