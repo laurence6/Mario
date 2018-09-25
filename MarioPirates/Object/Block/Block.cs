@@ -13,7 +13,7 @@ namespace MarioPirates
         {
             location.X = dstX;
             location.Y = dstY;
-            size = new Point(16, 16);
+            size = new Point(size.X * 2, size.Y * 2);
             sprite = SpriteFactory.Instance.CreateSprite("brick5");
 
             State = new QuestionBlock(this);

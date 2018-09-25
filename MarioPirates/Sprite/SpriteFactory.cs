@@ -26,6 +26,18 @@ namespace MarioPirates
 
                 case "mario_big_idle_left": return new Sprite("bigmario", new Point(30, 32), new Point(150, 0));
 
+                case "brickblock": return new Sprite("brickblock", new Point(16, 16), new Point(0, 0));
+
+                case "brokenblock": return new Sprite("brokenblock", new Point(16, 16), new Point(0, 0));
+
+                case "brownblock": return new Sprite("brownblock", new Point(16, 16), new Point(0, 0));
+
+                case "hiddenblock": return new Sprite("hiddenblock", new Point(16, 16), new Point(0, 0));
+
+                case "orangeblock": return new Sprite("orangeblock", new Point(16, 16), new Point(0, 0));
+
+                case "questionblock": return new Sprite("questionblock", new Point(16, 16), new Point(0, 0));
+
                 // TODO
 
                 default: return null;
