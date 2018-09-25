@@ -1,4 +1,6 @@
-﻿namespace MarioPirates
+﻿using Microsoft.Xna.Framework;
+
+namespace MarioPirates
 {
     internal class Koopa : GameObject
     {
@@ -6,8 +8,7 @@
         {
             Location.X = x;
             Location.Y = y;
-            Size.X = 60;
-            Size.Y = 48;
+            Size = new Point(60, 48);
             Sprite = SpriteFactory.Instance.CreateSprite("koopa");
         }
     }

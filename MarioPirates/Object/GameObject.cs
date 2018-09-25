@@ -7,8 +7,10 @@ namespace MarioPirates
     internal abstract class GameObject
     {
         public Sprite Sprite { get; set; }
-        public Point Location { get; set; }
+
         public Point Size { get; set; }
+
+        protected Point Location;
 
         public virtual void Update()
         {

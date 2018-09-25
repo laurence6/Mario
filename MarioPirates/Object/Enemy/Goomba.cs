@@ -1,4 +1,6 @@
-﻿namespace MarioPirates
+﻿using Microsoft.Xna.Framework;
+
+namespace MarioPirates
 {
     internal class Goomba : GameObject
     {
@@ -8,8 +10,7 @@
         {
             Location.X = x;
             Location.Y = y;
-            Size.X = 60;
-            Size.Y = 40;
+            Size = new Point(60, 40);
             Sprite = SpriteFactory.Instance.CreateSprite("goomba");
         }
 
