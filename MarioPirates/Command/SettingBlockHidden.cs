@@ -1,17 +1,17 @@
 ﻿namespace MarioPirates.Command
 {
-    public class QuestionBlockUsed : ICommand
+    public class SettingBlockHidden : ICommand
     {
         private Block block;
 
-        public QuestionBlockUsed(Block block)
+        public SettingBlockHidden(Block block)
         {
             this.block = block;
         }
 
         public void Execute()
         {
-            block.State.ChangeToBrick4();
+            block.State.ChangeToHiddenBlock();
         }
     }
 }

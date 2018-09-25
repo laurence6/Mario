@@ -2,10 +2,6 @@
 {
     public class Goomba : GameObject
     {
-        private enum State { normal, flipped, stomped };
-
-        private State state = State.normal;
-
         private int vx = 1;
 
         public Goomba(int x, int y)

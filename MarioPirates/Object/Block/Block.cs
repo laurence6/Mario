@@ -4,7 +4,7 @@ namespace MarioPirates
 {
     public class Block : GameObject
     {
-        public BlockState State;
+        public BlockState State { get; set; }
 
         private const int blockWidth = 16, blockHeight = 16;
 

@@ -44,8 +44,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Command\Reset.cs" />
-    <Compile Include="Command\SetBlockHidden.cs" />
-    <Compile Include="Command\QuestionBlockUsed.cs" />
+    <Compile Include="Command\SettingBlockHidden.cs" />
+    <Compile Include="Command\SettingBlockUsed.cs" />
     <Compile Include="Object\Block\BlockState.cs" />
     <Compile Include="Object\Block\QuestionBlock.cs" />
     <Compile Include="Object\Block\BrokenBlock.cs" />

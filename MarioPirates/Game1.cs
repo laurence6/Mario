@@ -25,7 +25,6 @@ namespace MarioPirates
             { "flower", null },
             { "goomba", null },
             { "greenmushroom", null },
-            { "mashroomenemies", null },
             { "orangeblock", null },
             { "pipeline", null },
             { "questionblock", null },
@@ -35,7 +34,7 @@ namespace MarioPirates
             { "turtles", null },
         };
 
-        private List<ISprite> sprites = new List<ISprite>();
+        private List<GameObject> gameObjects = new List<GameObject>();
         private List<IController> controllers = new List<IController>();
 
         public bool TriggerReset = false;
@@ -86,7 +85,7 @@ namespace MarioPirates
         protected override void Update(GameTime gameTime)
         {
             controllers.ForEach(c => c.Update());
-            sprites.ForEach(s => s.Update());
+            gameObjects.ForEach(o => o.Update());
             if (TriggerReset)
             {
                 Reset();
@@ -103,66 +102,63 @@ namespace MarioPirates
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-            sprites.ForEach(s => s.Draw(spriteBatch, textures));
+            gameObjects.ForEach(o => o.Draw(spriteBatch, textures));
             spriteBatch.End();
         }
 
         public void Reset()
         {
-            sprites.Clear();
+            gameObjects.Clear();
             controllers.Clear();
 
             var mario = new Mario(600, 200);
-            sprites.Add(mario);
+            gameObjects.Add(mario);
 
             var hiddenBlock = new Block(100, 0);
-            hiddenBlock.State.SetHide(true);
-            hiddenBlock.State.ChangeToBrick4();
-            sprites.Add(hiddenBlock);
+            hiddenBlock.State.ChangeToHiddenBlock();
+            gameObjects.Add(hiddenBlock);
 
+            var block1 = new Block(100, 150);
+            block1.State.ChangeToBrickBlock();
+            gameObjects.Add(block1);
 
-            var brick1 = new Block(100, 150);
-            brick1.State.ChangeToBrick1();
-            sprites.Add(brick1);
+            var block2 = new Block(100, 200);
+            block2.State.ChangeToBrokenBlock();
+            gameObjects.Add(block2);
 
-            var brick2 = new Block(100, 200);
-            brick2.State.ChangeToBrick2();
-            sprites.Add(brick2);
+            var block3 = new Block(100, 250);
+            block3.State.ChangeToBrownBlock();
+            gameObjects.Add(block3);
 
-            var brick3 = new Block(100, 250);
-            brick3.State.ChangeToBrick3();
-            sprites.Add(brick3);
+            var block4 = new Block(100, 100);
+            block4.State.ChangeToOrangeBlock();
+            gameObjects.Add(block4);
 
-            var brick4 = new Block(100, 100);
-            brick4.State.ChangeToBrick4();
-            sprites.Add(brick4);
-
-            var brick5 = new Block(100, 50);
-            sprites.Add(brick5);
+            var block5 = new Block(100, 50);
+            block5.State.ChangeToQuestionBlock();
+            gameObjects.Add(block5);
 
             var pipe = new Pipe(200, 200);
-            sprites.Add(pipe);
+            gameObjects.Add(pipe);
 
             var flower = new Flower(300, 300);
-            sprites.Add(flower);
+            gameObjects.Add(flower);
 
             var coin = new Coin(200, 300);
-            sprites.Add(coin);
+            gameObjects.Add(coin);
 
             var star = new Star(100, 300);
-            sprites.Add(star);
+            gameObjects.Add(star);
 
             var redMush = new RedMushroom(400, 100);
-            sprites.Add(redMush);
+            gameObjects.Add(redMush);
 
             var greenMush = new GreenMushroom(300, 100);
-            sprites.Add(greenMush);
+            gameObjects.Add(greenMush);
 
             var goomba1 = new Goomba(0, 400);
-            sprites.Add(goomba1);
+            gameObjects.Add(goomba1);
 
-            var koopa1 = new Koopa(0, 350, Direction.right);
-            sprites.Add(koopa1);
             var keyboardController = new KeyboardController();
             keyboardController.AddCommandMapping(new Command.Quit(this), Keys.Q);
             keyboardController.AddCommandMapping(new Command.Reset(this), Keys.R);
@@ -174,9 +170,9 @@ namespace MarioPirates
             keyboardController.AddCommandMapping(new Command.Big(mario), Keys.U);
             keyboardController.AddCommandMapping(new Command.Fire(mario), Keys.I);
             keyboardController.AddCommandMapping(new Command.Dead(mario), Keys.O);
-            keyboardController.AddCommandMapping(new Command.QuestionBlockUsed(brick1), Keys.Z);
-            keyboardController.AddCommandMapping(new Command.SetBlockHidden(brick5, true), Keys.X);
-            keyboardController.AddCommandMapping(new Command.SetBlockHidden(hiddenBlock, false), Keys.C);
+            keyboardController.AddCommandMapping(new Command.SettingBlockUsed(block1), Keys.Z);
+            keyboardController.AddCommandMapping(new Command.SettingBlockHidden(block5), Keys.X);
+            keyboardController.AddCommandMapping(new Command.SettingBlockUsed(hiddenBlock), Keys.C);
             controllers.Add(keyboardController);
 
             var gamePadController = new GamePadController();
