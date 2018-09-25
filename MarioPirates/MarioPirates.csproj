@@ -53,6 +53,7 @@
     <Compile Include="Object\Block\BrownBlock.cs" />
     <Compile Include="Object\Block\BrickBlock.cs" />
     <Compile Include="Object\Block\HiddenBlock.cs" />
+    <Compile Include="Object\Enemy\Koopa.cs" />
     <Compile Include="Object\GameObject.cs" />
     <Compile Include="Object\Item\GreenMushroom.cs" />
     <Compile Include="Object\Block\Block.cs" />

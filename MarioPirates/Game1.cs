@@ -160,8 +160,11 @@ namespace MarioPirates
             var greenMush = new GreenMushroom(300, 100);
             gameObjects.Add(greenMush);
 
-            var goomba1 = new Goomba(0, 400);
-            gameObjects.Add(goomba1);
+            var koopa = new Koopa(700, 100);
+            gameObjects.Add(koopa);
+
+            var goomba = new Goomba(0, 400);
+            gameObjects.Add(goomba);
 
             var keyboardController = new KeyboardController();
             keyboardController.AddCommandMapping(new Command.Quit(this), Keys.Q);

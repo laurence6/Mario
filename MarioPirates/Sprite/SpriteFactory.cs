@@ -10,8 +10,8 @@ namespace MarioPirates
 
         public Sprite CreateSprite(string spriteName)
         {
-            Point[] marioLeftRunFrame = {new Point(120, 0), new Point(90, 0), new Point(60, 0), new Point(90, 0)};
-            Point[] marioRightRunFrame = {new Point(210, 0), new Point(240, 0), new Point(270, 0), new Point(240, 0)};
+            Point[] marioLeftRunFrame = { new Point(120, 0), new Point(90, 0), new Point(60, 0), new Point(90, 0) };
+            Point[] marioRightRunFrame = { new Point(210, 0), new Point(240, 0), new Point(270, 0), new Point(240, 0) };
 
             switch (spriteName)
             {
@@ -40,6 +40,8 @@ namespace MarioPirates
                 case "questionblock": return new Sprite("questionblock", new Point(16, 16), new Point(0, 0));
 
                 case "goomba": return new Sprite("goomba", new Point(30, 20), GenerateFrameLocationArray(new Point(0, 0), new Point(30, 0), 2));
+
+                case "koopa": return new Sprite("turtles", new Point(30, 24), GenerateFrameLocationArray(new Point(0, 0), new Point(30, 0), 9));
 
                 case "mario_small_crouch_left": return new Sprite("smallmario", new Point(30, 15), new Point(0, 0));
 
