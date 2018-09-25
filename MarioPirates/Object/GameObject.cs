@@ -14,7 +14,7 @@ namespace MarioPirates
             sprite?.Update();
         }
 
-        public virtual void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures, Rectangle drawDst)
+        public virtual void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
         {
             sprite?.Draw(spriteBatch, textures, new Rectangle(location.X, location.Y, size.X, size.Y));
         }
