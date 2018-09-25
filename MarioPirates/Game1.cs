@@ -11,8 +11,8 @@ namespace MarioPirates
     /// </summary>
     public class Game1 : Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        private GraphicsDeviceManager graphics;
+        private SpriteBatch spriteBatch;
 
         private Dictionary<string, Texture2D> textures = new Dictionary<string, Texture2D> {
             { "bigmario", null },

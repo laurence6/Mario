@@ -9,7 +9,7 @@ namespace MarioPirates
 
         public MarioStateDead(Mario mario) : base(mario)
         {
-            new Point(marioHeight, marioWidth);
+            mario.size = new Point(marioHeight, marioWidth);
             mario.sprite = SpriteFactory.Instance.CreateSprite("mario_dead");
         }
 
