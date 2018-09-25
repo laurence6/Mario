@@ -4,7 +4,7 @@
     {
         public HiddenBlock(Block block) : base(block)
         {
-            block.sprite = null;
+            block.Sprite = null;
         }
 
         public override void ChangeToHiddenBlock()

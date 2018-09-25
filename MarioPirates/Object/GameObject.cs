@@ -6,17 +6,18 @@ namespace MarioPirates
 {
     internal abstract class GameObject
     {
-        public Sprite sprite;
-        public Point location, size;
+        public Sprite Sprite { get; set; }
+        public Point Location { get; set; }
+        public Point Size { get; set; }
 
         public virtual void Update()
         {
-            sprite?.Update();
+            Sprite?.Update();
         }
 
         public virtual void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
         {
-            sprite?.Draw(spriteBatch, textures, new Rectangle(location.X, location.Y, size.X, size.Y));
+            Sprite?.Draw(spriteBatch, textures, new Rectangle(Location.X, Location.Y, Size.X, Size.Y));
         }
     }
 }

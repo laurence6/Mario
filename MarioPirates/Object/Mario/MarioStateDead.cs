@@ -8,8 +8,8 @@ namespace MarioPirates
 
         public MarioStateDead(Mario mario) : base(mario)
         {
-            mario.size = new Point(marioWidth, marioHeight);
-            mario.sprite = SpriteFactory.Instance.CreateSprite("mario_dead");
+            mario.Size = new Point(marioWidth, marioHeight);
+            mario.Sprite = SpriteFactory.Instance.CreateSprite("mario_dead");
         }
 
         public override void Left()

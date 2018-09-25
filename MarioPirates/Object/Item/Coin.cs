@@ -7,10 +7,10 @@ namespace MarioPirates
         private const int coinWidth = 30, coinHeight = 14;
         public Coin(int dstX, int dstY)
         {
-            location.X = dstX;
-            location.Y = dstY;
-            size = new Point(coinWidth * 2, coinHeight * 2);
-            sprite = SpriteFactory.Instance.CreateSprite("coins");
+            Location.X = dstX;
+            Location.Y = dstY;
+            Size = new Point(coinWidth * 2, coinHeight * 2);
+            Sprite = SpriteFactory.Instance.CreateSprite("coins");
         }
     }
 }

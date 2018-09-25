@@ -6,8 +6,8 @@ namespace MarioPirates
     {
         public MarioStateBigLeftCrouch(Mario mario) : base(mario)
         {
-            mario.size = new Point(marioCrouchWidth, marioCrouchHeight);
-            mario.sprite = SpriteFactory.Instance.CreateSprite("mario_big_crouch_left");
+            mario.Size = new Point(marioCrouchWidth, marioCrouchHeight);
+            mario.Sprite = SpriteFactory.Instance.CreateSprite("mario_big_crouch_left");
         }
 
         public override void Jump()

@@ -6,17 +6,17 @@
 
         public Goomba(int x, int y)
         {
-            location.X = x;
-            location.Y = y;
-            size.X = 60;
-            size.Y = 40;
-            sprite = SpriteFactory.Instance.CreateSprite("goomba");
+            Location.X = x;
+            Location.Y = y;
+            Size.X = 60;
+            Size.Y = 40;
+            Sprite = SpriteFactory.Instance.CreateSprite("goomba");
         }
 
         public override void Update()
         {
-            vx = (location.X == 0) ? 1 : (location.X == 800 - 48) ? -1 : vx;
-            location.X += vx;
+            vx = (Location.X == 0) ? 1 : (Location.X == 800 - 48) ? -1 : vx;
+            Location.X += vx;
             base.Update();
         }
     }

@@ -41,7 +41,7 @@ namespace MarioPirates
         private List<GameObject> gameObjects = new List<GameObject>();
         private List<IController> controllers = new List<IController>();
 
-        public bool TriggerReset = false;
+        public bool TriggerReset { get; set; } = false;
 
         public Game1()
         {
