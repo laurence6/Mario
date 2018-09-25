@@ -107,8 +107,9 @@
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Object\ISprite.cs" />
+    <Compile Include="Sprite\Sprite.cs" />
     <Compile Include="Object\Item\Star.cs" />
+    <Compile Include="Sprite\SpriteFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
