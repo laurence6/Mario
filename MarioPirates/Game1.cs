@@ -145,16 +145,16 @@ namespace MarioPirates
             var pipe = new Pipe(200, 200);
             gameObjects.Add(pipe);
 
-            var flower = new Flower(300, 300);
+            var flower = new Flower(400, 100);
             gameObjects.Add(flower);
 
-            var coin = new Coin(200, 300);
+            var coin = new Coin(600, 100);
             gameObjects.Add(coin);
 
-            var star = new Star(100, 300);
+            var star = new Star(500, 100);
             gameObjects.Add(star);
 
-            var redMush = new RedMushroom(400, 100);
+            var redMush = new RedMushroom(200, 100);
             gameObjects.Add(redMush);
 
             var greenMush = new GreenMushroom(300, 100);
