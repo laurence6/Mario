@@ -122,25 +122,25 @@ namespace MarioPirates
             hiddenBlock.State.ChangeToHiddenBlock();
             gameObjects.Add(hiddenBlock);
 
-            var block1 = new Block(100, 150);
-            block1.State.ChangeToBrickBlock();
-            gameObjects.Add(block1);
+            var brickBlock = new Block(100, 150);
+            brickBlock.State.ChangeToBrickBlock();
+            gameObjects.Add(brickBlock);
 
-            var block2 = new Block(100, 200);
-            block2.State.ChangeToBrokenBlock();
-            gameObjects.Add(block2);
+            var brokenBlock = new Block(100, 200);
+            brokenBlock.State.ChangeToBrokenBlock();
+            gameObjects.Add(brokenBlock);
 
-            var block3 = new Block(100, 250);
-            block3.State.ChangeToBrownBlock();
-            gameObjects.Add(block3);
+            var brownBlock = new Block(100, 250);
+            brownBlock.State.ChangeToBrownBlock();
+            gameObjects.Add(brownBlock);
 
-            var block4 = new Block(100, 100);
-            block4.State.ChangeToOrangeBlock();
-            gameObjects.Add(block4);
+            var orangeBlock = new Block(100, 100);
+            orangeBlock.State.ChangeToOrangeBlock();
+            gameObjects.Add(orangeBlock);
 
-            var block5 = new Block(100, 50);
-            block5.State.ChangeToQuestionBlock();
-            gameObjects.Add(block5);
+            var questionBlock = new Block(100, 50);
+            questionBlock.State.ChangeToQuestionBlock();
+            gameObjects.Add(questionBlock);
 
             var pipe = new Pipe(200, 200);
             gameObjects.Add(pipe);
@@ -177,8 +177,8 @@ namespace MarioPirates
             keyboardController.AddCommandMapping(new Command.Big(mario), Keys.U);
             keyboardController.AddCommandMapping(new Command.Fire(mario), Keys.I);
             keyboardController.AddCommandMapping(new Command.Dead(mario), Keys.O);
-            keyboardController.AddCommandMapping(new Command.SettingBlockUsed(block1), Keys.Z);
-            keyboardController.AddCommandMapping(new Command.SettingBlockHidden(block5), Keys.X);
+            keyboardController.AddCommandMapping(new Command.SettingBlockUsed(questionBlock), Keys.Z);
+            keyboardController.AddCommandMapping(new Command.SettingBlockHidden(brickBlock), Keys.X);
             keyboardController.AddCommandMapping(new Command.SettingBlockUsed(hiddenBlock), Keys.C);
             controllers.Add(keyboardController);
 
