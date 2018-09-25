@@ -10,9 +10,6 @@ namespace MarioPirates
 
         public Sprite CreateSprite(string spriteName)
         {
-            Point[] marioLeftRunFrame = { new Point(120, 0), new Point(90, 0), new Point(60, 0), new Point(90, 0) };
-            Point[] marioRightRunFrame = { new Point(210, 0), new Point(240, 0), new Point(270, 0), new Point(240, 0) };
-
             switch (spriteName)
             {
                 case "coins": return new Sprite("coins", new Point(30, 24), GenerateFrameLocationArray(new Point(0, 0), new Point(30, 0), 4));
@@ -47,13 +44,13 @@ namespace MarioPirates
 
                 case "mario_small_jump_left": return new Sprite("smallmario", new Point(30, 15), new Point(0, 0));
 
-                case "mario_small_run_left": return new Sprite("smallmario", new Point(30, 15), marioLeftRunFrame);
+                case "mario_small_run_left": return new Sprite("smallmario", new Point(30, 15), new Point(120, 0), new Point(90, 0), new Point(60, 0), new Point(90, 0));
 
                 case "mario_small_idle_left": return new Sprite("smallmario", new Point(30, 15), new Point(150, 0));
 
                 case "mario_small_idle_right": return new Sprite("smallmario", new Point(30, 15), new Point(180, 0));
 
-                case "mario_small_run_right": return new Sprite("smallmario", new Point(30, 15), marioRightRunFrame);
+                case "mario_small_run_right": return new Sprite("smallmario", new Point(30, 15), new Point(210, 0), new Point(240, 0), new Point(270, 0), new Point(240, 0));
 
                 case "mario_small_jump_right": return new Sprite("smallmario", new Point(30, 15), new Point(330, 0));
 
@@ -63,13 +60,13 @@ namespace MarioPirates
 
                 case "mario_big_jump_left": return new Sprite("bigmario", new Point(30, 33), new Point(0, 0));
 
-                case "mario_big_run_left": return new Sprite("bigmario", new Point(30, 33), marioLeftRunFrame);
+                case "mario_big_run_left": return new Sprite("bigmario", new Point(30, 33), new Point(120, 0), new Point(90, 0), new Point(60, 0), new Point(90, 0));
 
                 case "mario_big_idle_left": return new Sprite("bigmario", new Point(30, 33), new Point(150, 0));
 
                 case "mario_big_idle_right": return new Sprite("bigmario", new Point(30, 33), new Point(180, 0));
 
-                case "mario_big_run_right": return new Sprite("bigmario", new Point(30, 33), marioRightRunFrame);
+                case "mario_big_run_right": return new Sprite("bigmario", new Point(30, 33), new Point(210, 0), new Point(240, 0), new Point(270, 0), new Point(240, 0));
 
                 case "mario_big_jump_right": return new Sprite("bigmario", new Point(30, 33), new Point(330, 0));
 
@@ -79,13 +76,13 @@ namespace MarioPirates
 
                 case "mario_fire_jump_left": return new Sprite("firemario", new Point(30, 33), new Point(0, 0));
 
-                case "mario_fire_run_left": return new Sprite("firemario", new Point(30, 33), marioLeftRunFrame);
+                case "mario_fire_run_left": return new Sprite("firemario", new Point(30, 33), new Point(120, 0), new Point(90, 0), new Point(60, 0), new Point(90, 0));
 
                 case "mario_fire_idle_left": return new Sprite("firemario", new Point(30, 33), new Point(150, 0));
 
                 case "mario_fire_idle_right": return new Sprite("firemario", new Point(30, 33), new Point(180, 0));
 
-                case "mario_fire_run_right": return new Sprite("firemario", new Point(30, 33), marioRightRunFrame);
+                case "mario_fire_run_right": return new Sprite("firemario", new Point(30, 33), new Point(210, 0), new Point(240, 0), new Point(270, 0), new Point(240, 0));
 
                 case "mario_fire_jump_right": return new Sprite("firemario", new Point(30, 33), new Point(330, 0));
 
