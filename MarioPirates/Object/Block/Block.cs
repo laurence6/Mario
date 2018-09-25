@@ -9,14 +9,16 @@ namespace MarioPirates
         public BlockState State;
         public bool hidden = false;
 
+        private const int blockWidth = 16, blockHeight = 16;
+
         public Block(int dstX, int dstY)
         {
             location.X = dstX;
             location.Y = dstY;
-            size = new Point(size.X * 2, size.Y * 2);
-            sprite = SpriteFactory.Instance.CreateSprite("brick5");
+            size = new Point(blockWidth * 2, blockHeight * 2);
+            sprite = SpriteFactory.Instance.CreateSprite("orangeblock");
 
-            State = new QuestionBlock(this);
+            State = new OrangeBlock(this);
         }
 
         public override void Update()

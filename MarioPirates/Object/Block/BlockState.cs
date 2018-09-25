@@ -38,15 +38,5 @@ namespace MarioPirates
         {
             block.State = new OrangeBlock(block);
         }
-
-        public virtual void SetHide(bool hidden)
-        {
-            block.hidden = hidden;
-        }
-
-        public virtual void Update()
-        {
-        }
     }
-
 }
