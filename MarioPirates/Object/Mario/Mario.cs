@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace MarioPirates
 {
-    public class Mario : ISprite
+    public class Mario : GameObject
     {
         protected const int screenWidth = 800, screenHeight = 480;
         protected const int textureFrameCount = 4;
@@ -16,19 +16,7 @@ namespace MarioPirates
 
         public Mario(int dstX, int dstY)
         {
-            State = new MarioStateSmallRightIdle(this);
-            DrawDst.X = dstX;
-            DrawDst.Y = dstY;
-        }
-
-        public void Update()
-        {
-            State.Update();
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
-        {
-            State.Draw(spriteBatch, textures);
+            State = new MarioStateSmallRightIdle(this, dstX, dstY);
         }
     }
 }

@@ -9,9 +9,11 @@ namespace MarioPirates
 
         protected Mario mario;
 
-        protected MarioState(Mario mario)
+        protected MarioState(Mario mario, int dstX, int dstY)
         {
             this.mario = mario;
+            location.X = dstX;
+            location.Y = dstY;
         }
 
         public abstract void Left();

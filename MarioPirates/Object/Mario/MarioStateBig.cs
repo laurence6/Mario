@@ -7,20 +7,21 @@ namespace MarioPirates
 
     public abstract class MarioStateBig : MarioState
     {
-        public const int marioWidth = 30, marioHeight = 32;
+        public const int marioWidth = 120, marioHeight = 128;
 
-        public MarioStateBig(Mario mario) : base(mario)
+        protected MarioStateBig(Mario mario, int dstX, int dstY) : base(mario, dstX, dstY)
         {
+            new Point(marioHeight, marioWidth);
         }
 
         public override void Left()
         {
-            mario.State = new MarioStateBigLeftIdle(mario);
+            mario.State = new MarioStateBigLeftIdle(mario, location.X, location.Y);
         }
 
         public override void Right()
         {
-            mario.State = new MarioStateBigRightIdle(mario);
+            mario.State = new MarioStateBigRightIdle(mario, location.X, location.Y);
         }
 
         public override void Update()

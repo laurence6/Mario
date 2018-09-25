@@ -1,13 +1,12 @@
 namespace MarioPirates
-{
-
-    public class MarioStateBigLeftRun : MarioStateBig
+{(mario, location.X, location.Y);
     {
         private const uint framesPerSprite = 15;
         private uint frameCount = 0;
 
-        public MarioStateBigLeftRun(Mario mario) : base(mario)
+        public MarioStateBigLeftRun(Mario mario, int dstX, int dstY) : base(mario, dstX, dstY)
         {
+            mario.State = SpriteFactory.Instance.CreateSprite("mario_big_run_left");
         }
 
         public override void Left()
@@ -16,22 +15,22 @@ namespace MarioPirates
 
         public override void Right()
         {
-            mario.State = new MarioStateBigLeftIdle(mario);
+            mario.State = new MarioStateBigLeftIdle(mario, location.X, location.Y);
         }
 
         public override void Jump()
         {
-            mario.State = new MarioStateBigLeftJump(mario);
+            mario.State = new MarioStateBigLeftJump(mario, location.X, location.Y);
         }
 
         public override void Crouch()
         {
-            mario.State = new MarioStateBigLeftCrouch(mario);
+            mario.State = new MarioStateBigLeftCrouch(mario, location.X, location.Y);
         }
 
         public override void Small()
         {
-            mario.State = new MarioStateSmallLeftRun(mario);
+            mario.State = new MarioStateSmallLeftRun(mario, location.X, location.Y);
         }
 
         public override void Big()
@@ -40,7 +39,7 @@ namespace MarioPirates
 
         public override void Fire()
         {
-            mario.State = new MarioStateFireLeftRun(mario);
+            mario.State = new MarioStateFireLeftRun(mario, location.X, location.Y);
         }
 
         public override void Update()

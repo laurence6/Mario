@@ -7,10 +7,12 @@ namespace MarioPirates
 
     public class MarioStateDead : MarioState
     {
-        public const int marioWidth = 15, marioHeight = 14;
+        public const int marioWidth = 60, marioHeight = 56;
 
-        public MarioStateDead(Mario mario) : base(mario)
+        public MarioStateDead(Mario mario, int dstX, int dstY) : base(mario, dstX, dstY)
         {
+            new Point(marioHeight, marioWidth);
+            mario.State = SpriteFactory.Instance.CreateSprite("mario_dead");
         }
 
         public override void Left()
@@ -31,17 +33,17 @@ namespace MarioPirates
 
         public override void Small()
         {
-            mario.State = new MarioStateSmallRightIdle(mario);
+            mario.State = new MarioStateSmallRightIdle(mario, location.X, location.Y);
         }
 
         public override void Big()
         {
-            mario.State = new MarioStateBigRightIdle(mario);
+            mario.State = new MarioStateBigRightIdle(mario, location.X, location.Y);
         }
 
         public override void Fire()
         {
-            mario.State = new MarioStateFireRightIdle(mario);
+            mario.State = new MarioStateFireRightIdle(mario, location.X, location.Y);
         }
 
         public override void Dead()
