@@ -13,10 +13,10 @@ namespace MarioPirates
             switch (spriteName)
             {
                 case "coins":
-                    return new Sprite("coins", new Point(30, 24), GenerateFrameLocationArray(new Point(0, 0), new Point(30, 0), 4));
+                    return new Sprite("coins", new Point(30, 14), GenerateFrameLocationArray(new Point(0, 0), new Point(30, 0), 4));
 
                 case "flower":
-                    return new Sprite("flower", new Point(30, 20), GenerateFrameLocationArray(new Point(0, 0), new Point(30, 0), 4));
+                    return new Sprite("flower", new Point(30, 16), GenerateFrameLocationArray(new Point(0, 0), new Point(30, 0), 4));
 
                 case "greenmushroom":
                     return new Sprite("greenmushroom", new Point(28, 30), new Point(0, 0));
