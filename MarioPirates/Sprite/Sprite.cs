@@ -28,7 +28,7 @@ namespace MarioPirates
 
         public void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures, Rectangle drawDst)
         {
-            if (frames.Length > 0 && frameCount % frameUpdateInterval == 0)
+            if (frames.Length > 0)
             {
                 spriteBatch.Draw(
                     textures[textureName],
