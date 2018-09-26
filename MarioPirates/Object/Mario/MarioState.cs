@@ -1,19 +1,12 @@
-using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
-
 namespace MarioPirates
 {
     public abstract class MarioState
     {
-        public const int zoom = 4;
-
         protected Mario mario;
 
-        protected MarioState(Mario mario, int dstX, int dstY)
+        protected MarioState(Mario mario)
         {
             this.mario = mario;
-            location.X = dstX;
-            location.Y = dstY;
         }
 
         public abstract void Left();

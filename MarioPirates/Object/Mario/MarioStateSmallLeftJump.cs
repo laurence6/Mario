@@ -3,9 +3,9 @@ namespace MarioPirates
 
     public class MarioStateSmallLeftJump : MarioStateSmall
     {
-        public MarioStateSmallLeftJump(Mario mario, int dstX, int dstY) : base(mario, dstX, dstY)
+        public MarioStateSmallLeftJump(Mario mario) : base(mario)
         {
-            mario.State = SpriteFactory.Instance.CreateSprite("mario_small_jump_left");
+            mario.sprite = SpriteFactory.Instance.CreateSprite("mario_small_jump_left");
         }
 
         public override void Jump()
@@ -14,7 +14,7 @@ namespace MarioPirates
 
         public override void Crouch()
         {
-            mario.State = new MarioStateSmallLeftIdle(mario, location.X, location.Y);
+            mario.State = new MarioStateSmallLeftIdle(mario);
         }
 
         public override void Small()
@@ -23,12 +23,12 @@ namespace MarioPirates
 
         public override void Big()
         {
-            mario.State = new MarioStateBigLeftJump(mario, location.X, location.Y);
+            mario.State = new MarioStateBigLeftJump(mario);
         }
 
         public override void Fire()
         {
-            mario.State = new MarioStateFireLeftJump(mario, location.X, location.Y);
+            mario.State = new MarioStateFireLeftJump(mario);
         }
     }
 

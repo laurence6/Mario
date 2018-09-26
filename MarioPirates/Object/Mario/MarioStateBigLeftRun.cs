@@ -3,12 +3,9 @@ namespace MarioPirates
 
     public class MarioStateBigLeftRun : MarioStateBig
     {
-        private const uint framesPerSprite = 15;
-        private uint frameCount = 0;
-
-        public MarioStateBigLeftRun(Mario mario, int dstX, int dstY) : base(mario, dstX, dstY)
+        public MarioStateBigLeftRun(Mario mario) : base(mario)
         {
-            mario.State = SpriteFactory.Instance.CreateSprite("mario_big_run_left");
+            mario.sprite = SpriteFactory.Instance.CreateSprite("mario_big_run_left");
         }
 
         public override void Left()

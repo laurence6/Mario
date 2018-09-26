@@ -1,6 +1,4 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
 
 namespace MarioPirates
 {
@@ -9,10 +7,10 @@ namespace MarioPirates
     {
         public const int marioWidth = 60, marioHeight = 56;
 
-        public MarioStateDead(Mario mario, int dstX, int dstY) : base(mario, dstX, dstY)
+        public MarioStateDead(Mario mario) : base(mario)
         {
             new Point(marioHeight, marioWidth);
-            mario.State = SpriteFactory.Instance.CreateSprite("mario_dead");
+            mario.sprite = SpriteFactory.Instance.CreateSprite("mario_dead");
         }
 
         public override void Left()
@@ -33,17 +31,17 @@ namespace MarioPirates
 
         public override void Small()
         {
-            mario.State = new MarioStateSmallRightIdle(mario, location.X, location.Y);
+            mario.State = new MarioStateSmallRightIdle(mario);
         }
 
         public override void Big()
         {
-            mario.State = new MarioStateBigRightIdle(mario, location.X, location.Y);
+            mario.State = new MarioStateBigRightIdle(mario);
         }
 
         public override void Fire()
         {
-            mario.State = new MarioStateFireRightIdle(mario, location.X, location.Y);
+            mario.State = new MarioStateFireRightIdle(mario);
         }
 
         public override void Dead()
