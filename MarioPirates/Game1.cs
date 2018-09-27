@@ -35,7 +35,7 @@ namespace MarioPirates
             { "rightcrouchfiremario", null },
             { "smallmario", null },
             { "stars", null },
-            { "turtles", null },
+            { "koopa", null },
         };
 
         private List<GameObject> gameObjects = new List<GameObject>();

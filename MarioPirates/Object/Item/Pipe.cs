@@ -4,7 +4,7 @@ namespace MarioPirates
 {
     internal class Pipe : GameObject
     {
-        private const int pipeWidth = 64, pipeHeight = 46;
+        private const int pipeWidth = 32, pipeHeight = 32;
         public Pipe(int dstX, int dstY)
         {
             Location.X = dstX;

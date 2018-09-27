@@ -19,16 +19,16 @@ namespace MarioPirates
                     return new Sprite("flower", new Point(30, 16), GenerateFrameLocationArray(new Point(0, 0), new Point(30, 0), 4));
 
                 case "greenmushroom":
-                    return new Sprite("greenmushroom", new Point(28, 30), new Point(0, 0));
+                    return new Sprite("greenmushroom", new Point(16, 16), new Point(0, 0));
 
                 case "pipe":
-                    return new Sprite("pipeline", new Point(64, 64), new Point(0, 0));
+                    return new Sprite("pipeline", new Point(32, 32), new Point(0, 0));
 
                 case "redmushroom":
-                    return new Sprite("redmushroom", new Point(28, 30), new Point(0, 0));
+                    return new Sprite("redmushroom", new Point(16, 16), new Point(0, 0));
 
                 case "stars":
-                    return new Sprite("stars", new Point(30, 24), GenerateFrameLocationArray(new Point(0, 0), new Point(30, 0), 4));
+                    return new Sprite("stars", new Point(30, 16), GenerateFrameLocationArray(new Point(0, 0), new Point(30, 0), 4));
 
                 case "brickblock":
                     return new Sprite("brickblock", new Point(16, 16), new Point(0, 0));
@@ -49,10 +49,10 @@ namespace MarioPirates
                     return new Sprite("questionblock", new Point(16, 16), new Point(0, 0));
 
                 case "goomba":
-                    return new Sprite("goomba", new Point(30, 20), GenerateFrameLocationArray(new Point(0, 0), new Point(30, 0), 2));
+                    return new Sprite("goomba", new Point(30, 16), GenerateFrameLocationArray(new Point(0, 0), new Point(30, 0), 2));
 
                 case "koopa":
-                    return new Sprite("turtles", new Point(30, 24), GenerateFrameLocationArray(new Point(0, 0), new Point(30, 0), 9));
+                    return new Sprite("koopa", new Point(30, 24), GenerateFrameLocationArray(new Point(0, 0), new Point(30, 0), 9));
 
                 case "mario_small_crouch_left":
                     return new Sprite("smallmario", new Point(30, 15), new Point(0, 0));

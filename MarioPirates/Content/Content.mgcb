@@ -241,18 +241,6 @@
 /processorParam:TextureFormat=Color
 /build:stars.png
 
-#begin turtles.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:turtles.png
-
 #begin coins.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -264,4 +252,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:coins.png
+
+#begin koopa.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:koopa.png
 
