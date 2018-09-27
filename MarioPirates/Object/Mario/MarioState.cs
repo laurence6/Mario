@@ -28,5 +28,4 @@ namespace MarioPirates
             mario.State = new MarioStateDead(mario);
         }
     }
-
 }

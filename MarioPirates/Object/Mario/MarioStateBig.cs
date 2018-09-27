@@ -2,7 +2,6 @@ using Microsoft.Xna.Framework;
 
 namespace MarioPirates
 {
-
     internal abstract class MarioStateBig : MarioState
     {
         protected const int marioWidth = 120, marioHeight = 128;
@@ -23,5 +22,4 @@ namespace MarioPirates
             mario.State = new MarioStateBigRightIdle(mario);
         }
     }
-
 }

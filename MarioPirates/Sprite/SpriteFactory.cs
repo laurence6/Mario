@@ -7,7 +7,7 @@ namespace MarioPirates
 
     internal sealed class SpriteFactory
     {
-        public static SpriteFactory Instance { get; private set; } = new SpriteFactory();
+        public static SpriteFactory Instance { get; } = new SpriteFactory();
 
         private SpriteFactory() { }
 

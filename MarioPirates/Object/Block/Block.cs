@@ -17,6 +17,5 @@ namespace MarioPirates
             State = new OrangeBlock(this);
         }
     }
-
 }
 

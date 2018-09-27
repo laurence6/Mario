@@ -1,6 +1,5 @@
 namespace MarioPirates
 {
-
     internal abstract class BlockState
     {
         protected Block block;

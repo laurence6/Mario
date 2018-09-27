@@ -41,5 +41,4 @@ namespace MarioPirates
             mario.State = new MarioStateFireLeftIdle(mario);
         }
     }
-
 }

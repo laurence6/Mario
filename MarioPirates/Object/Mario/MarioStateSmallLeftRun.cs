@@ -2,7 +2,6 @@ namespace MarioPirates
 {
     internal class MarioStateSmallLeftRun : MarioStateSmall
     {
-
         public MarioStateSmallLeftRun(Mario mario) : base(mario)
         {
             mario.Sprite = SpriteFactory.Instance.CreateSpriteMario("small_run_left");
@@ -41,5 +40,4 @@ namespace MarioPirates
             mario.State = new MarioStateFireLeftRun(mario);
         }
     }
-
 }
