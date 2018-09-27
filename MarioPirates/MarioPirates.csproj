@@ -49,6 +49,7 @@
     <Compile Include="Command\Resetting.cs" />
     <Compile Include="Command\SettingBlockHidden.cs" />
     <Compile Include="Command\SettingBlockUsed.cs" />
+    <Compile Include="Common\Common.cs" />
     <Compile Include="Object\Block\BlockState.cs" />
     <Compile Include="Object\Block\QuestionBlock.cs" />
     <Compile Include="Object\Block\BrokenBlock.cs" />
