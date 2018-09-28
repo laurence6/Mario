@@ -10,9 +10,9 @@ namespace MarioPirates
 
         public Block(int dstX, int dstY)
         {
-            Location.X = dstX;
-            Location.Y = dstY;
-            Size = new Point(blockWidth * 2, blockHeight * 2);
+            location.X = dstX;
+            location.Y = dstY;
+            size = new Point(blockWidth * 2, blockHeight * 2);
 
             State = new OrangeBlock(this);
         }

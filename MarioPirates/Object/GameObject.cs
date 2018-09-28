@@ -8,9 +8,11 @@ namespace MarioPirates
     {
         public Sprite Sprite { get; set; }
 
-        public Point Size { get; set; }
+        public Point Size { get => size; set => size = value; }
+        public Point Location { get => location; }
 
-        protected Point Location;
+        protected Point size;
+        protected Point location;
 
         public virtual void Update()
         {
@@ -19,7 +21,7 @@ namespace MarioPirates
 
         public virtual void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
         {
-            Sprite?.Draw(spriteBatch, textures, new Rectangle(Location.X, Location.Y, Size.X, Size.Y));
+            Sprite?.Draw(spriteBatch, textures, new Rectangle(location, size));
         }
     }
 }

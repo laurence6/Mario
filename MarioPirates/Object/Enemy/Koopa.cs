@@ -6,9 +6,9 @@ namespace MarioPirates
     {
         public Koopa(int x, int y)
         {
-            Location.X = x;
-            Location.Y = y;
-            Size = new Point(60, 48);
+            location.X = x;
+            location.Y = y;
+            size = new Point(60, 48);
             Sprite = SpriteFactory.CreateSprite("koopa");
         }
     }

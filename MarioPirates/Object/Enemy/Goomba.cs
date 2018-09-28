@@ -8,16 +8,16 @@ namespace MarioPirates
 
         public Goomba(int x, int y)
         {
-            Location.X = x;
-            Location.Y = y;
-            Size = new Point(60, 40);
+            location.X = x;
+            location.Y = y;
+            size = new Point(60, 40);
             Sprite = SpriteFactory.CreateSprite("goomba");
         }
 
         public override void Update()
         {
-            vx = (Location.X == 0) ? 1 : (Location.X == 800 - 48) ? -1 : vx;
-            Location.X += vx;
+            vx = (location.X == 0) ? 1 : (location.X == 800 - 48) ? -1 : vx;
+            location.X += vx;
             base.Update();
         }
     }

@@ -7,9 +7,9 @@ namespace MarioPirates
         private const int redMushroomWidth = 16, redMushroomHeight = 16;
         public RedMushroom(int dstX, int dstY)
         {
-            Location.X = dstX;
-            Location.Y = dstY;
-            Size = new Point(redMushroomWidth * 2, redMushroomHeight * 2);
+            location.X = dstX;
+            location.Y = dstY;
+            size = new Point(redMushroomWidth * 2, redMushroomHeight * 2);
             Sprite = SpriteFactory.CreateSprite("redmushroom");
         }
     }

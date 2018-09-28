@@ -24,6 +24,7 @@ namespace MarioPirates
             { "flower", null },
             { "goomba", null },
             { "greenmushroom", null },
+            { "koopa", null },
             { "leftcrouchbigmario", null },
             { "leftcrouchfiremario", null },
             { "orangeblock", null },
@@ -34,7 +35,6 @@ namespace MarioPirates
             { "rightcrouchfiremario", null },
             { "smallmario", null },
             { "stars", null },
-            { "koopa", null },
         };
 
         private List<GameObject> gameObjects = new List<GameObject>();
@@ -57,51 +57,6 @@ namespace MarioPirates
             Reset();
 
             base.Initialize();
-        }
-
-        /// <summary>
-        /// LoadContent will be called once per game and is the place to load
-        /// all of your content.
-        /// </summary>
-        protected override void LoadContent()
-        {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            textures.Keys.ToList().ForEach(name => textures[name] = Content.Load<Texture2D>(name));
-        }
-
-        /// <summary>
-        /// UnloadContent will be called once per game and is the place to unload
-        /// game-specific content.
-        /// </summary>
-        protected override void UnloadContent()
-        {
-            Content.Unload();
-        }
-
-        /// <summary>
-        /// Allows the game to run logic such as updating the world,
-        /// checking for collisions, gathering input, and playing audio.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        protected override void Update(GameTime gameTime)
-        {
-            controllers.ForEach(c => c.Update());
-            gameObjects.ForEach(o => o.Update());
-            EventManager.Instance.ProcessQueue();
-        }
-
-        /// <summary>
-        /// This is called when the game should draw itself.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        protected override void Draw(GameTime gameTime)
-        {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-            gameObjects.ForEach(o => o.Draw(spriteBatch, textures));
-            spriteBatch.End();
         }
 
         public void Reset()
@@ -180,6 +135,51 @@ namespace MarioPirates
 
             var gamePadController = new GamePadController();
             controllers.Add(gamePadController);
+        }
+
+        /// <summary>
+        /// LoadContent will be called once per game and is the place to load
+        /// all of your content.
+        /// </summary>
+        protected override void LoadContent()
+        {
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            textures.Keys.ToList().ForEach(name => textures[name] = Content.Load<Texture2D>(name));
+        }
+
+        /// <summary>
+        /// UnloadContent will be called once per game and is the place to unload
+        /// game-specific content.
+        /// </summary>
+        protected override void UnloadContent()
+        {
+            Content.Unload();
+        }
+
+        /// <summary>
+        /// Allows the game to run logic such as updating the world,
+        /// checking for collisions, gathering input, and playing audio.
+        /// </summary>
+        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        protected override void Update(GameTime gameTime)
+        {
+            controllers.ForEach(c => c.Update());
+            gameObjects.ForEach(o => o.Update());
+            EventManager.Instance.ProcessQueue();
+        }
+
+        /// <summary>
+        /// This is called when the game should draw itself.
+        /// </summary>
+        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        protected override void Draw(GameTime gameTime)
+        {
+            GraphicsDevice.Clear(Color.CornflowerBlue);
+
+            spriteBatch.Begin(samplerState: SamplerState.PointClamp);
+            gameObjects.ForEach(o => o.Draw(spriteBatch, textures));
+            spriteBatch.End();
         }
     }
 }

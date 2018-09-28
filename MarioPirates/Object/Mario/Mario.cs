@@ -6,8 +6,8 @@
 
         public Mario(int dstX, int dstY)
         {
-            Location.X = dstX;
-            Location.Y = dstY;
+            location.X = dstX;
+            location.Y = dstY;
             State = new MarioStateSmallRightIdle(this);
         }
     }
