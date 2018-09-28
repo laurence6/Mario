@@ -4,7 +4,7 @@ namespace MarioPirates
     {
         public BrokenBlock(Block block) : base(block)
         {
-            block.Sprite = SpriteFactory.Instance.CreateSprite("brokenblock");
+            block.Sprite = SpriteFactory.CreateSprite("brokenblock");
         }
 
         public override void ChangeToBrokenBlock()

@@ -11,7 +11,7 @@ namespace MarioPirates
             Location.X = x;
             Location.Y = y;
             Size = new Point(60, 40);
-            Sprite = SpriteFactory.Instance.CreateSprite("goomba");
+            Sprite = SpriteFactory.CreateSprite("goomba");
         }
 
         public override void Update()

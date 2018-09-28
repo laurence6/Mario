@@ -10,7 +10,7 @@ namespace MarioPirates
             Location.X = dstX;
             Location.Y = dstY;
             Size = new Point(flowerWidth * 2, flowerHeight * 2);
-            Sprite = SpriteFactory.Instance.CreateSprite("flower");
+            Sprite = SpriteFactory.CreateSprite("flower");
         }
     }
 }

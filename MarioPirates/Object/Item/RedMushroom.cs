@@ -10,7 +10,7 @@ namespace MarioPirates
             Location.X = dstX;
             Location.Y = dstY;
             Size = new Point(redMushroomWidth * 2, redMushroomHeight * 2);
-            Sprite = SpriteFactory.Instance.CreateSprite("redmushroom");
+            Sprite = SpriteFactory.CreateSprite("redmushroom");
         }
     }
 }

@@ -4,7 +4,7 @@ namespace MarioPirates
     {
         public OrangeBlock(Block block) : base(block)
         {
-            block.Sprite = SpriteFactory.Instance.CreateSprite("orangeblock");
+            block.Sprite = SpriteFactory.CreateSprite("orangeblock");
         }
 
         public override void ChangeToOrangeBlock()

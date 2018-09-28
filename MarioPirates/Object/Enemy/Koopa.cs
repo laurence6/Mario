@@ -9,7 +9,7 @@ namespace MarioPirates
             Location.X = x;
             Location.Y = y;
             Size = new Point(60, 48);
-            Sprite = SpriteFactory.Instance.CreateSprite("koopa");
+            Sprite = SpriteFactory.CreateSprite("koopa");
         }
     }
 }

@@ -4,7 +4,7 @@ namespace MarioPirates
     {
         public QuestionBlock(Block block) : base(block)
         {
-            block.Sprite = SpriteFactory.Instance.CreateSprite("questionblock");
+            block.Sprite = SpriteFactory.CreateSprite("questionblock");
         }
 
         public override void ChangeToQuestionBlock()

@@ -4,7 +4,7 @@ namespace MarioPirates
     {
         public BrownBlock(Block block) : base(block)
         {
-            block.Sprite = SpriteFactory.Instance.CreateSprite("brownblock");
+            block.Sprite = SpriteFactory.CreateSprite("brownblock");
         }
 
         public override void ChangeToBrownBlock()

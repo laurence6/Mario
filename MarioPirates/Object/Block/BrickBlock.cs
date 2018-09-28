@@ -4,7 +4,7 @@
     {
         public BrickBlock(Block block) : base(block)
         {
-            block.Sprite = SpriteFactory.Instance.CreateSprite("brickblock");
+            block.Sprite = SpriteFactory.CreateSprite("brickblock");
         }
 
         public override void ChangeToBrickBlock()

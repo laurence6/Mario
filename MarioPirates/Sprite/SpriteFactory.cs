@@ -7,11 +7,9 @@ namespace MarioPirates
 
     internal sealed class SpriteFactory
     {
-        public static SpriteFactory Instance { get; } = new SpriteFactory();
-
         private SpriteFactory() { }
 
-        public Sprite CreateSprite(string spriteName)
+        public static Sprite CreateSprite(string spriteName)
         {
             switch (spriteName)
             {
@@ -61,7 +59,7 @@ namespace MarioPirates
             return null;
         }
 
-        public Sprite CreateSpriteMario(string spriteName)
+        public static Sprite CreateSpriteMario(string spriteName)
         {
             switch (spriteName)
             {
@@ -144,7 +142,7 @@ namespace MarioPirates
             return null;
         }
 
-        private Point[] GenerateFrameLocationArray(Point begin, Point delta, int count)
+        private static Point[] GenerateFrameLocationArray(Point begin, Point delta, int count)
         {
             var arr = new Point[count];
             for (var i = 0; i < count; i++)
