@@ -1,6 +1,6 @@
 ﻿namespace MarioPirates.Event
 {
-    internal enum EventEnum
+    internal enum EventEnum : int
     {
         // Game
         Quit,

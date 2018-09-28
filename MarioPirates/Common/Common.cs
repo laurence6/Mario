@@ -1,7 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace MarioPirates
 {
@@ -16,9 +14,9 @@ namespace MarioPirates
             o2 = tmp;
         }
 
-        public static IEnumerable<T> EnumValues<T>()
+        public static T[] EnumValues<T>()
         {
-            return Enum.GetValues(typeof(T)).Cast<T>();
+            return (T[])Enum.GetValues(typeof(T));
         }
     }
 }

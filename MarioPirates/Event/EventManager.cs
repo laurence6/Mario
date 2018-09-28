@@ -8,38 +8,42 @@ namespace MarioPirates.Event
     {
         public delegate void OnEvent(IEvent eventData);
 
-        private Dictionary<EventEnum, List<OnEvent>> subscribers = new Dictionary<EventEnum, List<OnEvent>>();
-        private Queue<IEvent> queueOld = new Queue<IEvent>(), queueActive = new Queue<IEvent>();
+        private List<OnEvent>[] subscribers;
+        private Queue<IEvent> queueOld, queueActive;
 
         public static EventManager Instance { get; } = new EventManager();
 
-        private EventManager() { }
+        private EventManager()
+        {
+            subscribers = new List<OnEvent>[EnumValues<EventEnum>().Length];
+            for (var i = 0; i < subscribers.Length; i++)
+                subscribers[i] = new List<OnEvent>();
+            queueOld = new Queue<IEvent>();
+            queueActive = new Queue<IEvent>();
+        }
 
         public void Reset()
         {
-            subscribers.Clear();
+            for (var i = 0; i < subscribers.Length; i++)
+                subscribers[i].Clear();
             queueOld.Clear();
             queueActive.Clear();
         }
 
         public void Subscribe(EventEnum e, OnEvent f)
         {
-            if (!subscribers.ContainsKey(e))
-                subscribers[e] = new List<OnEvent>();
-            if (!subscribers[e].Contains(f))
-                subscribers[e].Add(f);
+            if (!subscribers[(int)e].Contains(f))
+                subscribers[(int)e].Add(f);
         }
 
         public void Unsubscribe(EventEnum e, OnEvent f)
         {
-            if (subscribers.ContainsKey(e))
-                subscribers[e].Remove(f);
+            subscribers[(int)e].Remove(f);
         }
 
         public void TriggerEvent(IEvent e)
         {
-            if (subscribers.ContainsKey(e.EventType))
-                subscribers[e.EventType].ForEach(f => f(e));
+            subscribers[(int)e.EventType].ForEach(f => f(e));
         }
 
         public void EnqueueEvent(IEvent e)
