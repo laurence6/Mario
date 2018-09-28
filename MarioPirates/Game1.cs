@@ -6,9 +6,8 @@ using System.Linq;
 
 namespace MarioPirates
 {
-    /// <summary>
-    /// This is the main type for your game.
-    /// </summary>
+    using Event;
+
     internal class Game1 : Game
     {
         private GraphicsDeviceManager graphics;
@@ -41,8 +40,6 @@ namespace MarioPirates
         private List<GameObject> gameObjects = new List<GameObject>();
         private List<IController> controllers = new List<IController>();
 
-        public bool TriggerReset { get; set; } = false;
-
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -57,7 +54,11 @@ namespace MarioPirates
         /// </summary>
         protected override void Initialize()
         {
+            EventManager.Instance.Subscribe(EventEnum.Quit, e => Exit());
+            EventManager.Instance.Subscribe(EventEnum.Reset, e => Reset());
+
             Reset();
+
             base.Initialize();
         }
 
@@ -90,11 +91,7 @@ namespace MarioPirates
         {
             controllers.ForEach(c => c.Update());
             gameObjects.ForEach(o => o.Update());
-            if (TriggerReset)
-            {
-                Reset();
-                TriggerReset = false;
-            }
+            EventManager.Instance.ProcessQueue();
         }
 
         /// <summary>
@@ -117,6 +114,10 @@ namespace MarioPirates
 
             var mario = new Mario(600, 200);
             gameObjects.Add(mario);
+            EventManager.Instance.Subscribe(EventEnum.Up, e => mario.State.Jump());
+            EventManager.Instance.Subscribe(EventEnum.Down, e => mario.State.Crouch());
+            EventManager.Instance.Subscribe(EventEnum.Left, e => mario.State.Left());
+            EventManager.Instance.Subscribe(EventEnum.Right, e => mario.State.Right());
 
             var hiddenBlock = new Block(100, 0);
             hiddenBlock.State.ChangeToHiddenBlock();
@@ -167,23 +168,15 @@ namespace MarioPirates
             gameObjects.Add(goomba);
 
             var keyboardController = new KeyboardController();
-            keyboardController.AddCommandMapping(new Command.Quitting(this), Keys.Q);
-            keyboardController.AddCommandMapping(new Command.Resetting(this), Keys.R);
-            keyboardController.AddCommandMapping(new Command.Up(mario), Keys.Up, Keys.W);
-            keyboardController.AddCommandMapping(new Command.Down(mario), Keys.Down, Keys.S);
-            keyboardController.AddCommandMapping(new Command.Left(mario), Keys.Left, Keys.A);
-            keyboardController.AddCommandMapping(new Command.Right(mario), Keys.Right, Keys.D);
-            keyboardController.AddCommandMapping(new Command.Small(mario), Keys.Y);
-            keyboardController.AddCommandMapping(new Command.Big(mario), Keys.U);
-            keyboardController.AddCommandMapping(new Command.Fire(mario), Keys.I);
-            keyboardController.AddCommandMapping(new Command.Dead(mario), Keys.O);
-            keyboardController.AddCommandMapping(new Command.SettingBlockUsed(questionBlock), Keys.Z);
-            keyboardController.AddCommandMapping(new Command.SettingBlockHidden(brickBlock), Keys.X);
-            keyboardController.AddCommandMapping(new Command.SettingBlockUsed(hiddenBlock), Keys.C);
+            keyboardController.AddEventMapping(new BaseEvent(EventEnum.Quit), Keys.Q);
+            keyboardController.AddEventMapping(new BaseEvent(EventEnum.Reset), Keys.R);
+            keyboardController.AddEventMapping(new BaseEvent(EventEnum.Up), Keys.Up, Keys.W);
+            keyboardController.AddEventMapping(new BaseEvent(EventEnum.Down), Keys.Down, Keys.S);
+            keyboardController.AddEventMapping(new BaseEvent(EventEnum.Left), Keys.Left, Keys.A);
+            keyboardController.AddEventMapping(new BaseEvent(EventEnum.Right), Keys.Right, Keys.D);
             controllers.Add(keyboardController);
 
             var gamePadController = new GamePadController();
-            gamePadController.AddCommandMapping(new Command.Quitting(this), Buttons.Start);
             controllers.Add(gamePadController);
         }
     }
