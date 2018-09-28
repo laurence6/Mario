@@ -17,10 +17,12 @@
         KeyRightUp,
 
         // Generic keyboard input
-        Key,
+        KeyDown,
+        KeyUp,
 
         // Generic gamepad input
-        Button,
+        ButtonDown,
+        ButtonUp,
 
         // 
         Collide,
