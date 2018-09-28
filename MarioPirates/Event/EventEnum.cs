@@ -6,13 +6,23 @@
         Quit,
         Reset,
 
-        // Keyboard input
-        Up,
-        Down,
-        Left,
-        Right,
+        // Common input
+        KeyUpDown,
+        KeyDownDown,
+        KeyLeftDown,
+        KeyRightDown,
+        KeyUpUp,
+        KeyDownUp,
+        KeyLeftUp,
+        KeyRightUp,
 
-        //
+        // Generic keyboard input
+        Key,
+
+        // Generic gamepad input
+        Button,
+
+        // 
         Collide,
     }
 }

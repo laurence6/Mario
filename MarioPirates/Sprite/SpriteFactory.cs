@@ -5,10 +5,8 @@ namespace MarioPirates
 {
     using static Common;
 
-    internal sealed class SpriteFactory
+    internal static class SpriteFactory
     {
-        private SpriteFactory() { }
-
         public static Sprite CreateSprite(string spriteName)
         {
             switch (spriteName)

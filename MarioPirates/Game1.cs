@@ -71,10 +71,10 @@ namespace MarioPirates
 
             var mario = new Mario(600, 200);
             gameObjects.Add(mario);
-            EventManager.Instance.Subscribe(EventEnum.Up, e => mario.State.Jump());
-            EventManager.Instance.Subscribe(EventEnum.Down, e => mario.State.Crouch());
-            EventManager.Instance.Subscribe(EventEnum.Left, e => mario.State.Left());
-            EventManager.Instance.Subscribe(EventEnum.Right, e => mario.State.Right());
+            EventManager.Instance.Subscribe(EventEnum.KeyUpDown, e => mario.State.Jump());
+            EventManager.Instance.Subscribe(EventEnum.KeyDownDown, e => mario.State.Crouch());
+            EventManager.Instance.Subscribe(EventEnum.KeyLeftDown, e => mario.State.Left());
+            EventManager.Instance.Subscribe(EventEnum.KeyRightDown, e => mario.State.Right());
 
             var hiddenBlock = new Block(100, 0);
             hiddenBlock.State.ChangeToHiddenBlock();
@@ -125,12 +125,12 @@ namespace MarioPirates
             gameObjects.Add(goomba);
 
             var keyboardController = new KeyboardController();
-            keyboardController.AddEventMapping(new BaseEvent(EventEnum.Quit), Keys.Q);
-            keyboardController.AddEventMapping(new BaseEvent(EventEnum.Reset), Keys.R);
-            keyboardController.AddEventMapping(new BaseEvent(EventEnum.Up), Keys.Up, Keys.W);
-            keyboardController.AddEventMapping(new BaseEvent(EventEnum.Down), Keys.Down, Keys.S);
-            keyboardController.AddEventMapping(new BaseEvent(EventEnum.Left), Keys.Left, Keys.A);
-            keyboardController.AddEventMapping(new BaseEvent(EventEnum.Right), Keys.Right, Keys.D);
+            keyboardController.AddEventMapping(new BaseEvent(EventEnum.Quit), InputState.Down, Keys.Q);
+            keyboardController.AddEventMapping(new BaseEvent(EventEnum.Reset), InputState.Down, Keys.R);
+            keyboardController.AddEventMapping(new BaseEvent(EventEnum.KeyUpDown), InputState.Down, Keys.Up, Keys.W);
+            keyboardController.AddEventMapping(new BaseEvent(EventEnum.KeyDownDown), InputState.Down, Keys.Down, Keys.S);
+            keyboardController.AddEventMapping(new BaseEvent(EventEnum.KeyLeftDown), InputState.Down, Keys.Left, Keys.A);
+            keyboardController.AddEventMapping(new BaseEvent(EventEnum.KeyRightDown), InputState.Down, Keys.Right, Keys.D);
             controllers.Add(keyboardController);
 
             var gamePadController = new GamePadController();

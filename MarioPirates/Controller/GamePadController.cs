@@ -5,27 +5,42 @@ using System.Collections.Generic;
 namespace MarioPirates
 {
     using Event;
+    using static Common;
 
     internal class GamePadController : IController
     {
-        private Dictionary<Buttons, IEvent> mapping = new Dictionary<Buttons, IEvent>();
+        private Dictionary<Buttons, IEvent>[] mapping = new Dictionary<Buttons, IEvent>[2] {
+            new Dictionary<Buttons, IEvent>(),
+            new Dictionary<Buttons, IEvent>(),
+        };
 
         private GamePadState prevState = GamePad.GetState(PlayerIndex.One);
 
-        public void AddEventMapping(IEvent e, params Buttons[] buttons)
+        public void AddEventMapping(IEvent e, InputState state, Buttons[] buttons)
         {
             foreach (var b in buttons)
-                mapping.Add(b, e);
+                mapping[(int)state].Add(b, e);
         }
 
         public void Update()
         {
+            IEvent e = null;
             var currState = GamePad.GetState(PlayerIndex.One);
             if (currState.IsConnected)
-                foreach (var m in mapping)
-                    if (currState.IsButtonDown(m.Key) && !(prevState.IsConnected && prevState.IsButtonDown(m.Key)))
-                        EventManager.Instance.EnqueueEvent(m.Value);
-            prevState = currState;
+            {
+                foreach (var b in EnumValues<Buttons>())
+                    if (currState.IsButtonDown(b) && prevState.IsButtonUp(b))
+                    {
+                        if (mapping[(int)InputState.Down].TryGetValue(b, out e))
+                            EventManager.Instance.EnqueueEvent(e);
+                    }
+                    else if (currState.IsButtonUp(b) && prevState.IsButtonDown(b))
+                    {
+                        if (mapping[(int)InputState.Up].TryGetValue(b, out e))
+                            EventManager.Instance.EnqueueEvent(e);
+                    }
+                prevState = currState;
+            }
         }
     }
 }

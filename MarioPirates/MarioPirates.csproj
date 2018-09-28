@@ -52,6 +52,9 @@
     <Compile Include="Event\BaseEvent.cs" />
     <Compile Include="Event\EventManager.cs" />
     <Compile Include="Event\IEvent.cs" />
+    <Compile Include="Controller\InputState.cs" />
+    <Compile Include="Event\Input\GamePadEvent.cs" />
+    <Compile Include="Event\Input\KeyboardEvent.cs" />
     <Compile Include="Object\Block\BlockState.cs" />
     <Compile Include="Object\Block\QuestionBlock.cs" />
     <Compile Include="Object\Block\BrokenBlock.cs" />
