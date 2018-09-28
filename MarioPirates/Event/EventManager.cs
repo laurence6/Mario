@@ -2,16 +2,25 @@
 
 namespace MarioPirates.Event
 {
+    using static MarioPirates.Common;
+
     internal sealed class EventManager
     {
         public delegate void OnEvent(IEvent eventData);
 
         private Dictionary<EventEnum, List<OnEvent>> subscribers = new Dictionary<EventEnum, List<OnEvent>>();
-        private Queue<IEvent> queue = new Queue<IEvent>();
+        private Queue<IEvent> queueOld = new Queue<IEvent>(), queueActive = new Queue<IEvent>();
 
         public static EventManager Instance { get; } = new EventManager();
 
         private EventManager() { }
+
+        public void Reset()
+        {
+            subscribers.Clear();
+            queueOld.Clear();
+            queueActive.Clear();
+        }
 
         public void Subscribe(EventEnum e, OnEvent f)
         {
@@ -35,13 +44,14 @@ namespace MarioPirates.Event
 
         public void EnqueueEvent(IEvent e)
         {
-            queue.Enqueue(e);
+            queueActive.Enqueue(e);
         }
 
         public void ProcessQueue()
         {
-            for (var i = queue.Count; i > 0; i--)
-                TriggerEvent(queue.Dequeue());
+            Swap(ref queueActive, ref queueOld);
+            while (queueOld.Count > 0)
+                TriggerEvent(queueOld.Dequeue());
         }
     }
 }

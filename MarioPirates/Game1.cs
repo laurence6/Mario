@@ -54,9 +54,6 @@ namespace MarioPirates
         /// </summary>
         protected override void Initialize()
         {
-            EventManager.Instance.Subscribe(EventEnum.Quit, e => Exit());
-            EventManager.Instance.Subscribe(EventEnum.Reset, e => Reset());
-
             Reset();
 
             base.Initialize();
@@ -109,6 +106,11 @@ namespace MarioPirates
 
         public void Reset()
         {
+            EventManager.Instance.Reset();
+
+            EventManager.Instance.Subscribe(EventEnum.Quit, e => Exit());
+            EventManager.Instance.Subscribe(EventEnum.Reset, e => Reset());
+
             gameObjects.Clear();
             controllers.Clear();
 
