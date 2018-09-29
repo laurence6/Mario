@@ -48,6 +48,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Common\Common.cs" />
+    <Compile Include="Controller\InputEventFactory.cs" />
     <Compile Include="Event\EventEnum.cs" />
     <Compile Include="Event\BaseEvent.cs" />
     <Compile Include="Event\EventManager.cs" />

@@ -1,24 +1,24 @@
 ﻿using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 
-namespace MarioPirates
+namespace MarioPirates.Controller
 {
     using Event;
     using static Common;
 
     internal class KeyboardController : IController
     {
-        private readonly Dictionary<Keys, IEvent>[] mapping = new Dictionary<Keys, IEvent>[2] {
+        private Dictionary<Keys, IEvent>[] mapping = new Dictionary<Keys, IEvent>[2] {
             new Dictionary<Keys, IEvent>(),
             new Dictionary<Keys, IEvent>(),
         };
 
         private KeyboardState prevState = Keyboard.GetState();
 
-        public void AddEventMapping(IEvent e, InputState state, params Keys[] keys)
+        public void EnableKeyEvent(InputState state, params Keys[] keys)
         {
             foreach (var k in keys)
-                mapping[(int)state].Add(k, e);
+                mapping[(int)state].Add(k, InputEventFactory.CreateKeyEvent(state, k));
         }
 
         public void Update()

@@ -30,15 +30,17 @@ namespace MarioPirates.Event
             queueActive.Clear();
         }
 
-        public void Subscribe(EventEnum e, OnEvent f)
+        public void Subscribe(OnEvent f, params EventEnum[] eventTypes)
         {
-            if (!subscribers[(int)e].Contains(f))
-                subscribers[(int)e].Add(f);
+            foreach (var e in eventTypes)
+                if (!subscribers[(int)e].Contains(f))
+                    subscribers[(int)e].Add(f);
         }
 
-        public void Unsubscribe(EventEnum e, OnEvent f)
+        public void Unsubscribe(OnEvent f, params EventEnum[] eventTypes)
         {
-            subscribers[(int)e].Remove(f);
+            foreach (var e in eventTypes)
+                subscribers[(int)e].Remove(f);
         }
 
         public void TriggerEvent(IEvent e)

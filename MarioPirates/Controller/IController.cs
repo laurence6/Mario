@@ -1,4 +1,4 @@
-﻿namespace MarioPirates
+﻿namespace MarioPirates.Controller
 {
     internal interface IController
     {

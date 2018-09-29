@@ -6,6 +6,7 @@ using System.Linq;
 
 namespace MarioPirates
 {
+    using Controller;
     using Event;
 
     internal class Game1 : Game
@@ -59,22 +60,33 @@ namespace MarioPirates
             base.Initialize();
         }
 
-        public void Reset()
+        private bool triggerReset = false;
+
+        public void TriggerReset() => triggerReset = true;
+
+        private void Reset()
         {
             EventManager.Instance.Reset();
 
-            EventManager.Instance.Subscribe(EventEnum.Quit, e => Exit());
-            EventManager.Instance.Subscribe(EventEnum.Reset, e => Reset());
+            EventManager.Instance.Subscribe(e =>
+            {
+                switch ((e as KeyDownEvent).Key)
+                {
+                    case Keys.Q:
+                        Exit();
+                        break;
+                    case Keys.R:
+                        TriggerReset();
+                        break;
+                }
+            }, EventEnum.KeyDown);
 
             gameObjects.Clear();
             controllers.Clear();
+            triggerReset = false;
 
             var mario = new Mario(600, 200);
             gameObjects.Add(mario);
-            EventManager.Instance.Subscribe(EventEnum.KeyUpDown, e => mario.State.Jump());
-            EventManager.Instance.Subscribe(EventEnum.KeyDownDown, e => mario.State.Crouch());
-            EventManager.Instance.Subscribe(EventEnum.KeyLeftDown, e => mario.State.Left());
-            EventManager.Instance.Subscribe(EventEnum.KeyRightDown, e => mario.State.Right());
 
             var hiddenBlock = new Block(100, 0);
             hiddenBlock.State.ChangeToHiddenBlock();
@@ -125,12 +137,10 @@ namespace MarioPirates
             gameObjects.Add(goomba);
 
             var keyboardController = new KeyboardController();
-            keyboardController.AddEventMapping(new BaseEvent(EventEnum.Quit), InputState.Down, Keys.Q);
-            keyboardController.AddEventMapping(new BaseEvent(EventEnum.Reset), InputState.Down, Keys.R);
-            keyboardController.AddEventMapping(new BaseEvent(EventEnum.KeyUpDown), InputState.Down, Keys.Up, Keys.W);
-            keyboardController.AddEventMapping(new BaseEvent(EventEnum.KeyDownDown), InputState.Down, Keys.Down, Keys.S);
-            keyboardController.AddEventMapping(new BaseEvent(EventEnum.KeyLeftDown), InputState.Down, Keys.Left, Keys.A);
-            keyboardController.AddEventMapping(new BaseEvent(EventEnum.KeyRightDown), InputState.Down, Keys.Right, Keys.D);
+            keyboardController.EnableKeyEvent(InputState.Down, Keys.Q, Keys.R);
+            keyboardController.EnableKeyEvent(InputState.Down, Keys.Up, Keys.W, Keys.Down, Keys.S, Keys.Left, Keys.A, Keys.Right, Keys.D);
+            keyboardController.EnableKeyEvent(InputState.Up, Keys.Up, Keys.W, Keys.Down, Keys.S, Keys.Left, Keys.A, Keys.Right, Keys.D);
+            keyboardController.EnableKeyEvent(InputState.Down, Keys.U, Keys.I);
             controllers.Add(keyboardController);
 
             var gamePadController = new GamePadController();
@@ -167,6 +177,9 @@ namespace MarioPirates
             controllers.ForEach(c => c.Update());
             gameObjects.ForEach(o => o.Update());
             EventManager.Instance.ProcessQueue();
+
+            if (triggerReset)
+                Reset();
         }
 
         /// <summary>

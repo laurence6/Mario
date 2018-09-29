@@ -2,10 +2,6 @@
 {
     internal enum EventEnum : int
     {
-        // Game
-        Quit,
-        Reset,
-
         // Common input
         KeyUpDown,
         KeyDownDown,

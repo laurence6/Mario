@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 
-namespace MarioPirates
+namespace MarioPirates.Controller
 {
     using Event;
     using static Common;
@@ -16,10 +16,10 @@ namespace MarioPirates
 
         private GamePadState prevState = GamePad.GetState(PlayerIndex.One);
 
-        public void AddEventMapping(IEvent e, InputState state, Buttons[] buttons)
+        public void EnableButtonEvent(InputState state, Buttons[] buttons)
         {
             foreach (var b in buttons)
-                mapping[(int)state].Add(b, e);
+                mapping[(int)state].Add(b, InputEventFactory.CreateButtonEvent(state, b));
         }
 
         public void Update()
