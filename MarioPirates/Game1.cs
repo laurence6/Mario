@@ -38,7 +38,6 @@ namespace MarioPirates
             { "stars", null },
         };
 
-        private List<GameObject> gameObjects = new List<GameObject>();
         private List<IController> controllers = new List<IController>();
 
         public Game1()
@@ -56,7 +55,6 @@ namespace MarioPirates
         protected override void Initialize()
         {
             Reset();
-
             base.Initialize();
         }
 
@@ -67,6 +65,7 @@ namespace MarioPirates
         private void Reset()
         {
             EventManager.Instance.Reset();
+            Scene.Instance.Reset();
 
             EventManager.Instance.Subscribe(e =>
             {
@@ -81,60 +80,8 @@ namespace MarioPirates
                 }
             }, EventEnum.KeyDown);
 
-            gameObjects.Clear();
             controllers.Clear();
             triggerReset = false;
-
-            var mario = new Mario(600, 200);
-            gameObjects.Add(mario);
-
-            var hiddenBlock = new Block(100, 0);
-            hiddenBlock.State.ChangeToHiddenBlock();
-            gameObjects.Add(hiddenBlock);
-
-            var brickBlock = new Block(100, 150);
-            brickBlock.State.ChangeToBrickBlock();
-            gameObjects.Add(brickBlock);
-
-            var brokenBlock = new Block(100, 200);
-            brokenBlock.State.ChangeToBrokenBlock();
-            gameObjects.Add(brokenBlock);
-
-            var brownBlock = new Block(100, 250);
-            brownBlock.State.ChangeToBrownBlock();
-            gameObjects.Add(brownBlock);
-
-            var orangeBlock = new Block(100, 100);
-            orangeBlock.State.ChangeToOrangeBlock();
-            gameObjects.Add(orangeBlock);
-
-            var questionBlock = new Block(100, 50);
-            questionBlock.State.ChangeToQuestionBlock();
-            gameObjects.Add(questionBlock);
-
-            var pipe = new Pipe(200, 200);
-            gameObjects.Add(pipe);
-
-            var flower = new Flower(400, 100);
-            gameObjects.Add(flower);
-
-            var coin = new Coin(600, 100);
-            gameObjects.Add(coin);
-
-            var star = new Star(500, 100);
-            gameObjects.Add(star);
-
-            var redMush = new RedMushroom(200, 100);
-            gameObjects.Add(redMush);
-
-            var greenMush = new GreenMushroom(300, 100);
-            gameObjects.Add(greenMush);
-
-            var koopa = new Koopa(700, 100);
-            gameObjects.Add(koopa);
-
-            var goomba = new Goomba(0, 400);
-            gameObjects.Add(goomba);
 
             var keyboardController = new KeyboardController();
             keyboardController.EnableKeyEvent(InputState.Down, Keys.Q, Keys.R);
@@ -175,7 +122,7 @@ namespace MarioPirates
         protected override void Update(GameTime gameTime)
         {
             controllers.ForEach(c => c.Update());
-            gameObjects.ForEach(o => o.Update());
+            Scene.Instance.Update();
             EventManager.Instance.ProcessQueue();
 
             if (triggerReset)
@@ -190,9 +137,7 @@ namespace MarioPirates
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-            gameObjects.ForEach(o => o.Draw(spriteBatch, textures));
-            spriteBatch.End();
+            Scene.Instance.Draw(spriteBatch, textures);
         }
     }
 }
