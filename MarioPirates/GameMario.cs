@@ -9,7 +9,7 @@ namespace MarioPirates
     using Controller;
     using Event;
 
-    internal class Game1 : Game
+    internal class GameMario : Game
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
@@ -40,7 +40,7 @@ namespace MarioPirates
 
         private List<IController> controllers = new List<IController>();
 
-        public Game1()
+        public GameMario()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -65,6 +65,7 @@ namespace MarioPirates
         private void Reset()
         {
             EventManager.Instance.Reset();
+            Physics.Reset();
             Scene.Instance.Reset();
 
             EventManager.Instance.Subscribe(e =>
@@ -87,6 +88,7 @@ namespace MarioPirates
             keyboardController.EnableKeyEvent(InputState.Down, Keys.Q, Keys.R);
             keyboardController.EnableKeyEvent(InputState.Down, Keys.Up, Keys.W, Keys.Down, Keys.S, Keys.Left, Keys.A, Keys.Right, Keys.D);
             keyboardController.EnableKeyEvent(InputState.Up, Keys.Up, Keys.W, Keys.Down, Keys.S, Keys.Left, Keys.A, Keys.Right, Keys.D);
+            keyboardController.EnableKeyEvent(InputState.Hold, Keys.Up, Keys.W, Keys.Down, Keys.S, Keys.Left, Keys.A, Keys.Right, Keys.D);
             keyboardController.EnableKeyEvent(InputState.Down, Keys.Y, Keys.U, Keys.I, Keys.O);
             controllers.Add(keyboardController);
 
@@ -122,7 +124,7 @@ namespace MarioPirates
         protected override void Update(GameTime gameTime)
         {
             controllers.ForEach(c => c.Update());
-            Scene.Instance.Update();
+            Scene.Instance.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
             EventManager.Instance.ProcessQueue();
 
             if (triggerReset)

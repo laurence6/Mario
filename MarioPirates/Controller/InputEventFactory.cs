@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace MarioPirates.Controller
 {
@@ -8,23 +9,20 @@ namespace MarioPirates.Controller
     {
         public static IEvent CreateKeyEvent(InputState state, Keys key)
         {
-            switch (key)
+            if (Enum.TryParse<EventEnum>("Key" + key.ToString() + state.ToString(), out var e))
             {
-                case Keys.Up:
-                case Keys.W:
-                    return new BaseEvent(state == InputState.Down ? EventEnum.KeyUpDown : EventEnum.KeyUpUp);
-                case Keys.Down:
-                case Keys.S:
-                    return new BaseEvent(state == InputState.Down ? EventEnum.KeyDownDown : EventEnum.KeyDownUp);
-                case Keys.Left:
-                case Keys.A:
-                    return new BaseEvent(state == InputState.Down ? EventEnum.KeyLeftDown : EventEnum.KeyLeftUp);
-                case Keys.Right:
-                case Keys.D:
-                    return new BaseEvent(state == InputState.Down ? EventEnum.KeyRightDown : EventEnum.KeyRightUp);
-                default:
-                    return state == InputState.Down ? (IEvent)new KeyDownEvent(key) : (IEvent)new KeyUpEvent(key);
+                return new BaseEvent(e);
             }
+            switch (state)
+            {
+                case InputState.Down:
+                    return new KeyDownEvent(key);
+                case InputState.Up:
+                    return new KeyUpEvent(key);
+                case InputState.Hold:
+                    return new KeyHoldEvent(key);
+            }
+            return null;
         }
 
         public static IEvent CreateButtonEvent(InputState state, Buttons button)

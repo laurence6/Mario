@@ -9,12 +9,16 @@ namespace MarioPirates.Controller
 
     internal class GamePadController : IController
     {
-        private Dictionary<Buttons, IEvent>[] mapping = new Dictionary<Buttons, IEvent>[2] {
-            new Dictionary<Buttons, IEvent>(),
-            new Dictionary<Buttons, IEvent>(),
-        };
+        private Dictionary<Buttons, IEvent>[] mapping;
 
         private GamePadState prevState = GamePad.GetState(PlayerIndex.One);
+
+        public GamePadController()
+        {
+            mapping = new Dictionary<Buttons, IEvent>[EnumValues<InputState>().Length];
+            for (var i = 0; i < mapping.Length; i++)
+                mapping[i] = new Dictionary<Buttons, IEvent>();
+        }
 
         public void EnableButtonEvent(InputState state, Buttons[] buttons)
         {
@@ -29,10 +33,18 @@ namespace MarioPirates.Controller
             if (currState.IsConnected)
             {
                 foreach (var b in EnumValues<Buttons>())
-                    if (currState.IsButtonDown(b) && prevState.IsButtonUp(b))
+                    if (currState.IsButtonDown(b))
                     {
-                        if (mapping[(int)InputState.Down].TryGetValue(b, out e))
-                            EventManager.Instance.EnqueueEvent(e);
+                        if (prevState.IsButtonDown(b))
+                        {
+                            if (mapping[(int)InputState.Hold].TryGetValue(b, out e))
+                                EventManager.Instance.EnqueueEvent(e);
+                        }
+                        else
+                        {
+                            if (mapping[(int)InputState.Down].TryGetValue(b, out e))
+                                EventManager.Instance.EnqueueEvent(e);
+                        }
                     }
                     else if (currState.IsButtonUp(b) && prevState.IsButtonDown(b))
                     {

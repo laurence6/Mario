@@ -26,7 +26,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <LangVersion>7.2</LangVersion>
+    <LangVersion>7.3</LangVersion>
     <CodeAnalysisRuleSet>BasicDesignGuidelineRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
@@ -38,7 +38,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <LangVersion>7.2</LangVersion>
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Icon.ico</ApplicationIcon>
@@ -56,7 +56,13 @@
     <Compile Include="Controller\InputState.cs" />
     <Compile Include="Event\Input\ButtonEvent.cs" />
     <Compile Include="Event\Input\KeyEvent.cs" />
+    <Compile Include="Physics\BaseRigidBody.cs" />
+    <Compile Include="Physics\DefaultRigidBody.cs" />
+    <Compile Include="Physics\WorldForce.cs" />
+    <Compile Include="Physics\IRigidBody.cs" />
+    <Compile Include="Physics\Physics.cs" />
     <Compile Include="Object\Block\OrangeBlock.cs" />
+    <Compile Include="Event\Physics\CollideEvent.cs" />
     <Compile Include="Object\Block\QuestionBlock.cs" />
     <Compile Include="Object\Block\UsedBlock.cs" />
     <Compile Include="Object\Block\BrokenBlock.cs" />
@@ -67,43 +73,44 @@
     <Compile Include="Object\Block\Block.cs" />
     <Compile Include="Object\Item\Coin.cs" />
     <Compile Include="Object\Item\Flower.cs" />
-    <Compile Include="Object\Mario\MarioState.cs" />
-    <Compile Include="Object\Mario\MarioStateBig.cs" />
-    <Compile Include="Object\Mario\MarioStateBigLeftCrouch.cs" />
-    <Compile Include="Object\Mario\MarioStateBigLeftIdle.cs" />
-    <Compile Include="Object\Mario\MarioStateBigLeftJump.cs" />
-    <Compile Include="Object\Mario\MarioStateBigLeftRun.cs" />
-    <Compile Include="Object\Mario\MarioStateBigRightCrouch.cs" />
-    <Compile Include="Object\Mario\MarioStateBigRightIdle.cs" />
-    <Compile Include="Object\Mario\MarioStateBigRightJump.cs" />
-    <Compile Include="Object\Mario\MarioStateBigRightRun.cs" />
-    <Compile Include="Object\Mario\MarioStateDead.cs" />
-    <Compile Include="Object\Mario\MarioStateFire.cs" />
-    <Compile Include="Object\Mario\MarioStateFireLeftCrouch.cs" />
-    <Compile Include="Object\Mario\MarioStateFireLeftIdle.cs" />
-    <Compile Include="Object\Mario\MarioStateFireLeftJump.cs" />
-    <Compile Include="Object\Mario\MarioStateFireLeftRun.cs" />
-    <Compile Include="Object\Mario\MarioStateFireRightCrouch.cs" />
-    <Compile Include="Object\Mario\MarioStateFireRightIdle.cs" />
-    <Compile Include="Object\Mario\MarioStateFireRightJump.cs" />
-    <Compile Include="Object\Mario\MarioStateFireRightRun.cs" />
-    <Compile Include="Object\Mario\MarioStateSmall.cs" />
-    <Compile Include="Object\Mario\MarioStateSmallLeftCrouch.cs" />
-    <Compile Include="Object\Mario\MarioStateSmallLeftIdle.cs" />
-    <Compile Include="Object\Mario\MarioStateSmallLeftJump.cs" />
-    <Compile Include="Object\Mario\MarioStateSmallLeftRun.cs" />
-    <Compile Include="Object\Mario\MarioStateSmallRightCrouch.cs" />
-    <Compile Include="Object\Mario\MarioStateSmallRightIdle.cs" />
-    <Compile Include="Object\Mario\MarioStateSmallRightJump.cs" />
-    <Compile Include="Object\Mario\MarioStateSmallRightRun.cs" />
+    <Compile Include="Object\Mario\MarioState\MarioState.cs" />
+    <Compile Include="Object\Mario\MarioState\MarioStateBig.cs" />
+    <Compile Include="Object\Mario\MarioState\MarioStateBigLeftCrouch.cs" />
+    <Compile Include="Object\Mario\MarioState\MarioStateBigLeftIdle.cs" />
+    <Compile Include="Object\Mario\MarioState\MarioStateBigLeftJump.cs" />
+    <Compile Include="Object\Mario\MarioState\MarioStateBigLeftRun.cs" />
+    <Compile Include="Object\Mario\MarioState\MarioStateBigRightCrouch.cs" />
+    <Compile Include="Object\Mario\MarioState\MarioStateBigRightIdle.cs" />
+    <Compile Include="Object\Mario\MarioState\MarioStateBigRightJump.cs" />
+    <Compile Include="Object\Mario\MarioState\MarioStateBigRightRun.cs" />
+    <Compile Include="Object\Mario\MarioState\MarioStateDead.cs" />
+    <Compile Include="Object\Mario\MarioState\MarioStateFire.cs" />
+    <Compile Include="Object\Mario\MarioState\MarioStateFireLeftCrouch.cs" />
+    <Compile Include="Object\Mario\MarioState\MarioStateFireLeftIdle.cs" />
+    <Compile Include="Object\Mario\MarioState\MarioStateFireLeftJump.cs" />
+    <Compile Include="Object\Mario\MarioState\MarioStateFireLeftRun.cs" />
+    <Compile Include="Object\Mario\MarioState\MarioStateFireRightCrouch.cs" />
+    <Compile Include="Object\Mario\MarioState\MarioStateFireRightIdle.cs" />
+    <Compile Include="Object\Mario\MarioState\MarioStateFireRightJump.cs" />
+    <Compile Include="Object\Mario\MarioState\MarioStateFireRightRun.cs" />
+    <Compile Include="Object\Mario\MarioState\MarioStateSmall.cs" />
+    <Compile Include="Object\Mario\MarioState\MarioStateSmallLeftCrouch.cs" />
+    <Compile Include="Object\Mario\MarioState\MarioStateSmallLeftIdle.cs" />
+    <Compile Include="Object\Mario\MarioState\MarioStateSmallLeftJump.cs" />
+    <Compile Include="Object\Mario\MarioState\MarioStateSmallLeftRun.cs" />
+    <Compile Include="Object\Mario\MarioState\MarioStateSmallRightCrouch.cs" />
+    <Compile Include="Object\Mario\MarioState\MarioStateSmallRightIdle.cs" />
+    <Compile Include="Object\Mario\MarioState\MarioStateSmallRightJump.cs" />
+    <Compile Include="Object\Mario\MarioState\MarioStateSmallRightRun.cs" />
     <Compile Include="Object\Item\RedMushroom.cs" />
     <Compile Include="Object\Item\Pipe.cs" />
     <Compile Include="Controller\GamePadController.cs" />
     <Compile Include="Controller\KeyboardController.cs" />
     <Compile Include="Object\Mario\Mario.cs" />
     <Compile Include="Object\Enemy\Goomba.cs" />
-    <Compile Include="Game1.cs" />
+    <Compile Include="GameMario.cs" />
     <Compile Include="Controller\IController.cs" />
+    <Compile Include="Physics\CustomRigidBody.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scene\Scene.cs" />

@@ -19,4 +19,13 @@ namespace MarioPirates.Event
 
         public ButtonUpEvent(Buttons b) => Button = b;
     }
+
+    internal class ButtonHoldEvent : IEvent
+    {
+        public EventEnum EventType => EventEnum.ButtonHold;
+
+        public Buttons Button { get; }
+
+        public ButtonHoldEvent(Buttons b) => Button = b;
+    }
 }

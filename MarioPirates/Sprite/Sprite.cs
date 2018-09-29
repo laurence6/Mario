@@ -6,13 +6,13 @@ namespace MarioPirates
 {
     internal class Sprite
     {
-        private const uint frameUpdateInterval = 15;
+        private const float frameUpdateInterval = 15 * 0.016f;
 
         private string textureName;
         private Point size;
         private Point[] frames;
 
-        private uint frameCount = 0;
+        private float elpased = 0;
 
         public Sprite(string textureName, Point size, params Point[] frames)
         {
@@ -21,9 +21,9 @@ namespace MarioPirates
             this.frames = frames;
         }
 
-        public void Update()
+        public void Update(float dt)
         {
-            frameCount++;
+            elpased += dt;
         }
 
         public void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures, Rectangle drawDst)
@@ -33,7 +33,7 @@ namespace MarioPirates
                 spriteBatch.Draw(
                     textures[textureName],
                     drawDst,
-                    new Rectangle(frames[frameCount / frameUpdateInterval % frames.Length], size),
+                    new Rectangle(frames[(int)(elpased / frameUpdateInterval) % frames.Length], size),
                     Color.White);
             }
         }

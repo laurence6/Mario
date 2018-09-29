@@ -8,12 +8,16 @@ namespace MarioPirates.Controller
 
     internal class KeyboardController : IController
     {
-        private Dictionary<Keys, IEvent>[] mapping = new Dictionary<Keys, IEvent>[2] {
-            new Dictionary<Keys, IEvent>(),
-            new Dictionary<Keys, IEvent>(),
-        };
+        private Dictionary<Keys, IEvent>[] mapping;
 
         private KeyboardState prevState = Keyboard.GetState();
+
+        public KeyboardController()
+        {
+            mapping = new Dictionary<Keys, IEvent>[EnumValues<InputState>().Length];
+            for (var i = 0; i < mapping.Length; i++)
+                mapping[i] = new Dictionary<Keys, IEvent>();
+        }
 
         public void EnableKeyEvent(InputState state, params Keys[] keys)
         {
@@ -26,10 +30,18 @@ namespace MarioPirates.Controller
             IEvent e = null;
             var currState = Keyboard.GetState();
             foreach (var k in EnumValues<Keys>())
-                if (currState.IsKeyDown(k) && prevState.IsKeyUp(k))
+                if (currState.IsKeyDown(k))
                 {
-                    if (mapping[(int)InputState.Down].TryGetValue(k, out e))
-                        EventManager.Instance.EnqueueEvent(e);
+                    if (prevState.IsKeyDown(k))
+                    {
+                        if (mapping[(int)InputState.Hold].TryGetValue(k, out e))
+                            EventManager.Instance.EnqueueEvent(e);
+                    }
+                    else
+                    {
+                        if (mapping[(int)InputState.Down].TryGetValue(k, out e))
+                            EventManager.Instance.EnqueueEvent(e);
+                    }
                 }
                 else if (currState.IsKeyUp(k) && prevState.IsKeyDown(k))
                 {

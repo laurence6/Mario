@@ -8,69 +8,84 @@ namespace MarioPirates
         public static Scene Instance { get; } = new Scene();
 
         private List<GameObject> gameObjects = new List<GameObject>();
+        private List<GameObject> gameObjectsStatic = new List<GameObject>();
 
         private Scene() { }
 
         public void Reset()
         {
             gameObjects.Clear();
+            gameObjectsStatic.Clear();
 
             var mario = new Mario(600, 200);
-            gameObjects.Add(mario);
+            AddGameObject(mario, false);
 
             var hiddenBlock = new UsedBlock(100, 0);
             hiddenBlock.SetHidden(true);
-            gameObjects.Add(hiddenBlock);
+            AddGameObject(hiddenBlock);
 
             var brickBlock = new BrickBlock(100, 150);
-            gameObjects.Add(brickBlock);
+            AddGameObject(brickBlock);
 
             var brokenBlock = new BrokenBlock(100, 200);
-            gameObjects.Add(brokenBlock);
+            AddGameObject(brokenBlock);
 
             var usedBlock = new UsedBlock(100, 250);
-            gameObjects.Add(usedBlock);
+            AddGameObject(usedBlock);
 
             var orangeBlock = new OrangeBlock(100, 100);
-            gameObjects.Add(orangeBlock);
+            AddGameObject(orangeBlock);
 
             var questionBlock = new QuestionBlock(100, 50);
-            gameObjects.Add(questionBlock);
+            AddGameObject(questionBlock);
 
             var pipe = new Pipe(200, 200);
-            gameObjects.Add(pipe);
+            AddGameObject(pipe);
 
             var flower = new Flower(400, 100);
-            gameObjects.Add(flower);
+            AddGameObject(flower);
 
             var coin = new Coin(600, 100);
-            gameObjects.Add(coin);
+            AddGameObject(coin);
 
             var star = new Star(500, 100);
-            gameObjects.Add(star);
+            AddGameObject(star);
 
             var redMush = new RedMushroom(200, 100);
-            gameObjects.Add(redMush);
+            AddGameObject(redMush);
 
             var greenMush = new GreenMushroom(300, 100);
-            gameObjects.Add(greenMush);
+            AddGameObject(greenMush);
 
             var koopa = new Koopa(700, 100);
-            gameObjects.Add(koopa);
+            AddGameObject(koopa, false);
 
             var goomba = new Goomba(0, 400);
-            gameObjects.Add(goomba);
+            AddGameObject(goomba, false);
         }
 
-        public void Update()
+        public void AddGameObject(GameObject o, bool isStatic = true) =>
+            (isStatic ? gameObjectsStatic : gameObjects).Add(o);
+
+        public void Update(float dt)
         {
-            gameObjects.ForEach(o => o.Update());
+            gameObjects.ForEach(o => o.Update(dt));
+            gameObjectsStatic.ForEach(o => o.Update(dt));
+
+            foreach (var objStatic in gameObjectsStatic)
+                foreach (var obj in gameObjects)
+                    Physics.TestCollide(objStatic, obj);
+
+            for (var i = 0; i < gameObjects.Count; i++)
+                for (var j = i + 1; j < gameObjects.Count; j++)
+                    Physics.TestCollide(gameObjects[i], gameObjects[j]);
         }
 
         public void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
         {
             spriteBatch.Begin(samplerState: SamplerState.PointClamp);
             gameObjects.ForEach(o => o.Draw(spriteBatch, textures));
+            gameObjectsStatic.ForEach(o => o.Draw(spriteBatch, textures));
             spriteBatch.End();
         }
     }

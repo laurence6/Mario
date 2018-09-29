@@ -1,9 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 namespace MarioPirates
 {
     using Event;
-    using Microsoft.Xna.Framework.Input;
 
     internal class Mario : GameObject
     {
@@ -11,13 +11,19 @@ namespace MarioPirates
 
         public Mario(int dstX, int dstY)
         {
-            location = new Point(dstX, dstY);
+            location = new Vector2(dstX, dstY);
             State = new MarioStateSmallRightIdle(this);
 
-            EventManager.Instance.Subscribe(e => State.Jump(), EventEnum.KeyUpDown, EventEnum.KeyDownUp);
-            EventManager.Instance.Subscribe(e => State.Crouch(), EventEnum.KeyDownDown, EventEnum.KeyUpUp);
-            EventManager.Instance.Subscribe(e => State.Left(), EventEnum.KeyLeftDown, EventEnum.KeyRightUp);
-            EventManager.Instance.Subscribe(e => State.Right(), EventEnum.KeyRightDown, EventEnum.KeyLeftUp);
+            RigidBody.Mass = 1f;
+            RigidBody.ApplyForce(WorldForce.Friction);
+            EventManager.Instance.Subscribe(e => { State.Jump(); RigidBody.ApplyForce(new Vector2(00, -7000)); }, EventEnum.KeyUpDown, EventEnum.KeyWDown);
+            EventManager.Instance.Subscribe(e => { State.Crouch(); RigidBody.ApplyForce(new Vector2(00, 7000)); }, EventEnum.KeyDownDown, EventEnum.KeySDown);
+            EventManager.Instance.Subscribe(e => { State.Left(); RigidBody.ApplyForce(new Vector2(-7000, 00)); }, EventEnum.KeyLeftDown, EventEnum.KeyADown);
+            EventManager.Instance.Subscribe(e => { State.Right(); RigidBody.ApplyForce(new Vector2(7000, 00)); }, EventEnum.KeyRightDown, EventEnum.KeyDDown);
+            EventManager.Instance.Subscribe(e => RigidBody.ApplyForce(new Vector2(00, -700)), EventEnum.KeyUpHold, EventEnum.KeyWHold);
+            EventManager.Instance.Subscribe(e => RigidBody.ApplyForce(new Vector2(00, 700)), EventEnum.KeyDownHold, EventEnum.KeySHold);
+            EventManager.Instance.Subscribe(e => RigidBody.ApplyForce(new Vector2(-700, 00)), EventEnum.KeyLeftHold, EventEnum.KeyAHold);
+            EventManager.Instance.Subscribe(e => RigidBody.ApplyForce(new Vector2(700, 00)), EventEnum.KeyRightHold, EventEnum.KeyDHold);
 
             EventManager.Instance.Subscribe(e =>
             {

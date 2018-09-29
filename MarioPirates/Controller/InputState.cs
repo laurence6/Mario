@@ -1,7 +1,7 @@
 ﻿namespace MarioPirates.Controller
 {
-    internal enum InputState : int
+    internal enum InputState : byte
     {
-        Down = 0, Up = 1,
+        Down = 0, Up = 1, Hold = 2,
     }
 }

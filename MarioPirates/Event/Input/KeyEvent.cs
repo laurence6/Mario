@@ -19,4 +19,13 @@ namespace MarioPirates.Event
 
         public KeyUpEvent(Keys key) => Key = key;
     }
+
+    internal class KeyHoldEvent : IEvent
+    {
+        public EventEnum EventType => EventEnum.KeyHold;
+
+        public Keys Key { get; private set; }
+
+        public KeyHoldEvent(Keys key) => Key = key;
+    }
 }
