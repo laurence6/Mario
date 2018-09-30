@@ -87,7 +87,7 @@ namespace MarioPirates
             keyboardController.EnableKeyEvent(InputState.Down, Keys.Q, Keys.R);
             keyboardController.EnableKeyEvent(InputState.Down, Keys.Up, Keys.W, Keys.Down, Keys.S, Keys.Left, Keys.A, Keys.Right, Keys.D);
             keyboardController.EnableKeyEvent(InputState.Up, Keys.Up, Keys.W, Keys.Down, Keys.S, Keys.Left, Keys.A, Keys.Right, Keys.D);
-            keyboardController.EnableKeyEvent(InputState.Down, Keys.Y, Keys.U, Keys.I);
+            keyboardController.EnableKeyEvent(InputState.Down, Keys.Y, Keys.U, Keys.I, Keys.O);
             controllers.Add(keyboardController);
 
             var gamePadController = new GamePadController();
