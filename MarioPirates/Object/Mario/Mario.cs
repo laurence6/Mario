@@ -23,6 +23,9 @@ namespace MarioPirates
             {
                 switch ((e as KeyDownEvent).Key)
                 {
+                    case Keys.Y:
+                        State.Small();
+                        break;
                     case Keys.U:
                         State.Big();
                         break;
