@@ -4,7 +4,7 @@ namespace MarioPirates.Event
 {
     internal class KeyDownEvent : IEvent
     {
-        public EventEnum EventType { get => EventEnum.KeyDown; }
+        public EventEnum EventType => EventEnum.KeyDown;
 
         public Keys Key { get; private set; }
 
@@ -13,7 +13,7 @@ namespace MarioPirates.Event
 
     internal class KeyUpEvent : IEvent
     {
-        public EventEnum EventType { get => EventEnum.KeyUp; }
+        public EventEnum EventType => EventEnum.KeyUp;
 
         public Keys Key { get; private set; }
 

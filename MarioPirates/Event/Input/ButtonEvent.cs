@@ -4,7 +4,7 @@ namespace MarioPirates.Event
 {
     internal class ButtonDownEvent : IEvent
     {
-        public EventEnum EventType { get => EventEnum.ButtonDown; }
+        public EventEnum EventType => EventEnum.ButtonDown;
 
         public Buttons Button { get; }
 
@@ -13,7 +13,7 @@ namespace MarioPirates.Event
 
     internal class ButtonUpEvent : IEvent
     {
-        public EventEnum EventType { get => EventEnum.ButtonUp; }
+        public EventEnum EventType => EventEnum.ButtonUp;
 
         public Buttons Button { get; }
 

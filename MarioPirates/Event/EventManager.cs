@@ -8,16 +8,14 @@ namespace MarioPirates.Event
     {
         public delegate void OnEvent(IEvent eventData);
 
-        private List<OnEvent>[] subscribers;
+        private OnEvent[] subscribers;
         private Queue<IEvent> queueOld, queueActive;
 
         public static EventManager Instance { get; } = new EventManager();
 
         private EventManager()
         {
-            subscribers = new List<OnEvent>[EnumValues<EventEnum>().Length];
-            for (var i = 0; i < subscribers.Length; i++)
-                subscribers[i] = new List<OnEvent>();
+            subscribers = new OnEvent[EnumValues<EventEnum>().Length];
             queueOld = new Queue<IEvent>();
             queueActive = new Queue<IEvent>();
         }
@@ -25,7 +23,7 @@ namespace MarioPirates.Event
         public void Reset()
         {
             for (var i = 0; i < subscribers.Length; i++)
-                subscribers[i].Clear();
+                subscribers[i] = null;
             queueOld.Clear();
             queueActive.Clear();
         }
@@ -33,19 +31,18 @@ namespace MarioPirates.Event
         public void Subscribe(OnEvent f, params EventEnum[] eventTypes)
         {
             foreach (var e in eventTypes)
-                if (!subscribers[(int)e].Contains(f))
-                    subscribers[(int)e].Add(f);
+                subscribers[(int)e] += f;
         }
 
         public void Unsubscribe(OnEvent f, params EventEnum[] eventTypes)
         {
             foreach (var e in eventTypes)
-                subscribers[(int)e].Remove(f);
+                subscribers[(int)e] -= f;
         }
 
         public void TriggerEvent(IEvent e)
         {
-            subscribers[(int)e.EventType].ForEach(f => f(e));
+            subscribers[(int)e.EventType]?.Invoke(e);
         }
 
         public void EnqueueEvent(IEvent e)
