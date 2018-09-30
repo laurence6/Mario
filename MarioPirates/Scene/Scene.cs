@@ -18,28 +18,23 @@ namespace MarioPirates
             var mario = new Mario(600, 200);
             gameObjects.Add(mario);
 
-            var hiddenBlock = new Block(100, 0);
-            hiddenBlock.State.ChangeToHiddenBlock();
+            var hiddenBlock = new UsedBlock(100, 0);
+            hiddenBlock.SetHidden(true);
             gameObjects.Add(hiddenBlock);
 
-            var brickBlock = new Block(100, 150);
-            brickBlock.State.ChangeToBrickBlock();
+            var brickBlock = new BrickBlock(100, 150);
             gameObjects.Add(brickBlock);
 
-            var brokenBlock = new Block(100, 200);
-            brokenBlock.State.ChangeToBrokenBlock();
+            var brokenBlock = new BrokenBlock(100, 200);
             gameObjects.Add(brokenBlock);
 
-            var brownBlock = new Block(100, 250);
-            brownBlock.State.ChangeToBrownBlock();
-            gameObjects.Add(brownBlock);
+            var usedBlock = new UsedBlock(100, 250);
+            gameObjects.Add(usedBlock);
 
-            var orangeBlock = new Block(100, 100);
-            orangeBlock.State.ChangeToOrangeBlock();
+            var orangeBlock = new OrangeBlock(100, 100);
             gameObjects.Add(orangeBlock);
 
-            var questionBlock = new Block(100, 50);
-            questionBlock.State.ChangeToQuestionBlock();
+            var questionBlock = new QuestionBlock(100, 50);
             gameObjects.Add(questionBlock);
 
             var pipe = new Pipe(200, 200);

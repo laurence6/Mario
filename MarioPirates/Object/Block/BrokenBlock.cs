@@ -1,14 +1,10 @@
-namespace MarioPirates
+﻿namespace MarioPirates
 {
-    internal class BrokenBlock : BlockState
+    internal class BrokenBlock : Block
     {
-        public BrokenBlock(Block block) : base(block)
+        public BrokenBlock(int dstX, int dstY) : base(dstX, dstY)
         {
-            block.Sprite = SpriteFactory.CreateSprite("brokenblock");
-        }
-
-        public override void ChangeToBrokenBlock()
-        {
+            Sprite = SpriteFactory.CreateSprite("brokenblock");
         }
     }
 }

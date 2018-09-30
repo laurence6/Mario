@@ -1,14 +1,10 @@
-namespace MarioPirates
+﻿namespace MarioPirates
 {
-    internal class OrangeBlock : BlockState
+    internal class OrangeBlock : Block
     {
-        public OrangeBlock(Block block) : base(block)
+        public OrangeBlock(int dstX, int dstY) : base(dstX, dstY)
         {
-            block.Sprite = SpriteFactory.CreateSprite("orangeblock");
-        }
-
-        public override void ChangeToOrangeBlock()
-        {
+            Sprite = SpriteFactory.CreateSprite("orangeblock");
         }
     }
 }

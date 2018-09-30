@@ -1,14 +1,10 @@
 ﻿namespace MarioPirates
 {
-    internal class BrickBlock : BlockState
+    internal class BrickBlock : Block
     {
-        public BrickBlock(Block block) : base(block)
+        public BrickBlock(int dstX, int dstY) : base(dstX, dstY)
         {
-            block.Sprite = SpriteFactory.CreateSprite("brickblock");
-        }
-
-        public override void ChangeToBrickBlock()
-        {
+            Sprite = SpriteFactory.CreateSprite("brickblock");
         }
     }
 }

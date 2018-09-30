@@ -1,14 +1,10 @@
-namespace MarioPirates
+﻿namespace MarioPirates
 {
-    internal class QuestionBlock : BlockState
+    internal class QuestionBlock : Block
     {
-        public QuestionBlock(Block block) : base(block)
+        public QuestionBlock(int dstX, int dstY) : base(dstX, dstY)
         {
-            block.Sprite = SpriteFactory.CreateSprite("questionblock");
-        }
-
-        public override void ChangeToQuestionBlock()
-        {
+            Sprite = SpriteFactory.CreateSprite("questionblock");
         }
     }
 }

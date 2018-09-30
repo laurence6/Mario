@@ -56,13 +56,11 @@
     <Compile Include="Controller\InputState.cs" />
     <Compile Include="Event\Input\ButtonEvent.cs" />
     <Compile Include="Event\Input\KeyEvent.cs" />
-    <Compile Include="Object\Block\BlockState.cs" />
-    <Compile Include="Object\Block\QuestionBlock.cs" />
-    <Compile Include="Object\Block\BrokenBlock.cs" />
     <Compile Include="Object\Block\OrangeBlock.cs" />
-    <Compile Include="Object\Block\BrownBlock.cs" />
+    <Compile Include="Object\Block\QuestionBlock.cs" />
+    <Compile Include="Object\Block\UsedBlock.cs" />
+    <Compile Include="Object\Block\BrokenBlock.cs" />
     <Compile Include="Object\Block\BrickBlock.cs" />
-    <Compile Include="Object\Block\HiddenBlock.cs" />
     <Compile Include="Object\Enemy\Koopa.cs" />
     <Compile Include="Object\GameObject.cs" />
     <Compile Include="Object\Item\GreenMushroom.cs" />
