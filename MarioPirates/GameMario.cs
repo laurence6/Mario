@@ -59,6 +59,7 @@ namespace MarioPirates
         protected override void Initialize()
         {
             Reset();
+            graphics.IsFullScreen = false;
             base.Initialize();
         }
 

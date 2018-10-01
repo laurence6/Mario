@@ -75,16 +75,7 @@ namespace MarioPirates
 
         public void Update(float dt)
         {
-            gameObjects.ForEach(o => o.Update(dt));
-            gameObjectsStatic.ForEach(o => o.Update(dt));
-
-            foreach (var objStatic in gameObjectsStatic)
-                foreach (var obj in gameObjects)
-                    Physics.TestCollide(objStatic, obj);
-
-            for (var i = 0; i < gameObjects.Count; i++)
-                for (var j = i + 1; j < gameObjects.Count; j++)
-                    Physics.TestCollide(gameObjects[i], gameObjects[j]);
+            Physics.Simulate(dt, in gameObjects, in gameObjectsStatic);
         }
 
         public void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)

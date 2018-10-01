@@ -151,7 +151,6 @@
     <Compile Include="Object\Enemy\Goomba.cs" />
     <Compile Include="GameMario.cs" />
     <Compile Include="Controller\IController.cs" />
-    <Compile Include="Physics\CustomRigidBody.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scene\Scene.cs" />

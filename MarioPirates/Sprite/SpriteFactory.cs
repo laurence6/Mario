@@ -186,10 +186,7 @@ namespace MarioPirates
         {
             var arr = new Point[count];
             for (var i = 0; i < count; i++)
-            {
-                arr[i].X = begin.X + delta.X * i;
-                arr[i].Y = begin.Y + delta.Y * i;
-            }
+                arr[i] = begin + delta.Mul(i);
             return arr;
         }
     }

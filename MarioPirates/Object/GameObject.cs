@@ -7,7 +7,7 @@ namespace MarioPirates
     internal abstract class GameObject
     {
         public Sprite Sprite { get; set; }
-        public IRigidBody RigidBody { get; set; }
+        public BaseRigidBody RigidBody { get; set; }
 
         protected Vector2 location;
         protected Point size;
@@ -20,9 +20,14 @@ namespace MarioPirates
             RigidBody = new DefaultRigidBody(this);
         }
 
+        public void Step(float dt)
+        {
+            RigidBody?.Step(dt);
+        }
+
         public virtual void Update(float dt)
         {
-            RigidBody?.Update(dt);
+            RigidBody?.Update();
             Sprite?.Update(dt);
         }
 
@@ -34,8 +39,6 @@ namespace MarioPirates
         // Override to handle game logic
         public virtual void OnCollide(GameObject other)
         {
-            // Physics simulation
-            RigidBody.OnCollide(other.RigidBody);
         }
     }
 }

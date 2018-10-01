@@ -2,7 +2,9 @@
 
 namespace MarioPirates
 {
-    internal abstract class BaseRigidBody : IRigidBody
+    using static Common;
+
+    internal abstract class BaseRigidBody
     {
         public virtual Rectangle Bound { get; }
         public byte CollideMask { get; set; } = 0b1;
@@ -11,9 +13,9 @@ namespace MarioPirates
 
         public Vector2 Force { get; protected set; }
         public Vector2 Accel => Force / Mass;
-        public Vector2 Velocity { get; protected set; }
+        public Vector2 Velocity { get; set; }
 
-        protected GameObject Object;
+        public GameObject Object { get; protected set; }
 
         protected WorldForce worldForce;
 
@@ -32,20 +34,21 @@ namespace MarioPirates
             Force += force;
         }
 
-        public void Update(float dt)
+        public void Step(float dt)
         {
             var nextVelocity = Velocity + dt * Accel;
+
+            // XXX: a hacky approx to simulate friction
             if ((worldForce & WorldForce.Friction) != 0)
-                nextVelocity *= 0.93f; // TODO: .X
+                nextVelocity *= Pow(0.0001f, dt); // TODO: .X
+
             Object.Location += dt * (nextVelocity + Velocity) / 2;
             Velocity = nextVelocity;
-
-            Force = Vector2.Zero;
         }
 
-        public void OnCollide(IRigidBody other)
+        public void Update()
         {
-            // TODO: handle physics simulation
+            Force = Vector2.Zero;
         }
     }
 }
