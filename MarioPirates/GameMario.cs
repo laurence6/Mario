@@ -36,6 +36,8 @@ namespace MarioPirates
             { "rightcrouchfiremario", null },
             { "smallmario", null },
             { "stars", null },
+            { "brushes", null },
+            { "hills", null },
         };
 
         private List<IController> controllers = new List<IController>();
