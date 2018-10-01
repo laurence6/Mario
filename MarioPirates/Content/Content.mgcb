@@ -313,7 +313,7 @@
 /processorParam:TextureFormat=Color
 /build:hills.png
 
-#begin brushes.png
+#begin bushes.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -323,5 +323,5 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:brushes.png
+/build:bushes.png
 

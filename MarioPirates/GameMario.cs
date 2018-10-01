@@ -36,7 +36,7 @@ namespace MarioPirates
             { "rightcrouchfiremario", null },
             { "smallmario", null },
             { "stars", null },
-            { "brushes", null },
+            { "bushes", null },
             { "hills", null },
         };
 
