@@ -14,7 +14,7 @@ namespace MarioPirates
 
         public override void Right()
         {
-            mario.State = new MarioStateBigRightIdle(mario);
+            mario.State = new MarioStateBigRightRun(mario);
         }
 
         public override void Jump()

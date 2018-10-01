@@ -9,7 +9,7 @@ namespace MarioPirates
 
         public override void Left()
         {
-            mario.State = new MarioStateSmallLeftIdle(mario);
+            mario.State = new MarioStateSmallLeftRun(mario);
         }
 
         public override void Right()
