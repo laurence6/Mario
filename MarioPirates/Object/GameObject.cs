@@ -35,7 +35,7 @@ namespace MarioPirates
         public virtual void OnCollide(GameObject other)
         {
             // Physics simulation
-            RigidBody.OnColide(other.RigidBody);
+            RigidBody.OnCollide(other.RigidBody);
         }
     }
 }

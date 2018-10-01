@@ -20,6 +20,6 @@ namespace MarioPirates
 
         void Update(float dt);
 
-        void OnColide(IRigidBody other);
+        void OnCollide(IRigidBody other);
     }
 }

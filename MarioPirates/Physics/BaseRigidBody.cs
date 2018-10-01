@@ -43,7 +43,7 @@ namespace MarioPirates
             Force = Vector2.Zero;
         }
 
-        public void OnColide(IRigidBody other)
+        public void OnCollide(IRigidBody other)
         {
             // TODO: handle physics simulation
         }
