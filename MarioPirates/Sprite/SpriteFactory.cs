@@ -65,82 +65,86 @@ namespace MarioPirates
 
         public static Sprite CreateSpriteMario(string spriteName)
         {
+            var smallMarioSize = P(17, 15);
+            var bigMarioSize = P(16, 32);
+            var bigMarioCrouchSize = P(16, 22);
+            var deadMarioSize = P(15, 14);
             switch (spriteName)
             {
                 case "small_crouch_left":
-                    return new Sprite("smallmario", P(30, 15), P(0, 0));
+                    return new Sprite("smallmario", smallMarioSize, P(0, 0));
 
                 case "small_jump_left":
-                    return new Sprite("smallmario", P(30, 15), P(0, 0));
+                    return new Sprite("smallmario", smallMarioSize, P(0, 0));
 
                 case "small_run_left":
-                    return new Sprite("smallmario", P(30, 15), P(120, 0), P(90, 0), P(60, 0), P(90, 0));
+                    return new Sprite("smallmario", smallMarioSize, P(120, 0), P(90, 0), P(60, 0), P(90, 0));
 
                 case "small_idle_left":
-                    return new Sprite("smallmario", P(30, 15), P(150, 0));
+                    return new Sprite("smallmario", smallMarioSize, P(150, 0));
 
                 case "small_idle_right":
-                    return new Sprite("smallmario", P(30, 15), P(180, 0));
+                    return new Sprite("smallmario", smallMarioSize, P(180, 0));
 
                 case "small_run_right":
-                    return new Sprite("smallmario", P(30, 15), P(210, 0), P(240, 0), P(270, 0), P(240, 0));
+                    return new Sprite("smallmario", smallMarioSize, P(210, 0), P(240, 0), P(270, 0), P(240, 0));
 
                 case "small_jump_right":
-                    return new Sprite("smallmario", P(30, 15), P(330, 0));
+                    return new Sprite("smallmario", smallMarioSize, P(330, 0));
 
                 case "small_crouch_right":
-                    return new Sprite("smallmario", P(30, 15), P(330, 0));
+                    return new Sprite("smallmario", smallMarioSize, P(330, 0));
 
                 case "big_crouch_left":
-                    return new Sprite("leftcrouchbigmario", P(16, 22), P(0, 0));
+                    return new Sprite("leftcrouchbigmario", bigMarioCrouchSize, P(0, 0));
 
                 case "big_jump_left":
-                    return new Sprite("bigmario", P(30, 33), P(0, 0));
+                    return new Sprite("bigmario", bigMarioSize, P(0, 0));
 
                 case "big_run_left":
-                    return new Sprite("bigmario", P(30, 33), P(120, 0), P(90, 0), P(60, 0), P(90, 0));
+                    return new Sprite("bigmario", bigMarioSize, P(120, 0), P(90, 0), P(60, 0), P(90, 0));
 
                 case "big_idle_left":
-                    return new Sprite("bigmario", P(30, 33), P(150, 0));
+                    return new Sprite("bigmario", bigMarioSize, P(150, 0));
 
                 case "big_idle_right":
-                    return new Sprite("bigmario", P(30, 33), P(180, 0));
+                    return new Sprite("bigmario", bigMarioSize, P(180, 0));
 
                 case "big_run_right":
-                    return new Sprite("bigmario", P(30, 33), P(210, 0), P(240, 0), P(270, 0), P(240, 0));
+                    return new Sprite("bigmario", bigMarioSize, P(210, 0), P(240, 0), P(270, 0), P(240, 0));
 
                 case "big_jump_right":
-                    return new Sprite("bigmario", P(30, 33), P(330, 0));
+                    return new Sprite("bigmario", bigMarioSize, P(330, 0));
 
                 case "big_crouch_right":
-                    return new Sprite("rightcrouchbigmario", P(16, 22), P(0, 0));
+                    return new Sprite("rightcrouchbigmario", bigMarioCrouchSize, P(0, 0));
 
                 case "fire_crouch_left":
-                    return new Sprite("leftcrouchfiremario", P(16, 22), P(0, 0));
+                    return new Sprite("leftcrouchfiremario", bigMarioCrouchSize, P(0, 0));
 
                 case "fire_jump_left":
-                    return new Sprite("firemario", P(30, 33), P(0, 0));
+                    return new Sprite("firemario", bigMarioSize, P(0, 0));
 
                 case "fire_run_left":
-                    return new Sprite("firemario", P(30, 33), P(120, 0), P(90, 0), P(60, 0), P(90, 0));
+                    return new Sprite("firemario", bigMarioSize, P(120, 0), P(90, 0), P(60, 0), P(90, 0));
 
                 case "fire_idle_left":
-                    return new Sprite("firemario", P(30, 33), P(150, 0));
+                    return new Sprite("firemario", bigMarioSize, P(150, 0));
 
                 case "fire_idle_right":
-                    return new Sprite("firemario", P(30, 33), P(180, 0));
+                    return new Sprite("firemario", bigMarioSize, P(180, 0));
 
                 case "fire_run_right":
-                    return new Sprite("firemario", P(30, 33), P(210, 0), P(240, 0), P(270, 0), P(240, 0));
+                    return new Sprite("firemario", bigMarioSize, P(210, 0), P(240, 0), P(270, 0), P(240, 0));
 
                 case "fire_jump_right":
-                    return new Sprite("firemario", P(30, 33), P(330, 0));
+                    return new Sprite("firemario", bigMarioSize, P(330, 0));
 
                 case "fire_crouch_right":
-                    return new Sprite("rightcrouchfiremario", P(16, 22), P(0, 0));
+                    return new Sprite("rightcrouchfiremario", bigMarioCrouchSize, P(0, 0));
 
                 case "dead":
-                    return new Sprite("deadmario", P(15, 14), P(0, 0));
+                    return new Sprite("deadmario", deadMarioSize, P(0, 0));
             }
             Console.Error.WriteLine("Couldn't find sprite " + spriteName);
             return null;

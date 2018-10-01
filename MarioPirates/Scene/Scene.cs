@@ -65,7 +65,7 @@ namespace MarioPirates
 
             var brushes = new Brushes(100,400);
             AddGameObject(brushes);
-
+            
             var hills = new Hills(300, 400);
             AddGameObject(hills);
         }
