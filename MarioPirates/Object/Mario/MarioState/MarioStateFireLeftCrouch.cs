@@ -10,6 +10,16 @@ namespace MarioPirates
             mario.Sprite = SpriteFactory.CreateSpriteMario("fire_crouch_left");
         }
 
+        public override void Left()
+        {
+            mario.State = new MarioStateFireLeftCrouchRun(mario);
+        }
+
+        public override void Right()
+        {
+            mario.State = new MarioStateFireRightCrouchRun(mario);
+        }
+
         public override void Jump()
         {
             mario.State = new MarioStateFireLeftIdle(mario);

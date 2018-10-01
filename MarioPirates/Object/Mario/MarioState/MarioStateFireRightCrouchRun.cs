@@ -2,27 +2,26 @@ using Microsoft.Xna.Framework;
 
 namespace MarioPirates
 {
-    internal class MarioStateBigLeftCrouch : MarioStateBig
+    internal class MarioStateFireRightCrouchRun : MarioStateFire
     {
-        public MarioStateBigLeftCrouch(Mario mario) : base(mario)
+        public MarioStateFireRightCrouchRun(Mario mario) : base(mario)
         {
             mario.Size = new Point(marioCrouchWidth, marioCrouchHeight);
-            mario.Sprite = SpriteFactory.CreateSpriteMario("big_crouch_left");
+            mario.Sprite = SpriteFactory.CreateSpriteMario("fire_crouch_right");
         }
 
         public override void Left()
         {
-            mario.State = new MarioStateBigLeftCrouchRun(mario);
+            mario.State = new MarioStateFireRightCrouch(mario);
         }
 
         public override void Right()
         {
-            mario.State = new MarioStateBigRightCrouchRun(mario);
         }
 
         public override void Jump()
         {
-            mario.State = new MarioStateBigLeftIdle(mario);
+            mario.State = new MarioStateFireRightRun(mario);
         }
 
         public override void Crouch()
@@ -31,16 +30,16 @@ namespace MarioPirates
 
         public override void Small()
         {
-            mario.State = new MarioStateSmallLeftCrouch(mario);
+            mario.State = new MarioStateSmallRightCrouchRun(mario);
         }
 
         public override void Big()
         {
+            mario.State = new MarioStateBigRightCrouchRun(mario);
         }
 
         public override void Fire()
         {
-            mario.State = new MarioStateFireLeftCrouch(mario);
         }
     }
 }

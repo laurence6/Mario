@@ -1,20 +1,19 @@
 namespace MarioPirates
 {
-    internal class MarioStateBigRightJump : MarioStateBig
+    internal class MarioStateBigRightJumpRun : MarioStateBig
     {
-        public MarioStateBigRightJump(Mario mario) : base(mario)
+        public MarioStateBigRightJumpRun(Mario mario) : base(mario)
         {
             mario.Sprite = SpriteFactory.CreateSpriteMario("big_jump_right");
         }
 
         public override void Left()
         {
-            mario.State = new MarioStateBigLeftJumpRun(mario);
+            mario.State = new MarioStateBigRightJump(mario);
         }
 
         public override void Right()
         {
-            mario.State = new MarioStateBigRightJumpRun(mario);
         }
 
         public override void Jump()
@@ -23,12 +22,12 @@ namespace MarioPirates
 
         public override void Crouch()
         {
-            mario.State = new MarioStateBigRightIdle(mario);
+            mario.State = new MarioStateBigRightRun(mario);
         }
 
         public override void Small()
         {
-            mario.State = new MarioStateSmallRightJump(mario);
+            mario.State = new MarioStateSmallRightJumpRun(mario);
         }
 
         public override void Big()
@@ -37,7 +36,7 @@ namespace MarioPirates
 
         public override void Fire()
         {
-            mario.State = new MarioStateFireRightJump(mario);
+            mario.State = new MarioStateFireRightJumpRun(mario);
         }
     }
 }

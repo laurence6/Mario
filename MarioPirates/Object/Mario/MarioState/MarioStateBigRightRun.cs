@@ -18,12 +18,12 @@ namespace MarioPirates
 
         public override void Jump()
         {
-            mario.State = new MarioStateBigRightJump(mario);
+            mario.State = new MarioStateBigRightJumpRun(mario);
         }
 
         public override void Crouch()
         {
-            mario.State = new MarioStateBigRightCrouch(mario);
+            mario.State = new MarioStateBigRightCrouchRun(mario);
         }
 
         public override void Small()
