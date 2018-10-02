@@ -4,7 +4,7 @@ namespace MarioPirates
 {
     internal class Star : GameObject
     {
-        private const int starWidth = 30, starHeight = 16;
+        private const int starWidth = 14, starHeight = 16;
         public Star(int dstX, int dstY)
         {
             location.X = dstX;

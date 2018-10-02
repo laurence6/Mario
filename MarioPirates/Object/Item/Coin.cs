@@ -4,7 +4,7 @@ namespace MarioPirates
 {
     internal class Coin : GameObject
     {
-        private const int coinWidth = 30, coinHeight = 14;
+        private const int coinWidth = 7, coinHeight = 14;
         public Coin(int dstX, int dstY)
         {
             location.X = dstX;
