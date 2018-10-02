@@ -4,7 +4,7 @@ namespace MarioPirates
 {
     internal class Koopa : GameObject
     {
-        private const int koopaWidth = 16, koopaHeight = 16;
+        private const int koopaWidth = 16, koopaHeight = 23;
         public Koopa(int x, int y)
         {
             location.X = x;

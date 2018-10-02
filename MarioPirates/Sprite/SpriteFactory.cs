@@ -45,10 +45,10 @@ namespace MarioPirates
             switch (spriteName)
             {
                 case "coins":
-                    return new Sprite("coins", P(30, 14), GenerateFrameLocationArray(P(0, 0), P(30, 0), 4));
+                    return new Sprite("coins", P(7, 14), GenerateFrameLocationArray(P(0, 0), P(30, 0), 4));
 
                 case "flower":
-                    return new Sprite("flower", P(30, 16), GenerateFrameLocationArray(P(0, 0), P(30, 0), 4));
+                    return new Sprite("flower", P(16, 16), GenerateFrameLocationArray(P(0, 0), P(30, 0), 4));
 
                 case "greenmushroom":
                     return new Sprite("greenmushroom", P(16, 16), P(0, 0));
@@ -60,7 +60,7 @@ namespace MarioPirates
                     return new Sprite("redmushroom", P(16, 16), P(0, 0));
 
                 case "stars":
-                    return new Sprite("stars", P(30, 16), GenerateFrameLocationArray(P(0, 0), P(30, 0), 4));
+                    return new Sprite("stars", P(14, 16), GenerateFrameLocationArray(P(0, 0), P(30, 0), 4));
 
                 case "brickblock":
                     return new Sprite("brickblock", P(16, 16), P(0, 0));
@@ -81,10 +81,10 @@ namespace MarioPirates
                     return new Sprite("questionblock", P(16, 16), P(0, 0));
 
                 case "goomba":
-                    return new Sprite("goomba", P(30, 16), GenerateFrameLocationArray(P(0, 0), P(30, 0), 2));
+                    return new Sprite("goomba", P(16, 16), GenerateFrameLocationArray(P(0, 0), P(30, 0), 2));
 
                 case "koopa":
-                    return new Sprite("koopa", P(30, 24), GenerateFrameLocationArray(P(0, 0), P(30, 0), 9));
+                    return new Sprite("koopa", P(16, 23), GenerateFrameLocationArray(P(0, 0), P(30, 0), 9));
             }
             Console.Error.WriteLine("Couldn't find sprite " + spriteName);
             return null;
