@@ -11,6 +11,7 @@ namespace MarioPirates
         private string textureName;
         private Point size;
         private Point[] frames;
+        private float accelerateRate;
 
         private float elpased = 0;
 
@@ -19,6 +20,15 @@ namespace MarioPirates
             this.textureName = textureName;
             this.size = size;
             this.frames = frames;
+            this.accelerateRate = 1;
+        }
+
+        public Sprite(string textureName, float accelerateRate, Point size, params Point[] frames)
+        {
+            this.textureName = textureName;
+            this.size = size;
+            this.frames = frames;
+            this.accelerateRate = accelerateRate;
         }
 
         public void Update(float dt)
@@ -33,7 +43,7 @@ namespace MarioPirates
                 spriteBatch.Draw(
                     textures[textureName],
                     drawDst,
-                    new Rectangle(frames[(int)(elpased / frameUpdateInterval) % frames.Length], size),
+                    new Rectangle(frames[(int)(elpased / frameUpdateInterval * accelerateRate) % frames.Length], size),
                     Color.White);
             }
         }

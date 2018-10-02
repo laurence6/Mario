@@ -38,5 +38,10 @@ namespace MarioPirates
         {
             mario.State = new MarioStateFireLeftJumpRun(mario);
         }
+
+        public override void Star()
+        {
+            mario.State = new MarioStateStarSmallLeftJumpRun(mario);
+        }
     }
 }

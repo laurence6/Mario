@@ -45,6 +45,9 @@ namespace MarioPirates
                     case Keys.O:
                         State.Dead();
                         break;
+                    case Keys.P:
+                        State.Star();
+                        break;
                 }
             }, EventEnum.KeyDown);
         }

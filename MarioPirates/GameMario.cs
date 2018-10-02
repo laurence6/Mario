@@ -16,6 +16,7 @@ namespace MarioPirates
 
         private Dictionary<string, Texture2D> textures = new Dictionary<string, Texture2D> {
             { "bigmario", null },
+            { "bigstarpowermario", null },
             { "brickblock", null },
             { "brokenblock", null },
             { "brownblock", null },
@@ -35,6 +36,7 @@ namespace MarioPirates
             { "rightcrouchbigmario", null },
             { "rightcrouchfiremario", null },
             { "smallmario", null },
+            { "smallstarpowermario", null },
             { "stars", null },
             { "bushes", null },
             { "hills", null },
@@ -91,7 +93,7 @@ namespace MarioPirates
             keyboardController.EnableKeyEvent(InputState.Down, Keys.Up, Keys.W, Keys.Down, Keys.S, Keys.Left, Keys.A, Keys.Right, Keys.D);
             keyboardController.EnableKeyEvent(InputState.Up, Keys.Up, Keys.W, Keys.Down, Keys.S, Keys.Left, Keys.A, Keys.Right, Keys.D);
             keyboardController.EnableKeyEvent(InputState.Hold, Keys.Up, Keys.W, Keys.Down, Keys.S, Keys.Left, Keys.A, Keys.Right, Keys.D);
-            keyboardController.EnableKeyEvent(InputState.Down, Keys.Y, Keys.U, Keys.I, Keys.O);
+            keyboardController.EnableKeyEvent(InputState.Down, Keys.Y, Keys.U, Keys.I, Keys.O, Keys.P);
             controllers.Add(keyboardController);
 
             var gamePadController = new GamePadController();

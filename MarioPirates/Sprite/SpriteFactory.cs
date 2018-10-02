@@ -68,6 +68,7 @@ namespace MarioPirates
             var smallMarioSize = P(17, 15);
             var bigMarioSize = P(16, 32);
             var bigMarioCrouchSize = P(16, 22);
+            var starSmallMarioSize = P(16, 16);
             var deadMarioSize = P(15, 14);
             switch (spriteName)
             {
@@ -142,9 +143,40 @@ namespace MarioPirates
 
                 case "fire_crouch_right":
                     return new Sprite("rightcrouchfiremario", bigMarioCrouchSize, P(0, 0));
+                    
+                case "star_small_idle_right":
+                    return new Sprite("smallstarpowermario", 3, starSmallMarioSize, P(96, 0), P(96, 48), P(96, 96));
+
+                case "star_small_run_right":
+                    return new Sprite("smallstarpowermario", 3, starSmallMarioSize, 
+                        P(0, 0), P(0, 48), P(0, 96), P(16, 0), P(16, 48), P(16, 96), 
+                        P(32, 0), P(32, 48), P(32, 96), P(16, 0), P(16, 48), P(16, 96));
+                    
+                case "star_small_jump_right":
+                    return new Sprite("smallstarpowermario", 3, starSmallMarioSize, P(64, 0), P(64, 48), P(64, 96));
+
+                case "star_small_crouch_right":
+                    return new Sprite("smallstarpowermario", 3, starSmallMarioSize, P(64, 0), P(64, 48), P(64, 96));
+
+                case "star_big_idle_right":
+                    return new Sprite("bigstarpowermario", 3, bigMarioSize, P(96, 0), P(96, 48), P(96, 96));
+
+                case "star_big_run_right":
+                    return new Sprite("bigstarpowermario", 3, bigMarioSize, 
+                        P(0, 0), P(0, 48), P(0, 96), P(16, 0), P(16, 48), P(16, 96), 
+                        P(32, 0), P(32, 48), P(32, 96), P(16, 0), P(16, 48), P(16, 96));
+                    
+                case "star_big_jump_right":
+                    return new Sprite("bigstarpowermario", 3, bigMarioSize, P(64, 0), P(64, 48), P(64, 96));
+
+                case "star_big_crouch_right":
+                    return new Sprite("bigstarpowermario", 3, bigMarioSize, P(80, 0), P(80, 48), P(80, 96));
 
                 case "dead":
                     return new Sprite("deadmario", deadMarioSize, P(0, 0));
+
+                case "star_dead":
+                    return new Sprite("smallstarpowermario", 3, starSmallMarioSize, P(80, 0), P(80, 48), P(80, 96));
             }
             Console.Error.WriteLine("Couldn't find sprite " + spriteName);
             return null;

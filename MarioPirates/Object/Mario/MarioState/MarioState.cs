@@ -23,6 +23,8 @@ namespace MarioPirates
 
         public abstract void Fire();
 
+        public abstract void Star();
+
         public virtual void Dead()
         {
             mario.State = new MarioStateDead(mario);
