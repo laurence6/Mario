@@ -25,9 +25,6 @@ namespace MarioPirates
 
         public abstract void Star();
 
-        public virtual void Dead()
-        {
-            mario.State = new MarioStateDead(mario);
-        }
+        public abstract void Dead();
     }
 }

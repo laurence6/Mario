@@ -32,10 +32,6 @@ namespace MarioPirates
             mario.State = new MarioStateSmallLeftIdle(mario);
         }
 
-        public override void Big()
-        {
-        }
-
         public override void Fire()
         {
             mario.State = new MarioStateFireLeftIdle(mario);

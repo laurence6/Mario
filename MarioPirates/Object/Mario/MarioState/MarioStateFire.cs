@@ -12,14 +12,13 @@ namespace MarioPirates
             mario.Size = new Point(marioWidth, marioHeight);
         }
 
-        public override void Left()
+        public override void Fire()
         {
-            mario.State = new MarioStateFireLeftIdle(mario);
         }
 
-        public override void Right()
+        public override void Dead()
         {
-            mario.State = new MarioStateFireRightIdle(mario);
+            mario.State = new MarioStateDead(mario);
         }
     }
 }
