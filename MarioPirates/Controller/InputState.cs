@@ -1,7 +1,10 @@
-﻿namespace MarioPirates.Controller
+﻿using System;
+
+namespace MarioPirates.Controller
 {
+    [Flags]
     internal enum InputState : byte
     {
-        Down = 0, Up = 1, Hold = 2,
+        None = 0b00, Down = 0b01, Up = 0b10, Hold = 0b11,
     }
 }

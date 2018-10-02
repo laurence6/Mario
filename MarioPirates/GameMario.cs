@@ -90,10 +90,14 @@ namespace MarioPirates
             triggerReset = false;
 
             var keyboardController = new KeyboardController();
+            keyboardController.SetKeyMapping(Keys.W, Keys.Up);
+            keyboardController.SetKeyMapping(Keys.S, Keys.Down);
+            keyboardController.SetKeyMapping(Keys.A, Keys.Left);
+            keyboardController.SetKeyMapping(Keys.D, Keys.Right);
             keyboardController.EnableKeyEvent(InputState.Down, Keys.Q, Keys.R);
-            keyboardController.EnableKeyEvent(InputState.Down, Keys.Up, Keys.W, Keys.Down, Keys.S, Keys.Left, Keys.A, Keys.Right, Keys.D);
-            keyboardController.EnableKeyEvent(InputState.Up, Keys.Up, Keys.W, Keys.Down, Keys.S, Keys.Left, Keys.A, Keys.Right, Keys.D);
-            keyboardController.EnableKeyEvent(InputState.Hold, Keys.Up, Keys.W, Keys.Down, Keys.S, Keys.Left, Keys.A, Keys.Right, Keys.D);
+            keyboardController.EnableKeyEvent(InputState.Down, Keys.Up, Keys.Down, Keys.Left, Keys.Right);
+            keyboardController.EnableKeyEvent(InputState.Up, Keys.Up, Keys.Down, Keys.Left, Keys.Right);
+            keyboardController.EnableKeyEvent(InputState.Hold, Keys.Up, Keys.Down, Keys.Left, Keys.Right);
             keyboardController.EnableKeyEvent(InputState.Down, Keys.Y, Keys.U, Keys.I, Keys.O, Keys.P);
             controllers.Add(keyboardController);
 

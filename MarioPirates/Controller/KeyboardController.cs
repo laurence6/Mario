@@ -8,47 +8,58 @@ namespace MarioPirates.Controller
 
     internal class KeyboardController : IController
     {
-        private Dictionary<Keys, IEvent>[] mapping;
+        private Dictionary<Keys, List<Keys>> inputMapping;
+        private Dictionary<Keys, IEvent>[] eventMapping;
+        private List<Keys> enabledKey;
 
-        private KeyboardState prevState = Keyboard.GetState();
+        private KeyboardState prevState, currState;
 
         public KeyboardController()
         {
-            mapping = new Dictionary<Keys, IEvent>[EnumValues<InputState>().Length];
-            for (var i = 0; i < mapping.Length; i++)
-                mapping[i] = new Dictionary<Keys, IEvent>();
+            inputMapping = new Dictionary<Keys, List<Keys>>();
+            eventMapping = new Dictionary<Keys, IEvent>[EnumValues<InputState>().Length];
+            for (var i = 0; i < eventMapping.Length; i++)
+                eventMapping[i] = new Dictionary<Keys, IEvent>();
+            enabledKey = new List<Keys>();
+            prevState = Keyboard.GetState();
+        }
+
+        public void SetKeyMapping(Keys k1, Keys k2)
+        {
+            if (!inputMapping.ContainsKey(k2))
+                inputMapping.Add(k2, new List<Keys> { k2 });
+            inputMapping[k2].AddIfNotExist(k1);
         }
 
         public void EnableKeyEvent(InputState state, params Keys[] keys)
         {
             foreach (var k in keys)
-                mapping[(int)state].Add(k, InputEventFactory.CreateKeyEvent(state, k));
+            {
+                eventMapping[(int)state].Add(k, InputEventFactory.CreateKeyEvent(state, k));
+                enabledKey.Add(k);
+            }
         }
 
         public void Update()
         {
-            IEvent e = null;
-            var currState = Keyboard.GetState();
-            foreach (var k in EnumValues<Keys>())
-                if (currState.IsKeyDown(k))
-                {
-                    if (prevState.IsKeyDown(k))
-                    {
-                        if (mapping[(int)InputState.Hold].TryGetValue(k, out e))
-                            EventManager.Instance.EnqueueEvent(e);
-                    }
-                    else
-                    {
-                        if (mapping[(int)InputState.Down].TryGetValue(k, out e))
-                            EventManager.Instance.EnqueueEvent(e);
-                    }
-                }
-                else if (currState.IsKeyUp(k) && prevState.IsKeyDown(k))
-                {
-                    if (mapping[(int)InputState.Up].TryGetValue(k, out e))
-                        EventManager.Instance.EnqueueEvent(e);
-                }
+            currState = Keyboard.GetState();
+
+            enabledKey.ForEach(k =>
+            {
+                var state = InputState.None;
+                if (inputMapping.TryGetValue(k, out var mappings))
+                    mappings.ForEach(k1 => state |= GetPrevKeyState(k1) | GetCurrKeyState(k1));
+                else
+                    state |= GetPrevKeyState(k) | GetCurrKeyState(k);
+
+                if (eventMapping[(int)state].TryGetValue(k, out var e))
+                    EventManager.Instance.EnqueueEvent(e);
+            });
+
             prevState = currState;
         }
+
+        private InputState GetPrevKeyState(Keys k) => prevState.IsKeyDown(k) ? InputState.Up : InputState.None;
+        private InputState GetCurrKeyState(Keys k) => currState.IsKeyDown(k) ? InputState.Down : InputState.None;
     }
 }

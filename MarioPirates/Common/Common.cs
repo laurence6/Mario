@@ -17,6 +17,12 @@ namespace MarioPirates
 
         public static T[] EnumValues<T>() => (T[])Enum.GetValues(typeof(T));
 
+        public static void AddIfNotExist<T>(this List<T> l, T val)
+        {
+            if (!l.Contains(val))
+                l.Add(val);
+        }
+
         public static void AddIfNotExist<T, U>(this Dictionary<T, U> d, T key, U val)
         {
             if (!d.ContainsKey(key))
