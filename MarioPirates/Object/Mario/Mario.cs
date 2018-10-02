@@ -16,22 +16,18 @@ namespace MarioPirates
 
             RigidBody.Mass = 1f;
             RigidBody.ApplyForce(WorldForce.Friction);
-            EventManager.Instance.Subscribe(e => { State.Jump(); RigidBody.ApplyForce(new Vector2(0, -7000)); },
-                EventEnum.KeyUpDown);
-            EventManager.Instance.Subscribe(e => { State.Crouch(); RigidBody.ApplyForce(new Vector2(0, 7000)); },
-                EventEnum.KeyDownDown);
-            EventManager.Instance.Subscribe(e => { State.Left(); RigidBody.ApplyForce(new Vector2(-7000, 0)); },
-                EventEnum.KeyLeftDown);
-            EventManager.Instance.Subscribe(e => { State.Right(); RigidBody.ApplyForce(new Vector2(7000, 0)); },
-                EventEnum.KeyRightDown);
-            EventManager.Instance.Subscribe(e => RigidBody.ApplyForce(new Vector2(0, -700)),
-                EventEnum.KeyUpHold);
-            EventManager.Instance.Subscribe(e => RigidBody.ApplyForce(new Vector2(0, 700)),
-                EventEnum.KeyDownHold);
-            EventManager.Instance.Subscribe(e => RigidBody.ApplyForce(new Vector2(-700, 0)),
-                EventEnum.KeyLeftHold);
-            EventManager.Instance.Subscribe(e => RigidBody.ApplyForce(new Vector2(700, 0)),
-                EventEnum.KeyRightHold);
+            EventManager.Instance.Subscribe(e => RigidBody.ApplyForce(new Vector2(0, -7000)), EventEnum.KeyUpDown);
+            EventManager.Instance.Subscribe(e => RigidBody.ApplyForce(new Vector2(0, 7000)), EventEnum.KeyDownDown);
+            EventManager.Instance.Subscribe(e => RigidBody.ApplyForce(new Vector2(-7000, 0)), EventEnum.KeyLeftDown);
+            EventManager.Instance.Subscribe(e => RigidBody.ApplyForce(new Vector2(7000, 0)), EventEnum.KeyRightDown);
+            EventManager.Instance.Subscribe(e => RigidBody.ApplyForce(new Vector2(0, -700)), EventEnum.KeyUpHold);
+            EventManager.Instance.Subscribe(e => RigidBody.ApplyForce(new Vector2(0, 700)), EventEnum.KeyDownHold);
+            EventManager.Instance.Subscribe(e => RigidBody.ApplyForce(new Vector2(-700, 0)), EventEnum.KeyLeftHold);
+            EventManager.Instance.Subscribe(e => RigidBody.ApplyForce(new Vector2(700, 0)), EventEnum.KeyRightHold);
+            EventManager.Instance.Subscribe(e => State.Jump(), EventEnum.KeyUpDown, EventEnum.KeyDownUp);
+            EventManager.Instance.Subscribe(e => State.Crouch(), EventEnum.KeyDownDown, EventEnum.KeyUpUp);
+            EventManager.Instance.Subscribe(e => State.Left(), EventEnum.KeyLeftDown, EventEnum.KeyRightUp);
+            EventManager.Instance.Subscribe(e => State.Right(), EventEnum.KeyRightDown, EventEnum.KeyLeftUp);
 
             EventManager.Instance.Subscribe(e =>
             {
