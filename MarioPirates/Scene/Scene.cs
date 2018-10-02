@@ -22,6 +22,10 @@ namespace MarioPirates
             gameObjects.Clear();
             gameObjectsStatic.Clear();
 
+            LoadJSON();
+
+
+
             var mario = new Mario(600, 200);
             AddGameObject(mario, false);
 

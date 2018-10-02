@@ -2,34 +2,106 @@
   "levelData": {
     "object": [
       {
-        "type": "background",
-        "name": "",
-        "isStatic":  "",
-        "position": ""
+        "type": "mario",
+        "name": "Mario",
+        "isStatic": "false",
+        "position": "(600,200)"
       },
       {
         "type": "block",
-        "name": "",
-        "isStatic": "",
-        "position": ""
+        "name": "HiddenBlock",
+        "isStatic": "true",
+        "position": "(100,0)"
       },
       {
-        "type": "enemy",
-        "name": "",
-        "isStatic": "",
-        "position": ""
+        "type": "block",
+        "name": "BrickBlock",
+        "isStatic": "true",
+        "position": "(100,150)"
+      },
+      {
+        "type": "block",
+        "name": "BrokenBlock",
+        "isStatic": "true",
+        "position": "(100,200)"
+      },
+      {
+        "type": "block",
+        "name": "UsedBlock",
+        "isStatic": "true",
+        "position": "(100,250)"
+      },
+      {
+        "type": "block",
+        "name": "OrangeBlock",
+        "isStatic": "true",
+        "position": "(100,100)"
+      },
+      {
+        "type": "block",
+        "name": "QuestionBlock",
+        "isStatic": "true",
+        "position": "(100,50)"
       },
       {
         "type": "item",
-        "name": "",
-        "isStatic": "",
-        "position": ""
+        "name": "Pipe",
+        "isStatic": "true",
+        "position": "(200,200)"
       },
       {
-        "type": "mario",
-        "name": "",
-        "isStatic": "",
-        "position": ""
+        "type": "item",
+        "name": "Flower",
+        "isStatic": "true",
+        "position": "(400,100)"
+      },
+      {
+        "type": "item",
+        "name": "Coin",
+        "isStatic": "true",
+        "position": "(600,100)"
+      },
+      {
+        "type": "item",
+        "name": "Star",
+        "isStatic": "true",
+        "position": "(500,100)"
+      },
+      {
+        "type": "item",
+        "name": "RedMushroom",
+        "isStatic": "true",
+        "position": "(200,100)"
+      },
+      {
+        "type": "item",
+        "name": "GreenMushroom",
+        "isStatic": "true",
+        "position": "(300,100)"
+      },
+      {
+        "type": "enemy",
+        "name": "Koopa",
+        "isStatic": "false",
+        "position": "(700,100)"
+      },
+      {
+        "type": "enemy",
+        "name": "Goomba",
+        "isStatic": "false",
+        "position": "(0,400)"
+      },
+      {
+        "type": "background",
+        "name": "Bushes",
+        "isStatic": "true",
+        "position": "(100,400)"
+      },
+      {
+        "type": "background",
+        "name": "Hills",
+        "isStatic": "true",
+        "position": "(300,400)"
       }
     ]
   }
