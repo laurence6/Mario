@@ -10,6 +10,8 @@ namespace MarioPirates
     {
         public static Scene Instance { get; } = new Scene();
 
+        List<LevelDataObject> levelDataObjects = new List<LevelDataObject>();
+
         private List<GameObject> gameObjects = new List<GameObject>();
         private List<GameObject> gameObjectsStatic = new List<GameObject>();
 
@@ -79,7 +81,7 @@ namespace MarioPirates
             using (var read = new StreamReader("levelData.json"))
             {
                 var json = read.ReadToEnd();
-                List<LevelDataObject> levelDataObjects = JsonConvert.DeserializeObject<List<LevelDataObject>>(json);
+                levelDataObjects = JsonConvert.DeserializeObject<List<LevelDataObject>>(json);
             }
         }
 

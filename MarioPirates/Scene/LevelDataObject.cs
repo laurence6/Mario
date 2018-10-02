@@ -6,7 +6,8 @@ namespace MarioPirates
 {
     class LevelDataObject
     {
-        public string type, name;
-        public Vector2 location;
+        //public string type, name;
+        //public bool isStatic;
+        //public Vector2 location;
     }
 }

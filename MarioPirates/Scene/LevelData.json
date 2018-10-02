@@ -4,26 +4,31 @@
       {
         "type": "background",
         "name": "",
+        "isStatic":  "",
         "position": ""
       },
       {
         "type": "block",
         "name": "",
+        "isStatic": "",
         "position": ""
       },
       {
         "type": "enemy",
         "name": "",
+        "isStatic": "",
         "position": ""
       },
       {
         "type": "item",
         "name": "",
+        "isStatic": "",
         "position": ""
       },
       {
         "type": "mario",
         "name": "",
+        "isStatic": "",
         "position": ""
       }
     ]
