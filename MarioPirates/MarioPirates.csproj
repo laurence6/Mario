@@ -62,6 +62,7 @@
     <Compile Include="Event\Input\KeyHoldEvent.cs" />
     <Compile Include="Event\Input\KeyUpEvent.cs" />
     <Compile Include="Physics\BaseRigidBody.cs" />
+    <Compile Include="Physics\CollisionSide.cs" />
     <Compile Include="Physics\DefaultRigidBody.cs" />
     <Compile Include="Physics\WorldForce.cs" />
     <Compile Include="Physics\IRigidBody.cs" />
@@ -69,7 +70,7 @@
     <Compile Include="Object\Block\OrangeBlock.cs" />
     <Compile Include="Event\Physics\CollideEvent.cs" />
     <Compile Include="Object\Block\QuestionBlock.cs" />
-	<Compile Include="Object\Background\Background.cs" />
+    <Compile Include="Object\Background\Background.cs" />
     <Compile Include="Object\Block\UsedBlock.cs" />
     <Compile Include="Object\Block\BrokenBlock.cs" />
     <Compile Include="Object\Block\BrickBlock.cs" />

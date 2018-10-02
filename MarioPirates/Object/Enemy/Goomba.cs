@@ -13,5 +13,24 @@ namespace MarioPirates
             Sprite = SpriteFactory.Instance.CreateSprite("goomba");
             RigidBody.Mass = 0.1f;
         }
+        public override void OnCollide(GameObject other, CollisionSide side)
+        {
+            if(other is Mario)
+            {
+                if (side == CollisionSide.Top)
+                {
+                    //stomped
+                }
+                else
+                {
+                    //freeze all other moving enemies
+                }
+            }
+            else if(other is Pipe)
+            {
+                //reverse direction
+            }
+        }
     }
+    
 }

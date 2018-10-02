@@ -37,7 +37,7 @@ namespace MarioPirates
         }
 
         // Override to handle game logic
-        public virtual void OnCollide(GameObject other)
+        public virtual void OnCollide(GameObject other, CollisionSide side)
         {
         }
     }
