@@ -1,0 +1,31 @@
+{
+  "levelData": {
+    "object": [
+      {
+        "type": "background",
+        "name": "",
+        "position": ""
+      },
+      {
+        "type": "block",
+        "name": "",
+        "position": ""
+      },
+      {
+        "type": "enemy",
+        "name": "",
+        "position": ""
+      },
+      {
+        "type": "item",
+        "name": "",
+        "position": ""
+      },
+      {
+        "type": "mario",
+        "name": "",
+        "position": ""
+      }
+    ]
+  }
+}

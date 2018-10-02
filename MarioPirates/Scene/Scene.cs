@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace MarioPirates
 {
@@ -70,6 +72,15 @@ namespace MarioPirates
 
             var hills = new Hills(300, 400);
             AddGameObject(hills);
+        }
+
+        public void LoadJSON()
+        {
+            using (var read = new StreamReader("levelData.json"))
+            {
+                var json = read.ReadToEnd();
+                List<LevelDataObject> levelDataObjects = JsonConvert.DeserializeObject<List<LevelDataObject>>(json);
+            }
         }
 
         public void AddGameObject(GameObject o, bool isStatic = true) =>
