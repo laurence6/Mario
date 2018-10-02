@@ -13,7 +13,7 @@ namespace MarioPirates
             size = new Point(coinWidth * 2, coinHeight * 2);
             Sprite = SpriteFactory.Instance.CreateSprite("coins");
         }
-        public override void OnCollide(GameObject obj)
+        public override void OnCollide(GameObject obj, CollisionSide side)
         {
             if (obj is Mario)
             {
