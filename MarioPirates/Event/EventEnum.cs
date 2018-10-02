@@ -28,5 +28,6 @@
 
         // 
         Collide,
+        GameObjectDestroy,
     }
 }
