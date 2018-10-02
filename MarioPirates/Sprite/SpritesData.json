@@ -4,12 +4,13 @@
         "Size": [ 7, 14 ],
         "Frames": [ 0, 0, 30, 0, 60, 0, 90, 0 ]
     },
+
     "flower": {
         "TextureName": "flower",
         "Size": [ 16, 16 ],
         "Frames": [ 0, 0, 30, 0, 60, 0, 90, 0 ]
-
     },
+
     "greenmushroom": {
         "TextureName": "greenmushroom",
         "Size": [ 16, 16 ],
@@ -32,7 +33,6 @@
         "TextureName": "stars",
         "Size": [ 14, 16 ],
         "Frames": [ 0, 0, 30, 0, 60, 0, 90, 0 ]
-
     },
 
     "brickblock": {
@@ -75,7 +75,7 @@
     "goomba": {
         "TextureName": "goomba",
         "Size": [ 16, 16 ],
-        "Frames": [ 0, 0, 30, 0, 60, 0]
+        "Frames": [ 0, 0, 30, 0, 60, 0 ]
 
     },
 
@@ -88,12 +88,7 @@
 
     "background": {
         "TextureName": "background",
-        "Size": [ 1600, 480 ],
-        "Frames": [0, 0]
+        "Size": [ 800, 480 ],
+        "Frames": [ 0, 0 ]
     }
-
-
-
-
-
 }
