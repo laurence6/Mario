@@ -20,7 +20,7 @@ namespace MarioPirates
             this.textureName = textureName;
             this.size = size;
             this.frames = frames;
-            this.accelerateRate = 1;
+            accelerateRate = 1;
         }
 
         public Sprite(string textureName, float accelerateRate, Point size, params Point[] frames)

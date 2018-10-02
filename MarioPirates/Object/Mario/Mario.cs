@@ -16,13 +16,13 @@ namespace MarioPirates
 
             RigidBody.Mass = 1f;
             RigidBody.ApplyForce(WorldForce.Friction);
-            EventManager.Instance.Subscribe(e => { State.Jump(); RigidBody.ApplyForce(new Vector2(00, -7000)); }, 
+            EventManager.Instance.Subscribe(e => { State.Jump(); RigidBody.ApplyForce(new Vector2(00, -7000)); },
                 EventEnum.KeyUpDown, EventEnum.KeyWDown, EventEnum.KeyDownUp, EventEnum.KeySUp);
-            EventManager.Instance.Subscribe(e => { State.Crouch(); RigidBody.ApplyForce(new Vector2(00, 7000)); }, 
+            EventManager.Instance.Subscribe(e => { State.Crouch(); RigidBody.ApplyForce(new Vector2(00, 7000)); },
                 EventEnum.KeyDownDown, EventEnum.KeySDown, EventEnum.KeyUpUp, EventEnum.KeyWUp);
-            EventManager.Instance.Subscribe(e => { State.Left(); RigidBody.ApplyForce(new Vector2(-7000, 00)); }, 
+            EventManager.Instance.Subscribe(e => { State.Left(); RigidBody.ApplyForce(new Vector2(-7000, 00)); },
                 EventEnum.KeyLeftDown, EventEnum.KeyADown, EventEnum.KeyRightUp, EventEnum.KeyDUp);
-            EventManager.Instance.Subscribe(e => { State.Right(); RigidBody.ApplyForce(new Vector2(7000, 00)); }, 
+            EventManager.Instance.Subscribe(e => { State.Right(); RigidBody.ApplyForce(new Vector2(7000, 00)); },
                 EventEnum.KeyRightDown, EventEnum.KeyDDown, EventEnum.KeyLeftUp, EventEnum.KeyAUp);
             EventManager.Instance.Subscribe(e => RigidBody.ApplyForce(new Vector2(00, -700)), EventEnum.KeyUpHold, EventEnum.KeyWHold);
             EventManager.Instance.Subscribe(e => RigidBody.ApplyForce(new Vector2(00, 700)), EventEnum.KeyDownHold, EventEnum.KeySHold);

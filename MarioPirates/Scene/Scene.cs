@@ -63,9 +63,9 @@ namespace MarioPirates
             var goomba = new Goomba(0, 400);
             AddGameObject(goomba, false);
 
-            var bushes = new Bushes(100,400);
+            var bushes = new Bushes(100, 400);
             AddGameObject(bushes);
-            
+
             var hills = new Hills(300, 400);
             AddGameObject(hills);
         }

@@ -48,10 +48,10 @@ namespace MarioPirates
                     return new Sprite("questionblock", P(16, 16), P(0, 0));
 
                 case "bushes":
-                    return new Sprite("bushes", P(100,17), P(0, 0));
+                    return new Sprite("bushes", P(100, 17), P(0, 0));
 
                 case "hills":
-                    return new Sprite("hills", P(135,40), P(0, 0));
+                    return new Sprite("hills", P(135, 40), P(0, 0));
 
                 case "goomba":
                     return new Sprite("goomba", P(30, 16), GenerateFrameLocationArray(P(0, 0), P(30, 0), 2));
@@ -143,15 +143,15 @@ namespace MarioPirates
 
                 case "fire_crouch_right":
                     return new Sprite("rightcrouchfiremario", bigMarioCrouchSize, P(0, 0));
-                    
+
                 case "star_small_idle_right":
                     return new Sprite("smallstarpowermario", 3, starSmallMarioSize, P(96, 0), P(96, 48), P(96, 96));
 
                 case "star_small_run_right":
-                    return new Sprite("smallstarpowermario", 3, starSmallMarioSize, 
-                        P(0, 0), P(0, 48), P(0, 96), P(16, 0), P(16, 48), P(16, 96), 
+                    return new Sprite("smallstarpowermario", 3, starSmallMarioSize,
+                        P(0, 0), P(0, 48), P(0, 96), P(16, 0), P(16, 48), P(16, 96),
                         P(32, 0), P(32, 48), P(32, 96), P(16, 0), P(16, 48), P(16, 96));
-                    
+
                 case "star_small_jump_right":
                     return new Sprite("smallstarpowermario", 3, starSmallMarioSize, P(64, 0), P(64, 48), P(64, 96));
 
@@ -162,10 +162,10 @@ namespace MarioPirates
                     return new Sprite("bigstarpowermario", 3, bigMarioSize, P(96, 0), P(96, 48), P(96, 96));
 
                 case "star_big_run_right":
-                    return new Sprite("bigstarpowermario", 3, bigMarioSize, 
-                        P(0, 0), P(0, 48), P(0, 96), P(16, 0), P(16, 48), P(16, 96), 
+                    return new Sprite("bigstarpowermario", 3, bigMarioSize,
+                        P(0, 0), P(0, 48), P(0, 96), P(16, 0), P(16, 48), P(16, 96),
                         P(32, 0), P(32, 48), P(32, 96), P(16, 0), P(16, 48), P(16, 96));
-                    
+
                 case "star_big_jump_right":
                     return new Sprite("bigstarpowermario", 3, bigMarioSize, P(64, 0), P(64, 48), P(64, 96));
 
