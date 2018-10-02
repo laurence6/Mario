@@ -34,8 +34,6 @@ namespace MarioPirates
             { "smallmario", null },
             { "smallstarpowermario", null },
             { "stars", null },
-            { "bushes", null },
-            { "hills", null },
             { "frame", null },
         };
 

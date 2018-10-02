@@ -73,11 +73,7 @@ namespace MarioPirates
             AddGameObject(goomba, false);
             goomba.RigidBody.Velocity = new Vector2(100f, 0f);
 
-            var bushes = new Bushes(100, 400);
-            AddGameObject(bushes);
-
-            var hills = new Hills(300, 400);
-            AddGameObject(hills);
+            
         }
 
         public void LoadJSON()

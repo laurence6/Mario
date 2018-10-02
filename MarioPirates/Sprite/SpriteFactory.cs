@@ -47,12 +47,6 @@ namespace MarioPirates
                 case "questionblock":
                     return new Sprite("questionblock", P(16, 16), P(0, 0));
 
-                case "bushes":
-                    return new Sprite("bushes", P(100, 17), P(0, 0));
-
-                case "hills":
-                    return new Sprite("hills", P(135, 40), P(0, 0));
-
                 case "goomba":
                     return new Sprite("goomba", P(30, 16), GenerateFrameLocationArray(P(0, 0), P(30, 0), 2));
 
