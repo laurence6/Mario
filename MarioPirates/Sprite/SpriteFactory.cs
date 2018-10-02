@@ -67,7 +67,6 @@ namespace MarioPirates
         {
             var smallMarioSize = P(17, 15);
             var bigMarioSize = P(16, 32);
-            var bigMarioCrouchSize = P(16, 22);
             var starSmallMarioSize = P(16, 16);
             var deadMarioSize = P(15, 14);
             switch (spriteName)
@@ -97,7 +96,7 @@ namespace MarioPirates
                     return new Sprite("smallmario", smallMarioSize, P(330, 0));
 
                 case "big_crouch_left":
-                    return new Sprite("leftcrouchbigmario", bigMarioCrouchSize, P(0, 0));
+                    return new Sprite("bigmario", bigMarioSize, P(360, 0));
 
                 case "big_jump_left":
                     return new Sprite("bigmario", bigMarioSize, P(0, 0));
@@ -118,10 +117,10 @@ namespace MarioPirates
                     return new Sprite("bigmario", bigMarioSize, P(330, 0));
 
                 case "big_crouch_right":
-                    return new Sprite("rightcrouchbigmario", bigMarioCrouchSize, P(0, 0));
+                    return new Sprite("bigmario", bigMarioSize, P(390, 0));
 
                 case "fire_crouch_left":
-                    return new Sprite("leftcrouchfiremario", bigMarioCrouchSize, P(0, 0));
+                    return new Sprite("firemario", bigMarioSize, P(360, 0));
 
                 case "fire_jump_left":
                     return new Sprite("firemario", bigMarioSize, P(0, 0));
@@ -142,7 +141,7 @@ namespace MarioPirates
                     return new Sprite("firemario", bigMarioSize, P(330, 0));
 
                 case "fire_crouch_right":
-                    return new Sprite("rightcrouchfiremario", bigMarioCrouchSize, P(0, 0));
+                    return new Sprite("firemario", bigMarioSize, P(390, 0));
 
                 case "star_small_idle_right":
                     return new Sprite("smallstarpowermario", 3, starSmallMarioSize, P(96, 0), P(96, 48), P(96, 96));
