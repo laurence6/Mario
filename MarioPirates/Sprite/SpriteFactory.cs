@@ -39,6 +39,6 @@ namespace MarioPirates
             spriteParam = new JavaScriptSerializer().Deserialize<Dictionary<string, SpriteParam>>(ReadAllText("Sprite\\SpritesData.json"));
         }
 
-        public Sprite CreateSprite(string spriteName) => spriteParam.TryGetValue(spriteName, out var param) ? param.ToSprite() : null;
+        public Sprite CreateSprite(string spriteName) => spriteParam[spriteName].ToSprite();
     }
 }

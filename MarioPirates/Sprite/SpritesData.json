@@ -83,10 +83,22 @@
         "Frames": [ 60, 0 ]
     },
 
-    "koopa": {
+    "koopa_left": {
         "TextureName": "koopa",
         "Size": [ 16, 23 ],
-        "Frames": [ 0, 0, 30, 0, 60, 0, 90, 0, 120, 0, 150, 0, 180, 0, 210, 0, 240, 0 ]
+        "Frames": [ 30, 0, 60, 0 ]
+    },
+
+    "koopa_right": {
+        "TextureName": "koopa",
+        "Size": [ 16, 23 ],
+        "Frames": [ 90, 0, 120, 0 ]
+    },
+
+    "koopa_stomped": {
+        "TextureName": "koopa",
+        "Size": [ 16, 23 ],
+        "Frames": [ 240, 0 ]
     },
 
     "background": {
