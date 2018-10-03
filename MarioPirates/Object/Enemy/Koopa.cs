@@ -13,5 +13,16 @@ namespace MarioPirates
             Sprite = SpriteFactory.Instance.CreateSprite("koopa");
             RigidBody.Mass = 0.1f;
         }
+        public override void OnCollide(GameObject other, CollisionSide side)
+        {
+            if(other is Mario)
+            {
+
+            }
+            else if(other is Pipe)
+            {
+
+            }
+        }
     }
 }
