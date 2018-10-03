@@ -14,7 +14,7 @@ namespace MarioPirates
         }
         public override void OnCollide(GameObject other, CollisionSide side)
         {
-            if(other is Mario)
+            if (other is Mario)
             {
 
             }

@@ -39,7 +39,6 @@
         "TextureName": "brickblock",
         "Size": [ 16, 16 ],
         "Frames": [ 0, 0 ]
-
     },
 
     "brokenblock": {
@@ -76,14 +75,12 @@
         "TextureName": "goomba",
         "Size": [ 16, 16 ],
         "Frames": [ 0, 0, 30, 0, 60, 0 ]
-
     },
 
     "koopa": {
         "TextureName": "koopa",
         "Size": [ 16, 23 ],
         "Frames": [ 0, 0, 30, 0, 60, 0, 90, 0, 120, 0, 150, 0, 180, 0, 210, 0, 240, 0 ]
-
     },
 
     "background": {
@@ -151,88 +148,98 @@
         "Size": [ 16, 32 ],
         "Frames": [ 0, 0 ]
     },
+
     "big_run_left": {
         "TextureName": "bigmario",
         "Size": [ 16, 32 ],
         "Frames": [ 120, 0, 90, 0, 60, 0, 90, 0 ]
-
     },
+
     "big_idle_left": {
         "TextureName": "bigmario",
         "Size": [ 16, 32 ],
         "Frames": [ 150, 0 ]
-
     },
+
     "big_idle_right": {
         "TextureName": "bigmario",
         "Size": [ 16, 32 ],
         "Frames": [ 180, 0 ]
-
     },
+
     "big_run_right": {
         "TextureName": "bigmario",
         "Size": [ 16, 32 ],
         "Frames": [ 210, 0, 240, 0, 270, 0, 240, 0 ]
-
     },
+
     "big_jump_right": {
         "TextureName": "bigmario",
         "Size": [ 16, 32 ],
         "Frames": [ 330, 0 ]
-
     },
+
     "big_crouch_right": {
         "TextureName": "bigmario",
         "Size": [ 16, 32 ],
         "Frames": [ 390, 0 ]
-
     },
+
     "fire_crouch_left": {
         "TextureName": "firemario",
         "Size": [ 16, 32 ],
         "Frames": [ 360, 0 ]
     },
+
     "fire_jump_left": {
         "TextureName": "firemario",
         "Size": [ 16, 32 ],
         "Frames": [ 0, 0 ]
     },
+
     "fire_run_left": {
         "TextureName": "firemario",
         "Size": [ 16, 32 ],
         "Frames": [ 120, 0, 90, 0, 60, 0, 90, 0 ]
     },
+
     "fire_idle_left": {
         "TextureName": "firemario",
         "Size": [ 16, 32 ],
         "Frames": [ 150, 0 ]
     },
+
     "fire_idle_right": {
         "TextureName": "firemario",
         "Size": [ 16, 32 ],
         "Frames": [ 180, 0 ]
     },
+
     "fire_run_right": {
         "TextureName": "firemario",
         "Size": [ 16, 32 ],
         "Frames": [ 210, 0, 240, 0, 270, 0, 240, 0 ]
     },
+
     "fire_jump_right": {
         "TextureName": "firemario",
         "Size": [ 16, 32 ],
         "Frames": [ 330, 0 ]
     },
+
     "fire_crouch_right": {
         "TextureName": "firemario",
         "Size": [ 16, 32 ],
         "Frames": [ 390, 0 ]
     },
+
     "star_small_idle_right": {
         "TextureName": "smallstarpowermario",
         "accelerateRate": 3,
         "Size": [ 16, 16 ],
         "Frames": [ 96, 0, 96, 48, 96, 96 ]
     },
+
     "star_small_run_right": {
         "TextureName": "smallstarpowermario",
         "accelerateRate": 3,
@@ -264,24 +271,28 @@
             96
         ]
     },
+
     "star_small_jump_right": {
         "TextureName": "smallstarpowermario",
         "accelerateRate": 3,
         "Size": [ 16, 16 ],
         "Frames": [ 64, 0, 64, 48, 64, 96 ]
     },
+
     "star_small_crouch_right": {
         "TextureName": "smallstarpowermario",
         "accelerateRate": 3,
         "Size": [ 16, 16 ],
         "Frames": [ 64, 0, 64, 48, 64, 96 ]
     },
+
     "star_big_idle_right": {
         "TextureName": "bigstarpowermario",
         "accelerateRate": 3,
         "Size": [ 16, 32 ],
         "Frames": [ 96, 0, 96, 48, 96, 96 ]
     },
+
     "star_big_run_right": {
         "TextureName": "bigstarpowermario",
         "accelerateRate": 3,
@@ -313,6 +324,7 @@
             96
         ]
     },
+
     "star_big_jump_right": {
         "TextureName": "bigstarpowermario",
         "accelerateRate": 3,
@@ -326,18 +338,17 @@
         "Size": [ 16, 32 ],
         "Frames": [ 80, 0, 80, 48, 80, 96 ]
     },
+
     "dead": {
         "TextureName": "deadmario",
         "Size": [ 15, 14 ],
         "Frames": [ 0, 0 ]
     },
+
     "star_dead": {
         "TextureName": "smallstarpowermario",
         "accelerateRate": 3,
         "Size": [ 16, 16 ],
         "Frames": [ 80, 0, 80, 48, 80, 96 ]
-
     }
-
-
 }
