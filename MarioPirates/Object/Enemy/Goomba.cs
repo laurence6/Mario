@@ -1,10 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MarioPirates.Object.Enemy;
+using Microsoft.Xna.Framework;
 
 namespace MarioPirates
 {
     internal class Goomba : GameObject
     {
         private const int goombaWidth = 16, goombaHeight = 16;
+        private Status health;
         public Goomba(int x, int y)
         {
             location.X = x;
