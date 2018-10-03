@@ -1,108 +1,82 @@
-{
-  "levelData": {
-    "object": [
+[
       {
-        "type": "mario",
-        "name": "Mario",
-        "isStatic": "false",
-        "position": "(600,200)"
+        "TypeName": "Background",
+        "IsStatic": true,
+        "Location": [ 0, 0 ]
       },
       {
-        "type": "block",
-        "name": "HiddenBlock",
-        "isStatic": "true",
-        "position": "(100,0)"
+        "TypeName": "Mario",
+        "IsStatic": false,
+        "Location": [ 600, 200 ]
       },
       {
-        "type": "block",
-        "name": "BrickBlock",
-        "isStatic": "true",
-        "position": "(100,150)"
+        "TypeName": "UsedBlock",
+        "IsStatic": true,
+        "Location": [ 100, 0 ]
       },
       {
-        "type": "block",
-        "name": "BrokenBlock",
-        "isStatic": "true",
-        "position": "(100,200)"
+        "TypeName": "BrickBlock",
+        "IsStatic": true,
+        "Location": [ 100, 150 ]
       },
       {
-        "type": "block",
-        "name": "UsedBlock",
-        "isStatic": "true",
-        "position": "(100,250)"
+        "TypeName": "BrokenBlock",
+        "IsStatic": true,
+        "Location": [ 100, 200 ]
       },
       {
-        "type": "block",
-        "name": "OrangeBlock",
-        "isStatic": "true",
-        "position": "(100,100)"
+        "TypeName": "UsedBlock",
+        "IsStatic": true,
+        "Location": [ 100, 250 ]
       },
       {
-        "type": "block",
-        "name": "QuestionBlock",
-        "isStatic": "true",
-        "position": "(100,50)"
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 100, 100 ]
       },
       {
-        "type": "item",
-        "name": "Pipe",
-        "isStatic": "true",
-        "position": "(200,200)"
+        "TypeName": "QuestionBlock",
+        "IsStatic": true,
+        "Location": [ 100, 50 ]
       },
       {
-        "type": "item",
-        "name": "Flower",
-        "isStatic": "true",
-        "position": "(400,100)"
+        "TypeName": "Pipe",
+        "IsStatic": true,
+        "Location": [ 200, 200 ]
       },
       {
-        "type": "item",
-        "name": "Coin",
-        "isStatic": "true",
-        "position": "(600,100)"
+        "TypeName": "Flower",
+        "IsStatic": true,
+        "Location": [ 400, 100 ]
       },
       {
-        "type": "item",
-        "name": "Star",
-        "isStatic": "true",
-        "position": "(500,100)"
+        "TypeName": "Coin",
+        "IsStatic": true,
+        "Location": [ 600, 100 ]
       },
       {
-        "type": "item",
-        "name": "RedMushroom",
-        "isStatic": "true",
-        "position": "(200,100)"
+        "TypeName": "Star",
+        "IsStatic": true,
+        "Location": [ 500, 100 ]
       },
       {
-        "type": "item",
-        "name": "GreenMushroom",
-        "isStatic": "true",
-        "position": "(300,100)"
+        "TypeName": "RedMushroom",
+        "IsStatic": "true",
+        "Location": [ 200, 100 ]
       },
       {
-        "type": "enemy",
-        "name": "Koopa",
-        "isStatic": "false",
-        "position": "(700,100)"
+        "TypeName": "GreenMushroom",
+        "IsStatic": true,
+        "Location": [ 300, 100 ]
       },
       {
-        "type": "enemy",
-        "name": "Goomba",
-        "isStatic": "false",
-        "position": "(0,400)"
+        "TypeName": "Koopa",
+        "IsStatic": false,
+        "Location": [ 700, 100 ]
       },
       {
-        "type": "background",
-        "name": "Bushes",
-        "isStatic": "true",
-        "position": "(100,400)"
-      },
-      {
-        "type": "background",
-        "name": "Hills",
-        "isStatic": "true",
-        "position": "(300,400)"
+        "TypeName": "Goomba",
+        "IsStatic": false,
+        "Location": [ 0, 400 ]
       }
-    ]
-  }
-}
+]

@@ -1,6 +1,7 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using System.Web.Script.Serialization;
+using static System.IO.File;
 
 namespace MarioPirates
 {
@@ -9,8 +10,6 @@ namespace MarioPirates
     internal sealed class Scene
     {
         public static Scene Instance { get; } = new Scene();
-
-        private List<LevelDataObject> levelDataObjects = new List<LevelDataObject>();
 
         private List<GameObject> gameObjects = new List<GameObject>();
         private List<GameObject> gameObjectsStatic = new List<GameObject>();
@@ -26,55 +25,8 @@ namespace MarioPirates
 
             EventManager.Instance.Subscribe(e => gameObjectToDestory.AddIfNotExist(((GameObjectDestroyEvent)e).Object), EventEnum.GameObjectDestroy);
 
-            var bg = new Background();
-            AddGameObject(bg, true);
-
-            var mario = new Mario(600, 200);
-            AddGameObject(mario);
-
-            var hiddenBlock = new UsedBlock(100, 0);
-            hiddenBlock.SetHidden(true);
-            AddGameObject(hiddenBlock);
-
-            var brickBlock = new BrickBlock(100, 150);
-            AddGameObject(brickBlock);
-
-            var brokenBlock = new BrokenBlock(100, 200);
-            AddGameObject(brokenBlock);
-
-            var usedBlock = new UsedBlock(100, 250);
-            AddGameObject(usedBlock);
-
-            var orangeBlock = new OrangeBlock(100, 100);
-            AddGameObject(orangeBlock);
-
-            var questionBlock = new QuestionBlock(100, 50);
-            AddGameObject(questionBlock);
-
-            var pipe = new Pipe(200, 200);
-            AddGameObject(pipe);
-
-            var flower = new Flower(400, 100);
-            AddGameObject(flower);
-
-            var coin = new Coin(600, 100);
-            AddGameObject(coin);
-
-            var star = new Star(500, 100);
-            AddGameObject(star);
-
-            var redMush = new RedMushroom(200, 100);
-            AddGameObject(redMush);
-
-            var greenMush = new GreenMushroom(300, 100);
-            AddGameObject(greenMush);
-
-            var koopa = new Koopa(700, 100);
-            AddGameObject(koopa);
-
-            var goomba = new Goomba(0, 400);
-            AddGameObject(goomba);
-            goomba.RigidBody.Velocity = new Vector2(100f, 0f);
+            new JavaScriptSerializer().Deserialize<List<GameObjectParam>>(ReadAllText("Scene\\LevelData.json"))
+                .ForEach(o => AddGameObject(o.ToGameObject()));
         }
 
         public void AddGameObject(GameObject o, bool isStatic = false) =>

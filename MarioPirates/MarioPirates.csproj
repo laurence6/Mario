@@ -154,7 +154,7 @@
     <Compile Include="Controller\IController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scene\LevelDataObject.cs" />
+    <Compile Include="Scene\GameObjectParam.cs" />
     <Compile Include="Scene\Scene.cs" />
     <Compile Include="Sprite\Sprite.cs" />
     <Compile Include="Object\Item\Star.cs" />
