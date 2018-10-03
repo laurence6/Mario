@@ -35,7 +35,7 @@ namespace MarioPirates
             { "smallstarpowermario", null },
             { "stars", null },
             { "frame", null },
-            
+            { "background", null }
         };
 
         private List<IController> controllers = new List<IController>();

@@ -85,6 +85,7 @@ namespace MarioPirates
 
                 case "koopa":
                     return new Sprite("koopa", P(16, 23), GenerateFrameLocationArray(P(0, 0), P(30, 0), 9));
+                
 
                 
             }
