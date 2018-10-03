@@ -14,7 +14,7 @@ namespace MarioPirates
 
         private class SpriteParam
         {
-            public string TextureName = "";
+            public string TextureName = null;
             public int[] Size = null;
             public int[] Frames = null;
 
@@ -36,16 +36,12 @@ namespace MarioPirates
 
         public void Reset()
         {
-            var s = new JavaScriptSerializer();
-            spriteParam = s.Deserialize<Dictionary<string, SpriteParam>>(ReadAllText("Sprite\\SpritesData.json"));
+            spriteParam = new JavaScriptSerializer().Deserialize<Dictionary<string, SpriteParam>>(ReadAllText("Sprite\\SpritesData.json"));
         }
 
         public Sprite CreateSprite(string spriteName)
         {
-            if (spriteParam.TryGetValue(spriteName, out var param))
-                return param.ToSprite();
-            Console.Error.WriteLine("Couldn't find sprite " + spriteName);
-            return null;
+            return spriteParam.TryGetValue(spriteName, out var param) ? param.ToSprite() : null;
         }
 
         public Sprite CreateSpriteMario(string spriteName)
@@ -164,14 +160,6 @@ namespace MarioPirates
             }
             Console.Error.WriteLine("Couldn't find sprite " + spriteName);
             return null;
-        }
-
-        private static Point[] GenerateFrameLocationArray(Point begin, Point delta, int count)
-        {
-            var arr = new Point[count];
-            for (var i = 0; i < count; i++)
-                arr[i] = begin + delta.Mul(i);
-            return arr;
         }
     }
 }
