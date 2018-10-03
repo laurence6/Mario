@@ -2,6 +2,7 @@
 
 namespace MarioPirates
 {
+    using Event;
     internal class Flower : GameObjectRigidBody
     {
         private const int flowerWidth = 16, flowerHeight = 16;
@@ -16,7 +17,7 @@ namespace MarioPirates
         {
             if (other is Mario)
             {
-
+                EventManager.Instance.EnqueueEvent(new GameObjectDestroyEvent(this));
             }
         }
     }
