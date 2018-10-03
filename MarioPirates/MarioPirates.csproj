@@ -54,8 +54,12 @@
     <Compile Include="Event\EventManager.cs" />
     <Compile Include="Event\IEvent.cs" />
     <Compile Include="Controller\InputState.cs" />
-    <Compile Include="Event\Input\ButtonEvent.cs" />
-    <Compile Include="Event\Input\KeyEvent.cs" />
+    <Compile Include="Event\Input\ButtonDownEvent.cs" />
+    <Compile Include="Event\Input\ButtonHoldEvent.cs" />
+    <Compile Include="Event\Input\ButtonUpEvent.cs" />
+    <Compile Include="Event\Input\KeyDownEvent.cs" />
+    <Compile Include="Event\Input\KeyHoldEvent.cs" />
+    <Compile Include="Event\Input\KeyUpEvent.cs" />
     <Compile Include="Physics\BaseRigidBody.cs" />
     <Compile Include="Physics\DefaultRigidBody.cs" />
     <Compile Include="Physics\WorldForce.cs" />

@@ -10,6 +10,7 @@ namespace MarioPirates
             location.Y = y;
             size = new Point(60, 40);
             Sprite = SpriteFactory.CreateSprite("goomba");
+            RigidBody.Mass = 0.1f;
         }
     }
 }
