@@ -5,7 +5,7 @@ namespace MarioPirates
 {
     using Event;
 
-    internal class Mario : GameObject
+    internal class Mario : GameObjectRigidBody
     {
         public MarioState State { get; set; }
 

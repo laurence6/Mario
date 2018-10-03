@@ -9,7 +9,7 @@ namespace MarioPirates
         Normal, Hidden,
     }
 
-    internal class Block : GameObject
+    internal class Block : GameObjectRigidBody
     {
         private const int blockWidth = 16, blockHeight = 16;
 

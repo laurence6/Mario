@@ -4,7 +4,7 @@ namespace MarioPirates
 {
     using Event;
 
-    internal class Coin : GameObject
+    internal class Coin : GameObjectRigidBody
     {
         private const int coinWidth = 7, coinHeight = 14;
 
