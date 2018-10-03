@@ -17,6 +17,12 @@ namespace MarioPirates
             RigidBody.Mass = 1f;
             RigidBody.ApplyForce(WorldForce.Friction);
 
+            SubscribeInputMoving();
+            SubscribeInputTransition();
+        }
+
+        private void SubscribeInputMoving()
+        {
             EventManager.Instance.Subscribe(e =>
             {
                 if (!(State is MarioStateDead || State is MarioStateStarDead))
@@ -43,7 +49,10 @@ namespace MarioPirates
             EventManager.Instance.Subscribe(e => State.Crouch(), EventEnum.KeyDownDown, EventEnum.KeyUpUp);
             EventManager.Instance.Subscribe(e => State.Left(), EventEnum.KeyLeftDown, EventEnum.KeyRightUp);
             EventManager.Instance.Subscribe(e => State.Right(), EventEnum.KeyRightDown, EventEnum.KeyLeftUp);
+        }
 
+        private void SubscribeInputTransition()
+        {
             EventManager.Instance.Subscribe(e =>
             {
                 switch ((e as KeyDownEvent).Key)

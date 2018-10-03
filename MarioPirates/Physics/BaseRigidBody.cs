@@ -7,10 +7,10 @@ namespace MarioPirates
     internal abstract class BaseRigidBody
     {
         public virtual Rectangle Bound { get; }
-        public byte CollideMask { get; set; } = 0b1;
+        public byte CollideMask { get; } = 0b1;
 
         public float Mass { get; set; } = 1e9f;
-        public float CoR { get; set; } = 0.5f;
+        public float CoR { get; } = 0.5f;
 
         public Vector2 Force { get; protected set; }
         public Vector2 Accel => Force / Mass;
