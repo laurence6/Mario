@@ -12,7 +12,6 @@ namespace MarioPirates
             location.Y = y;
             size = new Point(goombaWidth * 2, goombaHeight * 2);
             Sprite = SpriteFactory.Instance.CreateSprite("goomba");
-            RigidBody.Mass = 0.1f;
         }
 
         public override void OnCollide(GameObject other, CollisionSide side)
@@ -21,10 +20,7 @@ namespace MarioPirates
             {
                 if (side == CollisionSide.Top)
                 {
-                    //stomped
-                }
-                else
-                {
+                    Sprite = SpriteFactory.Instance.CreateSprite("goomba_stomped");
                 }
             }
         }
