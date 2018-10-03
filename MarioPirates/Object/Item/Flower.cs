@@ -12,5 +12,12 @@ namespace MarioPirates
             size = new Point(flowerWidth * 2, flowerHeight * 2);
             Sprite = SpriteFactory.Instance.CreateSprite("flower");
         }
+        public override void OnCollide(GameObject other, CollisionSide side)
+        {
+            if(other is Mario)
+            {
+
+            }
+        }
     }
 }
