@@ -4,7 +4,7 @@
     {
         public QuestionBlock(int dstX, int dstY) : base(dstX, dstY)
         {
-            Sprite = SpriteFactory.CreateSprite("questionblock");
+            Sprite = SpriteFactory.Instance.CreateSprite("questionblock");
         }
     }
 }

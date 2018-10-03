@@ -4,7 +4,7 @@ namespace MarioPirates
     {
         public MarioStateFireRightJumpRun(Mario mario) : base(mario)
         {
-            mario.Sprite = SpriteFactory.CreateSpriteMario("fire_jump_right");
+            mario.Sprite = SpriteFactory.Instance.CreateSpriteMario("fire_jump_right");
         }
 
         public override void Left()

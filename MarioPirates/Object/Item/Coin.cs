@@ -11,11 +11,11 @@ namespace MarioPirates
             location.X = dstX;
             location.Y = dstY;
             size = new Point(coinWidth * 2, coinHeight * 2);
-            Sprite = SpriteFactory.CreateSprite("coins");
+            Sprite = SpriteFactory.Instance.CreateSprite("coins");
         }
         public override void OnCollide(GameObject obj)
         {
-            if(obj is Mario)
+            if (obj is Mario)
             {
                 EventManager.Instance.EnqueueEvent(new GameObjectDestroyEvent(this));
             }

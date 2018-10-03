@@ -4,7 +4,7 @@
     {
         public BrokenBlock(int dstX, int dstY) : base(dstX, dstY)
         {
-            Sprite = SpriteFactory.CreateSprite("brokenblock");
+            Sprite = SpriteFactory.Instance.CreateSprite("brokenblock");
         }
     }
 }

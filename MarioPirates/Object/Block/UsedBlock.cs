@@ -4,7 +4,7 @@
     {
         public UsedBlock(int dstX, int dstY) : base(dstX, dstY)
         {
-            Sprite = SpriteFactory.CreateSprite("brownblock");
+            Sprite = SpriteFactory.Instance.CreateSprite("brownblock");
         }
     }
 }

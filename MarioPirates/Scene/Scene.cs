@@ -1,8 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
-using System.IO;
-using Newtonsoft.Json;
 
 namespace MarioPirates
 {
@@ -10,7 +8,7 @@ namespace MarioPirates
     {
         public static Scene Instance { get; } = new Scene();
 
-        List<LevelDataObject> levelDataObjects = new List<LevelDataObject>();
+        private List<LevelDataObject> levelDataObjects = new List<LevelDataObject>();
 
         private List<GameObject> gameObjects = new List<GameObject>();
         private List<GameObject> gameObjectsStatic = new List<GameObject>();
@@ -73,16 +71,11 @@ namespace MarioPirates
             AddGameObject(goomba, false);
             goomba.RigidBody.Velocity = new Vector2(100f, 0f);
 
-            
+
         }
 
         public void LoadJSON()
         {
-            using (var read = new StreamReader("levelData.json"))
-            {
-                var json = read.ReadToEnd();
-                levelDataObjects = JsonConvert.DeserializeObject<List<LevelDataObject>>(json);
-            }
         }
 
         public void AddGameObject(GameObject o, bool isStatic = true) =>

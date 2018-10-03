@@ -4,7 +4,7 @@
     {
         public OrangeBlock(int dstX, int dstY) : base(dstX, dstY)
         {
-            Sprite = SpriteFactory.CreateSprite("orangeblock");
+            Sprite = SpriteFactory.Instance.CreateSprite("orangeblock");
         }
     }
 }

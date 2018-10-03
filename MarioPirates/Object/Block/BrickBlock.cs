@@ -4,7 +4,7 @@
     {
         public BrickBlock(int dstX, int dstY) : base(dstX, dstY)
         {
-            Sprite = SpriteFactory.CreateSprite("brickblock");
+            Sprite = SpriteFactory.Instance.CreateSprite("brickblock");
         }
     }
 }

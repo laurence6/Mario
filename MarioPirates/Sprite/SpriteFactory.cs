@@ -1,13 +1,46 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
+using System.Collections.Generic;
+using System.Web.Script.Serialization;
+using static System.IO.File;
 
 namespace MarioPirates
 {
     using static Common;
 
-    internal static class SpriteFactory
+    internal sealed class SpriteFactory
     {
-        public static Sprite CreateSprite(string spriteName)
+        public static SpriteFactory Instance { get; } = new SpriteFactory();
+
+        private class SpriteParam
+        {
+            public string TextureName = "";
+            public int[] Size = null;
+            public int[] Frames = null;
+
+            private Sprite ToSprite()
+            {
+                var frames = new Point[Frames.Length / 2];
+                for (var i = 0; i < Frames.Length; i++)
+                    frames[i] = P(Frames[i * 2], Frames[i * 2 + 1]);
+                return new Sprite(TextureName, P(Size[0], Size[1]), frames);
+            }
+        };
+
+        private Dictionary<string, SpriteParam> spriteParam;
+
+        private SpriteFactory()
+        {
+            Reset();
+        }
+
+        public void Reset()
+        {
+            var s = new JavaScriptSerializer();
+            spriteParam = s.Deserialize<Dictionary<string, SpriteParam>>(ReadAllText("Sprite\\SpritesData.json"));
+        }
+
+        public Sprite CreateSprite(string spriteName)
         {
             switch (spriteName)
             {
@@ -57,7 +90,7 @@ namespace MarioPirates
             return null;
         }
 
-        public static Sprite CreateSpriteMario(string spriteName)
+        public Sprite CreateSpriteMario(string spriteName)
         {
             var smallMarioSize = P(17, 15);
             var bigMarioSize = P(16, 32);

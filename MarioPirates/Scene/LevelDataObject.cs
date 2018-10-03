@@ -1,10 +1,6 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
-
-namespace MarioPirates
+﻿namespace MarioPirates
 {
-    class LevelDataObject
+    internal class LevelDataObject
     {
         //public string type, name;
         //public bool isStatic;
