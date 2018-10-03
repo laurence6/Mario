@@ -20,45 +20,23 @@ namespace MarioPirates
             EventManager.Instance.Subscribe(e =>
             {
                 if (!(State is MarioStateDead || State is MarioStateStarDead))
-                    RigidBody.ApplyForce(new Vector2(0, -7000));
-            }, EventEnum.KeyUpDown);
-            EventManager.Instance.Subscribe(e =>
-            {
-                if (!(State is MarioStateDead || State is MarioStateStarDead))
-                    RigidBody.ApplyForce(new Vector2(0, 7000));
-            }, EventEnum.KeyDownDown);
-            EventManager.Instance.Subscribe(e =>
-            {
-                if (!(State is MarioStateDead || State is MarioStateStarDead ||
-                    State is MarioStateStarSmall || State is MarioStateStarBig))
-                    RigidBody.ApplyForce(new Vector2(-7000, 0));
-            }, EventEnum.KeyLeftDown);
-            EventManager.Instance.Subscribe(e =>
-            {
-                if (!(State is MarioStateDead || State is MarioStateStarDead))
-                    RigidBody.ApplyForce(new Vector2(7000, 0));
-            }, EventEnum.KeyRightDown);
-
-            EventManager.Instance.Subscribe(e =>
-            {
-                if (!(State is MarioStateDead || State is MarioStateStarDead))
-                    RigidBody.ApplyForce(new Vector2(0, -700));
+                    RigidBody.ApplyForce(new Vector2(0, -1000));
             }, EventEnum.KeyUpHold);
             EventManager.Instance.Subscribe(e =>
             {
                 if (!(State is MarioStateDead || State is MarioStateStarDead))
-                    RigidBody.ApplyForce(new Vector2(0, 700));
+                    RigidBody.ApplyForce(new Vector2(0, 1000));
             }, EventEnum.KeyDownHold);
             EventManager.Instance.Subscribe(e =>
             {
                 if (!(State is MarioStateDead || State is MarioStateStarDead ||
                     State is MarioStateStarSmall || State is MarioStateStarBig))
-                    RigidBody.ApplyForce(new Vector2(-700, 0));
+                    RigidBody.ApplyForce(new Vector2(-1000, 0));
             }, EventEnum.KeyLeftHold);
             EventManager.Instance.Subscribe(e =>
             {
                 if (!(State is MarioStateDead || State is MarioStateStarDead))
-                    RigidBody.ApplyForce(new Vector2(700, 0));
+                    RigidBody.ApplyForce(new Vector2(1000, 0));
             }, EventEnum.KeyRightHold);
 
             EventManager.Instance.Subscribe(e => State.Jump(), EventEnum.KeyUpDown, EventEnum.KeyDownUp);
