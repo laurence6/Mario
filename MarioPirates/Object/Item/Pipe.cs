@@ -2,7 +2,7 @@
 
 namespace MarioPirates
 {
-    internal class Pipe : GameObject
+    internal class Pipe : GameObjectRigidBody
     {
         private const int pipeWidth = 32, pipeHeight = 32;
         public Pipe(int dstX, int dstY)

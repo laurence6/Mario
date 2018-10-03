@@ -17,23 +17,20 @@ namespace MarioPirates
 
         protected GameObject()
         {
-            RigidBody = new DefaultRigidBody(this);
         }
 
-        public void Step(float dt)
+        public virtual void Step(float dt)
         {
-            RigidBody?.Step(dt);
         }
 
         public virtual void Update(float dt)
         {
-            RigidBody?.Update();
-            Sprite?.Update(dt);
+            Sprite.Update(dt);
         }
 
         public virtual void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
         {
-            Sprite?.Draw(spriteBatch, textures, new Rectangle((int)location.X, (int)location.Y, size.X, size.Y));
+            Sprite.Draw(spriteBatch, textures, new Rectangle((int)location.X, (int)location.Y, size.X, size.Y));
         }
 
         // Override to handle game logic

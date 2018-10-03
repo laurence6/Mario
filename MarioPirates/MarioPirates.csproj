@@ -61,7 +61,7 @@
     <Compile Include="Event\Input\KeyDownEvent.cs" />
     <Compile Include="Event\Input\KeyHoldEvent.cs" />
     <Compile Include="Event\Input\KeyUpEvent.cs" />
-    <Compile Include="Object\Enemy\Status.cs" />
+    <Compile Include="Object\GameObjectRigidBody.cs" />
     <Compile Include="Physics\BaseRigidBody.cs" />
     <Compile Include="Physics\CollisionSide.cs" />
     <Compile Include="Physics\DefaultRigidBody.cs" />

@@ -1,12 +1,11 @@
-﻿using MarioPirates.Object.Enemy;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 
 namespace MarioPirates
 {
-    internal class Goomba : GameObject
+    internal class Goomba : GameObjectRigidBody
     {
         private const int goombaWidth = 16, goombaHeight = 16;
-        private Status health;
+
         public Goomba(int x, int y)
         {
             location.X = x;
@@ -15,9 +14,10 @@ namespace MarioPirates
             Sprite = SpriteFactory.Instance.CreateSprite("goomba");
             RigidBody.Mass = 0.1f;
         }
+
         public override void OnCollide(GameObject other, CollisionSide side)
         {
-            if(other is Mario)
+            if (other is Mario)
             {
                 if (side == CollisionSide.Top)
                 {
@@ -28,11 +28,10 @@ namespace MarioPirates
                     //freeze all other moving enemies
                 }
             }
-            else if(other is Pipe)
+            else if (other is Pipe)
             {
                 //reverse direction
             }
         }
     }
-    
 }
