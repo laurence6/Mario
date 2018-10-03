@@ -26,7 +26,7 @@ namespace MarioPirates
             EventManager.Instance.Subscribe(e => gameObjectToDestory.AddIfNotExist(((GameObjectDestroyEvent)e).Object), EventEnum.GameObjectDestroy);
 
             new JavaScriptSerializer().Deserialize<List<GameObjectParam>>(ReadAllText("Scene\\LevelData.json"))
-                .ForEach(o => AddGameObject(o.ToGameObject()));
+                .ForEach(o => AddGameObject(o.ToGameObject(), o.IsStatic));
         }
 
         public void AddGameObject(GameObject o, bool isStatic = false) =>
