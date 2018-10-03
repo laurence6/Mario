@@ -21,6 +21,7 @@ namespace MarioPirates
                 if (side == CollisionSide.Top)
                 {
                     Sprite = SpriteFactory.Instance.CreateSprite("goomba_stomped");
+                    RigidBody.Velocity = new Vector2(0f, 0f);
                 }
             }
         }
