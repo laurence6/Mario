@@ -1,3 +1,93 @@
 ﻿{
-	"coins": { "TextureName": "coins", "Size": [30, 14], "Frames": [0,0, 30,0, 60,0, 90,0] }
+    "coins": {
+        "TextureName": "coins",
+        "Size": [ 7, 14 ],
+        "Frames": [ 0, 0, 30, 0, 60, 0, 90, 0 ]
+    },
+    "flower": {
+        "TextureName": "flower",
+        "Size": [ 16, 16 ],
+        "Frames": [ 0, 0, 30, 0, 60, 0, 90, 0 ]
+
+    },
+    "greenmushroom": {
+        "TextureName": "greenmushroom",
+        "Size": [ 16, 16 ],
+        "Frames": [ 0, 0 ]
+    },
+
+    "pipe": {
+        "TextureName": "pipeline",
+        "Size": [ 32, 32 ],
+        "Frames": [0,0]
+    },
+
+    "redmushroom": {
+        "TextureName": "redmushroom",
+        "Size": [ 16, 16 ],
+        "Frames": [ 0, 0 ]
+    },
+
+    "stars": {
+        "TextureName": "stars",
+        "Size": [ 14, 16 ],
+        "Frames": [ 0, 0, 30, 0, 60, 0, 90, 0 ]
+
+    },
+
+    "brickblock": {
+        "TextureName": "brickblock",
+        "Size": [ 16, 16 ],
+        "Frames": [ 0, 0 ]
+
+    },
+
+    "brokenblock": {
+        "TextureName": "brokenblock",
+        "Size": [ 16, 16 ],
+        "Frames": [ 0, 0 ]
+    },
+
+    "brownblock": {
+        "TextureName": "brownblock",
+        "Size": [ 16, 16 ],
+        "Frames": [ 0, 0 ]
+    },
+
+    "hiddenblock": {
+        "TextureName": "hiddenblock",
+        "Size": [ 16, 16 ],
+        "Frames": [ 0, 0 ]
+    },
+
+    "orangeblock": {
+        "TextureName": "orangeblock",
+        "Size": [ 16, 16 ],
+        "Frames": [ 0, 0 ]
+    },
+
+    "questionblock": {
+        "TextureName": "questionblock",
+        "Size": [ 16, 16 ],
+        "Frames": [ 0, 0 ]
+    },
+
+    "goomba": {
+        "TextureName": "goomba",
+        "Size": [ 16, 16 ],
+        "Frames": [ 0, 0, 30, 0, 60, 0]
+
+    },
+
+    "koopa": {
+        "TextureName": "koopa",
+        "Size": [ 16, 23 ],
+        "Frames": [ 0, 0, 30, 0, 60, 0, 90, 0, 120, 0, 150, 0, 180, 0, 210, 0, 240, 0]
+
+    }
+
+
+
+
+
 }
