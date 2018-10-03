@@ -4,11 +4,11 @@
     {
         public EventEnum EventType => EventEnum.GameObjectDestroy;
 
-        public GameObject object1 { get; private set; }
+        public GameObject Object { get; private set; }
 
-        public GameObjectDestroyEvent(GameObject o1)
+        public GameObjectDestroyEvent(GameObject o)
         {
-            object1 = o1;
+            Object = o;
         }
 
     }

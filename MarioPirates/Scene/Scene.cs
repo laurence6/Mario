@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 namespace MarioPirates
 {
+    using Event;
+
     internal sealed class Scene
     {
         public static Scene Instance { get; } = new Scene();
@@ -12,6 +14,7 @@ namespace MarioPirates
 
         private List<GameObject> gameObjects = new List<GameObject>();
         private List<GameObject> gameObjectsStatic = new List<GameObject>();
+        private List<GameObject> gameObjectToDestory = new List<GameObject>();
 
         private Scene() { }
 
@@ -19,6 +22,9 @@ namespace MarioPirates
         {
             gameObjects.Clear();
             gameObjectsStatic.Clear();
+            gameObjectToDestory.Clear();
+
+            EventManager.Instance.Subscribe(e => gameObjectToDestory.AddIfNotExist(((GameObjectDestroyEvent)e).Object), EventEnum.GameObjectDestroy);
 
             var bg = new Background();
             AddGameObject(bg);
@@ -77,6 +83,8 @@ namespace MarioPirates
         public void Update(float dt)
         {
             Physics.Simulate(dt, in gameObjects, in gameObjectsStatic);
+            gameObjectToDestory.ForEach(o => { gameObjectsStatic.Remove(o); gameObjects.Remove(o); });
+            gameObjectToDestory.Clear();
         }
 
         public void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)

@@ -95,14 +95,14 @@ namespace MarioPirates
 
             collisions.ForEach(ce =>
             {
-                ce.Object1.OnCollide(ce.Object2);
-                ce.Object2.OnCollide(ce.Object1);
+                ce.Object1.OnCollide(ce.Object2, GetCollisionSide(ce.Depth));
+                ce.Object2.OnCollide(ce.Object1, GetCollisionSide(-ce.Depth));
                 EventManager.Instance.EnqueueEvent(ce);
             });
             collisions.Clear();
         }
 
-        public static void ResolveCollide(BaseRigidBody o1, BaseRigidBody o2, Vector2 depth, out Vector2 v1, out Vector2 v2)
+        private static void ResolveCollide(BaseRigidBody o1, BaseRigidBody o2, Vector2 depth, out Vector2 v1, out Vector2 v2)
         {
             var e = 0.5f;
             var normal = depth;
@@ -113,5 +113,10 @@ namespace MarioPirates
             v1 = dp / o1.Mass;
             v2 = -dp / o2.Mass;
         }
+
+        private static CollisionSide GetCollisionSide(Vector2 depth) =>
+            depth.X != 0
+            ? depth.X > 0 ? CollisionSide.Right : CollisionSide.Left
+            : depth.Y > 0 ? CollisionSide.Bottom : CollisionSide.Top;
     }
 }
