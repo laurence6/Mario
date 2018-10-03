@@ -70,10 +70,6 @@ namespace MarioPirates
             var goomba = new Goomba(0, 400);
             AddGameObject(goomba, false);
             goomba.RigidBody.Velocity = new Vector2(100f, 0f);
-
-            var background = new Background(0, 0);
-            AddGameObject(background);
-
         }
 
         public void LoadJSON()

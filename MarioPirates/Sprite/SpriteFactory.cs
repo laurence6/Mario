@@ -18,10 +18,10 @@ namespace MarioPirates
             public int[] Size = null;
             public int[] Frames = null;
 
-            private Sprite ToSprite()
+            public Sprite ToSprite()
             {
                 var frames = new Point[Frames.Length / 2];
-                for (var i = 0; i < Frames.Length; i++)
+                for (var i = 0; i < frames.Length; i++)
                     frames[i] = P(Frames[i * 2], Frames[i * 2 + 1]);
                 return new Sprite(TextureName, P(Size[0], Size[1]), frames);
             }
@@ -42,53 +42,8 @@ namespace MarioPirates
 
         public Sprite CreateSprite(string spriteName)
         {
-            switch (spriteName)
-            {
-                case "coins":
-                    return new Sprite("coins", P(7, 14), GenerateFrameLocationArray(P(0, 0), P(30, 0), 4));
-
-                case "flower":
-                    return new Sprite("flower", P(16, 16), GenerateFrameLocationArray(P(0, 0), P(30, 0), 4));
-
-                case "greenmushroom":
-                    return new Sprite("greenmushroom", P(16, 16), P(0, 0));
-
-                case "pipe":
-                    return new Sprite("pipeline", P(32, 32), P(0, 0));
-
-                case "redmushroom":
-                    return new Sprite("redmushroom", P(16, 16), P(0, 0));
-
-                case "stars":
-                    return new Sprite("stars", P(14, 16), GenerateFrameLocationArray(P(0, 0), P(30, 0), 4));
-
-                case "brickblock":
-                    return new Sprite("brickblock", P(16, 16), P(0, 0));
-
-                case "brokenblock":
-                    return new Sprite("brokenblock", P(16, 16), P(0, 0));
-
-                case "brownblock":
-                    return new Sprite("brownblock", P(16, 16), P(0, 0));
-
-                case "hiddenblock":
-                    return new Sprite("hiddenblock", P(16, 16), P(0, 0));
-
-                case "orangeblock":
-                    return new Sprite("orangeblock", P(16, 16), P(0, 0));
-
-                case "questionblock":
-                    return new Sprite("questionblock", P(16, 16), P(0, 0));
-
-                case "goomba":
-                    return new Sprite("goomba", P(16, 16), GenerateFrameLocationArray(P(0, 0), P(30, 0), 2));
-
-                case "koopa":
-                    return new Sprite("koopa", P(16, 23), GenerateFrameLocationArray(P(0, 0), P(30, 0), 9));
-                
-
-                
-            }
+            if (spriteParam.TryGetValue(spriteName, out var param))
+                return param.ToSprite();
             Console.Error.WriteLine("Couldn't find sprite " + spriteName);
             return null;
         }

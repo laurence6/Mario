@@ -4,13 +4,13 @@ namespace MarioPirates
 {
     internal class Background : GameObject
     {
-        private const int bkgdWidth = 1600, bkgdHeight = 480;
-        public Background(int dstX, int dstY)
+        private const int bkgdWidth = 800, bkgdHeight = 480;
+
+        public Background()
         {
-            location.X = dstX;
-            location.Y = dstY;
+            location = Vector2.Zero;
             size = new Point(bkgdWidth, bkgdHeight);
-            Sprite = SpriteFactory.CreateSprite("background");
+            Sprite = SpriteFactory.Instance.CreateSprite("background");
         }
     }
 }
