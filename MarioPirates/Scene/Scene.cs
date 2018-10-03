@@ -20,9 +20,8 @@ namespace MarioPirates
             gameObjects.Clear();
             gameObjectsStatic.Clear();
 
-            LoadJSON();
-
-
+            var bg = new Background();
+            AddGameObject(bg);
 
             var mario = new Mario(600, 200);
             AddGameObject(mario, false);
@@ -72,10 +71,6 @@ namespace MarioPirates
             goomba.RigidBody.Velocity = new Vector2(100f, 0f);
         }
 
-        public void LoadJSON()
-        {
-        }
-
         public void AddGameObject(GameObject o, bool isStatic = true) =>
             (isStatic ? gameObjectsStatic : gameObjects).Add(o);
 
@@ -87,8 +82,8 @@ namespace MarioPirates
         public void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
         {
             spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-            gameObjects.ForEach(o => o.Draw(spriteBatch, textures));
             gameObjectsStatic.ForEach(o => o.Draw(spriteBatch, textures));
+            gameObjects.ForEach(o => o.Draw(spriteBatch, textures));
             spriteBatch.End();
         }
     }

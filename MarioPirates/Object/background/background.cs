@@ -11,6 +11,7 @@ namespace MarioPirates
             location = Vector2.Zero;
             size = new Point(bkgdWidth, bkgdHeight);
             Sprite = SpriteFactory.Instance.CreateSprite("background");
+            RigidBody = null;
         }
     }
 }
