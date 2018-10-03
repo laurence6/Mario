@@ -31,15 +31,12 @@ namespace MarioPirates
                 {
                     status = Status.Stomped;
                     Sprite = SpriteFactory.Instance.CreateSprite("goombastomped");
-                    }
-                else
-                {
-                    
+                    RigidBody.Velocity *= 0;
                 }
             }
             else if (other is Pipe)
             {
-                RigidBody.Velocity = new Vector2(0, 0);
+                RigidBody.Velocity *= -1;
             }
         }
     }

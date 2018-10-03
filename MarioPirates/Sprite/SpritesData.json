@@ -74,7 +74,7 @@
   "goomba": {
     "TextureName": "goomba",
     "Size": [ 16, 16 ],
-    "Frames": [ 0, 0, 30, 0, 60, 0 ]
+    "Frames": [ 0, 0, 30, 0 ]
   },
   "goombastomped": {
     "TextureName": "goomba",
