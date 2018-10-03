@@ -43,6 +43,8 @@ namespace MarioPirates
             {
                 if (!(State is MarioStateDead || State is MarioStateStarDead))
                     RigidBody.ApplyForce(new Vector2(1000, 0));
+                if (State is MarioStateStarBig || State is MarioStateStarSmall)
+                    RigidBody.ApplyForce(new Vector2(2000, 0)); // star power speed up
             }, EventEnum.KeyRightHold);
 
             EventManager.Instance.Subscribe(e => State.Jump(), EventEnum.KeyUpDown, EventEnum.KeyDownUp);
