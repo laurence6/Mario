@@ -11,6 +11,7 @@ namespace MarioPirates
             location.Y = dstY;
             size = new Point(starWidth * 2, starHeight * 2);
             Sprite = SpriteFactory.Instance.CreateSprite("stars");
+            RigidBody.Mass = 0.05f;
         }
     }
 }

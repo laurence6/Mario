@@ -27,10 +27,10 @@ namespace MarioPirates
             EventManager.Instance.Subscribe(e => gameObjectToDestory.AddIfNotExist(((GameObjectDestroyEvent)e).Object), EventEnum.GameObjectDestroy);
 
             var bg = new Background();
-            AddGameObject(bg);
+            AddGameObject(bg, true);
 
             var mario = new Mario(600, 200);
-            AddGameObject(mario, false);
+            AddGameObject(mario);
 
             var hiddenBlock = new UsedBlock(100, 0);
             hiddenBlock.SetHidden(true);
@@ -70,14 +70,14 @@ namespace MarioPirates
             AddGameObject(greenMush);
 
             var koopa = new Koopa(700, 100);
-            AddGameObject(koopa, false);
+            AddGameObject(koopa);
 
             var goomba = new Goomba(0, 400);
-            AddGameObject(goomba, false);
+            AddGameObject(goomba);
             goomba.RigidBody.Velocity = new Vector2(100f, 0f);
         }
 
-        public void AddGameObject(GameObject o, bool isStatic = true) =>
+        public void AddGameObject(GameObject o, bool isStatic = false) =>
             (isStatic ? gameObjectsStatic : gameObjects).Add(o);
 
         public void Update(float dt)

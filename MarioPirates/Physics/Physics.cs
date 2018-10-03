@@ -104,14 +104,13 @@ namespace MarioPirates
 
         private static void ResolveCollide(BaseRigidBody o1, BaseRigidBody o2, Vector2 depth, out Vector2 v1, out Vector2 v2)
         {
-            var e = 0.5f;
             var normal = depth;
             normal.Normalize();
-            var dp = (e + 1f) * (o2.Velocity * normal - o1.Velocity * normal)
+            var dp = (o2.Velocity * normal - o1.Velocity * normal)
                 / (1f / o1.Mass + 1f / o2.Mass)
                 * normal;
-            v1 = dp / o1.Mass;
-            v2 = -dp / o2.Mass;
+            v1 = (o1.CoR + 1f) / o1.Mass * dp;
+            v2 = (o2.CoR + 1f) / o2.Mass * -dp;
         }
 
         private static CollisionSide GetCollisionSide(Vector2 depth) =>

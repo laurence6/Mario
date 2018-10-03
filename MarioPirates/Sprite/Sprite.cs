@@ -45,11 +45,12 @@ namespace MarioPirates
                     drawDst,
                     new Rectangle(frames[(int)(elpased / frameUpdateInterval * accelerateRate) % frames.Length], size),
                     Color.White);
-                //spriteBatch.Draw(
-                //    textures["frame"],
-                //    drawDst,
-                //    new Rectangle(0, 0, 16, 16),
-                //    Color.White);
+                if (textureName != "background")
+                    spriteBatch.Draw(
+                        textures["frame"],
+                        drawDst,
+                        new Rectangle(0, 0, 16, 16),
+                        Color.White);
             }
         }
     }

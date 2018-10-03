@@ -10,6 +10,7 @@ namespace MarioPirates
         public byte CollideMask { get; set; } = 0b1;
 
         public float Mass { get; set; } = 1e9f;
+        public float CoR { get; set; } = 0.5f;
 
         public Vector2 Force { get; protected set; }
         public Vector2 Accel => Force / Mass;
