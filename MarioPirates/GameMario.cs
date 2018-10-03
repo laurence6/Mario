@@ -98,6 +98,12 @@ namespace MarioPirates
             controllers.Add(keyboardController);
 
             var gamePadController = new GamePadController();
+            gamePadController.EnableButtonEvent(InputState.None,
+                Buttons.LeftThumbstickUp,
+                Buttons.LeftThumbstickDown,
+                Buttons.LeftThumbstickLeft,
+                Buttons.LeftThumbstickRight
+            );
             controllers.Add(gamePadController);
         }
 

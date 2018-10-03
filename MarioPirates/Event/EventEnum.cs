@@ -21,11 +21,6 @@
         KeyUp,
         KeyHold,
 
-        // Generic gamepad input
-        ButtonDown,
-        ButtonUp,
-        ButtonHold,
-
         // 
         Collide,
         GameObjectDestroy,

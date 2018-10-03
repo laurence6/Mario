@@ -19,21 +19,22 @@ namespace MarioPirates.Controller
             eventMapping = new Dictionary<Buttons, IEvent>[EnumValues<InputState>().Length];
             for (var i = 0; i < eventMapping.Length; i++)
                 eventMapping[i] = new Dictionary<Buttons, IEvent>();
+            enabledButton = new List<Buttons>();
             prevState = GamePad.GetState(PlayerIndex.One);
         }
 
-        public void EnableButtonEvent(InputState state, Buttons[] buttons)
+        public void EnableButtonEvent(InputState state, params Buttons[] buttons)
         {
             foreach (var b in buttons)
             {
-                eventMapping[(int)state].Add(b, InputEventFactory.CreateButtonEvent(state, b));
+                eventMapping[(int)state].Add(b, InputEventFactory.CreateButtonEvent(b));
                 enabledButton.AddIfNotExist(b);
             }
         }
 
         public void Update()
         {
-            var currState = GamePad.GetState(PlayerIndex.One);
+            currState = GamePad.GetState(PlayerIndex.One);
             if (currState.IsConnected)
             {
                 enabledButton.ForEach(b =>

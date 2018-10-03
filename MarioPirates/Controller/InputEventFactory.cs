@@ -13,21 +13,28 @@ namespace MarioPirates.Controller
             {
                 return new BaseEvent(e);
             }
+            //
             switch (state)
             {
                 case InputState.Down:
                     return new KeyDownEvent(key);
-                case InputState.Up:
-                    return new KeyUpEvent(key);
-                case InputState.Hold:
-                    return new KeyHoldEvent(key);
             }
             return null;
         }
 
-        public static IEvent CreateButtonEvent(InputState state, Buttons button)
+        public static IEvent CreateButtonEvent(Buttons button)
         {
-            // TODO
+            switch (button)
+            {
+                case Buttons.LeftThumbstickUp:
+                    return new BaseEvent(EventEnum.KeyUpHold);
+                case Buttons.LeftThumbstickDown:
+                    return new BaseEvent(EventEnum.KeyDownHold);
+                case Buttons.LeftThumbstickLeft:
+                    return new BaseEvent(EventEnum.KeyLeftHold);
+                case Buttons.LeftThumbstickRight:
+                    return new BaseEvent(EventEnum.KeyRightHold);
+            }
             return null;
         }
     }

@@ -34,12 +34,6 @@ namespace MarioPirates.Event
                 subscribers[(int)e] += f;
         }
 
-        public void Unsubscribe(OnEvent f, params EventEnum[] eventTypes)
-        {
-            foreach (var e in eventTypes)
-                subscribers[(int)e] -= f;
-        }
-
         public void TriggerEvent(IEvent e)
         {
             subscribers[(int)e.EventType]?.Invoke(e);

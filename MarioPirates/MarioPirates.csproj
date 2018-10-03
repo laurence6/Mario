@@ -55,12 +55,7 @@
     <Compile Include="Event\Scene\GameObjectDestroyEvent.cs" />
     <Compile Include="Event\IEvent.cs" />
     <Compile Include="Controller\InputState.cs" />
-    <Compile Include="Event\Input\ButtonDownEvent.cs" />
-    <Compile Include="Event\Input\ButtonHoldEvent.cs" />
-    <Compile Include="Event\Input\ButtonUpEvent.cs" />
     <Compile Include="Event\Input\KeyDownEvent.cs" />
-    <Compile Include="Event\Input\KeyHoldEvent.cs" />
-    <Compile Include="Event\Input\KeyUpEvent.cs" />
     <Compile Include="Object\GameObjectRigidBody.cs" />
     <Compile Include="Physics\BaseRigidBody.cs" />
     <Compile Include="Physics\CollisionSide.cs" />
