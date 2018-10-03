@@ -15,15 +15,7 @@ namespace MarioPirates
 
         private float elpased = 0;
 
-        public Sprite(string textureName, Point size, params Point[] frames)
-        {
-            this.textureName = textureName;
-            this.size = size;
-            this.frames = frames;
-            accelerateRate = 1;
-        }
-
-        public Sprite(string textureName, float accelerateRate, Point size, params Point[] frames)
+        public Sprite(string textureName, Point size, Point[] frames, float accelerateRate)
         {
             this.textureName = textureName;
             this.size = size;

@@ -4,7 +4,7 @@ namespace MarioPirates
     {
         public MarioStateSmallRightCrouchRun(Mario mario) : base(mario)
         {
-            mario.Sprite = SpriteFactory.Instance.CreateSpriteMario("small_crouch_right");
+            mario.Sprite = SpriteFactory.Instance.CreateSprite("small_crouch_right");
         }
 
         public override void Left()

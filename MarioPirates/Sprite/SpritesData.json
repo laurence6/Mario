@@ -241,14 +241,14 @@
 
     "star_small_idle_right": {
         "TextureName": "smallstarpowermario",
-        "accelerateRate": 3,
+        "AccelerateRate": 3,
         "Size": [ 16, 16 ],
         "Frames": [ 96, 0, 96, 48, 96, 96 ]
     },
 
     "star_small_run_right": {
         "TextureName": "smallstarpowermario",
-        "accelerateRate": 3,
+        "AccelerateRate": 3,
         "Size": [ 16, 16 ],
         "Frames": [
             0,
@@ -280,28 +280,28 @@
 
     "star_small_jump_right": {
         "TextureName": "smallstarpowermario",
-        "accelerateRate": 3,
+        "AccelerateRate": 3,
         "Size": [ 16, 16 ],
         "Frames": [ 64, 0, 64, 48, 64, 96 ]
     },
 
     "star_small_crouch_right": {
         "TextureName": "smallstarpowermario",
-        "accelerateRate": 3,
+        "AccelerateRate": 3,
         "Size": [ 16, 16 ],
         "Frames": [ 64, 0, 64, 48, 64, 96 ]
     },
 
     "star_big_idle_right": {
         "TextureName": "bigstarpowermario",
-        "accelerateRate": 3,
+        "AccelerateRate": 3,
         "Size": [ 16, 32 ],
         "Frames": [ 96, 0, 96, 48, 96, 96 ]
     },
 
     "star_big_run_right": {
         "TextureName": "bigstarpowermario",
-        "accelerateRate": 3,
+        "AccelerateRate": 3,
         "Size": [ 16, 32 ],
         "Frames": [
             0,
@@ -333,14 +333,14 @@
 
     "star_big_jump_right": {
         "TextureName": "bigstarpowermario",
-        "accelerateRate": 3,
+        "AccelerateRate": 3,
         "Size": [ 16, 32 ],
         "Frames": [ 64, 0, 64, 48, 64, 96 ]
     },
 
     "star_big_crouch_right": {
         "TextureName": "bigstarpowermario",
-        "accelerateRate": 3,
+        "AccelerateRate": 3,
         "Size": [ 16, 32 ],
         "Frames": [ 80, 0, 80, 48, 80, 96 ]
     },
@@ -353,7 +353,7 @@
 
     "star_dead": {
         "TextureName": "smallstarpowermario",
-        "accelerateRate": 3,
+        "AccelerateRate": 3,
         "Size": [ 16, 16 ],
         "Frames": [ 80, 0, 80, 48, 80, 96 ]
     }

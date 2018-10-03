@@ -4,7 +4,7 @@ namespace MarioPirates
     {
         public MarioStateStarBigRightRun(Mario mario) : base(mario)
         {
-            mario.Sprite = SpriteFactory.Instance.CreateSpriteMario("star_big_run_right");
+            mario.Sprite = SpriteFactory.Instance.CreateSprite("star_big_run_right");
         }
 
         public override void Left()

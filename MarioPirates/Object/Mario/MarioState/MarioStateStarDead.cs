@@ -9,7 +9,7 @@ namespace MarioPirates
         public MarioStateStarDead(Mario mario) : base(mario)
         {
             mario.Size = new Point(marioWidth, marioHeight);
-            mario.Sprite = SpriteFactory.Instance.CreateSpriteMario("star_dead");
+            mario.Sprite = SpriteFactory.Instance.CreateSprite("star_dead");
         }
 
         public override void Left()
