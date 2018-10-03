@@ -172,7 +172,9 @@
     <Content Include="Icon.ico" />
     <None Include=".editorconfig" />
     <None Include="packages.config" />
-    <None Include="Scene\LevelData.json" />
+    <None Include="Scene\LevelData.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Sprite\SpritesData.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
