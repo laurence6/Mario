@@ -66,5 +66,43 @@ namespace MarioPirates
                 }
             }, EventEnum.KeyDown);
         }
+
+        public override void OnCollide(GameObject obj, CollisionSide side)
+        {
+            // Response to collision with items.
+            if (obj is Coin)
+            {
+                // Score up
+            }
+            else if (obj is Flower)
+            {
+                State.Fire();
+            }
+            else if (obj is GreenMushroom)
+            {
+                // Life up
+            }
+            else if (obj is Pipe && side == CollisionSide.Bottom)
+            {
+                // Get in the pipe
+            }
+            else if (obj is RedMushroom)
+            {
+                State.Big();
+            }
+            else if (obj is Star)
+            {
+                State.Star();
+            }
+
+            // Response to collsion with enemies
+            if (obj is Goomba || obj is Koopa)
+            {
+                if (!(side == CollisionSide.Bottom || State is MarioStateStarBig || State is MarioStateStarSmall))
+                {
+                    State.Dead();
+                }
+            }
+        }
     }
 }
