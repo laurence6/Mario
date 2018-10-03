@@ -2,16 +2,12 @@
 
 namespace MarioPirates
 {
-    using Event;
     internal class Goomba : GameObjectRigidBody
     {
         private const int goombaWidth = 16, goombaHeight = 16;
-        private enum Status {Normal, Stomped}
-        private Status status;
 
         public Goomba(int x, int y)
         {
-            status = Status.Normal;
             location.X = x;
             location.Y = y;
             size = new Point(goombaWidth * 2, goombaHeight * 2);
@@ -23,20 +19,13 @@ namespace MarioPirates
         {
             if (other is Mario)
             {
-                if (status == Status.Stomped)
-                {
-                    EventManager.Instance.EnqueueEvent(new GameObjectDestroyEvent(this));
-                }
                 if (side == CollisionSide.Top)
                 {
-                    status = Status.Stomped;
-                    Sprite = SpriteFactory.Instance.CreateSprite("goombastomped");
-                    RigidBody.Velocity *= 0;
+                    //stomped
                 }
-            }
-            else if (other is Pipe)
-            {
-                RigidBody.Velocity *= -1;
+                else
+                {
+                }
             }
         }
     }

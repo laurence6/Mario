@@ -3,6 +3,7 @@
 namespace MarioPirates
 {
     using Event;
+
     internal class Coin : GameObjectRigidBody
     {
         private const int coinWidth = 7, coinHeight = 14;
@@ -20,7 +21,7 @@ namespace MarioPirates
         {
             if (obj is Mario)
             {
-                EventManager.Instance.EnqueueEvent(new GameObjectDestroyEvent(this));
+                EventManager.Instance.TriggerEvent(new GameObjectDestroyEvent(this));
             }
         }
     }

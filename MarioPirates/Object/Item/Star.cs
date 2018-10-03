@@ -3,9 +3,11 @@
 namespace MarioPirates
 {
     using Event;
+
     internal class Star : GameObjectRigidBody
     {
         private const int starWidth = 14, starHeight = 16;
+
         public Star(int dstX, int dstY)
         {
             location.X = dstX;
@@ -14,11 +16,12 @@ namespace MarioPirates
             Sprite = SpriteFactory.Instance.CreateSprite("stars");
             RigidBody.Mass = 0.05f;
         }
+
         public override void OnCollide(GameObject other, CollisionSide side)
         {
             if (other is Mario)
             {
-                EventManager.Instance.EnqueueEvent(new GameObjectDestroyEvent(this));
+                EventManager.Instance.TriggerEvent(new GameObjectDestroyEvent(this));
             }
         }
     }
