@@ -6,9 +6,9 @@ namespace MarioPirates
     {
         private const int bkgdWidth = 800, bkgdHeight = 480;
 
-        public Background()
+        public Background(int X, int Y)
         {
-            location = Vector2.Zero;
+            location = new Vector2(X, Y);
             size = new Point(bkgdWidth, bkgdHeight);
             Sprite = SpriteFactory.Instance.CreateSprite("background");
             RigidBody = null;

@@ -33,8 +33,9 @@ namespace MarioPirates
 
         public override void OnCollide(GameObject other, CollisionSide side)
         {
-            if (other is Mario)
-                if (side == CollisionSide.Top)
+            if (other is Mario mario)
+                if (side == CollisionSide.Top ||
+                    mario.State is MarioStateStarBig || mario.State is MarioStateStarSmall)
                     stopmed = true;
         }
     }
