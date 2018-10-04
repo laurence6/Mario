@@ -12,7 +12,7 @@ namespace MarioPirates
         protected BlockState state = BlockState.Normal;
         protected Sprite normalStateSprite = null;
 
-        private Sprite usedSprite;
+        private readonly Sprite usedSprite;
 
         public Block(int dstX, int dstY, string state)
         {

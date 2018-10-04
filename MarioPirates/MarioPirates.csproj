@@ -56,6 +56,7 @@
     <Compile Include="Event\IEvent.cs" />
     <Compile Include="Controller\InputState.cs" />
     <Compile Include="Event\Input\KeyDownEvent.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Object\Block\BlockState.cs" />
     <Compile Include="Object\GameObjectRigidBody.cs" />
     <Compile Include="Physics\BaseRigidBody.cs" />
