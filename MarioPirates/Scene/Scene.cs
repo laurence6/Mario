@@ -12,7 +12,7 @@ namespace MarioPirates
         public static Scene Instance { get; } = new Scene();
 
         private List<GameObject> gameObjects = new List<GameObject>();
-        private List<GameObject> gameObjectsStatic = new List<GameObject>();
+
         private List<GameObjectParam> gameObjectToCreate = new List<GameObjectParam>();
         private List<GameObject> gameObjectToDestory = new List<GameObject>();
 
@@ -21,7 +21,6 @@ namespace MarioPirates
         public void Reset()
         {
             gameObjects.Clear();
-            gameObjectsStatic.Clear();
             gameObjectToCreate.Clear();
             gameObjectToDestory.Clear();
 
@@ -29,25 +28,26 @@ namespace MarioPirates
             EventManager.Instance.Subscribe(e => gameObjectToDestory.AddIfNotExist(((GameObjectDestroyEvent)e).Object), EventEnum.GameObjectDestroy);
 
             new JavaScriptSerializer().Deserialize<List<GameObjectParam>>(ReadAllText("Scene\\LevelData.json"))
-                .ForEach(o => AddGameObject(o.ToGameObject(), o.IsStatic));
+                .ForEach(o => EventManager.Instance.TriggerEvent(new GameObjectCreateEvent(o)));
         }
 
-        public void AddGameObject(GameObject o, bool isStatic = false) =>
-            (isStatic ? gameObjectsStatic : gameObjects).Add(o);
+        public void AddGameObject(GameObject o) => gameObjects.Add(o);
 
         public void Update(float dt)
         {
-            Physics.Simulate(dt, in gameObjects, in gameObjectsStatic);
-            gameObjectToDestory.ForEach(o => { gameObjectsStatic.Remove(o); gameObjects.Remove(o); });
+            Physics.Simulate(dt, in gameObjects);
+
+            gameObjectToDestory.ForEach(o => gameObjects.Remove(o));
             gameObjectToDestory.Clear();
-            gameObjectToCreate.ForEach(p => AddGameObject(p.ToGameObject(), p.IsStatic));
+            gameObjectToCreate.ForEach(p => AddGameObject(p.ToGameObject()));
             gameObjectToCreate.Clear();
+
+            gameObjects.ForEach(o => o.Update(dt));
         }
 
         public void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
         {
             spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-            gameObjectsStatic.ForEach(o => o.Draw(spriteBatch, textures));
             gameObjects.ForEach(o => o.Draw(spriteBatch, textures));
             spriteBatch.End();
         }

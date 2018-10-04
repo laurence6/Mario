@@ -7,11 +7,12 @@ namespace MarioPirates
     internal abstract class GameObject
     {
         public Sprite Sprite { get; set; }
-        public BaseRigidBody RigidBody { get; set; }
+        public RigidBody RigidBody { get; set; }
+
+        public bool IsStatic { get; set; } = true;
 
         protected Vector2 location;
         protected Point size;
-
         public Vector2 Location { get => location; set => location = value; }
         public Point Size { get => size; set => size = value; }
 

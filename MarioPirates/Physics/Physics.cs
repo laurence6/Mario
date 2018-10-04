@@ -8,8 +8,8 @@ namespace MarioPirates
     internal static class Physics
     {
         private static List<CollideEvent> collisions = new List<CollideEvent>();
-        private static Dictionary<BaseRigidBody, Vector3> newVelocity = new Dictionary<BaseRigidBody, Vector3>();
-        private static Dictionary<BaseRigidBody, Vector3> fix = new Dictionary<BaseRigidBody, Vector3>();
+        private static Dictionary<RigidBody, Vector3> newVelocity = new Dictionary<RigidBody, Vector3>();
+        private static Dictionary<RigidBody, Vector3> fix = new Dictionary<RigidBody, Vector3>();
 
         public static void Reset()
         {
@@ -18,7 +18,7 @@ namespace MarioPirates
             fix.Clear();
         }
 
-        public static void Simulate(float dt, in List<GameObject> gameObjects, in List<GameObject> gameObjectsStatic)
+        public static void Simulate(float dt, in List<GameObject> gameObjects)
         {
             const float N = 4f;
             var ddt = dt / N;
@@ -26,20 +26,20 @@ namespace MarioPirates
             for (var n = 0f; n < N; n++)
             {
                 gameObjects.ForEach(o => o.Step(ddt));
-                gameObjectsStatic.ForEach(o => o.Step(ddt));
 
-                foreach (var objStatic in gameObjectsStatic)
-                    foreach (var obj in gameObjects)
-                        TestCollide(objStatic, obj);
+                foreach (var o1 in gameObjects)
+                    if (o1.IsStatic)
+                        foreach (var o2 in gameObjects)
+                            if (!o2.IsStatic)
+                                TestCollide(o1, o2);
                 for (var i = 0; i < gameObjects.Count; i++)
-                    for (var j = i + 1; j < gameObjects.Count; j++)
-                        TestCollide(gameObjects[i], gameObjects[j]);
+                    if (!gameObjects[i].IsStatic)
+                        for (var j = i + 1; j < gameObjects.Count; j++)
+                            if (!gameObjects[j].IsStatic)
+                                TestCollide(gameObjects[i], gameObjects[j]);
 
                 HandleCollide();
             }
-
-            gameObjects.ForEach(o => o.Update(dt));
-            gameObjectsStatic.ForEach(o => o.Update(dt));
         }
 
         private static void TestCollide(GameObject o1, GameObject o2)
@@ -102,7 +102,7 @@ namespace MarioPirates
             collisions.Clear();
         }
 
-        private static void ResolveCollide(BaseRigidBody o1, BaseRigidBody o2, Vector2 depth, out Vector2 v1, out Vector2 v2)
+        private static void ResolveCollide(RigidBody o1, RigidBody o2, Vector2 depth, out Vector2 v1, out Vector2 v2)
         {
             var normal = depth;
             normal.Normalize();

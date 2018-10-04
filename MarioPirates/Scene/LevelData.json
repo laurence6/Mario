@@ -67,12 +67,12 @@
       },
       {
         "TypeName": "RedMushroom",
-        "IsStatic": true,
+        "IsStatic": false,
         "Location": [ 200, 200 ]
       },
       {
         "TypeName": "GreenMushroom",
-        "IsStatic": true,
+        "IsStatic": false,
         "Location": [ 300, 200 ]
       },
       {

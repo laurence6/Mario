@@ -4,7 +4,7 @@
     {
         protected GameObjectRigidBody(float locX, float locY, int sizeX, int sizeY) : base(locX, locY, sizeX, sizeY)
         {
-            RigidBody = new DefaultRigidBody(this);
+            RigidBody = new RigidBody(this);
         }
 
         public override void Step(float dt)

@@ -4,23 +4,24 @@ namespace MarioPirates
 {
     using static Common;
 
-    internal abstract class BaseRigidBody
+    internal class RigidBody
     {
-        public virtual Rectangle Bound { get; }
+        public GameObject Object { get; }
+        public Rectangle Bound => new Rectangle((int)Object.Location.X, (int)Object.Location.Y, Object.Size.X, Object.Size.Y);
+
         public byte CollideMask { get; } = 0b1;
 
         public float Mass { get; set; } = 1e9f;
+
         public float CoR { get; } = 0.5f;
 
-        public Vector2 Force { get; protected set; }
-        public Vector2 Accel => Force / Mass;
+        public Vector2 Force { get; private set; }
         public Vector2 Velocity { get; set; }
+        private Vector2 Accel => Force / Mass;
 
-        public GameObject Object { get; protected set; }
+        private WorldForce worldForce;
 
-        protected WorldForce worldForce;
-
-        public BaseRigidBody(GameObject gameObject)
+        public RigidBody(GameObject gameObject)
         {
             Object = gameObject;
         }
