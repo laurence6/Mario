@@ -4,7 +4,7 @@ namespace MarioPirates
 {
     internal abstract class MarioStateBig : MarioState
     {
-        protected const int marioWidth = 64, marioHeight = 128;
+        protected const int marioWidth = 32, marioHeight = 64;
 
         protected MarioStateBig(Mario mario) : base(mario)
         {
