@@ -63,7 +63,7 @@
       {
         "TypeName": "Star",
         "IsStatic": true,
-        "Location": [ 400, 200 ]
+        "Location": [ 700, 200 ]
       },
       {
         "TypeName": "RedMushroom",

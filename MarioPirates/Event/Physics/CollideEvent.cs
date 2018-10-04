@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace MarioPirates.Event
+﻿namespace MarioPirates.Event
 {
     internal class CollideEvent : IEvent
     {
@@ -9,12 +7,14 @@ namespace MarioPirates.Event
         public GameObject Object1 { get; private set; }
         public GameObject Object2 { get; private set; }
 
-        public Vector2 Depth { get; private set; }
+        public CollisionSide Side { get; private set; }
+        public float Depth { get; private set; }
 
-        public CollideEvent(GameObject o1, GameObject o2, Vector2 depth)
+        public CollideEvent(GameObject o1, GameObject o2, CollisionSide side, float depth)
         {
             Object1 = o1;
             Object2 = o2;
+            Side = side;
             Depth = depth;
         }
     }

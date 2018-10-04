@@ -13,7 +13,7 @@ namespace MarioPirates
 
         protected BlockState State { get; private set; } = BlockState.Normal;
 
-        public Block(int dstX, int dstY, string stateName, Sprite normalSprite) : base(dstX, dstY, blockWidth * 2, blockHeight * 2)
+        protected Block(int dstX, int dstY, string stateName, Sprite normalSprite) : base(dstX, dstY, blockWidth * 2, blockHeight * 2)
         {
             usedSprite = SpriteFactory.Instance.CreateSprite("brownblock");
             this.normalSprite = normalSprite;

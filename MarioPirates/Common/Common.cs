@@ -33,6 +33,7 @@ namespace MarioPirates
 
         public static Vector2 Abs(this Vector2 v) => new Vector2(Math.Abs(v.X), Math.Abs(v.Y));
 
-        public static Vector2 DivS(this Vector2 v1, Vector2 v2) => new Vector2(v2.X == 0 ? 0 : v1.X / v2.X, v2.Y == 0 ? 0 : v1.Y / v2.Y);
+        public static Vector2 DivS(this Vector2 v1, Vector2 v2) =>
+            new Vector2(v2.X == 0 ? 0 : (v1.X / v2.X), v2.Y == 0 ? 0 : (v1.Y / v2.Y));
     }
 }

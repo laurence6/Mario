@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 
 namespace MarioPirates
@@ -8,41 +9,49 @@ namespace MarioPirates
     internal static class Physics
     {
         private static List<CollideEvent> collisions = new List<CollideEvent>();
-        private static Dictionary<RigidBody, Vector3> newVelocity = new Dictionary<RigidBody, Vector3>();
-        private static Dictionary<RigidBody, Vector3> fix = new Dictionary<RigidBody, Vector3>();
+        private static Dictionary<RigidBody, Vector3> velocityFix = new Dictionary<RigidBody, Vector3>();
+        private static Dictionary<RigidBody, Vector3> locationFix = new Dictionary<RigidBody, Vector3>();
 
         public static void Reset()
         {
             collisions.Clear();
-            newVelocity.Clear();
-            fix.Clear();
+            velocityFix.Clear();
+            locationFix.Clear();
         }
 
         public static void Simulate(float dt, in List<GameObject> gameObjects)
         {
             const float N = 4f;
+            const int R = 5;
+
             var ddt = dt / N;
 
             for (var n = 0f; n < N; n++)
             {
                 gameObjects.ForEach(o => o.Step(ddt));
 
-                foreach (var o1 in gameObjects)
-                    if (o1.IsStatic)
-                        foreach (var o2 in gameObjects)
-                            if (!o2.IsStatic)
-                                TestCollide(o1, o2);
-                for (var i = 0; i < gameObjects.Count; i++)
-                    if (!gameObjects[i].IsStatic)
-                        for (var j = i + 1; j < gameObjects.Count; j++)
-                            if (!gameObjects[j].IsStatic)
-                                TestCollide(gameObjects[i], gameObjects[j]);
+                for (var r = 0; ; r++)
+                {
+                    foreach (var o1 in gameObjects)
+                        if (o1.IsStatic)
+                            foreach (var o2 in gameObjects)
+                                if (!o2.IsStatic)
+                                    DetectCollide(o1, o2);
+                    for (var i = 0; i < gameObjects.Count; i++)
+                        if (!gameObjects[i].IsStatic)
+                            for (var j = i + 1; j < gameObjects.Count; j++)
+                                if (!gameObjects[j].IsStatic)
+                                    DetectCollide(gameObjects[i], gameObjects[j]);
 
-                HandleCollide();
+                    if (r > R || collisions.Count == 0)
+                        break;
+
+                    HandleCollide(r == 0);
+                }
             }
         }
 
-        private static void TestCollide(GameObject o1, GameObject o2)
+        private static void DetectCollide(GameObject o1, GameObject o2)
         {
             RigidBody r1 = o1.RigidBody, r2 = o2.RigidBody;
             if (r1 != null && r2 != null)
@@ -53,73 +62,110 @@ namespace MarioPirates
                     Rectangle.Intersect(ref b1, ref b2, out var ints);
                     if (!ints.IsEmpty)
                     {
-                        var depth = ints.Width > ints.Height
-                            ? b1.Center.Y > b2.Center.Y ? new Vector2(0, -ints.Height) : new Vector2(0, ints.Height)
-                            : b1.Center.X > b2.Center.X ? new Vector2(-ints.Width, 0) : new Vector2(ints.Width, 0);
-                        CollisionSide cs1 = GetCollisionSide(depth), cs2 = GetCollisionSide(-depth);
-                        if ((r1.CollideSideMask & cs1) != 0 && (r2.CollideSideMask & cs2) != 0)
-                            collisions.Add(new CollideEvent(o1, o2, depth));
+                        var side = CollisionSide.All;
+                        var depth = 0f;
+
+                        var relVel = r2.Velocity - r1.Velocity;
+                        if (relVel.Y <= 0)
+                            side &= ~CollisionSide.Top;
+                        if (relVel.Y >= 0)
+                            side &= ~CollisionSide.Bottom;
+                        if (relVel.X <= 0)
+                            side &= ~CollisionSide.Left;
+                        if (relVel.X >= 0)
+                            side &= ~CollisionSide.Right;
+                        if (side != CollisionSide.None)
+                        {
+                            if (ints.Width > ints.Height)
+                            {
+                                side &= CollisionSide.TopBottom;
+                                depth = Math.Abs(ints.Height);
+                            }
+                            else
+                            {
+                                side &= CollisionSide.LeftRight;
+                                depth = Math.Abs(ints.Width);
+                            }
+
+                            if ((r1.CollideSideMask & side) != 0 && (r2.CollideSideMask & side.Invert()) != 0)
+                                collisions.Add(new CollideEvent(o1, o2, side, depth));
+                        }
                     }
                 }
             }
         }
 
-        private static void HandleCollide()
+        private static void HandleCollide(bool sendOncollide)
         {
             collisions.ForEach(ce =>
             {
-                var r1 = ce.Object1.RigidBody;
-                var r2 = ce.Object2.RigidBody;
+                ResolveCollide(ce, out var v1, out var v2);
 
-                ResolveCollide(r1, r2, ce.Depth, out var v1, out var v2);
+                RigidBody r1 = ce.Object1.RigidBody, r2 = ce.Object2.RigidBody;
 
-                newVelocity.AddIfNotExist(r1, Vector3.Zero);
-                newVelocity[r1] += new Vector3(v1, 1);
+                velocityFix.AddIfNotExist(r1, Vector3.Zero);
+                velocityFix[r1] += new Vector3(v1, 1);
 
-                newVelocity.AddIfNotExist(r2, Vector3.Zero);
-                newVelocity[r2] += new Vector3(v2, 1);
+                velocityFix.AddIfNotExist(r2, Vector3.Zero);
+                velocityFix[r2] += new Vector3(v2, 1);
 
-                fix.AddIfNotExist(r1, Vector3.Zero);
-                fix[r1] += new Vector3(v1.Abs().DivS(v1.Abs() + v2.Abs()) * -ce.Depth, 1);
+                locationFix.AddIfNotExist(r1, Vector3.Zero);
+                var f1 = ce.Side.Select(v1.DivS(v1.Abs() + v2.Abs()) * ce.Depth);
+                locationFix[r1] += new Vector3(f1, 1);
 
-                fix.AddIfNotExist(r2, Vector3.Zero);
-                fix[r2] += new Vector3(v2.Abs().DivS(v1.Abs() + v2.Abs()) * ce.Depth, 1);
+                locationFix.AddIfNotExist(r2, Vector3.Zero);
+                var f2 = ce.Side.Select(v2.DivS(v1.Abs() + v2.Abs()) * ce.Depth);
+                locationFix[r2] += new Vector3(f2, 1);
             });
-            foreach (var p in newVelocity)
+
+            foreach (var p in velocityFix)
             {
                 var v = p.Value;
                 v /= v.Z;
-                var f = fix[p.Key];
+                var f = locationFix[p.Key];
                 f /= f.Z;
                 p.Key.Velocity += new Vector2(v.X, v.Y);
                 p.Key.Object.Location += new Vector2(f.X, f.Y);
             }
-            newVelocity.Clear();
-            fix.Clear();
+            velocityFix.Clear();
+            locationFix.Clear();
 
-            collisions.ForEach(ce =>
-            {
-                ce.Object1.OnCollide(ce.Object2, GetCollisionSide(ce.Depth));
-                ce.Object2.OnCollide(ce.Object1, GetCollisionSide(-ce.Depth));
-                EventManager.Instance.EnqueueEvent(ce);
-            });
+            if (sendOncollide)
+                collisions.ForEach(ce =>
+                {
+                    ce.Object1.OnCollide(ce.Object2, ce.Side);
+                    ce.Object2.OnCollide(ce.Object1, ce.Side.Invert());
+                    EventManager.Instance.EnqueueEvent(ce);
+                });
+
             collisions.Clear();
         }
 
-        private static void ResolveCollide(RigidBody o1, RigidBody o2, Vector2 depth, out Vector2 v1, out Vector2 v2)
+        private static void ResolveCollide(CollideEvent ce, out Vector2 v1, out Vector2 v2)
         {
-            var normal = depth;
+            var normal = Vector2.Zero;
+            switch (ce.Side)
+            {
+                case CollisionSide.Top:
+                    normal.Y = ce.Depth;
+                    break;
+                case CollisionSide.Bottom:
+                    normal.Y = -ce.Depth;
+                    break;
+                case CollisionSide.Left:
+                    normal.X = ce.Depth;
+                    break;
+                case CollisionSide.Right:
+                    normal.X = -ce.Depth;
+                    break;
+            }
             normal.Normalize();
+            RigidBody o1 = ce.Object1.RigidBody, o2 = ce.Object2.RigidBody;
             var dp = (o2.Velocity * normal - o1.Velocity * normal)
                 / (1f / o1.Mass + 1f / o2.Mass)
                 * normal;
             v1 = (o1.CoR + 1f) / o1.Mass * dp;
             v2 = (o2.CoR + 1f) / o2.Mass * -dp;
         }
-
-        private static CollisionSide GetCollisionSide(Vector2 depth) =>
-            depth.X != 0
-            ? depth.X > 0 ? CollisionSide.Right : CollisionSide.Left
-            : depth.Y > 0 ? CollisionSide.Bottom : CollisionSide.Top;
     }
 }
