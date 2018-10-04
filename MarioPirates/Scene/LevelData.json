@@ -78,11 +78,11 @@
       {
         "TypeName": "Koopa",
         "IsStatic": false,
-        "Location": [ 600, 150 ]
+        "Location": [ 600, 400 ]
       },
       {
         "TypeName": "Goomba",
         "IsStatic": false,
-        "Location": [ 700, 150 ]
+        "Location": [ 700, 450 ]
       }
 ]

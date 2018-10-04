@@ -42,7 +42,7 @@ namespace MarioPirates
 
         public override void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
         {
-            if (state == BlockState.Normal || state == BlockState.Used)
+            if (Sprite != null)
                 base.Draw(spriteBatch, textures);
         }
 
