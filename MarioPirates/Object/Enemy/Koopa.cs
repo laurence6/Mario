@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace MarioPirates
+﻿namespace MarioPirates
 {
     internal class Koopa : GameObjectRigidBody
     {
@@ -9,11 +7,8 @@ namespace MarioPirates
         private bool stopmed;
         private Sprite[] sprites;
 
-        public Koopa(int x, int y)
+        public Koopa(int x, int y) : base(x, y, koopaWidth * 2, koopaHeight * 2)
         {
-            location.X = x;
-            location.Y = y;
-            size = new Point(koopaWidth * 2, koopaHeight * 2);
             RigidBody.Mass = 0.1f;
 
             stopmed = false;

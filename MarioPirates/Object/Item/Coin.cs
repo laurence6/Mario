@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace MarioPirates
+﻿namespace MarioPirates
 {
     using Event;
 
@@ -8,11 +6,8 @@ namespace MarioPirates
     {
         private const int coinWidth = 7, coinHeight = 14;
 
-        public Coin(int dstX, int dstY)
+        public Coin(int dstX, int dstY) : base(dstX, dstY, coinWidth * 2, coinHeight * 2)
         {
-            location.X = dstX;
-            location.Y = dstY;
-            size = new Point(coinWidth * 2, coinHeight * 2);
             Sprite = SpriteFactory.Instance.CreateSprite("coins");
             RigidBody.Mass = 0.05f;
         }

@@ -6,11 +6,8 @@ namespace MarioPirates
     {
         private const int goombaWidth = 16, goombaHeight = 16;
 
-        public Goomba(int x, int y)
+        public Goomba(int x, int y) : base(x, y, goombaWidth * 2, goombaHeight * 2)
         {
-            location.X = x;
-            location.Y = y;
-            size = new Point(goombaWidth * 2, goombaHeight * 2);
             Sprite = SpriteFactory.Instance.CreateSprite("goomba");
             RigidBody.Mass = 0.1f;
         }

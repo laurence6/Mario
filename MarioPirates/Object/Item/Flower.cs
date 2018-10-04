@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace MarioPirates
+﻿namespace MarioPirates
 {
     using Event;
 
@@ -8,11 +6,8 @@ namespace MarioPirates
     {
         private const int flowerWidth = 16, flowerHeight = 16;
 
-        public Flower(int dstX, int dstY)
+        public Flower(int dstX, int dstY) : base(dstX, dstY, flowerWidth * 2, flowerHeight * 2)
         {
-            location.X = dstX;
-            location.Y = dstY;
-            size = new Point(flowerWidth * 2, flowerHeight * 2);
             Sprite = SpriteFactory.Instance.CreateSprite("flower");
             RigidBody.Mass = 0.05f;
         }

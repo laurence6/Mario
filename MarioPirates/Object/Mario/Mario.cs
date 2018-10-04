@@ -9,9 +9,8 @@ namespace MarioPirates
     {
         public MarioState State { get; set; }
 
-        public Mario(int dstX, int dstY)
+        public Mario(int dstX, int dstY) : base(dstX, dstY, 0, 0)
         {
-            location = new Vector2(dstX, dstY);
             State = new MarioStateSmallRightIdle(this);
 
             RigidBody.Mass = 1f;

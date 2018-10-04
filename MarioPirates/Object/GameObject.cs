@@ -15,8 +15,12 @@ namespace MarioPirates
         public Vector2 Location { get => location; set => location = value; }
         public Point Size { get => size; set => size = value; }
 
-        protected GameObject()
+        protected GameObject(float locX, float locY, int sizeX, int sizeY)
         {
+            location.X = locX;
+            location.Y = locY;
+            size.X = sizeX;
+            size.Y = sizeY;
         }
 
         public virtual void Step(float dt)

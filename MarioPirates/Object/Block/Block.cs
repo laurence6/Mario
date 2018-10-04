@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 
@@ -10,15 +9,12 @@ namespace MarioPirates
         private const int blockWidth = 16, blockHeight = 16;
 
         protected BlockState state = BlockState.Normal;
-        protected Sprite normalStateSprite = null;
+        protected Sprite normalStateSprite;
 
         private readonly Sprite usedSprite;
 
-        public Block(int dstX, int dstY, string state)
+        public Block(int dstX, int dstY, string state) : base(dstX, dstY, blockWidth * 2, blockHeight * 2)
         {
-            location.X = dstX;
-            location.Y = dstY;
-            size = new Point(blockWidth * 2, blockHeight * 2);
             Enum.TryParse(state, out this.state);
             usedSprite = SpriteFactory.Instance.CreateSprite("brownblock");
         }

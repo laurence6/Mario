@@ -1,16 +1,11 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace MarioPirates
+﻿namespace MarioPirates
 {
     internal class Pipe : GameObjectRigidBody
     {
         private const int pipeWidth = 32, pipeHeight = 32;
 
-        public Pipe(int dstX, int dstY)
+        public Pipe(int dstX, int dstY) : base(dstX, dstY, pipeWidth * 2, pipeHeight * 2)
         {
-            location.X = dstX;
-            location.Y = dstY;
-            size = new Point(pipeWidth * 2, pipeHeight * 2);
             Sprite = SpriteFactory.Instance.CreateSprite("pipe");
         }
     }

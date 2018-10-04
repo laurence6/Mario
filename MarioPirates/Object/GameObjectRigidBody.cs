@@ -2,7 +2,7 @@
 {
     internal abstract class GameObjectRigidBody : GameObject
     {
-        protected GameObjectRigidBody()
+        protected GameObjectRigidBody(float locX, float locY, int sizeX, int sizeY) : base(locX, locY, sizeX, sizeY)
         {
             RigidBody = new DefaultRigidBody(this);
         }
