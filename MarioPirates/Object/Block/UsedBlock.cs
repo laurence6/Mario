@@ -2,9 +2,9 @@
 {
     internal class UsedBlock : Block
     {
-        public UsedBlock(int dstX, int dstY) : base(dstX, dstY)
+        public UsedBlock(int dstX, int dstY, string state) : base(dstX, dstY, state)
         {
-            Sprite = SpriteFactory.Instance.CreateSprite("brownblock");
+            normalStateSprite = SpriteFactory.Instance.CreateSprite("brownblock");
         }
     }
 }

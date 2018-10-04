@@ -12,32 +12,38 @@
       {
         "TypeName": "UsedBlock",
         "IsStatic": true,
-        "Location": [ 100, 200 ]
+        "Location": [ 100, 200 ],
+        "State": "Hidden"
       },
       {
         "TypeName": "BrickBlock",
         "IsStatic": true,
-        "Location": [ 200, 200 ]
+        "Location": [ 200, 200 ],
+        "State": "Normal"
       },
       {
         "TypeName": "BrokenBlock",
         "IsStatic": true,
-        "Location": [ 300, 200 ]
-      },
-      {
-        "TypeName": "UsedBlock",
-        "IsStatic": true,
-        "Location": [ 400, 200 ]
-      },
-      {
-        "TypeName": "OrangeBlock",
-        "IsStatic": true,
-        "Location": [ 500, 200 ]
+        "Location": [ 300, 200 ],
+        "State": "Normal"
       },
       {
         "TypeName": "QuestionBlock",
         "IsStatic": true,
-        "Location": [ 600, 200 ]
+        "Location": [ 400, 200 ],
+        "State": "Used"
+      },
+      {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 500, 200 ],
+        "State": "Normal"
+      },
+      {
+        "TypeName": "QuestionBlock",
+        "IsStatic": true,
+        "Location": [ 600, 200 ],
+        "State": "Normal"
       },
       {
         "TypeName": "Pipe",
@@ -61,7 +67,7 @@
       },
       {
         "TypeName": "RedMushroom",
-        "IsStatic": "true",
+        "IsStatic": true,
         "Location": [ 200, 100 ]
       },
       {

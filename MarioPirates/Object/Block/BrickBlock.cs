@@ -2,9 +2,9 @@
 {
     internal class BrickBlock : Block
     {
-        public BrickBlock(int dstX, int dstY) : base(dstX, dstY)
+        public BrickBlock(int dstX, int dstY, string state) : base(dstX, dstY, state)
         {
-            Sprite = SpriteFactory.Instance.CreateSprite("brickblock");
+            normalStateSprite = SpriteFactory.Instance.CreateSprite("brickblock");
         }
     }
 }

@@ -2,9 +2,9 @@
 {
     internal class OrangeBlock : Block
     {
-        public OrangeBlock(int dstX, int dstY) : base(dstX, dstY)
+        public OrangeBlock(int dstX, int dstY, string state) : base(dstX, dstY, state)
         {
-            Sprite = SpriteFactory.Instance.CreateSprite("orangeblock");
+            normalStateSprite = SpriteFactory.Instance.CreateSprite("orangeblock");
         }
     }
 }

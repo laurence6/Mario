@@ -2,9 +2,9 @@
 {
     internal class BrokenBlock : Block
     {
-        public BrokenBlock(int dstX, int dstY) : base(dstX, dstY)
+        public BrokenBlock(int dstX, int dstY, string state) : base(dstX, dstY, state)
         {
-            Sprite = SpriteFactory.Instance.CreateSprite("brokenblock");
+            normalStateSprite = SpriteFactory.Instance.CreateSprite("brokenblock");
         }
     }
 }

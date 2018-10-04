@@ -2,9 +2,9 @@
 {
     internal class QuestionBlock : Block
     {
-        public QuestionBlock(int dstX, int dstY) : base(dstX, dstY)
+        public QuestionBlock(int dstX, int dstY, string state) : base(dstX, dstY, state)
         {
-            Sprite = SpriteFactory.Instance.CreateSprite("questionblock");
+            normalStateSprite = SpriteFactory.Instance.CreateSprite("questionblock");
         }
     }
 }
