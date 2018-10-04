@@ -44,20 +44,24 @@ namespace MarioPirates
 
         private static void TestCollide(GameObject o1, GameObject o2)
         {
-            if (o1.RigidBody != null && o2.RigidBody != null)
-                if ((o1.RigidBody.CollideMask & o2.RigidBody.CollideMask) != 0)
+            RigidBody r1 = o1.RigidBody, r2 = o2.RigidBody;
+            if (r1 != null && r2 != null)
+            {
+                if ((r1.CollideLayerMask & r2.CollideLayerMask) != 0)
                 {
-                    var b1 = o1.RigidBody.Bound;
-                    var b2 = o2.RigidBody.Bound;
+                    Rectangle b1 = r1.Bound, b2 = r2.Bound;
                     Rectangle.Intersect(ref b1, ref b2, out var ints);
                     if (!ints.IsEmpty)
                     {
                         var depth = ints.Width > ints.Height
                             ? b1.Center.Y > b2.Center.Y ? new Vector2(0, -ints.Height) : new Vector2(0, ints.Height)
                             : b1.Center.X > b2.Center.X ? new Vector2(-ints.Width, 0) : new Vector2(ints.Width, 0);
-                        collisions.Add(new CollideEvent(o1, o2, depth));
+                        CollisionSide cs1 = GetCollisionSide(depth), cs2 = GetCollisionSide(-depth);
+                        if ((r1.CollideSideMask & cs1) != 0 && (r2.CollideSideMask & cs2) != 0)
+                            collisions.Add(new CollideEvent(o1, o2, depth));
                     }
                 }
+            }
         }
 
         private static void HandleCollide()

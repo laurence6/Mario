@@ -8,31 +8,21 @@ namespace MarioPirates
     {
         private const int blockWidth = 16, blockHeight = 16;
 
-        protected BlockState state = BlockState.Normal;
-        protected Sprite normalStateSprite;
-
         private readonly Sprite usedSprite;
+        private readonly Sprite normalSprite;
 
-        public Block(int dstX, int dstY, string state) : base(dstX, dstY, blockWidth * 2, blockHeight * 2)
+        protected BlockState State { get; private set; } = BlockState.Normal;
+
+        public Block(int dstX, int dstY, string stateName, Sprite normalSprite) : base(dstX, dstY, blockWidth * 2, blockHeight * 2)
         {
-            Enum.TryParse(state, out this.state);
             usedSprite = SpriteFactory.Instance.CreateSprite("brownblock");
+            this.normalSprite = normalSprite;
+            Enum.TryParse(stateName, out BlockState state);
+            SetState(state);
         }
 
         public override void Update(float dt)
         {
-            switch (state)
-            {
-                case BlockState.Normal:
-                    Sprite = normalStateSprite;
-                    break;
-                case BlockState.Used:
-                    Sprite = usedSprite;
-                    break;
-                case BlockState.Hidden:
-                    Sprite = null;
-                    break;
-            }
             Sprite?.Update(dt);
         }
 
@@ -42,16 +32,31 @@ namespace MarioPirates
                 base.Draw(spriteBatch, textures);
         }
 
-        public void SetHidden(bool hidden)
+        public void SetState(BlockState state)
         {
-            state = hidden ? BlockState.Hidden : BlockState.Used;
+            switch (state)
+            {
+                case BlockState.Normal:
+                    RigidBody.CollideSideMask = CollisionSide.All;
+                    Sprite = normalSprite;
+                    break;
+                case BlockState.Used:
+                    RigidBody.CollideSideMask = CollisionSide.All;
+                    Sprite = usedSprite;
+                    break;
+                case BlockState.Hidden:
+                    RigidBody.CollideSideMask = CollisionSide.Bottom;
+                    Sprite = null;
+                    break;
+            }
+            State = state;
         }
 
         public override void OnCollide(GameObject other, CollisionSide side)
         {
             if (other is Mario)
-                if (state == BlockState.Hidden && side == CollisionSide.Bottom)
-                    state = BlockState.Used;
+                if (State == BlockState.Hidden && side == CollisionSide.Bottom)
+                    SetState(BlockState.Normal);
         }
     }
 }

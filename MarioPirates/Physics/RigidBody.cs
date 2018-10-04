@@ -9,7 +9,8 @@ namespace MarioPirates
         public GameObject Object { get; }
         public Rectangle Bound => new Rectangle((int)Object.Location.X, (int)Object.Location.Y, Object.Size.X, Object.Size.Y);
 
-        public byte CollideMask { get; } = 0b1;
+        public byte CollideLayerMask { get; } = 0b1;
+        public CollisionSide CollideSideMask { get; set; } = CollisionSide.All;
 
         public float Mass { get; set; } = 1e9f;
 
