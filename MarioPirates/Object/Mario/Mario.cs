@@ -26,23 +26,23 @@ namespace MarioPirates
             EventManager.Instance.Subscribe(e =>
             {
                 if (!(State is MarioStateDead || State is MarioStateStarDead))
-                    RigidBody.ApplyForce(new Vector2(0, -1000));
+                    RigidBody.ApplyForce(new Vector2(0, -1500));
             }, EventEnum.KeyUpHold);
             EventManager.Instance.Subscribe(e =>
             {
                 if (!(State is MarioStateDead || State is MarioStateStarDead))
-                    RigidBody.ApplyForce(new Vector2(0, 1000));
+                    RigidBody.ApplyForce(new Vector2(0, 1500));
             }, EventEnum.KeyDownHold);
             EventManager.Instance.Subscribe(e =>
             {
                 if (!(State is MarioStateDead || State is MarioStateStarDead ||
                     State is MarioStateStarSmall || State is MarioStateStarBig))
-                    RigidBody.ApplyForce(new Vector2(-1000, 0));
+                    RigidBody.ApplyForce(new Vector2(-1500, 0));
             }, EventEnum.KeyLeftHold);
             EventManager.Instance.Subscribe(e =>
             {
                 if (!(State is MarioStateDead || State is MarioStateStarDead))
-                    RigidBody.ApplyForce(new Vector2(1000, 0));
+                    RigidBody.ApplyForce(new Vector2(1500, 0));
                 if (State is MarioStateStarBig || State is MarioStateStarSmall)
                     RigidBody.ApplyForce(new Vector2(2000, 0)); // star power speed up
             }, EventEnum.KeyRightHold);

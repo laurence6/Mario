@@ -17,10 +17,5 @@
             RigidBody.Update();
             base.Update(dt);
         }
-
-        public override void OnCollide(GameObject other, CollisionSide side)
-        {
-            base.OnCollide(other, side);
-        }
     }
 }
