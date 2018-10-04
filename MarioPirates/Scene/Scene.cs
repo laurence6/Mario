@@ -13,6 +13,7 @@ namespace MarioPirates
 
         private List<GameObject> gameObjects = new List<GameObject>();
         private List<GameObject> gameObjectsStatic = new List<GameObject>();
+        private List<GameObjectParam> gameObjectToCreate = new List<GameObjectParam>();
         private List<GameObject> gameObjectToDestory = new List<GameObject>();
 
         private Scene() { }
@@ -21,8 +22,10 @@ namespace MarioPirates
         {
             gameObjects.Clear();
             gameObjectsStatic.Clear();
+            gameObjectToCreate.Clear();
             gameObjectToDestory.Clear();
 
+            EventManager.Instance.Subscribe(e => gameObjectToCreate.Add(((GameObjectCreateEvent)e).Param), EventEnum.GameObjectCreate);
             EventManager.Instance.Subscribe(e => gameObjectToDestory.AddIfNotExist(((GameObjectDestroyEvent)e).Object), EventEnum.GameObjectDestroy);
 
             new JavaScriptSerializer().Deserialize<List<GameObjectParam>>(ReadAllText("Scene\\LevelData.json"))
@@ -37,6 +40,8 @@ namespace MarioPirates
             Physics.Simulate(dt, in gameObjects, in gameObjectsStatic);
             gameObjectToDestory.ForEach(o => { gameObjectsStatic.Remove(o); gameObjects.Remove(o); });
             gameObjectToDestory.Clear();
+            gameObjectToCreate.ForEach(p => AddGameObject(p.ToGameObject(), p.IsStatic));
+            gameObjectToCreate.Clear();
         }
 
         public void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)

@@ -52,6 +52,7 @@
     <Compile Include="Event\EventEnum.cs" />
     <Compile Include="Event\BaseEvent.cs" />
     <Compile Include="Event\EventManager.cs" />
+    <Compile Include="Event\Scene\GameObjectCreateEvent.cs" />
     <Compile Include="Event\Scene\GameObjectDestroyEvent.cs" />
     <Compile Include="Event\IEvent.cs" />
     <Compile Include="Controller\InputState.cs" />

@@ -23,6 +23,7 @@
 
         // 
         Collide,
+        GameObjectCreate,
         GameObjectDestroy,
     }
 }
