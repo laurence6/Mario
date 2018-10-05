@@ -8,13 +8,17 @@ namespace MarioPirates
 
     internal static class Physics
     {
-        private static List<CollideEvent> collisions = new List<CollideEvent>();
-        private static Dictionary<RigidBody, Vector3> velocityFix = new Dictionary<RigidBody, Vector3>();
+        private static List<CollideEvent> collisionsFirst = new List<CollideEvent>();
+        private static List<CollideEvent> collisionsOther = new List<CollideEvent>();
+
         private static Dictionary<RigidBody, Vector3> locationFix = new Dictionary<RigidBody, Vector3>();
+
+        private static Dictionary<RigidBody, Vector3> velocityFix = new Dictionary<RigidBody, Vector3>();
 
         public static void Reset()
         {
-            collisions.Clear();
+            collisionsFirst.Clear();
+            collisionsOther.Clear();
             velocityFix.Clear();
             locationFix.Clear();
         }
@@ -30,28 +34,39 @@ namespace MarioPirates
             {
                 gameObjects.ForEach(o => o.Step(ddt));
 
-                for (var r = 0; ; r++)
+                for (var r = 0; r < R; r++)
                 {
+                    var collisions = r == 0 ? collisionsFirst : collisionsOther;
+
                     foreach (var o1 in gameObjects)
                         if (o1.IsStatic)
                             foreach (var o2 in gameObjects)
                                 if (!o2.IsStatic)
-                                    DetectCollide(o1, o2);
+                                    DetectCollide(o1, o2, collisions);
                     for (var i = 0; i < gameObjects.Count; i++)
                         if (!gameObjects[i].IsStatic)
                             for (var j = i + 1; j < gameObjects.Count; j++)
                                 if (!gameObjects[j].IsStatic)
-                                    DetectCollide(gameObjects[i], gameObjects[j]);
+                                    DetectCollide(gameObjects[i], gameObjects[j], collisions);
 
-                    if (r > R || collisions.Count == 0)
-                        break;
-
-                    HandleCollide(r == 0);
+                    if (collisions.Count > 0)
+                    {
+                        ResolveAllCollide(collisions);
+                        FixVelocity();
+                        FixLocation();
+                    }
                 }
+
+                collisionsFirst.Consume(ce =>
+                {
+                    ce.Object1.OnCollide(ce.Object2, ce.Side);
+                    ce.Object2.OnCollide(ce.Object1, ce.Side.Invert());
+                    EventManager.Instance.EnqueueEvent(ce);
+                });
             }
         }
 
-        private static void DetectCollide(GameObject o1, GameObject o2)
+        private static void DetectCollide(GameObject o1, GameObject o2, List<CollideEvent> collisions)
         {
             RigidBody r1 = o1.RigidBody, r2 = o2.RigidBody;
             if (r1 != null && r2 != null)
@@ -95,9 +110,9 @@ namespace MarioPirates
             }
         }
 
-        private static void HandleCollide(bool sendOncollide)
+        private static void ResolveAllCollide(List<CollideEvent> collisions)
         {
-            collisions.ForEach(ce =>
+            collisions.Consume(ce =>
             {
                 ResolveCollide(ce, out var v1, out var v2);
 
@@ -117,28 +132,26 @@ namespace MarioPirates
                 var f2 = ce.Side.Select(v2.DivS(v1.Abs() + v2.Abs()) * ce.Depth);
                 locationFix[r2] += new Vector3(f2, 1);
             });
+        }
 
-            foreach (var p in velocityFix)
+        private static void FixLocation()
+        {
+            locationFix.Consume(p =>
             {
-                var v = p.Value;
-                v /= v.Z;
-                var f = locationFix[p.Key];
-                f /= f.Z;
-                p.Key.Velocity += new Vector2(v.X, v.Y);
-                p.Key.Object.Location += new Vector2(f.X, f.Y);
-            }
-            velocityFix.Clear();
-            locationFix.Clear();
+                var dp = locationFix[p.Key];
+                dp /= dp.Z;
+                p.Key.Object.Location += new Vector2(dp.X, dp.Y);
+            });
+        }
 
-            if (sendOncollide)
-                collisions.ForEach(ce =>
-                {
-                    ce.Object1.OnCollide(ce.Object2, ce.Side);
-                    ce.Object2.OnCollide(ce.Object1, ce.Side.Invert());
-                    EventManager.Instance.EnqueueEvent(ce);
-                });
-
-            collisions.Clear();
+        private static void FixVelocity()
+        {
+            velocityFix.Consume(p =>
+            {
+                var dv = p.Value;
+                dv /= dv.Z;
+                p.Key.Velocity += new Vector2(dv.X, dv.Y);
+            });
         }
 
         private static void ResolveCollide(CollideEvent ce, out Vector2 v1, out Vector2 v2)
