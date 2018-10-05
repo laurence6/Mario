@@ -50,11 +50,9 @@ namespace MarioPirates
                                     DetectCollide(gameObjects[i], gameObjects[j], collisions);
 
                     if (collisions.Count > 0)
-                    {
-                        ResolveAllCollide(collisions);
-                        FixVelocity();
-                        FixLocation();
-                    }
+                        HandleCollide(collisions);
+                    if (r > 0)
+                        collisions.Clear();
                 }
 
                 collisionsFirst.Consume(ce =>
@@ -110,9 +108,9 @@ namespace MarioPirates
             }
         }
 
-        private static void ResolveAllCollide(List<CollideEvent> collisions)
+        private static void HandleCollide(List<CollideEvent> collisions)
         {
-            collisions.Consume(ce =>
+            collisions.ForEach(ce =>
             {
                 ResolveCollide(ce, out var v1, out var v2);
 
@@ -132,20 +130,12 @@ namespace MarioPirates
                 var f2 = ce.Side.Select(v2.DivS(v1.Abs() + v2.Abs()) * ce.Depth);
                 locationFix[r2] += new Vector3(f2, 1);
             });
-        }
-
-        private static void FixLocation()
-        {
             locationFix.Consume(p =>
             {
                 var dp = locationFix[p.Key];
                 dp /= dp.Z;
                 p.Key.Object.Location += new Vector2(dp.X, dp.Y);
             });
-        }
-
-        private static void FixVelocity()
-        {
             velocityFix.Consume(p =>
             {
                 var dv = p.Value;
