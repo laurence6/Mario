@@ -107,6 +107,7 @@ namespace MarioPirates
             {
                 if (!(side == CollisionSide.Bottom || State is MarioStateStarBig || State is MarioStateStarSmall))
                 {
+                    RigidBody.CollideLayerMask = 0b10;
                     State.Dead();
                 }
             }
