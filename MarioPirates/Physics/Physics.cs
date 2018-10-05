@@ -21,12 +21,12 @@ namespace MarioPirates
 
         public static void Simulate(float dt, in List<GameObject> gameObjects)
         {
-            const float N = 4f;
+            const float S = 4f;
             const int R = 5;
 
-            var ddt = dt / N;
+            var ddt = dt / S;
 
-            for (var n = 0f; n < N; n++)
+            for (var s = 0f; s < S; s++)
             {
                 gameObjects.ForEach(o => o.Step(ddt));
 
