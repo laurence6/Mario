@@ -31,7 +31,10 @@
             if (other is Mario mario)
                 if (side == CollisionSide.Top ||
                     mario.State is MarioStateStarBig || mario.State is MarioStateStarSmall)
+                {
                     stopmed = true;
+                    RigidBody.CollideLayerMask = 0b10;
+                }
         }
     }
 }
