@@ -12,13 +12,14 @@ namespace MarioPirates
         public byte CollideLayerMask { get; set; } = 0b1;
         public CollisionSide CollideSideMask { get; set; } = CollisionSide.All;
 
-        public float Mass { get; set; } = 1e9f;
+        public float Mass { get; set; } = 1e24f;
+        private float InvMass => Object.IsStatic ? 0 : 1f / Mass;
 
         public float CoR { get; } = 0.5f;
 
         public Vector2 Force { get; private set; }
         public Vector2 Velocity { get; set; }
-        private Vector2 Accel => Force / Mass;
+        private Vector2 Accel => Force * InvMass;
 
         private WorldForce worldForce;
 

@@ -68,7 +68,7 @@
       {
         "TypeName": "RedMushroom",
         "IsStatic": false,
-        "Location": [ 200, 200 ]
+        "Location": [ 300, 300 ]
       },
       {
         "TypeName": "GreenMushroom",
