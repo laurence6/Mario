@@ -5,7 +5,7 @@
         private const int koopaWidth = 16, koopaHeight = 23;
 
         private bool stopmed;
-        private Sprite[] sprites;
+        private readonly Sprite[] sprites;
 
         public Koopa(int x, int y) : base(x, y, koopaWidth * 2, koopaHeight * 2)
         {
