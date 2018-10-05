@@ -4,7 +4,7 @@ namespace MarioPirates
     {
         public MarioStateStarSmallLeftRun(Mario mario) : base(mario)
         {
-            mario.Sprite = SpriteFactory.Instance.CreateSprite("star_small_idle_right");
+            mario.Sprite = SpriteFactory.Instance.CreateSprite("star_small_run_left");
         }
 
         public override void Left()
