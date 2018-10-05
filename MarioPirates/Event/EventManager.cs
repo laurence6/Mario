@@ -30,8 +30,7 @@ namespace MarioPirates.Event
 
         public void Subscribe(OnEvent f, params EventEnum[] eventTypes)
         {
-            foreach (var e in eventTypes)
-                subscribers[(int)e] += f;
+            eventTypes.ForEach(e => subscribers[(int)e] += f);
         }
 
         public void TriggerEvent(IEvent e)

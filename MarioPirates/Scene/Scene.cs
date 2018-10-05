@@ -37,10 +37,8 @@ namespace MarioPirates
         {
             Physics.Simulate(dt, in gameObjects);
 
-            gameObjectToDestory.ForEach(o => gameObjects.Remove(o));
-            gameObjectToDestory.Clear();
-            gameObjectToCreate.ForEach(p => AddGameObject(p.ToGameObject()));
-            gameObjectToCreate.Clear();
+            gameObjectToDestory.Consume(o => gameObjects.Remove(o));
+            gameObjectToCreate.Consume(p => AddGameObject(p.ToGameObject()));
 
             gameObjects.ForEach(o => o.Update(dt));
         }

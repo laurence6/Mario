@@ -33,11 +33,11 @@ namespace MarioPirates.Controller
 
         public void EnableKeyEvent(InputState state, params Keys[] keys)
         {
-            foreach (var k in keys)
+            keys.ForEach(k =>
             {
                 eventMapping[(int)state].Add(k, InputEventFactory.CreateKeyEvent(state, k));
                 enabledKey.AddIfNotExist(k);
-            }
+            });
         }
 
         public void Update()

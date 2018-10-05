@@ -25,11 +25,11 @@ namespace MarioPirates.Controller
 
         public void EnableButtonEvent(InputState state, params Buttons[] buttons)
         {
-            foreach (var b in buttons)
+            buttons.ForEach(b =>
             {
                 eventMapping[(int)state].Add(b, InputEventFactory.CreateButtonEvent(b));
                 enabledButton.AddIfNotExist(b);
-            }
+            });
         }
 
         public void Update()

@@ -17,6 +17,12 @@ namespace MarioPirates
 
         public static T[] EnumValues<T>() => (T[])Enum.GetValues(typeof(T));
 
+        public static void ForEach<T>(this T[] a, Action<T> f)
+        {
+            foreach (var e in a)
+                f(e);
+        }
+
         public static void AddIfNotExist<T>(this List<T> l, T val)
         {
             if (!l.Contains(val))
