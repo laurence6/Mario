@@ -3,7 +3,7 @@
     internal class BrokenBlock : Block
     {
         public BrokenBlock(int dstX, int dstY, string state)
-            : base(dstX, dstY, state, SpriteFactory.Instance.CreateSprite("brokenblock"))
+            : base(dstX, dstY, state, SpriteFactory.CreateSprite("brokenblock"))
         {
         }
     }

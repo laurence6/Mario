@@ -9,7 +9,7 @@ namespace MarioPirates
 
     internal sealed class Scene
     {
-        public static Scene Instance { get; } = new Scene();
+        public static readonly Scene Instance = new Scene();
 
         private List<GameObject> gameObjects = new List<GameObject>();
 
@@ -24,11 +24,11 @@ namespace MarioPirates
             gameObjectToCreate.Clear();
             gameObjectToDestory.Clear();
 
-            EventManager.Instance.Subscribe(e => gameObjectToCreate.Add(((GameObjectCreateEvent)e).Param), EventEnum.GameObjectCreate);
-            EventManager.Instance.Subscribe(e => gameObjectToDestory.AddIfNotExist(((GameObjectDestroyEvent)e).Object), EventEnum.GameObjectDestroy);
+            EventManager.Subscribe(e => gameObjectToCreate.Add(((GameObjectCreateEvent)e).Param), EventEnum.GameObjectCreate);
+            EventManager.Subscribe(e => gameObjectToDestory.AddIfNotExist(((GameObjectDestroyEvent)e).Object), EventEnum.GameObjectDestroy);
 
-            new JavaScriptSerializer().Deserialize<List<GameObjectParam>>(ReadAllText("Scene\\LevelData.json"))
-                .ForEach(o => EventManager.Instance.TriggerEvent(new GameObjectCreateEvent(o)));
+            new JavaScriptSerializer().Deserialize<List<GameObjectParam>>(ReadAllText("Content\\LevelData.json"))
+                .ForEach(o => EventManager.TriggerEvent(new GameObjectCreateEvent(o)));
         }
 
         public void AddGameObject(GameObject o) => gameObjects.Add(o);
@@ -43,10 +43,10 @@ namespace MarioPirates
             gameObjects.ForEach(o => o.Update(dt));
         }
 
-        public void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
+        public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-            gameObjects.ForEach(o => o.Draw(spriteBatch, textures));
+            gameObjects.ForEach(o => o.Draw(spriteBatch));
             spriteBatch.End();
         }
     }

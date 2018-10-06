@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
 
 namespace MarioPirates
 {
@@ -33,9 +32,9 @@ namespace MarioPirates
             Sprite.Update(dt);
         }
 
-        public virtual void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
-            Sprite.Draw(spriteBatch, textures, new Rectangle((int)location.X, (int)location.Y, size.X, size.Y));
+            Sprite.Draw(spriteBatch, new Rectangle((int)location.X, (int)location.Y, size.X, size.Y));
         }
 
         // Override to handle game logic

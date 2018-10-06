@@ -8,7 +8,7 @@
 
         public Star(int dstX, int dstY) : base(dstX, dstY, starWidth * 2, starHeight * 2)
         {
-            Sprite = SpriteFactory.Instance.CreateSprite("stars");
+            Sprite = SpriteFactory.CreateSprite("stars");
             RigidBody.Mass = 0.05f;
         }
 
@@ -16,7 +16,7 @@
         {
             if (other is Mario)
             {
-                EventManager.Instance.TriggerEvent(new GameObjectDestroyEvent(this));
+                EventManager.TriggerEvent(new GameObjectDestroyEvent(this));
             }
         }
     }

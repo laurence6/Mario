@@ -47,14 +47,13 @@
         "Frames": [ 0, 0 ]
     },
 
-    "brownblock": {
-        "TextureName": "brownblock",
+    "usedblock": {
+        "TextureName": "usedblock",
         "Size": [ 16, 16 ],
         "Frames": [ 0, 0 ]
     },
 
     "hiddenblock": {
-        "TextureName": "hiddenblock",
         "Size": [ 16, 16 ],
         "Frames": [ 0, 0 ]
     },

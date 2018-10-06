@@ -58,7 +58,7 @@ namespace MarioPirates
                 {
                     ce.Object1.OnCollide(ce.Object2, ce.Side);
                     ce.Object2.OnCollide(ce.Object1, ce.Side.Invert());
-                    EventManager.Instance.EnqueueEvent(ce);
+                    EventManager.EnqueueEvent(ce);
                 });
             }
         }
@@ -85,17 +85,15 @@ namespace MarioPirates
                 var f2 = ce.Side.Select(v2.DivS(v1.Abs() + v2.Abs()) * ce.Depth);
                 locationFix[r2] += new Vector3(f2, 1);
             });
-            locationFix.Consume(p =>
+            locationFix.Consume((rb, dp) =>
             {
-                var dp = locationFix[p.Key];
                 dp /= dp.Z;
-                p.Key.Object.Location += new Vector2(dp.X, dp.Y);
+                rb.Object.Location += new Vector2(dp.X, dp.Y);
             });
-            velocityFix.Consume(p =>
+            velocityFix.Consume((rb, dv) =>
             {
-                var dv = p.Value;
                 dv /= dv.Z;
-                p.Key.Velocity += new Vector2(dv.X, dv.Y);
+                rb.Velocity += new Vector2(dv.X, dv.Y);
             });
         }
     }

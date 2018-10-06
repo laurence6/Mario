@@ -13,6 +13,12 @@ namespace MarioPirates
             o2 = tmp;
         }
 
+        public static void NotNullThen<T>(this T self, Action f) where T : class
+        {
+            if (self != null)
+                f();
+        }
+
         // Enum
         public static T[] EnumValues<T>() => (T[])Enum.GetValues(typeof(T));
 
@@ -43,13 +49,13 @@ namespace MarioPirates
                 d.Add(key, val);
         }
 
-        public static void ForEach<T, U>(this Dictionary<T, U> d, Action<KeyValuePair<T, U>> f)
+        public static void ForEach<T, U>(this Dictionary<T, U> d, Action<T, U> f)
         {
             foreach (var p in d)
-                f(p);
+                f(p.Key, p.Value);
         }
 
-        public static void Consume<T, U>(this Dictionary<T, U> d, Action<KeyValuePair<T, U>> f)
+        public static void Consume<T, U>(this Dictionary<T, U> d, Action<T, U> f)
         {
             d.ForEach(f);
             d.Clear();

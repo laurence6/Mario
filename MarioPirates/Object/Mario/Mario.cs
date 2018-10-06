@@ -22,36 +22,36 @@ namespace MarioPirates
 
         private void SubscribeInputMoving()
         {
-            EventManager.Instance.Subscribe(e =>
+            EventManager.Subscribe(e =>
             {
                 if (!(State is MarioStateDead || State is MarioStateStarDead))
                     RigidBody.ApplyForce(new Vector2(0, -2000));
             }, EventEnum.KeyUpHold);
-            EventManager.Instance.Subscribe(e =>
+            EventManager.Subscribe(e =>
             {
                 if (!(State is MarioStateDead || State is MarioStateStarDead))
                     RigidBody.ApplyForce(new Vector2(0, 2000));
             }, EventEnum.KeyDownHold);
-            EventManager.Instance.Subscribe(e =>
+            EventManager.Subscribe(e =>
             {
                 if (!(State is MarioStateDead || State is MarioStateStarDead))
                     RigidBody.ApplyForce(new Vector2(-2000, 0));
             }, EventEnum.KeyLeftHold);
-            EventManager.Instance.Subscribe(e =>
+            EventManager.Subscribe(e =>
             {
                 if (!(State is MarioStateDead || State is MarioStateStarDead))
                     RigidBody.ApplyForce(new Vector2(2000, 0));
             }, EventEnum.KeyRightHold);
 
-            EventManager.Instance.Subscribe(e => State.Jump(), EventEnum.KeyUpDown, EventEnum.KeyDownUp);
-            EventManager.Instance.Subscribe(e => State.Crouch(), EventEnum.KeyDownDown, EventEnum.KeyUpUp);
-            EventManager.Instance.Subscribe(e => State.Left(), EventEnum.KeyLeftDown, EventEnum.KeyRightUp);
-            EventManager.Instance.Subscribe(e => State.Right(), EventEnum.KeyRightDown, EventEnum.KeyLeftUp);
+            EventManager.Subscribe(e => State.Jump(), EventEnum.KeyUpDown, EventEnum.KeyDownUp);
+            EventManager.Subscribe(e => State.Crouch(), EventEnum.KeyDownDown, EventEnum.KeyUpUp);
+            EventManager.Subscribe(e => State.Left(), EventEnum.KeyLeftDown, EventEnum.KeyRightUp);
+            EventManager.Subscribe(e => State.Right(), EventEnum.KeyRightDown, EventEnum.KeyLeftUp);
         }
 
         private void SubscribeInputTransition()
         {
-            EventManager.Instance.Subscribe(e =>
+            EventManager.Subscribe(e =>
             {
                 switch ((e as KeyDownEvent).Key)
                 {

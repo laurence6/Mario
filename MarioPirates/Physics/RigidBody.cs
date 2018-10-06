@@ -8,7 +8,8 @@ namespace MarioPirates
 
     internal class RigidBody
     {
-        public GameObject Object { get; }
+        public readonly GameObject Object;
+
         public Rectangle Bound => new Rectangle((int)Object.Location.X, (int)Object.Location.Y, Object.Size.X, Object.Size.Y);
 
         public byte CollideLayerMask { get; set; } = 0b1;

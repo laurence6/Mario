@@ -6,7 +6,7 @@ namespace MarioPirates
 
         public Background(int X, int Y) : base(X, Y, bkgdWidth, bkgdHeight)
         {
-            Sprite = SpriteFactory.Instance.CreateSprite("background");
+            Sprite = SpriteFactory.CreateSprite("background");
         }
     }
 }

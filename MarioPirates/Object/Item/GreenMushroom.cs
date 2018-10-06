@@ -8,7 +8,7 @@
 
         public GreenMushroom(int dstX, int dstY) : base(dstX, dstY, greenMushroomWidth * 2, greenMushroomHeight * 2)
         {
-            Sprite = SpriteFactory.Instance.CreateSprite("greenmushroom");
+            Sprite = SpriteFactory.CreateSprite("greenmushroom");
             RigidBody.Mass = 0.05f;
         }
 
@@ -16,7 +16,7 @@
         {
             if (other is Mario)
             {
-                EventManager.Instance.TriggerEvent(new GameObjectDestroyEvent(this));
+                EventManager.TriggerEvent(new GameObjectDestroyEvent(this));
             }
         }
     }

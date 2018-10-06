@@ -1,14 +1,15 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Script.Serialization;
 using static System.IO.File;
 
 namespace MarioPirates
 {
-    internal sealed class SpriteFactory
+    internal static class SpriteFactory
     {
-        public static SpriteFactory Instance { get; } = new SpriteFactory();
-
         private class SpriteParam
         {
             public string TextureName = null;
@@ -21,22 +22,23 @@ namespace MarioPirates
                 var frames = new Point[Frames.Length / 2];
                 for (var i = 0; i < frames.Length; i++)
                     frames[i] = new Point(Frames[i * 2], Frames[i * 2 + 1]);
-                return new Sprite(TextureName, new Point(Size[0], Size[1]), frames, AccelerateRate);
+                return new Sprite(textures[TextureName], new Point(Size[0], Size[1]), frames, AccelerateRate);
             }
         };
 
-        private Dictionary<string, SpriteParam> spriteParam;
+        private static readonly Dictionary<string, Texture2D> textures = new Dictionary<string, Texture2D>();
 
-        private SpriteFactory()
+        private static Dictionary<string, SpriteParam> spriteParam;
+
+        public static void LoadContent(ContentManager content)
         {
-            Reset();
+            spriteParam = new JavaScriptSerializer().Deserialize<Dictionary<string, SpriteParam>>(ReadAllText("Content\\SpritesData.json"));
+            spriteParam.ForEach((name, param) => param.TextureName.NotNullThen(() => textures.AddIfNotExist(param.TextureName, null)));
+            textures.Keys.ToList().ForEach(name => textures[name] = content.Load<Texture2D>(name));
         }
 
-        public void Reset()
-        {
-            spriteParam = new JavaScriptSerializer().Deserialize<Dictionary<string, SpriteParam>>(ReadAllText("Sprite\\SpritesData.json"));
-        }
+        public static void Reset() { }
 
-        public Sprite CreateSprite(string spriteName) => spriteParam[spriteName].ToSprite();
+        public static Sprite CreateSprite(string spriteName) => spriteParam[spriteName].ToSprite();
     }
 }

@@ -8,7 +8,7 @@ namespace MarioPirates
 
         public Goomba(int x, int y) : base(x, y, goombaWidth * 2, goombaHeight * 2)
         {
-            Sprite = SpriteFactory.Instance.CreateSprite("goomba");
+            Sprite = SpriteFactory.CreateSprite("goomba");
             RigidBody.Mass = 0.1f;
         }
 
@@ -19,7 +19,7 @@ namespace MarioPirates
                 if (side == CollisionSide.Top ||
                     mario.State is MarioStateStarBig || mario.State is MarioStateStarSmall)
                 {
-                    Sprite = SpriteFactory.Instance.CreateSprite("goomba_stomped");
+                    Sprite = SpriteFactory.CreateSprite("goomba_stomped");
                     RigidBody.Velocity = new Vector2(0f, 0f);
                     RigidBody.CollideLayerMask = 0b10;
                 }

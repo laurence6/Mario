@@ -5,7 +5,7 @@
     internal class BrickBlock : Block
     {
         public BrickBlock(int dstX, int dstY, string state)
-            : base(dstX, dstY, state, SpriteFactory.Instance.CreateSprite("brickblock"))
+            : base(dstX, dstY, state, SpriteFactory.CreateSprite("brickblock"))
         {
         }
 
@@ -19,7 +19,7 @@
                     var state = mario.State.GetType().ToString();
                     if (state.Contains("Big") || state.Contains("Fire"))
                     {
-                        EventManager.Instance.EnqueueEvent(new GameObjectDestroyEvent(this));
+                        EventManager.EnqueueEvent(new GameObjectDestroyEvent(this));
                     }
                 }
             }

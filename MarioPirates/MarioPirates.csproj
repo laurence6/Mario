@@ -52,6 +52,7 @@
     <Compile Include="Event\EventEnum.cs" />
     <Compile Include="Event\BaseEvent.cs" />
     <Compile Include="Event\EventManager.cs" />
+    <Compile Include="Event\OnEvent.cs" />
     <Compile Include="Event\Scene\GameObjectCreateEvent.cs" />
     <Compile Include="Event\Scene\GameObjectDestroyEvent.cs" />
     <Compile Include="Event\IEvent.cs" />
@@ -172,13 +173,13 @@
   <ItemGroup>
     <Content Include="Icon.ico" />
     <None Include=".editorconfig" />
+    <None Include="Content\LevelData.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\SpritesData.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
-    <None Include="Scene\LevelData.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Sprite\SpritesData.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />

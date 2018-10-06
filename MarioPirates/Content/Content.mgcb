@@ -61,18 +61,6 @@
 /processorParam:TextureFormat=Color
 /build:orangeblock.png
 
-#begin brownblock.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:brownblock.png
-
 #begin brickblock.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -264,4 +252,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:smallstarpowermario.png
+
+#begin usedblock.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:usedblock.png
 

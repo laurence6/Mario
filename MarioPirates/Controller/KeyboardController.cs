@@ -53,7 +53,7 @@ namespace MarioPirates.Controller
                     state |= GetPrevKeyState(k) | GetCurrKeyState(k);
 
                 if (eventMapping[(int)state].TryGetValue(k, out var e))
-                    EventManager.Instance.EnqueueEvent(e);
+                    EventManager.EnqueueEvent(e);
             });
 
             prevState = currState;

@@ -13,9 +13,9 @@
 
             stopmed = false;
             sprites = new Sprite[3] {
-                SpriteFactory.Instance.CreateSprite("koopa_left"),
-                SpriteFactory.Instance.CreateSprite("koopa_right"),
-                SpriteFactory.Instance.CreateSprite("koopa_stomped"),
+                SpriteFactory.CreateSprite("koopa_left"),
+                SpriteFactory.CreateSprite("koopa_right"),
+                SpriteFactory.CreateSprite("koopa_stomped"),
             };
             Sprite = sprites[0];
         }

@@ -8,7 +8,7 @@
 
         public Coin(int dstX, int dstY) : base(dstX, dstY, coinWidth * 2, coinHeight * 2)
         {
-            Sprite = SpriteFactory.Instance.CreateSprite("coins");
+            Sprite = SpriteFactory.CreateSprite("coins");
             RigidBody.Mass = 0.05f;
         }
 
@@ -16,7 +16,7 @@
         {
             if (obj is Mario)
             {
-                EventManager.Instance.TriggerEvent(new GameObjectDestroyEvent(this));
+                EventManager.TriggerEvent(new GameObjectDestroyEvent(this));
             }
         }
     }

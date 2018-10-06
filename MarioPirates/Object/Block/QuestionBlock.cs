@@ -5,7 +5,7 @@
     internal class QuestionBlock : Block
     {
         public QuestionBlock(int dstX, int dstY, string state)
-            : base(dstX, dstY, state, SpriteFactory.Instance.CreateSprite("questionblock"))
+            : base(dstX, dstY, state, SpriteFactory.CreateSprite("questionblock"))
         {
         }
 
@@ -16,7 +16,7 @@
                 {
                     SetState(BlockState.Used);
 
-                    EventManager.Instance.TriggerEvent(new GameObjectCreateEvent(
+                    EventManager.TriggerEvent(new GameObjectCreateEvent(
                         new GameObjectParam
                         {
                             TypeName = "Coin",

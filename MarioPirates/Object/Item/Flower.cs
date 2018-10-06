@@ -8,7 +8,7 @@
 
         public Flower(int dstX, int dstY) : base(dstX, dstY, flowerWidth * 2, flowerHeight * 2)
         {
-            Sprite = SpriteFactory.Instance.CreateSprite("flower");
+            Sprite = SpriteFactory.CreateSprite("flower");
             RigidBody.Mass = 0.05f;
         }
 
@@ -16,7 +16,7 @@
         {
             if (other is Mario)
             {
-                EventManager.Instance.TriggerEvent(new GameObjectDestroyEvent(this));
+                EventManager.TriggerEvent(new GameObjectDestroyEvent(this));
             }
         }
     }

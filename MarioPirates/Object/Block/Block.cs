@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
 
 namespace MarioPirates
 {
@@ -15,7 +14,7 @@ namespace MarioPirates
 
         protected Block(int dstX, int dstY, string stateName, Sprite normalSprite) : base(dstX, dstY, blockWidth * 2, blockHeight * 2)
         {
-            usedSprite = SpriteFactory.Instance.CreateSprite("brownblock");
+            usedSprite = SpriteFactory.CreateSprite("usedblock");
             this.normalSprite = normalSprite;
             Enum.TryParse(stateName, out BlockState state);
             SetState(state);
@@ -26,10 +25,9 @@ namespace MarioPirates
             Sprite?.Update(dt);
         }
 
-        public override void Draw(SpriteBatch spriteBatch, Dictionary<string, Texture2D> textures)
+        public override void Draw(SpriteBatch spriteBatch)
         {
-            if (Sprite != null)
-                base.Draw(spriteBatch, textures);
+            Sprite.NotNullThen(() => base.Draw(spriteBatch));
         }
 
         public void SetState(BlockState state)

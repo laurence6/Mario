@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace MarioPirates
 {
@@ -13,30 +12,6 @@ namespace MarioPirates
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-
-        private Dictionary<string, Texture2D> textures = new Dictionary<string, Texture2D> {
-            { "bigmario", null },
-            { "bigstarpowermario", null },
-            { "brickblock", null },
-            { "brokenblock", null },
-            { "brownblock", null },
-            { "coins", null },
-            { "deadmario", null },
-            { "firemario", null },
-            { "flower", null },
-            { "goomba", null },
-            { "greenmushroom", null },
-            { "koopa", null },
-            { "orangeblock", null },
-            { "pipeline", null },
-            { "questionblock", null },
-            { "redmushroom", null },
-            { "smallmario", null },
-            { "smallstarpowermario", null },
-            { "stars", null },
-            { "frame", null },
-            { "background", null }
-        };
 
         private List<IController> controllers = new List<IController>();
 
@@ -65,11 +40,12 @@ namespace MarioPirates
 
         private void Reset()
         {
-            EventManager.Instance.Reset();
+            EventManager.Reset();
             Physics.Reset();
+            SpriteFactory.Reset();
             Scene.Instance.Reset();
 
-            EventManager.Instance.Subscribe(e =>
+            EventManager.Subscribe(e =>
             {
                 switch ((e as KeyDownEvent).Key)
                 {
@@ -115,7 +91,7 @@ namespace MarioPirates
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            textures.Keys.ToList().ForEach(name => textures[name] = Content.Load<Texture2D>(name));
+            SpriteFactory.LoadContent(Content);
         }
 
         /// <summary>
@@ -136,7 +112,7 @@ namespace MarioPirates
         {
             controllers.ForEach(c => c.Update());
             Scene.Instance.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
-            EventManager.Instance.ProcessQueue();
+            EventManager.ProcessQueue();
 
             if (triggerReset)
                 Reset();
@@ -150,7 +126,7 @@ namespace MarioPirates
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            Scene.Instance.Draw(spriteBatch, textures);
+            Scene.Instance.Draw(spriteBatch);
         }
     }
 }

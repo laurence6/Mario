@@ -7,7 +7,7 @@ namespace MarioPirates
         public MarioStateFireRightCrouch(Mario mario) : base(mario)
         {
             mario.Size = new Point(marioWidth, marioHeight);
-            mario.Sprite = SpriteFactory.Instance.CreateSprite("fire_crouch_right");
+            mario.Sprite = SpriteFactory.CreateSprite("fire_crouch_right");
         }
 
         public override void Left()
