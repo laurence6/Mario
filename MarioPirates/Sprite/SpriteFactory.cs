@@ -5,8 +5,6 @@ using static System.IO.File;
 
 namespace MarioPirates
 {
-    using static Common;
-
     internal sealed class SpriteFactory
     {
         public static SpriteFactory Instance { get; } = new SpriteFactory();
@@ -22,8 +20,8 @@ namespace MarioPirates
             {
                 var frames = new Point[Frames.Length / 2];
                 for (var i = 0; i < frames.Length; i++)
-                    frames[i] = P(Frames[i * 2], Frames[i * 2 + 1]);
-                return new Sprite(TextureName, P(Size[0], Size[1]), frames, AccelerateRate);
+                    frames[i] = new Point(Frames[i * 2], Frames[i * 2 + 1]);
+                return new Sprite(TextureName, new Point(Size[0], Size[1]), frames, AccelerateRate);
             }
         };
 
