@@ -1,0 +1,85 @@
+﻿[
+    "small_crouch_left",
+
+    "small_jump_left",
+
+    "small_run_left",
+    
+    "small_idle_left",
+
+    "small_idle_right",
+
+    "small_run_right",
+
+    "small_jump_right",
+
+    "small_crouch_right",
+
+    "big_crouch_left",
+
+    "big_jump_left",
+
+    "big_run_left",
+
+    "big_idle_left",
+
+    "big_idle_right",
+
+    "big_run_right",
+
+    "big_jump_right",
+
+    "big_crouch_right",
+
+    "fire_crouch_left",
+
+    "fire_jump_left",
+
+    "fire_run_left",
+
+    "fire_idle_left",
+
+    "fire_idle_right",
+
+    "fire_run_right",
+
+    "fire_jump_right",
+
+    "fire_crouch_right",
+
+    "star_small_idle_left",
+
+    "star_small_run_left",
+
+    "star_small_jump_left",
+
+    "star_small_crouch_left",
+
+    "star_small_idle_right",
+
+    "star_small_run_right",
+
+    "star_small_jump_right",
+
+    "star_small_crouch_right",
+
+    "star_big_idle_left",
+
+    "star_big_run_left",
+
+    "star_big_jump_left",
+
+    "star_big_crouch_left",
+
+    "star_big_idle_right",
+
+    "star_big_run_right",
+
+    "star_big_jump_right",
+
+    "star_big_crouch_right",
+
+    "dead",
+
+    "star_dead"
+]

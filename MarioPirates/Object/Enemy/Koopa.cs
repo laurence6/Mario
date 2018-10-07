@@ -29,8 +29,7 @@
         public override void OnCollide(GameObject other, CollisionSide side)
         {
             if (other is Mario mario)
-                if (side == CollisionSide.Top ||
-                    mario.State is MarioStateStarBig || mario.State is MarioStateStarSmall)
+                if (side == CollisionSide.Top || mario.State.IsInvincible())
                 {
                     stopmed = true;
                     RigidBody.CollideLayerMask = 0b10;

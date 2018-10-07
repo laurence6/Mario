@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 
 namespace MarioPirates
 {
-    internal class MarioStateDead : MarioState
+    internal class MarioStateDead : MarioStateSize
     {
         protected const int marioWidth = 30, marioHeight = 28;
 
@@ -12,44 +12,18 @@ namespace MarioPirates
             mario.Sprite = SpriteFactory.CreateSprite("dead");
         }
 
-        public override void Left()
-        {
-        }
-
-        public override void Right()
-        {
-        }
-
-        public override void Jump()
-        {
-        }
-
-        public override void Crouch()
-        {
-        }
-
-        public override void Small()
-        {
-            mario.State = new MarioStateSmallRightIdle(mario);
-        }
-
-        public override void Big()
-        {
-            mario.State = new MarioStateBigRightIdle(mario);
-        }
-
-        public override void Fire()
-        {
-            mario.State = new MarioStateFireRightIdle(mario);
-        }
-
-        public override void Star()
-        {
-            mario.State = new MarioStateStarSmallRightIdle(mario);
-        }
-
         public override void Dead()
         {
+        }
+
+        public override bool IsDead()
+        {
+            return true;
+        }
+
+        public override string GetString()
+        {
+            return "dead";
         }
     }
 }

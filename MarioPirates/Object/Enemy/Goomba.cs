@@ -16,8 +16,7 @@ namespace MarioPirates
         {
             if (other is Mario mario)
             {
-                if (side == CollisionSide.Top ||
-                    mario.State is MarioStateStarBig || mario.State is MarioStateStarSmall)
+                if (side == CollisionSide.Top || mario.State.IsInvincible())
                 {
                     Sprite = SpriteFactory.CreateSprite("goomba_stomped");
                     RigidBody.Velocity = new Vector2(0f, 0f);

@@ -2,11 +2,11 @@ using Microsoft.Xna.Framework;
 
 namespace MarioPirates
 {
-    internal abstract class MarioStateSmall : MarioState
+    internal class MarioStateSmall : MarioStateSize
     {
         protected const int marioWidth = 34, marioHeight = 30;
 
-        protected MarioStateSmall(Mario mario) : base(mario)
+        public MarioStateSmall(Mario mario) : base(mario)
         {
             mario.Size = new Point(marioWidth, marioHeight);
         }
@@ -15,9 +15,9 @@ namespace MarioPirates
         {
         }
 
-        public override void Dead()
+        public override string GetString()
         {
-            mario.State = new MarioStateDead(mario);
+            return "small";
         }
     }
 }

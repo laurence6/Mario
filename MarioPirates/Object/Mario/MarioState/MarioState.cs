@@ -1,30 +1,130 @@
 namespace MarioPirates
 {
-    internal abstract class MarioState
+    internal class MarioState
     {
-        protected Mario mario;
+        private Mario mario;
+        private MarioStateStar star;
+        private MarioStateDirection direction;
+        public MarioStateSize Size { get; set; }
+        public MarioStateAction Action { get; set; }
 
-        protected MarioState(Mario mario)
+        public MarioState(Mario mario)
         {
             this.mario = mario;
+            star = new MarioStateStar(false);
+            direction = new MarioStateDirection(false);
+            Size = new MarioStateSmall(mario);
+            Action = new MarioStateIdle(this);
+
+            ApplySprite();
         }
 
-        public abstract void Left();
+        private void ApplySprite()
+        {
+            var s = "";
+            if (IsInvincible())
+                s += "star_";
+            if (IsDead())
+                s += Size.GetString();
+            else
+                s += Size.GetString() + "_" + Action.GetString() + "_" + direction.GetString();
+            mario.Sprite = mario.Sprites[s];
+        }
 
-        public abstract void Right();
+        public void Left()
+        {
+            direction.Left();
+            ApplySprite();
+        }
 
-        public abstract void Jump();
+        public void Right()
+        {
+            direction.Right();
+            ApplySprite();
+        }
 
-        public abstract void Crouch();
+        public void Idle()
+        {
+            Action.Idle();
+            ApplySprite();
+        }
 
-        public abstract void Small();
+        public void Run()
+        {
+            Action.Run();
+            ApplySprite();
+        }
 
-        public abstract void Big();
+        public void Jump()
+        {
+            Action.Jump();
+            ApplySprite();
+        }
 
-        public abstract void Fire();
+        public void Crouch()
+        {
+            Action.Crouch();
+            ApplySprite();
+        }
 
-        public abstract void Star();
+        public void Small()
+        {
+            Size.Small();
+            ApplySprite();
+        }
 
-        public abstract void Dead();
+        public void Big()
+        {
+            Size.Big();
+            ApplySprite();
+        }
+
+        public void Fire()
+        {
+            Size.Fire();
+            if (IsInvincible())
+                Size.Big();
+            ApplySprite();
+        }
+
+        public void Dead()
+        {
+            Size.Dead();
+            ApplySprite();
+        }
+
+        public void Star()
+        {
+            star.Star();
+            if (Size.GetString().Equals("fire"))
+                Size.Big();
+            ApplySprite();
+        }
+
+        public void Unstar()
+        {
+            star.Unstar();
+            ApplySprite();
+        }
+
+        public bool IsInvincible()
+        {
+            return star.IsInvincible();
+        }
+
+        public bool IsDead()
+        {
+            return Size.IsDead();
+        }
+
+        public bool IsJump()
+        {
+            return Action.GetString().Equals("jump");
+        }
+
+        public bool IsCrouch()
+        {
+            return Action.GetString().Equals("crouch");
+        }
     }
 }
