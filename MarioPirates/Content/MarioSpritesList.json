@@ -4,7 +4,7 @@
     "small_jump_left",
 
     "small_run_left",
-    
+
     "small_idle_left",
 
     "small_idle_right",
@@ -47,39 +47,39 @@
 
     "fire_crouch_right",
 
-    "star_small_idle_left",
+    "small_idle_left_star",
 
-    "star_small_run_left",
+    "small_run_left_star",
 
-    "star_small_jump_left",
+    "small_jump_left_star",
 
-    "star_small_crouch_left",
+    "small_crouch_left_star",
 
-    "star_small_idle_right",
+    "small_idle_right_star",
 
-    "star_small_run_right",
+    "small_run_right_star",
 
-    "star_small_jump_right",
+    "small_jump_right_star",
 
-    "star_small_crouch_right",
+    "small_crouch_right_star",
 
-    "star_big_idle_left",
+    "big_idle_left_star",
 
-    "star_big_run_left",
+    "big_run_left_star",
 
-    "star_big_jump_left",
+    "big_jump_left_star",
 
-    "star_big_crouch_left",
+    "big_crouch_left_star",
 
-    "star_big_idle_right",
+    "big_idle_right_star",
 
-    "star_big_run_right",
+    "big_run_right_star",
 
-    "star_big_jump_right",
+    "big_jump_right_star",
 
-    "star_big_crouch_right",
+    "big_crouch_right_star",
 
     "dead",
 
-    "star_dead"
+    "dead_star"
 ]

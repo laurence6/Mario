@@ -88,7 +88,7 @@
     <Compile Include="Object\Mario\MarioState\MarioStateIdle.cs" />
     <Compile Include="Object\Mario\MarioState\MarioStateJump.cs" />
     <Compile Include="Object\Mario\MarioState\MarioStateRun.cs" />
-    <Compile Include="Object\Mario\MarioState\MarioStateStar.cs" />
+    <Compile Include="Object\Mario\MarioState\MarioStateInvincible.cs" />
     <Compile Include="Object\Mario\MarioState\MarioStateDirection.cs" />
     <Compile Include="Object\Mario\MarioState\MarioStateAction.cs" />
     <Compile Include="Object\Item\RedMushroom.cs" />

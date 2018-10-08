@@ -1,11 +1,9 @@
-using Microsoft.Xna.Framework;
-
 namespace MarioPirates
 {
     internal class MarioStateDirection
     {
         private bool left;
-    
+
         public MarioStateDirection(bool isLeft = false)
         {
             left = isLeft;
@@ -20,7 +18,7 @@ namespace MarioPirates
         {
             left = false;
         }
-        
+
         public string GetString()
         {
             if (left)

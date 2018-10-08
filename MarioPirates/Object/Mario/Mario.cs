@@ -10,13 +10,15 @@ namespace MarioPirates
 
     internal class Mario : GameObjectRigidBody
     {
-        public MarioState State { get; set; }
-        public Dictionary<string, Sprite> Sprites { get; set; }
+        public readonly Dictionary<string, Sprite> Sprites;
+
+        public readonly MarioState State;
 
         public Mario(int dstX, int dstY) : base(dstX, dstY, 0, 0)
         {
             Sprites = new Dictionary<string, Sprite>();
-            LoadSprites();
+            new JavaScriptSerializer().Deserialize<List<string>>(ReadAllText("Content\\MarioSpritesList.json"))
+                 .ForEach(s => Sprites.Add(s, SpriteFactory.CreateSprite(s)));
 
             State = new MarioState(this);
 
@@ -27,34 +29,26 @@ namespace MarioPirates
             SubscribeInputTransition();
         }
 
-        private void LoadSprites()
-        {
-            List<string> list = 
-                new JavaScriptSerializer().Deserialize<List<string>>(ReadAllText("Content\\MarioSpritesList.json"));
-            foreach (var s in list)
-                Sprites.Add(s, SpriteFactory.CreateSprite(s));
-        }
-
         private void SubscribeInputMoving()
         {
             EventManager.Subscribe(e =>
             {
-                if (!(State.IsDead()))
+                if (!State.IsDead)
                     RigidBody.ApplyForce(new Vector2(0, -2000));
             }, EventEnum.KeyUpHold);
             EventManager.Subscribe(e =>
             {
-                if (!(State.IsDead()))
+                if (!State.IsDead)
                     RigidBody.ApplyForce(new Vector2(0, 2000));
             }, EventEnum.KeyDownHold);
             EventManager.Subscribe(e =>
             {
-                if (!(State.IsDead()))
+                if (!State.IsDead)
                     RigidBody.ApplyForce(new Vector2(-2000, 0));
             }, EventEnum.KeyLeftHold);
             EventManager.Subscribe(e =>
             {
-                if (!(State.IsDead()))
+                if (!State.IsDead)
                     RigidBody.ApplyForce(new Vector2(2000, 0));
             }, EventEnum.KeyRightHold);
 
@@ -64,7 +58,7 @@ namespace MarioPirates
             EventManager.Subscribe(e => State.Crouch(), EventEnum.KeyDownHold);
             EventManager.Subscribe(e =>
             {
-                if (!(State.IsJump() || State.IsCrouch()))
+                if (!(State.IsJump || State.IsCrouch))
                 {
                     if (RigidBody.Force.X != 0)
                         State.Run();
@@ -72,7 +66,7 @@ namespace MarioPirates
                         State.Idle();
                 }
             }, EventEnum.KeyLeftHold, EventEnum.KeyRightHold);
-            EventManager.Subscribe(e => State.Idle(), 
+            EventManager.Subscribe(e => State.Idle(),
                 EventEnum.KeyUpUp, EventEnum.KeyDownUp, EventEnum.KeyLeftUp, EventEnum.KeyRightUp);
         }
 
@@ -95,7 +89,7 @@ namespace MarioPirates
                         State.Dead();
                         break;
                     case Keys.P:
-                        State.Star();
+                        State.Invincible();
                         break;
                 }
             }, EventEnum.KeyDown);
@@ -126,15 +120,14 @@ namespace MarioPirates
             }
             else if (obj is Star)
             {
-                State.Star();
+                State.Invincible();
             }
 
             // Response to collsion with enemies
             if (obj is Goomba || obj is Koopa)
             {
-                if (!(side == CollisionSide.Bottom || State.IsInvincible()))
+                if (!(side == CollisionSide.Bottom || State.IsInvincible))
                 {
-                    RigidBody.CollideLayerMask = 0b10;
                     State.Dead();
                 }
             }

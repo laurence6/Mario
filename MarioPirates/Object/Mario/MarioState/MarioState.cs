@@ -3,7 +3,7 @@ namespace MarioPirates
     internal class MarioState
     {
         private Mario mario;
-        private MarioStateStar star;
+        private MarioStateInvincible invincible;
         private MarioStateDirection direction;
         public MarioStateSize Size { get; set; }
         public MarioStateAction Action { get; set; }
@@ -11,120 +11,107 @@ namespace MarioPirates
         public MarioState(Mario mario)
         {
             this.mario = mario;
-            star = new MarioStateStar(false);
+            invincible = new MarioStateInvincible(false);
             direction = new MarioStateDirection(false);
             Size = new MarioStateSmall(mario);
             Action = new MarioStateIdle(this);
 
-            ApplySprite();
+            UpdateSprite();
         }
 
-        private void ApplySprite()
+        private void UpdateSprite()
         {
-            var s = "";
-            if (IsInvincible())
-                s += "star_";
-            if (IsDead())
-                s += Size.GetString();
-            else
-                s += Size.GetString() + "_" + Action.GetString() + "_" + direction.GetString();
+            var s = Size.GetString();
+            if (!IsDead)
+                s += "_" + Action.GetString() + "_" + direction.GetString();
+            if (IsInvincible)
+                s += "_star";
             mario.Sprite = mario.Sprites[s];
         }
 
         public void Left()
         {
             direction.Left();
-            ApplySprite();
+            UpdateSprite();
         }
 
         public void Right()
         {
             direction.Right();
-            ApplySprite();
+            UpdateSprite();
         }
 
         public void Idle()
         {
             Action.Idle();
-            ApplySprite();
+            UpdateSprite();
         }
 
         public void Run()
         {
             Action.Run();
-            ApplySprite();
+            UpdateSprite();
         }
 
         public void Jump()
         {
             Action.Jump();
-            ApplySprite();
+            UpdateSprite();
         }
 
         public void Crouch()
         {
             Action.Crouch();
-            ApplySprite();
+            UpdateSprite();
         }
 
         public void Small()
         {
             Size.Small();
-            ApplySprite();
+            UpdateSprite();
         }
 
         public void Big()
         {
             Size.Big();
-            ApplySprite();
+            UpdateSprite();
         }
 
         public void Fire()
         {
             Size.Fire();
-            if (IsInvincible())
+            if (IsInvincible)
                 Size.Big();
-            ApplySprite();
+            UpdateSprite();
         }
 
         public void Dead()
         {
             Size.Dead();
-            ApplySprite();
+            UpdateSprite();
+            mario.RigidBody.CollideLayerMask = 0b10;
         }
 
-        public void Star()
+        public void Invincible()
         {
-            star.Star();
-            if (Size.GetString().Equals("fire"))
+            invincible.SetInvincible(true);
+            if (Size.GetString() != "fire")
                 Size.Big();
-            ApplySprite();
+            UpdateSprite();
         }
 
-        public void Unstar()
+        public void CancleInvincible()
         {
-            star.Unstar();
-            ApplySprite();
+            invincible.SetInvincible(false);
+            UpdateSprite();
         }
 
-        public bool IsInvincible()
-        {
-            return star.IsInvincible();
-        }
+        public bool IsInvincible => invincible.IsInvincible;
 
-        public bool IsDead()
-        {
-            return Size.IsDead();
-        }
+        public bool IsDead => Size.IsDead();
 
-        public bool IsJump()
-        {
-            return Action.GetString().Equals("jump");
-        }
+        public bool IsJump => Action.GetString() == "jump";
 
-        public bool IsCrouch()
-        {
-            return Action.GetString().Equals("crouch");
-        }
+        public bool IsCrouch => Action.GetString() == "crouch";
     }
 }

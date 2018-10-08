@@ -1,5 +1,3 @@
-using Microsoft.Xna.Framework;
-
 namespace MarioPirates
 {
     internal abstract class MarioStateAction
