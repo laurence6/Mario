@@ -132,7 +132,8 @@ namespace MarioPirates
                     {
                         State.Dead();
                     }
-                    else{
+                    else
+                    {
                         State.Small();
                     }
                 }
