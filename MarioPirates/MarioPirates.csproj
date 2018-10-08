@@ -61,6 +61,7 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Object\Block\BlockState.cs" />
     <Compile Include="Object\GameObjectRigidBody.cs" />
+    <Compile Include="Object\Mario\MarioState\MarioStateEnum.cs" />
     <Compile Include="Object\Mario\MarioState\MarioState.cs" />
     <Compile Include="Physics\RigidBody.cs" />
     <Compile Include="Physics\CollisionSide.cs" />

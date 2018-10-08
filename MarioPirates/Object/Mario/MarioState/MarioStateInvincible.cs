@@ -13,5 +13,17 @@ namespace MarioPirates
         {
             IsInvincible = inInvincible;
         }
+
+        public MarioStateEnum GetEnum()
+        {
+            if (IsInvincible)
+            {
+                return MarioStateEnum.Invincible;
+            }
+            else
+            {
+                return MarioStateEnum.Vincible;
+            }
+        }
     }
 }

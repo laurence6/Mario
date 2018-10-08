@@ -34,6 +34,6 @@ namespace MarioPirates
             return false;
         }
 
-        public abstract string GetString();
+        public abstract MarioStateEnum GetEnum();
     }
 }

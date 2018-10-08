@@ -21,9 +21,9 @@ namespace MarioPirates
             return true;
         }
 
-        public override string GetString()
+        public override MarioStateEnum GetEnum()
         {
-            return "dead";
+            return MarioStateEnum.Dead;
         }
     }
 }
