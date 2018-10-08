@@ -89,7 +89,7 @@ namespace MarioPirates
         {
             Size.Dead();
             UpdateSprite();
-            mario.RigidBody.CollideLayerMask = 0b10;
+            mario.RigidBody.CollideLayerMask = CollisionLayer.None;
         }
 
         public void Invincible()

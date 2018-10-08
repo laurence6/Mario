@@ -12,7 +12,7 @@ namespace MarioPirates
 
         public Rectangle Bound => new Rectangle((int)Object.Location.X, (int)Object.Location.Y, Object.Size.X, Object.Size.Y);
 
-        public byte CollideLayerMask { get; set; } = 0b1;
+        public CollisionLayer CollideLayerMask { get; set; } = CollisionLayer.Normal;
         public CollisionSide CollideSideMask { get; set; } = CollisionSide.All;
 
         public float Mass { get; set; } = 1e24f;

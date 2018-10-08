@@ -32,7 +32,7 @@
                 if (side == CollisionSide.Top || mario.State.IsInvincible)
                 {
                     stopmed = true;
-                    RigidBody.CollideLayerMask = 0b10;
+                    RigidBody.CollideLayerMask = CollisionLayer.None;
                 }
         }
     }
