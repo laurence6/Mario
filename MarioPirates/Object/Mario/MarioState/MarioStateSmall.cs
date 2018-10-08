@@ -15,9 +15,6 @@ namespace MarioPirates
         {
         }
 
-        public override MarioStateEnum GetEnum()
-        {
-            return MarioStateEnum.Small;
-        }
+        public override MarioStateEnum State => MarioStateEnum.Small;
     }
 }

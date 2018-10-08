@@ -29,6 +29,6 @@ namespace MarioPirates
             state.Action = new MarioStateCrouch(state);
         }
 
-        public abstract MarioStateEnum GetEnum();
+        public abstract MarioStateEnum State { get; }
     }
 }

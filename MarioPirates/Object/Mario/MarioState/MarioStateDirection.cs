@@ -19,16 +19,6 @@ namespace MarioPirates
             left = false;
         }
 
-        public MarioStateEnum GetEnum()
-        {
-            if (left)
-            {
-                return MarioStateEnum.Left;
-            }
-            else
-            {
-                return MarioStateEnum.Right;
-            }
-        }
+        public MarioStateEnum State => left ? MarioStateEnum.Left : MarioStateEnum.Right;
     }
 }

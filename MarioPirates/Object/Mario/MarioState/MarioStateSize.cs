@@ -29,11 +29,8 @@ namespace MarioPirates
             mario.State.Size = new MarioStateDead(mario);
         }
 
-        public virtual bool IsDead()
-        {
-            return false;
-        }
+        public virtual bool IsDead => false;
 
-        public abstract MarioStateEnum GetEnum();
+        public abstract MarioStateEnum State { get; }
     }
 }

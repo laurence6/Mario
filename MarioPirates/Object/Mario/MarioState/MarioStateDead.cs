@@ -16,14 +16,8 @@ namespace MarioPirates
         {
         }
 
-        public override bool IsDead()
-        {
-            return true;
-        }
+        public override bool IsDead => true;
 
-        public override MarioStateEnum GetEnum()
-        {
-            return MarioStateEnum.Dead;
-        }
+        public override MarioStateEnum State => MarioStateEnum.Dead;
     }
 }

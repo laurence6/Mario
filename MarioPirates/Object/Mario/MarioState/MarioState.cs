@@ -21,9 +21,9 @@ namespace MarioPirates
 
         private void UpdateSprite()
         {
-            var s = Size.GetEnum().ToString().ToLower();
+            var s = Size.State.ToString().ToLower();
             if (!IsDead)
-                s += "_" + Action.GetEnum().ToString().ToLower() + "_" + direction.GetEnum().ToString().ToLower();
+                s += "_" + Action.State.ToString().ToLower() + "_" + direction.State.ToString().ToLower();
             if (IsInvincible)
                 s += "_star";
             mario.Sprite = mario.Sprites[s];
@@ -95,7 +95,7 @@ namespace MarioPirates
         public void Invincible()
         {
             invincible.SetInvincible(true);
-            if (Size.GetEnum() == MarioStateEnum.Fire)
+            if (Size.State == MarioStateEnum.Fire)
                 Size.Big();
             UpdateSprite();
         }
@@ -108,12 +108,12 @@ namespace MarioPirates
 
         public bool IsInvincible => invincible.IsInvincible;
 
-        public bool IsDead => Size.IsDead();
+        public bool IsDead => Size.IsDead;
 
-        public bool IsJump => Action.GetEnum() == MarioStateEnum.Jump;
+        public bool IsJump => Action.State == MarioStateEnum.Jump;
 
-        public bool IsCrouch => Action.GetEnum() == MarioStateEnum.Crouch;
+        public bool IsCrouch => Action.State == MarioStateEnum.Crouch;
 
-        public bool IsSmall => Size.GetEnum() == MarioStateEnum.Small;
+        public bool IsSmall => Size.State == MarioStateEnum.Small;
     }
 }
