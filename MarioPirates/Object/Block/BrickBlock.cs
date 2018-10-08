@@ -1,5 +1,7 @@
 ﻿namespace MarioPirates
 {
+    using Event;
+
     internal class BrickBlock : Block
     {
         public BrickBlock(int dstX, int dstY, string state)
@@ -12,9 +14,12 @@
             base.OnCollide(other, side);
             if (side == CollisionSide.Bottom)
             {
-                if (other is Mario)
+                if (other is Mario mario)
                 {
-                    // FIXME
+                    if (!(mario.State.IsSmall || mario.State.IsDead))
+                    {
+                        EventManager.EnqueueEvent(new GameObjectDestroyEvent(this));
+                    }
                 }
             }
         }

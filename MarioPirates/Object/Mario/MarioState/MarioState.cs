@@ -113,5 +113,7 @@ namespace MarioPirates
         public bool IsJump => Action.GetString() == "jump";
 
         public bool IsCrouch => Action.GetString() == "crouch";
+
+        public bool IsSmall => Size.GetString().Equals("small");
     }
 }
