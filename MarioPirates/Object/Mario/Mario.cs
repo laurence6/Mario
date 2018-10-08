@@ -128,7 +128,13 @@ namespace MarioPirates
             {
                 if (!(side == CollisionSide.Bottom || State.IsInvincible))
                 {
-                    State.Dead();
+                    if (State.IsSmall)
+                    {
+                        State.Dead();
+                    }
+                    else{
+                        State.Small();
+                    }
                 }
             }
         }
