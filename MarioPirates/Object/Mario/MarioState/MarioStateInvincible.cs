@@ -9,9 +9,9 @@ namespace MarioPirates
             IsInvincible = isInvincible;
         }
 
-        public void SetInvincible(bool inInvincible)
+        public void SetInvincible(bool isInvincible)
         {
-            IsInvincible = inInvincible;
+            IsInvincible = isInvincible;
         }
 
         public MarioStateEnum State => IsInvincible ? MarioStateEnum.Invincible : MarioStateEnum.Vincible;
