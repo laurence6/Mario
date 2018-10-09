@@ -4,7 +4,7 @@ namespace MarioPirates.Event
 {
     using static Common;
 
-    internal sealed class EventManager
+    internal static class EventManager
     {
         private static OnEvent[] subscribers = new OnEvent[EnumValues<EventEnum>().Length];
         private static Queue<IEvent> queueOld = new Queue<IEvent>(), queueActive = new Queue<IEvent>();

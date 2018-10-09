@@ -2,7 +2,7 @@
 
 namespace MarioPirates
 {
-    internal sealed class GameObjectParam
+    internal class GameObjectParam
     {
         public string TypeName = null;
         public int[] Location = null;
