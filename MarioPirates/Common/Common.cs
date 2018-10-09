@@ -63,6 +63,7 @@ namespace MarioPirates
 
         // int
         public static int Abs(this int x) => Math.Abs(x);
+        public static float Abs(this float x) => Math.Abs(x);
 
         // float
         public static float Pow(float x, float y) => (float)Math.Pow(x, y);
@@ -74,5 +75,7 @@ namespace MarioPirates
             new Vector2(v2.X == 0 ? 0 : (v1.X / v2.X), v2.Y == 0 ? 0 : (v1.Y / v2.Y));
         public static Vector2 DivS(this Vector2 v1, float v2) =>
             v2 != 0 ? v1 / v2 : Vector2.Zero;
+
+        public static Vector2 DeEPS(this Vector2 v) => new Vector2(v.X.Abs() < 1f ? 0f : v.X, v.Y.Abs() < 1f ? 0f : v.Y);
     }
 }

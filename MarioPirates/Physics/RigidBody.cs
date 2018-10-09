@@ -21,7 +21,12 @@ namespace MarioPirates
         public float CoR { get; } = 0.5f;
 
         public Vector2 Force { get; private set; }
-        public Vector2 Velocity { get; set; }
+        private Vector2 velocity;
+        public Vector2 Velocity
+        {
+            get => velocity;
+            set => velocity = value.DeEPS();
+        }
         private Vector2 Accel => Force * InvMass;
 
         private WorldForce worldForce;
@@ -71,18 +76,18 @@ namespace MarioPirates
                     {
                         var side = CollisionSide.All;
                         var depth = 0f;
-                        {
-                            Point c1 = b1.Center, c2 = b2.Center;
-                            var relVel = r2.Velocity - r1.Velocity;
-                            if (c1.X > c2.X || relVel.X >= 0)
-                                side &= ~CollisionSide.Right;
-                            if (c1.X < c2.X || relVel.X <= 0)
-                                side &= ~CollisionSide.Left;
-                            if (c1.Y < c2.Y || relVel.Y <= 0)
-                                side &= ~CollisionSide.Top;
-                            if (c1.Y > c2.Y || relVel.Y >= 0)
-                                side &= ~CollisionSide.Bottom;
-                        }
+
+                        Point c1 = b1.Center, c2 = b2.Center;
+                        var relVel = r2.Velocity - r1.Velocity;
+                        if (c1.X > c2.X || relVel.X >= 0)
+                            side &= ~CollisionSide.Right;
+                        if (c1.X < c2.X || relVel.X <= 0)
+                            side &= ~CollisionSide.Left;
+                        if (c1.Y < c2.Y || relVel.Y <= 0)
+                            side &= ~CollisionSide.Top;
+                        if (c1.Y > c2.Y || relVel.Y >= 0)
+                            side &= ~CollisionSide.Bottom;
+
                         if (side != CollisionSide.None)
                         {
                             if (ints.Width > ints.Height)
