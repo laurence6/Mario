@@ -27,7 +27,7 @@ namespace MarioPirates.Controller
         {
             buttons.ForEach(b =>
             {
-                eventMapping[(int)state].Add(b, InputEventFactory.CreateButtonEvent(b));
+                eventMapping[(int)state].Add(b, InputEventFactory.CreateButtonEvent(state, b));
                 enabledButton.AddIfNotExist(b);
             });
         }

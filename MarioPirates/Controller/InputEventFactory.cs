@@ -22,18 +22,36 @@ namespace MarioPirates.Controller
             return null;
         }
 
-        public static IEvent CreateButtonEvent(Buttons button)
+        public static IEvent CreateButtonEvent(InputState state, Buttons button)
         {
-            switch (button)
+            switch (state)
             {
-                case Buttons.LeftThumbstickUp:
-                    return new BaseEvent(EventEnum.KeyUpHold);
-                case Buttons.LeftThumbstickDown:
-                    return new BaseEvent(EventEnum.KeyDownHold);
-                case Buttons.LeftThumbstickLeft:
-                    return new BaseEvent(EventEnum.KeyLeftHold);
-                case Buttons.LeftThumbstickRight:
-                    return new BaseEvent(EventEnum.KeyRightHold);
+                case InputState.Hold:
+                    switch (button)
+                    {
+                        case Buttons.LeftThumbstickUp:
+                            return new BaseEvent(EventEnum.KeyUpHold);
+                        case Buttons.LeftThumbstickDown:
+                            return new BaseEvent(EventEnum.KeyDownHold);
+                        case Buttons.LeftThumbstickLeft:
+                            return new BaseEvent(EventEnum.KeyLeftHold);
+                        case Buttons.LeftThumbstickRight:
+                            return new BaseEvent(EventEnum.KeyRightHold);
+                    }
+                    break;
+                case InputState.Up:
+                    switch (button)
+                    {
+                        case Buttons.LeftThumbstickUp:
+                            return new BaseEvent(EventEnum.KeyUpUp);
+                        case Buttons.LeftThumbstickDown:
+                            return new BaseEvent(EventEnum.KeyDownUp);
+                        case Buttons.LeftThumbstickLeft:
+                            return new BaseEvent(EventEnum.KeyLeftUp);
+                        case Buttons.LeftThumbstickRight:
+                            return new BaseEvent(EventEnum.KeyRightUp);
+                    }
+                    break;
             }
             return null;
         }
