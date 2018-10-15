@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace MarioPirates.Event
 {
@@ -17,9 +18,10 @@ namespace MarioPirates.Event
             queueActive.Clear();
         }
 
-        public static void Subscribe(OnEvent f, params EventEnum[] eventTypes)
+        public static Action Subscribe(OnEvent f, params EventEnum[] eventTypes)
         {
             eventTypes.ForEach(e => subscribers[(int)e] += f);
+            return () => eventTypes.ForEach(e => subscribers[(int)e] -= f);
         }
 
         public static void TriggerEvent(IEvent e)
