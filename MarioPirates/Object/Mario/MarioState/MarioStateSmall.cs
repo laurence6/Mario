@@ -6,9 +6,9 @@ namespace MarioPirates
     {
         protected const int marioWidth = 34, marioHeight = 30;
 
-        public MarioStateSmall(Mario mario) : base(mario)
+        public MarioStateSmall(MarioState state) : base(state)
         {
-            mario.Size = new Point(marioWidth, marioHeight);
+            state.mario.Size = new Point(marioWidth, marioHeight);
         }
 
         public override void Small()

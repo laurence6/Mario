@@ -2,19 +2,22 @@ namespace MarioPirates
 {
     internal class MarioState
     {
-        private Mario mario;
+        public readonly Mario mario;
         private MarioStateInvincible invincible;
         private MarioStateDirection direction;
-        public MarioStateSize Size { get; set; }
-        public MarioStateAction Action { get; set; }
+        private MarioStateSize size;
+        private MarioStateAction action;
+
+        public MarioStateSize Size { get => size; set { size = value; UpdateSprite(); } }
+        public MarioStateAction Action { get => action; set { action = value; UpdateSprite(); } }
 
         public MarioState(Mario mario)
         {
             this.mario = mario;
-            invincible = new MarioStateInvincible(false);
-            direction = new MarioStateDirection(false);
-            Size = new MarioStateSmall(mario);
-            Action = new MarioStateIdle(this);
+            invincible = new MarioStateInvincible();
+            direction = new MarioStateDirection();
+            size = new MarioStateSmall(this);
+            action = new MarioStateIdle(this);
 
             UpdateSprite();
         }
@@ -44,59 +47,52 @@ namespace MarioPirates
         public void Idle()
         {
             Action.Idle();
-            UpdateSprite();
         }
 
         public void Run()
         {
             Action.Run();
-            UpdateSprite();
         }
 
         public void Jump()
         {
             Action.Jump();
-            UpdateSprite();
         }
 
         public void Crouch()
         {
             Action.Crouch();
-            UpdateSprite();
         }
 
         public void Small()
         {
             Size.Small();
-            UpdateSprite();
         }
 
         public void Big()
         {
             Size.Big();
-            UpdateSprite();
         }
 
         public void Fire()
         {
-            Size.Fire();
             if (IsInvincible)
                 Size.Big();
-            UpdateSprite();
+            else
+                Size.Fire();
         }
 
         public void Dead()
         {
             Size.Dead();
-            UpdateSprite();
             mario.RigidBody.CollideLayerMask = CollisionLayer.None;
         }
 
         public void Invincible()
         {
-            invincible.SetInvincible(true);
             if (Size.State == MarioStateEnum.Fire)
                 Size.Big();
+            invincible.SetInvincible(true);
             UpdateSprite();
         }
 

@@ -4,20 +4,11 @@ namespace MarioPirates
     {
         private bool left;
 
-        public MarioStateDirection(bool isLeft = false)
-        {
-            left = isLeft;
-        }
+        public MarioStateDirection(bool isLeft = false) => left = isLeft;
 
-        public void Left()
-        {
-            left = true;
-        }
+        public void Left() => left = true;
 
-        public void Right()
-        {
-            left = false;
-        }
+        public void Right() => left = false;
 
         public MarioStateEnum State => left ? MarioStateEnum.Left : MarioStateEnum.Right;
     }

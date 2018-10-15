@@ -2,32 +2,17 @@ namespace MarioPirates
 {
     internal abstract class MarioStateSize
     {
-        protected Mario mario;
+        protected MarioState state;
 
-        protected MarioStateSize(Mario mario)
-        {
-            this.mario = mario;
-        }
+        protected MarioStateSize(MarioState state) => this.state = state;
 
-        public virtual void Small()
-        {
-            mario.State.Size = new MarioStateSmall(mario);
-        }
+        public virtual void Small() => state.Size = new MarioStateSmall(state);
 
-        public virtual void Big()
-        {
-            mario.State.Size = new MarioStateBig(mario);
-        }
+        public virtual void Big() => state.Size = new MarioStateBig(state);
 
-        public virtual void Fire()
-        {
-            mario.State.Size = new MarioStateFire(mario);
-        }
+        public virtual void Fire() => state.Size = new MarioStateFire(state);
 
-        public virtual void Dead()
-        {
-            mario.State.Size = new MarioStateDead(mario);
-        }
+        public virtual void Dead() => state.Size = new MarioStateDead(state);
 
         public virtual bool IsDead => false;
 

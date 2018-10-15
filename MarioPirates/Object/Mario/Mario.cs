@@ -34,40 +34,37 @@ namespace MarioPirates
             EventManager.Subscribe(e =>
             {
                 if (!State.IsDead)
+                {
+                    State.Jump();
                     RigidBody.ApplyForce(new Vector2(0, -2000));
+                }
             }, EventEnum.KeyUpHold);
             EventManager.Subscribe(e =>
             {
                 if (!State.IsDead)
+                {
+                    State.Crouch();
                     RigidBody.ApplyForce(new Vector2(0, 2000));
+                }
             }, EventEnum.KeyDownHold);
             EventManager.Subscribe(e =>
             {
                 if (!State.IsDead)
+                {
+                    State.Left();
                     RigidBody.ApplyForce(new Vector2(-2000, 0));
+                }
             }, EventEnum.KeyLeftHold);
             EventManager.Subscribe(e =>
             {
                 if (!State.IsDead)
+                {
+                    State.Right();
                     RigidBody.ApplyForce(new Vector2(2000, 0));
+                }
             }, EventEnum.KeyRightHold);
 
-            EventManager.Subscribe(e => State.Left(), EventEnum.KeyLeftHold);
-            EventManager.Subscribe(e => State.Right(), EventEnum.KeyRightHold);
-            EventManager.Subscribe(e => State.Jump(), EventEnum.KeyUpHold);
-            EventManager.Subscribe(e => State.Crouch(), EventEnum.KeyDownHold);
-            EventManager.Subscribe(e =>
-            {
-                if (!(State.IsJump || State.IsCrouch))
-                {
-                    if (RigidBody.Force.X != 0)
-                        State.Run();
-                    else
-                        State.Idle();
-                }
-            }, EventEnum.KeyLeftHold, EventEnum.KeyRightHold);
-            EventManager.Subscribe(e => State.Idle(),
-                EventEnum.KeyUpUp, EventEnum.KeyDownUp, EventEnum.KeyLeftUp, EventEnum.KeyRightUp);
+            EventManager.Subscribe(e => State.Idle(), EventEnum.KeyUpUp, EventEnum.KeyDownUp);
         }
 
         private void SubscribeInputTransition()
@@ -93,6 +90,15 @@ namespace MarioPirates
                         break;
                 }
             }, EventEnum.KeyDown);
+        }
+
+        public override void Update(float dt)
+        {
+            if (RigidBody.Velocity.X == 0f)
+                State.Idle();
+            else
+                State.Run();
+            base.Update(dt);
         }
 
         public override void OnCollide(GameObject obj, CollisionSide side)

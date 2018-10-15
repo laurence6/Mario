@@ -6,10 +6,9 @@ namespace MarioPirates
     {
         protected const int marioWidth = 30, marioHeight = 28;
 
-        public MarioStateDead(Mario mario) : base(mario)
+        public MarioStateDead(MarioState state) : base(state)
         {
-            mario.Size = new Point(marioWidth, marioHeight);
-            mario.Sprite = SpriteFactory.CreateSprite("dead");
+            state.mario.Size = new Point(marioWidth, marioHeight);
         }
 
         public override void Dead()
