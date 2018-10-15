@@ -85,7 +85,6 @@ namespace MarioPirates
         public void Dead()
         {
             Size.Dead();
-            mario.RigidBody.CollideLayerMask = CollisionLayer.None;
         }
 
         public void Invincible()
