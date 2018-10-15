@@ -4,18 +4,18 @@
     {
         public EventEnum EventType => EventEnum.Collide;
 
-        public GameObject Object1 { get; private set; }
-        public GameObject Object2 { get; private set; }
+        public readonly GameObject object1;
+        public readonly GameObject object2;
 
-        public CollisionSide Side { get; private set; }
-        public float Depth { get; private set; }
+        public readonly CollisionSide side;
+        public readonly float depth;
 
-        public CollideEvent(GameObject o1, GameObject o2, CollisionSide side, float depth)
+        public CollideEvent(GameObject object1, GameObject object2, CollisionSide side, float depth)
         {
-            Object1 = o1;
-            Object2 = o2;
-            Side = side;
-            Depth = depth;
+            this.object1 = object1;
+            this.object2 = object2;
+            this.side = side;
+            this.depth = depth;
         }
     }
 }

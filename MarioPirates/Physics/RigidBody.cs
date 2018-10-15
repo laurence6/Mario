@@ -112,23 +112,23 @@ namespace MarioPirates
         public static void ResolveCollide(in CollideEvent ce, out Vector2 v1, out Vector2 v2)
         {
             var normal = Vector2.Zero;
-            switch (ce.Side)
+            switch (ce.side)
             {
                 case CollisionSide.Top:
-                    normal.Y = ce.Depth;
+                    normal.Y = ce.depth;
                     break;
                 case CollisionSide.Bottom:
-                    normal.Y = -ce.Depth;
+                    normal.Y = -ce.depth;
                     break;
                 case CollisionSide.Left:
-                    normal.X = ce.Depth;
+                    normal.X = ce.depth;
                     break;
                 case CollisionSide.Right:
-                    normal.X = -ce.Depth;
+                    normal.X = -ce.depth;
                     break;
             }
             normal.Normalize();
-            RigidBody o1 = ce.Object1.RigidBody, o2 = ce.Object2.RigidBody;
+            RigidBody o1 = ce.object1.RigidBody, o2 = ce.object2.RigidBody;
             var dp = (o2.Velocity * normal - o1.Velocity * normal)
                 .DivS(o1.InvMass + o2.InvMass)
                 * normal;

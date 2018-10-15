@@ -71,7 +71,7 @@ namespace MarioPirates
         {
             EventManager.Subscribe(e =>
             {
-                switch ((e as KeyDownEvent).Key)
+                switch ((e as KeyDownEvent).key)
                 {
                     case Keys.Y:
                         State.Small();

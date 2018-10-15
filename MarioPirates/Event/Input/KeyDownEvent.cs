@@ -7,9 +7,9 @@ namespace MarioPirates.Event
     {
         public EventEnum EventType => EventEnum.KeyDown;
 
-        public Keys Key { get; private set; }
+        public readonly Keys key;
 
-        public KeyDownEvent(Keys key) => Key = key;
+        public KeyDownEvent(Keys key) => this.key = key;
     }
 
 }

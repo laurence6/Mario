@@ -4,11 +4,8 @@
     {
         public EventEnum EventType => EventEnum.GameObjectCreate;
 
-        public GameObjectParam Param { get; private set; }
+        public readonly GameObjectParam param;
 
-        public GameObjectCreateEvent(GameObjectParam param)
-        {
-            Param = param;
-        }
+        public GameObjectCreateEvent(GameObjectParam param) => this.param = param;
     }
 }

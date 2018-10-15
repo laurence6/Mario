@@ -56,8 +56,8 @@ namespace MarioPirates
 
                 collisionsFirst.Consume(ce =>
                 {
-                    ce.Object1.OnCollide(ce.Object2, ce.Side);
-                    ce.Object2.OnCollide(ce.Object1, ce.Side.Invert());
+                    ce.object1.OnCollide(ce.object2, ce.side);
+                    ce.object2.OnCollide(ce.object1, ce.side.Invert());
                     EventManager.EnqueueEvent(ce);
                 });
             }
@@ -69,7 +69,7 @@ namespace MarioPirates
             {
                 RigidBody.ResolveCollide(ce, out var v1, out var v2);
 
-                RigidBody r1 = ce.Object1.RigidBody, r2 = ce.Object2.RigidBody;
+                RigidBody r1 = ce.object1.RigidBody, r2 = ce.object2.RigidBody;
 
                 velocityFix.AddIfNotExist(r1, Vector3.Zero);
                 velocityFix[r1] += new Vector3(v1, 1);
@@ -78,11 +78,11 @@ namespace MarioPirates
                 velocityFix[r2] += new Vector3(v2, 1);
 
                 locationFix.AddIfNotExist(r1, Vector3.Zero);
-                var f1 = ce.Side.Select(v1.DivS(v1.Abs() + v2.Abs()) * ce.Depth);
+                var f1 = ce.side.Select(v1.DivS(v1.Abs() + v2.Abs()) * ce.depth);
                 locationFix[r1] += new Vector3(f1, 1);
 
                 locationFix.AddIfNotExist(r2, Vector3.Zero);
-                var f2 = ce.Side.Select(v2.DivS(v1.Abs() + v2.Abs()) * ce.Depth);
+                var f2 = ce.side.Select(v2.DivS(v1.Abs() + v2.Abs()) * ce.depth);
                 locationFix[r2] += new Vector3(f2, 1);
             });
             locationFix.Consume((rb, dp) =>

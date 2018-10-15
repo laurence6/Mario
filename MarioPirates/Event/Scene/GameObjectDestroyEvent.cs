@@ -6,9 +6,6 @@
 
         public GameObject Object { get; private set; }
 
-        public GameObjectDestroyEvent(GameObject o)
-        {
-            Object = o;
-        }
+        public GameObjectDestroyEvent(GameObject o) => Object = o;
     }
 }
