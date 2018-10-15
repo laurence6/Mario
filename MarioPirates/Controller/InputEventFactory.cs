@@ -7,22 +7,22 @@ namespace MarioPirates.Controller
 
     internal static class InputEventFactory
     {
-        public static IEvent CreateKeyEvent(InputState state, Keys key)
+        public static ValueTuple<EventEnum, EventArgs> CreateKeyEvent(InputState state, Keys key)
         {
             if (Enum.TryParse<EventEnum>("Key" + key.ToString() + state.ToString(), out var e))
             {
-                return new BaseEvent(e);
+                return (e, EventArgs.Empty);
             }
             //
             switch (state)
             {
                 case InputState.Down:
-                    return new KeyDownEvent(key);
+                    return (EventEnum.KeyDown, new KeyDownEventArgs(key));
             }
-            return null;
+            return (0, null);
         }
 
-        public static IEvent CreateButtonEvent(InputState state, Buttons button)
+        public static ValueTuple<EventEnum, EventArgs> CreateButtonEvent(InputState state, Buttons button)
         {
             switch (state)
             {
@@ -30,30 +30,30 @@ namespace MarioPirates.Controller
                     switch (button)
                     {
                         case Buttons.LeftThumbstickUp:
-                            return new BaseEvent(EventEnum.KeyUpHold);
+                            return (EventEnum.KeyUpHold, EventArgs.Empty);
                         case Buttons.LeftThumbstickDown:
-                            return new BaseEvent(EventEnum.KeyDownHold);
+                            return (EventEnum.KeyDownHold, EventArgs.Empty);
                         case Buttons.LeftThumbstickLeft:
-                            return new BaseEvent(EventEnum.KeyLeftHold);
+                            return (EventEnum.KeyLeftHold, EventArgs.Empty);
                         case Buttons.LeftThumbstickRight:
-                            return new BaseEvent(EventEnum.KeyRightHold);
+                            return (EventEnum.KeyRightHold, EventArgs.Empty);
                     }
                     break;
                 case InputState.Up:
                     switch (button)
                     {
                         case Buttons.LeftThumbstickUp:
-                            return new BaseEvent(EventEnum.KeyUpUp);
+                            return (EventEnum.KeyUpUp, EventArgs.Empty);
                         case Buttons.LeftThumbstickDown:
-                            return new BaseEvent(EventEnum.KeyDownUp);
+                            return (EventEnum.KeyDownUp, EventArgs.Empty);
                         case Buttons.LeftThumbstickLeft:
-                            return new BaseEvent(EventEnum.KeyLeftUp);
+                            return (EventEnum.KeyLeftUp, EventArgs.Empty);
                         case Buttons.LeftThumbstickRight:
-                            return new BaseEvent(EventEnum.KeyRightUp);
+                            return (EventEnum.KeyRightUp, EventArgs.Empty);
                     }
                     break;
             }
-            return null;
+            return (0, null);
         }
     }
 }

@@ -24,11 +24,11 @@ namespace MarioPirates
             gameObjectToCreate.Clear();
             gameObjectToDestory.Clear();
 
-            EventManager.Subscribe(e => gameObjectToCreate.Add(((GameObjectCreateEvent)e).param), EventEnum.GameObjectCreate);
-            EventManager.Subscribe(e => gameObjectToDestory.AddIfNotExist(((GameObjectDestroyEvent)e).Object), EventEnum.GameObjectDestroy);
+            EventManager.Subscribe(EventEnum.GameObjectCreate, (s, e) => gameObjectToCreate.Add((e as GameObjectCreateEventArgs).param));
+            EventManager.Subscribe(EventEnum.GameObjectDestroy, (s, e) => gameObjectToDestory.AddIfNotExist((e as GameObjectDestroyEventArgs).Object));
 
             new JavaScriptSerializer().Deserialize<List<GameObjectParam>>(ReadAllText("Content\\LevelData.json"))
-                .ForEach(o => EventManager.TriggerEvent(new GameObjectCreateEvent(o)));
+                .ForEach(o => EventManager.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(o)));
         }
 
         public void AddGameObject(GameObject o) => gameObjects.Add(o);

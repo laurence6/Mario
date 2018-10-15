@@ -13,7 +13,7 @@
     <AssemblyName>MarioPirates</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MonoGamePlatform>Windows</MonoGamePlatform>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -25,7 +25,7 @@
     <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <LangVersion>7.3</LangVersion>
     <CodeAnalysisRuleSet>BasicDesignGuidelineRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
@@ -37,7 +37,7 @@
     <DefineConstants>TRACE;WINDOWS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
@@ -50,14 +50,11 @@
     <Compile Include="Common\Common.cs" />
     <Compile Include="Controller\InputEventFactory.cs" />
     <Compile Include="Event\EventEnum.cs" />
-    <Compile Include="Event\BaseEvent.cs" />
     <Compile Include="Event\EventManager.cs" />
-    <Compile Include="Event\OnEvent.cs" />
-    <Compile Include="Event\Scene\GameObjectCreateEvent.cs" />
-    <Compile Include="Event\Scene\GameObjectDestroyEvent.cs" />
-    <Compile Include="Event\IEvent.cs" />
+    <Compile Include="Event\Scene\GameObjectCreateEventArgs.cs" />
+    <Compile Include="Event\Scene\GameObjectDestroyEventArgs.cs" />
     <Compile Include="Controller\InputState.cs" />
-    <Compile Include="Event\Input\KeyDownEvent.cs" />
+    <Compile Include="Event\Input\KeyDownEventArgs.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Object\Block\BlockState.cs" />
     <Compile Include="Object\GameObjectRigidBody.cs" />
@@ -69,7 +66,7 @@
     <Compile Include="Physics\WorldForce.cs" />
     <Compile Include="Physics\Physics.cs" />
     <Compile Include="Object\Block\OrangeBlock.cs" />
-    <Compile Include="Event\Physics\CollideEvent.cs" />
+    <Compile Include="Event\Physics\CollideEventArgs.cs" />
     <Compile Include="Object\Block\QuestionBlock.cs" />
     <Compile Include="Object\Background\Background.cs" />
     <Compile Include="Object\Block\UsedBlock.cs" />

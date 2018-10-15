@@ -24,7 +24,7 @@ namespace MarioPirates
                     frames[i] = new Point(Frames[i * 2], Frames[i * 2 + 1]);
                 return new Sprite(textures[TextureName], new Point(Size[0], Size[1]), frames, AccelerateRate);
             }
-        };
+        }
 
         private static readonly Dictionary<string, Texture2D> textures = new Dictionary<string, Texture2D>();
 

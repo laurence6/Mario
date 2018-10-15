@@ -7,8 +7,8 @@ namespace MarioPirates
 
     internal static class Physics
     {
-        private static List<CollideEvent> collisionsFirst = new List<CollideEvent>();
-        private static List<CollideEvent> collisionsOther = new List<CollideEvent>();
+        private static List<CollideEventArgs> collisionsFirst = new List<CollideEventArgs>();
+        private static List<CollideEventArgs> collisionsOther = new List<CollideEventArgs>();
 
         private static Dictionary<RigidBody, Vector3> locationFix = new Dictionary<RigidBody, Vector3>();
 
@@ -58,12 +58,11 @@ namespace MarioPirates
                 {
                     ce.object1.OnCollide(ce.object2, ce.side);
                     ce.object2.OnCollide(ce.object1, ce.side.Invert());
-                    EventManager.EnqueueEvent(ce);
                 });
             }
         }
 
-        private static void HandleCollide(in List<CollideEvent> collisions)
+        private static void HandleCollide(in List<CollideEventArgs> collisions)
         {
             collisions.ForEach(ce =>
             {

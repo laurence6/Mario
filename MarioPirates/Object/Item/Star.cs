@@ -16,7 +16,7 @@
         {
             if (other is Mario)
             {
-                EventManager.TriggerEvent(new GameObjectDestroyEvent(this));
+                EventManager.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this));
             }
         }
     }

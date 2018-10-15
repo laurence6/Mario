@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 
 namespace MarioPirates.Controller
@@ -9,16 +10,16 @@ namespace MarioPirates.Controller
 
     internal class GamePadController : IController
     {
-        private Dictionary<Buttons, IEvent>[] eventMapping;
+        private Dictionary<Buttons, ValueTuple<EventEnum, EventArgs>>[] eventMapping;
         private List<Buttons> enabledButton;
 
         private GamePadState prevState, currState;
 
         public GamePadController()
         {
-            eventMapping = new Dictionary<Buttons, IEvent>[EnumValues<InputState>().Length];
+            eventMapping = new Dictionary<Buttons, ValueTuple<EventEnum, EventArgs>>[EnumValues<InputState>().Length];
             for (var i = 0; i < eventMapping.Length; i++)
-                eventMapping[i] = new Dictionary<Buttons, IEvent>();
+                eventMapping[i] = new Dictionary<Buttons, ValueTuple<EventEnum, EventArgs>>();
             enabledButton = new List<Buttons>();
             prevState = GamePad.GetState(PlayerIndex.One);
         }
@@ -42,7 +43,7 @@ namespace MarioPirates.Controller
                     var state = GetPrevButtonState(b) | GetCurrButtonState(b);
 
                     if (eventMapping[(int)state].TryGetValue(b, out var e))
-                        EventManager.EnqueueEvent(e);
+                        EventManager.RaiseEvent(e.Item1, this, e.Item2);
                 });
                 prevState = currState;
             }

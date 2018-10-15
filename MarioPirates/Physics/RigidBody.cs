@@ -63,7 +63,7 @@ namespace MarioPirates
             Force = Vector2.Zero;
         }
 
-        public static void DetectCollide(GameObject o1, GameObject o2, List<CollideEvent> collisions)
+        public static void DetectCollide(GameObject o1, GameObject o2, List<CollideEventArgs> collisions)
         {
             RigidBody r1 = o1.RigidBody, r2 = o2.RigidBody;
             if (r1 != null && r2 != null)
@@ -102,14 +102,14 @@ namespace MarioPirates
                             }
 
                             if ((r1.CollideSideMask & side) != 0 && (r2.CollideSideMask & side.Invert()) != 0)
-                                collisions.Add(new CollideEvent(o1, o2, side, depth));
+                                collisions.Add(new CollideEventArgs(o1, o2, side, depth));
                         }
                     }
                 }
             }
         }
 
-        public static void ResolveCollide(in CollideEvent ce, out Vector2 v1, out Vector2 v2)
+        public static void ResolveCollide(in CollideEventArgs ce, out Vector2 v1, out Vector2 v2)
         {
             var normal = Vector2.Zero;
             switch (ce.side)

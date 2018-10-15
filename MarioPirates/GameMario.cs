@@ -45,9 +45,9 @@ namespace MarioPirates
             SpriteFactory.Reset();
             Scene.Instance.Reset();
 
-            EventManager.Subscribe(e =>
+            EventManager.Subscribe(EventEnum.KeyDown, (s, e) =>
             {
-                switch ((e as KeyDownEvent).key)
+                switch ((e as KeyDownEventArgs).key)
                 {
                     case Keys.Q:
                         Exit();
@@ -56,7 +56,7 @@ namespace MarioPirates
                         TriggerReset();
                         break;
                 }
-            }, EventEnum.KeyDown);
+            });
 
             controllers.Clear();
             triggerReset = false;
@@ -116,9 +116,8 @@ namespace MarioPirates
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            controllers.ForEach(c => c.Update());
             Scene.Instance.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
-            EventManager.ProcessQueue();
+            controllers.ForEach(c => c.Update());
 
             if (triggerReset)
                 Reset();

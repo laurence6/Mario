@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace MarioPirates.Event
 {
@@ -7,38 +6,22 @@ namespace MarioPirates.Event
 
     internal static class EventManager
     {
-        private static OnEvent[] subscribers = new OnEvent[EnumValues<EventEnum>().Length];
-        private static Queue<IEvent> queueOld = new Queue<IEvent>(), queueActive = new Queue<IEvent>();
+        private static EventHandler[] handlerList = new EventHandler[EnumValues<EventEnum>().Length];
 
         public static void Reset()
         {
-            for (var i = 0; i < subscribers.Length; i++)
-                subscribers[i] = null;
-            queueOld.Clear();
-            queueActive.Clear();
+            for (var i = 0; i < handlerList.Length; i++)
+                handlerList[i] = null;
         }
 
-        public static Action Subscribe(OnEvent f, params EventEnum[] eventTypes)
+        public static void Subscribe(EventEnum type, EventHandler h)
         {
-            eventTypes.ForEach(e => subscribers[(int)e] += f);
-            return () => eventTypes.ForEach(e => subscribers[(int)e] -= f);
+            handlerList[(int)type] += h;
         }
 
-        public static void TriggerEvent(IEvent e)
+        public static void RaiseEvent(EventEnum type, object s, EventArgs e)
         {
-            subscribers[(int)e.EventType]?.Invoke(e);
-        }
-
-        public static void EnqueueEvent(IEvent e)
-        {
-            queueActive.Enqueue(e);
-        }
-
-        public static void ProcessQueue()
-        {
-            Swap(ref queueActive, ref queueOld);
-            while (queueOld.Count > 0)
-                TriggerEvent(queueOld.Dequeue());
+            handlerList[(int)type]?.Invoke(s, e);
         }
     }
 }

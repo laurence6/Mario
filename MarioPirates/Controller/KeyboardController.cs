@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 
 namespace MarioPirates.Controller
@@ -9,7 +10,7 @@ namespace MarioPirates.Controller
     internal class KeyboardController : IController
     {
         private Dictionary<Keys, List<Keys>> inputMapping;
-        private Dictionary<Keys, IEvent>[] eventMapping;
+        private Dictionary<Keys, ValueTuple<EventEnum, EventArgs>>[] eventMapping;
         private List<Keys> enabledKey;
 
         private KeyboardState prevState, currState;
@@ -17,9 +18,9 @@ namespace MarioPirates.Controller
         public KeyboardController()
         {
             inputMapping = new Dictionary<Keys, List<Keys>>();
-            eventMapping = new Dictionary<Keys, IEvent>[EnumValues<InputState>().Length];
+            eventMapping = new Dictionary<Keys, ValueTuple<EventEnum, EventArgs>>[EnumValues<InputState>().Length];
             for (var i = 0; i < eventMapping.Length; i++)
-                eventMapping[i] = new Dictionary<Keys, IEvent>();
+                eventMapping[i] = new Dictionary<Keys, ValueTuple<EventEnum, EventArgs>>();
             enabledKey = new List<Keys>();
             prevState = Keyboard.GetState();
         }
@@ -53,7 +54,9 @@ namespace MarioPirates.Controller
                     state |= GetPrevKeyState(k) | GetCurrKeyState(k);
 
                 if (eventMapping[(int)state].TryGetValue(k, out var e))
-                    EventManager.EnqueueEvent(e);
+                {
+                    EventManager.RaiseEvent(e.Item1, this, e.Item2);
+                }
             });
 
             prevState = currState;

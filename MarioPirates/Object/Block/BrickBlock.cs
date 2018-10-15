@@ -18,7 +18,7 @@
                 {
                     if (!(mario.State.IsSmall || mario.State.IsDead))
                     {
-                        EventManager.EnqueueEvent(new GameObjectDestroyEvent(this));
+                        EventManager.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this));
                     }
                 }
             }

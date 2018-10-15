@@ -16,13 +16,11 @@
                 {
                     SetState(BlockState.Used);
 
-                    EventManager.TriggerEvent(new GameObjectCreateEvent(
-                        new GameObjectParam
-                        {
-                            TypeName = "Coin",
-                            Location = new int[2] { (int)location.X + 10, (int)location.Y - 32 },
-                        }
-                    ));
+                    EventManager.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(new GameObjectParam
+                    {
+                        TypeName = "Coin",
+                        Location = new int[2] { (int)location.X + 10, (int)location.Y - 32 },
+                    }));
                 }
 
             base.OnCollide(other, side);

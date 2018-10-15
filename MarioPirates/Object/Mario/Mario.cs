@@ -31,47 +31,49 @@ namespace MarioPirates
 
         private void SubscribeInputMoving()
         {
-            EventManager.Subscribe(e =>
+            EventManager.Subscribe(EventEnum.KeyUpHold, (s, e) =>
             {
                 if (!State.IsDead)
                 {
                     State.Jump();
                     RigidBody.ApplyForce(new Vector2(0, -2000));
                 }
-            }, EventEnum.KeyUpHold);
-            EventManager.Subscribe(e =>
+            });
+            EventManager.Subscribe(EventEnum.KeyDownHold, (s, e) =>
             {
                 if (!State.IsDead)
                 {
                     State.Crouch();
                     RigidBody.ApplyForce(new Vector2(0, 2000));
                 }
-            }, EventEnum.KeyDownHold);
-            EventManager.Subscribe(e =>
+            });
+            EventManager.Subscribe(EventEnum.KeyLeftHold, (s, e) =>
             {
                 if (!State.IsDead)
                 {
                     State.Left();
                     RigidBody.ApplyForce(new Vector2(-2000, 0));
                 }
-            }, EventEnum.KeyLeftHold);
-            EventManager.Subscribe(e =>
+            });
+            EventManager.Subscribe(EventEnum.KeyRightHold, (s, e) =>
             {
                 if (!State.IsDead)
                 {
                     State.Right();
                     RigidBody.ApplyForce(new Vector2(2000, 0));
                 }
-            }, EventEnum.KeyRightHold);
+            });
 
-            EventManager.Subscribe(e => State.Idle(), EventEnum.KeyUpUp, EventEnum.KeyDownUp);
+            EventManager.Subscribe(EventEnum.KeyUpUp, (s, e) => State.Idle());
+            EventManager.Subscribe(EventEnum.KeyDownUp, (s, e) => State.Idle());
         }
+
 
         private void SubscribeInputTransition()
         {
-            EventManager.Subscribe(e =>
+            EventManager.Subscribe(EventEnum.KeyDown, (s, e) =>
             {
-                switch ((e as KeyDownEvent).key)
+                switch ((e as KeyDownEventArgs).key)
                 {
                     case Keys.Y:
                         State.Small();
@@ -89,7 +91,7 @@ namespace MarioPirates
                         State.Invincible();
                         break;
                 }
-            }, EventEnum.KeyDown);
+            });
         }
 
         public override void Update(float dt)
@@ -135,13 +137,9 @@ namespace MarioPirates
                 if (!(side == CollisionSide.Bottom || State.IsInvincible))
                 {
                     if (State.IsSmall)
-                    {
                         State.Dead();
-                    }
                     else
-                    {
                         State.Small();
-                    }
                 }
             }
         }
