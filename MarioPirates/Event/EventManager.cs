@@ -14,9 +14,10 @@ namespace MarioPirates.Event
                 handlerList[i] = null;
         }
 
-        public static void Subscribe(EventEnum type, EventHandler h)
+        public static Action Subscribe(EventEnum type, EventHandler h)
         {
             handlerList[(int)type] += h;
+            return () => handlerList[(int)type] -= h;
         }
 
         public static void RaiseEvent(EventEnum type, object s, EventArgs e)
