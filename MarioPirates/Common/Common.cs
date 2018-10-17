@@ -94,5 +94,11 @@ namespace MarioPirates
             v2 != 0 ? v1 / v2 : Vector2.Zero;
 
         public static Vector2 DeEPS(this Vector2 v) => new Vector2(v.X.Abs() < 1f ? 0f : v.X, v.Y.Abs() < 1f ? 0f : v.Y);
+
+        public static Vector2 Clamp(this Vector2 v, float lower, float upper) =>
+            new Vector2(v.X < lower ? lower : v.X > upper ? upper : v.X, v.Y < lower ? lower : v.Y > upper ? upper : v.Y);
+
+        public static bool HasOne<T>(this T e, T f) where T : struct, IConvertible =>
+            (Convert.ToUInt64(e) & Convert.ToUInt64(f)) != 0;
     }
 }

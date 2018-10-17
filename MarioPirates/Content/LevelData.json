@@ -1,88 +1,88 @@
 [
       {
         "TypeName": "Background",
-        "IsStatic": true,
+        "Motion": "Static",
         "Location": [ 0, 0 ]
       },
       {
         "TypeName": "Mario",
-        "IsStatic": false,
+        "Motion": "Dynamic",
         "Location": [ 400, 300 ]
       },
       {
         "TypeName": "UsedBlock",
-        "IsStatic": true,
+        "Motion": "Static",
         "Location": [ 100, 100 ],
         "State": "Hidden"
       },
       {
         "TypeName": "BrickBlock",
-        "IsStatic": true,
+        "Motion": "Static",
         "Location": [ 200, 100 ],
         "State": "Normal"
       },
       {
         "TypeName": "BrokenBlock",
-        "IsStatic": true,
+        "Motion": "Static",
         "Location": [ 300, 100 ],
         "State": "Normal"
       },
       {
         "TypeName": "QuestionBlock",
-        "IsStatic": true,
+        "Motion": "Static",
         "Location": [ 400, 100 ],
         "State": "Used"
       },
       {
         "TypeName": "OrangeBlock",
-        "IsStatic": true,
+        "Motion": "Static",
         "Location": [ 500, 100 ],
         "State": "Normal"
       },
       {
         "TypeName": "QuestionBlock",
-        "IsStatic": true,
+        "Motion": "Static",
         "Location": [ 600, 100 ],
         "State": "Normal"
       },
       {
         "TypeName": "Pipe",
-        "IsStatic": true,
+        "Motion": "Static",
         "Location": [ 700, 100 ]
       },
       {
         "TypeName": "Flower",
-        "IsStatic": true,
+        "Motion": "Static",
         "Location": [ 50, 200 ]
       },
       {
         "TypeName": "Coin",
-        "IsStatic": true,
+        "Motion": "Static",
         "Location": [ 150, 200 ]
       },
       {
         "TypeName": "Star",
-        "IsStatic": true,
+        "Motion": "Static",
         "Location": [ 700, 200 ]
       },
       {
         "TypeName": "RedMushroom",
-        "IsStatic": false,
+        "Motion": "Dynamic",
         "Location": [ 300, 300 ]
       },
       {
         "TypeName": "GreenMushroom",
-        "IsStatic": false,
+        "Motion": "Dynamic",
         "Location": [ 300, 200 ]
       },
       {
         "TypeName": "Koopa",
-        "IsStatic": false,
+        "Motion": "Dynamic",
         "Location": [ 300, 400 ]
       },
       {
         "TypeName": "Goomba",
-        "IsStatic": false,
+        "Motion": "Dynamic",
         "Location": [ 600, 400 ]
       }
 ]

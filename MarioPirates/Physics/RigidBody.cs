@@ -11,13 +11,15 @@ namespace MarioPirates
     {
         public readonly GameObjectRigidBody Object;
 
+        public MotionEnum Motion { get; set; } = MotionEnum.Static;
+
         public Rectangle Bound => new Rectangle((int)Object.Location.X, (int)Object.Location.Y, Object.Size.X, Object.Size.Y);
 
-        public CollisionLayer CollideLayerMask { get; set; } = CollisionLayer.Normal;
-        public CollisionSide CollideSideMask { get; set; } = CollisionSide.All;
+        public CollisionLayer CollisionLayerMask { get; set; } = CollisionLayer.Normal;
+        public CollisionSide CollisionSideMask { get; set; } = CollisionSide.All;
 
         public float Mass { get; set; } = 1e24f;
-        public float InvMass => Object.IsStatic ? 0 : 1f / Mass;
+        public float InvMass => Motion == MotionEnum.Dynamic ? 1f / Mass : 0f;
 
         public float CoR { get; } = 0.5f;
 
@@ -26,9 +28,11 @@ namespace MarioPirates
         public Vector2 Velocity
         {
             get => velocity;
-            set => velocity = value.DeEPS();
+            set => velocity = value.DeEPS().Clamp(-250f, 250f);
         }
         private Vector2 Accel => Force * InvMass;
+
+        public float? Grounded { get; set; } = null;
 
         private WorldForce worldForce;
 
@@ -49,11 +53,25 @@ namespace MarioPirates
 
         public void Step(float dt)
         {
+            if (Motion != MotionEnum.Dynamic)
+                return;
+
             var nextVelocity = Velocity + dt * Accel;
 
             // XXX: a hacky approx to simulate friction
-            if ((worldForce & WorldForce.Friction) != 0)
-                nextVelocity *= Pow(0.0001f, dt); // TODO: .X
+            if (worldForce.HasOne(WorldForce.Friction))
+            {
+                if (worldForce.HasOne(WorldForce.Gravity))
+                    nextVelocity.X *= Pow(0.0001f, dt);
+                else
+                    nextVelocity *= Pow(0.0001f, dt);
+            }
+
+            if (worldForce.HasOne(WorldForce.Gravity))
+            {
+                if (!Grounded.HasValue)
+                    nextVelocity.Y += 2f;
+            }
 
             Object.Location += dt * (nextVelocity + Velocity) / 2;
             Velocity = nextVelocity;
@@ -67,7 +85,7 @@ namespace MarioPirates
         public static void DetectCollide(GameObjectRigidBody o1, GameObjectRigidBody o2, List<CollideEventArgs> collisions)
         {
             RigidBody r1 = o1.RigidBody, r2 = o2.RigidBody;
-            if ((r1.CollideLayerMask & r2.CollideLayerMask) != 0)
+            if ((r1.CollisionLayerMask & r2.CollisionLayerMask) != 0)
             {
                 Rectangle b1 = r1.Bound, b2 = r2.Bound;
                 Rectangle.Intersect(ref b1, ref b2, out var ints);
@@ -100,8 +118,14 @@ namespace MarioPirates
                             depth = ints.Width.Abs();
                         }
 
-                        if ((r1.CollideSideMask & side) != 0 && (r2.CollideSideMask & side.Invert()) != 0)
+                        if (r1.CollisionSideMask.HasOne(side) && r2.CollisionSideMask.HasOne(side.Invert()))
+                        {
                             collisions.Add(new CollideEventArgs(o1, o2, side, depth));
+                            if (side == CollisionSide.Bottom && r2.Motion != MotionEnum.Dynamic)
+                            {
+                                r1.Grounded = o2.Location.Y;
+                            }
+                        }
                     }
                 }
             }

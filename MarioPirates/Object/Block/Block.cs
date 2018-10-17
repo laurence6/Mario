@@ -16,6 +16,7 @@ namespace MarioPirates
         {
             usedSprite = SpriteFactory.CreateSprite("usedblock");
             this.normalSprite = normalSprite;
+
             Enum.TryParse(stateName, out BlockState state);
             SetState(state);
         }
@@ -35,15 +36,15 @@ namespace MarioPirates
             switch (state)
             {
                 case BlockState.Normal:
-                    RigidBody.CollideSideMask = CollisionSide.All;
+                    RigidBody.CollisionSideMask = CollisionSide.All;
                     Sprite = normalSprite;
                     break;
                 case BlockState.Used:
-                    RigidBody.CollideSideMask = CollisionSide.All;
+                    RigidBody.CollisionSideMask = CollisionSide.All;
                     Sprite = usedSprite;
                     break;
                 case BlockState.Hidden:
-                    RigidBody.CollideSideMask = CollisionSide.Bottom;
+                    RigidBody.CollisionSideMask = CollisionSide.Bottom;
                     Sprite = null;
                     break;
             }

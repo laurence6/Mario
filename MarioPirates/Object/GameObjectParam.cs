@@ -7,7 +7,7 @@ namespace MarioPirates
         public string TypeName = null;
         public int[] Location = null;
         public string State = null;
-        public bool? IsStatic = null;
+        public MotionEnum? Motion = null;
 
         public GameObject ToGameObject()
         {
@@ -16,7 +16,8 @@ namespace MarioPirates
                 ? (new object[] { Location[0], Location[1], State })
                 : (new object[] { Location[0], Location[1] });
             var obj = (GameObject)Activator.CreateInstance(t, param);
-            obj.IsStatic = IsStatic ?? obj.IsStatic;
+            if (Motion.HasValue && obj is GameObjectRigidBody or)
+                or.RigidBody.Motion = Motion.Value;
             return obj;
         }
     }

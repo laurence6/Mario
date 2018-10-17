@@ -7,12 +7,10 @@ namespace MarioPirates
     {
         public Sprite Sprite { get; set; }
 
-        public bool IsStatic { get; set; } = true;
-
         protected Vector2 location;
         protected Point size;
-        public virtual Vector2 Location { get => location; set => location = value; }
-        public virtual Point Size { get => size; set => size = value; }
+        public Vector2 Location { get => location; set => location = value; }
+        public Point Size { get => size; set => size = value; }
 
         protected GameObject(float locX, float locY, int sizeX, int sizeY)
         {

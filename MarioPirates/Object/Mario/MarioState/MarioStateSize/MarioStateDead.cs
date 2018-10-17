@@ -9,7 +9,7 @@ namespace MarioPirates
         public MarioStateDead(MarioState state) : base(state)
         {
             state.mario.Size = new Point(marioWidth, marioHeight);
-            state.mario.RigidBody.CollideLayerMask = CollisionLayer.None;
+            state.mario.RigidBody.CollisionLayerMask = CollisionLayer.None;
         }
 
         public override void Dead()

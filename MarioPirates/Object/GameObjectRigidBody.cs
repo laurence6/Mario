@@ -1,13 +1,8 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace MarioPirates
+﻿namespace MarioPirates
 {
     internal abstract class GameObjectRigidBody : GameObject
     {
         public readonly RigidBody RigidBody;
-
-        public override Vector2 Location { get => location; set => location = value; }
-        public override Point Size { get => size; set => size = value; }
 
         protected GameObjectRigidBody(float locX, float locY, int sizeX, int sizeY) : base(locX, locY, sizeX, sizeY)
         {

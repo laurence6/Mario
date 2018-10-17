@@ -44,8 +44,10 @@ namespace MarioPirates
 
                     container.ForEach(o1 =>
                     {
-                        if (!o1.IsStatic)
+                        if (o1.RigidBody.Motion == MotionEnum.Dynamic)
                         {
+                            o1.RigidBody.Grounded = null;
+
                             container.Find(o1.RigidBody.Bound, objectsNearby);
                             objectsNearby.Consume(o2 =>
                             {
@@ -97,11 +99,15 @@ namespace MarioPirates
             {
                 dp /= dp.Z;
                 rb.Object.Location += new Vector2(dp.X, dp.Y);
+                if (rb.Grounded.HasValue)
+                    rb.Object.Location = new Vector2(rb.Object.Location.X, rb.Grounded.Value - rb.Object.Size.Y);
             });
             velocityFix.Consume((rb, dv) =>
             {
                 dv /= dv.Z;
                 rb.Velocity += new Vector2(dv.X, dv.Y);
+                if (rb.Grounded.HasValue)
+                    rb.Velocity = new Vector2(rb.Velocity.X, 0f);
             });
         }
     }

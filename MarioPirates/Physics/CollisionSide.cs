@@ -22,16 +22,16 @@ namespace MarioPirates
 
     internal static class CollisionSideMethods
     {
-        public static CollisionSide Invert(this CollisionSide cs) => (CollisionSide)(
-            ((byte)(cs & CollisionSide.TopLeft) << 1)
+        public static CollisionSide Invert(this CollisionSide side) => (CollisionSide)(
+            ((byte)(side & CollisionSide.TopLeft) << 1)
             |
-            ((byte)(cs & CollisionSide.BottomRight) >> 1)
+            ((byte)(side & CollisionSide.BottomRight) >> 1)
         );
 
-        public static Vector2 Select(this CollisionSide cs, Vector2 v) =>
+        public static Vector2 Select(this CollisionSide side, Vector2 v) =>
             new Vector2(
-                ((cs & CollisionSide.LeftRight) != 0) ? v.X : 0,
-                ((cs & CollisionSide.TopBottom) != 0) ? v.Y : 0);
+                (side.HasOne(CollisionSide.LeftRight)) ? v.X : 0,
+                (side.HasOne(CollisionSide.TopBottom)) ? v.Y : 0);
 
     }
 }
