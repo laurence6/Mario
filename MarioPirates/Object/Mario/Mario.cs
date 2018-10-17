@@ -68,7 +68,6 @@ namespace MarioPirates
             EventManager.Subscribe(EventEnum.KeyDownUp, (s, e) => State.Idle());
         }
 
-
         private void SubscribeInputTransition()
         {
             EventManager.Subscribe(EventEnum.KeyDown, (s, e) =>
@@ -103,36 +102,36 @@ namespace MarioPirates
             base.Update(dt);
         }
 
-        public override void OnCollide(GameObject obj, CollisionSide side)
+        public override void OnCollide(GameObjectRigidBody other, CollisionSide side)
         {
             // Response to collision with items.
-            if (obj is Coin)
+            if (other is Coin)
             {
                 // Score up
             }
-            else if (obj is Flower)
+            else if (other is Flower)
             {
                 State.Fire();
             }
-            else if (obj is GreenMushroom)
+            else if (other is GreenMushroom)
             {
                 // Life up
             }
-            else if (obj is Pipe && side == CollisionSide.Bottom)
+            else if (other is Pipe && side == CollisionSide.Bottom)
             {
                 // Get in the pipe
             }
-            else if (obj is RedMushroom)
+            else if (other is RedMushroom)
             {
                 State.Big();
             }
-            else if (obj is Star)
+            else if (other is Star)
             {
                 State.Invincible();
             }
 
             // Response to collsion with enemies
-            if (obj is Goomba || obj is Koopa)
+            if (other is Goomba || other is Koopa)
             {
                 if (!(side == CollisionSide.Bottom || State.IsInvincible))
                 {
@@ -142,6 +141,8 @@ namespace MarioPirates
                         State.Small();
                 }
             }
+
+            base.OnCollide(other, side);
         }
     }
 }

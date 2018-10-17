@@ -29,12 +29,56 @@ namespace MarioPirates
         /// </summary>
         protected override void Initialize()
         {
-            Reset();
             graphics.IsFullScreen = false;
             base.Initialize();
         }
 
-        private bool triggerReset = false;
+        /// <summary>
+        /// LoadContent will be called once per game and is the place to load
+        /// all of your content.
+        /// </summary>
+        protected override void LoadContent()
+        {
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            SpriteFactory.LoadContent(Content);
+        }
+
+        /// <summary>
+        /// UnloadContent will be called once per game and is the place to unload
+        /// game-specific content.
+        /// </summary>
+        protected override void UnloadContent()
+        {
+            Content.Unload();
+        }
+
+        /// <summary>
+        /// Allows the game to run logic such as updating the world,
+        /// checking for collisions, gathering input, and playing audio.
+        /// </summary>
+        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        protected override void Update(GameTime gameTime)
+        {
+            if (triggerReset)
+                Reset();
+
+            Scene.Instance.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
+            controllers.ForEach(c => c.Update());
+        }
+
+        /// <summary>
+        /// This is called when the game should draw itself.
+        /// </summary>
+        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        protected override void Draw(GameTime gameTime)
+        {
+            GraphicsDevice.Clear(Color.CornflowerBlue);
+
+            Scene.Instance.Draw(spriteBatch);
+        }
+
+        private bool triggerReset = true;
 
         public void TriggerReset() => triggerReset = true;
 
@@ -87,51 +131,6 @@ namespace MarioPirates
                 Buttons.LeftThumbstickRight
             );
             controllers.Add(gamePadController);
-        }
-
-        /// <summary>
-        /// LoadContent will be called once per game and is the place to load
-        /// all of your content.
-        /// </summary>
-        protected override void LoadContent()
-        {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            SpriteFactory.LoadContent(Content);
-        }
-
-        /// <summary>
-        /// UnloadContent will be called once per game and is the place to unload
-        /// game-specific content.
-        /// </summary>
-        protected override void UnloadContent()
-        {
-            Content.Unload();
-        }
-
-        /// <summary>
-        /// Allows the game to run logic such as updating the world,
-        /// checking for collisions, gathering input, and playing audio.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        protected override void Update(GameTime gameTime)
-        {
-            Scene.Instance.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
-            controllers.ForEach(c => c.Update());
-
-            if (triggerReset)
-                Reset();
-        }
-
-        /// <summary>
-        /// This is called when the game should draw itself.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        protected override void Draw(GameTime gameTime)
-        {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            Scene.Instance.Draw(spriteBatch);
         }
     }
 }

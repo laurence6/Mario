@@ -11,42 +11,57 @@ namespace MarioPirates
     {
         public static readonly Scene Instance = new Scene();
 
-        private List<GameObject> gameObjects = new List<GameObject>();
+        private IGameObjectContainer gameObjectContainer = new HashMap();
+        private List<GameObject> gameObjectsNoBound = new List<GameObject>();
 
         private List<GameObjectParam> gameObjectToCreate = new List<GameObjectParam>();
-        private List<GameObject> gameObjectToDestory = new List<GameObject>();
+        private HashSet<GameObject> gameObjectToDestory = new HashSet<GameObject>();
 
         private Scene() { }
 
         public void Reset()
         {
-            gameObjects.Clear();
+            gameObjectContainer.Reset();
+            gameObjectsNoBound.Clear();
             gameObjectToCreate.Clear();
             gameObjectToDestory.Clear();
 
-            EventManager.Subscribe(EventEnum.GameObjectCreate, (s, e) => gameObjectToCreate.Add((e as GameObjectCreateEventArgs).param));
-            EventManager.Subscribe(EventEnum.GameObjectDestroy, (s, e) => gameObjectToDestory.AddIfNotExist((e as GameObjectDestroyEventArgs).Object));
+            EventManager.Subscribe(EventEnum.GameObjectCreate, (s, e) => AddGameObject((e as GameObjectCreateEventArgs).param.ToGameObject()));
+            EventManager.Subscribe(EventEnum.GameObjectDestroy, (s, e) => RemoveGameObject((e as GameObjectDestroyEventArgs).Object));
 
             new JavaScriptSerializer().Deserialize<List<GameObjectParam>>(ReadAllText("Content\\LevelData.json"))
                 .ForEach(o => EventManager.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(o)));
         }
 
-        public void AddGameObject(GameObject o) => gameObjects.Add(o);
+        public void AddGameObject(GameObject o)
+        {
+            if (o is GameObjectRigidBody or)
+                gameObjectContainer.Add(or);
+            else
+                gameObjectsNoBound.Add(o);
+        }
+
+        public void RemoveGameObject(GameObject o)
+        {
+            if (o is GameObjectRigidBody or)
+                gameObjectContainer.Remove(or);
+            else
+                gameObjectsNoBound.Remove(o);
+        }
 
         public void Update(float dt)
         {
-            Physics.Simulate(dt, in gameObjects);
+            Physics.Simulate(dt, gameObjectContainer);
 
-            gameObjectToDestory.Consume(o => gameObjects.Remove(o));
-            gameObjectToCreate.Consume(p => AddGameObject(p.ToGameObject()));
-
-            gameObjects.ForEach(o => o.Update(dt));
+            gameObjectsNoBound.ForEach(o => o.Update(dt));
+            gameObjectContainer.ForEach(o => o.Update(dt));
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-            gameObjects.ForEach(o => o.Draw(spriteBatch));
+            gameObjectsNoBound.ForEach(o => o.Draw(spriteBatch));
+            gameObjectContainer.ForEach(o => o.Draw(spriteBatch));
             spriteBatch.End();
         }
     }

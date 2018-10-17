@@ -101,6 +101,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Object\GameObjectParam.cs" />
+    <Compile Include="Scene\HashMap.cs" />
+    <Compile Include="Scene\IGameObjectContainer.cs" />
     <Compile Include="Scene\Scene.cs" />
     <Compile Include="Sprite\Sprite.cs" />
     <Compile Include="Object\Item\Star.cs" />

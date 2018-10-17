@@ -6,13 +6,6 @@ namespace MarioPirates
 {
     internal static class Common
     {
-        public static void Swap<T>(ref T o1, ref T o2)
-        {
-            var tmp = o1;
-            o1 = o2;
-            o2 = tmp;
-        }
-
         public static void NotNullThen<T>(this T self, Action f) where T : class
         {
             if (self != null)
@@ -43,10 +36,21 @@ namespace MarioPirates
         }
 
         // Dictionary
-        public static void AddIfNotExist<T, U>(this Dictionary<T, U> d, T key, U val)
+        public static void AddIfNotExistStruct<T, U>(this Dictionary<T, U> d, T key, U val) where U : struct
         {
             if (!d.ContainsKey(key))
                 d.Add(key, val);
+        }
+
+        public static void AddIfNotExist<T, U>(this Dictionary<T, U> d, T key, U val) where U : class
+        {
+            if (!d.ContainsKey(key))
+                d.Add(key, val);
+        }
+
+        public static void AddIfNotExist<T, U>(this Dictionary<T, U> d, T key) where U : class, new()
+        {
+            d.AddIfNotExist(key, new U());
         }
 
         public static void ForEach<T, U>(this Dictionary<T, U> d, Action<T, U> f)
@@ -59,6 +63,19 @@ namespace MarioPirates
         {
             d.ForEach(f);
             d.Clear();
+        }
+
+        // HashSet
+        public static void ForEach<T>(this HashSet<T> s, Action<T> f)
+        {
+            foreach (var e in s)
+                f(e);
+        }
+
+        public static void Consume<T>(this HashSet<T> s, Action<T> f)
+        {
+            s.ForEach(f);
+            s.Clear();
         }
 
         // int

@@ -50,11 +50,12 @@ namespace MarioPirates
             State = state;
         }
 
-        public override void OnCollide(GameObject other, CollisionSide side)
+        public override void OnCollide(GameObjectRigidBody other, CollisionSide side)
         {
             if (other is Mario)
                 if (State == BlockState.Hidden && side == CollisionSide.Bottom)
                     SetState(BlockState.Normal);
+            base.OnCollide(other, side);
         }
     }
 }

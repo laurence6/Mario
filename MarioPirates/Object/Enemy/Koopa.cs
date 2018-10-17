@@ -26,14 +26,14 @@
             base.Update(dt);
         }
 
-        public override void OnCollide(GameObject other, CollisionSide side)
+        public override void OnCollide(GameObjectRigidBody other, CollisionSide side)
         {
             if (other is Mario mario)
                 if (side == CollisionSide.Top || mario.State.IsInvincible)
                 {
                     stopmed = true;
-                    RigidBody.CollideLayerMask = CollisionLayer.None;
                 }
+            base.OnCollide(other, side);
         }
     }
 }

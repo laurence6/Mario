@@ -12,12 +12,13 @@
             RigidBody.Mass = 0.05f;
         }
 
-        public override void OnCollide(GameObject obj, CollisionSide side)
+        public override void OnCollide(GameObjectRigidBody other, CollisionSide side)
         {
-            if (obj is Mario)
+            if (other is Mario)
             {
                 EventManager.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this));
             }
+            base.OnCollide(other, side);
         }
     }
 }

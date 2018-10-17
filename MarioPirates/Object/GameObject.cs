@@ -6,14 +6,13 @@ namespace MarioPirates
     internal abstract class GameObject
     {
         public Sprite Sprite { get; set; }
-        public RigidBody RigidBody { get; set; }
 
         public bool IsStatic { get; set; } = true;
 
         protected Vector2 location;
         protected Point size;
-        public Vector2 Location { get => location; set => location = value; }
-        public Point Size { get => size; set => size = value; }
+        public virtual Vector2 Location { get => location; set => location = value; }
+        public virtual Point Size { get => size; set => size = value; }
 
         protected GameObject(float locX, float locY, int sizeX, int sizeY)
         {
@@ -35,11 +34,6 @@ namespace MarioPirates
         public virtual void Draw(SpriteBatch spriteBatch)
         {
             Sprite.Draw(spriteBatch, new Rectangle((int)location.X, (int)location.Y, size.X, size.Y));
-        }
-
-        // Override to handle game logic
-        public virtual void OnCollide(GameObject other, CollisionSide side)
-        {
         }
     }
 }

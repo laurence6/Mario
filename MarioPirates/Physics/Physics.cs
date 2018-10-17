@@ -10,77 +10,86 @@ namespace MarioPirates
         private static List<CollideEventArgs> collisionsFirst = new List<CollideEventArgs>();
         private static List<CollideEventArgs> collisionsOther = new List<CollideEventArgs>();
 
-        private static Dictionary<RigidBody, Vector3> locationFix = new Dictionary<RigidBody, Vector3>();
+        private static HashSet<GameObjectRigidBody> objectsChecked = new HashSet<GameObjectRigidBody>();
+        private static HashSet<GameObjectRigidBody> objectsNearby = new HashSet<GameObjectRigidBody>();
 
+        private static Dictionary<RigidBody, Vector3> locationFix = new Dictionary<RigidBody, Vector3>();
         private static Dictionary<RigidBody, Vector3> velocityFix = new Dictionary<RigidBody, Vector3>();
 
         public static void Reset()
         {
             collisionsFirst.Clear();
             collisionsOther.Clear();
+            objectsChecked.Clear();
+            objectsNearby.Clear();
             velocityFix.Clear();
             locationFix.Clear();
         }
 
-        public static void Simulate(float dt, in List<GameObject> gameObjects)
+        public static void Simulate(float dt, IGameObjectContainer container)
         {
-            const float S = 4f;
-            const int R = 5;
+            const int nsteps = 4;
+            const int nrounds = 4;
 
-            var ddt = dt / S;
+            var ddt = dt / nsteps;
 
-            for (var s = 0f; s < S; s++)
+            for (var s = 0; s < nsteps; s++)
             {
-                gameObjects.ForEach(o => o.Step(ddt));
+                container.ForEach(o => o.Step(ddt));
+                container.Rebuild();
 
-                for (var r = 0; r < R; r++)
+                for (var r = 0; r < nrounds; r++)
                 {
                     var collisions = r == 0 ? collisionsFirst : collisionsOther;
 
-                    foreach (var o1 in gameObjects)
-                        if (o1.IsStatic)
-                            foreach (var o2 in gameObjects)
-                                if (!o2.IsStatic)
+                    container.ForEach(o1 =>
+                    {
+                        if (!o1.IsStatic)
+                        {
+                            container.Find(o1.RigidBody.Bound, objectsNearby);
+                            objectsNearby.Consume(o2 =>
+                            {
+                                if (o1 != o2 && !objectsChecked.Contains(o2))
                                     RigidBody.DetectCollide(o1, o2, collisions);
-                    for (var i = 0; i < gameObjects.Count; i++)
-                        if (!gameObjects[i].IsStatic)
-                            for (var j = i + 1; j < gameObjects.Count; j++)
-                                if (!gameObjects[j].IsStatic)
-                                    RigidBody.DetectCollide(gameObjects[i], gameObjects[j], collisions);
+                            });
+                            objectsChecked.Add(o1);
+                        }
+                    });
+                    objectsChecked.Clear();
 
-                    if (collisions.Count > 0)
-                        HandleCollide(collisions);
+                    if (collisions.Count == 0)
+                        break;
+                    ResolveCollide(collisions);
                     if (r > 0)
                         collisions.Clear();
                 }
-
                 collisionsFirst.Consume(ce =>
                 {
                     ce.object1.OnCollide(ce.object2, ce.side);
                     ce.object2.OnCollide(ce.object1, ce.side.Invert());
+                    EventManager.RaiseEvent(EventEnum.Collide, null, ce);
                 });
             }
         }
 
-        private static void HandleCollide(in List<CollideEventArgs> collisions)
+        private static void ResolveCollide(List<CollideEventArgs> collisions)
         {
             collisions.ForEach(ce =>
             {
-                RigidBody.ResolveCollide(ce, out var v1, out var v2);
-
                 RigidBody r1 = ce.object1.RigidBody, r2 = ce.object2.RigidBody;
+                (var v1, var v2) = RigidBody.ResolveCollide(ce);
 
-                velocityFix.AddIfNotExist(r1, Vector3.Zero);
+                velocityFix.AddIfNotExistStruct(r1, Vector3.Zero);
                 velocityFix[r1] += new Vector3(v1, 1);
 
-                velocityFix.AddIfNotExist(r2, Vector3.Zero);
+                velocityFix.AddIfNotExistStruct(r2, Vector3.Zero);
                 velocityFix[r2] += new Vector3(v2, 1);
 
-                locationFix.AddIfNotExist(r1, Vector3.Zero);
+                locationFix.AddIfNotExistStruct(r1, Vector3.Zero);
                 var f1 = ce.side.Select(v1.DivS(v1.Abs() + v2.Abs()) * ce.depth);
                 locationFix[r1] += new Vector3(f1, 1);
 
-                locationFix.AddIfNotExist(r2, Vector3.Zero);
+                locationFix.AddIfNotExistStruct(r2, Vector3.Zero);
                 var f2 = ce.side.Select(v2.DivS(v1.Abs() + v2.Abs()) * ce.depth);
                 locationFix[r2] += new Vector3(f2, 1);
             });

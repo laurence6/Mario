@@ -9,9 +9,8 @@
         {
         }
 
-        public override void OnCollide(GameObject other, CollisionSide side)
+        public override void OnCollide(GameObjectRigidBody other, CollisionSide side)
         {
-            base.OnCollide(other, side);
             if (side == CollisionSide.Bottom)
             {
                 if (other is Mario mario)
@@ -22,6 +21,7 @@
                     }
                 }
             }
+            base.OnCollide(other, side);
         }
     }
 }

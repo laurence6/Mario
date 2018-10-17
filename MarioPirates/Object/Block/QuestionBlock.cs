@@ -9,7 +9,7 @@
         {
         }
 
-        public override void OnCollide(GameObject other, CollisionSide side)
+        public override void OnCollide(GameObjectRigidBody other, CollisionSide side)
         {
             if (other is Mario)
                 if (State == BlockState.Normal && side == CollisionSide.Bottom)
@@ -22,7 +22,6 @@
                         Location = new int[2] { (int)location.X + 10, (int)location.Y - 32 },
                     }));
                 }
-
             base.OnCollide(other, side);
         }
     }

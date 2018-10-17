@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 
 namespace MarioPirates
@@ -8,7 +9,7 @@ namespace MarioPirates
 
     internal class RigidBody
     {
-        public readonly GameObject Object;
+        public readonly GameObjectRigidBody Object;
 
         public Rectangle Bound => new Rectangle((int)Object.Location.X, (int)Object.Location.Y, Object.Size.X, Object.Size.Y);
 
@@ -31,7 +32,7 @@ namespace MarioPirates
 
         private WorldForce worldForce;
 
-        public RigidBody(GameObject gameObject)
+        public RigidBody(GameObjectRigidBody gameObject)
         {
             Object = gameObject;
         }
@@ -63,53 +64,50 @@ namespace MarioPirates
             Force = Vector2.Zero;
         }
 
-        public static void DetectCollide(GameObject o1, GameObject o2, List<CollideEventArgs> collisions)
+        public static void DetectCollide(GameObjectRigidBody o1, GameObjectRigidBody o2, List<CollideEventArgs> collisions)
         {
             RigidBody r1 = o1.RigidBody, r2 = o2.RigidBody;
-            if (r1 != null && r2 != null)
+            if ((r1.CollideLayerMask & r2.CollideLayerMask) != 0)
             {
-                if ((r1.CollideLayerMask & r2.CollideLayerMask) != 0)
+                Rectangle b1 = r1.Bound, b2 = r2.Bound;
+                Rectangle.Intersect(ref b1, ref b2, out var ints);
+                if (!ints.IsEmpty)
                 {
-                    Rectangle b1 = r1.Bound, b2 = r2.Bound;
-                    Rectangle.Intersect(ref b1, ref b2, out var ints);
-                    if (!ints.IsEmpty)
+                    var side = CollisionSide.All;
+                    var depth = 0f;
+
+                    Point c1 = b1.Center, c2 = b2.Center;
+                    var relVel = r2.Velocity - r1.Velocity;
+                    if (c1.X > c2.X || relVel.X >= 0)
+                        side &= ~CollisionSide.Right;
+                    if (c1.X < c2.X || relVel.X <= 0)
+                        side &= ~CollisionSide.Left;
+                    if (c1.Y < c2.Y || relVel.Y <= 0)
+                        side &= ~CollisionSide.Top;
+                    if (c1.Y > c2.Y || relVel.Y >= 0)
+                        side &= ~CollisionSide.Bottom;
+
+                    if (side != CollisionSide.None)
                     {
-                        var side = CollisionSide.All;
-                        var depth = 0f;
-
-                        Point c1 = b1.Center, c2 = b2.Center;
-                        var relVel = r2.Velocity - r1.Velocity;
-                        if (c1.X > c2.X || relVel.X >= 0)
-                            side &= ~CollisionSide.Right;
-                        if (c1.X < c2.X || relVel.X <= 0)
-                            side &= ~CollisionSide.Left;
-                        if (c1.Y < c2.Y || relVel.Y <= 0)
-                            side &= ~CollisionSide.Top;
-                        if (c1.Y > c2.Y || relVel.Y >= 0)
-                            side &= ~CollisionSide.Bottom;
-
-                        if (side != CollisionSide.None)
+                        if (ints.Width > ints.Height)
                         {
-                            if (ints.Width > ints.Height)
-                            {
-                                side &= CollisionSide.TopBottom;
-                                depth = ints.Height.Abs();
-                            }
-                            else
-                            {
-                                side &= CollisionSide.LeftRight;
-                                depth = ints.Width.Abs();
-                            }
-
-                            if ((r1.CollideSideMask & side) != 0 && (r2.CollideSideMask & side.Invert()) != 0)
-                                collisions.Add(new CollideEventArgs(o1, o2, side, depth));
+                            side &= CollisionSide.TopBottom;
+                            depth = ints.Height.Abs();
                         }
+                        else
+                        {
+                            side &= CollisionSide.LeftRight;
+                            depth = ints.Width.Abs();
+                        }
+
+                        if ((r1.CollideSideMask & side) != 0 && (r2.CollideSideMask & side.Invert()) != 0)
+                            collisions.Add(new CollideEventArgs(o1, o2, side, depth));
                     }
                 }
             }
         }
 
-        public static void ResolveCollide(in CollideEventArgs ce, out Vector2 v1, out Vector2 v2)
+        public static ValueTuple<Vector2, Vector2> ResolveCollide(in CollideEventArgs ce)
         {
             var normal = Vector2.Zero;
             switch (ce.side)
@@ -132,8 +130,7 @@ namespace MarioPirates
             var dp = (o2.Velocity * normal - o1.Velocity * normal)
                 .DivS(o1.InvMass + o2.InvMass)
                 * normal;
-            v1 = (o1.CoR + 1f) * o1.InvMass * dp;
-            v2 = (o2.CoR + 1f) * o2.InvMass * -dp;
+            return ((o1.CoR + 1f) * o1.InvMass * dp, (o2.CoR + 1f) * o2.InvMass * -dp);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace MarioPirates
             RigidBody.Mass = 0.1f;
         }
 
-        public override void OnCollide(GameObject other, CollisionSide side)
+        public override void OnCollide(GameObjectRigidBody other, CollisionSide side)
         {
             if (other is Mario mario)
             {
@@ -23,6 +23,7 @@ namespace MarioPirates
                     RigidBody.CollideLayerMask = CollisionLayer.None;
                 }
             }
+            base.OnCollide(other, side);
         }
     }
 }
