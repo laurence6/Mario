@@ -12,19 +12,16 @@ namespace MarioPirates
         public static readonly Scene Instance = new Scene();
 
         private IGameObjectContainer gameObjectContainer = new HashMap();
-        private List<GameObject> gameObjectsNoBound = new List<GameObject>();
+        private List<GameObject> gameObjectsNoRigidBody = new List<GameObject>();
 
-        private List<GameObjectParam> gameObjectToCreate = new List<GameObjectParam>();
-        private HashSet<GameObject> gameObjectToDestory = new HashSet<GameObject>();
-
-        private Scene() { }
+        private Scene()
+        {
+        }
 
         public void Reset()
         {
             gameObjectContainer.Reset();
-            gameObjectsNoBound.Clear();
-            gameObjectToCreate.Clear();
-            gameObjectToDestory.Clear();
+            gameObjectsNoRigidBody.Clear();
 
             EventManager.Subscribe(EventEnum.GameObjectCreate, (s, e) => AddGameObject((e as GameObjectCreateEventArgs).param.ToGameObject()));
             EventManager.Subscribe(EventEnum.GameObjectDestroy, (s, e) => RemoveGameObject((e as GameObjectDestroyEventArgs).Object));
@@ -38,7 +35,7 @@ namespace MarioPirates
             if (o is GameObjectRigidBody or)
                 gameObjectContainer.Add(or);
             else
-                gameObjectsNoBound.Add(o);
+                gameObjectsNoRigidBody.Add(o);
         }
 
         public void RemoveGameObject(GameObject o)
@@ -46,21 +43,21 @@ namespace MarioPirates
             if (o is GameObjectRigidBody or)
                 gameObjectContainer.Remove(or);
             else
-                gameObjectsNoBound.Remove(o);
+                gameObjectsNoRigidBody.Remove(o);
         }
 
         public void Update(float dt)
         {
             Physics.Simulate(dt, gameObjectContainer);
 
-            gameObjectsNoBound.ForEach(o => o.Update(dt));
+            gameObjectsNoRigidBody.ForEach(o => o.Update(dt));
             gameObjectContainer.ForEach(o => o.Update(dt));
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-            gameObjectsNoBound.ForEach(o => o.Draw(spriteBatch));
+            gameObjectsNoRigidBody.ForEach(o => o.Draw(spriteBatch));
             gameObjectContainer.ForEach(o => o.Draw(spriteBatch));
             spriteBatch.End();
         }
