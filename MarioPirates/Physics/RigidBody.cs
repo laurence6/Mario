@@ -53,7 +53,7 @@ namespace MarioPirates
 
         public void ApplyForce(WorldForce force)
         {
-            worldForce |= force;
+            worldForce = force;
         }
 
         public void ApplyForce(Vector2 force)
