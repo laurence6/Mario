@@ -4,14 +4,14 @@
     {
         private const int koopaWidth = 16, koopaHeight = 23;
 
-        private bool stopmed;
+        private bool stomped;
         private readonly Sprite[] sprites;
 
         public Koopa(int x, int y) : base(x, y, koopaWidth * 2, koopaHeight * 2)
         {
             RigidBody.Mass = 0.1f;
 
-            stopmed = false;
+            stomped = false;
             sprites = new Sprite[3] {
                 SpriteFactory.CreateSprite("koopa_left"),
                 SpriteFactory.CreateSprite("koopa_right"),
@@ -22,17 +22,44 @@
 
         public override void Update(float dt)
         {
-            Sprite = stopmed ? sprites[2] : RigidBody.Velocity.X < 0 ? sprites[0] : sprites[1];
+            Sprite = stomped ? sprites[2] : RigidBody.Velocity.X < 0 ? sprites[0] : sprites[1];
             base.Update(dt);
         }
 
         public override void OnCollide(GameObjectRigidBody other, CollisionSide side)
         {
             if (other is Mario mario)
-                if (side == CollisionSide.Top || mario.State.IsInvincible)
+            {
+                if (!stomped)
                 {
-                    stopmed = true;
+                    if(side == CollisionSide.Top || mario.State.IsInvincible)
+                    {
+                        stomped = true;
+                    }
                 }
+                else
+                {
+                    if (side == CollisionSide.Right || side == CollisionSide.TopRight)
+                    {
+                        // move right
+                    }
+                    else
+                    {
+                        // move left
+                    }
+                }
+            }
+            else if (other is Pipe pipe || other is Block block || other is Goomba goomba || other is Koopa koopa)
+            {
+                if (side == CollisionSide.Right)
+                {
+                    // move left
+                }
+                if (side == CollisionSide.Left)
+                {
+                    // move right
+                }
+            }
             base.OnCollide(other, side);
         }
     }
