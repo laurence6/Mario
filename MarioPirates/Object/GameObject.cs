@@ -5,19 +5,15 @@ namespace MarioPirates
 {
     internal abstract class GameObject
     {
-        public Sprite Sprite { get; set; }
+        public Vector2 Location { get; set; }
+        public Point Size { get; set; }
 
-        private Vector2 location;
-        private Point size;
-        public Vector2 Location { get => location; set => location = value; }
-        public Point Size { get => size; set => size = value; }
+        public Sprite Sprite { get; set; }
 
         protected GameObject(float locX, float locY, int sizeX, int sizeY)
         {
-            location.X = locX;
-            location.Y = locY;
-            size.X = sizeX;
-            size.Y = sizeY;
+            Location = new Vector2(locX, locY);
+            Size = new Point(sizeX, sizeY);
         }
 
         public virtual void Update(float dt)
@@ -27,7 +23,7 @@ namespace MarioPirates
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            Sprite.Draw(spriteBatch, new Rectangle((int)location.X, (int)location.Y, size.X, size.Y));
+            Sprite.Draw(spriteBatch, new Rectangle((int)Location.X, (int)Location.Y, Size.X, Size.Y));
         }
     }
 }
