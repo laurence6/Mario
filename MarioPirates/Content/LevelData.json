@@ -1,88 +1,96 @@
 [
       {
         "TypeName": "Background",
-        "Motion": "Static",
-        "Location": [ 0, 0 ]
-      },
-      {
-        "TypeName": "Mario",
-        "Motion": "Dynamic",
-        "Location": [ 400, 300 ]
+        "Location": [ 0, 0 ],
+        "Motion": "Static"
       },
       {
         "TypeName": "UsedBlock",
-        "Motion": "Static",
         "Location": [ 100, 100 ],
-        "State": "Hidden"
+        "State": "Hidden",
+        "Motion": "Static"
       },
       {
         "TypeName": "BrickBlock",
-        "Motion": "Static",
         "Location": [ 200, 100 ],
-        "State": "Normal"
+        "State": "Normal",
+        "Motion": "Static"
       },
       {
         "TypeName": "BrokenBlock",
-        "Motion": "Static",
         "Location": [ 300, 100 ],
-        "State": "Normal"
+        "State": "Normal",
+        "Motion": "Static"
       },
       {
         "TypeName": "QuestionBlock",
-        "Motion": "Static",
         "Location": [ 400, 100 ],
-        "State": "Used"
+        "State": "Used",
+        "Motion": "Static"
       },
       {
         "TypeName": "OrangeBlock",
-        "Motion": "Static",
-        "Location": [ 500, 100 ],
-        "State": "Normal"
+        "Location": [ 500, 400 ],
+        "State": "Normal",
+        "Motion": "Static"
+      },
+      {
+        "TypeName": "OrangeBlock",
+        "Location": [ 500, 200 ],
+        "State": "Normal",
+        "Motion": "Static"
       },
       {
         "TypeName": "QuestionBlock",
-        "Motion": "Static",
         "Location": [ 600, 100 ],
-        "State": "Normal"
+        "State": "Normal",
+        "Motion": "Static"
       },
       {
         "TypeName": "Pipe",
-        "Motion": "Static",
-        "Location": [ 700, 100 ]
+        "Location": [ 700, 100 ],
+        "Motion": "Static"
       },
       {
         "TypeName": "Flower",
-        "Motion": "Static",
-        "Location": [ 50, 200 ]
+        "Location": [ 50, 200 ],
+        "Motion": "Static"
       },
       {
         "TypeName": "Coin",
-        "Motion": "Static",
-        "Location": [ 150, 200 ]
+        "Location": [ 150, 200 ],
+        "Motion": "Static"
       },
       {
         "TypeName": "Star",
-        "Motion": "Static",
-        "Location": [ 700, 200 ]
+        "Location": [ 700, 200 ],
+        "Motion": "Static"
       },
       {
         "TypeName": "RedMushroom",
-        "Motion": "Dynamic",
-        "Location": [ 300, 300 ]
+        "Location": [ 300, 300 ],
+        "Motion": "Dynamic"
       },
       {
         "TypeName": "GreenMushroom",
-        "Motion": "Dynamic",
-        "Location": [ 300, 200 ]
+        "Location": [ 500, 100 ],
+        "Motion": "Dynamic"
       },
       {
         "TypeName": "Koopa",
-        "Motion": "Dynamic",
-        "Location": [ 300, 400 ]
+        "Location": [ 300, 400 ],
+        "Motion": "Dynamic"
       },
       {
         "TypeName": "Goomba",
+        "Location": [ 600, 400 ],
+        "Motion": "Dynamic"
+      },
+      {
+        "TypeName": "Mario",
+        "Location": [ 400, 300 ],
         "Motion": "Dynamic",
-        "Location": [ 600, 400 ]
+        "Force": "Gravity, Friction",
+		"Mass": 1
       }
 ]

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 
 namespace MarioPirates
@@ -10,15 +11,44 @@ namespace MarioPirates
         private readonly Sprite usedSprite;
         private readonly Sprite normalSprite;
 
-        protected BlockState State { get; private set; } = BlockState.Normal;
+        private BlockState state = BlockState.Normal;
+        protected BlockState State
+        {
+            get => state;
+            set
+            {
+                switch (value)
+                {
+                    case BlockState.Normal:
+                        RigidBody.CollisionSideMask = CollisionSide.All;
+                        Sprite = normalSprite;
+                        break;
+                    case BlockState.Used:
+                        RigidBody.CollisionSideMask = CollisionSide.All;
+                        Sprite = usedSprite;
+                        break;
+                    case BlockState.Hidden:
+                        RigidBody.CollisionSideMask = CollisionSide.Bottom;
+                        Sprite = null;
+                        break;
+                }
+                state = value;
+            }
+        }
+
+        private readonly Vector2 origLocation;
 
         protected Block(int dstX, int dstY, string stateName, Sprite normalSprite) : base(dstX, dstY, blockWidth * 2, blockHeight * 2)
         {
             usedSprite = SpriteFactory.CreateSprite("usedblock");
             this.normalSprite = normalSprite;
 
+            RigidBody.ApplyForce(WorldForce.Gravity);
+
             Enum.TryParse(stateName, out BlockState state);
-            SetState(state);
+            State = state;
+
+            origLocation = Location;
         }
 
         public override void Update(float dt)
@@ -31,31 +61,27 @@ namespace MarioPirates
             Sprite.NotNullThen(() => base.Draw(spriteBatch));
         }
 
-        public void SetState(BlockState state)
+        public override void Step(float dt)
         {
-            switch (state)
+            if (Location.Y > origLocation.Y)
             {
-                case BlockState.Normal:
-                    RigidBody.CollisionSideMask = CollisionSide.All;
-                    Sprite = normalSprite;
-                    break;
-                case BlockState.Used:
-                    RigidBody.CollisionSideMask = CollisionSide.All;
-                    Sprite = usedSprite;
-                    break;
-                case BlockState.Hidden:
-                    RigidBody.CollisionSideMask = CollisionSide.Bottom;
-                    Sprite = null;
-                    break;
+                Location = origLocation;
+                RigidBody.Motion = MotionEnum.Static;
             }
-            State = state;
+            base.Step(dt);
         }
 
         public override void OnCollide(GameObjectRigidBody other, CollisionSide side)
         {
             if (other is Mario)
-                if (State == BlockState.Hidden && side == CollisionSide.Bottom)
-                    SetState(BlockState.Normal);
+                if (side == CollisionSide.Bottom && RigidBody.Motion == MotionEnum.Static)
+                {
+                    if (State == BlockState.Hidden)
+                        State = BlockState.Normal;
+
+                    RigidBody.Motion = MotionEnum.Keyframe;
+                    RigidBody.Velocity = new Vector2(0, -150f);
+                }
             base.OnCollide(other, side);
         }
     }

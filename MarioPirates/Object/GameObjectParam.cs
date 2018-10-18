@@ -8,6 +8,8 @@ namespace MarioPirates
         public int[] Location = null;
         public string State = null;
         public MotionEnum? Motion = null;
+        public WorldForce? Force = null;
+        public float? Mass = null;
 
         public GameObject ToGameObject()
         {
@@ -16,9 +18,21 @@ namespace MarioPirates
                 ? (new object[] { Location[0], Location[1], State })
                 : (new object[] { Location[0], Location[1] });
             var obj = (GameObject)Activator.CreateInstance(t, param);
-            if (Motion.HasValue && obj is GameObjectRigidBody or)
-                or.RigidBody.Motion = Motion.Value;
+
+            if (obj is GameObjectRigidBody or)
+                SetRigidBodyParam(or);
+
             return obj;
+        }
+
+        private void SetRigidBodyParam(GameObjectRigidBody obj)
+        {
+            if (Motion.HasValue)
+                obj.RigidBody.Motion = Motion.Value;
+            if (Force.HasValue)
+                obj.RigidBody.ApplyForce(Force.Value);
+            if (Mass.HasValue)
+                obj.RigidBody.Mass = Mass.Value;
         }
     }
 }

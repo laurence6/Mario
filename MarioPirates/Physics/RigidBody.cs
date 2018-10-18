@@ -11,7 +11,17 @@ namespace MarioPirates
     {
         public readonly GameObjectRigidBody Object;
 
-        public MotionEnum Motion { get; set; } = MotionEnum.Static;
+        private MotionEnum motion = MotionEnum.Static;
+        public MotionEnum Motion
+        {
+            get => motion;
+            set
+            {
+                motion = value;
+                if (motion == MotionEnum.Static)
+                    Velocity = Vector2.Zero;
+            }
+        }
 
         public Rectangle Bound => new Rectangle((int)Object.Location.X, (int)Object.Location.Y, Object.Size.X, Object.Size.Y);
 
@@ -34,7 +44,7 @@ namespace MarioPirates
 
         public float? Grounded { get; set; } = null;
 
-        private WorldForce worldForce;
+        private WorldForce worldForce = WorldForce.Gravity;
 
         public RigidBody(GameObjectRigidBody gameObject)
         {
@@ -53,7 +63,7 @@ namespace MarioPirates
 
         public void Step(float dt)
         {
-            if (Motion != MotionEnum.Dynamic)
+            if (Motion == MotionEnum.Static)
                 return;
 
             var nextVelocity = Velocity + dt * Accel;

@@ -7,8 +7,8 @@ namespace MarioPirates
     {
         public Sprite Sprite { get; set; }
 
-        protected Vector2 location;
-        protected Point size;
+        private Vector2 location;
+        private Point size;
         public Vector2 Location { get => location; set => location = value; }
         public Point Size { get => size; set => size = value; }
 
@@ -18,10 +18,6 @@ namespace MarioPirates
             location.Y = locY;
             size.X = sizeX;
             size.Y = sizeY;
-        }
-
-        public virtual void Step(float dt)
-        {
         }
 
         public virtual void Update(float dt)
