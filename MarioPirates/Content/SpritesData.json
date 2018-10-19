@@ -17,11 +17,17 @@
         "Frames": [ 0, 0 ]
     },
 
-    "pipe": {
-        "TextureName": "pipeline",
-        "Size": [ 32, 32 ],
+    "pipelinetop": {
+        "TextureName": "pipelinetop",
+        "Size": [ 32, 15 ],
         "Frames": [ 0, 0 ]
     },
+    "pipelinebottom": {
+        "TextureName": "pipelinebottom",
+        "Size": [ 28, 17 ],
+        "Frames": [ 0, 0 ]
+    },
+
 
     "redmushroom": {
         "TextureName": "redmushroom",

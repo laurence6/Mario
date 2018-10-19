@@ -13,7 +13,7 @@
     <AssemblyName>MarioPirates</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MonoGamePlatform>Windows</MonoGamePlatform>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -92,7 +92,8 @@
     <Compile Include="Object\Mario\MarioState\MarioStateDirection.cs" />
     <Compile Include="Object\Mario\MarioState\MarioStateAction\MarioStateAction.cs" />
     <Compile Include="Object\Item\RedMushroom.cs" />
-    <Compile Include="Object\Item\Pipe.cs" />
+    <Compile Include="Object\Item\PipeTop.cs" />
+	<Compile Include="Object\Item\PipeBottom.cs" />
     <Compile Include="Controller\GamePadController.cs" />
     <Compile Include="Controller\KeyboardController.cs" />
     <Compile Include="Object\Mario\Mario.cs" />
