@@ -31,7 +31,7 @@ namespace MarioPirates
         public float Mass { get; set; } = 1e24f;
         public float InvMass => Motion == MotionEnum.Dynamic ? 1f / Mass : 0f;
 
-        public float CoR { get; } = 0.5f;
+        public float CoR { get; set; } = 1f;
 
         public Vector2 Force { get; private set; }
         private Vector2 velocity;

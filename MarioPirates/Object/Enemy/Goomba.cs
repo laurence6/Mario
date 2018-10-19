@@ -22,21 +22,12 @@ namespace MarioPirates
                     Sprite = SpriteFactory.CreateSprite("goomba_stomped");
                     RigidBody.Velocity = new Vector2(0f, 0f);
                     RigidBody.CollisionLayerMask = CollisionLayer.None;
-                }
-            }
-            else if (other is Pipe || other is Block || other is Goomba)
-            {
-                if (side == CollisionSide.Right)
-                {
-                    // move left
-                }
-                if (side == CollisionSide.Left)
-                {
-                    // move right
+                    // TODO: disappear
                 }
             }
             else if (other is Koopa koopa)
             {
+                // TODO: flip
                 EventManager.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this));
             }
             base.OnCollide(other, side);

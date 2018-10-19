@@ -30,34 +30,9 @@
         {
             if (other is Mario mario)
             {
-                if (!stomped)
+                if (side == CollisionSide.Top || mario.State.IsInvincible)
                 {
-                    if(side == CollisionSide.Top || mario.State.IsInvincible)
-                    {
-                        stomped = true;
-                    }
-                }
-                else
-                {
-                    if (side == CollisionSide.Right || side == CollisionSide.TopRight)
-                    {
-                        // move right
-                    }
-                    else
-                    {
-                        // move left
-                    }
-                }
-            }
-            else if (other is Pipe pipe || other is Block block || other is Goomba goomba || other is Koopa koopa)
-            {
-                if (side == CollisionSide.Right)
-                {
-                    // move left
-                }
-                if (side == CollisionSide.Left)
-                {
-                    // move right
+                    stomped = true;
                 }
             }
             base.OnCollide(other, side);

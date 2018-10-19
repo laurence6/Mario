@@ -20,6 +20,8 @@ namespace MarioPirates
             new JavaScriptSerializer().Deserialize<List<string>>(ReadAllText("Content\\MarioSpritesList.json"))
                  .ForEach(s => Sprites.Add(s, SpriteFactory.CreateSprite(s)));
 
+            RigidBody.CoR = 0.5f;
+
             State = new MarioState(this);
 
             SubscribeInputMoving();
