@@ -5,7 +5,6 @@ using System.Collections.Generic;
 namespace MarioPirates
 {
     using Event;
-    using static Common;
 
     internal class RigidBody
     {
@@ -42,7 +41,7 @@ namespace MarioPirates
         }
         private Vector2 Accel => Force * InvMass;
 
-        public float? Grounded { get; set; } = null;
+        public bool Grounded { get; set; } = false;
 
         private WorldForce worldForce = WorldForce.Gravity;
 
@@ -67,21 +66,22 @@ namespace MarioPirates
                 return;
 
             var nextVelocity = Velocity + dt * Accel;
+            if (Grounded)
+                nextVelocity.Y = nextVelocity.Y.Clamp(-250f, 0f);
 
             // XXX: a hacky approx to simulate friction
             if (worldForce.HasOne(WorldForce.Friction))
             {
                 if (worldForce.HasOne(WorldForce.Gravity))
-                    nextVelocity.X *= Pow(0.0001f, dt);
+                    nextVelocity.X *= 0.0001f.Pow(dt);
                 else
-                    nextVelocity *= Pow(0.0001f, dt);
+                    nextVelocity *= 0.0001f.Pow(dt);
             }
 
+            // XXX: another hacky approx to simulate gravity
             if (worldForce.HasOne(WorldForce.Gravity))
-            {
-                if (!Grounded.HasValue)
+                if (!Grounded)
                     nextVelocity.Y += 2f;
-            }
 
             Object.Location += dt * (nextVelocity + Velocity) / 2;
             Velocity = nextVelocity;
@@ -131,10 +131,6 @@ namespace MarioPirates
                         if (r1.CollisionSideMask.HasOne(side) && r2.CollisionSideMask.HasOne(side.Invert()))
                         {
                             collisions.Add(new CollideEventArgs(o1, o2, side, depth));
-                            if (side == CollisionSide.Bottom && r2.Motion != MotionEnum.Dynamic)
-                            {
-                                r1.Grounded = o2.Location.Y;
-                            }
                         }
                     }
                 }

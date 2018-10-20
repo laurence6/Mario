@@ -3,6 +3,7 @@
 namespace MarioPirates
 {
     using Event;
+
     internal class Goomba : GameObjectRigidBody
     {
         private const int goombaWidth = 16, goombaHeight = 16;

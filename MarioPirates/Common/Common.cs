@@ -83,7 +83,8 @@ namespace MarioPirates
         public static float Abs(this float x) => Math.Abs(x);
 
         // float
-        public static float Pow(float x, float y) => (float)Math.Pow(x, y);
+        public static float Pow(this float x, float y) => (float)Math.Pow(x, y);
+        public static float Clamp(this float x, float lower, float upper) => x < lower ? lower : x > upper ? upper : x;
 
         // Vector2
         public static Vector2 Abs(this Vector2 v) => new Vector2(Math.Abs(v.X), Math.Abs(v.Y));
@@ -96,7 +97,7 @@ namespace MarioPirates
         public static Vector2 DeEPS(this Vector2 v) => new Vector2(v.X.Abs() < 1f ? 0f : v.X, v.Y.Abs() < 1f ? 0f : v.Y);
 
         public static Vector2 Clamp(this Vector2 v, float lower, float upper) =>
-            new Vector2(v.X < lower ? lower : v.X > upper ? upper : v.X, v.Y < lower ? lower : v.Y > upper ? upper : v.Y);
+            new Vector2(v.X.Clamp(lower, upper), v.Y.Clamp(lower, upper));
 
         public static bool HasOne<T>(this T e, T f) where T : struct, IConvertible =>
             (Convert.ToUInt64(e) & Convert.ToUInt64(f)) != 0;
