@@ -34,25 +34,27 @@ namespace MarioPirates
             for (var s = 0; s < nsteps; s++)
             {
                 container.Rebuild();
-                container.ForEach(o =>
+                container.ForEach(o1 =>
                 {
-                    if (o.RigidBody.Motion == MotionEnum.Dynamic)
+                    if (o1.RigidBody.Motion == MotionEnum.Dynamic)
                     {
-                        var bound = o.RigidBody.Bound;
+                        var bound = o1.RigidBody.Bound;
                         var potentialSupportUpper = new Rectangle(bound.Left, bound.Bottom + 1, bound.Width, 1);
-                        o.RigidBody.Grounded = false;
+                        o1.RigidBody.Grounded = false;
                         container.Find(potentialSupportUpper, potentialSupport);
-                        foreach (var other in potentialSupport)
+                        foreach (var o2 in potentialSupport)
                         {
-                            if (other.RigidBody.Bound.Intersects(potentialSupportUpper))
-                            {
-                                o.RigidBody.Grounded = true;
-                                collisions.Add(new CollideEventArgs(o, other, CollisionSide.Bottom, 0));
-                            }
+                            if (o1.RigidBody.CollisionLayerMask.HasOne(o2.RigidBody.CollisionLayerMask))
+                                if (o1.RigidBody.CollisionSideMask.HasOne(CollisionSide.Bottom) && o2.RigidBody.CollisionSideMask.HasOne(CollisionSide.Top))
+                                    if (o2.RigidBody.Bound.Intersects(potentialSupportUpper))
+                                    {
+                                        o1.RigidBody.Grounded = true;
+                                        collisions.Add(new CollideEventArgs(o1, o2, CollisionSide.Bottom, 0));
+                                    }
                         }
                         potentialSupport.Clear();
                     }
-                    o.Step(ddt);
+                    o1.Step(ddt);
                 });
                 collisions.ForEach(ce =>
                 {
