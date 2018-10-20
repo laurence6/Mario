@@ -20,6 +20,7 @@
                     {
                         TypeName = "Coin",
                         Location = new int[2] { (int)Location.X + 10, (int)Location.Y - 32 },
+                        Motion = MotionEnum.Dynamic,
                     }));
                 }
             base.OnCollide(other, side);
