@@ -54,11 +54,15 @@ namespace MarioPirates
                     }
                     o.Step(ddt);
                 });
+                collisions.ForEach(ce =>
+                {
+                    ce.object1.PreCollide(ce.object2, ce.side);
+                    ce.object2.PreCollide(ce.object1, ce.side.Invert());
+                });
                 collisions.Consume(ce =>
                 {
-                    ce.object1.OnCollide(ce.object2, ce.side);
-                    ce.object2.OnCollide(ce.object1, ce.side.Invert());
-                    EventManager.RaiseEvent(EventEnum.Collide, null, ce);
+                    ce.object1.PostCollide(ce.object2, ce.side);
+                    ce.object2.PostCollide(ce.object1, ce.side.Invert());
                 });
 
                 container.Rebuild();
@@ -76,6 +80,11 @@ namespace MarioPirates
                     }
                 });
                 objectsChecked.Clear();
+                collisions.ForEach(ce =>
+                {
+                    ce.object1.PreCollide(ce.object2, ce.side);
+                    ce.object2.PreCollide(ce.object1, ce.side.Invert());
+                });
                 collisions.ForEach(ce =>
                 {
                     RigidBody r1 = ce.object1.RigidBody, r2 = ce.object2.RigidBody;
@@ -107,9 +116,8 @@ namespace MarioPirates
                 });
                 collisions.Consume(ce =>
                 {
-                    ce.object1.OnCollide(ce.object2, ce.side);
-                    ce.object2.OnCollide(ce.object1, ce.side.Invert());
-                    EventManager.RaiseEvent(EventEnum.Collide, null, ce);
+                    ce.object1.PostCollide(ce.object2, ce.side);
+                    ce.object2.PostCollide(ce.object1, ce.side.Invert());
                 });
             }
         }

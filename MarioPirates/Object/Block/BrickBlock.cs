@@ -9,7 +9,7 @@
         {
         }
 
-        public override void OnCollide(GameObjectRigidBody other, CollisionSide side)
+        public override void PostCollide(GameObjectRigidBody other, CollisionSide side)
         {
             if (side == CollisionSide.Bottom)
             {
@@ -21,7 +21,7 @@
                     }
                 }
             }
-            base.OnCollide(other, side);
+            base.PostCollide(other, side);
         }
     }
 }

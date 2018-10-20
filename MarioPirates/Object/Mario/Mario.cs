@@ -101,7 +101,7 @@ namespace MarioPirates
             base.Update(dt);
         }
 
-        public override void OnCollide(GameObjectRigidBody other, CollisionSide side)
+        public override void PostCollide(GameObjectRigidBody other, CollisionSide side)
         {
             // Response to collision with items.
             if (other is Coin)
@@ -141,7 +141,7 @@ namespace MarioPirates
                 }
             }
 
-            base.OnCollide(other, side);
+            base.PostCollide(other, side);
         }
     }
 }

@@ -9,7 +9,7 @@
         {
         }
 
-        public override void OnCollide(GameObjectRigidBody other, CollisionSide side)
+        public override void PostCollide(GameObjectRigidBody other, CollisionSide side)
         {
             if (other is Mario)
                 if (State == BlockState.Normal && side == CollisionSide.Bottom)
@@ -23,7 +23,7 @@
                         Motion = MotionEnum.Dynamic,
                     }));
                 }
-            base.OnCollide(other, side);
+            base.PostCollide(other, side);
         }
     }
 }

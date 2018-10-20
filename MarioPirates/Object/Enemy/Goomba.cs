@@ -14,7 +14,18 @@ namespace MarioPirates
             RigidBody.Mass = 0.1f;
         }
 
-        public override void OnCollide(GameObjectRigidBody other, CollisionSide side)
+        public override void PreCollide(GameObjectRigidBody other, CollisionSide side)
+        {
+            if (other is Koopa)
+            {
+                // TODO: flip
+                RigidBody.Mass = 1e-6f;
+                EventManager.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this));
+            }
+            base.PreCollide(other, side);
+        }
+
+        public override void PostCollide(GameObjectRigidBody other, CollisionSide side)
         {
             if (other is Mario mario)
             {
@@ -26,12 +37,7 @@ namespace MarioPirates
                     // TODO: disappear
                 }
             }
-            else if (other is Koopa)
-            {
-                // TODO: flip
-                EventManager.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this));
-            }
-            base.OnCollide(other, side);
+            base.PostCollide(other, side);
         }
     }
 }

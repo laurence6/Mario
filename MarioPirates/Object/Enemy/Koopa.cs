@@ -26,7 +26,7 @@
             base.Update(dt);
         }
 
-        public override void OnCollide(GameObjectRigidBody other, CollisionSide side)
+        public override void PostCollide(GameObjectRigidBody other, CollisionSide side)
         {
             if (other is Mario mario)
             {
@@ -35,7 +35,7 @@
                     stomped = true;
                 }
             }
-            base.OnCollide(other, side);
+            base.PostCollide(other, side);
         }
     }
 }

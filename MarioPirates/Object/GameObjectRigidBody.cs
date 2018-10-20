@@ -19,7 +19,11 @@
             RigidBody.Step(dt);
         }
 
-        public virtual void OnCollide(GameObjectRigidBody other, CollisionSide side)
+        public virtual void PreCollide(GameObjectRigidBody other, CollisionSide side)
+        {
+        }
+
+        public virtual void PostCollide(GameObjectRigidBody other, CollisionSide side)
         {
         }
     }
