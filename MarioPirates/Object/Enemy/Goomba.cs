@@ -25,7 +25,7 @@ namespace MarioPirates
                     // TODO: disappear
                 }
             }
-            else if (other is Koopa koopa)
+            else if (other is Koopa)
             {
                 // TODO: flip
                 EventManager.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this));

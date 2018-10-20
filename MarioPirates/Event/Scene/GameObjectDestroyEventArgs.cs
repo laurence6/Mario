@@ -2,7 +2,7 @@
 {
     internal class GameObjectDestroyEventArgs : System.EventArgs
     {
-        public GameObject Object { get; private set; }
+        public readonly GameObject Object;
 
         public GameObjectDestroyEventArgs(GameObject o) => Object = o;
     }
