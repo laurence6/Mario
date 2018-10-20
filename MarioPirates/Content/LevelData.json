@@ -170,7 +170,7 @@
         "Location": [ 532, 316 ]
     },
 
-    
+
 
     {
         "TypeName": "Mario",
@@ -336,5 +336,18 @@
         "Location": [ 800, 450 ],
         "State": "Normal",
         "Motion": "Static"
+    },
+    {
+        "TypeName": "BrickBlock",
+        "Location": [ 50, 100 ],
+        "State": "Hidden",
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "UsedBlock",
+        "Location": [ 600, 300 ],
+        "State": "Hidden",
+        "Motion": "Static"
     }
+
 ]
