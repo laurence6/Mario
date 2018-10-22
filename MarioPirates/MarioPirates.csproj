@@ -51,6 +51,7 @@
     <Compile Include="Common\Common.cs" />
     <Compile Include="Common\Time.cs" />
     <Compile Include="Controller\InputEventFactory.cs" />
+    <Compile Include="Event\Action\ActionEventArgs.cs" />
     <Compile Include="Event\EventEnum.cs" />
     <Compile Include="Event\EventManager.cs" />
     <Compile Include="Event\Scene\GameObjectCreateEventArgs.cs" />
@@ -98,7 +99,7 @@
     <Compile Include="Object\Item\RedMushroom.cs" />
     <Compile Include="Object\Item\PipeTop.cs" />
     <Compile Include="Object\Item\PipeBottom.cs" />
-	<Compile Include="Controller\GamePadController.cs" />
+    <Compile Include="Controller\GamePadController.cs" />
     <Compile Include="Controller\KeyboardController.cs" />
     <Compile Include="Object\Mario\Mario.cs" />
     <Compile Include="Object\Enemy\Goomba.cs" />
