@@ -67,8 +67,8 @@ namespace MarioPirates
                 }
             });
 
-            EventManager.Subscribe(EventEnum.KeyRightDown, (s, e) => State.Right());
-            EventManager.Subscribe(EventEnum.KeyLeftDown, (s, e) => State.Left());
+            EventManager.Subscribe(EventEnum.KeyRightHold, (s, e) => State.Right());
+            EventManager.Subscribe(EventEnum.KeyLeftHold, (s, e) => State.Left());
 
             EventManager.Subscribe(EventEnum.KeyUpUp, (s, e) => JumpHoldCount = JumpHoldCountLimit);
 
