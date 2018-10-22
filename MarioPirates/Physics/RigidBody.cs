@@ -64,8 +64,6 @@ namespace MarioPirates
                 return;
 
             var nextVelocity = Velocity + dt * Accel;
-            if (Grounded)
-                nextVelocity.Y = nextVelocity.Y.Clamp(-250f, 0f);
 
             // XXX: a hacky approx to simulate friction
             if (worldForce.HasOne(WorldForce.Friction))
@@ -79,7 +77,7 @@ namespace MarioPirates
             // XXX: another hacky approx to simulate gravity
             if (worldForce.HasOne(WorldForce.Gravity))
                 if (!Grounded)
-                    nextVelocity.Y += 2f;
+                    nextVelocity.Y += 4f;
 
             Object.Location += dt * (nextVelocity + Velocity) / 2;
             Velocity = nextVelocity;

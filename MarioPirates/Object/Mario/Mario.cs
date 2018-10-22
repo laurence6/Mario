@@ -8,7 +8,7 @@ namespace MarioPirates
 {
     internal class Mario : GameObjectRigidBody
     {
-        private const int JumpHoldCountLimit = 30;
+        private const int JumpHoldCountLimit = 20;
 
         public readonly Dictionary<string, Sprite> Sprites;
 
@@ -39,7 +39,7 @@ namespace MarioPirates
             {
                 if (!State.IsDead && JumpHoldCount < JumpHoldCountLimit)
                 {
-                    RigidBody.ApplyForce(new Vector2(0, -1500 + JumpHoldCount * 50));
+                    RigidBody.ApplyForce(new Vector2(0, -2500 + JumpHoldCount * 50));
                     JumpHoldCount += 1;
                 }
             });
@@ -174,7 +174,7 @@ namespace MarioPirates
                 {
                     if (State.IsSmall)
                     {
-                        RigidBody.Velocity = new Vector2(0f, -100f);
+                        RigidBody.Velocity = new Vector2(0f, -200f);
                         State.Dead();
                     }
                     else
@@ -184,7 +184,7 @@ namespace MarioPirates
                 }
                 else
                 {
-                    RigidBody.Velocity = new Vector2(0f, -100f);
+                    RigidBody.Velocity = new Vector2(0f, -200f);
                 }
             }
 
