@@ -106,6 +106,7 @@ namespace MarioPirates
             triggerReset = false;
 
             var keyboardController = new KeyboardController();
+            keyboardController.SetKeyMapping(Keys.Space, Keys.Up);
             keyboardController.SetKeyMapping(Keys.W, Keys.Up);
             keyboardController.SetKeyMapping(Keys.S, Keys.Down);
             keyboardController.SetKeyMapping(Keys.A, Keys.Left);
