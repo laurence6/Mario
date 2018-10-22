@@ -34,12 +34,19 @@ namespace MarioPirates
 
         private void SubscribeInputMoving()
         {
-
             EventManager.Subscribe(EventEnum.KeyUpHold, (s, e) =>
             {
                 if (!State.IsDead && JumpHoldCount < JumpHoldCountLimit)
                 {
                     RigidBody.ApplyForce(new Vector2(0, -2500 + JumpHoldCount * 50));
+                    JumpHoldCount += 1;
+                }
+            });
+            EventManager.Subscribe(EventEnum.KeyUpDown, (s, e) =>
+            {
+                if (!State.IsDead && JumpHoldCount < JumpHoldCountLimit)
+                {
+                    RigidBody.ApplyForce(new Vector2(0, -1500 + JumpHoldCount * 50));
                     JumpHoldCount += 1;
                 }
             });
