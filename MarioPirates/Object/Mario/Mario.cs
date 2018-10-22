@@ -152,7 +152,7 @@ namespace MarioPirates
             }
 
             // Response to collsion with enemies
-            if (other is Goomba || other is Koopa)
+            if ((other is Goomba) || other is Koopa)
             {
                 if (!(side == CollisionSide.Bottom || State.IsInvincible))
                 {
@@ -163,6 +163,10 @@ namespace MarioPirates
                     }
                     else
                         State.Small();
+                }
+                else
+                {
+                    RigidBody.ApplyForce(new Vector2(0, -5000));
                 }
             }
 

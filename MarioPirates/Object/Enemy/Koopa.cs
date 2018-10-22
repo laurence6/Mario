@@ -1,4 +1,6 @@
-﻿namespace MarioPirates
+﻿using Microsoft.Xna.Framework;
+
+namespace MarioPirates
 {
     internal class Koopa : GameObjectRigidBody
     {
@@ -32,7 +34,10 @@
             {
                 if (side == CollisionSide.Top || mario.State.IsInvincible)
                 {
-                    stomped = true;
+                    if (stomped && mario.RigidBody.Velocity.Y < 0)
+                        RigidBody.ApplyForce(new Vector2(20000, 0));
+                    else
+                        stomped = true;
                 }
             }
             base.PostCollide(other, side);
