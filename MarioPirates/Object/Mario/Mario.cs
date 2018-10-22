@@ -184,11 +184,12 @@ namespace MarioPirates
                 {
                     if (State.IsSmall)
                     {
-                        RigidBody.Velocity = new Vector2(0f, -200f);
+                        RigidBody.Velocity = new Vector2(0f, -250f);
                         State.Dead();
                         unsubscribe();
                         unsubscribe = null;
                         EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), 3000f);
+                        EventManager.Ins.RaiseEvent(EventEnum.Action, this, new ActionEventArgs(() => Scene.Ins.Reset()), 4000f);
                     }
                     else
                     {
