@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using System;
 using System.Collections.Generic;
 using System.Web.Script.Serialization;
 using static System.IO.File;
@@ -13,6 +14,8 @@ namespace MarioPirates
         public readonly Dictionary<string, Sprite> Sprites;
 
         public readonly MarioState State;
+
+        private Action unsubscribe;
 
         private int JumpHoldCount;
 
@@ -34,7 +37,7 @@ namespace MarioPirates
 
         private void SubscribeInputMoving()
         {
-            EventManager.Subscribe(EventEnum.KeyUpHold, (s, e) =>
+            unsubscribe += EventManager.Subscribe(EventEnum.KeyUpHold, (s, e) =>
             {
                 if (!State.IsDead && JumpHoldCount < JumpHoldCountLimit)
                 {
@@ -42,7 +45,7 @@ namespace MarioPirates
                     JumpHoldCount += 1;
                 }
             });
-            EventManager.Subscribe(EventEnum.KeyUpDown, (s, e) =>
+            unsubscribe += EventManager.Subscribe(EventEnum.KeyUpDown, (s, e) =>
             {
                 if (!State.IsDead && JumpHoldCount < JumpHoldCountLimit)
                 {
@@ -50,21 +53,21 @@ namespace MarioPirates
                     JumpHoldCount += 1;
                 }
             });
-            EventManager.Subscribe(EventEnum.KeyDownHold, (s, e) =>
+            unsubscribe += EventManager.Subscribe(EventEnum.KeyDownHold, (s, e) =>
             {
                 if (!State.IsDead)
                 {
                     State.Crouch();
                 }
             });
-            EventManager.Subscribe(EventEnum.KeyLeftHold, (s, e) =>
+            unsubscribe += EventManager.Subscribe(EventEnum.KeyLeftHold, (s, e) =>
             {
                 if (!State.IsDead && !State.IsCrouch)
                 {
                     RigidBody.ApplyForce(new Vector2(-2000, 0));
                 }
             });
-            EventManager.Subscribe(EventEnum.KeyRightHold, (s, e) =>
+            unsubscribe += EventManager.Subscribe(EventEnum.KeyRightHold, (s, e) =>
             {
                 if (!State.IsDead && !State.IsCrouch)
                 {
@@ -72,10 +75,10 @@ namespace MarioPirates
                 }
             });
 
-            EventManager.Subscribe(EventEnum.KeyRightHold, (s, e) => State.Right());
-            EventManager.Subscribe(EventEnum.KeyLeftHold, (s, e) => State.Left());
+            unsubscribe += EventManager.Subscribe(EventEnum.KeyRightHold, (s, e) => State.Right());
+            unsubscribe += EventManager.Subscribe(EventEnum.KeyLeftHold, (s, e) => State.Left());
 
-            EventManager.Subscribe(EventEnum.KeyRightHold, (s, e) =>
+            unsubscribe += EventManager.Subscribe(EventEnum.KeyRightHold, (s, e) =>
             {
                 if (RigidBody.Velocity.X < 0)
                 {
@@ -86,7 +89,7 @@ namespace MarioPirates
                     State.Coast();
                 }
             });
-            EventManager.Subscribe(EventEnum.KeyLeftHold, (s, e) =>
+            unsubscribe += EventManager.Subscribe(EventEnum.KeyLeftHold, (s, e) =>
             {
                 if (RigidBody.Velocity.X > 0)
                 {
@@ -98,9 +101,9 @@ namespace MarioPirates
                 }
             });
 
-            EventManager.Subscribe(EventEnum.KeyUpUp, (s, e) => JumpHoldCount = JumpHoldCountLimit);
+            unsubscribe += EventManager.Subscribe(EventEnum.KeyUpUp, (s, e) => JumpHoldCount = JumpHoldCountLimit);
 
-            EventManager.Subscribe(EventEnum.KeyUpDown, (s, e) =>
+            unsubscribe += EventManager.Subscribe(EventEnum.KeyUpDown, (s, e) =>
             {
                 if (RigidBody.Grounded)
                 {
@@ -111,7 +114,7 @@ namespace MarioPirates
 
         private void SubscribeInputTransition()
         {
-            EventManager.Subscribe(EventEnum.KeyDown, (s, e) =>
+            unsubscribe += EventManager.Subscribe(EventEnum.KeyDown, (s, e) =>
             {
                 switch ((e as KeyDownEventArgs).key)
                 {
@@ -183,7 +186,9 @@ namespace MarioPirates
                     {
                         RigidBody.Velocity = new Vector2(0f, -200f);
                         State.Dead();
-                        EventManager.RaiseEvent(EventEnum.KeyDown, this, new KeyDownEventArgs(Keys.R), 5000f);
+                        unsubscribe();
+                        unsubscribe = null;
+                        EventManager.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this));
                     }
                     else
                     {
