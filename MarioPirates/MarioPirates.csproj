@@ -96,7 +96,7 @@
     <Compile Include="Object\Item\RedMushroom.cs" />
     <Compile Include="Object\Item\PipeTop.cs" />
     <Compile Include="Object\Item\PipeBottom.cs" />
-    <Compile Include="Controller\GamePadController.cs" />
+	<Compile Include="Controller\GamePadController.cs" />
     <Compile Include="Controller\KeyboardController.cs" />
     <Compile Include="Object\Mario\Mario.cs" />
     <Compile Include="Object\Enemy\Goomba.cs" />
