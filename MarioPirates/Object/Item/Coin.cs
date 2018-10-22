@@ -6,7 +6,7 @@
 
         public Coin(int dstX, int dstY) : base(dstX, dstY, coinWidth * 2, coinHeight * 2)
         {
-            Sprite = SpriteFactory.CreateSprite("coins");
+            Sprite = SpriteFactory.CreateSprite("coin");
             RigidBody.Mass = 0.05f;
         }
 

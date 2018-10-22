@@ -1,8 +1,8 @@
-﻿namespace MarioPirates
+namespace MarioPirates
 {
-    internal class QuestionBlock : Block
+    internal class QuestionBlockStar : Block
     {
-        public QuestionBlock(int dstX, int dstY, string state)
+        public QuestionBlockStar(int dstX, int dstY, string state)
             : base(dstX, dstY, state, SpriteFactory.CreateSprite("questionblock"))
         {
         }
@@ -16,7 +16,7 @@
 
                     EventManager.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(new GameObjectParam
                     {
-                        TypeName = "Coin",
+                        TypeName = "Star",
                         Location = new int[2] { (int)Location.X + 10, (int)Location.Y - 32 },
                         Motion = MotionEnum.Dynamic,
                     }));

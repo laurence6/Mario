@@ -1,7 +1,7 @@
 ﻿{
     
-    "coins": {
-        "TextureName": "coins",
+    "coin": {
+        "TextureName": "coin",
         "Size": [ 7, 14 ],
         "Frames": [ 0, 0, 30, 0, 60, 0, 90, 0 ]
     },
@@ -36,8 +36,8 @@
         "Frames": [ 0, 0 ]
     },
 
-    "stars": {
-        "TextureName": "stars",
+    "star": {
+        "TextureName": "star",
         "Size": [ 14, 16 ],
         "Frames": [ 0, 0, 30, 0, 60, 0, 90, 0 ]
     },

@@ -6,7 +6,7 @@
 
         public Star(int dstX, int dstY) : base(dstX, dstY, starWidth * 2, starHeight * 2)
         {
-            Sprite = SpriteFactory.CreateSprite("stars");
+            Sprite = SpriteFactory.CreateSprite("star");
             RigidBody.Mass = 0.05f;
         }
 

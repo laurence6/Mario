@@ -65,37 +65,37 @@
         "State": "Normal"
     },
     {
-        "TypeName": "QuestionBlock",
+        "TypeName": "QuestionBlockStar",
         "Motion": "Static",
         "Location": [ 160, 300 ],
         "State": "normal"
     },
     {
-        "TypeName": "QuestionBlock",
+        "TypeName": "QuestionBlockCoin",
         "Motion": "Static",
         "Location": [ 192, 300 ],
         "State": "normal"
     },
     {
-        "TypeName": "QuestionBlock",
+        "TypeName": "QuestionBlockCoin",
         "Motion": "Static",
         "Location": [ 224, 300 ],
         "State": "normal"
     },
     {
-        "TypeName": "QuestionBlock",
+        "TypeName": "QuestionBlockCoin",
         "Motion": "Static",
         "Location": [ 256, 300 ],
         "State": "normal"
     },
     {
-        "TypeName": "QuestionBlock",
+        "TypeName": "QuestionBlockCoin",
         "Motion": "Static",
         "Location": [ 500, 268 ],
         "State": "Normal"
     },
     {
-        "TypeName": "QuestionBlock",
+        "TypeName": "QuestionBlockCoin",
         "Motion": "Static",
         "Location": [ 532, 268 ],
         "State": "Normal"

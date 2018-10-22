@@ -71,7 +71,8 @@
     <Compile Include="Physics\Physics.cs" />
     <Compile Include="Object\Block\OrangeBlock.cs" />
     <Compile Include="Event\Physics\CollideEventArgs.cs" />
-    <Compile Include="Object\Block\QuestionBlock.cs" />
+    <Compile Include="Object\Block\QuestionBlockCoin.cs" />
+	<Compile Include="Object\Block\QuestionBlockStar.cs" />
     <Compile Include="Object\Background\Background.cs" />
     <Compile Include="Object\Block\UsedBlock.cs" />
     <Compile Include="Object\Block\BrokenBlock.cs" />
