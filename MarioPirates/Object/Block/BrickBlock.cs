@@ -4,23 +4,37 @@ namespace MarioPirates
 {
     internal class BrickBlock : Block
     {
+        private string powerup;
+
         public BrickBlock(int dstX, int dstY, Dictionary<string, string> Params)
             : base(dstX, dstY, Params, SpriteFactory.Ins.CreateSprite("brickblock"))
         {
+            powerup = Params["Powerup"];
         }
 
         public override void PostCollide(GameObjectRigidBody other, CollisionSide side)
         {
             base.PostCollide(other, side);
-            if (side == CollisionSide.Bottom)
+            if (other is Mario mario && side == CollisionSide.Bottom)
             {
-                if (other is Mario mario)
+                if (State == BlockState.Normal)
                 {
-                    if (!(mario.State.IsSmall || mario.State.IsDead))
+                    State = BlockState.Used;
+
+                    var powerupObj = new GameObjectParam
                     {
-                        EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this));
+                        TypeName = powerup,
+                        Location = new int[2] { (int)Location.X + 10, (int)Location.Y - 32 },
+                        Motion = MotionEnum.Dynamic,
+                    }.ToGameObject();
+                    EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(powerupObj));
+                    if (powerup == "Coin")
+                    {
+                        EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(powerupObj), 500f);
                     }
                 }
+                else if(State == BlockState.Used && !(mario.State.IsSmall || mario.State.IsDead))
+                    EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this));
             }
         }
     }
