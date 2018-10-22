@@ -9,6 +9,7 @@ namespace MarioPirates
 
         public override void PostCollide(GameObjectRigidBody other, CollisionSide side)
         {
+            base.PostCollide(other, side);
             if (other is Mario)
                 if (State == BlockState.Normal && side == CollisionSide.Bottom)
                 {
@@ -21,7 +22,6 @@ namespace MarioPirates
                         Motion = MotionEnum.Dynamic,
                     }));
                 }
-            base.PostCollide(other, side);
         }
     }
 }

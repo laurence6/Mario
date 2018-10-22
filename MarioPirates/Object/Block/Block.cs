@@ -12,7 +12,7 @@ namespace MarioPirates
         private readonly Sprite normalSprite;
 
         private BlockState state = BlockState.Normal;
-        protected BlockState State
+        protected virtual BlockState State
         {
             get => state;
             set
@@ -74,7 +74,7 @@ namespace MarioPirates
         public override void PostCollide(GameObjectRigidBody other, CollisionSide side)
         {
             if (other is Mario)
-                if (side == CollisionSide.Bottom && RigidBody.Motion == MotionEnum.Static)
+                if (side == CollisionSide.Bottom && RigidBody.Motion == MotionEnum.Static && State != BlockState.Used)
                 {
                     if (State == BlockState.Hidden)
                         State = BlockState.Normal;

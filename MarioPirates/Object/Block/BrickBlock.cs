@@ -9,6 +9,7 @@
 
         public override void PostCollide(GameObjectRigidBody other, CollisionSide side)
         {
+            base.PostCollide(other, side);
             if (side == CollisionSide.Bottom)
             {
                 if (other is Mario mario)
@@ -19,7 +20,6 @@
                     }
                 }
             }
-            base.PostCollide(other, side);
         }
     }
 }

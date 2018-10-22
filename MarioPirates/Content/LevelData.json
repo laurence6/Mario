@@ -68,25 +68,25 @@
         "TypeName": "QuestionBlockStar",
         "Motion": "Static",
         "Location": [ 160, 300 ],
-        "State": "normal"
+        "State": "Normal"
     },
     {
         "TypeName": "QuestionBlockCoin",
         "Motion": "Static",
         "Location": [ 192, 300 ],
-        "State": "normal"
+        "State": "Normal"
     },
     {
         "TypeName": "QuestionBlockCoin",
         "Motion": "Static",
         "Location": [ 224, 300 ],
-        "State": "normal"
+        "State": "Normal"
     },
     {
         "TypeName": "QuestionBlockCoin",
         "Motion": "Static",
         "Location": [ 256, 300 ],
-        "State": "normal"
+        "State": "Normal"
     },
     {
         "TypeName": "QuestionBlockCoin",
