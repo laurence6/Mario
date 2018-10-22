@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace MarioPirates.Event
 {
@@ -10,7 +9,7 @@ namespace MarioPirates.Event
     {
         private static EventHandler[] handlerList = new EventHandler[EnumValues<EventEnum>().Length];
 
-        private static Dictionary<float, ValueTuple<EventEnum, object, EventArgs>> waitlist = new Dictionary<float, (EventEnum, object, EventArgs)>();
+        private static List<ValueTuple<float, EventEnum, object, EventArgs>> waitlist = new List<(float, EventEnum, object, EventArgs)>();
 
         public static void Reset()
         {
@@ -31,26 +30,20 @@ namespace MarioPirates.Event
 
         public static void RaiseEvent(EventEnum type, object s, EventArgs e, float dt)
         {
-            waitlist.Add(Time.Now + dt, (type, s, e));
+            waitlist.Add((Time.Now + dt, type, s, e));
         }
 
         public static void Update()
         {
             var t = Time.Now;
-            var keys = waitlist.Keys.ToList();
-            keys.Sort();
-            foreach (var k in keys)
+            waitlist.Sort((x, y) => x.Item1.CompareTo(y.Item1));
+            while (waitlist.Count > 0)
             {
-                if (k <= t)
-                {
-                    (var type, var s, var e) = waitlist[k];
-                    waitlist.Remove(k);
-                    RaiseEvent(type, s, e);
-                }
-                else
-                {
+                (var due, var type, var s, var e) = waitlist[0];
+                if (due > t)
                     break;
-                }
+                waitlist.RemoveAt(0);
+                RaiseEvent(type, s, e);
             }
         }
     }

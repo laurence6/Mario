@@ -20,6 +20,8 @@ namespace MarioPirates
                 SpriteFactory.CreateSprite("koopa_stomped"),
             };
             Sprite = sprites[0];
+
+            RigidBody.Velocity = new Vector2(-25f, 0f);
         }
 
         public override void Update(float dt)

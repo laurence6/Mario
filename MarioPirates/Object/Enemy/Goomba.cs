@@ -12,16 +12,15 @@ namespace MarioPirates
         {
             Sprite = SpriteFactory.CreateSprite("goomba");
             RigidBody.Mass = 0.1f;
+
+            RigidBody.Velocity = new Vector2(-25f, 0f);
         }
 
         public override void PreCollide(GameObjectRigidBody other, CollisionSide side)
         {
             if (other is Koopa)
             {
-                // TODO: flip
                 RigidBody.Mass = 1e-6f;
-                RigidBody.CollisionLayerMask = CollisionLayer.None;
-                EventManager.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), 1000f);
             }
             base.PreCollide(other, side);
         }
@@ -33,14 +32,17 @@ namespace MarioPirates
                 if (side == CollisionSide.Top || mario.State.IsInvincible)
                 {
                     Sprite = SpriteFactory.CreateSprite("goomba_stomped");
-                    RigidBody.Velocity = new Vector2(0f, 0f);
                     RigidBody.CollisionLayerMask = CollisionLayer.None;
-                    // TODO: disappear
+                    RigidBody.Velocity = Vector2.Zero;
+                    EventManager.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), 3000f);
                 }
             }
             else if (other is Koopa)
             {
-                RigidBody.Motion = MotionEnum.Static;
+                // TODO: flip
+                RigidBody.CollisionLayerMask = CollisionLayer.None;
+                RigidBody.Velocity = new Vector2(0f, -250f);
+                EventManager.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), 3000f);
             }
             base.PostCollide(other, side);
         }
