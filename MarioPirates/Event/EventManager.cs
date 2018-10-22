@@ -15,6 +15,7 @@ namespace MarioPirates
         {
             for (var i = 0; i < handlerList.Length; i++)
                 handlerList[i] = null;
+            ActionEventArgs.Reset();
         }
 
         public static Action Subscribe(EventEnum type, EventHandler h)

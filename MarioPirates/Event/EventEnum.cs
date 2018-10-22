@@ -2,6 +2,8 @@
 {
     internal enum EventEnum : int
     {
+        Action,
+
         // Common input
         KeyUpDown,
         KeyDownDown,
