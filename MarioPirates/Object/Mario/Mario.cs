@@ -174,7 +174,7 @@ namespace MarioPirates
                 {
                     if (State.IsSmall)
                     {
-                        RigidBody.ApplyForce(new Vector2(0, -100000));
+                        RigidBody.Velocity = new Vector2(0f, -100f);
                         State.Dead();
                     }
                     else
@@ -184,7 +184,7 @@ namespace MarioPirates
                 }
                 else
                 {
-                    RigidBody.ApplyForce(new Vector2(0, -5000));
+                    RigidBody.Velocity = new Vector2(0f, -100f);
                 }
             }
 

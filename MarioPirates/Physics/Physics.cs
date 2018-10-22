@@ -50,7 +50,7 @@ namespace MarioPirates
                                         if (o2.RigidBody.Bound.Intersects(potentialSupportUpper))
                                         {
                                             o1.RigidBody.Grounded = true;
-                                            collisions.Add(new CollideEventArgs(o1, o2, CollisionSide.Bottom, 0));
+                                            collisions.Add(new CollideEventArgs(o1, o2, CollisionSide.Bottom, 0f));
                                         }
                             }
                             potentialSupport.Clear();
@@ -61,6 +61,10 @@ namespace MarioPirates
                 {
                     ce.object1.PreCollide(ce.object2, ce.side);
                     ce.object2.PreCollide(ce.object1, ce.side.Invert());
+                });
+                collisions.ForEach(ce =>
+                {
+                    ce.object1.RigidBody.Velocity = new Vector2(ce.object1.RigidBody.Velocity.X, 0f);
                 });
                 collisions.Consume(ce =>
                 {

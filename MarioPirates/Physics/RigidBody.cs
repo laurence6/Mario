@@ -137,8 +137,22 @@ namespace MarioPirates
         public static ValueTuple<Vector2, Vector2> ResolveCollide(in CollideEventArgs ce)
         {
             RigidBody o1 = ce.object1.RigidBody, o2 = ce.object2.RigidBody;
-            var normal = o2.Object.Location - o1.Object.Location;
-            normal.Normalize();
+            var normal = Vector2.Zero;
+            switch (ce.side)
+            {
+                case CollisionSide.Top:
+                    normal.Y = 1f;
+                    break;
+                case CollisionSide.Bottom:
+                    normal.Y = -1f;
+                    break;
+                case CollisionSide.Left:
+                    normal.X = 1f;
+                    break;
+                case CollisionSide.Right:
+                    normal.X = -1f;
+                    break;
+            }
             var dp = (o2.Velocity * normal - o1.Velocity * normal)
                 .DivS(o1.InvMass + o2.InvMass)
                 * normal;

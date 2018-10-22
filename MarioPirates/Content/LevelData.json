@@ -103,12 +103,12 @@
     {
         "TypeName": "PipeTop",
         "Motion": "Static",
-        "Location": [ 320, 390 ]
+        "Location": [ 340, 390 ]
     },
     {
         "TypeName": "PipeBottom",
         "Motion": "Static",
-        "Location": [ 324, 419 ]
+        "Location": [ 344, 419 ]
     },
     {
         "TypeName": "PipeTop",
