@@ -5,8 +5,6 @@ using static System.IO.File;
 
 namespace MarioPirates
 {
-    using Event;
-
     internal sealed class Scene
     {
         public static readonly Scene Instance = new Scene();

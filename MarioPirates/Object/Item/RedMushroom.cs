@@ -1,7 +1,5 @@
 ﻿namespace MarioPirates
 {
-    using Event;
-
     internal class RedMushroom : GameObjectRigidBody
     {
         private const int redMushroomWidth = 16, redMushroomHeight = 16;

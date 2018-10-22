@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MarioPirates.Event
+namespace MarioPirates
 {
     using static Common;
 

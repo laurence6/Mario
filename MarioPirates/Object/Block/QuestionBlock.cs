@@ -1,7 +1,5 @@
 ﻿namespace MarioPirates
 {
-    using Event;
-
     internal class QuestionBlock : Block
     {
         public QuestionBlock(int dstX, int dstY, string state)

@@ -3,8 +3,6 @@ using System;
 
 namespace MarioPirates.Controller
 {
-    using Event;
-
     internal static class InputEventFactory
     {
         public static ValueTuple<EventEnum, EventArgs> CreateKeyEvent(InputState state, Keys key)

@@ -6,8 +6,6 @@ using System.Collections.Generic;
 namespace MarioPirates
 {
     using Controller;
-    using Event;
-
     internal class GameMario : Game
     {
         private GraphicsDeviceManager graphics;

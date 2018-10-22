@@ -1,4 +1,4 @@
-﻿namespace MarioPirates.Event
+﻿namespace MarioPirates
 {
     internal class CollideEventArgs : System.EventArgs
     {

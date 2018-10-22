@@ -5,6 +5,7 @@ namespace MarioPirates
         public readonly Mario mario;
         private MarioStateInvincible invincible;
         private MarioStateDirection direction;
+        private MarioStateBrake brake;
         private MarioStateSize size;
         private MarioStateAction action;
 
@@ -16,6 +17,7 @@ namespace MarioPirates
             this.mario = mario;
             invincible = new MarioStateInvincible();
             direction = new MarioStateDirection();
+            brake = new MarioStateBrake();
             size = new MarioStateSmall(this);
             action = new MarioStateIdle(this);
 
@@ -29,6 +31,8 @@ namespace MarioPirates
                 s += "_" + Action.State.ToString().ToLower() + "_" + direction.State.ToString().ToLower();
             if (IsInvincible)
                 s += "_star";
+            if (action.State == MarioStateEnum.Run && brake.State == MarioStateEnum.Brake)
+                s += "_brake";
             mario.Sprite = mario.Sprites[s];
         }
 
@@ -98,6 +102,18 @@ namespace MarioPirates
         public void CancelInvincible()
         {
             invincible.SetInvincible(false);
+            UpdateSprite();
+        }
+
+        public void Brake()
+        {
+            brake.Brake();
+            UpdateSprite();
+        }
+
+        public void Coast()
+        {
+            brake.Coast();
             UpdateSprite();
         }
 
