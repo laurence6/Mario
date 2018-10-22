@@ -17,5 +17,8 @@
 
         Vincible,
         Invincible,
+
+        Brake,
+        Coast,
     }
 }

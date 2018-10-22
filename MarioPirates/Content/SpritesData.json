@@ -454,6 +454,13 @@
         ]
     },
 
+    "big_run_right_star_brake": {
+        "TextureName": "bigstarpowermario",
+        "AccelerateRate": 3,
+        "Size": [ 16, 16 ],
+        "Frames": [ 48, 0, 48, 48, 48, 96 ]
+    },
+
     "big_jump_right_star": {
         "TextureName": "bigstarpowermario",
         "AccelerateRate": 3,
