@@ -174,7 +174,7 @@
 
     {
         "TypeName": "Mario",
-        "Location": [ 400, 300 ],
+        "Location": [ 120, 300 ],
         "Motion": "Dynamic",
         "Force": "Gravity, Friction",
         "Mass": 1
