@@ -10,10 +10,6 @@ namespace MarioPirates
         {
         }
 
-        public override void Run()
-        {
-        }
-
         public override MarioStateEnum State => MarioStateEnum.Jump;
     }
 }

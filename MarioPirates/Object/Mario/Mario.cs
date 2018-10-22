@@ -10,9 +10,13 @@ namespace MarioPirates
 
     internal class Mario : GameObjectRigidBody
     {
+        private const int JumpHoldCountLimit = 30;
+
         public readonly Dictionary<string, Sprite> Sprites;
 
         public readonly MarioState State;
+
+        private int JumpHoldCount;
 
         public Mario(int dstX, int dstY) : base(dstX, dstY, 0, 0)
         {
@@ -26,16 +30,19 @@ namespace MarioPirates
 
             SubscribeInputMoving();
             SubscribeInputTransition();
+
+            JumpHoldCount = 0;
         }
 
         private void SubscribeInputMoving()
         {
+            
             EventManager.Subscribe(EventEnum.KeyUpHold, (s, e) =>
             {
-                if (!State.IsDead)
+                if (!State.IsDead && JumpHoldCount < JumpHoldCountLimit)
                 {
-                    State.Jump();
-                    RigidBody.ApplyForce(new Vector2(0, -2000));
+                    RigidBody.ApplyForce(new Vector2(0, -1500 + JumpHoldCount * 50));
+                    JumpHoldCount += 1;
                 }
             });
             EventManager.Subscribe(EventEnum.KeyDownHold, (s, e) =>
@@ -43,28 +50,35 @@ namespace MarioPirates
                 if (!State.IsDead)
                 {
                     State.Crouch();
-                    RigidBody.ApplyForce(new Vector2(0, 2000));
                 }
             });
             EventManager.Subscribe(EventEnum.KeyLeftHold, (s, e) =>
             {
-                if (!State.IsDead)
+                if (!State.IsDead && !State.IsCrouch)
                 {
-                    State.Left();
                     RigidBody.ApplyForce(new Vector2(-2000, 0));
                 }
             });
             EventManager.Subscribe(EventEnum.KeyRightHold, (s, e) =>
             {
-                if (!State.IsDead)
+                if (!State.IsDead && !State.IsCrouch)
                 {
-                    State.Right();
                     RigidBody.ApplyForce(new Vector2(2000, 0));
                 }
             });
 
-            EventManager.Subscribe(EventEnum.KeyUpUp, (s, e) => State.Idle());
-            EventManager.Subscribe(EventEnum.KeyDownUp, (s, e) => State.Idle());
+            EventManager.Subscribe(EventEnum.KeyRightDown, (s, e) => State.Right());
+            EventManager.Subscribe(EventEnum.KeyLeftDown, (s, e) => State.Left());
+
+            EventManager.Subscribe(EventEnum.KeyUpUp, (s, e) => JumpHoldCount = JumpHoldCountLimit);
+
+            EventManager.Subscribe(EventEnum.KeyUpDown, (s, e) =>
+            {
+                if (RigidBody.Velocity.Y == 0f)
+                {
+                    JumpHoldCount = 0;
+                }
+            });
         }
 
         private void SubscribeInputTransition()
@@ -94,10 +108,18 @@ namespace MarioPirates
 
         public override void Update(float dt)
         {
-            if (RigidBody.Velocity.X == 0f)
-                State.Idle();
-            else
+            if (RigidBody.Velocity.X > 0f)
+                State.Right();
+            else if (RigidBody.Velocity.X < 0f)
+                State.Left();
+
+            if (RigidBody.Velocity.Y != 0f)
+                State.Jump();
+            else if (RigidBody.Velocity.X != 0f)
                 State.Run();
+            else
+                State.Idle();
+
             base.Update(dt);
         }
 
@@ -135,7 +157,10 @@ namespace MarioPirates
                 if (!(side == CollisionSide.Bottom || State.IsInvincible))
                 {
                     if (State.IsSmall)
+                    {
+                        RigidBody.ApplyForce(new Vector2(0, -100000));
                         State.Dead();
+                    }
                     else
                         State.Small();
                 }
