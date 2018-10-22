@@ -1,4 +1,6 @@
-﻿namespace MarioPirates
+﻿using Microsoft.Xna.Framework;
+
+namespace MarioPirates
 {
     internal class GreenMushroom : GameObjectRigidBody
     {
@@ -8,6 +10,8 @@
         {
             Sprite = SpriteFactory.Ins.CreateSprite("greenmushroom");
             RigidBody.Mass = 0.05f;
+
+            RigidBody.Velocity = new Vector2(25f, 0f);
         }
 
         public override void PreCollide(GameObjectRigidBody other, CollisionSide side)
