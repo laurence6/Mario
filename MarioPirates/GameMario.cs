@@ -63,6 +63,8 @@ namespace MarioPirates
             if (triggerReset)
                 Reset();
 
+            Time.Update(gameTime);
+            EventManager.Update();
             Scene.Instance.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
             controllers.ForEach(c => c.Update());
         }
