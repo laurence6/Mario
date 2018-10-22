@@ -36,7 +36,7 @@ namespace MarioPirates
 
         private void SubscribeInputMoving()
         {
-            
+
             EventManager.Subscribe(EventEnum.KeyUpHold, (s, e) =>
             {
                 if (!State.IsDead && JumpHoldCount < JumpHoldCountLimit)
@@ -74,7 +74,7 @@ namespace MarioPirates
 
             EventManager.Subscribe(EventEnum.KeyUpDown, (s, e) =>
             {
-                if (RigidBody.Velocity.Y == 0f)
+                if (RigidBody.Grounded)
                 {
                     JumpHoldCount = 0;
                 }
@@ -152,9 +152,9 @@ namespace MarioPirates
             }
 
             // Response to collsion with enemies
-            if ((other is Goomba) || other is Koopa)
+            if (other is Goomba || other is Koopa)
             {
-                if (!(side == CollisionSide.Bottom || State.IsInvincible))
+                if (side != CollisionSide.Bottom && !State.IsInvincible)
                 {
                     if (State.IsSmall)
                     {
@@ -162,7 +162,9 @@ namespace MarioPirates
                         State.Dead();
                     }
                     else
+                    {
                         State.Small();
+                    }
                 }
                 else
                 {

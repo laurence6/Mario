@@ -20,7 +20,8 @@ namespace MarioPirates
             {
                 // TODO: flip
                 RigidBody.Mass = 1e-6f;
-                EventManager.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this));
+                RigidBody.CollisionLayerMask = CollisionLayer.None;
+                EventManager.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), 1000f);
             }
             base.PreCollide(other, side);
         }
@@ -36,6 +37,10 @@ namespace MarioPirates
                     RigidBody.CollisionLayerMask = CollisionLayer.None;
                     // TODO: disappear
                 }
+            }
+            else if (other is Koopa)
+            {
+                RigidBody.Motion = MotionEnum.Static;
             }
             base.PostCollide(other, side);
         }
