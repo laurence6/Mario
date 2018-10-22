@@ -108,11 +108,6 @@ namespace MarioPirates
 
         public override void Update(float dt)
         {
-            if (RigidBody.Velocity.X > 0f)
-                State.Right();
-            else if (RigidBody.Velocity.X < 0f)
-                State.Left();
-
             if (RigidBody.Velocity.Y != 0f)
                 State.Jump();
             else if (RigidBody.Velocity.X != 0f)

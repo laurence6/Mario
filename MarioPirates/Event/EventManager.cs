@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MarioPirates.Event
 {
-    using System.Linq;
     using static Common;
 
     internal static class EventManager
