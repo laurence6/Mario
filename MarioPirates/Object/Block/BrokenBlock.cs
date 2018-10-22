@@ -1,9 +1,11 @@
-﻿namespace MarioPirates
+﻿using System.Collections.Generic;
+
+namespace MarioPirates
 {
     internal class BrokenBlock : Block
     {
-        public BrokenBlock(int dstX, int dstY, string state)
-            : base(dstX, dstY, state, SpriteFactory.Ins.CreateSprite("brokenblock"))
+        public BrokenBlock(int dstX, int dstY, Dictionary<string, string> Params)
+            : base(dstX, dstY, Params, SpriteFactory.Ins.CreateSprite("brokenblock"))
         {
         }
     }

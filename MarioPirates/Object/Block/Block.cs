@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Collections.Generic;
 
 namespace MarioPirates
 {
@@ -38,14 +39,14 @@ namespace MarioPirates
 
         private readonly Vector2 origLocation;
 
-        protected Block(int dstX, int dstY, string stateName, Sprite normalSprite) : base(dstX, dstY, blockWidth * 2, blockHeight * 2)
+        protected Block(int dstX, int dstY, Dictionary<string, string> Params, Sprite normalSprite) : base(dstX, dstY, blockWidth * 2, blockHeight * 2)
         {
             usedSprite = SpriteFactory.Ins.CreateSprite("usedblock");
             this.normalSprite = normalSprite;
 
             RigidBody.ApplyForce(WorldForce.Gravity);
 
-            Enum.TryParse(stateName, out BlockState state);
+            Enum.TryParse(Params["State"], out BlockState state);
             State = state;
 
             origLocation = Location;
