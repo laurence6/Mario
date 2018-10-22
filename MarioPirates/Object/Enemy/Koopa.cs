@@ -37,17 +37,9 @@ namespace MarioPirates
             {
                 if (side == CollisionSide.Top || mario.State.IsInvincible)
                 {
-                    if (!Stomped)
-                    {
+                    if (Stomped)
                         RigidBody.Velocity = mario.RigidBody.Bound.Center.X > RigidBody.Bound.Center.X ? new Vector2(-250f, 0f) : new Vector2(250f, 0f);
-                        Stomped = true;
-                    }
-                    else
-                    {
-                        RigidBody.CollisionLayerMask = CollisionLayer.None;
-                        RigidBody.Velocity = new Vector2(0f, -250f);
-                        EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), 3000f);
-                    }
+                    Stomped = true;
 
                 }
             }
