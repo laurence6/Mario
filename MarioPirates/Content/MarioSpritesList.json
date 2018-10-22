@@ -5,11 +5,15 @@
 
     "small_run_left",
 
+    "small_run_left_brake",
+
     "small_idle_left",
 
     "small_idle_right",
 
     "small_run_right",
+
+    "small_run_right_brake",
 
     "small_jump_right",
 
@@ -21,11 +25,15 @@
 
     "big_run_left",
 
+    "big_run_left_brake",
+
     "big_idle_left",
 
     "big_idle_right",
 
     "big_run_right",
+
+    "big_run_right_brake",
 
     "big_jump_right",
 
@@ -37,11 +45,15 @@
 
     "fire_run_left",
 
+    "fire_run_left_brake",
+
     "fire_idle_left",
 
     "fire_idle_right",
 
     "fire_run_right",
+
+    "fire_run_right_brake",
 
     "fire_jump_right",
 
@@ -51,6 +63,8 @@
 
     "small_run_left_star",
 
+    "small_run_left_star_brake",
+
     "small_jump_left_star",
 
     "small_crouch_left_star",
@@ -58,6 +72,8 @@
     "small_idle_right_star",
 
     "small_run_right_star",
+
+    "small_run_right_star_brake",
 
     "small_jump_right_star",
 
@@ -67,6 +83,8 @@
 
     "big_run_left_star",
 
+    "big_run_left_star_brake",
+
     "big_jump_left_star",
 
     "big_crouch_left_star",
@@ -74,6 +92,8 @@
     "big_idle_right_star",
 
     "big_run_right_star",
+
+    "big_run_right_star_brake",
 
     "big_jump_right_star",
 

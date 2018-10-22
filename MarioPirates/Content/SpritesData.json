@@ -130,6 +130,12 @@
         "Frames": [ 120, 0, 90, 0, 60, 0, 90, 0 ]
     },
 
+    "small_run_left_brake": {
+        "TextureName": "smallmario",
+        "Size": [ 17, 15 ],
+        "Frames": [ 30, 0 ]
+    },
+
     "small_idle_left": {
         "TextureName": "smallmario",
         "Size": [ 17, 15 ],
@@ -146,6 +152,12 @@
         "TextureName": "smallmario",
         "Size": [ 17, 15 ],
         "Frames": [ 210, 0, 240, 0, 270, 0, 240, 0 ]
+    },
+
+    "small_run_right_brake": {
+        "TextureName": "smallmario",
+        "Size": [ 17, 15 ],
+        "Frames": [ 300, 0 ]
     },
 
     "small_jump_right": {
@@ -178,6 +190,12 @@
         "Frames": [ 120, 0, 90, 0, 60, 0, 90, 0 ]
     },
 
+    "big_run_left_brake": {
+        "TextureName": "bigmario",
+        "Size": [ 16, 32 ],
+        "Frames": [ 30, 0 ]
+    },
+
     "big_idle_left": {
         "TextureName": "bigmario",
         "Size": [ 16, 32 ],
@@ -194,6 +212,12 @@
         "TextureName": "bigmario",
         "Size": [ 16, 32 ],
         "Frames": [ 210, 0, 240, 0, 270, 0, 240, 0 ]
+    },
+
+    "big_run_right_brake": {
+        "TextureName": "bigmario",
+        "Size": [ 16, 32 ],
+        "Frames": [ 300, 0 ]
     },
 
     "big_jump_right": {
@@ -226,6 +250,12 @@
         "Frames": [ 120, 0, 90, 0, 60, 0, 90, 0 ]
     },
 
+    "fire_run_left_brake": {
+        "TextureName": "firemario",
+        "Size": [ 16, 32 ],
+        "Frames": [ 30, 0 ]
+    },
+
     "fire_idle_left": {
         "TextureName": "firemario",
         "Size": [ 16, 32 ],
@@ -242,6 +272,12 @@
         "TextureName": "firemario",
         "Size": [ 16, 32 ],
         "Frames": [ 210, 0, 240, 0, 270, 0, 240, 0 ]
+    },
+
+    "fire_run_right_brake": {
+        "TextureName": "firemario",
+        "Size": [ 16, 32 ],
+        "Frames": [ 300, 0 ]
     },
 
     "fire_jump_right": {
@@ -293,6 +329,13 @@
             192,
             96
         ]
+    },
+
+    "small_run_left_star_brake": {
+        "TextureName": "smallstarpowermario",
+        "AccelerateRate": 3,
+        "Size": [ 16, 16 ],
+        "Frames": [ 128, 0, 128, 48, 128, 96 ]
     },
 
     "small_jump_left_star": {
@@ -348,6 +391,13 @@
         ]
     },
 
+    "small_run_right_star_brake": {
+        "TextureName": "smallstarpowermario",
+        "AccelerateRate": 3,
+        "Size": [ 16, 16 ],
+        "Frames": [ 48, 0, 48, 48, 48, 96 ]
+    },
+
     "small_jump_right_star": {
         "TextureName": "smallstarpowermario",
         "AccelerateRate": 3,
@@ -399,6 +449,13 @@
             192,
             96
         ]
+    },
+
+    "big_run_left_star_brake": {
+        "TextureName": "bigstarpowermario",
+        "AccelerateRate": 3,
+        "Size": [ 16, 32 ],
+        "Frames": [ 128, 0, 128, 48, 128, 96 ]
     },
 
     "big_jump_left_star": {
@@ -457,7 +514,7 @@
     "big_run_right_star_brake": {
         "TextureName": "bigstarpowermario",
         "AccelerateRate": 3,
-        "Size": [ 16, 16 ],
+        "Size": [ 16, 32 ],
         "Frames": [ 48, 0, 48, 48, 48, 96 ]
     },
 
