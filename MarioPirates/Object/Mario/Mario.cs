@@ -183,6 +183,7 @@ namespace MarioPirates
                     {
                         RigidBody.Velocity = new Vector2(0f, -200f);
                         State.Dead();
+                        EventManager.RaiseEvent(EventEnum.KeyDown, this, new KeyDownEventArgs(Keys.R), 5000f);
                     }
                     else
                     {
