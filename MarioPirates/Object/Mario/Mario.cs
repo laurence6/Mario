@@ -6,8 +6,6 @@ using static System.IO.File;
 
 namespace MarioPirates
 {
-    using Event;
-
     internal class Mario : GameObjectRigidBody
     {
         private const int JumpHoldCountLimit = 30;

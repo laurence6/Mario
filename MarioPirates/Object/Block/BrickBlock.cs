@@ -1,7 +1,5 @@
 ﻿namespace MarioPirates
 {
-    using Event;
-
     internal class BrickBlock : Block
     {
         public BrickBlock(int dstX, int dstY, string state)

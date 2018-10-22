@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 namespace MarioPirates.Controller
 {
-    using Event;
     using static Common;
 
     internal class KeyboardController : IController

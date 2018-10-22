@@ -1,7 +1,5 @@
 ﻿namespace MarioPirates
 {
-    using Event;
-
     internal class Star : GameObjectRigidBody
     {
         private const int starWidth = 14, starHeight = 16;

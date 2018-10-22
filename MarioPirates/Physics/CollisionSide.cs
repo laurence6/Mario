@@ -30,8 +30,8 @@ namespace MarioPirates
 
         public static Vector2 Select(this CollisionSide side, Vector2 v) =>
             new Vector2(
-                (side.HasOne(CollisionSide.LeftRight)) ? v.X : 0,
-                (side.HasOne(CollisionSide.TopBottom)) ? v.Y : 0);
+                side.HasOne(CollisionSide.LeftRight) ? v.X : 0,
+                side.HasOne(CollisionSide.TopBottom) ? v.Y : 0);
 
     }
 }

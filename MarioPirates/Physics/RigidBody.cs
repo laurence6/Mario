@@ -4,8 +4,6 @@ using System.Collections.Generic;
 
 namespace MarioPirates
 {
-    using Event;
-
     internal class RigidBody
     {
         public readonly GameObjectRigidBody Object;
@@ -104,15 +102,14 @@ namespace MarioPirates
                     var side = CollisionSide.All;
                     var depth = 0f;
 
-                    Point c1 = b1.Center, c2 = b2.Center;
                     var relVel = r2.Velocity - r1.Velocity;
-                    if (c1.X > c2.X || relVel.X >= 0)
+                    if (b1.Right > b2.Right || relVel.X >= 0)
                         side &= ~CollisionSide.Right;
-                    if (c1.X < c2.X || relVel.X <= 0)
+                    if (b1.Left < b2.Left || relVel.X <= 0)
                         side &= ~CollisionSide.Left;
-                    if (c1.Y < c2.Y || relVel.Y <= 0)
+                    if (b1.Top < b2.Top || relVel.Y <= 0)
                         side &= ~CollisionSide.Top;
-                    if (c1.Y > c2.Y || relVel.Y >= 0)
+                    if (b1.Bottom > b2.Bottom || relVel.Y >= 0)
                         side &= ~CollisionSide.Bottom;
 
                     if (side != CollisionSide.None)
@@ -139,24 +136,9 @@ namespace MarioPirates
 
         public static ValueTuple<Vector2, Vector2> ResolveCollide(in CollideEventArgs ce)
         {
-            var normal = Vector2.Zero;
-            switch (ce.side)
-            {
-                case CollisionSide.Top:
-                    normal.Y = ce.depth;
-                    break;
-                case CollisionSide.Bottom:
-                    normal.Y = -ce.depth;
-                    break;
-                case CollisionSide.Left:
-                    normal.X = ce.depth;
-                    break;
-                case CollisionSide.Right:
-                    normal.X = -ce.depth;
-                    break;
-            }
-            normal.Normalize();
             RigidBody o1 = ce.object1.RigidBody, o2 = ce.object2.RigidBody;
+            var normal = o2.Velocity - o1.Velocity;
+            normal.Normalize();
             var dp = (o2.Velocity * normal - o1.Velocity * normal)
                 .DivS(o1.InvMass + o2.InvMass)
                 * normal;

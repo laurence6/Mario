@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework.Input;
 
-namespace MarioPirates.Event
+namespace MarioPirates
 {
 
     internal class KeyDownEventArgs : System.EventArgs

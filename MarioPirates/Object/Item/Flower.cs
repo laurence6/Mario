@@ -1,7 +1,5 @@
 ﻿namespace MarioPirates
 {
-    using Event;
-
     internal class Flower : GameObjectRigidBody
     {
         private const int flowerWidth = 16, flowerHeight = 16;
