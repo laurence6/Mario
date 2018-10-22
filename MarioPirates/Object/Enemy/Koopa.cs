@@ -6,14 +6,15 @@ namespace MarioPirates
     {
         private const int koopaWidth = 16, koopaHeight = 23;
 
-        private bool stomped;
+        public bool Stomped { get; private set; }
+
         private readonly Sprite[] sprites;
 
         public Koopa(int x, int y) : base(x, y, koopaWidth * 2, koopaHeight * 2)
         {
             RigidBody.Mass = 0.1f;
 
-            stomped = false;
+            Stomped = false;
             sprites = new Sprite[3] {
                 SpriteFactory.Ins.CreateSprite("koopa_left"),
                 SpriteFactory.Ins.CreateSprite("koopa_right"),
@@ -26,7 +27,7 @@ namespace MarioPirates
 
         public override void Update(float dt)
         {
-            Sprite = stomped ? sprites[2] : RigidBody.Velocity.X < 0 ? sprites[0] : sprites[1];
+            Sprite = Stomped ? sprites[2] : RigidBody.Velocity.X < 0 ? sprites[0] : sprites[1];
             base.Update(dt);
         }
 
@@ -37,9 +38,9 @@ namespace MarioPirates
                 if (side == CollisionSide.Top || mario.State.IsInvincible)
                 {
                     if (side == CollisionSide.Top)
-                        if (stomped)
+                        if (Stomped)
                             RigidBody.Velocity = mario.RigidBody.Bound.Center.X > RigidBody.Bound.Center.X ? new Vector2(-250f, 0f) : new Vector2(250f, 0f);
-                    stomped = true;
+                    Stomped = true;
                 }
             }
             base.PostCollide(other, side);

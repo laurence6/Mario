@@ -16,9 +16,10 @@ namespace MarioPirates
 
         public override void PreCollide(GameObjectRigidBody other, CollisionSide side)
         {
-            if (other is Koopa)
+            if (other is Koopa koopa)
             {
-                RigidBody.Mass = 1e-6f;
+                if (koopa.Stomped)
+                    RigidBody.Mass = 1e-6f;
             }
             base.PreCollide(other, side);
         }
@@ -35,12 +36,15 @@ namespace MarioPirates
                     EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), 3000f);
                 }
             }
-            else if (other is Koopa)
+            else if (other is Koopa koopa)
             {
-                // TODO: flip
-                RigidBody.CollisionLayerMask = CollisionLayer.None;
-                RigidBody.Velocity = new Vector2(0f, -250f);
-                EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), 3000f);
+                if (koopa.Stomped)
+                {
+                    // TODO: flip
+                    RigidBody.CollisionLayerMask = CollisionLayer.None;
+                    RigidBody.Velocity = new Vector2(0f, -250f);
+                    EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), 3000f);
+                }
             }
             base.PostCollide(other, side);
         }
