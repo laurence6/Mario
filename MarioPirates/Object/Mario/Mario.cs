@@ -188,7 +188,7 @@ namespace MarioPirates
                         State.Dead();
                         unsubscribe();
                         unsubscribe = null;
-                        EventManager.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this));
+                        EventManager.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), 3000f);
                     }
                     else
                     {
