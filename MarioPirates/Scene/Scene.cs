@@ -9,6 +9,8 @@ namespace MarioPirates
     {
         public static readonly Scene Ins = new Scene();
 
+        private readonly Background background = new Background(0, 0);
+
         private IGameObjectContainer gameObjectContainer = new HashMap();
         private List<GameObject> gameObjectsNoRigidBody = new List<GameObject>();
 
@@ -54,6 +56,9 @@ namespace MarioPirates
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            spriteBatch.Begin(samplerState: SamplerState.PointClamp);
+            background.Draw(spriteBatch);
+            spriteBatch.End();
             spriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: Camera.Ins.Transform);
             gameObjectsNoRigidBody.ForEach(o => o.Draw(spriteBatch));
             gameObjectContainer.ForEach(o => o.Draw(spriteBatch));
