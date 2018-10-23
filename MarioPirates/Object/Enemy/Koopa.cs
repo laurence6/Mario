@@ -40,7 +40,6 @@ namespace MarioPirates
                     if (Stomped)
                         RigidBody.Velocity = mario.RigidBody.Bound.Center.X > RigidBody.Bound.Center.X ? new Vector2(-250f, 0f) : new Vector2(250f, 0f);
                     Stomped = true;
-
                 }
             }
             base.PostCollide(other, side);
