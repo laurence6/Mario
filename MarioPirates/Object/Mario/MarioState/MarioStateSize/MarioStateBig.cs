@@ -18,9 +18,9 @@ namespace MarioPirates
         public override void Small()
         {
             base.Small();
-            state.mario.Location = 
+            state.mario.Location =
                 new Vector2(
-                state.mario.Location.X - (marioWidth - MarioStateSmall.marioWidth) / 2, 
+                state.mario.Location.X - (marioWidth - MarioStateSmall.marioWidth) / 2,
                 state.mario.Location.Y + marioHeight - MarioStateSmall.marioHeight);
         }
 

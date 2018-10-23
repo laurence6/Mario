@@ -41,8 +41,6 @@ namespace MarioPirates
             textures.Keys.ToList().ForEach(name => textures[name] = content.Load<Texture2D>(name));
         }
 
-        public void Reset() { }
-
         public Sprite CreateSprite(string spriteName) => spriteParam[spriteName].ToSprite(textures);
     }
 }

@@ -13,7 +13,7 @@ namespace MarioPirates
         private readonly Sprite normalSprite;
 
         private BlockState state = BlockState.Normal;
-        protected virtual BlockState State
+        protected BlockState State
         {
             get => state;
             set
@@ -36,6 +36,8 @@ namespace MarioPirates
                 state = value;
             }
         }
+
+        protected virtual bool IsUsed => State == BlockState.Used;
 
         private readonly Vector2 origLocation;
 
@@ -75,7 +77,7 @@ namespace MarioPirates
         public override void PostCollide(GameObjectRigidBody other, CollisionSide side)
         {
             if (other is Mario)
-                if (side == CollisionSide.Bottom && RigidBody.Motion == MotionEnum.Static && State != BlockState.Used)
+                if (side == CollisionSide.Bottom && RigidBody.Motion == MotionEnum.Static && !IsUsed)
                 {
                     if (State == BlockState.Hidden)
                         State = BlockState.Normal;
