@@ -13,15 +13,23 @@ namespace MarioPirates
             Sprite = SpriteFactory.Ins.CreateSprite("fireball");
         }
 
+        public override void PreCollide(GameObjectRigidBody other, CollisionSide side)
+        {
+            RigidBody.Mass = 1e-6f;
+            base.PreCollide(other, side);
+        }
+
         public override void PostCollide(GameObjectRigidBody other, CollisionSide side)
         {
             if (RigidBody.Grounded)
             {
-                if (side == CollisionSide.Top)
-                {
-                    RigidBody.Velocity = new Vector2(RigidBody.Velocity.X, 25f);
-                }
+                RigidBody.Velocity = new Vector2(RigidBody.Velocity.X, -200f);
             }
+            else if (other is Goomba || other is Koopa)
+            {
+                EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this));
+            }
+            base.PostCollide(other, side);
         }
     }
 }

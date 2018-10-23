@@ -42,7 +42,7 @@ namespace MarioPirates
             {
                 if (!State.IsDead && JumpHoldCount < JumpHoldCountLimit)
                 {
-                    RigidBody.ApplyForce(new Vector2(0, -2500 + JumpHoldCount * 50));
+                    RigidBody.ApplyForce(new Vector2(0, -3000 + JumpHoldCount * 50));
                     JumpHoldCount += 1;
                 }
             });
@@ -50,7 +50,7 @@ namespace MarioPirates
             {
                 if (!State.IsDead && JumpHoldCount < JumpHoldCountLimit)
                 {
-                    RigidBody.ApplyForce(new Vector2(0, -2500 + JumpHoldCount * 50));
+                    RigidBody.ApplyForce(new Vector2(0, -3000 + JumpHoldCount * 50));
                     JumpHoldCount += 1;
                 }
             });
@@ -146,8 +146,8 @@ namespace MarioPirates
             {
                 if (State.IsFire)
                 {
-                    var fireball = new Fireball((int)Location.X + (State.IsLeft ? -32 : 16 + Size.X), (int)Location.Y);
-                    fireball.RigidBody.Velocity = new Vector2(State.IsLeft ? -200f : 200f, -200f);
+                    var fireball = new Fireball((int)Location.X + (State.IsLeft ? -16 : 16 + Size.X), (int)Location.Y + 16);
+                    fireball.RigidBody.Velocity = new Vector2(State.IsLeft ? -200f : 200f, 0f);
                     EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(fireball));
                     EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(fireball), 3000f);
                 }
@@ -162,6 +162,8 @@ namespace MarioPirates
                 State.Run();
             else
                 State.Idle();
+
+            Camera.Ins.LookAt(Location);
 
             base.Update(dt);
         }

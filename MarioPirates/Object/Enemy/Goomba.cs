@@ -16,10 +16,9 @@ namespace MarioPirates
 
         public override void PreCollide(GameObjectRigidBody other, CollisionSide side)
         {
-            if (other is Koopa koopa)
+            if (other is Koopa koopa && koopa.Stomped)
             {
-                if (koopa.Stomped)
-                    RigidBody.Mass = 1e-6f;
+                RigidBody.Mass = 1e-6f;
             }
             base.PreCollide(other, side);
         }

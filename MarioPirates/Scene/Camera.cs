@@ -2,22 +2,20 @@
 
 namespace MarioPirates
 {
-    internal class Camera
+    internal sealed class Camera
     {
+        public static readonly Camera Ins = new Camera();
+
+        private Camera()
+        {
+            LookAt(Vector2.Zero);
+        }
+
         public Matrix Transform { get; private set; }
-
-        public Camera() : this(Vector2.Zero)
-        {
-        }
-
-        public Camera(Vector2 location)
-        {
-            LookAt(location);
-        }
 
         public void LookAt(Vector2 location)
         {
-            Transform = Matrix.CreateTranslation(new Vector3(-location, 0f));
+            Transform = Matrix.CreateTranslation(new Vector3(-location.X + 400f, 0f, 0f));
         }
     }
 }

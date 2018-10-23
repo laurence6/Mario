@@ -54,7 +54,7 @@ namespace MarioPirates
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin(samplerState: SamplerState.PointClamp);
+            spriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: Camera.Ins.Transform);
             gameObjectsNoRigidBody.ForEach(o => o.Draw(spriteBatch));
             gameObjectContainer.ForEach(o => o.Draw(spriteBatch));
             spriteBatch.End();

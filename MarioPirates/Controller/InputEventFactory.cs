@@ -24,17 +24,32 @@ namespace MarioPirates.Controller
         {
             switch (state)
             {
+                case InputState.Down:
+                    switch (button)
+                    {
+                        case Buttons.LeftThumbstickDown:
+                            return (EventEnum.KeyDownDown, EventArgs.Empty);
+                        case Buttons.LeftThumbstickLeft:
+                            return (EventEnum.KeyLeftDown, EventArgs.Empty);
+                        case Buttons.LeftThumbstickRight:
+                            return (EventEnum.KeyRightDown, EventArgs.Empty);
+                        case Buttons.A:
+                            return (EventEnum.KeyUpDown, EventArgs.Empty);
+                        case Buttons.B:
+                            return (EventEnum.KeyXDown, EventArgs.Empty);
+                    }
+                    break;
                 case InputState.Hold:
                     switch (button)
                     {
-                        case Buttons.LeftThumbstickUp:
-                            return (EventEnum.KeyUpHold, EventArgs.Empty);
                         case Buttons.LeftThumbstickDown:
                             return (EventEnum.KeyDownHold, EventArgs.Empty);
                         case Buttons.LeftThumbstickLeft:
                             return (EventEnum.KeyLeftHold, EventArgs.Empty);
                         case Buttons.LeftThumbstickRight:
                             return (EventEnum.KeyRightHold, EventArgs.Empty);
+                        case Buttons.A:
+                            return (EventEnum.KeyUpHold, EventArgs.Empty);
                         case Buttons.B:
                             return (EventEnum.KeyXHold, EventArgs.Empty);
                     }
@@ -42,14 +57,14 @@ namespace MarioPirates.Controller
                 case InputState.Up:
                     switch (button)
                     {
-                        case Buttons.LeftThumbstickUp:
-                            return (EventEnum.KeyUpUp, EventArgs.Empty);
                         case Buttons.LeftThumbstickDown:
                             return (EventEnum.KeyDownUp, EventArgs.Empty);
                         case Buttons.LeftThumbstickLeft:
                             return (EventEnum.KeyLeftUp, EventArgs.Empty);
                         case Buttons.LeftThumbstickRight:
                             return (EventEnum.KeyRightUp, EventArgs.Empty);
+                        case Buttons.A:
+                            return (EventEnum.KeyUpUp, EventArgs.Empty);
                         case Buttons.B:
                             return (EventEnum.KeyXUp, EventArgs.Empty);
                     }
