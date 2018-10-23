@@ -25,7 +25,7 @@ namespace MarioPirates
             {
                 RigidBody.Velocity = new Vector2(RigidBody.Velocity.X, -200f);
             }
-            else if (other is Goomba || other is Koopa)
+            if (other is Goomba || other is Koopa)
             {
                 EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this));
             }
