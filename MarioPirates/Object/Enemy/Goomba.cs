@@ -46,7 +46,7 @@ namespace MarioPirates
                     EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), 3000f);
                 }
             }
-            else if(other is Fireball fireball)
+            else if (other is Fireball fireball)
             {
                 Sprite = SpriteFactory.Ins.CreateSprite("goomba_stomped");
                 RigidBody.CollisionLayerMask = CollisionLayer.None;

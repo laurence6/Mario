@@ -42,7 +42,7 @@ namespace MarioPirates
                     Stomped = true;
                 }
             }
-            else if(other is Fireball fireball)
+            else if (other is Fireball fireball)
             {
                 if (Stomped)
                     RigidBody.Velocity = fireball.RigidBody.Bound.Center.X > RigidBody.Bound.Center.X ? new Vector2(-250f, 0f) : new Vector2(250f, 0f);

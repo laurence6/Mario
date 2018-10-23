@@ -20,16 +20,19 @@ namespace MarioPirates
                 {
                     State = BlockState.Used;
 
-                    var powerupObj = new GameObjectParam
+                    if (powerup != null)
                     {
-                        TypeName = powerup,
-                        Location = new int[2] { (int)Location.X + 10, (int)Location.Y - 32 },
-                        Motion = MotionEnum.Dynamic,
-                    }.ToGameObject();
-                    EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(powerupObj));
-                    if (powerup == "Coin")
-                    {
-                        EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(powerupObj), 500f);
+                        var powerupObj = new GameObjectParam
+                        {
+                            TypeName = powerup,
+                            Location = new int[2] { (int)Location.X + 10, (int)Location.Y - 32 },
+                            Motion = MotionEnum.Dynamic,
+                        }.ToGameObject();
+                        EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(powerupObj));
+                        if (powerup == "Coin")
+                        {
+                            EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(powerupObj), 500f);
+                        }
                     }
                 }
         }
