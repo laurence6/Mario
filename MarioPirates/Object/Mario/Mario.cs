@@ -146,7 +146,7 @@ namespace MarioPirates
             {
                 if (State.IsFire)
                 {
-                    var fireball = new Fireball((int)Location.X + (State.IsLeft ? -32 : 16 + Size.X), (int)Location.Y);
+                    var fireball = new Fireball((int)Location.X + (State.IsLeft ? -16 : 16 + Size.X), (int)Location.Y + 16);
                     fireball.RigidBody.Velocity = new Vector2(State.IsLeft ? -200f : 200f, -200f);
                     EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(fireball));
                     EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(fireball), 3000f);
