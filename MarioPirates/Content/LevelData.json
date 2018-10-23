@@ -1160,6 +1160,16 @@
         "TypeName": "Goomba",
         "Motion": "Dynamic",
         "Location": [ 800, 316 ]
+    },
+    {
+        "TypeName": "Koopa",
+        "Motion": "Dynamic",
+        "Location": [ 1700, 300 ]
+    },
+    {
+        "TypeName": "Goomba",
+        "Motion": "Dynamic",
+        "Location": [ 1800, 316 ]
     }
 
 ]
