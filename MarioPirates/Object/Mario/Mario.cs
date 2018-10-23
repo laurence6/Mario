@@ -194,6 +194,7 @@ namespace MarioPirates
             else if (other is Star)
             {
                 State.Invincible();
+                EventManager.Ins.RaiseEvent(EventEnum.Action, this, new ActionEventArgs(() => State.CancelInvincible()), 3000f);
             }
 
             // Response to collsion with enemies

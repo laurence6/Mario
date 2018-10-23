@@ -1,10 +1,5 @@
 [
     {
-        "TypeName": "Background",
-        "Location": [ 0, 0 ],
-        "Motion": "Static"
-    },
-    {
         "TypeName": "QuestionBlock",
         "Motion": "Static",
         "Location": [ 200, 350 ],
@@ -25,7 +20,7 @@
         "Location": [ 382, 350 ],
         "Params": {
             "State": "Normal",
-            "Powerup": "Star"
+            "Powerup": "RedMushroom"
         }
     },
     {
@@ -40,7 +35,7 @@
         "Location": [ 446, 350 ],
         "Params": {
             "State": "Normal",
-            "Powerup": "Star"
+            "Powerup": "Flower"
         }
     },
     {
