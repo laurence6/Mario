@@ -18,26 +18,24 @@ namespace MarioPirates
             base.PostCollide(other, side);
             if (other is Mario mario && side == CollisionSide.Bottom)
             {
-                if (State == BlockState.Normal)
+                if (powerup != null)
                 {
                     State = BlockState.Used;
 
-                    if (powerup != null)
+                    var powerupObj = new GameObjectParam
                     {
-                        var powerupObj = new GameObjectParam
-                        {
-                            TypeName = powerup,
-                            Location = new int[2] { (int)Location.X + 10, (int)Location.Y - 32 },
-                            Motion = MotionEnum.Dynamic,
-                        }.ToGameObject();
-                        EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(powerupObj));
-                        if (powerup == "Coin")
-                        {
-                            EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(powerupObj), 500f);
-                        }
-                    }
+                        TypeName = powerup,
+                        Location = new int[2] { (int)Location.X + 10, (int)Location.Y - 32 },
+                        Motion = MotionEnum.Dynamic,
+                    }.ToGameObject();
+                    EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(powerupObj));
+                    if (powerup == "Coin")
+                    {
+                        EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(powerupObj), 500f);
+                    }                
+                    powerup = null;
                 }
-                else if (State == BlockState.Used && !(mario.State.IsSmall || mario.State.IsDead))
+                else if (State == BlockState.Normal && !(mario.State.IsSmall || mario.State.IsDead))
                     EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this));
             }
         }
