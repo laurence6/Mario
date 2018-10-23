@@ -9,16 +9,16 @@ namespace MarioPirates.Controller
 
     internal class GamePadController : IController
     {
-        private Dictionary<Buttons, ValueTuple<EventEnum, EventArgs>>[] eventMapping;
+        private Dictionary<Buttons, (EventEnum, EventArgs)>[] eventMapping;
         private List<Buttons> enabledButton;
 
         private GamePadState prevState, currState;
 
         public GamePadController()
         {
-            eventMapping = new Dictionary<Buttons, ValueTuple<EventEnum, EventArgs>>[EnumValues<InputState>().Length];
+            eventMapping = new Dictionary<Buttons, (EventEnum, EventArgs)>[EnumValues<InputState>().Length];
             for (var i = 0; i < eventMapping.Length; i++)
-                eventMapping[i] = new Dictionary<Buttons, ValueTuple<EventEnum, EventArgs>>();
+                eventMapping[i] = new Dictionary<Buttons, (EventEnum, EventArgs)>();
             enabledButton = new List<Buttons>();
             prevState = GamePad.GetState(PlayerIndex.One);
         }

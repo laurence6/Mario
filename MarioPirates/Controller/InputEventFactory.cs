@@ -5,7 +5,7 @@ namespace MarioPirates.Controller
 {
     internal static class InputEventFactory
     {
-        public static ValueTuple<EventEnum, EventArgs> CreateKeyEvent(InputState state, Keys key)
+        public static (EventEnum, EventArgs) CreateKeyEvent(InputState state, Keys key)
         {
             if (Enum.TryParse<EventEnum>("Key" + key.ToString() + state.ToString(), out var e))
             {
@@ -20,7 +20,7 @@ namespace MarioPirates.Controller
             return (0, null);
         }
 
-        public static ValueTuple<EventEnum, EventArgs> CreateButtonEvent(InputState state, Buttons button)
+        public static (EventEnum, EventArgs) CreateButtonEvent(InputState state, Buttons button)
         {
             switch (state)
             {

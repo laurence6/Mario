@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 using System.Collections.Generic;
 
 namespace MarioPirates
@@ -132,7 +131,7 @@ namespace MarioPirates
             }
         }
 
-        public static ValueTuple<Vector2, Vector2> ResolveCollide(in CollideEventArgs ce)
+        public static (Vector2, Vector2) ResolveCollide(in CollideEventArgs ce)
         {
             RigidBody o1 = ce.object1.RigidBody, o2 = ce.object2.RigidBody;
             var normal = Vector2.Zero;

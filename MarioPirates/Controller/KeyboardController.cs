@@ -9,7 +9,7 @@ namespace MarioPirates.Controller
     internal class KeyboardController : IController
     {
         private Dictionary<Keys, List<Keys>> inputMapping;
-        private Dictionary<Keys, ValueTuple<EventEnum, EventArgs>>[] eventMapping;
+        private Dictionary<Keys, (EventEnum, EventArgs)>[] eventMapping;
         private List<Keys> enabledKey;
 
         private KeyboardState prevState, currState;
@@ -17,9 +17,9 @@ namespace MarioPirates.Controller
         public KeyboardController()
         {
             inputMapping = new Dictionary<Keys, List<Keys>>();
-            eventMapping = new Dictionary<Keys, ValueTuple<EventEnum, EventArgs>>[EnumValues<InputState>().Length];
+            eventMapping = new Dictionary<Keys, (EventEnum, EventArgs)>[EnumValues<InputState>().Length];
             for (var i = 0; i < eventMapping.Length; i++)
-                eventMapping[i] = new Dictionary<Keys, ValueTuple<EventEnum, EventArgs>>();
+                eventMapping[i] = new Dictionary<Keys, (EventEnum, EventArgs)>();
             enabledKey = new List<Keys>();
             prevState = Keyboard.GetState();
         }
