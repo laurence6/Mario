@@ -1,10 +1,15 @@
+﻿using System.Collections.Generic;
+
 namespace MarioPirates
 {
-    internal class QuestionBlockStar : Block
+    internal class QuestionBlock : Block
     {
-        public QuestionBlockStar(int dstX, int dstY, string state)
-            : base(dstX, dstY, state, SpriteFactory.Ins.CreateSprite("questionblock"))
+        private string powerup;
+
+        public QuestionBlock(int dstX, int dstY, Dictionary<string, string> Params)
+            : base(dstX, dstY, Params, SpriteFactory.Ins.CreateSprite("questionblock"))
         {
+            powerup = Params["Powerup"];
         }
 
         public override void PostCollide(GameObjectRigidBody other, CollisionSide side)
@@ -17,7 +22,7 @@ namespace MarioPirates
 
                     EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(new GameObjectParam
                     {
-                        TypeName = "Star",
+                        TypeName = powerup,
                         Location = new int[2] { (int)Location.X + 10, (int)Location.Y - 32 },
                         Motion = MotionEnum.Dynamic,
                     }));

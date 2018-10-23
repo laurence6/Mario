@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace MarioPirates
 {
@@ -6,16 +7,16 @@ namespace MarioPirates
     {
         public string TypeName = null;
         public int[] Location = null;
-        public string State = null;
         public MotionEnum? Motion = null;
         public WorldForce? Force = null;
         public float? Mass = null;
+        public Dictionary<string, string> Params = null;
 
         public GameObject ToGameObject()
         {
             var t = Type.GetType("MarioPirates." + TypeName);
-            var param = State != null
-                ? (new object[] { Location[0], Location[1], State })
+            var param = Params != null
+                ? (new object[] { Location[0], Location[1], Params })
                 : (new object[] { Location[0], Location[1] });
             var obj = (GameObject)Activator.CreateInstance(t, param);
 
