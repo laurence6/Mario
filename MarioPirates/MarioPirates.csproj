@@ -65,6 +65,7 @@
     <Compile Include="Object\Mario\MarioState\MarioStateBrake.cs" />
     <Compile Include="Object\Mario\MarioState\MarioStateEnum.cs" />
     <Compile Include="Object\Mario\MarioState\MarioState.cs" />
+    <Compile Include="Object\Mario\MarioState\MarioStateAccelerated.cs" />
     <Compile Include="Physics\Motion.cs" />
     <Compile Include="Physics\CollisionLayer.cs" />
     <Compile Include="Physics\RigidBody.cs" />

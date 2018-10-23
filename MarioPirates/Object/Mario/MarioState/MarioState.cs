@@ -6,6 +6,7 @@ namespace MarioPirates
         private MarioStateInvincible invincible;
         private MarioStateDirection direction;
         private MarioStateBrake brake;
+        private MarioStateAccelerated accelerated;
         private MarioStateSize size;
         private MarioStateAction action;
 
@@ -20,6 +21,7 @@ namespace MarioPirates
             brake = new MarioStateBrake();
             size = new MarioStateSmall(this);
             action = new MarioStateIdle(this);
+            accelerated = new MarioStateAccelerated();
 
             UpdateSprite();
         }
@@ -117,6 +119,16 @@ namespace MarioPirates
             UpdateSprite();
         }
 
+        public void Accelerated()
+        {
+            accelerated.SetAccelerated(true);
+        }
+
+        public void CancelAccelerated()
+        {
+            accelerated.SetAccelerated(false);
+        }
+
         public bool IsInvincible => invincible.IsInvincible;
 
         public bool IsDead => Size.IsDead;
@@ -126,5 +138,7 @@ namespace MarioPirates
         public bool IsCrouch => Action.State == MarioStateEnum.Crouch;
 
         public bool IsSmall => Size.State == MarioStateEnum.Small;
+
+        public float VelocityMultipler => accelerated.VelocityMultiplier;
     }
 }

@@ -13,12 +13,13 @@ namespace MarioPirates
 
         private EventHandler[] handlerList = new EventHandler[EnumValues<EventEnum>().Length];
 
-        private List<ValueTuple<float, EventEnum, object, EventArgs>> waitlist = new List<(float, EventEnum, object, EventArgs)>();
+        private List<(float, EventEnum, object, EventArgs)> waitlist = new List<(float, EventEnum, object, EventArgs)>();
 
         public void Reset()
         {
             for (var i = 0; i < handlerList.Length; i++)
                 handlerList[i] = null;
+            waitlist.Clear();
             ActionEventArgs.Reset();
         }
 

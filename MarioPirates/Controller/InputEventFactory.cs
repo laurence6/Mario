@@ -5,7 +5,7 @@ namespace MarioPirates.Controller
 {
     internal static class InputEventFactory
     {
-        public static ValueTuple<EventEnum, EventArgs> CreateKeyEvent(InputState state, Keys key)
+        public static (EventEnum, EventArgs) CreateKeyEvent(InputState state, Keys key)
         {
             if (Enum.TryParse<EventEnum>("Key" + key.ToString() + state.ToString(), out var e))
             {
@@ -20,7 +20,7 @@ namespace MarioPirates.Controller
             return (0, null);
         }
 
-        public static ValueTuple<EventEnum, EventArgs> CreateButtonEvent(InputState state, Buttons button)
+        public static (EventEnum, EventArgs) CreateButtonEvent(InputState state, Buttons button)
         {
             switch (state)
             {
@@ -35,6 +35,8 @@ namespace MarioPirates.Controller
                             return (EventEnum.KeyLeftHold, EventArgs.Empty);
                         case Buttons.LeftThumbstickRight:
                             return (EventEnum.KeyRightHold, EventArgs.Empty);
+                        case Buttons.B:
+                            return (EventEnum.KeyXHold, EventArgs.Empty);
                     }
                     break;
                 case InputState.Up:
@@ -48,6 +50,8 @@ namespace MarioPirates.Controller
                             return (EventEnum.KeyLeftUp, EventArgs.Empty);
                         case Buttons.LeftThumbstickRight:
                             return (EventEnum.KeyRightUp, EventArgs.Empty);
+                        case Buttons.B:
+                            return (EventEnum.KeyXUp, EventArgs.Empty);
                     }
                     break;
             }

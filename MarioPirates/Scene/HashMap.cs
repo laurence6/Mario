@@ -58,7 +58,7 @@ namespace MarioPirates
                 }
         }
 
-        private static ValueTuple<ulong, ulong> Hash(Point p)
+        private static (ulong, ulong) Hash(Point p)
         {
             var x = (ulong)((long)p.X + int.MinValue);
             var y = (ulong)((long)p.Y + int.MinValue);

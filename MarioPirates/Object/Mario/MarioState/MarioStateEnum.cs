@@ -20,5 +20,11 @@
 
         Brake,
         Coast,
+
+        Slow,
+        Fast,
+
+        Accelerated,
+        NonAccelerated,
     }
 }

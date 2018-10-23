@@ -18,6 +18,10 @@
         KeyLeftHold,
         KeyRightHold,
 
+        KeyXDown,
+        KeyXUp,
+        KeyXHold,
+
         // Generic keyboard input
         KeyDown,
         KeyUp,

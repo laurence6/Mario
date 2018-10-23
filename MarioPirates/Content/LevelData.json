@@ -8,13 +8,13 @@
         "TypeName": "BrickBlock",
         "Motion": "Static",
         "Location": [ 0, 300 ],
-        "Params": { "State": "Normal" }
+        "Params": { "State": "Normal", "Powerup": "Coin" }
     },
     {
         "TypeName": "BrickBlock",
         "Motion": "Static",
         "Location": [ 64, 300 ],
-        "Params": { "State": "Normal" }
+        "Params": { "State": "Normal", "Powerup" :  "Star" }
     },
     {
         "TypeName": "BrickBlock",
