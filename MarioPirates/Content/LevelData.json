@@ -7,7 +7,7 @@
     {
         "TypeName": "QuestionBlock",
         "Motion": "Static",
-        "Location": [ 200, 300 ],
+        "Location": [ 200, 350 ],
         "Params": {
             "State": "Normal",
             "Powerup": "Coin"
@@ -16,13 +16,13 @@
     {
         "TypeName": "BrickBlock",
         "Motion": "Static",
-        "Location": [ 350, 300 ],
+        "Location": [ 350, 350 ],
         "Params": { "State": "Normal" }
     },
     {
         "TypeName": "QuestionBlock",
         "Motion": "Static",
-        "Location": [ 382, 300 ],
+        "Location": [ 382, 350 ],
         "Params": {
             "State": "Normal",
             "Powerup": "Star"
@@ -31,13 +31,13 @@
     {
         "TypeName": "BrickBlock",
         "Motion": "Static",
-        "Location": [ 414, 300 ],
+        "Location": [ 414, 350 ],
         "Params": { "State": "Normal" }
     },
     {
         "TypeName": "QuestionBlock",
         "Motion": "Static",
-        "Location": [ 446, 300 ],
+        "Location": [ 446, 350 ],
         "Params": {
             "State": "Normal",
             "Powerup": "Star"
@@ -46,13 +46,13 @@
     {
         "TypeName": "BrickBlock",
         "Motion": "Static",
-        "Location": [ 478, 300 ],
+        "Location": [ 478, 350 ],
         "Params": { "State": "Normal" }
     },
     {
         "TypeName": "QuestionBlock",
         "Motion": "Static",
-        "Location": [ 414, 150 ],
+        "Location": [ 414, 250 ],
         "Params": {
             "State": "Normal",
             "Powerup": "Star"
@@ -67,6 +67,17 @@
         "TypeName": "PipeBottom",
         "Motion": "Static",
         "Location": [ 604, 419 ]
+    },
+
+    {
+        "TypeName": "PipeTop",
+        "Motion": "Static",
+        "Location": [ 800, 390 ]
+    },
+    {
+        "TypeName": "PipeBottom",
+        "Motion": "Static",
+        "Location": [ 804, 419 ]
     },
 
 
