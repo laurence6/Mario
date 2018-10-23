@@ -8,17 +8,22 @@ namespace MarioPirates
 
         private Camera()
         {
-            LookAt(Vector2.Zero);
+            Reset();
         }
 
         public Matrix Transform { get; private set; }
 
-        private float x;
+        private float x = 0f;
 
         public void LookAt(Vector2 location)
         {
             x = x.Max(location.X - 400f);
             Transform = Matrix.CreateTranslation(new Vector3(-x, 0f, 0f));
+        }
+
+        public void Reset()
+        {
+            x = 0f;
         }
     }
 }
