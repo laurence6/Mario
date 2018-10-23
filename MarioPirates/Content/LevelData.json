@@ -5,178 +5,73 @@
         "Motion": "Static"
     },
     {
-        "TypeName": "BrickBlock",
+        "TypeName": "QuestionBlock",
         "Motion": "Static",
-        "Location": [ 0, 300 ],
-        "Params": { "State": "Normal", "Powerup": "Coin" }
+        "Location": [ 200, 300 ],
+        "Params": {
+            "State": "Normal",
+            "Powerup": "Coin"
+        }
     },
     {
         "TypeName": "BrickBlock",
         "Motion": "Static",
-        "Location": [ 64, 300 ],
-        "Params": { "State": "Normal", "Powerup" :  "Star" }
-    },
-    {
-        "TypeName": "BrickBlock",
-        "Motion": "Static",
-        "Location": [ 400, 64 ],
-        "Params": { "State": "Normal" }
-    },
-    {
-        "TypeName": "BrickBlock",
-        "Motion": "Static",
-        "Location": [ 432, 96 ],
-        "Params": { "State": "Normal" }
-    },
-    {
-        "TypeName": "BrickBlock",
-        "Motion": "Static",
-        "Location": [ 464, 96 ],
-        "Params": { "State": "Normal" }
-    },
-    {
-        "TypeName": "BrickBlock",
-        "Motion": "Static",
-        "Location": [ 496, 96 ],
-        "Params": { "State": "Normal" }
-    },
-    {
-        "TypeName": "BrickBlock",
-        "Motion": "Static",
-        "Location": [ 528, 96 ],
-        "Params": { "State": "Normal" }
-    },
-    {
-        "TypeName": "BrickBlock",
-        "Motion": "Static",
-        "Location": [ 560, 96 ],
-        "Params": { "State": "Normal" }
-    },
-    {
-        "TypeName": "BrickBlock",
-        "Motion": "Static",
-        "Location": [ 592, 96 ],
-        "Params": { "State": "Normal" }
-    },
-    {
-        "TypeName": "BrickBlock",
-        "Motion": "Static",
-        "Location": [ 624, 64 ],
+        "Location": [ 350, 300 ],
         "Params": { "State": "Normal" }
     },
     {
         "TypeName": "QuestionBlock",
         "Motion": "Static",
-        "Location": [ 160, 300 ],
-        "Params": { "State": "Normal", "Powerup": "Star" }
+        "Location": [ 382, 300 ],
+        "Params": {
+            "State": "Normal",
+            "Powerup": "Star"
+        }
+    },
+    {
+        "TypeName": "BrickBlock",
+        "Motion": "Static",
+        "Location": [ 414, 300 ],
+        "Params": { "State": "Normal" }
     },
     {
         "TypeName": "QuestionBlock",
         "Motion": "Static",
-        "Location": [ 192, 300 ],
-        "Params": { "State": "Normal", "Powerup": "Coin" }
+        "Location": [ 446, 300 ],
+        "Params": {
+            "State": "Normal",
+            "Powerup": "Star"
+        }
+    },
+    {
+        "TypeName": "BrickBlock",
+        "Motion": "Static",
+        "Location": [ 478, 300 ],
+        "Params": { "State": "Normal" }
     },
     {
         "TypeName": "QuestionBlock",
         "Motion": "Static",
-        "Location": [ 224, 300 ],
-        "Params": { "State": "Normal", "Powerup": "Coin" }
-    },
-    {
-        "TypeName": "QuestionBlock",
-        "Motion": "Static",
-        "Location": [ 256, 300 ],
-        "Params": { "State": "Normal", "Powerup": "Coin" }
-    },
-    {
-        "TypeName": "QuestionBlock",
-        "Motion": "Static",
-        "Location": [ 500, 268 ],
-        "Params": { "State": "Normal", "Powerup": "Coin" }
-    },
-    {
-        "TypeName": "QuestionBlock",
-        "Motion": "Static",
-        "Location": [ 532, 268 ],
-        "Params": { "State": "Normal", "Powerup": "Coin" }
+        "Location": [ 414, 150 ],
+        "Params": {
+            "State": "Normal",
+            "Powerup": "Star"
+        }
     },
     {
         "TypeName": "PipeTop",
         "Motion": "Static",
-        "Location": [ 340, 390 ]
+        "Location": [ 600, 390 ]
     },
     {
         "TypeName": "PipeBottom",
         "Motion": "Static",
-        "Location": [ 344, 419 ]
-    },
-    {
-        "TypeName": "PipeTop",
-        "Motion": "Static",
-        "Location": [ 700, 390 ]
-    },
-    {
-        "TypeName": "PipeBottom",
-        "Motion": "Static",
-        "Location": [ 704, 419 ]
+        "Location": [ 604, 419 ]
     },
 
 
 
 
-    {
-        "TypeName": "RedMushroom",
-        "Location": [ 300, 300 ],
-        "Motion": "Dynamic"
-    },
-    {
-        "TypeName": "GreenMushroom",
-        "Location": [ 500, 100 ],
-        "Motion": "Dynamic"
-    },
-
-
-    {
-        "TypeName": "Koopa",
-        "Motion": "Dynamic",
-        "Location": [ 464, 48 ]
-    },
-    {
-        "TypeName": "Goomba",
-        "Motion": "Dynamic",
-        "Location": [ 532, 64 ]
-    },
-    {
-        "TypeName": "Koopa",
-        "Motion": "Dynamic",
-        "Location": [ 464, 300 ]
-    },
-    {
-        "TypeName": "Goomba",
-        "Motion": "Dynamic",
-        "Location": [ 532, 316 ]
-    },
-    {
-        "TypeName": "Mario",
-        "Location": [ 120, 300 ],
-        "Motion": "Dynamic",
-        "Force": "Gravity, Friction",
-        "Mass": 1
-    },
-
-    {
-        "TypeName": "BrickBlock",
-        "Location": [ 50, 100 ],
-        "Params": { "State": "Hidden" },
-        "Motion": "Static"
-    },
-
-    {
-        "TypeName": "UsedBlock",
-        "Location": [ 600, 300 ],
-        "Params": { "State": "Hidden" },
-        "Motion": "Static"
-    },
 
     {
         "TypeName": "BrokenBlock",
@@ -333,5 +228,23 @@
         "Location": [ 800, 450 ],
         "Params": { "State": "Normal" },
         "Motion": "Static"
+    },
+    {
+        "TypeName": "Mario",
+        "Location": [ 120, 300 ],
+        "Motion": "Dynamic",
+        "Force": "Gravity, Friction",
+        "Mass": 1
+    },
+    {
+        "TypeName": "Koopa",
+        "Motion": "Dynamic",
+        "Location": [ 464, 300 ]
+    },
+    {
+        "TypeName": "Goomba",
+        "Motion": "Dynamic",
+        "Location": [ 532, 316 ]
     }
+
 ]
