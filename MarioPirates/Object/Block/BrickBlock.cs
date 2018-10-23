@@ -9,7 +9,8 @@ namespace MarioPirates
         public BrickBlock(int dstX, int dstY, Dictionary<string, string> Params)
             : base(dstX, dstY, Params, SpriteFactory.Ins.CreateSprite("brickblock"))
         {
-            powerup = Params["Powerup"];
+            if(Params.ContainsKey("Powerup"))
+                powerup = Params["Powerup"];
         }
 
         public override void PostCollide(GameObjectRigidBody other, CollisionSide side)
