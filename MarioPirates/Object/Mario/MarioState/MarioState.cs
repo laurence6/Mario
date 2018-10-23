@@ -19,9 +19,9 @@ namespace MarioPirates
             invincible = new MarioStateInvincible();
             direction = new MarioStateDirection();
             brake = new MarioStateBrake();
+            accelerated = new MarioStateAccelerated();
             size = new MarioStateSmall(this);
             action = new MarioStateIdle(this);
-            accelerated = new MarioStateAccelerated();
 
             UpdateSprite();
         }
