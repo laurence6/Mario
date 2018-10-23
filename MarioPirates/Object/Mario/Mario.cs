@@ -163,6 +163,8 @@ namespace MarioPirates
             else
                 State.Idle();
 
+            Camera.Ins.LookAt(Location);
+
             base.Update(dt);
         }
 
