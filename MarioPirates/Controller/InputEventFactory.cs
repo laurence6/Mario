@@ -35,6 +35,8 @@ namespace MarioPirates.Controller
                             return (EventEnum.KeyLeftHold, EventArgs.Empty);
                         case Buttons.LeftThumbstickRight:
                             return (EventEnum.KeyRightHold, EventArgs.Empty);
+                        case Buttons.B:
+                            return (EventEnum.KeyXHold, EventArgs.Empty);
                     }
                     break;
                 case InputState.Up:
@@ -48,6 +50,8 @@ namespace MarioPirates.Controller
                             return (EventEnum.KeyLeftUp, EventArgs.Empty);
                         case Buttons.LeftThumbstickRight:
                             return (EventEnum.KeyRightUp, EventArgs.Empty);
+                        case Buttons.B:
+                            return (EventEnum.KeyXUp, EventArgs.Empty);
                     }
                     break;
             }

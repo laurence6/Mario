@@ -37,6 +37,10 @@ namespace MarioPirates
 
         private void SubscribeInputMoving()
         {
+            // subscribe to acceleration
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyXDown, (s, e) => State.Accelerated());
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyXUp, (s, e) => State.CancelAccelerated());
+
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyUpHold, (s, e) =>
             {
                 if (!State.IsDead && JumpHoldCount < JumpHoldCountLimit)
@@ -64,14 +68,14 @@ namespace MarioPirates
             {
                 if (!State.IsDead && !State.IsCrouch)
                 {
-                    RigidBody.ApplyForce(new Vector2(-2000, 0));
+                    RigidBody.ApplyForce(new Vector2(-2000 * State.VelocityMultipler, 0));
                 }
             });
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyRightHold, (s, e) =>
             {
                 if (!State.IsDead && !State.IsCrouch)
                 {
-                    RigidBody.ApplyForce(new Vector2(2000, 0));
+                    RigidBody.ApplyForce(new Vector2(2000 * State.VelocityMultipler, 0));
                 }
             });
 
