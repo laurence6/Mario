@@ -8,8 +8,6 @@ namespace MarioPirates
 
         public void SetAccelerated(bool isAccelerated) => IsAccelerated = isAccelerated;
 
-        public MarioStateEnum State => IsAccelerated ? MarioStateEnum.Accelerated : MarioStateEnum.NonAccelerated;
-
         public float VelocityMultiplier => IsAccelerated ? 10f : 1f;
     }
 }

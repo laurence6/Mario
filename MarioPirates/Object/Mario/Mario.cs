@@ -31,16 +31,13 @@ namespace MarioPirates
 
             SubscribeInputMoving();
             SubscribeInputTransition();
+            SubscribeInputExtended();
 
             JumpHoldCount = 0;
         }
 
         private void SubscribeInputMoving()
         {
-            // subscribe to acceleration
-            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyXDown, (s, e) => State.Accelerated());
-            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyXUp, (s, e) => State.CancelAccelerated());
-
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyUpHold, (s, e) =>
             {
                 if (!State.IsDead && JumpHoldCount < JumpHoldCountLimit)
@@ -139,6 +136,12 @@ namespace MarioPirates
                         break;
                 }
             });
+        }
+
+        private void SubscribeInputExtended()
+        {
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyXDown, (s, e) => State.Accelerated());
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyXUp, (s, e) => State.CancelAccelerated());
         }
 
         public override void Update(float dt)
