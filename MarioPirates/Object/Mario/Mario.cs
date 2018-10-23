@@ -11,6 +11,8 @@ namespace MarioPirates
     {
         private const int JumpHoldCountLimit = 20;
 
+        private const int TransitionCountMax = 30;
+
         public readonly Dictionary<string, Sprite> Sprites;
 
         public readonly MarioState State;
@@ -18,6 +20,12 @@ namespace MarioPirates
         private Action unsubscribe;
 
         private int JumpHoldCount;
+
+        private int TransitionToBigCount;
+
+        private int TransitionToSmallCount;
+
+        private Vector2 StoredLocation;
 
         public Mario(int dstX, int dstY) : base(dstX, dstY, 0, 0)
         {
@@ -34,6 +42,8 @@ namespace MarioPirates
             SubscribeInputExtended();
 
             JumpHoldCount = 0;
+            TransitionToBigCount = TransitionCountMax;
+            TransitionToSmallCount = TransitionCountMax;
         }
 
         private void SubscribeInputMoving()
@@ -120,12 +130,18 @@ namespace MarioPirates
                 switch ((e as KeyDownEventArgs).key)
                 {
                     case Keys.Y:
+                        if (!State.IsSmall)
+                            TransitionToSmallCount = 0;
                         State.Small();
                         break;
                     case Keys.U:
+                        if (State.IsSmall)
+                            TransitionToBigCount = 0;
                         State.Big();
                         break;
                     case Keys.I:
+                        if (State.IsSmall)
+                            TransitionToBigCount = 0;
                         State.Fire();
                         break;
                     case Keys.O:
@@ -163,6 +179,72 @@ namespace MarioPirates
             else
                 State.Idle();
 
+            if (TransitionToBigCount < TransitionCountMax)
+            {
+                switch (TransitionToBigCount)
+                {
+                    case 0:
+                        StoredLocation = new Vector2(Location.X, Location.Y + (float)MarioStateBig.marioHeight);
+                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (float)MarioStateBig.marioHeight * 0.5f);
+                        Size = new Point(MarioStateBig.marioWidth, (int)((float)MarioStateBig.marioHeight * 0.5f));
+                        break;
+                    case 5:
+                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (float)MarioStateBig.marioHeight * 0.7f);
+                        Size = new Point(MarioStateBig.marioWidth, (int)((float)MarioStateBig.marioHeight * 0.7f));
+                        break;
+                    case 10:
+                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (float)MarioStateBig.marioHeight * 0.9f);
+                        Size = new Point(MarioStateBig.marioWidth, (int)((float)MarioStateBig.marioHeight * 0.9f));
+                        break;
+                    case 15:
+                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (float)MarioStateBig.marioHeight * 0.7f);
+                        Size = new Point(MarioStateBig.marioWidth, (int)((float)MarioStateBig.marioHeight * 0.7f));
+                        break;
+                    case 20:
+                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (float)MarioStateBig.marioHeight * 0.9f);
+                        Size = new Point(MarioStateBig.marioWidth, (int)((float)MarioStateBig.marioHeight * 0.9f));
+                        break;
+                    case 25:
+                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (float)MarioStateBig.marioHeight);
+                        Size = new Point(MarioStateBig.marioWidth, (int)((float)MarioStateBig.marioHeight));
+                        break;
+                }
+                TransitionToBigCount++;
+            }
+
+            if (TransitionToSmallCount < TransitionCountMax)
+            {
+                switch (TransitionToSmallCount)
+                {
+                    case 0:
+                        StoredLocation = new Vector2(Location.X, Location.Y + (float)MarioStateSmall.marioHeight);
+                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (float)MarioStateSmall.marioHeight * 2f);
+                        Size = new Point(MarioStateBig.marioWidth, (int)((float)MarioStateSmall.marioHeight * 2f));
+                        break;
+                    case 5:
+                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (float)MarioStateSmall.marioHeight * 1.6f);
+                        Size = new Point(MarioStateBig.marioWidth, (int)((float)MarioStateSmall.marioHeight * 1.6f));
+                        break;
+                    case 10:
+                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (float)MarioStateSmall.marioHeight * 1.3f);
+                        Size = new Point(MarioStateBig.marioWidth, (int)((float)MarioStateSmall.marioHeight * 1.3f));
+                        break;
+                    case 15:
+                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (float)MarioStateSmall.marioHeight * 1.6f);
+                        Size = new Point(MarioStateBig.marioWidth, (int)((float)MarioStateSmall.marioHeight * 1.6f));
+                        break;
+                    case 20:
+                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (float)MarioStateSmall.marioHeight * 1.3f);
+                        Size = new Point(MarioStateBig.marioWidth, (int)((float)MarioStateSmall.marioHeight * 1.3f));
+                        break;
+                    case 25:
+                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (float)MarioStateSmall.marioHeight);
+                        Size = new Point(MarioStateBig.marioWidth, (int)((float)MarioStateSmall.marioHeight));
+                        break;
+                }
+                TransitionToSmallCount++;
+            }
+
             Camera.Ins.LookAt(Location);
 
             base.Update(dt);
@@ -177,6 +259,8 @@ namespace MarioPirates
             }
             else if (other is Flower)
             {
+                if (State.IsSmall)
+                    TransitionToBigCount = 0;
                 State.Fire();
             }
             else if (other is GreenMushroom)
@@ -189,6 +273,8 @@ namespace MarioPirates
             }
             else if (other is RedMushroom)
             {
+                if (State.IsSmall)
+                    TransitionToBigCount = 0;
                 State.Big();
             }
             else if (other is Star)
@@ -213,6 +299,7 @@ namespace MarioPirates
                     }
                     else
                     {
+                        TransitionToSmallCount = 0;
                         State.Small();
                     }
                 }
