@@ -85,6 +85,7 @@ namespace MarioPirates
         // float
         public static float Pow(this float x, float y) => (float)Math.Pow(x, y);
         public static float Clamp(this float x, float lower, float upper) => x < lower ? lower : x > upper ? upper : x;
+        public static float Max(this float x, float y) => Math.Max(x, y);
 
         // Vector2
         public static Vector2 Abs(this Vector2 v) => new Vector2(Math.Abs(v.X), Math.Abs(v.Y));
