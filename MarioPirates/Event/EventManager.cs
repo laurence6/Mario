@@ -19,6 +19,7 @@ namespace MarioPirates
         {
             for (var i = 0; i < handlerList.Length; i++)
                 handlerList[i] = null;
+            waitlist.Clear();
             ActionEventArgs.Reset();
         }
 
