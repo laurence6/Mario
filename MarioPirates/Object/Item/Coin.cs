@@ -6,7 +6,7 @@
 
         public Coin(int dstX, int dstY) : base(dstX, dstY, coinWidth * 2, coinHeight * 2)
         {
-            Sprite = SpriteFactory.CreateSprite("coin");
+            Sprite = SpriteFactory.Ins.CreateSprite("coin");
             RigidBody.Mass = 0.05f;
         }
 
@@ -15,7 +15,7 @@
             if (other is Mario)
             {
                 RigidBody.Mass = 1e-6f;
-                EventManager.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this));
+                EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this));
             }
             base.PostCollide(other, side);
         }

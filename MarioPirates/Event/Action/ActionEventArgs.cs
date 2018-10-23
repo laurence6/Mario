@@ -10,7 +10,7 @@ namespace MarioPirates
 
         public static void Reset()
         {
-            EventManager.Subscribe(EventEnum.Action, (s, e) => ((ActionEventArgs)e).action());
+            EventManager.Ins.Subscribe(EventEnum.Action, (s, e) => ((ActionEventArgs)e).action());
         }
     }
 }

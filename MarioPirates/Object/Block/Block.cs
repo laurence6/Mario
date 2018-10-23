@@ -40,7 +40,7 @@ namespace MarioPirates
 
         protected Block(int dstX, int dstY, string stateName, Sprite normalSprite) : base(dstX, dstY, blockWidth * 2, blockHeight * 2)
         {
-            usedSprite = SpriteFactory.CreateSprite("usedblock");
+            usedSprite = SpriteFactory.Ins.CreateSprite("usedblock");
             this.normalSprite = normalSprite;
 
             RigidBody.ApplyForce(WorldForce.Gravity);

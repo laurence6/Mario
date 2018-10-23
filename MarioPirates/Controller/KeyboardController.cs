@@ -54,7 +54,7 @@ namespace MarioPirates.Controller
 
                 if (eventMapping[(int)state].TryGetValue(k, out var e))
                 {
-                    EventManager.RaiseEvent(e.Item1, this, e.Item2);
+                    EventManager.Ins.RaiseEvent(e.Item1, this, e.Item2);
                 }
             });
 

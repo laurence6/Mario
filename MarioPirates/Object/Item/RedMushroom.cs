@@ -6,7 +6,7 @@
 
         public RedMushroom(int dstX, int dstY) : base(dstX, dstY, redMushroomWidth * 2, redMushroomHeight * 2)
         {
-            Sprite = SpriteFactory.CreateSprite("redmushroom");
+            Sprite = SpriteFactory.Ins.CreateSprite("redmushroom");
             RigidBody.Mass = 0.05f;
         }
 
@@ -15,7 +15,7 @@
             if (other is Mario)
             {
                 RigidBody.Mass = 1e-6f;
-                EventManager.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this));
+                EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this));
             }
             base.PostCollide(other, side);
         }

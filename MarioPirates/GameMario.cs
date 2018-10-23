@@ -39,7 +39,7 @@ namespace MarioPirates
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            SpriteFactory.LoadContent(Content);
+            SpriteFactory.Ins.LoadContent(Content);
         }
 
         /// <summary>
@@ -62,8 +62,8 @@ namespace MarioPirates
                 Reset();
 
             Time.Update(gameTime);
-            EventManager.Update();
-            Scene.Instance.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
+            EventManager.Ins.Update();
+            Scene.Ins.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
             controllers.ForEach(c => c.Update());
         }
 
@@ -75,7 +75,7 @@ namespace MarioPirates
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            Scene.Instance.Draw(spriteBatch);
+            Scene.Ins.Draw(spriteBatch);
         }
 
         private bool triggerReset = true;
@@ -84,12 +84,12 @@ namespace MarioPirates
 
         private void Reset()
         {
-            EventManager.Reset();
             Physics.Reset();
-            SpriteFactory.Reset();
-            Scene.Instance.Reset();
+            EventManager.Ins.Reset();
+            SpriteFactory.Ins.Reset();
+            Scene.Ins.Reset();
 
-            EventManager.Subscribe(EventEnum.KeyDown, (s, e) =>
+            EventManager.Ins.Subscribe(EventEnum.KeyDown, (s, e) =>
             {
                 switch ((e as KeyDownEventArgs).key)
                 {

@@ -5,36 +5,40 @@ namespace MarioPirates
 {
     using static Common;
 
-    internal static class EventManager
+    internal sealed class EventManager
     {
-        private static EventHandler[] handlerList = new EventHandler[EnumValues<EventEnum>().Length];
+        public static readonly EventManager Ins = new EventManager();
 
-        private static List<ValueTuple<float, EventEnum, object, EventArgs>> waitlist = new List<(float, EventEnum, object, EventArgs)>();
+        private EventManager() { }
 
-        public static void Reset()
+        private EventHandler[] handlerList = new EventHandler[EnumValues<EventEnum>().Length];
+
+        private List<ValueTuple<float, EventEnum, object, EventArgs>> waitlist = new List<(float, EventEnum, object, EventArgs)>();
+
+        public void Reset()
         {
             for (var i = 0; i < handlerList.Length; i++)
                 handlerList[i] = null;
             ActionEventArgs.Reset();
         }
 
-        public static Action Subscribe(EventEnum type, EventHandler h)
+        public Action Subscribe(EventEnum type, EventHandler h)
         {
             handlerList[(int)type] += h;
             return () => handlerList[(int)type] -= h;
         }
 
-        public static void RaiseEvent(EventEnum type, object s, EventArgs e)
+        public void RaiseEvent(EventEnum type, object s, EventArgs e)
         {
             handlerList[(int)type]?.Invoke(s, e);
         }
 
-        public static void RaiseEvent(EventEnum type, object s, EventArgs e, float dt)
+        public void RaiseEvent(EventEnum type, object s, EventArgs e, float dt)
         {
             waitlist.Add((Time.Now + dt, type, s, e));
         }
 
-        public static void Update()
+        public void Update()
         {
             var t = Time.Now;
             waitlist.Sort((x, y) => x.Item1.CompareTo(y.Item1));

@@ -13,7 +13,7 @@
         }
 
         public UsedBlock(int dstX, int dstY, string state)
-            : base(dstX, dstY, state, SpriteFactory.CreateSprite("usedblock"))
+            : base(dstX, dstY, state, SpriteFactory.Ins.CreateSprite("usedblock"))
         {
         }
     }

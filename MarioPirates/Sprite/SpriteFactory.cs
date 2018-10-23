@@ -8,7 +8,7 @@ using static System.IO.File;
 
 namespace MarioPirates
 {
-    internal static class SpriteFactory
+    internal sealed class SpriteFactory
     {
         private class SpriteParam
         {
@@ -17,7 +17,7 @@ namespace MarioPirates
             public int[] Frames = null;
             public int AccelerateRate = 1;
 
-            public Sprite ToSprite()
+            public Sprite ToSprite(Dictionary<string, Texture2D> textures)
             {
                 var frames = new Point[Frames.Length / 2];
                 for (var i = 0; i < frames.Length; i++)
@@ -26,19 +26,23 @@ namespace MarioPirates
             }
         }
 
-        private static readonly Dictionary<string, Texture2D> textures = new Dictionary<string, Texture2D>();
+        public static readonly SpriteFactory Ins = new SpriteFactory();
 
-        private static Dictionary<string, SpriteParam> spriteParam;
+        private SpriteFactory() { }
 
-        public static void LoadContent(ContentManager content)
+        private Dictionary<string, Texture2D> textures = new Dictionary<string, Texture2D>();
+
+        private Dictionary<string, SpriteParam> spriteParam;
+
+        public void LoadContent(ContentManager content)
         {
             spriteParam = new JavaScriptSerializer().Deserialize<Dictionary<string, SpriteParam>>(ReadAllText("Content\\SpritesData.json"));
             spriteParam.ForEach((name, param) => param.TextureName.NotNullThen(() => textures.AddIfNotExist(param.TextureName, null)));
             textures.Keys.ToList().ForEach(name => textures[name] = content.Load<Texture2D>(name));
         }
 
-        public static void Reset() { }
+        public void Reset() { }
 
-        public static Sprite CreateSprite(string spriteName) => spriteParam[spriteName].ToSprite();
+        public Sprite CreateSprite(string spriteName) => spriteParam[spriteName].ToSprite(textures);
     }
 }

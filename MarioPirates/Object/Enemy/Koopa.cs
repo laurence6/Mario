@@ -15,9 +15,9 @@ namespace MarioPirates
 
             stomped = false;
             sprites = new Sprite[3] {
-                SpriteFactory.CreateSprite("koopa_left"),
-                SpriteFactory.CreateSprite("koopa_right"),
-                SpriteFactory.CreateSprite("koopa_stomped"),
+                SpriteFactory.Ins.CreateSprite("koopa_left"),
+                SpriteFactory.Ins.CreateSprite("koopa_right"),
+                SpriteFactory.Ins.CreateSprite("koopa_stomped"),
             };
             Sprite = sprites[0];
 

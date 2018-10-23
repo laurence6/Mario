@@ -6,7 +6,7 @@ namespace MarioPirates
 
         public PipeBottom(int dstX, int dstY) : base(dstX, dstY, pipeWidth * 2, pipeHeight * 2)
         {
-            Sprite = SpriteFactory.CreateSprite("pipelinebottom");
+            Sprite = SpriteFactory.Ins.CreateSprite("pipelinebottom");
         }
     }
 }

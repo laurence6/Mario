@@ -3,7 +3,7 @@ namespace MarioPirates
     internal class QuestionBlockStar : Block
     {
         public QuestionBlockStar(int dstX, int dstY, string state)
-            : base(dstX, dstY, state, SpriteFactory.CreateSprite("questionblock"))
+            : base(dstX, dstY, state, SpriteFactory.Ins.CreateSprite("questionblock"))
         {
         }
 
@@ -15,7 +15,7 @@ namespace MarioPirates
                 {
                     State = BlockState.Used;
 
-                    EventManager.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(new GameObjectParam
+                    EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(new GameObjectParam
                     {
                         TypeName = "Star",
                         Location = new int[2] { (int)Location.X + 10, (int)Location.Y - 32 },

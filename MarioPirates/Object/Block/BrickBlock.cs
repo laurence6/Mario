@@ -3,7 +3,7 @@
     internal class BrickBlock : Block
     {
         public BrickBlock(int dstX, int dstY, string state)
-            : base(dstX, dstY, state, SpriteFactory.CreateSprite("brickblock"))
+            : base(dstX, dstY, state, SpriteFactory.Ins.CreateSprite("brickblock"))
         {
         }
 
@@ -16,7 +16,7 @@
                 {
                     if (!(mario.State.IsSmall || mario.State.IsDead))
                     {
-                        EventManager.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this));
+                        EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this));
                     }
                 }
             }
