@@ -293,7 +293,8 @@
     {
         "TypeName": "PipeBottom",
         "Motion": "Static",
-        "Location": [ 604, 419 ]
+        "Location": [ 604, 419 ],
+		"Params": { "Height": "17" }
     },
 
     {
@@ -304,7 +305,8 @@
     {
         "TypeName": "PipeBottom",
         "Motion": "Static",
-        "Location": [ 804, 419 ]
+        "Location": [ 804, 419 ],
+		"Params": { "Height": "17" }
     },
     {
         "TypeName": "PipeTop",
@@ -314,7 +316,8 @@
     {
         "TypeName": "PipeBottom",
         "Motion": "Static",
-        "Location": [ 1204, 419 ]
+        "Location": [ 1204, 419 ],
+		"Params": { "Height": "17" }
     },
     {
         "TypeName": "PipeTop",
@@ -324,7 +327,8 @@
     {
         "TypeName": "PipeBottom",
         "Motion": "Static",
-        "Location": [ 1504, 419 ]
+        "Location": [ 1504, 419 ],
+		"Params": { "Height": "17" }
     },
 
 
@@ -1280,12 +1284,22 @@
     {
         "TypeName": "Koopa",
         "Motion": "Dynamic",
-        "Location": [ 464, 300 ]
+        "Location": [ 700, 300 ]
     },
     {
         "TypeName": "Goomba",
         "Motion": "Dynamic",
-        "Location": [ 532, 316 ]
+        "Location": [ 800, 316 ]
+    },
+    {
+        "TypeName": "Koopa",
+        "Motion": "Dynamic",
+        "Location": [ 1700, 300 ]
+    },
+    {
+        "TypeName": "Goomba",
+        "Motion": "Dynamic",
+        "Location": [ 1800, 316 ]
     }
 
 ]
