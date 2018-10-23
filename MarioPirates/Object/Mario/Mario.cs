@@ -91,7 +91,7 @@ namespace MarioPirates
 
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyRightHold, (s, e) =>
             {
-                if (RigidBody.Velocity.X < 0)
+                if (RigidBody.Velocity.X < -50)
                 {
                     State.Brake();
                 }
@@ -102,7 +102,7 @@ namespace MarioPirates
             });
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyLeftHold, (s, e) =>
             {
-                if (RigidBody.Velocity.X > 0)
+                if (RigidBody.Velocity.X > 50)
                 {
                     State.Brake();
                 }
