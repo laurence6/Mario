@@ -46,6 +46,13 @@ namespace MarioPirates
                     EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), 3000f);
                 }
             }
+            else if(other is Fireball fireball)
+            {
+                Sprite = SpriteFactory.Ins.CreateSprite("goomba_stomped");
+                RigidBody.CollisionLayerMask = CollisionLayer.None;
+                RigidBody.Velocity = Vector2.Zero;
+                EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), 3000f);
+            }
             base.PostCollide(other, side);
         }
     }
