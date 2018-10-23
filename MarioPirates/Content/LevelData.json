@@ -59,6 +59,108 @@
         }
     },
     {
+        "TypeName": "BrickBlock",
+        "Motion": "Static",
+        "Location": [ 2464, 350 ],
+        "Params": { "State": "Normal" }
+    },
+    {
+        "TypeName": "QuestionBlock",
+        "Motion": "Static",
+        "Location": [ 2496, 350 ],
+        "Params": {
+            "State": "Normal",
+            "Powerup": "Star"
+        }
+    },
+    {
+        "TypeName": "BrickBlock",
+        "Motion": "Static",
+        "Location": [ 2528, 350 ],
+        "Params": { "State": "Normal" }
+    },
+    {
+        "TypeName": "BrickBlock",
+        "Motion": "Static",
+        "Location": [ 2560, 200 ],
+        "Params": { "State": "Normal" }
+    },
+    {
+        "TypeName": "BrickBlock",
+        "Motion": "Static",
+        "Location": [ 2592, 200 ],
+        "Params": { "State": "Normal" }
+    },
+    {
+        "TypeName": "BrickBlock",
+        "Motion": "Static",
+        "Location": [ 2624, 200 ],
+        "Params": { "State": "Normal" }
+    },
+    {
+        "TypeName": "BrickBlock",
+        "Motion": "Static",
+        "Location": [ 2656, 200 ],
+        "Params": { "State": "Normal" }
+    },
+    {
+        "TypeName": "BrickBlock",
+        "Motion": "Static",
+        "Location": [ 2688, 200 ],
+        "Params": { "State": "Normal" }
+    },
+    {
+        "TypeName": "BrickBlock",
+        "Motion": "Static",
+        "Location": [ 2720, 200 ],
+        "Params": { "State": "Normal" }
+    },
+    {
+        "TypeName": "BrickBlock",
+        "Motion": "Static",
+        "Location": [ 2752, 200 ],
+        "Params": { "State": "Normal" }
+    },
+    {
+        "TypeName": "BrickBlock",
+        "Motion": "Static",
+        "Location": [ 2784, 200 ],
+        "Params": { "State": "Normal" }
+    },
+    {
+        "TypeName": "BrickBlock",
+        "Motion": "Static",
+        "Location": [ 2816, 200 ],
+        "Params": { "State": "Normal" }
+    },
+    {
+        "TypeName": "BrickBlock",
+        "Motion": "Static",
+        "Location": [ 2912, 200 ],
+        "Params": { "State": "Normal" }
+    },
+    {
+        "TypeName": "BrickBlock",
+        "Motion": "Static",
+        "Location": [ 2944, 200 ],
+        "Params": { "State": "Normal" }
+    },
+    {
+        "TypeName": "BrickBlock",
+        "Motion": "Static",
+        "Location": [ 2976, 200 ],
+        "Params": { "State": "Normal" }
+    },
+    {
+        "TypeName": "QuestionBlock",
+        "Motion": "Static",
+        "Location": [ 3008, 200 ],
+        "Params": {
+            "State": "Normal",
+            "Powerup": "Star"
+        }
+    },
+    {
         "TypeName": "PipeTop",
         "Motion": "Static",
         "Location": [ 600, 390 ]
@@ -79,7 +181,36 @@
         "Motion": "Static",
         "Location": [ 804, 419 ]
     },
-
+    {
+        "TypeName": "PipeTop",
+        "Motion": "Static",
+        "Location": [ 1200, 390 ]
+    },
+    {
+        "TypeName": "PipeBottom",
+        "Motion": "Static",
+        "Location": [ 1204, 419 ]
+    },
+    {
+        "TypeName": "PipeTop",
+        "Motion": "Static",
+        "Location": [ 1500, 390 ]
+    },
+    {
+        "TypeName": "PipeBottom",
+        "Motion": "Static",
+        "Location": [ 1504, 419 ]
+    },
+    {
+        "TypeName": "PipeTop",
+        "Motion": "Static",
+        "Location": [ 1900, 390 ]
+    },
+    {
+        "TypeName": "PipeBottom",
+        "Motion": "Static",
+        "Location": [ 1904, 419 ]
+    },
 
 
 
@@ -241,8 +372,369 @@
         "Motion": "Static"
     },
     {
+        "TypeName": "BrokenBlock",
+        "Location": [ 832, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 864, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 896, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 928, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 960, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 992, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 1024, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 1056, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 1088, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 1120, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 1152, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 1184, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 1216, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 1248, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 1280, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 1312, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 1344, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 1376, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 1408, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 1440, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 1472, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 1504, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 1536, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 1568, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 1600, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 1632, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 1664, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 1696, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 1728, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 1760, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 1792, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 1824, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 1856, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 1888, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 1920, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 1952, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 1984, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 2016, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 2048, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 2080, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 2112, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 2144, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 2176, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 2208, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 2240, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 2272, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 2304, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 2336, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 2400, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 2432, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 2464, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 2496, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 2528, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 2560, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 2592, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 2624, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 2656, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 2688, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 2720, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 2816, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
         "TypeName": "Mario",
-        "Location": [ 120, 300 ],
+        "Location": [ 0, 300 ],
         "Motion": "Dynamic",
         "Force": "Gravity, Friction",
         "Mass": 1
