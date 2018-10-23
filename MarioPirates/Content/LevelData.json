@@ -65,7 +65,7 @@
         "Location": [ 2496, 350 ],
         "Params": {
             "State": "Normal",
-            "Powerup": "Star"
+            "Powerup": "Coin"
         }
     },
     {
@@ -179,7 +179,7 @@
         "Location": [ 3424, 350 ],
         "Params": {
             "State": "Normal",
-            "Powerup": "Star"
+            "Powerup": "RedMushroom"
         }
     },
     {
@@ -188,7 +188,7 @@
         "Location": [ 3488, 250 ],
         "Params": {
             "State": "Normal",
-            "Powerup": "Star"
+            "Powerup": "GreenMushroom"
         }
     },
     {
@@ -206,7 +206,7 @@
         "Location": [ 3552, 350 ],
         "Params": {
             "State": "Normal",
-            "Powerup": "Star"
+            "Powerup": "Coin"
         }
     },
     {
