@@ -184,29 +184,29 @@ namespace MarioPirates
                 switch (TransitionToBigCount)
                 {
                     case 0:
-                        StoredLocation = new Vector2(Location.X, Location.Y + (float)MarioStateBig.marioHeight);
-                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (float)MarioStateBig.marioHeight * 0.5f);
-                        Size = new Point(MarioStateBig.marioWidth, (int)((float)MarioStateBig.marioHeight * 0.5f));
+                        StoredLocation = new Vector2(Location.X, Location.Y + MarioStateBig.marioHeight);
+                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - MarioStateBig.marioHeight * 0.5f);
+                        Size = new Point(MarioStateBig.marioWidth, (int)(MarioStateBig.marioHeight * 0.5f));
                         break;
                     case 5:
-                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (float)MarioStateBig.marioHeight * 0.7f);
-                        Size = new Point(MarioStateBig.marioWidth, (int)((float)MarioStateBig.marioHeight * 0.7f));
+                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - MarioStateBig.marioHeight * 0.7f);
+                        Size = new Point(MarioStateBig.marioWidth, (int)(MarioStateBig.marioHeight * 0.7f));
                         break;
                     case 10:
-                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (float)MarioStateBig.marioHeight * 0.9f);
-                        Size = new Point(MarioStateBig.marioWidth, (int)((float)MarioStateBig.marioHeight * 0.9f));
+                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - MarioStateBig.marioHeight * 0.9f);
+                        Size = new Point(MarioStateBig.marioWidth, (int)(MarioStateBig.marioHeight * 0.9f));
                         break;
                     case 15:
-                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (float)MarioStateBig.marioHeight * 0.7f);
-                        Size = new Point(MarioStateBig.marioWidth, (int)((float)MarioStateBig.marioHeight * 0.7f));
+                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - MarioStateBig.marioHeight * 0.7f);
+                        Size = new Point(MarioStateBig.marioWidth, (int)(MarioStateBig.marioHeight * 0.7f));
                         break;
                     case 20:
-                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (float)MarioStateBig.marioHeight * 0.9f);
-                        Size = new Point(MarioStateBig.marioWidth, (int)((float)MarioStateBig.marioHeight * 0.9f));
+                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - MarioStateBig.marioHeight * 0.9f);
+                        Size = new Point(MarioStateBig.marioWidth, (int)(MarioStateBig.marioHeight * 0.9f));
                         break;
                     case 25:
-                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (float)MarioStateBig.marioHeight);
-                        Size = new Point(MarioStateBig.marioWidth, (int)((float)MarioStateBig.marioHeight));
+                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - MarioStateBig.marioHeight);
+                        Size = new Point(MarioStateBig.marioWidth, MarioStateBig.marioHeight);
                         break;
                 }
                 TransitionToBigCount++;
@@ -217,29 +217,29 @@ namespace MarioPirates
                 switch (TransitionToSmallCount)
                 {
                     case 0:
-                        StoredLocation = new Vector2(Location.X, Location.Y + (float)MarioStateSmall.marioHeight);
-                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (float)MarioStateSmall.marioHeight * 2f);
-                        Size = new Point(MarioStateBig.marioWidth, (int)((float)MarioStateSmall.marioHeight * 2f));
+                        StoredLocation = new Vector2(Location.X, Location.Y + MarioStateSmall.marioHeight);
+                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - MarioStateSmall.marioHeight * 2f);
+                        Size = new Point(MarioStateBig.marioWidth, (int)(MarioStateSmall.marioHeight * 2f));
                         break;
                     case 5:
-                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (float)MarioStateSmall.marioHeight * 1.6f);
-                        Size = new Point(MarioStateBig.marioWidth, (int)((float)MarioStateSmall.marioHeight * 1.6f));
+                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - MarioStateSmall.marioHeight * 1.6f);
+                        Size = new Point(MarioStateBig.marioWidth, (int)(MarioStateSmall.marioHeight * 1.6f));
                         break;
                     case 10:
-                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (float)MarioStateSmall.marioHeight * 1.3f);
-                        Size = new Point(MarioStateBig.marioWidth, (int)((float)MarioStateSmall.marioHeight * 1.3f));
+                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - MarioStateSmall.marioHeight * 1.3f);
+                        Size = new Point(MarioStateBig.marioWidth, (int)(MarioStateSmall.marioHeight * 1.3f));
                         break;
                     case 15:
-                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (float)MarioStateSmall.marioHeight * 1.6f);
-                        Size = new Point(MarioStateBig.marioWidth, (int)((float)MarioStateSmall.marioHeight * 1.6f));
+                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - MarioStateSmall.marioHeight * 1.6f);
+                        Size = new Point(MarioStateBig.marioWidth, (int)(MarioStateSmall.marioHeight * 1.6f));
                         break;
                     case 20:
-                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (float)MarioStateSmall.marioHeight * 1.3f);
-                        Size = new Point(MarioStateBig.marioWidth, (int)((float)MarioStateSmall.marioHeight * 1.3f));
+                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - MarioStateSmall.marioHeight * 1.3f);
+                        Size = new Point(MarioStateBig.marioWidth, (int)(MarioStateSmall.marioHeight * 1.3f));
                         break;
                     case 25:
-                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (float)MarioStateSmall.marioHeight);
-                        Size = new Point(MarioStateBig.marioWidth, (int)((float)MarioStateSmall.marioHeight));
+                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - MarioStateSmall.marioHeight);
+                        Size = new Point(MarioStateBig.marioWidth, MarioStateSmall.marioHeight);
                         break;
                 }
                 TransitionToSmallCount++;
