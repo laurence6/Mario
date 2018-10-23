@@ -1,8 +1,8 @@
 ﻿{
     "fireball": {
         "TextureName": "fireball",
-        "Size": [ 10, 10 ],
-        "Frames": [ 0, 0, 10, 10, 20, 20, 30, 30 ]
+        "Size": [ 18, 18 ],
+        "Frames": [ 0, 0, 18, 0, 36, 0, 54, 0 ]
     },
     "coin": {
         "TextureName": "coin",
