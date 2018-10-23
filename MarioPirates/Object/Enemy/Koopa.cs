@@ -33,19 +33,10 @@ namespace MarioPirates
 
         public override void PostCollide(GameObjectRigidBody other, CollisionSide side)
         {
-            if (other is Mario mario)
-            {
-                if (side == CollisionSide.Top || mario.State.IsInvincible)
-                {
-                    if (Stomped)
-                        RigidBody.Velocity = mario.RigidBody.Bound.Center.X > RigidBody.Bound.Center.X ? new Vector2(-250f, 0f) : new Vector2(250f, 0f);
-                    Stomped = true;
-                }
-            }
-            else if (other is Fireball fireball)
+            if ((other is Mario mario && (side == CollisionSide.Top || mario.State.IsInvincible)) || (other is Fireball fireball))
             {
                 if (Stomped)
-                    RigidBody.Velocity = fireball.RigidBody.Bound.Center.X > RigidBody.Bound.Center.X ? new Vector2(-250f, 0f) : new Vector2(250f, 0f);
+                    RigidBody.Velocity = other.RigidBody.Bound.Center.X > RigidBody.Bound.Center.X ? new Vector2(-250f, 0f) : new Vector2(250f, 0f);
                 Stomped = true;
             }
             base.PostCollide(other, side);
