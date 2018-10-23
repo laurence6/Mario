@@ -144,10 +144,13 @@ namespace MarioPirates
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyXUp, (s, e) => State.CancelAccelerated());
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyXDown, (s, e) =>
             {
-                var fireball = new Fireball((int)Location.X + (State.IsLeft ? -32 : 16 + Size.X), (int)Location.Y);
-                fireball.RigidBody.Velocity = new Vector2(State.IsLeft ? -200f : 200f, -200f);
-                EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(fireball));
-                EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(fireball), 3000f);
+                if (State.IsFire)
+                {
+                    var fireball = new Fireball((int)Location.X + (State.IsLeft ? -32 : 16 + Size.X), (int)Location.Y);
+                    fireball.RigidBody.Velocity = new Vector2(State.IsLeft ? -200f : 200f, -200f);
+                    EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(fireball));
+                    EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(fireball), 3000f);
+                }
             });
         }
 
