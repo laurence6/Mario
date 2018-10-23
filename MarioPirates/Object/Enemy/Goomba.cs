@@ -26,31 +26,18 @@ namespace MarioPirates
 
         public override void PostCollide(GameObjectRigidBody other, CollisionSide side)
         {
-            if (other is Mario mario)
-            {
-                if (side == CollisionSide.Top || mario.State.IsInvincible)
-                {
-                    Sprite = SpriteFactory.Ins.CreateSprite("goomba_stomped");
-                    RigidBody.CollisionLayerMask = CollisionLayer.None;
-                    RigidBody.Velocity = Vector2.Zero;
-                    EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), 3000f);
-                }
-            }
-            else if (other is Koopa koopa)
-            {
-                if (koopa.Stomped)
-                {
-                    // TODO: flip
-                    RigidBody.CollisionLayerMask = CollisionLayer.None;
-                    RigidBody.Velocity = new Vector2(0f, -250f);
-                    EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), 3000f);
-                }
-            }
-            else if (other is Fireball fireball)
+            if ((other is Mario mario && (side == CollisionSide.Top || mario.State.IsInvincible)) || other is Fireball)
             {
                 Sprite = SpriteFactory.Ins.CreateSprite("goomba_stomped");
                 RigidBody.CollisionLayerMask = CollisionLayer.None;
                 RigidBody.Velocity = Vector2.Zero;
+                EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), 3000f);
+            }
+            else if (other is Koopa koopa && koopa.Stomped)
+            {
+                // TODO: flip
+                RigidBody.CollisionLayerMask = CollisionLayer.None;
+                RigidBody.Velocity = new Vector2(0f, -250f);
                 EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), 3000f);
             }
             base.PostCollide(other, side);
