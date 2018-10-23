@@ -25,7 +25,7 @@
         "Location": [ 382, 350 ],
         "Params": {
             "State": "Normal",
-            "Powerup": "Star"
+            "Powerup": "RedMushroom"
         }
     },
     {
@@ -40,7 +40,7 @@
         "Location": [ 446, 350 ],
         "Params": {
             "State": "Normal",
-            "Powerup": "Star"
+            "Powerup": "Flower"
         }
     },
     {
