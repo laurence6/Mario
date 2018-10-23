@@ -139,6 +139,8 @@ namespace MarioPirates
 
         public bool IsSmall => Size.State == MarioStateEnum.Small;
 
+        public bool IsFire => Size.State == MarioStateEnum.Fire;
+
         public float VelocityMultipler => accelerated.VelocityMultiplier;
     }
 }
