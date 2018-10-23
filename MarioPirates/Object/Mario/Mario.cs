@@ -189,7 +189,7 @@ namespace MarioPirates
                         unsubscribe();
                         unsubscribe = null;
                         EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), 3000f);
-                        EventManager.Ins.RaiseEvent(EventEnum.Action, this, new ActionEventArgs(() => Scene.Ins.Reset()), 4000f);
+                        EventManager.Ins.RaiseEvent(EventEnum.KeyDown, this, new KeyDownEventArgs(Keys.R), 4000f);
                     }
                     else
                     {
