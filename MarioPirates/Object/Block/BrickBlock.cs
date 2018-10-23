@@ -32,7 +32,7 @@ namespace MarioPirates
                     if (powerup == "Coin")
                     {
                         EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(powerupObj), 500f);
-                    }                
+                    }
                     powerup = null;
                 }
                 else if (State == BlockState.Normal && !(mario.State.IsSmall || mario.State.IsDead))
