@@ -15,11 +15,11 @@ namespace MarioPirates
 
         public override void PostCollide(GameObjectRigidBody other, CollisionSide side)
         {
-            if (other.RigidBody.Motion == MotionEnum.Static)
+            if (RigidBody.Grounded)
             {
                 if (side == CollisionSide.Top)
                 {
-                    RigidBody.Velocity = new Vector2(RigidBody.Velocity.X, 25);
+                    RigidBody.Velocity = new Vector2(RigidBody.Velocity.X, 25f);
                 }
             }
         }
