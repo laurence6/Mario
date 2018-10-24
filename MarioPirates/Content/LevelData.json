@@ -56,6 +56,28 @@
     {
         "TypeName": "BrickBlock",
         "Motion": "Static",
+        "Location": [ 964, 300 ],
+        "Params": { "State": "Normal" }
+    },
+    {
+        "TypeName": "QuestionBlock",
+        "Motion": "Static",
+        "Location": [ 996, 300 ],
+        "Params": {
+            "State": "Normal",
+            "Powerup": "Star"
+        }
+    },
+    {
+        "TypeName": "BrickBlock",
+        "Motion": "Static",
+        "Location": [ 1028, 300 ],
+        "Params": { "State": "Normal" }
+    },
+
+    {
+        "TypeName": "BrickBlock",
+        "Motion": "Static",
         "Location": [ 2464, 350 ],
         "Params": { "State": "Normal" }
     },
@@ -288,47 +310,47 @@
     {
         "TypeName": "PipeTop",
         "Motion": "Static",
-        "Location": [ 600, 390 ]
+        "Location": [ 600, 389 ]
     },
     {
         "TypeName": "PipeBottom",
         "Motion": "Static",
         "Location": [ 604, 419 ],
-		"Params": { "Height": "17" }
+        "Params": { "Height": "17" }
     },
 
     {
         "TypeName": "PipeTop",
         "Motion": "Static",
-        "Location": [ 800, 390 ]
+        "Location": [ 800, 373 ]
     },
     {
         "TypeName": "PipeBottom",
         "Motion": "Static",
-        "Location": [ 804, 419 ],
-		"Params": { "Height": "17" }
+        "Location": [ 804, 403 ],
+        "Params": { "Height": "33" }
     },
     {
         "TypeName": "PipeTop",
         "Motion": "Static",
-        "Location": [ 1200, 390 ]
+        "Location": [ 1200, 357 ]
     },
     {
         "TypeName": "PipeBottom",
         "Motion": "Static",
-        "Location": [ 1204, 419 ],
-		"Params": { "Height": "17" }
+        "Location": [ 1204, 387 ],
+        "Params": { "Height": "49" }
     },
     {
         "TypeName": "PipeTop",
         "Motion": "Static",
-        "Location": [ 1500, 390 ]
+        "Location": [ 1500, 389 ]
     },
     {
         "TypeName": "PipeBottom",
         "Motion": "Static",
         "Location": [ 1504, 419 ],
-		"Params": { "Height": "17" }
+        "Params": { "Height": "17" }
     },
 
 
@@ -659,36 +681,7 @@
         "Params": { "State": "Normal" },
         "Motion": "Static"
     },
-    {
-        "TypeName": "BrokenBlock",
-        "Location": [ 1728, 450 ],
-        "Params": { "State": "Normal" },
-        "Motion": "Static"
-    },
-    {
-        "TypeName": "BrokenBlock",
-        "Location": [ 1760, 450 ],
-        "Params": { "State": "Normal" },
-        "Motion": "Static"
-    },
-    {
-        "TypeName": "BrokenBlock",
-        "Location": [ 1792, 450 ],
-        "Params": { "State": "Normal" },
-        "Motion": "Static"
-    },
-    {
-        "TypeName": "BrokenBlock",
-        "Location": [ 1824, 450 ],
-        "Params": { "State": "Normal" },
-        "Motion": "Static"
-    },
-    {
-        "TypeName": "BrokenBlock",
-        "Location": [ 1856, 450 ],
-        "Params": { "State": "Normal" },
-        "Motion": "Static"
-    },
+
     {
         "TypeName": "BrokenBlock",
         "Location": [ 1888, 450 ],

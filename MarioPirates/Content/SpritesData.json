@@ -29,11 +29,10 @@
     },
     "pipelinebottom": {
         "TextureName": "pipelinebottom",
-        "Size": [ 28, 17 ],
+        "Size": [ 28, 16 ],
         "Frames": [ 0, 0 ]
     },
-
-
+    
     "redmushroom": {
         "TextureName": "redmushroom",
         "Size": [ 16, 16 ],
