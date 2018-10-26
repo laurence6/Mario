@@ -11,7 +11,7 @@ namespace MarioPirates
             Sprite = SpriteFactory.Ins.CreateSprite("star");
             RigidBody.Mass = 0.05f;
 
-            RigidBody.Velocity = new Vector2(25f, 0f);
+            RigidBody.Velocity = new Vector2(100f, 0f);
         }
 
         public override void PreCollide(GameObjectRigidBody other, CollisionSide side)
@@ -19,6 +19,15 @@ namespace MarioPirates
             if (other is Mario)
             {
                 EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this));
+            }
+            base.PostCollide(other, side);
+        }
+
+        public override void PostCollide(GameObjectRigidBody other, CollisionSide side)
+        {
+            if (RigidBody.Grounded)
+            {
+                RigidBody.Velocity = new Vector2(RigidBody.Velocity.X, -200f);
             }
             base.PostCollide(other, side);
         }
