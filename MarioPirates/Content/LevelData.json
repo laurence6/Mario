@@ -1208,6 +1208,7 @@
         "Params": { "State": "Normal" },
         "Motion": "Static"
     },
+
     {
         "TypeName": "OrangeBlock",
         "IsStatic": true,
@@ -1215,6 +1216,263 @@
         "Params": { "State": "Normal" },
         "Motion": "Static"
     },
+
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4480, 322 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4480, 354 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4480, 386 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4480, 418 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4480, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4512, 354 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4512, 386 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4512, 418 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4512, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4544, 386 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4544, 418 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4544, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4576, 418 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4576, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4608, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4768, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4800, 418 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4800, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4832, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4832, 418 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4832, 386 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4864, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4864, 418 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4864, 386 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4864, 354 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4896, 322 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+
+
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4896, 354 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4896, 386 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4896, 418 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4896, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+
+
+
+
+
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4928, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4928, 418 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4928, 386 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4928, 354 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 4928, 322 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+
     {
         "TypeName": "BrokenBlock",
         "Location": [ 4320, 450 ],
