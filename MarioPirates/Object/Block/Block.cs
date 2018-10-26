@@ -76,6 +76,7 @@ namespace MarioPirates
 
         public override void PostCollide(GameObjectRigidBody other, CollisionSide side)
         {
+            base.PostCollide(other, side);
             if (other is Mario)
                 if (side == CollisionSide.Bottom && RigidBody.Motion == MotionEnum.Static && !IsUsed)
                 {
@@ -85,7 +86,6 @@ namespace MarioPirates
                     RigidBody.Motion = MotionEnum.Keyframe;
                     RigidBody.Velocity = new Vector2(0, -150f);
                 }
-            base.PostCollide(other, side);
         }
     }
 }

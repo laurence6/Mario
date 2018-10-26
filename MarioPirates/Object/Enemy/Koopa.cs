@@ -32,6 +32,7 @@ namespace MarioPirates
 
         public override void PostCollide(GameObjectRigidBody other, CollisionSide side)
         {
+            base.PostCollide(other, side);
             if (other is Mario mario && (side == CollisionSide.Top || mario.State.IsInvincible))
             {
                 if (Stomped)
@@ -45,7 +46,6 @@ namespace MarioPirates
                 RigidBody.Velocity = new Vector2(RigidBody.Velocity.X + (side == CollisionSide.Left ? 20f : 0f) + (side == CollisionSide.Right ? -20f : 0f), -250f);
                 EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), 3000f);
             }
-            base.PostCollide(other, side);
         }
     }
 }

@@ -7,7 +7,7 @@ using static System.IO.File;
 
 namespace MarioPirates
 {
-    internal class Mario : GameObjectRigidBody
+    internal class Mario : GameObjectRigidBody, IDisposable
     {
         private const int JumpHoldCountLimit = 20;
 
@@ -254,6 +254,7 @@ namespace MarioPirates
 
         public override void PostCollide(GameObjectRigidBody other, CollisionSide side)
         {
+            base.PostCollide(other, side);
             // Response to collision with items.
             if (other is Coin)
             {
@@ -294,10 +295,6 @@ namespace MarioPirates
                     {
                         RigidBody.Velocity = new Vector2(0f, -250f);
                         State.Dead();
-                        unsubscribe();
-                        unsubscribe = null;
-                        EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), 3000f);
-                        EventManager.Ins.RaiseEvent(EventEnum.KeyDown, this, new KeyDownEventArgs(Keys.R), 4000f);
                     }
                     else
                     {
@@ -310,8 +307,14 @@ namespace MarioPirates
                     RigidBody.Velocity = new Vector2(0f, -200f);
                 }
             }
+        }
 
-            base.PostCollide(other, side);
+        public void Dispose()
+        {
+            unsubscribe();
+            unsubscribe = null;
+            EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), 3000f);
+            EventManager.Ins.RaiseEvent(EventEnum.KeyDown, this, new KeyDownEventArgs(Keys.R), 4000f);
         }
     }
 }

@@ -21,6 +21,7 @@ namespace MarioPirates
 
         public override void PostCollide(GameObjectRigidBody other, CollisionSide side)
         {
+            base.PostCollide(other, side);
             if (RigidBody.Grounded)
             {
                 RigidBody.Velocity = new Vector2(RigidBody.Velocity.X, -200f);
@@ -29,7 +30,6 @@ namespace MarioPirates
             {
                 EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this));
             }
-            base.PostCollide(other, side);
         }
     }
 }

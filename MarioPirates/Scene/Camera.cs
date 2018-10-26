@@ -16,7 +16,7 @@ namespace MarioPirates
 
         public Rectangle VisiableArea { get; private set; }
 
-        public VirtualWall[] VirtualWalls { get; private set; } = new VirtualWall[] { new VirtualWall(0, 0), new VirtualWall(0, 0) };
+        public GameObjectRigidBody[] VirtualWalls { get; private set; } = new GameObjectRigidBody[] { new VirtualPlane(0, 0), new VirtualWall(0, 0), new VirtualWall(0, 0) };
 
         private float x = 0f;
 
@@ -31,8 +31,9 @@ namespace MarioPirates
             x = x.Max(location.X - 400f);
             Transform = Matrix.CreateTranslation(new Vector3(-x, 0f, 0f));
             VisiableArea = new Rectangle((int)x, 0, ScreenWidth, ScreenHeight);
-            VirtualWalls[0].Location = new Vector2(VisiableArea.Left - 1f, 0f);
-            VirtualWalls[1].Location = new Vector2(VisiableArea.Right - 1f, 0f);
+            VirtualWalls[0].Location = new Vector2(x, ScreenHeight + 1);
+            VirtualWalls[1].Location = new Vector2(VisiableArea.Left - 1f, 0f);
+            VirtualWalls[2].Location = new Vector2(VisiableArea.Right - 1f, 0f);
         }
     }
 }

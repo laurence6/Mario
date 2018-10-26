@@ -1,10 +1,10 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 
-namespace MarioPirates.Object.Virtual
+namespace MarioPirates
 {
     internal class VirtualPlane : GameObjectRigidBody
     {
-        public VirtualPlane(float locX, float locY) : base(locX, locY, 1, Camera.ScreenWidth)
+        public VirtualPlane(float locX, float locY) : base(locX, locY, Camera.ScreenWidth, 1)
         {
         }
 
@@ -14,6 +14,20 @@ namespace MarioPirates.Object.Virtual
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+        }
+
+        public override void PreCollide(GameObjectRigidBody other, CollisionSide side)
+        {
+            base.PostCollide(other, side);
+            if (other is Mario mario)
+            {
+                mario.State.Dead();
+            }
+            else
+            {
+                other.RigidBody.CollisionLayerMask = CollisionLayer.None;
+                EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(other), 1000f);
+            }
         }
     }
 }

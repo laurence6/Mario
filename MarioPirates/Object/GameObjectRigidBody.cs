@@ -16,7 +16,8 @@
         }
         public virtual void Step(float dt)
         {
-            RigidBody.Step(dt);
+            if (Camera.Ins.VisiableArea.Intersects(RigidBody.Bound))
+                RigidBody.Step(dt);
         }
 
         public virtual void PreCollide(GameObjectRigidBody other, CollisionSide side)

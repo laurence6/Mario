@@ -25,6 +25,7 @@ namespace MarioPirates
 
         public override void PostCollide(GameObjectRigidBody other, CollisionSide side)
         {
+            base.PostCollide(other, side);
             if ((other is Mario mario && (side == CollisionSide.Top || mario.State.IsInvincible)) || other is Fireball)
             {
                 Sprite = SpriteFactory.Ins.CreateSprite("goomba_stomped");
@@ -39,7 +40,6 @@ namespace MarioPirates
                 RigidBody.Velocity = new Vector2(0f, -250f);
                 EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), 3000f);
             }
-            base.PostCollide(other, side);
         }
     }
 }

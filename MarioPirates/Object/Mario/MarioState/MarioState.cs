@@ -90,6 +90,7 @@ namespace MarioPirates
 
         public void Dead()
         {
+            mario.Dispose();
             Size.Dead();
         }
 
