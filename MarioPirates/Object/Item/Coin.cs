@@ -2,7 +2,7 @@
 {
     internal class Coin : GameObjectRigidBody
     {
-        private const int coinWidth = 7, coinHeight = 14;
+        private const int coinWidth = 30, coinHeight = 14;
 
         public Coin(int dstX, int dstY) : base(dstX, dstY, coinWidth * 2, coinHeight * 2)
         {
