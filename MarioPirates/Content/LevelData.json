@@ -1437,13 +1437,7 @@
 
 
 
-    {
-        "TypeName": "OrangeBlock",
-        "IsStatic": true,
-        "Location": [ 4928, 450 ],
-        "Params": { "State": "Normal" },
-        "Motion": "Static"
-    },
+
     {
         "TypeName": "OrangeBlock",
         "IsStatic": true,
@@ -1471,6 +1465,17 @@
         "Location": [ 4928, 322 ],
         "Params": { "State": "Normal" },
         "Motion": "Static"
+    },
+    {
+        "TypeName": "PipeTop",
+        "Motion": "Static",
+        "Location": [ 5056, 373 ]
+    },
+    {
+        "TypeName": "PipeBottom",
+        "Motion": "Static",
+        "Location": [ 5056, 403 ],
+        "Params": { "Height": "33" }
     },
 
     {
@@ -1594,23 +1599,137 @@
         "Params": { "State": "Normal" },
         "Motion": "Static"
     },
+
+
+
+
+
     {
-        "TypeName": "BrokenBlock",
-        "Location": [ 4960, 450 ],
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 5056, 418 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 5056, 386 ],
         "Params": { "State": "Normal" },
         "Motion": "Static"
     },
     {
-        "TypeName": "BrokenBlock",
-        "Location": [ 4992, 450 ],
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 5056, 354 ],
         "Params": { "State": "Normal" },
         "Motion": "Static"
     },
     {
-        "TypeName": "BrokenBlock",
-        "Location": [ 5024, 450 ],
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 5056, 322 ],
         "Params": { "State": "Normal" },
         "Motion": "Static"
+    },
+
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 5088, 418 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 5088, 386 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 5088, 354 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 5120, 418 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 5120, 386 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "IsStatic": true,
+        "Location": [ 5152, 418 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "PipeTop",
+        "Motion": "Static",
+        "Location": [ 5310, 389 ]
+    },
+    {
+        "TypeName": "PipeBottom",
+        "Motion": "Static",
+        "Location": [ 5310, 419 ],
+        "Params": { "Height": "17" }
+    },
+
+
+    {
+        "TypeName": "BrickBlock",
+        "Motion": "Static",
+        "Location": [ 5438, 350 ],
+        "Params": { "State": "Normal" }
+    },
+
+    {
+        "TypeName": "BrickBlock",
+        "Motion": "Static",
+        "Location": [ 5470, 350 ],
+        "Params": { "State": "Normal" }
+    },
+    {
+        "TypeName": "QuestionBlock",
+        "Motion": "Static",
+        "Location": [ 5502, 350 ],
+        "Params": {
+            "State": "Normal",
+            "Powerup": "Coin"
+        }
+    },
+    {
+        "TypeName": "BrickBlock",
+        "Motion": "Static",
+        "Location": [ 5534, 350 ],
+        "Params": { "State": "Normal" }
+    },
+
+    {
+        "TypeName": "PipeTop",
+        "Motion": "Static",
+        "Location": [ 5758, 389 ]
+    },
+    {
+        "TypeName": "PipeBottom",
+        "Motion": "Static",
+        "Location": [ 5758, 419 ],
+        "Params": { "Height": "17" }
     },
     {
         "TypeName": "BrokenBlock",
@@ -1639,6 +1758,162 @@
     {
         "TypeName": "BrokenBlock",
         "Location": [ 5184, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 5216, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 5248, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 5280, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 5312, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 5344, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 5376, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 5408, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 5440, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 5472, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 5504, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 5536, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 5568, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 5600, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 5632, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 5664, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 5696, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 5728, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 5760, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 5792, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 5824, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 5856, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 5888, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 5920, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 5952, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 5984, 450 ],
+        "Params": { "State": "Normal" },
+        "Motion": "Static"
+    },
+    {
+        "TypeName": "BrokenBlock",
+        "Location": [ 6016, 450 ],
         "Params": { "State": "Normal" },
         "Motion": "Static"
     },
