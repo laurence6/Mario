@@ -16,7 +16,7 @@ namespace MarioPirates
 
         public Rectangle VisiableArea { get; private set; }
 
-        public GameObjectRigidBody[] VirtualWalls { get; private set; } = new GameObjectRigidBody[] { new VirtualPlane(0, 0), new VirtualWall(0, 0), new VirtualWall(0, 0) };
+        public GameObjectRigidBody[] VirtualWalls { get; } = new GameObjectRigidBody[] { new VirtualPlane(0, 0), new VirtualWall(0, 0), new VirtualWall(0, 0) };
 
         private float x = 0f;
 
