@@ -37,18 +37,6 @@
 /processorParam:TextureFormat=Color
 /build:questionblock.png
 
-#begin brokenblock.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:brokenblock.png
-
 #begin orangeblock.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -265,6 +253,18 @@
 /processorParam:TextureFormat=Color
 /build:fireball.png
 
+#begin pipelinebottom.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:pipelinebottom.png
+
 #begin brickblock.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -277,7 +277,7 @@
 /processorParam:TextureFormat=Color
 /build:brickblock.png
 
-#begin pipelinebottom.png
+#begin brokenblock.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -287,5 +287,5 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:pipelinebottom.png
+/build:brokenblock.png
 
