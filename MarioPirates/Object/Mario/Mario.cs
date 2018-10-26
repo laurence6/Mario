@@ -89,9 +89,9 @@ namespace MarioPirates
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyRightHold, (s, e) => State.Right());
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyLeftHold, (s, e) => State.Left());
 
-            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyRightHold, (s, e) =>
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyRightDown, (s, e) =>
             {
-                if (RigidBody.Velocity.X < -50)
+                if (RigidBody.Velocity.X < -0)
                 {
                     State.Brake();
                 }
@@ -100,9 +100,9 @@ namespace MarioPirates
                     State.Coast();
                 }
             });
-            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyLeftHold, (s, e) =>
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyLeftDown, (s, e) =>
             {
-                if (RigidBody.Velocity.X > 50)
+                if (RigidBody.Velocity.X > 0)
                 {
                     State.Brake();
                 }
@@ -178,6 +178,8 @@ namespace MarioPirates
                 State.Run();
             else
                 State.Idle();
+            if (RigidBody.Velocity.X < 30 && RigidBody.Velocity.X < -30)
+                State.Coast();
 
             if (TransitionToBigCount < TransitionCountMax)
             {
