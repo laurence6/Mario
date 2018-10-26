@@ -27,9 +27,14 @@ namespace MarioPirates
             else
             {
                 other.RigidBody.CollisionLayerMask = CollisionLayer.None;
-                other.RigidBody.Velocity = new Vector2(0f, other.RigidBody.Velocity.Y);
                 EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(other), 1000f);
             }
+        }
+
+        public override void PostCollide(GameObjectRigidBody other, CollisionSide side)
+        {
+            base.PostCollide(other, side);
+            other.RigidBody.Velocity = new Vector2(0f, 100f);
         }
     }
 }
