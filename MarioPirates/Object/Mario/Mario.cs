@@ -178,7 +178,7 @@ namespace MarioPirates
                 State.Run();
             else
                 State.Idle();
-            if (RigidBody.Velocity.X < 30 && RigidBody.Velocity.X < -30)
+            if (RigidBody.Velocity.X < 30 && RigidBody.Velocity.X > -30)
                 State.Coast();
 
             if (TransitionToBigCount < TransitionCountMax)
