@@ -29,7 +29,7 @@
     },
     "pipelinebottom": {
         "TextureName": "pipelinebottom",
-        "Size": [ 28, 16 ],
+        "Size": [ 32, 16 ],
         "Frames": [ 0, 0 ]
     },
     

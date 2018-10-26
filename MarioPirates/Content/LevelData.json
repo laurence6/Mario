@@ -315,7 +315,7 @@
     {
         "TypeName": "PipeBottom",
         "Motion": "Static",
-        "Location": [ 604, 419 ],
+        "Location": [ 600, 419 ],
         "Params": { "Height": "17" }
     },
 
@@ -327,7 +327,7 @@
     {
         "TypeName": "PipeBottom",
         "Motion": "Static",
-        "Location": [ 804, 403 ],
+        "Location": [ 800, 403 ],
         "Params": { "Height": "33" }
     },
     {
@@ -338,7 +338,7 @@
     {
         "TypeName": "PipeBottom",
         "Motion": "Static",
-        "Location": [ 1204, 387 ],
+        "Location": [ 1200, 387 ],
         "Params": { "Height": "49" }
     },
     {
@@ -349,7 +349,7 @@
     {
         "TypeName": "PipeBottom",
         "Motion": "Static",
-        "Location": [ 1504, 419 ],
+        "Location": [ 1500, 419 ],
         "Params": { "Height": "17" }
     },
 
