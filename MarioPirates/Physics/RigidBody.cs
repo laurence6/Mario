@@ -34,7 +34,7 @@ namespace MarioPirates
         public Vector2 Velocity
         {
             get => velocity;
-            set => velocity = value.DeEPS().Clamp(-250f, 250f);
+            set => velocity = value.DeEPS().Clamp(-255f, 255f);
         }
         private Vector2 Accel => Force * InvMass;
 
@@ -76,7 +76,7 @@ namespace MarioPirates
             // XXX: another hacky approx to simulate gravity
             if (worldForce.HasOne(WorldForce.Gravity))
                 if (!Grounded)
-                    nextVelocity.Y += 4f;
+                    nextVelocity.Y += 6f;
 
             Object.Location += dt * (nextVelocity + Velocity) / 2;
             Velocity = nextVelocity;

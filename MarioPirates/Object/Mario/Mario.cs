@@ -52,7 +52,7 @@ namespace MarioPirates
             {
                 if (!State.IsDead && JumpHoldCount < JumpHoldCountLimit)
                 {
-                    RigidBody.ApplyForce(new Vector2(0, -3000 + JumpHoldCount * 50));
+                    RigidBody.ApplyForce(new Vector2(0, -8000));
                     JumpHoldCount += 1;
                 }
             });
@@ -60,7 +60,7 @@ namespace MarioPirates
             {
                 if (!State.IsDead && JumpHoldCount < JumpHoldCountLimit)
                 {
-                    RigidBody.ApplyForce(new Vector2(0, -3000 + JumpHoldCount * 50));
+                    RigidBody.ApplyForce(new Vector2(0, -8000));
                     JumpHoldCount += 1;
                 }
             });
