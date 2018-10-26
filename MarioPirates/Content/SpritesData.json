@@ -6,7 +6,7 @@
     },
     "coin": {
         "TextureName": "coin",
-        "Size": [ 30, 14 ],
+        "Size": [ 16, 14 ],
         "Frames": [ 0, 0, 30, 0, 60, 0, 90, 0 ]
     },
 
