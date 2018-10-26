@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace MarioPirates
 {
@@ -26,6 +27,7 @@ namespace MarioPirates
             else
             {
                 other.RigidBody.CollisionLayerMask = CollisionLayer.None;
+                other.RigidBody.Velocity = new Vector2(0f, other.RigidBody.Velocity.Y);
                 EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(other), 1000f);
             }
         }
