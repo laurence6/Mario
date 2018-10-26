@@ -10,6 +10,7 @@ namespace MarioPirates
         {
             Sprite = SpriteFactory.Ins.CreateSprite("fireball");
             RigidBody.Mass = .05f;
+            RigidBody.CollisionLayerMask = CollisionLayer.Enemy | CollisionLayer.Static;
             RigidBody.Motion = MotionEnum.Dynamic;
         }
 

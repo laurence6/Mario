@@ -7,8 +7,8 @@
         public Flower(int dstX, int dstY) : base(dstX, dstY, flowerWidth * 2, flowerHeight * 2)
         {
             Sprite = SpriteFactory.Ins.CreateSprite("flower");
-            RigidBody.Mass = 0.05f;
             RigidBody.CollisionLayerMask = CollisionLayer.Flower;
+            RigidBody.Motion = MotionEnum.Keyframe;
         }
 
         public override void PreCollide(GameObjectRigidBody other, CollisionSide side)
