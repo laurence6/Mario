@@ -83,9 +83,10 @@ namespace MarioPirates
         public static float Abs(this float x) => Math.Abs(x);
 
         // float
-        public static float Pow(this float x, float y) => (float)Math.Pow(x, y);
-        public static float Clamp(this float x, float lower, float upper) => x < lower ? lower : x > upper ? upper : x;
         public static float Max(this float x, float y) => Math.Max(x, y);
+        public static float Pow(this float x, float y) => (float)Math.Pow(x, y);
+        public static float DeEPS(this float x) => x.Abs() < 1f ? 0f : x;
+        public static float Clamp(this float x, float lower, float upper) => x < lower ? lower : x > upper ? upper : x;
 
         // Vector2
         public static Vector2 Abs(this Vector2 v) => new Vector2(Math.Abs(v.X), Math.Abs(v.Y));
@@ -95,7 +96,7 @@ namespace MarioPirates
         public static Vector2 DivS(this Vector2 v1, float v2) =>
             v2 != 0 ? v1 / v2 : Vector2.Zero;
 
-        public static Vector2 DeEPS(this Vector2 v) => new Vector2(v.X.Abs() < 1f ? 0f : v.X, v.Y.Abs() < 1f ? 0f : v.Y);
+        public static Vector2 DeEPS(this Vector2 v) => new Vector2(v.X.DeEPS(), v.Y.DeEPS());
 
         public static Vector2 Clamp(this Vector2 v, float lower, float upper) =>
             new Vector2(v.X.Clamp(lower, upper), v.Y.Clamp(lower, upper));
