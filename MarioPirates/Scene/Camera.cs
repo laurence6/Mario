@@ -6,24 +6,33 @@ namespace MarioPirates
     {
         public static readonly Camera Ins = new Camera();
 
+        public const int ScreenWidth = 800, ScreenHeight = 480;
+
         private Camera()
         {
-            Reset();
         }
 
         public Matrix Transform { get; private set; }
 
+        public Rectangle VisiableArea { get; private set; }
+
+        public VirtualWall[] VirtualWalls { get; private set; } = new VirtualWall[] { new VirtualWall(0, 0), new VirtualWall(0, 0) };
+
         private float x = 0f;
+
+        public void Reset()
+        {
+            x = 0;
+            LookAt(Vector2.Zero);
+        }
 
         public void LookAt(Vector2 location)
         {
             x = x.Max(location.X - 400f);
             Transform = Matrix.CreateTranslation(new Vector3(-x, 0f, 0f));
-        }
-
-        public void Reset()
-        {
-            x = 0f;
+            VisiableArea = new Rectangle((int)x, 0, ScreenWidth, ScreenHeight);
+            VirtualWalls[0].Location = new Vector2(VisiableArea.Left - 1f, 0f);
+            VirtualWalls[1].Location = new Vector2(VisiableArea.Right - 1f, 0f);
         }
     }
 }

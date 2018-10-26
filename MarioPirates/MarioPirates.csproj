@@ -66,6 +66,8 @@
     <Compile Include="Object\Mario\MarioState\MarioStateEnum.cs" />
     <Compile Include="Object\Mario\MarioState\MarioState.cs" />
     <Compile Include="Object\Mario\MarioState\MarioStateAccelerated.cs" />
+    <Compile Include="Object\Virtual\VirtualPlane.cs" />
+    <Compile Include="Object\Virtual\VirtualWall.cs" />
     <Compile Include="Physics\Motion.cs" />
     <Compile Include="Physics\CollisionLayer.cs" />
     <Compile Include="Physics\RigidBody.cs" />
@@ -75,7 +77,7 @@
     <Compile Include="Object\Block\OrangeBlock.cs" />
     <Compile Include="Event\Physics\CollideEventArgs.cs" />
     <Compile Include="Object\Block\QuestionBlock.cs" />
-    <Compile Include="Object\Background\Background.cs" />
+    <Compile Include="Object\Virtual\Background.cs" />
     <Compile Include="Object\Block\UsedBlock.cs" />
     <Compile Include="Object\Block\BrokenBlock.cs" />
     <Compile Include="Object\Block\BrickBlock.cs" />

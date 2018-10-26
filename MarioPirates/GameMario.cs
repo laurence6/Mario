@@ -86,8 +86,8 @@ namespace MarioPirates
         {
             Physics.Reset();
             EventManager.Ins.Reset();
-            Scene.Ins.Reset();
             Camera.Ins.Reset();
+            Scene.Ins.Reset();
 
             EventManager.Ins.Subscribe(EventEnum.KeyDown, (s, e) =>
             {
