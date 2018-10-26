@@ -8,9 +8,9 @@ namespace MarioPirates
 
         public Fireball(int dstX, int dstY) : base(dstX, dstY, fireballwidth * 2, fireballheight * 2)
         {
+            Sprite = SpriteFactory.Ins.CreateSprite("fireball");
             RigidBody.Mass = .05f;
             RigidBody.Motion = MotionEnum.Dynamic;
-            Sprite = SpriteFactory.Ins.CreateSprite("fireball");
         }
 
         public override void PreCollide(GameObjectRigidBody other, CollisionSide side)

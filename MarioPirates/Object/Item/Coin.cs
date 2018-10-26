@@ -8,6 +8,7 @@
         {
             Sprite = SpriteFactory.Ins.CreateSprite("coin");
             RigidBody.Mass = 0.05f;
+            RigidBody.CollisionLayerMask = CollisionLayer.Coin;
         }
 
         public override void PreCollide(GameObjectRigidBody other, CollisionSide side)

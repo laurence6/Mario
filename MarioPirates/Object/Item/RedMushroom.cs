@@ -10,7 +10,7 @@ namespace MarioPirates
         {
             Sprite = SpriteFactory.Ins.CreateSprite("redmushroom");
             RigidBody.Mass = 0.05f;
-
+            RigidBody.CollisionLayerMask = CollisionLayer.Mushroom;
             RigidBody.Velocity = new Vector2(25f, 0f);
         }
 

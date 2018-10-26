@@ -10,7 +10,7 @@ namespace MarioPirates
         {
             Sprite = SpriteFactory.Ins.CreateSprite("star");
             RigidBody.Mass = 0.05f;
-
+            RigidBody.CollisionLayerMask = CollisionLayer.Star;
             RigidBody.Velocity = new Vector2(100f, 0f);
         }
 

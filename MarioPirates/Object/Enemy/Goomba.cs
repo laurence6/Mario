@@ -10,7 +10,7 @@ namespace MarioPirates
         {
             Sprite = SpriteFactory.Ins.CreateSprite("goomba");
             RigidBody.Mass = 0.1f;
-
+            RigidBody.CollisionLayerMask = CollisionLayer.Enemy;
             RigidBody.Velocity = new Vector2(-25f, 0f);
         }
 

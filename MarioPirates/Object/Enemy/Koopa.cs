@@ -6,15 +6,12 @@ namespace MarioPirates
     {
         private const int koopaWidth = 16, koopaHeight = 23;
 
-        public bool Stomped { get; private set; }
+        public bool Stomped { get; private set; } = false;
 
         private readonly Sprite[] sprites;
 
         public Koopa(int x, int y) : base(x, y, koopaWidth * 2, koopaHeight * 2)
         {
-            RigidBody.Mass = 0.1f;
-
-            Stomped = false;
             sprites = new Sprite[3] {
                 SpriteFactory.Ins.CreateSprite("koopa_left"),
                 SpriteFactory.Ins.CreateSprite("koopa_right"),
@@ -22,6 +19,8 @@ namespace MarioPirates
             };
             Sprite = sprites[0];
 
+            RigidBody.Mass = 0.1f;
+            RigidBody.CollisionLayerMask = CollisionLayer.Enemy;
             RigidBody.Velocity = new Vector2(-25f, 0f);
         }
 

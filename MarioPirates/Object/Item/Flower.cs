@@ -8,6 +8,7 @@
         {
             Sprite = SpriteFactory.Ins.CreateSprite("flower");
             RigidBody.Mass = 0.05f;
+            RigidBody.CollisionLayerMask = CollisionLayer.Flower;
         }
 
         public override void PreCollide(GameObjectRigidBody other, CollisionSide side)
