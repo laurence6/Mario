@@ -10,6 +10,7 @@ namespace MarioPirates
 
         public Background(int X, int Y) : base(X, Y, bkgdWidth, bkgdHeight)
         {
+            IsLocationAbsolute = true;
             Sprite = SpriteFactory.Ins.CreateSprite("background");
         }
     }

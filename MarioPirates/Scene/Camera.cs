@@ -12,28 +12,23 @@ namespace MarioPirates
         {
         }
 
+        public Vector2 Offset { get; private set; } = Vector2.Zero;
+
         public Matrix Transform { get; private set; }
 
         public Rectangle VisiableArea { get; private set; }
 
-        public GameObjectRigidBody[] VirtualWalls { get; private set; } = new GameObjectRigidBody[] { new VirtualPlane(0, 0), new VirtualWall(0, 0), new VirtualWall(0, 0) };
-
-        private float x = 0f;
-
         public void Reset()
         {
-            x = 0;
+            Offset = Vector2.Zero;
             LookAt(Vector2.Zero);
         }
 
         public void LookAt(Vector2 location)
         {
-            x = x.Max(location.X - 400f);
-            Transform = Matrix.CreateTranslation(new Vector3(-x, 0f, 0f));
-            VisiableArea = new Rectangle((int)x, 0, ScreenWidth, ScreenHeight);
-            VirtualWalls[0].Location = new Vector2(x, ScreenHeight + 1);
-            VirtualWalls[1].Location = new Vector2(VisiableArea.Left - 1f, 0f);
-            VirtualWalls[2].Location = new Vector2(VisiableArea.Right - 1f, 0f);
+            Offset = new Vector2(Offset.X.Max(location.X - 400f), 0f);
+            Transform = Matrix.CreateTranslation(new Vector3(-Offset, 0f));
+            VisiableArea = new Rectangle((int)Offset.X, (int)Offset.Y, ScreenWidth, ScreenHeight);
         }
     }
 }

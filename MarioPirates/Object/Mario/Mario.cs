@@ -52,16 +52,16 @@ namespace MarioPirates
             {
                 if (!State.IsDead && JumpHoldCount < JumpHoldCountLimit)
                 {
-                    RigidBody.ApplyForce(new Vector2(0, -3000 + JumpHoldCount * 50));
+                    RigidBody.ApplyForce(new Vector2(0, -8000));
                     JumpHoldCount += 1;
                 }
             });
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyUpDown, (s, e) =>
             {
-                if (!State.IsDead && JumpHoldCount < JumpHoldCountLimit)
+                if (!State.IsDead && RigidBody.Grounded)
                 {
-                    RigidBody.ApplyForce(new Vector2(0, -3000 + JumpHoldCount * 50));
-                    JumpHoldCount += 1;
+                    RigidBody.ApplyForce(new Vector2(0, -8000));
+                    JumpHoldCount = 1;
                 }
             });
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyDownHold, (s, e) =>
@@ -113,14 +113,6 @@ namespace MarioPirates
             });
 
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyUpUp, (s, e) => JumpHoldCount = JumpHoldCountLimit);
-
-            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyUpDown, (s, e) =>
-            {
-                if (RigidBody.Grounded)
-                {
-                    JumpHoldCount = 0;
-                }
-            });
         }
 
         private void SubscribeInputTransition()

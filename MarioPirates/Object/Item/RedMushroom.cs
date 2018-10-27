@@ -11,7 +11,7 @@ namespace MarioPirates
             Sprite = SpriteFactory.Ins.CreateSprite("redmushroom");
             RigidBody.Mass = 0.05f;
             RigidBody.CollisionLayerMask = CollisionLayer.Mushroom;
-            RigidBody.Velocity = new Vector2(25f, 0f);
+            RigidBody.Velocity = new Vector2(50f, 0f);
         }
 
         public override void PreCollide(GameObjectRigidBody other, CollisionSide side)

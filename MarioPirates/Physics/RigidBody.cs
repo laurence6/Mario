@@ -7,6 +7,11 @@ namespace MarioPirates
     {
         public readonly GameObjectRigidBody Object;
 
+        public Rectangle Bound => new Rectangle((int)Object.Location.X, (int)Object.Location.Y, Object.Size.X, Object.Size.Y);
+
+        public CollisionLayer CollisionLayerMask { get; set; } = CollisionLayer.All;
+        public CollisionSide CollisionSideMask { get; set; } = CollisionSide.All;
+
         private MotionEnum motion = MotionEnum.Static;
         public MotionEnum Motion
         {
@@ -19,11 +24,6 @@ namespace MarioPirates
             }
         }
 
-        public Rectangle Bound => new Rectangle((int)Object.Location.X, (int)Object.Location.Y, Object.Size.X, Object.Size.Y);
-
-        public CollisionLayer CollisionLayerMask { get; set; } = CollisionLayer.All;
-        public CollisionSide CollisionSideMask { get; set; } = CollisionSide.All;
-
         public float Mass { get; set; } = 1e24f;
         public float InvMass => Motion == MotionEnum.Dynamic ? 1f / Mass : 0f;
 
@@ -34,7 +34,7 @@ namespace MarioPirates
         public Vector2 Velocity
         {
             get => velocity;
-            set => velocity = value.DeEPS().Clamp(-250f, 250f);
+            set => velocity = value.DeEPS().Clamp(-255f, 255f);
         }
         private Vector2 Accel => Force * InvMass;
 
@@ -76,7 +76,7 @@ namespace MarioPirates
             // XXX: another hacky approx to simulate gravity
             if (worldForce.HasOne(WorldForce.Gravity))
                 if (!Grounded)
-                    nextVelocity.Y += 4f;
+                    nextVelocity.Y += 6f;
 
             Object.Location += dt * (nextVelocity + Velocity) / 2;
             Velocity = nextVelocity;

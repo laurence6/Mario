@@ -5,7 +5,14 @@ namespace MarioPirates
 {
     internal abstract class GameObject
     {
-        public Vector2 Location { get; set; }
+        private Vector2 location;
+        public Vector2 Location
+        {
+            get => IsLocationAbsolute ? location + Camera.Ins.Offset : location;
+            set => location = IsLocationAbsolute ? value - Camera.Ins.Offset : value;
+        }
+        public bool IsLocationAbsolute { get; protected set; } = false;
+
         public Point Size { get; set; }
 
         public Sprite Sprite { get; set; }

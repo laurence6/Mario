@@ -6,6 +6,7 @@ namespace MarioPirates
     {
         public VirtualWall(float locX, float locY) : base(locX, locY, 1, Camera.ScreenHeight)
         {
+            IsLocationAbsolute = true;
         }
 
         public override void Update(float dt)

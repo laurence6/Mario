@@ -60,9 +60,9 @@ namespace MarioPirates
 
         private static (ulong, ulong) Hash(Point p)
         {
-            var x = (ulong)((long)p.X + int.MinValue);
-            var y = (ulong)((long)p.Y + int.MinValue);
-            return (x & mask, y & mask);
+            var x = p.X - (long)int.MinValue;
+            var y = p.Y - (long)int.MinValue;
+            return ((ulong)x & mask, (ulong)y & mask);
         }
     }
 }
