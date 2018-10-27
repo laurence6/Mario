@@ -34,7 +34,7 @@ namespace MarioPirates
         public Vector2 Velocity
         {
             get => velocity;
-            set => velocity = value.DeEPS().Clamp(-255f, 255f);
+            set => velocity = value.DeEPS().Clamp(-480f, 480f);
         }
         private Vector2 Accel => Force * InvMass;
 

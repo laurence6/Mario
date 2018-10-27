@@ -9,7 +9,7 @@ namespace MarioPirates
 {
     internal class Mario : GameObjectRigidBody, IDisposable
     {
-        private const int JumpHoldCountLimit = 20;
+        private const int JumpHoldCountLimit = 30;
 
         private const int TransitionCountMax = 30;
 
@@ -52,7 +52,7 @@ namespace MarioPirates
             {
                 if (!State.IsDead && JumpHoldCount < JumpHoldCountLimit)
                 {
-                    RigidBody.ApplyForce(new Vector2(0, -8000));
+                    RigidBody.ApplyForce(new Vector2(0, -5000 + JumpHoldCount * 240));
                     JumpHoldCount += 1;
                 }
             });
@@ -60,7 +60,7 @@ namespace MarioPirates
             {
                 if (!State.IsDead && RigidBody.Grounded)
                 {
-                    RigidBody.ApplyForce(new Vector2(0, -8000));
+                    RigidBody.ApplyForce(new Vector2(0, -5000 + JumpHoldCount * 240));
                     JumpHoldCount = 1;
                 }
             });
