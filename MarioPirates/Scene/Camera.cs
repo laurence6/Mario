@@ -26,7 +26,7 @@ namespace MarioPirates
 
         public void LookAt(Vector2 location)
         {
-            Offset = new Vector2(Offset.X.Max(location.X - 400f), 0f);
+            Offset = new Vector2(Offset.X.Max(location.X - ScreenWidth / 2), 0f);
             Transform = Matrix.CreateTranslation(new Vector3(-Offset, 0f));
             VisiableArea = new Rectangle((int)Offset.X, (int)Offset.Y, ScreenWidth, ScreenHeight);
         }

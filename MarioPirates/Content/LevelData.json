@@ -1721,17 +1721,6 @@
     },
 
     {
-        "TypeName": "PipeTop",
-        "Motion": "Static",
-        "Location": [ 5758, 389 ]
-    },
-    {
-        "TypeName": "PipeBottom",
-        "Motion": "Static",
-        "Location": [ 5758, 419 ],
-        "Params": { "Height": "17" }
-    },
-    {
         "TypeName": "BrokenBlock",
         "Location": [ 5056, 450 ],
         "Params": { "State": "Normal" },

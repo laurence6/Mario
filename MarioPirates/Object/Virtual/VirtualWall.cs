@@ -4,7 +4,9 @@ namespace MarioPirates
 {
     internal class VirtualWall : GameObjectRigidBody
     {
-        public VirtualWall(float locX, float locY) : base(locX, locY, 1, Camera.ScreenHeight)
+        public const int Width = 16, Height = Camera.ScreenHeight;
+
+        public VirtualWall(float locX, float locY) : base(locX, locY, Width, Height)
         {
             IsLocationAbsolute = true;
         }

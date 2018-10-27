@@ -11,7 +11,7 @@ namespace MarioPirates
             get => IsLocationAbsolute ? location + Camera.Ins.Offset : location;
             set => location = IsLocationAbsolute ? value - Camera.Ins.Offset : value;
         }
-        public bool IsLocationAbsolute { get; protected set; } = false;
+        public bool IsLocationAbsolute { get; set; } = false;
 
         public Point Size { get; set; }
 
