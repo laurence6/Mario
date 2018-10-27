@@ -7,6 +7,11 @@ namespace MarioPirates
     {
         public readonly GameObjectRigidBody Object;
 
+        public Rectangle Bound => new Rectangle((int)Object.Location.X, (int)Object.Location.Y, Object.Size.X, Object.Size.Y);
+
+        public CollisionLayer CollisionLayerMask { get; set; } = CollisionLayer.All;
+        public CollisionSide CollisionSideMask { get; set; } = CollisionSide.All;
+
         private MotionEnum motion = MotionEnum.Static;
         public MotionEnum Motion
         {
@@ -18,11 +23,6 @@ namespace MarioPirates
                     Velocity = Vector2.Zero;
             }
         }
-
-        public Rectangle Bound => new Rectangle((int)Object.Location.X, (int)Object.Location.Y, Object.Size.X, Object.Size.Y);
-
-        public CollisionLayer CollisionLayerMask { get; set; } = CollisionLayer.All;
-        public CollisionSide CollisionSideMask { get; set; } = CollisionSide.All;
 
         public float Mass { get; set; } = 1e24f;
         public float InvMass => Motion == MotionEnum.Dynamic ? 1f / Mass : 0f;

@@ -7,6 +7,7 @@ namespace MarioPirates
     {
         public VirtualPlane(float locX, float locY) : base(locX, locY, Camera.ScreenWidth, 1)
         {
+            IsLocationAbsolute = true;
         }
 
         public override void Update(float dt)

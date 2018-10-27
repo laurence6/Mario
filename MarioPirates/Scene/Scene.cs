@@ -11,7 +11,6 @@ namespace MarioPirates
 
         private IGameObjectContainer gameObjectContainer = new HashMap();
         private List<GameObject> gameObjectsNoRigidBody = new List<GameObject>();
-        private List<GameObject> gameObjectsAbsLocation = new List<GameObject> { new Background(0, 0) };
 
         private Scene()
         {
@@ -25,7 +24,10 @@ namespace MarioPirates
             EventManager.Ins.Subscribe(EventEnum.GameObjectCreate, (s, e) => AddGameObject((e as GameObjectCreateEventArgs).Object));
             EventManager.Ins.Subscribe(EventEnum.GameObjectDestroy, (s, e) => RemoveGameObject((e as GameObjectDestroyEventArgs).Object));
 
-            Camera.Ins.VirtualWalls.ForEach(o => AddGameObject(o));
+            AddGameObject(new Background());
+            AddGameObject(new VirtualPlane(0f, Camera.ScreenHeight + 1));
+            AddGameObject(new VirtualWall(-1f, 0f));
+            AddGameObject(new VirtualWall(Camera.ScreenWidth + 1f, 0f));
             new JavaScriptSerializer().Deserialize<List<GameObjectParam>>(ReadAllText("Content\\LevelData.json"))
                 .ForEach(o => EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(o.ToGameObject())));
         }
@@ -56,9 +58,6 @@ namespace MarioPirates
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin(samplerState: SamplerState.PointClamp);
-            gameObjectsAbsLocation.ForEach(o => o.Draw(spriteBatch));
-            spriteBatch.End();
             spriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: Camera.Ins.Transform);
             gameObjectsNoRigidBody.ForEach(o => o.Draw(spriteBatch));
             gameObjectContainer.ForEach(o => o.Draw(spriteBatch));

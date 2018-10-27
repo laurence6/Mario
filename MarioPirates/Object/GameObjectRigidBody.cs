@@ -14,6 +14,7 @@
             RigidBody.Update();
             base.Update(dt);
         }
+
         public virtual void Step(float dt)
         {
             if (Camera.Ins.VisiableArea.Intersects(RigidBody.Bound))
