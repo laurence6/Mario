@@ -7,7 +7,7 @@
     "coin": {
         "TextureName": "coin",
         "Size": [ 16, 14 ],
-        "Frames": [ 0, 0, 30, 0, 60, 0, 90, 0 ]
+        "Frames": [6, 0, 36, 0, 66, 0, 96, 0 ]
     },
 
     "flower": {
