@@ -2,6 +2,6 @@ namespace MarioPirates
 {
     internal enum BlockState
     {
-        Normal, Hidden, Used,
+        Normal, Hidden, Used, Debris
     }
 }

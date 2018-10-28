@@ -7,7 +7,7 @@
     "coin": {
         "TextureName": "coin",
         "Size": [ 16, 14 ],
-        "Frames": [6, 0, 36, 0, 66, 0, 96, 0 ]
+        "Frames": [ 6, 0, 36, 0, 66, 0, 96, 0 ]
     },
 
     "flower": {
@@ -32,7 +32,7 @@
         "Size": [ 32, 16 ],
         "Frames": [ 0, 0 ]
     },
-    
+
     "redmushroom": {
         "TextureName": "redmushroom",
         "Size": [ 16, 16 ],
@@ -44,6 +44,13 @@
         "Size": [ 14, 16 ],
         "Frames": [ 0, 0, 30, 0, 60, 0, 90, 0 ]
     },
+
+    "flag": {
+        "TextureName": "flag",
+        "Size": [ 33, 168 ],
+        "Frames": [ 9, 0, 42, 0, 75, 0, 109, 0, 142, 0 ]
+    },
+
 
     "brickblock": {
         "TextureName": "brickblock",
@@ -61,8 +68,14 @@
         "TextureName": "usedblock",
         "Size": [ 16, 16 ],
         "Frames": [ 0, 0 ]
+
     },
 
+    "brickdebris": {
+        "TextureName": "brickdebris",
+        "Size": [ 16, 16 ],
+        "Frames": [ 0, 0 ]
+    },
     "hiddenblock": {
         "Size": [ 16, 16 ],
         "Frames": [ 0, 0 ]
@@ -108,6 +121,11 @@
         "TextureName": "koopa",
         "Size": [ 16, 23 ],
         "Frames": [ 240, 0 ]
+    },
+    "castle": {
+        "TextureName": "castle",
+        "Size": [ 80, 80 ],
+        "Frames": [ 0, 0 ]
     },
 
     "background": {

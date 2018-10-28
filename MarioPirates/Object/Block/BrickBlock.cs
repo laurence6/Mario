@@ -36,7 +36,8 @@ namespace MarioPirates
                     powerup = null;
                 }
                 else if (State == BlockState.Normal && !(mario.State.IsSmall || mario.State.IsDead))
-                    EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this));
+                    State = BlockState.Debris;
+                    //EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this));
             }
         }
     }
