@@ -13,6 +13,8 @@ namespace MarioPirates
 
         private const int TransitionCountMax = 30;
 
+        private static readonly double[] TransitionZoom = { 2.00, 1.67, 1.33, 1.67, 1.33, 1.00 };
+
         public readonly Dictionary<string, Sprite> Sprites;
 
         public readonly MarioState State;
@@ -25,7 +27,8 @@ namespace MarioPirates
 
         private int TransitionToSmallCount;
 
-        private Vector2 StoredLocation;
+        private Vector2 StoredToBigLocation;
+        private Vector2 StoredToSmallLocation;
 
         public Mario(int dstX, int dstY) : base(dstX, dstY, 0, 0)
         {
@@ -175,67 +178,27 @@ namespace MarioPirates
 
             if (TransitionToBigCount < TransitionCountMax)
             {
-                switch (TransitionToBigCount)
+                if (TransitionToBigCount % 5 == 0)
                 {
-                    case 0:
-                        StoredLocation = new Vector2(Location.X, Location.Y + MarioStateBig.marioHeight);
-                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (int)(MarioStateBig.marioHeight * 0.5f));
-                        Size = new Point(MarioStateBig.marioWidth, (int)(MarioStateBig.marioHeight * 0.5f));
-                        break;
-                    case 5:
-                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (int)(MarioStateBig.marioHeight * 0.67f));
-                        Size = new Point(MarioStateBig.marioWidth, (int)(MarioStateBig.marioHeight * 0.67f));
-                        break;
-                    case 10:
-                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (int)(MarioStateBig.marioHeight * 0.83f));
-                        Size = new Point(MarioStateBig.marioWidth, (int)(MarioStateBig.marioHeight * 0.83f));
-                        break;
-                    case 15:
-                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (int)(MarioStateBig.marioHeight * 0.67f));
-                        Size = new Point(MarioStateBig.marioWidth, (int)(MarioStateBig.marioHeight * 0.67f));
-                        break;
-                    case 20:
-                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (int)(MarioStateBig.marioHeight * 0.83f));
-                        Size = new Point(MarioStateBig.marioWidth, (int)(MarioStateBig.marioHeight * 0.83f));
-                        break;
-                    case 25:
-                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - MarioStateBig.marioHeight);
-                        Size = new Point(MarioStateBig.marioWidth, MarioStateBig.marioHeight);
-                        break;
+                    StoredToBigLocation = new Vector2(Location.X, Location.Y + Size.Y);
+                    var targetHeight = (int)(MarioStateBig.marioHeight / TransitionZoom[TransitionToBigCount / 5]);
+                    System.Console.WriteLine(targetHeight);
+                    Location = new Vector2(StoredToBigLocation.X, StoredToBigLocation.Y - targetHeight);
+                    Size = new Point(MarioStateBig.marioWidth, targetHeight);
                 }
                 TransitionToBigCount++;
             }
 
             if (TransitionToSmallCount < TransitionCountMax)
             {
-                switch (TransitionToSmallCount)
+                if (TransitionToSmallCount % 5 == 0)
                 {
-                    case 0:
-                        StoredLocation = new Vector2(Location.X, Location.Y + MarioStateSmall.marioHeight);
-                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (int)(MarioStateSmall.marioHeight * 2f));
-                        Size = new Point(MarioStateBig.marioWidth, (int)(MarioStateSmall.marioHeight * 2f));
-                        break;
-                    case 5:
-                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (int)(MarioStateSmall.marioHeight * 1.67f));
-                        Size = new Point(MarioStateBig.marioWidth, (int)(MarioStateSmall.marioHeight * 1.67f));
-                        break;
-                    case 10:
-                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (int)(MarioStateSmall.marioHeight * 1.33f));
-                        Size = new Point(MarioStateBig.marioWidth, (int)(MarioStateSmall.marioHeight * 1.33f));
-                        break;
-                    case 15:
-                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (int)(MarioStateSmall.marioHeight * 1.67f));
-                        Size = new Point(MarioStateBig.marioWidth, (int)(MarioStateSmall.marioHeight * 1.67f));
-                        break;
-                    case 20:
-                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - (int)(MarioStateSmall.marioHeight * 1.33f));
-                        Size = new Point(MarioStateBig.marioWidth, (int)(MarioStateSmall.marioHeight * 1.33f));
-                        break;
-                    case 25:
-                        Location = new Vector2(StoredLocation.X, StoredLocation.Y - MarioStateSmall.marioHeight);
-                        Size = new Point(MarioStateBig.marioWidth, MarioStateSmall.marioHeight);
-                        break;
+                    StoredToSmallLocation = new Vector2(Location.X, Location.Y + Size.Y);
+                    var targetHeight = (int)(MarioStateSmall.marioHeight * TransitionZoom[TransitionToSmallCount / 5]);
+                    Location = new Vector2(StoredToSmallLocation.X, StoredToSmallLocation.Y - targetHeight);
+                    Size = new Point(MarioStateSmall.marioWidth, targetHeight);
                 }
+                    
                 TransitionToSmallCount++;
             }
 
