@@ -13,7 +13,7 @@ namespace MarioPirates
 
         private const int TransitionCountMax = 30;
 
-        private static readonly double[] TransitionZoom = { 2.00, 1.67, 1.33, 1.67, 1.33, 1.00 };
+        private static readonly float[] TransitionZoom = { 2f, 1.67f, 1.33f, 1.67f, 1.33f, 1f };
 
         public readonly Dictionary<string, Sprite> Sprites;
 
@@ -182,7 +182,6 @@ namespace MarioPirates
                 {
                     StoredToBigLocation = new Vector2(Location.X, Location.Y + Size.Y);
                     var targetHeight = (int)(MarioStateBig.marioHeight / TransitionZoom[TransitionToBigCount / 5]);
-                    System.Console.WriteLine(targetHeight);
                     Location = new Vector2(StoredToBigLocation.X, StoredToBigLocation.Y - targetHeight);
                     Size = new Point(MarioStateBig.marioWidth, targetHeight);
                 }
