@@ -23,5 +23,8 @@
 
         Accelerated,
         NonAccelerated,
+
+        Transiting,
+        NonTransiting,
     }
 }
