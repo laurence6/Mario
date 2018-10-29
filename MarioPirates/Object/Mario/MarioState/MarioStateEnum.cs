@@ -21,10 +21,10 @@
         Brake,
         Coast,
 
-        Slow,
-        Fast,
-
         Accelerated,
         NonAccelerated,
+
+        Transiting,
+        NonTransiting,
     }
 }

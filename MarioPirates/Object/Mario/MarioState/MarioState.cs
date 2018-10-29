@@ -7,6 +7,7 @@ namespace MarioPirates
         private MarioStateDirection direction;
         private MarioStateBrake brake;
         private MarioStateAccelerated accelerated;
+        private MarioStateTransiting transiting;
         private MarioStateSize size;
         private MarioStateAction action;
 
@@ -20,6 +21,7 @@ namespace MarioPirates
             direction = new MarioStateDirection();
             brake = new MarioStateBrake();
             accelerated = new MarioStateAccelerated();
+            transiting = new MarioStateTransiting();
             size = new MarioStateSmall(this);
             action = new MarioStateIdle(this);
 
@@ -130,7 +132,19 @@ namespace MarioPirates
             accelerated.SetAccelerated(false);
         }
 
+        public void Transiting()
+        {
+            transiting.SetTransiting(true);
+        }
+
+        public void CancelTransiting()
+        {
+            transiting.SetTransiting(false);
+        }
+
         public bool IsInvincible => invincible.IsInvincible;
+
+        public bool IsTransiting => transiting.IsTransiting;
 
         public bool IsDead => Size.IsDead;
 

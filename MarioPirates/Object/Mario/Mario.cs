@@ -217,7 +217,11 @@ namespace MarioPirates
             else if (other is Flower)
             {
                 if (State.IsSmall)
+                {
                     TransitionToBigCount = 0;
+                    State.Transiting();
+                    EventManager.Ins.RaiseEvent(EventEnum.Action, this, new ActionEventArgs(() => State.CancelTransiting()), 1000f);
+                }
                 State.Fire();
             }
             else if (other is GreenMushroom)
@@ -231,7 +235,11 @@ namespace MarioPirates
             else if (other is RedMushroom)
             {
                 if (State.IsSmall)
+                {
                     TransitionToBigCount = 0;
+                    State.Transiting();
+                    EventManager.Ins.RaiseEvent(EventEnum.Action, this, new ActionEventArgs(() => State.CancelTransiting()), 1000f);
+                }
                 State.Big();
             }
             else if (other is Star)
@@ -243,7 +251,7 @@ namespace MarioPirates
             // Response to collsion with enemies
             if (other is Goomba || other is Koopa)
             {
-                if (side != CollisionSide.Bottom && !State.IsInvincible)
+                if (side != CollisionSide.Bottom && !State.IsInvincible && !State.IsTransiting)
                 {
                     if (State.IsSmall)
                     {
@@ -253,6 +261,8 @@ namespace MarioPirates
                     else
                     {
                         TransitionToSmallCount = 0;
+                        State.Transiting();
+                        EventManager.Ins.RaiseEvent(EventEnum.Action, this, new ActionEventArgs(() => State.CancelTransiting()), 1000f);
                         State.Small();
                     }
                 }
