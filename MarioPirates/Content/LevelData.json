@@ -56,13 +56,13 @@
     {
         "TypeName": "BrickBlock",
         "Motion": "Static",
-        "Location": [ 964, 300 ],
+        "Location": [ 1064, 300 ],
         "Params": { "State": "Normal" }
     },
     {
         "TypeName": "QuestionBlock",
         "Motion": "Static",
-        "Location": [ 996, 300 ],
+        "Location": [ 1096, 300 ],
         "Params": {
             "State": "Normal",
             "Powerup": "Star"
@@ -71,7 +71,7 @@
     {
         "TypeName": "BrickBlock",
         "Motion": "Static",
-        "Location": [ 1028, 300 ],
+        "Location": [ 1128, 300 ],
         "Params": { "State": "Normal" }
     },
 
@@ -322,12 +322,12 @@
     {
         "TypeName": "PipeTop",
         "Motion": "Static",
-        "Location": [ 800, 373 ]
+        "Location": [ 900, 373 ]
     },
     {
         "TypeName": "PipeBottom",
         "Motion": "Static",
-        "Location": [ 800, 403 ],
+        "Location": [ 900, 403 ],
         "Params": { "Height": "33" }
     },
     {
