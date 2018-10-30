@@ -197,7 +197,7 @@ namespace MarioPirates
                     Location = new Vector2(StoredToSmallLocation.X, StoredToSmallLocation.Y - targetHeight);
                     Size = new Point(MarioStateSmall.marioWidth, targetHeight);
                 }
-                    
+
                 TransitionToSmallCount++;
             }
 
