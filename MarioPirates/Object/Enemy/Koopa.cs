@@ -35,7 +35,7 @@ namespace MarioPirates
             base.PostCollide(other, side);
             if (other is Mario mario && (side == CollisionSide.Top || mario.State.IsInvincible))
             {
-                RigidBody.Velocity = !Stomped || RigidBody.Velocity.X.DeEPS() != 0f ? Vector2.Zero : other.RigidBody.Bound.Center.X > RigidBody.Bound.Center.X ? new Vector2(-250f, 0f) : new Vector2(250f, 0f);
+                RigidBody.Velocity = new Vector2(!Stomped || RigidBody.Velocity.X.DeEPS() != 0f ? 0f : other.RigidBody.Bound.Center.X > RigidBody.Bound.Center.X ? -250f : 250f, 0f);
                 Stomped = true;
             }
             else if (other is Fireball)
