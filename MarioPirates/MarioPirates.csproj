@@ -60,6 +60,7 @@
     <Compile Include="Event\Input\KeyDownEventArgs.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Object\Block\BlockState.cs" />
+    <Compile Include="Object\Block\BrickDebris.cs" />
     <Compile Include="Object\GameObjectRigidBody.cs" />
     <Compile Include="Object\Item\Fireball.cs" />
     <Compile Include="Object\Mario\MarioState\MarioStateTransiting.cs" />

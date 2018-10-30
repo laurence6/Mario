@@ -10,7 +10,6 @@ namespace MarioPirates
         private const int blockWidth = 16, blockHeight = 16;
 
         private readonly Sprite usedSprite;
-        private readonly Sprite debrisSprite;
         private readonly Sprite normalSprite;
 
         private BlockState state = BlockState.Normal;
@@ -33,23 +32,18 @@ namespace MarioPirates
                         RigidBody.CollisionSideMask = CollisionSide.Bottom;
                         Sprite = null;
                         break;
-                    case BlockState.Debris:
-                        RigidBody.CollisionSideMask = CollisionSide.Bottom;
-                        Sprite = debrisSprite;
-                        break;
                 }
                 state = value;
             }
         }
 
         protected virtual bool IsUsed => State == BlockState.Used;
-        protected virtual bool IsDebris => State == BlockState.Debris;
+
         private readonly Vector2 origLocation;
 
         protected Block(int dstX, int dstY, Dictionary<string, string> Params, Sprite normalSprite) : base(dstX, dstY, blockWidth * 2, blockHeight * 2)
         {
             usedSprite = SpriteFactory.Ins.CreateSprite("usedblock");
-            debrisSprite = SpriteFactory.Ins.CreateSprite("brickdebris");
             this.normalSprite = normalSprite;
 
             RigidBody.ApplyForce(WorldForce.Gravity);

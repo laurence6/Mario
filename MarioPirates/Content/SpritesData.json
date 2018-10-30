@@ -71,10 +71,25 @@
 
     },
 
-    "brickdebris": {
+    "brickdebrisupperleft": {
         "TextureName": "brickdebris",
-        "Size": [ 16, 16 ],
+        "Size": [ 8, 8 ],
         "Frames": [ 0, 0 ]
+    },
+    "brickdebrisupperright": {
+        "TextureName": "brickdebris",
+        "Size": [ 8, 8 ],
+        "Frames": [ 8, 0 ]
+    },
+    "brickdebrislowerleft": {
+        "TextureName": "brickdebris",
+        "Size": [ 8, 8 ],
+        "Frames": [ 0, 8 ]
+    },
+    "brickdebrislowerright": {
+        "TextureName": "brickdebris",
+        "Size": [ 8, 8 ],
+        "Frames": [ 8, 8 ]
     },
     "hiddenblock": {
         "Size": [ 16, 16 ],

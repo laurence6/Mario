@@ -7,9 +7,6 @@ namespace MarioPirates
         public Flag(int dstX, int dstY) : base(dstX, dstY, flagWidth * 2, flagHeight * 2)
         {
             Sprite = SpriteFactory.Ins.CreateSprite("flag");
-            //RigidBody.Mass = 0.05f;
-            //RigidBody.CollisionLayerMask = CollisionLayer.Star;
-            
         }
     }
 }
