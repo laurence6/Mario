@@ -24,7 +24,7 @@ namespace MarioPirates
             locationFix.Clear();
         }
 
-        public static void Simulate(float dt, IGameObjectContainer container)
+        public static void Simulate(float dt, HashMap container)
         {
             const int nsteps = 4;
             var ddt = dt / nsteps;
@@ -33,16 +33,16 @@ namespace MarioPirates
             {
                 SimulateGrounded(container);
 
-                container.ForEach(o => o.Step(ddt));
+                container.ForEachVisible(o => o.Step(ddt));
 
                 SimulateCollision(container);
             }
         }
 
-        private static void SimulateGrounded(IGameObjectContainer container)
+        private static void SimulateGrounded(HashMap container)
         {
             container.Rebuild();
-            container.ForEach(o1 =>
+            container.ForEachVisible(o1 =>
             {
                 if (o1.RigidBody.Motion == MotionEnum.Dynamic)
                 {
@@ -84,10 +84,10 @@ namespace MarioPirates
 
         }
 
-        private static void SimulateCollision(IGameObjectContainer container)
+        private static void SimulateCollision(HashMap container)
         {
             container.Rebuild();
-            container.ForEach(o1 =>
+            container.ForEachVisible(o1 =>
             {
                 if (o1.RigidBody.Motion == MotionEnum.Dynamic)
                 {

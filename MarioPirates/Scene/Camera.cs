@@ -16,7 +16,7 @@ namespace MarioPirates
 
         public Matrix Transform { get; private set; }
 
-        public Rectangle VisiableArea { get; private set; }
+        public Rectangle VisibleArea { get; private set; }
 
         public void Reset()
         {
@@ -28,7 +28,7 @@ namespace MarioPirates
         {
             Offset = new Vector2(Offset.X.Max(location.X - ScreenWidth / 2), 0f);
             Transform = Matrix.CreateTranslation(new Vector3(-Offset, 0f));
-            VisiableArea = new Rectangle((int)Offset.X, (int)Offset.Y, ScreenWidth, ScreenHeight);
+            VisibleArea = new Rectangle((int)Offset.X, (int)Offset.Y, ScreenWidth, ScreenHeight);
         }
     }
 }

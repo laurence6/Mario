@@ -1,21 +1,27 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MarioPirates
 {
-    internal class HashMap : IGameObjectContainer
+    internal class HashMap
     {
         public const ulong size = 64;
         public const ulong mask = ~(size - 1);
 
         private HashSet<GameObjectRigidBody> objects = new HashSet<GameObjectRigidBody>();
+
+        private HashSet<ulong> bucketKeys = new HashSet<ulong>();
         private Dictionary<ulong, HashSet<GameObjectRigidBody>> buckets = new Dictionary<ulong, HashSet<GameObjectRigidBody>>();
+        private HashSet<GameObjectRigidBody> objectsVisible = new HashSet<GameObjectRigidBody>();
 
         public void Reset()
         {
             objects.Clear();
+            bucketKeys.Clear();
             buckets.Clear();
+            objectsVisible.Clear();
         }
 
         public void Add(GameObjectRigidBody o)
@@ -31,13 +37,26 @@ namespace MarioPirates
 
         public void Rebuild()
         {
-            buckets.Clear();
-            ForEach(o => Apply(o.RigidBody.Bound, s => s.Add(o)));
+            bucketKeys.Clear();
+            objectsVisible.Clear();
+
+            Apply(Camera.Ins.VisibleArea, k => bucketKeys.Add(k));
+
+            buckets.Keys.ToList().ForEach(k => (!bucketKeys.Contains(k)).Then(() => buckets.Remove(k)));
+            buckets.ForEach((k, s) => s.Clear());
+            bucketKeys.ForEach(k => buckets.AddIfNotExist(k));
+
+            ForEach(o => Apply(o.RigidBody.Bound, s => { s.Add(o); objectsVisible.Add(o); }));
         }
 
         public void Find(Rectangle bound, HashSet<GameObjectRigidBody> objectsNearby)
         {
             Apply(bound, s => objectsNearby.UnionWith(s));
+        }
+
+        public void ForEachVisible(Action<GameObjectRigidBody> f)
+        {
+            objectsVisible.ForEach(f);
         }
 
         public void ForEach(Action<GameObjectRigidBody> f)
@@ -47,15 +66,16 @@ namespace MarioPirates
 
         private void Apply(Rectangle bound, Action<HashSet<GameObjectRigidBody>> f)
         {
+            Apply(bound, k => buckets.ContainsKey(k).Then(() => f(buckets[k])));
+        }
+
+        private void Apply(Rectangle bound, Action<ulong> f)
+        {
             (var minX, var minY) = Hash(bound.Location);
             (var maxX, var maxY) = Hash(bound.Location + bound.Size);
             for (var x = minX; x <= maxX; x += size)
                 for (var y = minY; y <= maxY; y += size)
-                {
-                    var k = (x << 32) | y;
-                    buckets.AddIfNotExist(k);
-                    f(buckets[k]);
-                }
+                    f((x << 32) | y);
         }
 
         private static (ulong, ulong) Hash(Point p)

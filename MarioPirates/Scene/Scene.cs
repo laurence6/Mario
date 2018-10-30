@@ -9,7 +9,7 @@ namespace MarioPirates
     {
         public static readonly Scene Ins = new Scene();
 
-        private IGameObjectContainer gameObjectContainer = new HashMap();
+        private HashMap gameObjectContainer = new HashMap();
         private List<GameObject> gameObjectsNoRigidBody = new List<GameObject>();
 
         private Scene()
@@ -32,7 +32,7 @@ namespace MarioPirates
                 .ForEach(o => EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(o.ToGameObject())));
 
             var sceneEndBound = 0f;
-            gameObjectContainer.ForEach(o => sceneEndBound = sceneEndBound.Max(o.RigidBody.Bound.Right));
+            gameObjectContainer.ForEachVisible(o => sceneEndBound = sceneEndBound.Max(o.RigidBody.Bound.Right));
             var endWall = new VirtualWall(sceneEndBound - Camera.ScreenWidth / 2, 0f)
             {
                 IsLocationAbsolute = false
@@ -61,14 +61,14 @@ namespace MarioPirates
             Physics.Simulate(dt, gameObjectContainer);
 
             gameObjectsNoRigidBody.ForEach(o => o.Update(dt));
-            gameObjectContainer.ForEach(o => o.Update(dt));
+            gameObjectContainer.ForEachVisible(o => o.Update(dt));
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: Camera.Ins.Transform);
             gameObjectsNoRigidBody.ForEach(o => o.Draw(spriteBatch));
-            gameObjectContainer.ForEach(o => o.Draw(spriteBatch));
+            gameObjectContainer.ForEachVisible(o => o.Draw(spriteBatch));
             spriteBatch.End();
         }
     }

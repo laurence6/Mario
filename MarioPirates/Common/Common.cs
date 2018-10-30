@@ -12,6 +12,12 @@ namespace MarioPirates
                 f();
         }
 
+        public static void Then(this bool self, Action f)
+        {
+            if (self)
+                f();
+        }
+
         // Enum
         public static T[] EnumValues<T>() => (T[])Enum.GetValues(typeof(T));
 
