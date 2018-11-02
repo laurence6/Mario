@@ -133,7 +133,7 @@
   <ItemGroup>
     <Content Include="Icon.ico" />
     <None Include=".editorconfig" />
-    <None Include="Content\LevelData.json">
+    <None Include="Content\LevelData_1.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\SpritesData.json">
