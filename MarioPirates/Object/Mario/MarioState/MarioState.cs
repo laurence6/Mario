@@ -34,7 +34,11 @@ namespace MarioPirates
             if (!IsDead)
                 s += "_" + Action.State.ToString().ToLower() + "_" + direction.State.ToString().ToLower();
             if (IsInvincible)
+            {
                 s += "_star";
+                if (s.Contains("fire"))
+                    s = "big" + s.Substring(4);
+            }
             if (action.State == MarioStateEnum.Run && brake.State == MarioStateEnum.Brake)
                 s += "_brake";
             mario.Sprite = mario.Sprites[s];
@@ -98,8 +102,6 @@ namespace MarioPirates
 
         public void Invincible()
         {
-            if (Size.State == MarioStateEnum.Fire)
-                Size.Big();
             invincible.SetInvincible(true);
             UpdateSprite();
         }
