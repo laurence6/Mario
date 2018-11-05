@@ -236,13 +236,13 @@ namespace MarioPirates
             {
                 // Life up
             }
-            else if (other is PipeTop && side is CollisionSide.Bottom && State.Action.State == MarioStateEnum.Crouch)
+            else if (other is PipeTop pipe && pipe.ToLevel != null && side is CollisionSide.Bottom && State.Action.State == MarioStateEnum.Crouch)
             {
                 UnsubscribeInput();
-                Location = new Vector2(other.Location.X + PipeBottom.pipeWidth / 4, Location.Y);
+                Location = new Vector2(pipe.Location.X + PipeBottom.pipeWidth / 4, Location.Y);
                 RigidBody.Motion = MotionEnum.Keyframe;
                 RigidBody.Velocity = new Vector2(0f, 50f);
-                EventManager.Ins.RaiseEvent(EventEnum.Action, this, new ActionEventArgs(() => Scene.Ins.Active("secret")), 1000f);
+                EventManager.Ins.RaiseEvent(EventEnum.Action, this, new ActionEventArgs(() => Scene.Ins.Active(pipe.ToLevel)), 1000f);
             }
             else if (other is RedMushroom)
             {
