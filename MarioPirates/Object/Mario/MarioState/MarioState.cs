@@ -36,10 +36,10 @@ namespace MarioPirates
             if (IsInvincible)
             {
                 s += "_star";
-                if (s.Contains("fire"))
+                if (Size.State is MarioStateEnum.Fire) 
                     s = "big" + s.Substring(4);
             }
-            if (action.State == MarioStateEnum.Run && brake.State == MarioStateEnum.Brake)
+            if (action.State is MarioStateEnum.Run && brake.State is MarioStateEnum.Brake)
                 s += "_brake";
             mario.Sprite = mario.Sprites[s];
         }
@@ -150,15 +150,15 @@ namespace MarioPirates
 
         public bool IsDead => Size.IsDead;
 
-        public bool IsJump => Action.State == MarioStateEnum.Jump;
+        public bool IsJump => Action.State is MarioStateEnum.Jump;
 
-        public bool IsCrouch => Action.State == MarioStateEnum.Crouch;
+        public bool IsCrouch => Action.State is MarioStateEnum.Crouch;
 
-        public bool IsSmall => Size.State == MarioStateEnum.Small;
+        public bool IsSmall => Size.State is MarioStateEnum.Small;
 
-        public bool IsFire => Size.State == MarioStateEnum.Fire;
+        public bool IsFire => Size.State is MarioStateEnum.Fire;
 
-        public bool IsLeft => direction.State == MarioStateEnum.Left;
+        public bool IsLeft => direction.State is MarioStateEnum.Left;
 
         public float VelocityMultipler => accelerated.VelocityMultiplier;
     }

@@ -228,7 +228,7 @@ namespace MarioPirates
             {
                 // Life up
             }
-            else if (other is PipeTop && side == CollisionSide.Bottom)
+            else if (other is PipeTop && side is CollisionSide.Bottom)
             {
                 // Get in the pipe
             }
