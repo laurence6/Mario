@@ -40,20 +40,31 @@ namespace MarioPirates
 
             State = new MarioState(this);
 
-            SubscribeInputMoving();
-            SubscribeInputTransition();
-            SubscribeInputExtended();
+            SubscribeInput();
 
             JumpHoldCount = 0;
             TransitionToBigCount = TransitionCountMax;
             TransitionToSmallCount = TransitionCountMax;
         }
 
+        public void SubscribeInput()
+        {
+            SubscribeInputMoving();
+            SubscribeInputTransition();
+            SubscribeInputX();
+        }
+
+        private void UnsubscribeInput()
+        {
+            unsubscribe();
+            unsubscribe = null;
+        }
+
         private void SubscribeInputMoving()
         {
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyUpHold, (s, e) =>
             {
-                if (!State.IsDead && JumpHoldCount < JumpHoldCountLimit)
+                if (JumpHoldCount < JumpHoldCountLimit)
                 {
                     RigidBody.ApplyForce(new Vector2(0, -5000 + JumpHoldCount * 240));
                     JumpHoldCount += 1;
@@ -61,7 +72,7 @@ namespace MarioPirates
             });
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyUpDown, (s, e) =>
             {
-                if (!State.IsDead && RigidBody.Grounded)
+                if (RigidBody.Grounded)
                 {
                     RigidBody.ApplyForce(new Vector2(0, -5000 + JumpHoldCount * 240));
                     JumpHoldCount = 1;
@@ -69,21 +80,18 @@ namespace MarioPirates
             });
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyDownHold, (s, e) =>
             {
-                if (!State.IsDead)
-                {
-                    State.Crouch();
-                }
+                State.Crouch();
             });
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyLeftHold, (s, e) =>
             {
-                if (!State.IsDead && !State.IsCrouch)
+                if (!State.IsCrouch)
                 {
                     RigidBody.ApplyForce(new Vector2(-2000 * State.VelocityMultipler, 0));
                 }
             });
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyRightHold, (s, e) =>
             {
-                if (!State.IsDead && !State.IsCrouch)
+                if (!State.IsCrouch)
                 {
                     RigidBody.ApplyForce(new Vector2(2000 * State.VelocityMultipler, 0));
                 }
@@ -149,7 +157,7 @@ namespace MarioPirates
             });
         }
 
-        private void SubscribeInputExtended()
+        private void SubscribeInputX()
         {
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyXDown, (s, e) => State.Accelerated());
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyXUp, (s, e) => State.CancelAccelerated());
@@ -228,9 +236,13 @@ namespace MarioPirates
             {
                 // Life up
             }
-            else if (other is PipeTop && side is CollisionSide.Bottom)
+            else if (other is PipeTop && side is CollisionSide.Bottom && State.Action.State == MarioStateEnum.Crouch)
             {
-                // Get in the pipe
+                UnsubscribeInput();
+                Location = new Vector2(other.Location.X + PipeBottom.pipeWidth / 4, Location.Y);
+                RigidBody.Motion = MotionEnum.Keyframe;
+                RigidBody.Velocity = new Vector2(0f, 50f);
+                EventManager.Ins.RaiseEvent(EventEnum.Action, this, new ActionEventArgs(() => Scene.Ins.Active("secret")), 1000f);
             }
             else if (other is RedMushroom)
             {
@@ -275,8 +287,7 @@ namespace MarioPirates
 
         public void Dispose()
         {
-            unsubscribe();
-            unsubscribe = null;
+            UnsubscribeInput();
             EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), 3000f);
             EventManager.Ins.RaiseEvent(EventEnum.KeyDown, this, new KeyDownEventArgs(Keys.R), 4000f);
         }

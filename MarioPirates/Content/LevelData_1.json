@@ -1,5 +1,12 @@
 [
     {
+        "TypeName": "Mario",
+        "Location": [ 0, 300 ],
+        "Motion": "Dynamic",
+        "Force": "Gravity, Friction",
+        "Mass": 1
+    },
+    {
         "TypeName": "QuestionBlock",
         "Motion": "Static",
         "Location": [ 200, 350 ],
@@ -2396,14 +2403,6 @@
         "Motion": "Static",
         "Location": [ 6500, 290 ]
 
-    },
-
-    {
-        "TypeName": "Mario",
-        "Location": [ 0, 300 ],
-        "Motion": "Dynamic",
-        "Force": "Gravity, Friction",
-        "Mass": 1
     },
     {
         "TypeName": "Koopa",
