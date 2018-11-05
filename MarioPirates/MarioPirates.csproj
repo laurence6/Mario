@@ -64,7 +64,9 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Object\Block\BlockState.cs" />
     <Compile Include="Object\Block\BrickDebris.cs" />
+    <Compile Include="Object\GameObject.cs" />
     <Compile Include="Object\GameObjectRigidBody.cs" />
+    <Compile Include="Object\IGameObject.cs" />
     <Compile Include="Object\Item\Fireball.cs" />
     <Compile Include="Object\Mario\MarioState\MarioStateTransiting.cs" />
     <Compile Include="Object\Mario\MarioState\MarioStateBrake.cs" />
@@ -87,7 +89,7 @@
     <Compile Include="Object\Block\BrokenBlock.cs" />
     <Compile Include="Object\Block\BrickBlock.cs" />
     <Compile Include="Object\Enemy\Koopa.cs" />
-    <Compile Include="Object\GameObject.cs" />
+    <Compile Include="Object\GameObjectBase.cs" />
     <Compile Include="Object\Item\GreenMushroom.cs" />
     <Compile Include="Object\Block\Block.cs" />
     <Compile Include="Object\Item\Coin.cs" />

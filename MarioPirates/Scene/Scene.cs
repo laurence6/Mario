@@ -12,7 +12,7 @@ namespace MarioPirates
         {
             private readonly string level;
             private HashMap gameObjectContainer = new HashMap();
-            private List<GameObject> gameObjectsNoRigidBody = new List<GameObject>();
+            private List<IGameObject> gameObjectsNoRigidBody = new List<IGameObject>();
 
             public SceneData(string level)
             {
@@ -40,7 +40,7 @@ namespace MarioPirates
                 AddGameObject(endWall);
             }
 
-            public void AddGameObject(GameObject o)
+            public void AddGameObject(IGameObject o)
             {
                 if (o is GameObjectRigidBody or)
                     gameObjectContainer.Add(or);
@@ -48,7 +48,7 @@ namespace MarioPirates
                     gameObjectsNoRigidBody.Add(o);
             }
 
-            public void RemoveGameObject(GameObject o)
+            public void RemoveGameObject(IGameObject o)
             {
                 if (o is GameObjectRigidBody or)
                     gameObjectContainer.Remove(or);

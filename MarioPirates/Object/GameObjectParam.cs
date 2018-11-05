@@ -12,13 +12,13 @@ namespace MarioPirates
         public float? Mass = null;
         public Dictionary<string, string> Params = null;
 
-        public GameObject ToGameObject()
+        public IGameObject ToGameObject()
         {
             var t = Type.GetType("MarioPirates." + TypeName);
             var param = Params != null
                 ? (new object[] { Location[0], Location[1], Params })
                 : (new object[] { Location[0], Location[1] });
-            var obj = (GameObject)Activator.CreateInstance(t, param);
+            var obj = (IGameObject)Activator.CreateInstance(t, param);
 
             if (obj is GameObjectRigidBody or)
                 SetRigidBodyParam(or);

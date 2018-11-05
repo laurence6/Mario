@@ -7,7 +7,7 @@ namespace MarioPirates
     {
         public readonly GameObjectRigidBody Object;
 
-        public Rectangle Bound => new Rectangle((int)Object.Location.X, (int)Object.Location.Y, Object.Size.X, Object.Size.Y);
+        public Rectangle Bound { get; private set; }
 
         public CollisionLayer CollisionLayerMask { get; set; } = CollisionLayer.All;
         public CollisionSide CollisionSideMask { get; set; } = CollisionSide.All;
@@ -45,6 +45,12 @@ namespace MarioPirates
         public RigidBody(GameObjectRigidBody gameObject)
         {
             Object = gameObject;
+            UpdateBound();
+        }
+
+        public void UpdateBound()
+        {
+            Bound = new Rectangle((int)Object.Location.X, (int)Object.Location.Y, Object.Size.X, Object.Size.Y);
         }
 
         public void ApplyForce(WorldForce force)

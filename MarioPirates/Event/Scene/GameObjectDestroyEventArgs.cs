@@ -2,8 +2,8 @@
 {
     internal class GameObjectDestroyEventArgs : System.EventArgs
     {
-        public readonly GameObject Object;
+        public readonly IGameObject Object;
 
-        public GameObjectDestroyEventArgs(GameObject o) => Object = o;
+        public GameObjectDestroyEventArgs(IGameObject o) => Object = o;
     }
 }

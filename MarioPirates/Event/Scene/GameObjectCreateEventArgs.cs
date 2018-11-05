@@ -2,8 +2,8 @@
 {
     internal class GameObjectCreateEventArgs : System.EventArgs
     {
-        public readonly GameObject Object;
+        public readonly IGameObject Object;
 
-        public GameObjectCreateEventArgs(GameObject o) => Object = o;
+        public GameObjectCreateEventArgs(IGameObject o) => Object = o;
     }
 }

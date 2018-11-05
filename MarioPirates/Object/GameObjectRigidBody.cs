@@ -1,7 +1,16 @@
-﻿namespace MarioPirates
+﻿using Microsoft.Xna.Framework;
+
+namespace MarioPirates
 {
-    internal abstract class GameObjectRigidBody : GameObject
+    internal abstract class GameObjectRigidBody : GameObjectBase
     {
+        private Vector2 location;
+        public override Vector2 Location
+        {
+            get => IsLocationAbsolute ? location + Camera.Ins.Offset : location;
+            set { location = IsLocationAbsolute ? value - Camera.Ins.Offset : value; RigidBody?.UpdateBound(); }
+        }
+
         public readonly RigidBody RigidBody;
 
         protected GameObjectRigidBody(float locX, float locY, int sizeX, int sizeY) : base(locX, locY, sizeX, sizeY)
