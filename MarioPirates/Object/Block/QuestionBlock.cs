@@ -31,6 +31,7 @@ namespace MarioPirates
                         EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(powerupObj));
                         if (powerup == "Coin")
                         {
+                            Coins.Ins.Value++;
                             EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(powerupObj), 500f);
                         }
                     }

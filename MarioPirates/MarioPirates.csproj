@@ -58,6 +58,9 @@
     <Compile Include="Event\Scene\GameObjectDestroyEventArgs.cs" />
     <Compile Include="Controller\InputState.cs" />
     <Compile Include="Event\Input\KeyDownEventArgs.cs" />
+    <Compile Include="GamePlay\Lives.cs" />
+    <Compile Include="GamePlay\Coins.cs" />
+    <Compile Include="GamePlay\Score.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Object\Block\BlockState.cs" />
     <Compile Include="Object\Block\BrickDebris.cs" />
@@ -110,7 +113,7 @@
     <Compile Include="Controller\KeyboardController.cs" />
     <Compile Include="Object\Mario\Mario.cs" />
     <Compile Include="Object\Enemy\Goomba.cs" />
-    <Compile Include="GameMario.cs" />
+    <Compile Include="GamePlay\Game.cs" />
     <Compile Include="Controller\IController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

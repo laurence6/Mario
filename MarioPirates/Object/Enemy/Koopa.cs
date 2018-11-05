@@ -1,8 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 
 namespace MarioPirates
 {
-    internal class Koopa : GameObjectRigidBody
+    internal class Koopa : GameObjectRigidBody, IDisposable
     {
         private const int koopaWidth = 16, koopaHeight = 23;
 
@@ -36,7 +37,11 @@ namespace MarioPirates
             if (other is Mario mario && (side == CollisionSide.Top || mario.State.IsInvincible))
             {
                 RigidBody.Velocity = new Vector2(!Stomped || RigidBody.Velocity.X.DeEPS() != 0f ? 0f : other.RigidBody.Bound.Center.X > RigidBody.Bound.Center.X ? -250f : 250f, 0f);
-                Stomped = true;
+                if (!Stomped)
+                {
+                    Score.Ins.Value += 100;
+                    Stomped = true;
+                }
             }
             else if (other is Fireball)
             {
@@ -45,6 +50,11 @@ namespace MarioPirates
                 RigidBody.Velocity = new Vector2(RigidBody.Velocity.X + (side == CollisionSide.Left ? 20f : 0f) + (side == CollisionSide.Right ? -20f : 0f), -250f);
                 EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), 3000f);
             }
+        }
+
+        public void Dispose()
+        {
+            Score.Ins.Value += Stomped ? 100 : 200;
         }
     }
 }

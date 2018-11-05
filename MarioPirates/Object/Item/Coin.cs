@@ -16,6 +16,7 @@
             if (other is Mario)
             {
                 RigidBody.Mass = 1e-6f;
+                Coins.Ins.Value++;
                 EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this));
             }
             base.PostCollide(other, side);

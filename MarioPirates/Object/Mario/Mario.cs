@@ -288,7 +288,6 @@ namespace MarioPirates
         public void Dispose()
         {
             UnsubscribeInput();
-            EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), 3000f);
             EventManager.Ins.RaiseEvent(EventEnum.KeyDown, this, new KeyDownEventArgs(Keys.R), 4000f);
         }
     }

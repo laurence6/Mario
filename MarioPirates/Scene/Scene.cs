@@ -100,7 +100,12 @@ namespace MarioPirates
             activeScene = scenes[level];
 
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.GameObjectCreate, (s, e) => activeScene.AddGameObject((e as GameObjectCreateEventArgs).Object));
-            unsubscribe += EventManager.Ins.Subscribe(EventEnum.GameObjectDestroy, (s, e) => activeScene.RemoveGameObject((e as GameObjectDestroyEventArgs).Object));
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.GameObjectDestroy, (s, e) =>
+            {
+                var eventArgs = e as GameObjectDestroyEventArgs;
+                (eventArgs.Object as IDisposable)?.Dispose();
+                activeScene.RemoveGameObject(eventArgs.Object);
+            });
         }
 
         public void Update(float dt) => activeScene.Update(dt);

@@ -21,15 +21,8 @@ namespace MarioPirates
         public override void PreCollide(GameObjectRigidBody other, CollisionSide side)
         {
             base.PostCollide(other, side);
-            if (other is Mario mario)
-            {
-                mario.State.Dead();
-            }
-            else
-            {
-                other.RigidBody.CollisionLayerMask = CollisionLayer.None;
-                EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(other), 1000f);
-            }
+            other.RigidBody.CollisionLayerMask = CollisionLayer.None;
+            EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(other), 1000f);
         }
 
         public override void PostCollide(GameObjectRigidBody other, CollisionSide side)

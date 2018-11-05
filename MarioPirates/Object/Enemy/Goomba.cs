@@ -1,8 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 
 namespace MarioPirates
 {
-    internal class Goomba : GameObjectRigidBody
+    internal class Goomba : GameObjectRigidBody, IDisposable
     {
         private const int goombaWidth = 16, goombaHeight = 16;
 
@@ -40,6 +41,11 @@ namespace MarioPirates
                 RigidBody.Velocity = new Vector2(0f, -250f);
                 EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), 3000f);
             }
+        }
+
+        public void Dispose()
+        {
+            Score.Ins.Value += 100;
         }
     }
 }
