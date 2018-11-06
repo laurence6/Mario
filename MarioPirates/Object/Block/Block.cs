@@ -7,8 +7,6 @@ namespace MarioPirates
 {
     internal abstract class Block : GameObjectRigidBody
     {
-        private const int blockWidth = 16, blockHeight = 16;
-
         private readonly Sprite usedSprite;
         private readonly Sprite normalSprite;
 
@@ -41,7 +39,7 @@ namespace MarioPirates
 
         private readonly Vector2 origLocation;
 
-        protected Block(int dstX, int dstY, Dictionary<string, string> Params, Sprite normalSprite) : base(dstX, dstY, blockWidth * 2, blockHeight * 2)
+        protected Block(int dstX, int dstY, Dictionary<string, string> Params, Sprite normalSprite) : base(dstX, dstY, Constants.BLOCK_WIDTH * 2, Constants.BLOCK_HEIGHT * 2) // 16, 16
         {
             usedSprite = SpriteFactory.Ins.CreateSprite("usedblock");
             this.normalSprite = normalSprite;
@@ -84,7 +82,7 @@ namespace MarioPirates
                         State = BlockState.Normal;
 
                     RigidBody.Motion = MotionEnum.Keyframe;
-                    RigidBody.Velocity = new Vector2(0, -150f);
+                    RigidBody.Velocity = new Vector2(0, -Constants.BLOCK_MARIO_COLLISION_VELOCITY);
                 }
         }
     }

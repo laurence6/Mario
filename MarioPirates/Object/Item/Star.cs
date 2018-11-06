@@ -4,14 +4,12 @@ namespace MarioPirates
 {
     internal class Star : GameObjectRigidBody
     {
-        private const int starWidth = 14, starHeight = 16;
-
-        public Star(int dstX, int dstY) : base(dstX, dstY, starWidth * 2, starHeight * 2)
+        public Star(int dstX, int dstY) : base(dstX, dstY, Constants.STAR_WIDTH * 2, Constants.STAR_HEIGHT * 2) // 14, 16
         {
             Sprite = SpriteFactory.Ins.CreateSprite("star");
-            RigidBody.Mass = 0.05f;
+            RigidBody.Mass = Constants.STAR_MASS; //0.05f
             RigidBody.CollisionLayerMask = CollisionLayer.Star;
-            RigidBody.Velocity = new Vector2(100f, 0f);
+            RigidBody.Velocity = new Vector2(Constants.STAR_INITIAL_VELOCITY, 0f); // 100
         }
 
         public override void PreCollide(GameObjectRigidBody other, CollisionSide side)
@@ -27,7 +25,7 @@ namespace MarioPirates
         {
             if (RigidBody.Grounded)
             {
-                RigidBody.Velocity = new Vector2(RigidBody.Velocity.X, -200f);
+                RigidBody.Velocity = new Vector2(RigidBody.Velocity.X, Constants.STAR_COLLISION_VELOCITY); // -200f
             }
             base.PostCollide(other, side);
         }

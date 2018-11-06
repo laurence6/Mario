@@ -5,13 +5,11 @@ namespace MarioPirates
 {
     internal class Koopa : GameObjectRigidBody, IDisposable
     {
-        private const int koopaWidth = 16, koopaHeight = 23;
-
         public bool Stomped { get; private set; } = false;
 
         private readonly Sprite[] sprites;
 
-        public Koopa(int x, int y) : base(x, y, koopaWidth * 2, koopaHeight * 2)
+        public Koopa(int x, int y) : base(x, y, Constants.KOOPA_WIDTH * 2, Constants.KOOPA_HEIGHT * 2) // 16, 23
         {
             sprites = new Sprite[3] {
                 SpriteFactory.Ins.CreateSprite("koopa_left"),
@@ -20,9 +18,9 @@ namespace MarioPirates
             };
             Sprite = sprites[0];
 
-            RigidBody.Mass = 0.1f;
+            RigidBody.Mass = Constants.KOOPA_MASS; // 0.1
             RigidBody.CollisionLayerMask = CollisionLayer.Enemy;
-            RigidBody.Velocity = new Vector2(-25f, 0f);
+            RigidBody.Velocity = new Vector2(Constants.KOOPA_INITIAL_VELOCITY, 0f); // -25
         }
 
         public override void Update(float dt)
@@ -36,10 +34,10 @@ namespace MarioPirates
             base.PostCollide(other, side);
             if (other is Mario mario && (side == CollisionSide.Top || mario.State.IsInvincible))
             {
-                RigidBody.Velocity = new Vector2(!Stomped || RigidBody.Velocity.X.DeEPS() != 0f ? 0f : other.RigidBody.Bound.Center.X > RigidBody.Bound.Center.X ? -250f : 250f, 0f);
+                RigidBody.Velocity = new Vector2(!Stomped || RigidBody.Velocity.X.DeEPS() != 0f ? 0f : other.RigidBody.Bound.Center.X > RigidBody.Bound.Center.X ? -Constants.KOOPA_MARIO_COLLISION_VELOCITY : Constants.KOOPA_MARIO_COLLISION_VELOCITY, 0f); //-250, 250
                 if (!Stomped)
                 {
-                    Score.Ins.Value += 100;
+                    Score.Ins.Value += Constants.KOOPA_POINTS; //100
                     Stomped = true;
                 }
             }
@@ -47,14 +45,14 @@ namespace MarioPirates
             {
                 Stomped = true;
                 RigidBody.CollisionLayerMask = CollisionLayer.None;
-                RigidBody.Velocity = new Vector2(RigidBody.Velocity.X + (side == CollisionSide.Left ? 20f : 0f) + (side == CollisionSide.Right ? -20f : 0f), -250f);
-                EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), 3000f);
+                RigidBody.Velocity = new Vector2(RigidBody.Velocity.X + (side == CollisionSide.Left ? Constants.KOOPA_FIREBALL_SIDE_COLLISION_VELOCITY : 0f) + (side == CollisionSide.Right ? -Constants.KOOPA_FIREBALL_SIDE_COLLISION_VELOCITY : 0f), Constants.KOOPA_FIREBALL_COLLISION_Y_VELOCITY); // 20, -20, -250
+                EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), Constants.DESTROY_KOOPA_DELAY); // 3000
             }
         }
 
         public void Dispose()
         {
-            Score.Ins.Value += Stomped ? 100 : 200;
+            Score.Ins.Value += Stomped ? Constants.KOOPA_POINTS : 2 * Constants.KOOPA_POINTS; //100, 200
         }
     }
 }

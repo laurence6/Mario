@@ -26,13 +26,13 @@ namespace MarioPirates
                     var powerupObj = new GameObjectParam
                     {
                         TypeName = powerup,
-                        Location = new int[2] { (int)Location.X, (int)Location.Y - 32 },
+                        Location = new int[2] { (int)Location.X, (int)Location.Y - Constants.BLOCK_HEIGHT * 2 }, // 32
                         Motion = MotionEnum.Dynamic,
                     }.ToGameObject();
                     EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(powerupObj));
                     if (powerup == "Coin")
                     {
-                        EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(powerupObj), 500f);
+                        EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(powerupObj), Constants.DESTROY_COIN_DELAY); //500
                     }
                     powerup = null;
                 }
@@ -41,9 +41,11 @@ namespace MarioPirates
                     EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this));
 
                     var positions = new string[4] { "upperleft", "upperright", "lowerleft", "lowerright" };
-                    var offsets = new int[4, 2] { { 0, 0 }, { BrickDebris.debrisWidth, 0 }, { 0, BrickDebris.debrisHeight }, { BrickDebris.debrisWidth, BrickDebris.debrisHeight } };
-                    var velocities = new Vector2[] { new Vector2(-100f, -200f), new Vector2(100f, -200f), new Vector2(-100f, 0f), new Vector2(100f, 0f) };
-                    for (var i = 0; i < 4; i++)
+                    var offsets = new int[4, 2] { { 0, 0 }, { Constants.BRICK_DEBRIS_WIDTH, 0 }, { 0, Constants.BRICK_DEBRIS_HEIGHT }, { Constants.BRICK_DEBRIS_WIDTH, Constants.BRICK_DEBRIS_HEIGHT } };
+                    var velocities = new Vector2[] { new Vector2(-Constants.BRICK_BLOCK_MARIO_COLLISION_VELOCITY, -2f * Constants.BRICK_BLOCK_MARIO_COLLISION_VELOCITY),
+                        new Vector2(Constants.BRICK_BLOCK_MARIO_COLLISION_VELOCITY, -2f * Constants.BRICK_BLOCK_MARIO_COLLISION_VELOCITY),
+                        new Vector2(-Constants.BRICK_BLOCK_MARIO_COLLISION_VELOCITY, 0f), new Vector2(Constants.BRICK_BLOCK_MARIO_COLLISION_VELOCITY, 0f) }; // -100, -200, 100, -200, -100, 100
+                    for (var i = 0; i < positions.Length; i++)
                     {
                         var debris = new GameObjectParam
                         {
@@ -54,7 +56,7 @@ namespace MarioPirates
                         }.ToGameObject();
                         (debris as GameObjectRigidBody).RigidBody.Velocity = velocities[i];
                         EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(debris));
-                        EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(debris), 500f);
+                        EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(debris), Constants.DESTORY_DEBRIS_DELAY); //500
                     }
                 }
             }

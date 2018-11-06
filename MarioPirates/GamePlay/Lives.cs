@@ -10,7 +10,7 @@
 
         public void Reset()
         {
-            Value = 3;
+            Value = Constants.LIVES_RESET; //3
         }
     }
 }

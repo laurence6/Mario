@@ -11,7 +11,6 @@ namespace MarioPirates.Controller
             {
                 return (e, EventArgs.Empty);
             }
-            //
             switch (state)
             {
                 case InputState.Down:

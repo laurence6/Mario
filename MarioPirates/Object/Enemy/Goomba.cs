@@ -5,21 +5,19 @@ namespace MarioPirates
 {
     internal class Goomba : GameObjectRigidBody, IDisposable
     {
-        private const int goombaWidth = 16, goombaHeight = 16;
-
-        public Goomba(int x, int y) : base(x, y, goombaWidth * 2, goombaHeight * 2)
+        public Goomba(int x, int y) : base(x, y, Constants.GOOMBA_WIDTH * 2, Constants.GOOMBA_HEIGHT * 2) //16, 16
         {
             Sprite = SpriteFactory.Ins.CreateSprite("goomba");
-            RigidBody.Mass = 0.1f;
+            RigidBody.Mass = Constants.GOOMBA_MASS; // 0.1
             RigidBody.CollisionLayerMask = CollisionLayer.Enemy;
-            RigidBody.Velocity = new Vector2(-25f, 0f);
+            RigidBody.Velocity = new Vector2(Constants.GOOMBA_INITIAL_VELOCITY, 0f); // -25
         }
 
         public override void PreCollide(GameObjectRigidBody other, CollisionSide side)
         {
             if (other is Koopa koopa && koopa.Stomped)
             {
-                RigidBody.Mass = 1e-6f;
+                RigidBody.Mass = Constants.GOOMBA_PRECOLLISION_MASS; //1e-6f
             }
             base.PreCollide(other, side);
         }
@@ -32,20 +30,20 @@ namespace MarioPirates
                 Sprite = SpriteFactory.Ins.CreateSprite("goomba_stomped");
                 RigidBody.CollisionLayerMask = CollisionLayer.None;
                 RigidBody.Velocity = Vector2.Zero;
-                EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), 3000f);
+                EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), Constants.DESTROY_GOOMBA_DELAY); //3000
             }
             else if (other is Koopa koopa && koopa.Stomped)
             {
                 // TODO: flip
                 RigidBody.CollisionLayerMask = CollisionLayer.None;
-                RigidBody.Velocity = new Vector2(0f, -250f);
-                EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), 3000f);
+                RigidBody.Velocity = new Vector2(0f, -Constants.GOOMBA_STOMPED_KOOPA_COLLISION_VELOCITY); // -250
+                EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), Constants.DESTROY_GOOMBA_DELAY); // 3000
             }
         }
 
         public void Dispose()
         {
-            Score.Ins.Value += 100;
+            Score.Ins.Value += Constants.GOOMBA_POINTS; // 100
         }
     }
 }
