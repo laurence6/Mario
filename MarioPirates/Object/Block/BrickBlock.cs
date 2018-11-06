@@ -26,13 +26,13 @@ namespace MarioPirates
                     var powerupObj = new GameObjectParam
                     {
                         TypeName = powerup,
-                        Location = new int[2] { (int)Location.X, (int)Location.Y - Constants.BLOCK_HEIGHT * 2 }, // 32
+                        Location = new int[2] { (int)Location.X, (int)Location.Y - Constants.BLOCK_HEIGHT * 2 },
                         Motion = MotionEnum.Dynamic,
                     }.ToGameObject();
                     EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(powerupObj));
                     if (powerup == "Coin")
                     {
-                        EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(powerupObj), Constants.DESTROY_COIN_DELAY); //500
+                        EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(powerupObj), Constants.BLOCK_COLLISION_EVENT_DT);
                     }
                     powerup = null;
                 }
@@ -40,23 +40,18 @@ namespace MarioPirates
                 {
                     EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this));
 
-                    var positions = new string[4] { "upperleft", "upperright", "lowerleft", "lowerright" };
-                    var offsets = new int[4, 2] { { 0, 0 }, { Constants.BRICK_DEBRIS_WIDTH, 0 }, { 0, Constants.BRICK_DEBRIS_HEIGHT }, { Constants.BRICK_DEBRIS_WIDTH, Constants.BRICK_DEBRIS_HEIGHT } };
-                    var velocities = new Vector2[] { new Vector2(-Constants.BRICK_BLOCK_MARIO_COLLISION_VELOCITY, -2f * Constants.BRICK_BLOCK_MARIO_COLLISION_VELOCITY),
-                        new Vector2(Constants.BRICK_BLOCK_MARIO_COLLISION_VELOCITY, -2f * Constants.BRICK_BLOCK_MARIO_COLLISION_VELOCITY),
-                        new Vector2(-Constants.BRICK_BLOCK_MARIO_COLLISION_VELOCITY, 0f), new Vector2(Constants.BRICK_BLOCK_MARIO_COLLISION_VELOCITY, 0f) }; // -100, -200, 100, -200, -100, 100
-                    for (var i = 0; i < positions.Length; i++)
+                    for (var i = 0; i < Constants.BRICK_BLOCK_COLLISION_POSITIONS.Length; i++)
                     {
                         var debris = new GameObjectParam
                         {
                             TypeName = "BrickDebris",
-                            Location = new int[] { (int)Location.X + offsets[i, 0], (int)Location.Y + offsets[i, 1] },
+                            Location = new int[] { (int)Location.X + Constants.BRICK_BLOCK_COLLISION_OFFSETS[i, 0], (int)Location.Y + Constants.BRICK_BLOCK_COLLISION_OFFSETS[i, 1] },
                             Motion = MotionEnum.Dynamic,
-                            Params = new Dictionary<string, string> { { "Position", positions[i] } },
+                            Params = new Dictionary<string, string> { { "Position", Constants.BRICK_BLOCK_COLLISION_POSITIONS[i] } },
                         }.ToGameObject();
-                        (debris as GameObjectRigidBody).RigidBody.Velocity = velocities[i];
+                        (debris as GameObjectRigidBody).RigidBody.Velocity = Constants.BRICK_BLOCK_COLLISION_VELOCITIES[i];
                         EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(debris));
-                        EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(debris), Constants.DESTORY_DEBRIS_DELAY); //500
+                        EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(debris), Constants.BLOCK_COLLISION_EVENT_DT);
                     }
                 }
             }

@@ -7,69 +7,64 @@ namespace MarioPirates
         // Gameplay
         public static readonly int LIVES_RESET = 3;
 
-        // Block, BrickBlock, BrickDebris, QuestionBlock
+        // Object
+        public static readonly float OBJECT_PRECOLLISION_MASS = 1e-6f;
+
+        // Block
         public static readonly int BLOCK_WIDTH = 16;
         public static readonly int BLOCK_HEIGHT = 16;
-        public static readonly float BLOCK_MARIO_COLLISION_VELOCITY = 150f;
+        public static readonly Vector2 BLOCK_MARIO_COLLISION_VELOCITY = new Vector2(0f, -150f);
+        public static readonly float BLOCK_COLLISION_EVENT_DT = 500f;
 
-        public static readonly float DESTROY_COIN_DELAY = 500f;
-        public static readonly float BRICK_BLOCK_MARIO_COLLISION_VELOCITY = 100f;
-        public static readonly float DESTORY_DEBRIS_DELAY = 500f;
+        public static readonly string[] BRICK_BLOCK_COLLISION_POSITIONS = new string[4] { "upperleft", "upperright", "lowerleft", "lowerright" };
+        public static readonly int[,] BRICK_BLOCK_COLLISION_OFFSETS = new int[4, 2] { { 0, 0 }, { 8, 0 }, { 0, 8 }, { 8, 8 } };
+        public static readonly Vector2[] BRICK_BLOCK_COLLISION_VELOCITIES = new Vector2[] { new Vector2(-100f, -200f), new Vector2(100f, -200f), new Vector2(-100f, 0f), new Vector2(100f, 0f) };
 
         public static readonly int BRICK_DEBRIS_WIDTH = 8;
         public static readonly int BRICK_DEBRIS_HEIGHT = 8;
         public static readonly float BRICK_DEBRIS_MASS = 0.05f;
 
-        // Goomba, Koopa
+        // Enemy
+        public static readonly float ENEMY_COLLISION_EVENT_DT = 3000f;
+
         public static readonly int GOOMBA_WIDTH = 16;
         public static readonly int GOOMBA_HEIGHT = 16;
         public static readonly float GOOMBA_MASS = 0.1f;
-        public static readonly float GOOMBA_INITIAL_VELOCITY = -25f;
-        public static readonly float GOOMBA_PRECOLLISION_MASS = 1e-6f;
-        public static readonly float DESTROY_GOOMBA_DELAY = 3000f;
-        public static readonly float GOOMBA_STOMPED_KOOPA_COLLISION_VELOCITY = 250f;
+        public static readonly Vector2 GOOMBA_INITIAL_VELOCITY = new Vector2(-25f, 0f);
+        public static readonly Vector2 GOOMBA_STOMPED_KOOPA_COLLISION_VELOCITY = new Vector2(0f, -250f);
         public static readonly int GOOMBA_POINTS = 100;
 
         public static readonly int KOOPA_WIDTH = 16;
         public static readonly int KOOPA_HEIGHT = 23;
         public static readonly float KOOPA_MASS = 0.1f;
-        public static readonly float KOOPA_INITIAL_VELOCITY = -25f;
-        public static readonly float KOOPA_MARIO_COLLISION_VELOCITY = 250f;
+        public static readonly Vector2 KOOPA_INITIAL_VELOCITY = new Vector2(-25f, 0f);
+        public static readonly Vector2 KOOPA_MARIO_COLLISION_VELOCITY = new Vector2(250f, 0f);
         public static readonly int KOOPA_POINTS = 100;
-        public static readonly float KOOPA_FIREBALL_SIDE_COLLISION_VELOCITY = 20f;
-        public static readonly float KOOPA_FIREBALL_COLLISION_Y_VELOCITY = -250f;
-        public static readonly float DESTROY_KOOPA_DELAY = 3000f;
+        public static readonly Vector2 KOOPA_FIREBALL_COLLISION_VELOCITY = new Vector2(20f, -250f);
 
-
-        // Castle, Coin, Fireball, Flag, Flower, GreenMushroom, PipeBottom, PipeTop, RedMushroom, Star
+        // Item
         public static readonly int CASTLE_WIDTH = 80;
         public static readonly int CASTLE_HEIGHT = 80;
 
         public static readonly int COIN_WIDTH = 16;
         public static readonly int COIN_HEIGHT = 14;
         public static readonly float COIN_MASS = 0.05f;
-        public static readonly float COIN_PRECOLLISION_MASS = 1e-6f;
 
         public static readonly int FIREBALL_WIDTH = 10;
         public static readonly int FIREBALL_HEIGHT = 10;
         public static readonly float FIREBALL_MASS = 0.05f;
-        public static readonly float FIREBALL_PRECOLLISION_MASS = 1e-6f;
-        public static readonly float FIREBALL_COLLISION_VELOCITY = 200f;
-        public static readonly float DESTROY_FIREBALL_DELAY = 3000f;
+        public static readonly float FIREBALL_COLLISION_VELOCITY_Y = -200f;
 
         public static readonly int FLAG_WIDTH = 33;
         public static readonly int FLAG_HEIGHT = 168;
 
         public static readonly int FLOWER_WIDTH = 16;
         public static readonly int FLOWER_HEIGHT = 16;
-        public static readonly float FLOWER_PRECOLLISION_MASS = 1e-6f;
-        public static readonly float DESTROY_FLOWER_DELAY = 1000f;
 
         public static readonly int MUSHROOM_WIDTH = 16;
         public static readonly int MUSHROOM_HEIGHT = 16;
         public static readonly float MUSHROOM_MASS = 0.05f;
-        public static readonly float MUSHROOM_INITIAL_VELOCITY = 50f;
-        public static readonly float MUSHROOM_PRECOLLISION_MASS = 1e-6f;
+        public static readonly Vector2 MUSHROOM_INITIAL_VELOCITY = new Vector2(50f, 0f);
 
         public static readonly int PIPE_BOTTOM_WIDTH = 32;
 
@@ -79,8 +74,8 @@ namespace MarioPirates
         public static readonly int STAR_WIDTH = 14;
         public static readonly int STAR_HEIGHT = 16;
         public static readonly float STAR_MASS = 0.05f;
-        public static readonly float STAR_INITIAL_VELOCITY = 100f;
-        public static readonly float STAR_COLLISION_VELOCITY = -200f;
+        public static readonly Vector2 STAR_INITIAL_VELOCITY = new Vector2(100f, 0f);
+        public static readonly float STAR_COLLISION_VELOCITY_Y = -200f;
 
 
         // Mario, MarioStateAccelerated, MarioStateBig, MarioStateDead, MarioStateFire, MarioStateSmall

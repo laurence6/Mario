@@ -39,7 +39,7 @@ namespace MarioPirates
 
         private readonly Vector2 origLocation;
 
-        protected Block(int dstX, int dstY, Dictionary<string, string> Params, Sprite normalSprite) : base(dstX, dstY, Constants.BLOCK_WIDTH * 2, Constants.BLOCK_HEIGHT * 2) // 16, 16
+        protected Block(int dstX, int dstY, Dictionary<string, string> Params, Sprite normalSprite) : base(dstX, dstY, Constants.BLOCK_WIDTH * 2, Constants.BLOCK_HEIGHT * 2)
         {
             usedSprite = SpriteFactory.Ins.CreateSprite("usedblock");
             this.normalSprite = normalSprite;
@@ -82,7 +82,7 @@ namespace MarioPirates
                         State = BlockState.Normal;
 
                     RigidBody.Motion = MotionEnum.Keyframe;
-                    RigidBody.Velocity = new Vector2(0, -Constants.BLOCK_MARIO_COLLISION_VELOCITY);
+                    RigidBody.Velocity = Constants.BLOCK_MARIO_COLLISION_VELOCITY;
                 }
         }
     }

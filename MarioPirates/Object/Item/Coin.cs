@@ -2,10 +2,10 @@
 {
     internal class Coin : GameObjectRigidBody
     {
-        public Coin(int dstX, int dstY) : base(dstX, dstY, Constants.CASTLE_WIDTH * 2, Constants.CASTLE_HEIGHT * 2) // 16, 14
+        public Coin(int dstX, int dstY) : base(dstX, dstY, Constants.CASTLE_WIDTH * 2, Constants.CASTLE_HEIGHT * 2)
         {
             Sprite = SpriteFactory.Ins.CreateSprite("coin");
-            RigidBody.Mass = Constants.COIN_MASS; // 0.05f
+            RigidBody.Mass = Constants.COIN_MASS;
             RigidBody.CollisionLayerMask = CollisionLayer.Coin;
         }
 
@@ -13,7 +13,7 @@
         {
             if (other is Mario)
             {
-                RigidBody.Mass = Constants.COIN_PRECOLLISION_MASS; //1e-6f
+                RigidBody.Mass = Constants.OBJECT_PRECOLLISION_MASS;
                 Coins.Ins.Value++;
                 EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this));
             }

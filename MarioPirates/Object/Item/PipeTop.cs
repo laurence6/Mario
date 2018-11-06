@@ -6,7 +6,7 @@ namespace MarioPirates
     {
         public readonly string ToLevel = null;
 
-        public PipeTop(int dstX, int dstY) : base(dstX, dstY, Constants.PIPE_TOP_WIDTH * 2, Constants.PIPE_TOP_HEIGHT * 2) // 32, 15
+        public PipeTop(int dstX, int dstY) : base(dstX, dstY, Constants.PIPE_TOP_WIDTH * 2, Constants.PIPE_TOP_HEIGHT * 2)
         {
             Sprite = SpriteFactory.Ins.CreateSprite("pipelinetop");
         }
