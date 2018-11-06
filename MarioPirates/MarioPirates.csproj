@@ -62,6 +62,7 @@
     <Compile Include="GamePlay\Coins.cs" />
     <Compile Include="GamePlay\Score.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Scene\HUD.cs" />
     <Compile Include="Object\Block\BlockState.cs" />
     <Compile Include="Object\Block\BrickDebris.cs" />
     <Compile Include="Object\GameObject.cs" />

@@ -385,3 +385,10 @@
 /processorParam:TextureFormat=Color
 /build:longpipe.png
 
+#begin hud.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:hud.spritefont
+

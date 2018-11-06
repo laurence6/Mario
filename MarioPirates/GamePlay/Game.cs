@@ -10,6 +10,7 @@ namespace MarioPirates
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
+        private SpriteFont font;
 
         private List<IController> controllers = new List<IController>();
 
@@ -38,6 +39,8 @@ namespace MarioPirates
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            font = Content.Load<SpriteFont>("hud");
 
             SpriteFactory.Ins.LoadContent(Content);
         }
@@ -76,6 +79,7 @@ namespace MarioPirates
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             Scene.Ins.Draw(spriteBatch);
+            HUD.Ins.Draw(spriteBatch, font);
         }
 
         private bool triggerReset = true;

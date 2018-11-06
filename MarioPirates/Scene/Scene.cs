@@ -17,6 +17,7 @@ namespace MarioPirates
             public SceneData(string level)
             {
                 this.level = level;
+                HUD.Ins.UpdateLevel(level);
             }
 
             public void Reset()
