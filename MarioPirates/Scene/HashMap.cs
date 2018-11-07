@@ -45,7 +45,8 @@ namespace MarioPirates
             buckets.ForEach((k, s) => s.Clear());
             bucketKeys.ForEach(k => buckets.AddIfNotExist(k));
 
-            ForEach(o => Apply(o.RigidBody.Bound, s => { s.Add(o); objectsVisible.Add(o); }));
+            ForEach(o => o.RigidBody.Bound.Intersects(Camera.Ins.VisibleArea)
+                .Then(() => { objectsVisible.Add(o); Apply(o.RigidBody.Bound, s => s.Add(o)); }));
         }
 
         public void Find(Rectangle bound, HashSet<GameObjectRigidBody> objectsNearby)

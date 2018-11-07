@@ -11,6 +11,7 @@ namespace MarioPirates
 
         public override void Update(float dt)
         {
+            RigidBody.UpdateBound();
         }
 
         public override void Draw(SpriteBatch spriteBatch)

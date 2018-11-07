@@ -8,7 +8,7 @@ namespace MarioPirates
         public abstract Vector2 Location { get; set; }
         public bool IsLocationAbsolute { get; set; } = false;
 
-        public Point Size { get; set; }
+        public abstract Point Size { get; set; }
 
         public Sprite Sprite { get; set; }
 

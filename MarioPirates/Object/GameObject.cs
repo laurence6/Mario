@@ -11,6 +11,8 @@ namespace MarioPirates
             set => location = IsLocationAbsolute ? value - Camera.Ins.Offset : value;
         }
 
+        public override Point Size { get; set; }
+
         protected GameObject(float locX, float locY, int sizeX, int sizeY) : base(locX, locY, sizeX, sizeY)
         {
         }

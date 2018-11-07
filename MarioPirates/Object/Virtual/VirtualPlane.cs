@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 
 namespace MarioPirates
 {
@@ -12,6 +11,7 @@ namespace MarioPirates
 
         public override void Update(float dt)
         {
+            RigidBody.UpdateBound();
         }
 
         public override void Draw(SpriteBatch spriteBatch)

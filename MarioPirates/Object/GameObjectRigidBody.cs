@@ -11,6 +11,9 @@ namespace MarioPirates
             set { location = IsLocationAbsolute ? value - Camera.Ins.Offset : value; RigidBody?.UpdateBound(); }
         }
 
+        private Point size;
+        public override Point Size { get => size; set { size = value; RigidBody?.UpdateBound(); } }
+
         public readonly RigidBody RigidBody;
 
         protected GameObjectRigidBody(float locX, float locY, int sizeX, int sizeY) : base(locX, locY, sizeX, sizeY)

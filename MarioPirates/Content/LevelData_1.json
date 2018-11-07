@@ -1,7 +1,7 @@
 [
     {
         "TypeName": "Mario",
-        "Location": [ 0, 300 ],
+        "Location": [ 16, 300 ],
         "Motion": "Dynamic",
         "Force": "Gravity, Friction",
         "Mass": 1
