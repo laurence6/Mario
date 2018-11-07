@@ -105,7 +105,7 @@
     "questionblock": {
         "TextureName": "questionblock",
         "Size": [ 16, 16 ],
-        "Frames": [ 0, 0 ]
+        "Frames": [ 0, 0, 20, 0, 40, 0 ]
     },
 
     "goomba": {
