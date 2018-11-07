@@ -30,7 +30,7 @@ namespace MarioPirates
                 AddGameObject(new VirtualWall(0f, 0f));
                 AddGameObject(new VirtualWall(Constants.SCREEN_WIDTH - Constants.VIRTUAL_WALL_WIDTH, 0f));
                 new JavaScriptSerializer().Deserialize<List<GameObjectParam>>(ReadAllText("Content\\LevelData_" + level + ".json"))
-                  .ForEach(o => EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(o.ToGameObject())));
+                    .ForEach(o => EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(o.ToGameObject())));
 
                 var sceneEndBound = 0f;
                 gameObjectContainer.ForEachVisible(o => sceneEndBound = sceneEndBound.Max(o.RigidBody.Bound.Right));
@@ -87,8 +87,8 @@ namespace MarioPirates
         public void Reset()
         {
             scenes.Clear();
-            new string[] { "1" }.ForEach(level => scenes.Add(level, new SceneData(level)));
-            Active("1");
+            Constants.AVAILABLE_SCENES.ForEach(level => scenes.Add(level, new SceneData(level)));
+            Active(Constants.DEFAULT_SCENE);
         }
 
         public void ResetActive() => activeScene.Reset();

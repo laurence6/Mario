@@ -133,6 +133,8 @@ namespace MarioPirates
         public const float RIGID_BODY_RESOLVE_COLLIDE_NORMAL = 1f;
 
         // Scene
+        public static readonly string[] AVAILABLE_SCENES = new string[] { "1" };
+        public const string DEFAULT_SCENE = "1";
         public const int SCREEN_WIDTH = 800;
         public const int SCREEN_HEIGHT = 480;
 
