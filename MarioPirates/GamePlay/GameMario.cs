@@ -94,6 +94,14 @@ namespace MarioPirates
             Scene.Ins.Reset();
             Scene.Ins.ResetActive();
 
+            Coins.Ins.Reset();
+            Score.Ins.Reset();
+            Lives.Ins.Value--;
+            if (Lives.Ins.Value < 0)
+            {
+                Lives.Ins.Value = 3;
+            }
+
             EventManager.Ins.Subscribe(EventEnum.KeyDown, (s, e) =>
             {
                 switch ((e as KeyDownEventArgs).key)
