@@ -68,8 +68,8 @@ namespace MarioPirates
             });
             collisions.ForEach(ce =>
             {
-                ce.object1.PreCollide(ce.object2, ce.side);
-                ce.object2.PreCollide(ce.object1, ce.side.Invert());
+                CollisionHandler.Ins.PreCollide(ce.object1, ce.object2, ce.side);
+                CollisionHandler.Ins.PreCollide(ce.object2, ce.object1, ce.side.Invert());
             });
             collisions.ForEach(ce =>
             {
@@ -77,8 +77,8 @@ namespace MarioPirates
             });
             collisions.Consume(ce =>
             {
-                ce.object1.PostCollide(ce.object2, ce.side);
-                ce.object2.PostCollide(ce.object1, ce.side.Invert());
+                CollisionHandler.Ins.PostCollide(ce.object1, ce.object2, ce.side);
+                CollisionHandler.Ins.PostCollide(ce.object2, ce.object1, ce.side.Invert());
             });
 
         }
@@ -102,8 +102,8 @@ namespace MarioPirates
             objectsChecked.Clear();
             collisions.ForEach(ce =>
             {
-                ce.object1.PreCollide(ce.object2, ce.side);
-                ce.object2.PreCollide(ce.object1, ce.side.Invert());
+                CollisionHandler.Ins.PreCollide(ce.object1, ce.object2, ce.side);
+                CollisionHandler.Ins.PreCollide(ce.object2, ce.object1, ce.side.Invert());
             });
             collisions.ForEach(ce =>
             {
@@ -136,8 +136,8 @@ namespace MarioPirates
             });
             collisions.Consume(ce =>
             {
-                ce.object1.PostCollide(ce.object2, ce.side);
-                ce.object2.PostCollide(ce.object1, ce.side.Invert());
+                CollisionHandler.Ins.PostCollide(ce.object1, ce.object2, ce.side);
+                CollisionHandler.Ins.PostCollide(ce.object2, ce.object1, ce.side.Invert());
             });
         }
     }

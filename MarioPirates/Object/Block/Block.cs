@@ -11,79 +11,66 @@ namespace MarioPirates
         private readonly Sprite normalSprite;
 
         private BlockState state = BlockState.Normal;
-        protected BlockState State
+
+        public BlockState State
         {
-            get => state;
+            get => this.state;
             set
             {
                 switch (value)
                 {
                     case BlockState.Normal:
-                        RigidBody.CollisionSideMask = CollisionSide.All;
-                        Sprite = normalSprite;
+                        this.RigidBody.CollisionSideMask = CollisionSide.All;
+                        this.Sprite = this.normalSprite;
                         break;
                     case BlockState.Used:
-                        RigidBody.CollisionSideMask = CollisionSide.All;
-                        Sprite = usedSprite;
+                        this.RigidBody.CollisionSideMask = CollisionSide.All;
+                        this.Sprite = this.usedSprite;
                         break;
                     case BlockState.Hidden:
-                        RigidBody.CollisionSideMask = CollisionSide.Bottom;
-                        Sprite = null;
+                        this.RigidBody.CollisionSideMask = CollisionSide.Bottom;
+                        this.Sprite = null;
                         break;
                 }
-                state = value;
+                this.state = value;
             }
         }
 
-        protected virtual bool IsUsed => State == BlockState.Used;
+        public virtual bool IsUsed => this.State == BlockState.Used;
 
         private readonly Vector2 origLocation;
 
         protected Block(int dstX, int dstY, Dictionary<string, string> Params, Sprite normalSprite) : base(dstX, dstY, Constants.BLOCK_WIDTH * 2, Constants.BLOCK_HEIGHT * 2)
         {
-            usedSprite = SpriteFactory.Ins.CreateSprite("usedblock");
+            this.usedSprite = SpriteFactory.Ins.CreateSprite("usedblock");
             this.normalSprite = normalSprite;
 
-            RigidBody.ApplyForce(WorldForce.Gravity);
+            this.RigidBody.ApplyForce(WorldForce.Gravity);
 
             Enum.TryParse(Params["State"], out BlockState state);
-            State = state;
+            this.State = state;
 
-            origLocation = Location;
+            this.origLocation = this.Location;
         }
 
         public override void Update(float dt)
         {
-            Sprite?.Update(dt);
+            this.Sprite?.Update(dt);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            Sprite.NotNullThen(() => base.Draw(spriteBatch));
+            this.Sprite.NotNullThen(() => base.Draw(spriteBatch));
         }
 
         public override void Step(float dt)
         {
             base.Step(dt);
-            if (Location.Y > origLocation.Y)
+            if (this.Location.Y > this.origLocation.Y)
             {
-                Location = origLocation;
-                RigidBody.Motion = MotionEnum.Static;
+                this.Location = this.origLocation;
+                this.RigidBody.Motion = MotionEnum.Static;
             }
-        }
-
-        public override void PostCollide(GameObjectRigidBody other, CollisionSide side)
-        {
-            base.PostCollide(other, side);
-            if (other is Mario)
-                if (side == CollisionSide.Bottom && RigidBody.Motion == MotionEnum.Static && !IsUsed)
-                {
-                    if (State == BlockState.Hidden)
-                        State = BlockState.Normal;
-
-                    RigidBody.Motion = MotionEnum.Keyframe;
-                    RigidBody.Velocity = Constants.BLOCK_MARIO_COLLISION_VELOCITY;
-                }
         }
     }
 }

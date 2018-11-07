@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+﻿sing Microsoft.Xna.Framework;
 
 namespace MarioPirates
 {
@@ -30,14 +30,6 @@ namespace MarioPirates
         public virtual void Step(float dt)
         {
             RigidBody.Step(dt);
-        }
-
-        public virtual void PreCollide(GameObjectRigidBody other, CollisionSide side)
-        {
-        }
-
-        public virtual void PostCollide(GameObjectRigidBody other, CollisionSide side)
-        {
         }
     }
 }

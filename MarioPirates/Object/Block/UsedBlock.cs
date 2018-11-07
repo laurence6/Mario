@@ -4,7 +4,7 @@ namespace MarioPirates
 {
     internal class UsedBlock : Block
     {
-        protected override bool IsUsed => State != BlockState.Hidden;
+        public override bool IsUsed => State != BlockState.Hidden;
 
         public UsedBlock(int dstX, int dstY, Dictionary<string, string> Params)
             : base(dstX, dstY, Params, SpriteFactory.Ins.CreateSprite("usedblock"))

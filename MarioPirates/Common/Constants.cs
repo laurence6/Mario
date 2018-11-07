@@ -8,7 +8,7 @@ namespace MarioPirates
         public const int LIVES_RESET = 3;
 
         // Object
-        public const float OBJECT_PRECOLLISION_MASS = 1e-6f;
+        public const float OBJECT_TINY_MASS = 1e-6f;
 
         // Block
         public const int BLOCK_WIDTH = 16;
@@ -60,7 +60,9 @@ namespace MarioPirates
 
         public const int FLOWER_WIDTH = 16;
         public const int FLOWER_HEIGHT = 16;
+        public const int FLOWER_SCORE = 1000;
 
+        public const int REDMUSHROOM_SCORE = 1000;
         public const int MUSHROOM_WIDTH = 16;
         public const int MUSHROOM_HEIGHT = 16;
         public const float MUSHROOM_MASS = 0.05f;
