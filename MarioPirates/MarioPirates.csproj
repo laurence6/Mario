@@ -117,7 +117,7 @@
     <Compile Include="Controller\KeyboardController.cs" />
     <Compile Include="Object\Mario\Mario.cs" />
     <Compile Include="Object\Enemy\Goomba.cs" />
-    <Compile Include="GamePlay\Game.cs" />
+    <Compile Include="GamePlay\GameMario.cs" />
     <Compile Include="Controller\IController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
