@@ -14,6 +14,7 @@
             if (other is Mario)
             {
                 RigidBody.Mass = Constants.OBJECT_PRECOLLISION_MASS;
+                Score.Ins.Value += 1000;
                 EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this));
             }
             base.PostCollide(other, side);
