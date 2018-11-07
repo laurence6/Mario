@@ -150,8 +150,6 @@ namespace MarioPirates
 
         public bool IsDead => Size.IsDead;
 
-        public bool IsJump => Action.State is MarioStateEnum.Jump;
-
         public bool IsCrouch => Action.State is MarioStateEnum.Crouch;
 
         public bool IsSmall => Size.State is MarioStateEnum.Small;
