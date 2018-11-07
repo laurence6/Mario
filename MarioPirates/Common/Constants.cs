@@ -138,7 +138,7 @@ namespace MarioPirates
         public static readonly int SCREEN_HEIGHT = 480;
 
         public const ulong HASH_MAP_SIZE = 64;
-        public static readonly int HASH_MAP_SHIFT = 32;
+        public static readonly int INT_SIZE = 32;
 
         public static readonly Vector2 SCORE_TITLE_POSITION = new Vector2(800f / 11f, 48f);
         public static readonly Vector2 COINS_TITLE_POSITION = new Vector2(3f * 800f / 11f, 48f);

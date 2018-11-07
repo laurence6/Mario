@@ -74,7 +74,7 @@ namespace MarioPirates
             (var maxX, var maxY) = Hash(bound.Location + bound.Size);
             for (var x = minX; x <= maxX; x += Constants.HASH_MAP_SIZE)
                 for (var y = minY; y <= maxY; y += Constants.HASH_MAP_SIZE)
-                    f((x << Constants.HASH_MAP_SHIFT) | y);
+                    f((x << Constants.INT_SIZE) | y);
         }
 
         private static (ulong, ulong) Hash(Point p)
