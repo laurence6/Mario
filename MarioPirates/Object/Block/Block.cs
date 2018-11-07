@@ -64,12 +64,12 @@ namespace MarioPirates
 
         public override void Step(float dt)
         {
+            base.Step(dt);
             if (Location.Y > origLocation.Y)
             {
                 Location = origLocation;
                 RigidBody.Motion = MotionEnum.Static;
             }
-            base.Step(dt);
         }
 
         public override void PostCollide(GameObjectRigidBody other, CollisionSide side)
