@@ -244,7 +244,7 @@ namespace MarioPirates
                 {
                     TransitionToBigCount = 0;
                     State.Transiting();
-                    EventManager.Ins.RaiseEvent(EventEnum.Action, this, new ActionEventArgs(() => State.CancelTransiting()), Constants.MARIO_MUSHROOM_COLLISION_EVENT_DT); 
+                    EventManager.Ins.RaiseEvent(EventEnum.Action, this, new ActionEventArgs(() => State.CancelTransiting()), Constants.MARIO_MUSHROOM_COLLISION_EVENT_DT);
                 }
                 State.Big();
             }

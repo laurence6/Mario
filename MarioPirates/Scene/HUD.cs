@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MarioPirates
 {
-    class HUD
+    internal class HUD
     {
         private uint score;
         private uint coins;

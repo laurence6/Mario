@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace MarioPirates
+﻿namespace MarioPirates
 {
     internal class GreenMushroom : GameObjectRigidBody
     {
