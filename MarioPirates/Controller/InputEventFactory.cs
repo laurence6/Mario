@@ -36,6 +36,8 @@ namespace MarioPirates.Controller
                             return (EventEnum.KeyUpDown, EventArgs.Empty);
                         case Buttons.B:
                             return (EventEnum.KeyXDown, EventArgs.Empty);
+                        case Buttons.Start:
+                            return (EventEnum.KeyDown, EventArgs.Empty);
                     }
                     break;
                 case InputState.Hold:

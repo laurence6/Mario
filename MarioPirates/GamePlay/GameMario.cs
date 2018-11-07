@@ -14,6 +14,8 @@ namespace MarioPirates
 
         private List<IController> controllers = new List<IController>();
 
+        private bool pause;
+
         public GameMario()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -64,10 +66,13 @@ namespace MarioPirates
             if (triggerReset)
                 Reset();
 
-            Time.Update(gameTime);
-            EventManager.Ins.Update();
-            Scene.Ins.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
             controllers.ForEach(c => c.Update());
+            if (!pause)
+            {
+                Time.Update(gameTime);
+                EventManager.Ins.Update();
+                Scene.Ins.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
+            }
         }
 
         /// <summary>
@@ -112,11 +117,15 @@ namespace MarioPirates
                     case Keys.R:
                         TriggerReset();
                         break;
+                    case Keys.Escape:
+                        pause = !pause;
+                        break;
                 }
             });
 
             controllers.Clear();
             triggerReset = false;
+            pause = false;
 
             var keyboardController = new KeyboardController();
             keyboardController.SetKeyMapping(Keys.LeftShift, Keys.X);
@@ -127,7 +136,7 @@ namespace MarioPirates
             keyboardController.SetKeyMapping(Keys.S, Keys.Down);
             keyboardController.SetKeyMapping(Keys.A, Keys.Left);
             keyboardController.SetKeyMapping(Keys.D, Keys.Right);
-            keyboardController.EnableKeyEvent(InputState.Down, Keys.Q, Keys.R);
+            keyboardController.EnableKeyEvent(InputState.Down, Keys.Q, Keys.R, Keys.Escape);
             keyboardController.EnableKeyEvent(InputState.Down, Keys.Up, Keys.Down, Keys.Left, Keys.Right, Keys.X);
             keyboardController.EnableKeyEvent(InputState.Up, Keys.Up, Keys.Down, Keys.Left, Keys.Right, Keys.X);
             keyboardController.EnableKeyEvent(InputState.Hold, Keys.Up, Keys.Down, Keys.Left, Keys.Right, Keys.X);
@@ -135,6 +144,7 @@ namespace MarioPirates
             controllers.Add(keyboardController);
 
             var gamePadController = new GamePadController();
+            gamePadController.EnableButtonEvent(InputState.Down, Buttons.Start);
             gamePadController.EnableButtonEvent(InputState.Down,
                 Buttons.LeftThumbstickDown,
                 Buttons.LeftThumbstickLeft,
