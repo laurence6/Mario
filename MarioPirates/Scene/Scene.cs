@@ -26,15 +26,15 @@ namespace MarioPirates
                 gameObjectsNoRigidBody.Clear();
 
                 AddGameObject(new Background());
-                AddGameObject(new VirtualPlane(0f, Camera.ScreenHeight + 1));
-                AddGameObject(new VirtualWall(-VirtualWall.Width, 0f));
-                AddGameObject(new VirtualWall(Camera.ScreenWidth, 0f));
+                AddGameObject(new VirtualPlane(0f, Constants.SCREEN_HEIGHT + 1));
+                AddGameObject(new VirtualWall(-Constants.VIRTUAL_WALL_WIDTH, 0f));
+                AddGameObject(new VirtualWall(Constants.SCREEN_WIDTH, 0f));
                 new JavaScriptSerializer().Deserialize<List<GameObjectParam>>(ReadAllText("Content\\LevelData_" + level + ".json"))
                     .ForEach(o => EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(o.ToGameObject())));
 
                 var sceneEndBound = 0f;
                 gameObjectContainer.ForEachVisible(o => sceneEndBound = sceneEndBound.Max(o.RigidBody.Bound.Right));
-                var endWall = new VirtualWall(sceneEndBound - Camera.ScreenWidth / 2, 0f)
+                var endWall = new VirtualWall(sceneEndBound - Constants.SCREEN_WIDTH / 2, 0f)
                 {
                     IsLocationAbsolute = false
                 };

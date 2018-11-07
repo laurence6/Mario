@@ -183,9 +183,9 @@ namespace MarioPirates
                 if (TransitionToBigCount % Constants.MARIO_TRANSITION_COUNT == 0)
                 {
                     StoredToBigLocation = new Vector2(Location.X, Location.Y + Size.Y);
-                    var targetHeight = (int)(MarioStateBig.marioHeight / Constants.MARIO_TRANSITION_ZOOM[TransitionToBigCount / Constants.MARIO_TRANSITION_COUNT]);
+                    var targetHeight = (int)(Constants.BIG_MARIO_HEIGHT / Constants.MARIO_TRANSITION_ZOOM[TransitionToBigCount / Constants.MARIO_TRANSITION_COUNT]);
                     Location = new Vector2(StoredToBigLocation.X, StoredToBigLocation.Y - targetHeight);
-                    Size = new Point(MarioStateBig.marioWidth, targetHeight);
+                    Size = new Point(Constants.BIG_MARIO_WIDTH, targetHeight);
                 }
                 TransitionToBigCount++;
             }
@@ -195,9 +195,9 @@ namespace MarioPirates
                 if (TransitionToSmallCount % Constants.MARIO_TRANSITION_COUNT == 0)
                 {
                     StoredToSmallLocation = new Vector2(Location.X, Location.Y + Size.Y);
-                    var targetHeight = (int)(MarioStateSmall.marioHeight * Constants.MARIO_TRANSITION_ZOOM[TransitionToSmallCount / Constants.MARIO_TRANSITION_COUNT]);
+                    var targetHeight = (int)(Constants.SMALL_MARIO_HEIGHT * Constants.MARIO_TRANSITION_ZOOM[TransitionToSmallCount / Constants.MARIO_TRANSITION_COUNT]);
                     Location = new Vector2(StoredToSmallLocation.X, StoredToSmallLocation.Y - targetHeight);
-                    Size = new Point(MarioStateSmall.marioWidth, targetHeight);
+                    Size = new Point(Constants.SMALL_MARIO_WIDTH, targetHeight);
                 }
 
                 TransitionToSmallCount++;

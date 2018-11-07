@@ -6,8 +6,6 @@ namespace MarioPirates
     {
         public static readonly Camera Ins = new Camera();
 
-        public const int ScreenWidth = 800, ScreenHeight = 480;
-
         private Camera()
         {
         }
@@ -26,9 +24,9 @@ namespace MarioPirates
 
         public void LookAt(Vector2 location)
         {
-            Offset = new Vector2(Offset.X.Max(location.X - ScreenWidth / 2), 0f);
+            Offset = new Vector2(Offset.X.Max(location.X - Constants.SCREEN_WIDTH / 2), 0f);
             Transform = Matrix.CreateTranslation(new Vector3(-Offset, 0f));
-            VisibleArea = new Rectangle((int)Offset.X, (int)Offset.Y, ScreenWidth, ScreenHeight);
+            VisibleArea = new Rectangle((int)Offset.X, (int)Offset.Y, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
         }
     }
 }

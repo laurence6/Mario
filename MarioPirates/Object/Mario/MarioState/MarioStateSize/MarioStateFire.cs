@@ -4,11 +4,9 @@ namespace MarioPirates
 {
     internal class MarioStateFire : MarioStateSize
     {
-        public const int marioWidth = 32, marioHeight = 64;
-
         public MarioStateFire(MarioState state) : base(state)
         {
-            state.mario.Size = new Point(marioWidth, marioHeight);
+            state.mario.Size = new Point(Constants.FIRE_MARIO_WIDTH, Constants.FIRE_MARIO_HEIGHT);
         }
 
         public override void Fire()
@@ -20,8 +18,8 @@ namespace MarioPirates
             base.Small();
             state.mario.Location =
                 new Vector2(
-                state.mario.Location.X - (marioWidth - MarioStateSmall.marioWidth) / 2,
-                state.mario.Location.Y + marioHeight - MarioStateSmall.marioHeight);
+                state.mario.Location.X - (Constants.FIRE_MARIO_WIDTH - Constants.SMALL_MARIO_WIDTH) / 2,
+                state.mario.Location.Y + Constants.FIRE_MARIO_HEIGHT - Constants.SMALL_MARIO_HEIGHT);
         }
 
         public override void Dead()
@@ -29,8 +27,8 @@ namespace MarioPirates
             base.Dead();
             state.mario.Location =
                 new Vector2(
-                state.mario.Location.X - (marioWidth - MarioStateDead.marioWidth) / 2,
-                state.mario.Location.Y + marioHeight - MarioStateDead.marioHeight);
+                state.mario.Location.X - (Constants.FIRE_MARIO_WIDTH - Constants.DEAD_MARIO_WIDTH) / 2,
+                state.mario.Location.Y + Constants.FIRE_MARIO_HEIGHT - Constants.DEAD_MARIO_HEIGHT);
         }
 
         public override MarioStateEnum State => MarioStateEnum.Fire;

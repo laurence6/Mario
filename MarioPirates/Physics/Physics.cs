@@ -26,10 +26,9 @@ namespace MarioPirates
 
         public static void Simulate(float dt, HashMap container)
         {
-            const int nsteps = 4;
-            var ddt = dt / nsteps;
+            var ddt = dt / Constants.N_STEPS;
 
-            for (var s = 0; s < nsteps; s++)
+            for (var s = 0; s < Constants.N_STEPS; s++)
             {
                 SimulateGrounded(container);
 

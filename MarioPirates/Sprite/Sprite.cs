@@ -5,8 +5,6 @@ namespace MarioPirates
 {
     internal class Sprite
     {
-        private const float frameUpdateInterval = 15 * 0.016f;
-
         private Texture2D texture;
         private Point size;
         private Point[] frames;
@@ -34,7 +32,7 @@ namespace MarioPirates
                 spriteBatch.Draw(
                     texture,
                     drawDst,
-                    new Rectangle(frames[(int)(elpased / frameUpdateInterval * accelerateRate) % frames.Length], size),
+                    new Rectangle(frames[(int)(elpased / Constants.FRAME_UPDATE_INTERVAL * accelerateRate) % frames.Length], size),
                     Color.White);
             }
         }

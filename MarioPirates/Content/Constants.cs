@@ -99,12 +99,59 @@ namespace MarioPirates
         public static readonly Vector2 MARIO_ENEMY_COLLISION_VELOCITY = new Vector2(0f, -200f);
         public static readonly float MARIO_DISPOSE_EVENT_DT = 4000f;
 
+        public static readonly float ACCELERATING_MARIO_MULTIPLIER = 10f;
+        public static readonly float NONACCELERATING_MARIO_MULTIPLIER = 1f;
+
+        public static readonly int BIG_MARIO_WIDTH = 32;
+        public static readonly int BIG_MARIO_HEIGHT = 64;
+
+        public static readonly int DEAD_MARIO_WIDTH = 30;
+        public static readonly int DEAD_MARIO_HEIGHT = 28;
+
+        public static readonly int FIRE_MARIO_WIDTH = 32;
+        public static readonly int FIRE_MARIO_HEIGHT = 64;
+
+        public static readonly int SMALL_MARIO_WIDTH = 34;
+        public static readonly int SMALL_MARIO_HEIGHT = 30;
+
         // Virtual
+        public static readonly int BACKGROUND_WIDTH = 800;
+        public static readonly int BACKGROUND_HEIGHT = 480;
+
+        public static readonly float VIRTUAL_PLANE_EVENT_DT = 1000f;
+        public static readonly Vector2 VIRTUAL_PLANE_COLLISION_VELOCITY = new Vector2(0f, 100f);
+
+        public static readonly int VIRTUAL_WALL_WIDTH = 16;
 
         // Physics
+        public static readonly int N_STEPS = 4;
+
+        public static readonly float RIGID_BODY_MASS = 1e24f;
+        public static readonly float RIGID_BODY_CO_R = 1f;
+        public static readonly float RIGID_BODY_VELOCITY_MAGNITUDE_BOUND = 480f;
+        public static readonly float RIGID_BODY_FRICTION_MULTIPLIER = 0.0001f;
+        public static readonly float RIGID_BODY_GRAVITY_VELOCITY_Y = 6f;
+        public static readonly float RIGID_BODY_RESOLVE_COLLIDE_NORMAL = 1f;
 
         // Scene
+        public static readonly int SCREEN_WIDTH = 800;
+        public static readonly int SCREEN_HEIGHT = 480;
+
+        public const ulong HASH_MAP_SIZE = 64;
+        public static readonly int HASH_MAP_SHIFT = 32;
+
+        public static readonly Vector2 SCORE_TITLE_POSITION = new Vector2(800f / 11f, 48f);
+        public static readonly Vector2 COINS_TITLE_POSITION = new Vector2(3f * 800f / 11f, 48f);
+        public static readonly Vector2 LEVEL_TITLE_POSITION = new Vector2(5f * 800f / 11f, 48f);
+        public static readonly Vector2 TIME_TITLE_POSITION = new Vector2(7f * 800f / 11f, 48f);
+        public static readonly Vector2 LIVES_TITLE_POSITION = new Vector2(9f * 800f / 11f, 48f);
+        public static readonly Vector2 SCORE_VALUE_POSITION = new Vector2(800f / 11f, 96f);
+        public static readonly Vector2 COINS_VALUE_POSITION = new Vector2(3f * 800f / 11f, 96f);
+        public static readonly Vector2 LEVEL_VALUE_POSITION = new Vector2(5f * 800f / 11f, 96f);
+        public static readonly Vector2 TIME_VALUE_POSITION = new Vector2(7f * 800f / 11f, 96f);
+        public static readonly Vector2 LIVES_VALUE_POSITION = new Vector2(9f * 800f / 11f, 96f);
 
         // Sprite
+        public static readonly float FRAME_UPDATE_INTERVAL = 15f * 0.016f;
     }
 }

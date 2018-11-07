@@ -4,11 +4,9 @@ namespace MarioPirates
 {
     internal class MarioStateDead : MarioStateSize
     {
-        public const int marioWidth = 30, marioHeight = 28;
-
         public MarioStateDead(MarioState state) : base(state)
         {
-            state.mario.Size = new Point(marioWidth, marioHeight);
+            state.mario.Size = new Point(Constants.DEAD_MARIO_WIDTH, Constants.DEAD_MARIO_HEIGHT);
             state.mario.RigidBody.CollisionLayerMask = CollisionLayer.None;
         }
 

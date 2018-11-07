@@ -8,6 +8,6 @@ namespace MarioPirates
 
         public void SetAccelerated(bool isAccelerated) => IsAccelerated = isAccelerated;
 
-        public float VelocityMultiplier => IsAccelerated ? 10f : 1f;
+        public float VelocityMultiplier => IsAccelerated ? Constants.ACCELERATING_MARIO_MULTIPLIER : Constants.NONACCELERATING_MARIO_MULTIPLIER;
     }
 }

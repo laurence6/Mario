@@ -7,8 +7,7 @@ namespace MarioPirates
 {
     internal class HashMap
     {
-        public const ulong size = 64;
-        public const ulong mask = ~(size - 1);
+        public const ulong mask = ~(Constants.HASH_MAP_SIZE - 1);
 
         private HashSet<GameObjectRigidBody> objects = new HashSet<GameObjectRigidBody>();
 
@@ -73,9 +72,9 @@ namespace MarioPirates
         {
             (var minX, var minY) = Hash(bound.Location);
             (var maxX, var maxY) = Hash(bound.Location + bound.Size);
-            for (var x = minX; x <= maxX; x += size)
-                for (var y = minY; y <= maxY; y += size)
-                    f((x << 32) | y);
+            for (var x = minX; x <= maxX; x += Constants.HASH_MAP_SIZE)
+                for (var y = minY; y <= maxY; y += Constants.HASH_MAP_SIZE)
+                    f((x << Constants.HASH_MAP_SHIFT) | y);
         }
 
         private static (ulong, ulong) Hash(Point p)

@@ -50,16 +50,16 @@ namespace MarioPirates
         public void Draw(SpriteBatch spriteBatch, SpriteFont font)
         {
             spriteBatch.Begin();
-            spriteBatch.DrawString(font, "SCORE", new Vector2(1 * Camera.ScreenWidth / 11, Camera.ScreenHeight / 10), Color.White);
-            spriteBatch.DrawString(font, "COINS", new Vector2(3 * Camera.ScreenWidth / 11, Camera.ScreenHeight / 10), Color.White);
-            spriteBatch.DrawString(font, "LEVEL", new Vector2(5 * Camera.ScreenWidth / 11, Camera.ScreenHeight / 10), Color.White);
-            spriteBatch.DrawString(font, "TIME", new Vector2(7 * Camera.ScreenWidth / 11, Camera.ScreenHeight / 10), Color.White);
-            spriteBatch.DrawString(font, "LIVES", new Vector2(9 * Camera.ScreenWidth / 11, Camera.ScreenHeight / 10), Color.White);
-            spriteBatch.DrawString(font, score.ToString(), new Vector2(1 * Camera.ScreenWidth / 11, Camera.ScreenHeight / 5), Color.White);
-            spriteBatch.DrawString(font, coins.ToString(), new Vector2(3 * Camera.ScreenWidth / 11, Camera.ScreenHeight / 5), Color.White);
-            spriteBatch.DrawString(font, level, new Vector2(5 * Camera.ScreenWidth / 11, Camera.ScreenHeight / 5), Color.White);
-            spriteBatch.DrawString(font, time.ToString(), new Vector2(7 * Camera.ScreenWidth / 11, Camera.ScreenHeight / 5), Color.White);
-            spriteBatch.DrawString(font, lives.ToString(), new Vector2(9 * Camera.ScreenWidth / 11, Camera.ScreenHeight / 5), Color.White);
+            spriteBatch.DrawString(font, "SCORE", Constants.SCORE_TITLE_POSITION, Color.White);
+            spriteBatch.DrawString(font, "COINS", Constants.COINS_TITLE_POSITION, Color.White);
+            spriteBatch.DrawString(font, "LEVEL", Constants.LEVEL_TITLE_POSITION, Color.White);
+            spriteBatch.DrawString(font, "TIME", Constants.TIME_TITLE_POSITION, Color.White);
+            spriteBatch.DrawString(font, "LIVES", Constants.LIVES_TITLE_POSITION, Color.White);
+            spriteBatch.DrawString(font, score.ToString(), Constants.SCORE_VALUE_POSITION, Color.White);
+            spriteBatch.DrawString(font, coins.ToString(), Constants.COINS_VALUE_POSITION, Color.White);
+            spriteBatch.DrawString(font, level, Constants.LIVES_VALUE_POSITION, Color.White);
+            spriteBatch.DrawString(font, time.ToString(), Constants.TIME_VALUE_POSITION, Color.White);
+            spriteBatch.DrawString(font, lives.ToString(), Constants.LIVES_VALUE_POSITION, Color.White);
             spriteBatch.End();
         }
     }
