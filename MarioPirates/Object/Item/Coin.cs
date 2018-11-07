@@ -15,6 +15,7 @@
             {
                 RigidBody.Mass = Constants.OBJECT_PRECOLLISION_MASS;
                 Coins.Ins.Value++;
+                Score.Ins.Value += 200;
                 EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this));
             }
             base.PostCollide(other, side);

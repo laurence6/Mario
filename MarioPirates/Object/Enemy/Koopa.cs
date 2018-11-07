@@ -40,6 +40,7 @@ namespace MarioPirates
                     Score.Ins.Value += Constants.KOOPA_POINTS;
                     Stomped = true;
                 }
+                Score.Ins.Value += 100;
             }
             else if (other is Fireball)
             {

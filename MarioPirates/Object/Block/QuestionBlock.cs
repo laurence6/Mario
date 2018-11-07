@@ -32,6 +32,7 @@ namespace MarioPirates
                         if (powerup == "Coin")
                         {
                             Coins.Ins.Value++;
+                            Score.Ins.Value += 200;
                             EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(powerupObj), Constants.BLOCK_COLLISION_EVENT_DT);
                         }
                     }

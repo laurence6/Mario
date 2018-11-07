@@ -30,6 +30,7 @@ namespace MarioPirates
                 Sprite = SpriteFactory.Ins.CreateSprite("goomba_stomped");
                 RigidBody.CollisionLayerMask = CollisionLayer.None;
                 RigidBody.Velocity = Vector2.Zero;
+                Score.Ins.Value += 100;
                 EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(this), Constants.ENEMY_COLLISION_EVENT_DT);
             }
             else if (other is Koopa koopa && koopa.Stomped)
