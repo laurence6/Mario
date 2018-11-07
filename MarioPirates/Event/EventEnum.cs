@@ -27,7 +27,7 @@
         KeyUp,
         KeyHold,
 
-        // 
+        // Others
         Collide,
         GameObjectCreate,
         GameObjectDestroy,
