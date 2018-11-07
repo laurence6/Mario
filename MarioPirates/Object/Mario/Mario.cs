@@ -257,11 +257,11 @@ namespace MarioPirates
             // Response to collsion with enemies
             if (other is Goomba || other is Koopa)
             {
-                if (side != CollisionSide.Bottom && !State.IsInvincible && !State.IsTransiting)
+                if (!(side is CollisionSide.Bottom) && !State.IsInvincible && !State.IsTransiting)
                 {
                     if (State.IsSmall)
                     {
-                        RigidBody.Velocity = Constants.SMALL_MARIO_ENEMY_COLLISION_VELOCITY;
+                        RigidBody.Velocity = Constants.MARIO_ENEMY_COLLISION_VELOCITY;
                         State.Dead();
                     }
                     else
@@ -272,7 +272,7 @@ namespace MarioPirates
                         State.Small();
                     }
                 }
-                else
+                else if (side is CollisionSide.Bottom)
                 {
                     RigidBody.Velocity = Constants.MARIO_ENEMY_COLLISION_VELOCITY;
                 }

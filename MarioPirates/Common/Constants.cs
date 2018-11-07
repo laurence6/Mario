@@ -94,9 +94,8 @@ namespace MarioPirates
         public static readonly float MARIO_PIPE_COLLISION_EVENT_DT = 1000f;
         public static readonly float MARIO_MUSHROOM_COLLISION_EVENT_DT = 1000f;
         public static readonly float MARIO_STAR_COLLISION_EVENT_DT = 3000f;
-        public static readonly Vector2 SMALL_MARIO_ENEMY_COLLISION_VELOCITY = new Vector2(0f, -250f);
         public static readonly float MARIO_ENEMY_COLLISION_EVENT_DT = 1000f;
-        public static readonly Vector2 MARIO_ENEMY_COLLISION_VELOCITY = new Vector2(0f, -200f);
+        public static readonly Vector2 MARIO_ENEMY_COLLISION_VELOCITY = new Vector2(0f, -250f);
         public static readonly float MARIO_DISPOSE_EVENT_DT = 4000f;
 
         public static readonly float ACCELERATING_MARIO_MULTIPLIER = 10f;
