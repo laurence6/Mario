@@ -8,16 +8,15 @@ namespace MarioPirates
 {
     internal sealed class Scene
     {
-        private class SceneData
+        public class SceneData
         {
-            private readonly string level;
+            public readonly string level;
             private HashMap gameObjectContainer = new HashMap();
             private List<IGameObject> gameObjectsNoRigidBody = new List<IGameObject>();
 
             public SceneData(string level)
             {
                 this.level = level;
-                HUD.Ins.UpdateLevel(level);
             }
 
             public void Reset()
@@ -77,7 +76,7 @@ namespace MarioPirates
         public static readonly Scene Ins = new Scene();
 
         private Dictionary<string, SceneData> scenes = new Dictionary<string, SceneData>();
-        private SceneData activeScene = null;
+        public SceneData ActiveScene { get; private set; }
         private Action unsubscribe = null;
 
         private Scene()
@@ -91,26 +90,26 @@ namespace MarioPirates
             Active(Constants.DEFAULT_SCENE);
         }
 
-        public void ResetActive() => activeScene.Reset();
+        public void ResetActive() => ActiveScene.Reset();
 
         public void Active(string level)
         {
             unsubscribe?.Invoke();
             unsubscribe = null;
 
-            activeScene = scenes[level];
+            ActiveScene = scenes[level];
 
-            unsubscribe += EventManager.Ins.Subscribe(EventEnum.GameObjectCreate, (s, e) => activeScene.AddGameObject((e as GameObjectCreateEventArgs).Object));
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.GameObjectCreate, (s, e) => ActiveScene.AddGameObject((e as GameObjectCreateEventArgs).Object));
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.GameObjectDestroy, (s, e) =>
             {
                 var eventArgs = e as GameObjectDestroyEventArgs;
                 (eventArgs.Object as IDisposable)?.Dispose();
-                activeScene.RemoveGameObject(eventArgs.Object);
+                ActiveScene.RemoveGameObject(eventArgs.Object);
             });
         }
 
-        public void Update(float dt) => activeScene.Update(dt);
+        public void Update(float dt) => ActiveScene.Update(dt);
 
-        public void Draw(SpriteBatch spriteBatch) => activeScene.Draw(spriteBatch);
+        public void Draw(SpriteBatch spriteBatch) => ActiveScene.Draw(spriteBatch);
     }
 }
