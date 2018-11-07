@@ -30,15 +30,15 @@ namespace MarioPirates
             new JavaScriptSerializer().Deserialize<List<string>>(ReadAllText("Content\\MarioSpritesList.json"))
                  .ForEach(s => Sprites.Add(s, SpriteFactory.Ins.CreateSprite(s)));
 
-            RigidBody.CoR = Constants.MARIO_CO_R; //0.5f
+            RigidBody.CoR = Constants.MARIO_CO_R;
 
             State = new MarioState(this);
 
             SubscribeInput();
 
             JumpHoldCount = 0;
-            TransitionToBigCount = Constants.MARIO_TRANSITION_COUNT_MAX; //30
-            TransitionToSmallCount = Constants.MARIO_TRANSITION_COUNT_MAX; //30
+            TransitionToBigCount = Constants.MARIO_TRANSITION_COUNT_MAX;
+            TransitionToSmallCount = Constants.MARIO_TRANSITION_COUNT_MAX;
         }
 
         public void SubscribeInput()
@@ -58,9 +58,9 @@ namespace MarioPirates
         {
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyUpHold, (s, e) =>
             {
-                if (JumpHoldCount < Constants.MARIO_JUMP_HOLD_COUNT_LIMIT) // 30
+                if (JumpHoldCount < Constants.MARIO_JUMP_HOLD_COUNT_LIMIT)
                 {
-                    RigidBody.ApplyForce(new Vector2(0, Constants.MARIO_Y_FORCE + JumpHoldCount * Constants.MARIO_JUMP_HOLD_COUNT_MULTIPLIER)); // -5000, 240
+                    RigidBody.ApplyForce(new Vector2(0, Constants.MARIO_JUMP_FORCE_Y + JumpHoldCount * Constants.MARIO_JUMP_HOLD_COUNT_MULTIPLIER));
                     JumpHoldCount += 1;
                 }
             });
@@ -68,7 +68,7 @@ namespace MarioPirates
             {
                 if (RigidBody.Grounded)
                 {
-                    RigidBody.ApplyForce(new Vector2(0, Constants.MARIO_Y_FORCE + JumpHoldCount * Constants.MARIO_JUMP_HOLD_COUNT_MULTIPLIER)); //-5000, 240
+                    RigidBody.ApplyForce(new Vector2(0, Constants.MARIO_JUMP_FORCE_Y + JumpHoldCount * Constants.MARIO_JUMP_HOLD_COUNT_MULTIPLIER));
                     JumpHoldCount = 1;
                 }
             });
@@ -80,14 +80,14 @@ namespace MarioPirates
             {
                 if (!State.IsCrouch)
                 {
-                    RigidBody.ApplyForce(new Vector2(-Constants.MARIO_X_FORCE * State.VelocityMultipler, 0)); //-2000
+                    RigidBody.ApplyForce(new Vector2(-Constants.MARIO_RUN_FORCE_X * State.VelocityMultipler, 0));
                 }
             });
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyRightHold, (s, e) =>
             {
                 if (!State.IsCrouch)
                 {
-                    RigidBody.ApplyForce(new Vector2(Constants.MARIO_X_FORCE * State.VelocityMultipler, 0)); // 2000
+                    RigidBody.ApplyForce(new Vector2(Constants.MARIO_RUN_FORCE_X * State.VelocityMultipler, 0));
                 }
             });
 
@@ -160,9 +160,9 @@ namespace MarioPirates
                 if (State.IsFire)
                 {
                     var fireball = new Fireball((int)Location.X + (State.IsLeft ? -Constants.FIREBALL_WIDTH : Constants.FIREBALL_WIDTH + Size.X), (int)Location.Y + Constants.FIREBALL_HEIGHT); //16, 16, 16
-                    fireball.RigidBody.Velocity = new Vector2(State.IsLeft ? -Constants.FIREBALL_COLLISION_VELOCITY : Constants.FIREBALL_COLLISION_VELOCITY, 0f); // -200, 200
+                    fireball.RigidBody.Velocity = new Vector2(State.IsLeft ? -Constants.FIREBALL_COLLISION_VELOCITY.X : Constants.FIREBALL_COLLISION_VELOCITY.X, 0f);
                     EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(fireball));
-                    EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(fireball), Constants.DESTROY_FIREBALL_DELAY); //3000
+                    EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(fireball), Constants.FIRE_MARIO_FIREBALL_EVENT_DT);
                 }
             });
         }
@@ -175,15 +175,15 @@ namespace MarioPirates
                 State.Run();
             else
                 State.Idle();
-            if (RigidBody.Velocity.X < Constants.MARIO_TRANSITION_COUNT_MAX && RigidBody.Velocity.X > -Constants.MARIO_TRANSITION_COUNT_MAX) // 30, -30
+            if (RigidBody.Velocity.X < Constants.MARIO_TRANSITION_COUNT_MAX && RigidBody.Velocity.X > -Constants.MARIO_TRANSITION_COUNT_MAX)
                 State.Coast();
 
             if (TransitionToBigCount < Constants.MARIO_TRANSITION_COUNT_MAX)
             {
-                if (TransitionToBigCount % Constants.MARIO_TRANSITION_COUNT == 0) //5
+                if (TransitionToBigCount % Constants.MARIO_TRANSITION_COUNT == 0)
                 {
                     StoredToBigLocation = new Vector2(Location.X, Location.Y + Size.Y);
-                    var targetHeight = (int)(MarioStateBig.marioHeight / Constants.MARIO_TRANSITION_ZOOM[TransitionToBigCount / Constants.MARIO_TRANSITION_COUNT]); //5
+                    var targetHeight = (int)(MarioStateBig.marioHeight / Constants.MARIO_TRANSITION_ZOOM[TransitionToBigCount / Constants.MARIO_TRANSITION_COUNT]);
                     Location = new Vector2(StoredToBigLocation.X, StoredToBigLocation.Y - targetHeight);
                     Size = new Point(MarioStateBig.marioWidth, targetHeight);
                 }
@@ -192,10 +192,10 @@ namespace MarioPirates
 
             if (TransitionToSmallCount < Constants.MARIO_TRANSITION_COUNT_MAX)
             {
-                if (TransitionToSmallCount % Constants.MARIO_TRANSITION_COUNT == 0) //5
+                if (TransitionToSmallCount % Constants.MARIO_TRANSITION_COUNT == 0)
                 {
                     StoredToSmallLocation = new Vector2(Location.X, Location.Y + Size.Y);
-                    var targetHeight = (int)(MarioStateSmall.marioHeight * Constants.MARIO_TRANSITION_ZOOM[TransitionToSmallCount / Constants.MARIO_TRANSITION_COUNT]); //5
+                    var targetHeight = (int)(MarioStateSmall.marioHeight * Constants.MARIO_TRANSITION_ZOOM[TransitionToSmallCount / Constants.MARIO_TRANSITION_COUNT]);
                     Location = new Vector2(StoredToSmallLocation.X, StoredToSmallLocation.Y - targetHeight);
                     Size = new Point(MarioStateSmall.marioWidth, targetHeight);
                 }
@@ -222,7 +222,7 @@ namespace MarioPirates
                 {
                     TransitionToBigCount = 0;
                     State.Transiting();
-                    EventManager.Ins.RaiseEvent(EventEnum.Action, this, new ActionEventArgs(() => State.CancelTransiting()), Constants.DESTROY_FLOWER_DELAY); //1000
+                    EventManager.Ins.RaiseEvent(EventEnum.Action, this, new ActionEventArgs(() => State.CancelTransiting()), Constants.SMALL_MARIO_FLOWER_COLLISION_EVENT_DT);
                 }
                 State.Fire();
             }
@@ -233,10 +233,10 @@ namespace MarioPirates
             else if (other is PipeTop pipe && pipe.ToLevel != null && side is CollisionSide.Bottom && State.Action.State == MarioStateEnum.Crouch)
             {
                 UnsubscribeInput();
-                Location = new Vector2(pipe.Location.X + Constants.MARIO_LOCATION_IN_PIPE, Location.Y); // 32/4
+                Location = new Vector2(pipe.Location.X + Constants.MARIO_LOCATION_IN_PIPE, Location.Y);
                 RigidBody.Motion = MotionEnum.Keyframe;
-                RigidBody.Velocity = new Vector2(0f, Constants.MARIO_PIPE_COLLISION_VELOCITY); //50
-                EventManager.Ins.RaiseEvent(EventEnum.Action, this, new ActionEventArgs(() => Scene.Ins.Active(pipe.ToLevel)), Constants.MARIO_COLLISION_EVENT_DELAY); //1000
+                RigidBody.Velocity = Constants.MARIO_PIPE_COLLISION_VELOCITY;
+                EventManager.Ins.RaiseEvent(EventEnum.Action, this, new ActionEventArgs(() => Scene.Ins.Active(pipe.ToLevel)), Constants.MARIO_PIPE_COLLISION_EVENT_DT);
             }
             else if (other is RedMushroom)
             {
@@ -244,14 +244,14 @@ namespace MarioPirates
                 {
                     TransitionToBigCount = 0;
                     State.Transiting();
-                    EventManager.Ins.RaiseEvent(EventEnum.Action, this, new ActionEventArgs(() => State.CancelTransiting()), Constants.MARIO_COLLISION_EVENT_DELAY); //1000
+                    EventManager.Ins.RaiseEvent(EventEnum.Action, this, new ActionEventArgs(() => State.CancelTransiting()), Constants.MARIO_MUSHROOM_COLLISION_EVENT_DT); 
                 }
                 State.Big();
             }
             else if (other is Star)
             {
                 State.Invincible();
-                EventManager.Ins.RaiseEvent(EventEnum.Action, this, new ActionEventArgs(() => State.CancelInvincible()), Constants.MARIO_STAR_COLLISION_EVENT_DELAY); // 3000
+                EventManager.Ins.RaiseEvent(EventEnum.Action, this, new ActionEventArgs(() => State.CancelInvincible()), Constants.MARIO_STAR_COLLISION_EVENT_DT);
             }
 
             // Response to collsion with enemies
@@ -261,20 +261,20 @@ namespace MarioPirates
                 {
                     if (State.IsSmall)
                     {
-                        RigidBody.Velocity = new Vector2(0f, Constants.SMALL_MARIO_ENEMY_COLLISION_VELOCITY); //-250
+                        RigidBody.Velocity = Constants.SMALL_MARIO_ENEMY_COLLISION_VELOCITY;
                         State.Dead();
                     }
                     else
                     {
                         TransitionToSmallCount = 0;
                         State.Transiting();
-                        EventManager.Ins.RaiseEvent(EventEnum.Action, this, new ActionEventArgs(() => State.CancelTransiting()), Constants.MARIO_COLLISION_EVENT_DELAY); //1000
+                        EventManager.Ins.RaiseEvent(EventEnum.Action, this, new ActionEventArgs(() => State.CancelTransiting()), Constants.MARIO_ENEMY_COLLISION_EVENT_DT);
                         State.Small();
                     }
                 }
                 else
                 {
-                    RigidBody.Velocity = new Vector2(0f, Constants.MARIO_ENEMY_COLLISION_VELOCITY); //-200
+                    RigidBody.Velocity = Constants.MARIO_ENEMY_COLLISION_VELOCITY;
                 }
             }
         }
@@ -282,7 +282,7 @@ namespace MarioPirates
         public void Dispose()
         {
             UnsubscribeInput();
-            EventManager.Ins.RaiseEvent(EventEnum.KeyDown, this, new KeyDownEventArgs(Keys.R), Constants.MARIO_DISPOSE_EVENT_DELAY); //4000
+            EventManager.Ins.RaiseEvent(EventEnum.KeyDown, this, new KeyDownEventArgs(Keys.R), Constants.MARIO_DISPOSE_EVENT_DT);
         }
     }
 }

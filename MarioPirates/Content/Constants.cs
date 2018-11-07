@@ -53,7 +53,7 @@ namespace MarioPirates
         public static readonly int FIREBALL_WIDTH = 10;
         public static readonly int FIREBALL_HEIGHT = 10;
         public static readonly float FIREBALL_MASS = 0.05f;
-        public static readonly float FIREBALL_COLLISION_VELOCITY_Y = -200f;
+        public static readonly Vector2 FIREBALL_COLLISION_VELOCITY = new Vector2(200f, -200f);
 
         public static readonly int FLAG_WIDTH = 33;
         public static readonly int FLAG_HEIGHT = 168;
@@ -78,29 +78,32 @@ namespace MarioPirates
         public static readonly float STAR_COLLISION_VELOCITY_Y = -200f;
 
 
-        // Mario, MarioStateAccelerated, MarioStateBig, MarioStateDead, MarioStateFire, MarioStateSmall
+        // Mario
         public static readonly int MARIO_JUMP_HOLD_COUNT_LIMIT = 30;
         public static readonly int MARIO_TRANSITION_COUNT_MAX = 30;
         public static readonly float[] MARIO_TRANSITION_ZOOM = { 2f, 1.67f, 1.33f, 1.67f, 1.33f, 1f };
         public static readonly float MARIO_CO_R = 0.5f;
-        public static readonly float MARIO_Y_FORCE = -5000;
-        public static readonly float MARIO_JUMP_HOLD_COUNT_MULTIPLIER = 240;
-        public static readonly float MARIO_X_FORCE = 2000f;
+        public static readonly float MARIO_JUMP_FORCE_Y = -5000f;
+        public static readonly float MARIO_JUMP_HOLD_COUNT_MULTIPLIER = 240f;
+        public static readonly float MARIO_RUN_FORCE_X = 2000f;
+        public static readonly float FIRE_MARIO_FIREBALL_EVENT_DT = 3000f;
         public static readonly int MARIO_TRANSITION_COUNT = 5;
-        public static readonly float MARIO_LOCATION_IN_PIPE = 8f;
-        public static readonly float MARIO_PIPE_COLLISION_VELOCITY = 50f;
-        public static readonly float MARIO_COLLISION_EVENT_DELAY = 1000f;
-        public static readonly float MARIO_STAR_COLLISION_EVENT_DELAY = 3000f;
-        public static readonly float SMALL_MARIO_ENEMY_COLLISION_VELOCITY = -250f;
-        public static readonly float MARIO_ENEMY_COLLISION_VELOCITY = -200f;
-        public static readonly float MARIO_DISPOSE_EVENT_DELAY = 4000f;
+        public static readonly float SMALL_MARIO_FLOWER_COLLISION_EVENT_DT = 1000f;
+        public static readonly float MARIO_LOCATION_IN_PIPE = 32f / 4f;
+        public static readonly Vector2 MARIO_PIPE_COLLISION_VELOCITY = new Vector2(0f, 50f);
+        public static readonly float MARIO_PIPE_COLLISION_EVENT_DT = 1000f;
+        public static readonly float MARIO_MUSHROOM_COLLISION_EVENT_DT = 1000f;
+        public static readonly float MARIO_STAR_COLLISION_EVENT_DT = 3000f;
+        public static readonly Vector2 SMALL_MARIO_ENEMY_COLLISION_VELOCITY = new Vector2(0f, -250f);
+        public static readonly float MARIO_ENEMY_COLLISION_EVENT_DT = 1000f;
+        public static readonly Vector2 MARIO_ENEMY_COLLISION_VELOCITY = new Vector2(0f, -200f);
+        public static readonly float MARIO_DISPOSE_EVENT_DT = 4000f;
 
+        // Virtual
 
-        // Background, VirtualWall
+        // Physics
 
-        // Physics, RigisBody
-
-        // Camera, HashMap
+        // Scene
 
         // Sprite
     }

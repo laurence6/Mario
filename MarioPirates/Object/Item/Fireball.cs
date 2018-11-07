@@ -23,7 +23,7 @@ namespace MarioPirates
             base.PostCollide(other, side);
             if (RigidBody.Grounded)
             {
-                RigidBody.Velocity = new Vector2(RigidBody.Velocity.X, Constants.FIREBALL_COLLISION_VELOCITY_Y);
+                RigidBody.Velocity = new Vector2(RigidBody.Velocity.X, Constants.FIREBALL_COLLISION_VELOCITY.Y);
             }
             if (other is Goomba || other is Koopa)
             {
