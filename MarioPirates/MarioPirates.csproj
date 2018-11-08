@@ -148,6 +148,9 @@
     <None Include="Content\LevelData_1.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\LevelData_gameover.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\SpritesData.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

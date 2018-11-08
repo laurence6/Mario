@@ -167,5 +167,11 @@ namespace MarioPirates
             );
             controllers.Add(gamePadController);
         }
+
+        private void GameOver()
+        {
+            Scene.Ins.Active(Constants.GAMEOVER_SCENE);
+            //EventManager.Ins.RaiseEvent()
+        }
     }
 }
