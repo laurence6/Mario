@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace MarioPirates
 {
     internal class LongPipe : GameObjectRigidBody

@@ -71,6 +71,7 @@ namespace MarioPirates
                     if (other is Mario)
                     {
                         @this.RigidBody.Mass = Constants.OBJECT_TINY_MASS;
+                        Lives.Ins.Value++;
                         EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, @this, new GameObjectDestroyEventArgs(@this));
                     }
 
@@ -165,7 +166,7 @@ namespace MarioPirates
 
                                 var powerupObj = new GameObjectParam
                                 {
-                                   TypeName = thisBlueBrickBlock.Powerup,
+                                    TypeName = thisBlueBrickBlock.Powerup,
                                     Location = new int[2] { (int)thisBlueBrickBlock.Location.X, (int)thisBlueBrickBlock.Location.Y - Constants.BLOCK_HEIGHT * 2 },
                                     Motion = MotionEnum.Dynamic,
                                 }.ToGameObject();
@@ -198,13 +199,13 @@ namespace MarioPirates
                         }
                     }
 
-                        else if (self is QuestionBlock thisQuestionBlock)
+                    else if (self is QuestionBlock thisQuestionBlock)
+                    {
+                        if (other is Mario)
                         {
-                            if (other is Mario)
+                            if (thisQuestionBlock.State == BlockState.Normal && side == CollisionSide.Bottom)
                             {
-                                if (thisQuestionBlock.State == BlockState.Normal && side == CollisionSide.Bottom)
-                                {
-                                    thisQuestionBlock.State = BlockState.Used;
+                                thisQuestionBlock.State = BlockState.Used;
 
                                 if (thisQuestionBlock.Powerup != null)
                                 {
