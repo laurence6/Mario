@@ -129,6 +129,7 @@ namespace MarioPirates
             Scene.Ins.ResetActive();
             EventManager.Ins.RaiseEvent(EventEnum.Action, this, new ActionEventArgs(GameOverReset), Constants.RESET_EVENT_DT);
             triggerGameOver = false;
+            triggerReset = false;
         }
 
         private void GameOverReset()
@@ -164,6 +165,7 @@ namespace MarioPirates
             });
 
             controllers.Clear();
+            triggerGameOver = false;
             triggerReset = false;
             pause = false;
 

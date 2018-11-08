@@ -6,23 +6,19 @@ namespace MarioPirates
 {
     internal sealed class AudioManager
     {
-
         public static readonly AudioManager Ins = new AudioManager();
 
-        public Song OverworldTheme;
-        public SoundEffect JumpSmall;
+        private AudioManager()
+        {
+        }
 
+        public Song OverworldTheme { get; private set; }
+        public SoundEffect JumpSmall { get; private set; }
 
         public void LoadContent(ContentManager content)
         {
-
             OverworldTheme = content.Load<Song>("OverworldTheme");
-
             JumpSmall = content.Load<SoundEffect>("jumpsmall");
-
-
-            System.Console.WriteLine(OverworldTheme.Duration);
-            System.Console.WriteLine(JumpSmall.Duration);
         }
 
         public void StartTheme()
@@ -35,12 +31,5 @@ namespace MarioPirates
         {
             JumpSmall.Play();
         }
-
-
-
-
     }
-
 }
-
-
