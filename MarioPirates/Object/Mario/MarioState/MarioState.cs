@@ -37,7 +37,7 @@ namespace MarioPirates
             {
                 s += "_star";
                 if (Size.State is MarioStateEnum.Fire)
-                    s = "big" + s.Substring(4);
+                    s = MarioStateEnum.Big.ToString().ToString() + s.Substring(4);
             }
             if (action.State is MarioStateEnum.Run && brake.State is MarioStateEnum.Brake)
                 s += "_brake";
