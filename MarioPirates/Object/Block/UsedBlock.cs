@@ -7,7 +7,7 @@ namespace MarioPirates
         public override bool IsUsed => State != BlockState.Hidden;
 
         public UsedBlock(int dstX, int dstY, Dictionary<string, string> Params)
-            : base(dstX, dstY, Params, SpriteFactory.Ins.CreateSprite("usedblock"))
+            : base(dstX, dstY, Params, SpriteFactory.Ins.CreateSprite(Constants.USED_BLOCK_SPRITE))
         {
         }
     }

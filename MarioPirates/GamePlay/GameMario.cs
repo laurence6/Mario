@@ -19,7 +19,7 @@ namespace MarioPirates
         public GameMario()
         {
             graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
+            Content.RootDirectory = Constants.CONTENT_ROOT;
         }
 
         /// <summary>
@@ -46,6 +46,11 @@ namespace MarioPirates
         /// </summary>
         protected override void LoadContent()
         {
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            font = Content.Load<SpriteFont>("hud");
+
+            SpriteFactory.Ins.LoadContent(Content);
         }
 
         /// <summary>

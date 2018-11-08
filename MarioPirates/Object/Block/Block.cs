@@ -42,12 +42,12 @@ namespace MarioPirates
 
         protected Block(int dstX, int dstY, Dictionary<string, string> Params, Sprite normalSprite) : base(dstX, dstY, Constants.BLOCK_WIDTH * 2, Constants.BLOCK_HEIGHT * 2)
         {
-            usedSprite = SpriteFactory.Ins.CreateSprite("usedblock");
+            usedSprite = SpriteFactory.Ins.CreateSprite(Constants.USED_BLOCK_SPRITE);
             this.normalSprite = normalSprite;
 
             RigidBody.ApplyForce(WorldForce.Gravity);
 
-            Enum.TryParse(Params["State"], out BlockState state);
+            Enum.TryParse(Params[Constants.STATE_PARAM], out BlockState state);
             State = state;
 
             origLocation = Location;

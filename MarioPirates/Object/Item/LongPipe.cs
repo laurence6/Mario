@@ -4,7 +4,7 @@ namespace MarioPirates
     {
         public LongPipe(int dstX, int dstY) : base(dstX, dstY, Constants.LONG_PIPE_WIDTH * 2, Constants.LONG_PIPE_HEIGHT * 2)
         {
-            Sprite = SpriteFactory.Ins.CreateSprite("longpipe");
+            Sprite = SpriteFactory.Ins.CreateSprite(Constants.LONG_PIPE_SPRITE);
         }
     }
 }

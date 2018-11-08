@@ -4,7 +4,7 @@
     {
         public Star(int dstX, int dstY) : base(dstX, dstY, Constants.STAR_WIDTH * 2, Constants.STAR_HEIGHT * 2)
         {
-            Sprite = SpriteFactory.Ins.CreateSprite("star");
+            Sprite = SpriteFactory.Ins.CreateSprite(Constants.STAR_SPRITE);
             RigidBody.Mass = Constants.STAR_MASS;
             RigidBody.CollisionLayerMask = CollisionLayer.Star;
             RigidBody.Velocity = Constants.STAR_INITIAL_VELOCITY;

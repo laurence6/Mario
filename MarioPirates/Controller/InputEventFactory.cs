@@ -7,7 +7,7 @@ namespace MarioPirates.Controller
     {
         public static (EventEnum, EventArgs) CreateKeyEvent(InputState state, Keys key)
         {
-            if (Enum.TryParse<EventEnum>("Key" + key + state, out var e))
+            if (Enum.TryParse<EventEnum>(Constants.KEYBOARD_EVENT_PREFIX + key + state, out var e))
             {
                 return (e, EventArgs.Empty);
             }

@@ -28,7 +28,7 @@ namespace MarioPirates
                 AddGameObject(new VirtualWall(0f, 0f));
                 AddGameObject(new VirtualWall(Constants.SCREEN_WIDTH - Constants.VIRTUAL_WALL_WIDTH, 0f));
 
-                new JavaScriptSerializer().Deserialize<List<GameObjectParam>>(ReadAllText("Content\\LevelData_" + level + ".json"))
+               new JavaScriptSerializer().Deserialize<List<GameObjectParam>>(ReadAllText(Constants.CONTENT_PATH_ROOT + Constants.LEVEL_DATA_PREFIX + level + Constants.DATA_FILE_TYPE))
                     .ForEach(o => EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(o.ToGameObject())));
 
                 var sceneEndBound = 0f;

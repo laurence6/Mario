@@ -32,15 +32,15 @@ namespace MarioPirates
         {
             var s = Size.State.ToString().ToLower();
             if (!IsDead)
-                s += "_" + Action.State.ToString().ToLower() + "_" + direction.State.ToString().ToLower();
+                s += Constants.MARIO_STATE_EXTEND + Action.State.ToString().ToLower() + Constants.MARIO_STATE_EXTEND + direction.State.ToString().ToLower();
             if (IsInvincible)
             {
-                s += "_star";
+                s += Constants.STAR_MARIO_SUFFIX;
                 if (Size.State is MarioStateEnum.Fire)
                     s = MarioStateEnum.Big.ToString().ToString() + s.Substring(4);
             }
             if (action.State is MarioStateEnum.Run && brake.State is MarioStateEnum.Brake)
-                s += "_brake";
+                s += Constants.MARIO_BRAKE_SUFFIX;
             mario.Sprite = mario.Sprites[s];
         }
 

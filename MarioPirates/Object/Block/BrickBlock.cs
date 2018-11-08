@@ -7,10 +7,10 @@ namespace MarioPirates
         public string Powerup { get; set; }
 
         public BrickBlock(int dstX, int dstY, Dictionary<string, string> Params)
-            : base(dstX, dstY, Params, SpriteFactory.Ins.CreateSprite("brickblock"))
+            : base(dstX, dstY, Params, SpriteFactory.Ins.CreateSprite(Constants.BRICK_BLOCK_SPRITE))
         {
-            if (Params.ContainsKey("Powerup"))
-                Powerup = Params["Powerup"];
+            if (Params.ContainsKey(Constants.POWERUP_PARAM))
+                Powerup = Params[Constants.POWERUP_PARAM];
         }
     }
 }

@@ -129,7 +129,7 @@ namespace MarioPirates
                                     Motion = MotionEnum.Dynamic,
                                 }.ToGameObject();
                                 EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, thisBrickBlock, new GameObjectCreateEventArgs(powerupObj));
-                                if (thisBrickBlock.Powerup == "Coin")
+                                if (thisBrickBlock.Powerup == Constants.COIN_TYPE_NAME)
                                 {
                                     EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, thisBrickBlock, new GameObjectDestroyEventArgs(powerupObj), Constants.BLOCK_COLLISION_EVENT_DT);
                                 }
@@ -143,10 +143,10 @@ namespace MarioPirates
                                 {
                                     var debris = new GameObjectParam
                                     {
-                                        TypeName = "BrickDebris",
+                                        TypeName = Constants.BRICK_DEBRIS_TYPE_NAME,
                                         Location = new int[] { (int)thisBrickBlock.Location.X + Constants.BRICK_BLOCK_COLLISION_OFFSETS[i, 0], (int)thisBrickBlock.Location.Y + Constants.BRICK_BLOCK_COLLISION_OFFSETS[i, 1] },
                                         Motion = MotionEnum.Dynamic,
-                                        Params = new Dictionary<string, string> { { "Position", Constants.BRICK_BLOCK_COLLISION_POSITIONS[i] } },
+                                        Params = new Dictionary<string, string> { { Constants.POSITION_PARAM, Constants.BRICK_BLOCK_COLLISION_POSITIONS[i] } },
                                     }.ToGameObject();
                                     (debris as GameObjectRigidBody).RigidBody.Velocity = Constants.BRICK_BLOCK_COLLISION_VELOCITIES[i];
                                     EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, thisBrickBlock, new GameObjectCreateEventArgs(debris));
@@ -171,7 +171,7 @@ namespace MarioPirates
                                     Motion = MotionEnum.Dynamic,
                                 }.ToGameObject();
                                 EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, thisBlueBrickBlock, new GameObjectCreateEventArgs(powerupObj));
-                                if (thisBlueBrickBlock.Powerup == "Coin")
+                                if (thisBlueBrickBlock.Powerup == Constants.COIN_TYPE_NAME)
                                 {
                                     EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, thisBlueBrickBlock, new GameObjectDestroyEventArgs(powerupObj), Constants.BLOCK_COLLISION_EVENT_DT);
                                 }
@@ -185,10 +185,10 @@ namespace MarioPirates
                                 {
                                     var debris = new GameObjectParam
                                     {
-                                        TypeName = "BlueBrickDebris",
+                                        TypeName = Constants.BLUE_BRICK_DEBRIS_TYPE_NAME,
                                         Location = new int[] { (int)thisBlueBrickBlock.Location.X + Constants.BRICK_BLOCK_COLLISION_OFFSETS[i, 0], (int)thisBlueBrickBlock.Location.Y + Constants.BRICK_BLOCK_COLLISION_OFFSETS[i, 1] },
                                         Motion = MotionEnum.Dynamic,
-                                        Params = new Dictionary<string, string> { { "Position", Constants.BRICK_BLOCK_COLLISION_POSITIONS[i] } },
+                                        Params = new Dictionary<string, string> { { Constants.POSITION_PARAM, Constants.BRICK_BLOCK_COLLISION_POSITIONS[i] } },
                                     }.ToGameObject();
                                     (debris as GameObjectRigidBody).RigidBody.Velocity = Constants.BRICK_BLOCK_COLLISION_VELOCITIES[i];
                                     EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, thisBlueBrickBlock, new GameObjectCreateEventArgs(debris));
@@ -216,7 +216,7 @@ namespace MarioPirates
                                         Motion = MotionEnum.Dynamic,
                                     }.ToGameObject();
                                     EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, thisQuestionBlock, new GameObjectCreateEventArgs(powerupObj));
-                                    if (thisQuestionBlock.Powerup == "Coin")
+                                    if (thisQuestionBlock.Powerup == Constants.COIN_TYPE_NAME)
                                     {
                                         Coins.Ins.Value++;
                                         Score.Ins.Value += Constants.COIN_POINTS;
@@ -236,7 +236,7 @@ namespace MarioPirates
 
                     if ((other is Mario mario && (side == CollisionSide.Top || mario.State.IsInvincible)) || other is Fireball)
                     {
-                        @this.Sprite = SpriteFactory.Ins.CreateSprite("goomba_stomped");
+                        @this.Sprite = SpriteFactory.Ins.CreateSprite(Constants.GOOMBA_STOMPED_SPRITE);
                         @this.RigidBody.CollisionLayerMask = CollisionLayer.None;
                         @this.RigidBody.Velocity = Vector2.Zero;
                         Score.Ins.Value += Constants.GOOMBA_POINTS;

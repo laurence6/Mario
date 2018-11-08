@@ -4,7 +4,7 @@ namespace MarioPirates
 {
     internal class VirtualPlane : GameObjectRigidBody
     {
-        public VirtualPlane(float locX, float locY) : base(locX, locY, Constants.SCREEN_WIDTH, 32)
+        public VirtualPlane(float locX, float locY) : base(locX, locY, Constants.SCREEN_WIDTH, Constants.VIRTUAL_PLANE_HEIGHT)
         {
             IsLocationAbsolute = true;
         }
