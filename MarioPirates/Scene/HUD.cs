@@ -3,11 +3,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MarioPirates
 {
-    internal sealed class HUD
+    internal static class HUD
     {
-        public static readonly HUD Ins = new HUD();
-
-        public void Draw(SpriteBatch spriteBatch, SpriteFont font)
+        public static void Draw(SpriteBatch spriteBatch, SpriteFont font)
         {
             spriteBatch.Begin();
             spriteBatch.DrawString(font, Constants.SCORE_TITLE, Constants.SCORE_TITLE_POSITION, Color.White);

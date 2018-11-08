@@ -6,21 +6,21 @@
 
         private Timer() { }
 
-        private float originalTime;
-        private uint timeLimit;
-        private float timeLeft;
+        private float OriginalTime;
+        private uint TimeLimit;
+        private float TimeLeft;
 
-        public uint Value => (timeLeft = (timeLimit - Time.Now + originalTime) / 1000) > 0 ? (uint)timeLeft : 0;
+        public uint Value => (TimeLeft = (TimeLimit - Time.Now + OriginalTime) / 1000) > 0 ? (uint)TimeLeft : 0;
 
         public void Reset(float originalTime)
         {
-            this.originalTime = originalTime;
+            OriginalTime = originalTime;
         }
 
         public void Reset(float originalTime, uint timeLimit)
         {
-            this.originalTime = originalTime;
-            this.timeLimit = timeLimit;
+            OriginalTime = originalTime;
+            TimeLimit = timeLimit;
         }
     }
 }

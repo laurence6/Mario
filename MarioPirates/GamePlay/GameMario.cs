@@ -100,7 +100,7 @@ namespace MarioPirates
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             Scene.Ins.Draw(spriteBatch);
-            HUD.Ins.Draw(spriteBatch, font);
+            HUD.Draw(spriteBatch, font);
         }
 
         private bool triggerReset = false;

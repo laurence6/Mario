@@ -43,28 +43,28 @@ namespace MarioPirates
             container.Rebuild();
             container.ForEachVisible(o1 =>
             {
-                if (o1.RigidBody.Motion == MotionEnum.Dynamic)
-                {
-                    o1.RigidBody.Grounded = false;
+                if (o1.RigidBody.Motion != MotionEnum.Dynamic)
+                    return;
 
-                    if (o1.RigidBody.Velocity.Y >= 0f)
+                o1.RigidBody.Grounded = false;
+
+                if (o1.RigidBody.Velocity.Y < 0f)
+                    return;
+
+                var bound = o1.RigidBody.Bound;
+                var potentialSupportUpper = new Rectangle(bound.Left, bound.Bottom + 1, bound.Width, 1);
+                container.Find(potentialSupportUpper, potentialSupport);
+                foreach (var o2 in potentialSupport)
+                {
+                    if (o1.RigidBody.CollisionLayerMask.HasOne(o2.RigidBody.CollisionLayerMask)
+                        && o1.RigidBody.CollisionSideMask.HasOne(CollisionSide.Bottom) && o2.RigidBody.CollisionSideMask.HasOne(CollisionSide.Top)
+                        && o2.RigidBody.Bound.Intersects(potentialSupportUpper))
                     {
-                        var bound = o1.RigidBody.Bound;
-                        var potentialSupportUpper = new Rectangle(bound.Left, bound.Bottom + 1, bound.Width, 1);
-                        container.Find(potentialSupportUpper, potentialSupport);
-                        foreach (var o2 in potentialSupport)
-                        {
-                            if (o1.RigidBody.CollisionLayerMask.HasOne(o2.RigidBody.CollisionLayerMask))
-                                if (o1.RigidBody.CollisionSideMask.HasOne(CollisionSide.Bottom) && o2.RigidBody.CollisionSideMask.HasOne(CollisionSide.Top))
-                                    if (o2.RigidBody.Bound.Intersects(potentialSupportUpper))
-                                    {
-                                        o1.RigidBody.Grounded = true;
-                                        collisions.Add(new CollideEventArgs(o1, o2, CollisionSide.Bottom, 0f));
-                                    }
-                        }
-                        potentialSupport.Clear();
+                        o1.RigidBody.Grounded = true;
+                        collisions.Add(new CollideEventArgs(o1, o2, CollisionSide.Bottom, 0f));
                     }
                 }
+                potentialSupport.Clear();
             });
             collisions.ForEach(ce =>
             {
@@ -88,16 +88,16 @@ namespace MarioPirates
             container.Rebuild();
             container.ForEachVisible(o1 =>
             {
-                if (o1.RigidBody.Motion == MotionEnum.Dynamic)
+                if (o1.RigidBody.Motion != MotionEnum.Dynamic)
+                    return;
+
+                container.Find(o1.RigidBody.Bound, objectsNearby);
+                objectsNearby.Consume(o2 =>
                 {
-                    container.Find(o1.RigidBody.Bound, objectsNearby);
-                    objectsNearby.Consume(o2 =>
-                    {
-                        if (o1 != o2 && !objectsChecked.Contains(o2))
-                            RigidBody.DetectCollide(o1, o2, collisions);
-                    });
-                    objectsChecked.Add(o1);
-                }
+                    if (o1 != o2 && !objectsChecked.Contains(o2))
+                        RigidBody.DetectCollide(o1, o2, collisions);
+                });
+                objectsChecked.Add(o1);
             });
             objectsChecked.Clear();
             collisions.ForEach(ce =>
