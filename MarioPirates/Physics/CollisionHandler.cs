@@ -154,33 +154,77 @@ namespace MarioPirates
                             }
                         }
                     }
-                    else if (self is QuestionBlock thisQuestionBlock)
-                    {
-                        if (other is Mario)
-                        {
-                            if (thisQuestionBlock.State == BlockState.Normal && side == CollisionSide.Bottom)
-                            {
-                                thisQuestionBlock.State = BlockState.Used;
 
-                                if (thisQuestionBlock.Powerup != null)
+                    else if (self is BlueBrickBlock thisBlueBrickBlock)
+                    {
+                        if (other is Mario mario && side == CollisionSide.Bottom)
+                        {
+                            if (thisBlueBrickBlock.Powerup != null)
+                            {
+                                thisBlueBrickBlock.State = BlockState.Used;
+
+                                var powerupObj = new GameObjectParam
                                 {
-                                    var powerupObj = new GameObjectParam
+                                   TypeName = thisBlueBrickBlock.Powerup,
+                                    Location = new int[2] { (int)thisBlueBrickBlock.Location.X, (int)thisBlueBrickBlock.Location.Y - Constants.BLOCK_HEIGHT * 2 },
+                                    Motion = MotionEnum.Dynamic,
+                                }.ToGameObject();
+                                EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(powerupObj));
+                                if (thisBlueBrickBlock.Powerup == "Coin")
+                                {
+                                    EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(powerupObj), Constants.BLOCK_COLLISION_EVENT_DT);
+                                }
+                                thisBlueBrickBlock.Powerup = null;
+                            }
+                            else if (thisBlueBrickBlock.State == BlockState.Normal && !(mario.State.IsSmall || mario.State.IsDead))
+                            {
+                                EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(thisBlueBrickBlock));
+
+                                for (var i = 0; i < Constants.BRICK_BLOCK_COLLISION_POSITIONS.Length; i++)
+                                {
+                                    var debris = new GameObjectParam
                                     {
-                                        TypeName = thisQuestionBlock.Powerup,
-                                        Location = new int[2] { (int)thisQuestionBlock.Location.X, (int)thisQuestionBlock.Location.Y - 2 * Constants.BLOCK_HEIGHT },
+                                        TypeName = "BlueBrickDebris",
+                                        Location = new int[] { (int)thisBlueBrickBlock.Location.X + Constants.BRICK_BLOCK_COLLISION_OFFSETS[i, 0], (int)thisBlueBrickBlock.Location.Y + Constants.BRICK_BLOCK_COLLISION_OFFSETS[i, 1] },
                                         Motion = MotionEnum.Dynamic,
+                                        Params = new Dictionary<string, string> { { "Position", Constants.BRICK_BLOCK_COLLISION_POSITIONS[i] } },
                                     }.ToGameObject();
-                                    EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, thisQuestionBlock, new GameObjectCreateEventArgs(powerupObj));
-                                    if (thisQuestionBlock.Powerup == "Coin")
+                                    (debris as GameObjectRigidBody).RigidBody.Velocity = Constants.BRICK_BLOCK_COLLISION_VELOCITIES[i];
+                                    EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(debris));
+                                    EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(debris), Constants.BLOCK_COLLISION_EVENT_DT);
+                                }
+                            }
+
+                        }
+                    }
+
+                        else if (self is QuestionBlock thisQuestionBlock)
+                        {
+                            if (other is Mario)
+                            {
+                                if (thisQuestionBlock.State == BlockState.Normal && side == CollisionSide.Bottom)
+                                {
+                                    thisQuestionBlock.State = BlockState.Used;
+
+                                    if (thisQuestionBlock.Powerup != null)
                                     {
-                                        Coins.Ins.Value++;
-                                        Score.Ins.Value += 200;
-                                        EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, thisQuestionBlock, new GameObjectDestroyEventArgs(powerupObj), Constants.BLOCK_COLLISION_EVENT_DT);
+                                        var powerupObj = new GameObjectParam
+                                        {
+                                            TypeName = thisQuestionBlock.Powerup,
+                                            Location = new int[2] { (int)thisQuestionBlock.Location.X, (int)thisQuestionBlock.Location.Y - 2 * Constants.BLOCK_HEIGHT },
+                                            Motion = MotionEnum.Dynamic,
+                                        }.ToGameObject();
+                                        EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, thisQuestionBlock, new GameObjectCreateEventArgs(powerupObj));
+                                        if (thisQuestionBlock.Powerup == "Coin")
+                                        {
+                                            Coins.Ins.Value++;
+                                            Score.Ins.Value += 200;
+                                            EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, thisQuestionBlock, new GameObjectDestroyEventArgs(powerupObj), Constants.BLOCK_COLLISION_EVENT_DT);
+                                        }
                                     }
                                 }
                             }
                         }
-                    }
 
                     break;
                 }
