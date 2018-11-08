@@ -37,7 +37,7 @@ namespace MarioPirates
             {
                 s += Constants.STAR_MARIO_SUFFIX;
                 if (Size.State is MarioStateEnum.Fire)
-                    s = MarioStateEnum.Big.ToString().ToString() + s.Substring(4);
+                    s = MarioStateEnum.Big.ToString().ToLower() + s.Substring(4);
             }
             if (action.State is MarioStateEnum.Run && brake.State is MarioStateEnum.Brake)
                 s += Constants.MARIO_BRAKE_SUFFIX;
