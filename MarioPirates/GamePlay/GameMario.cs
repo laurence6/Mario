@@ -113,6 +113,8 @@ namespace MarioPirates
             Scene.Ins.ResetActive();
             Scene.Ins.Player.Reset();
             triggerReset = false;
+
+            Timer.Ins.Reset(Time.Now);
         }
 
         private bool triggerGameOver = false;
@@ -139,6 +141,7 @@ namespace MarioPirates
             Coins.Ins.Reset();
             Score.Ins.Reset();
             Lives.Ins.Reset();
+            Timer.Ins.Reset(Time.Now, 400000);
 
             EventManager.Ins.Subscribe(EventEnum.GameOver, (s, e) => TriggerGameOver());
 

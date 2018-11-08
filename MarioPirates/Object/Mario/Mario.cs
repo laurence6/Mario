@@ -176,6 +176,9 @@ namespace MarioPirates
 
         public override void Update(float dt)
         {
+            if (Timer.Ins.Value <= 0)
+                State.Dead();
+
             if (RigidBody.Velocity.Y != 0f)
                 State.Jump();
             else if (RigidBody.Velocity.X != 0f)
