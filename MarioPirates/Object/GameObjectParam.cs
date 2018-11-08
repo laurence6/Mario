@@ -14,7 +14,7 @@ namespace MarioPirates
 
         public IGameObject ToGameObject()
         {
-            var t = Type.GetType(Constants.NAMESPACE_NAME + TypeName);
+            var t = Type.GetType(Constants.GAME_NAMESPACE + TypeName);
             var param = Params != null
                 ? (new object[] { Location[0], Location[1], Params })
                 : (new object[] { Location[0], Location[1] });

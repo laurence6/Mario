@@ -180,7 +180,7 @@ namespace MarioPirates
         // Virtual
         public const int BACKGROUND_WIDTH = 800;
         public const int BACKGROUND_HEIGHT = 480;
-        public static readonly string BACKGROUND_SPRITE = "background";
+        public static readonly string BACKGROUND_PARAM = "Background";
 
         public const int VIRTUAL_PLANE_HEIGHT = 32;
         public const float VIRTUAL_PLANE_EVENT_DT = 100f;
