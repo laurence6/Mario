@@ -107,9 +107,9 @@ namespace MarioPirates
 
             Coins.Ins.Reset();
             Score.Ins.Reset();
-            if (Lives.Ins.Value <= 0)
+            if (Lives.Ins.Value == 0)
             {
-                Lives.Ins.Value = 3;
+                Lives.Ins.Value = Constants.LIVES_RESET;
             }
 
             EventManager.Ins.Subscribe(EventEnum.GameOver, (s, e) => TriggerGameOver());

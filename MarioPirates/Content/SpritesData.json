@@ -180,12 +180,6 @@
     "Frames": [ 0, 0 ]
   },
 
-  "background": {
-    "TextureName": "background",
-    "Size": [ 800, 480 ],
-    "Frames": [ 0, 0 ]
-  },
-
   "small_crouch_left": {
     "TextureName": "smallmario",
     "Size": [ 17, 15 ],
@@ -617,5 +611,17 @@
     "AccelerateRate": 3,
     "Size": [ 16, 16 ],
     "Frames": [ 80, 0, 80, 48, 80, 96 ]
+  },
+
+  "background": {
+    "TextureName": "background",
+    "Size": [ 800, 480 ],
+    "Frames": [ 0, 0 ]
+  },
+
+  "gameover": {
+  	"TextureName": "gameover",
+    "Size": [ 800, 480 ],
+    "Frames": [ 0, 0 ]
   }
 }

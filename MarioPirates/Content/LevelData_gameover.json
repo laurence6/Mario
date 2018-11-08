@@ -1,0 +1,7 @@
+[
+	{
+		"TypeName": "Background",
+		"Location": [ 0, 0 ],
+		"Params": { "Background": "gameover" }
+	}
+]
