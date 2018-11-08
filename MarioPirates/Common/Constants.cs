@@ -49,6 +49,7 @@ namespace MarioPirates
         public const int COIN_WIDTH = 16;
         public const int COIN_HEIGHT = 14;
         public const float COIN_MASS = 0.05f;
+        public const int COIN_POINTS = 200;
 
         public const int FIREBALL_WIDTH = 10;
         public const int FIREBALL_HEIGHT = 10;
