@@ -20,7 +20,7 @@ namespace MarioPirates
             spriteBatch.DrawString(font, Score.Ins.Value.ToString(), Constants.SCORE_VALUE_POSITION, Color.White);
             spriteBatch.DrawString(font, Coins.Ins.Value.ToString(), Constants.COINS_VALUE_POSITION, Color.White);
             spriteBatch.DrawString(font, Scene.Ins.ActiveScene.level, Constants.LEVEL_VALUE_POSITION, Color.White);
-            spriteBatch.DrawString(font, Time.ToString(), Constants.TIME_VALUE_POSITION, Color.White);
+            spriteBatch.DrawString(font, Timer.Ins.Value.ToString(), Constants.TIME_VALUE_POSITION, Color.White);
             spriteBatch.DrawString(font, Lives.Ins.Value.ToString(), Constants.LIVES_VALUE_POSITION, Color.White);
             spriteBatch.End();
         }
