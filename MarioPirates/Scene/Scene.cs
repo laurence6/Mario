@@ -28,6 +28,7 @@ namespace MarioPirates
                 AddGameObject(new VirtualPlane(0f, Constants.SCREEN_HEIGHT - 1));
                 AddGameObject(new VirtualWall(0f, 0f));
                 AddGameObject(new VirtualWall(Constants.SCREEN_WIDTH - Constants.VIRTUAL_WALL_WIDTH, 0f));
+
                 new JavaScriptSerializer().Deserialize<List<GameObjectParam>>(ReadAllText("Content\\LevelData_" + level + ".json"))
                     .ForEach(o => EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(o.ToGameObject())));
 

@@ -68,6 +68,9 @@ namespace MarioPirates
         public const float MUSHROOM_MASS = 0.05f;
         public static readonly Vector2 MUSHROOM_INITIAL_VELOCITY = new Vector2(50f, 0f);
 
+        public const int LONG_PIPE_WIDTH = 62;
+        public const int LONG_PIPE_HEIGHT = 128;
+
         public const int PIPE_BOTTOM_WIDTH = 32;
 
         public const int PIPE_TOP_WIDTH = 32;

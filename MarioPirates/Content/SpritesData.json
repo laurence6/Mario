@@ -32,6 +32,11 @@
     "Size": [ 32, 16 ],
     "Frames": [ 0, 0 ]
   },
+  "longpipe": {
+    "TextureName": "longpipe",
+    "Size": [ 62, 128 ],
+    "Frames": [ 0, 0 ]
+  },
 
   "redmushroom": {
     "TextureName": "redmushroom",
@@ -102,11 +107,11 @@
     "Frames": [ 0, 0 ]
   },
 
-    "questionblock": {
-        "TextureName": "questionblock",
-        "Size": [ 16, 16 ],
-        "Frames": [ 0, 0, 20, 0, 40, 0 ]
-    },
+  "questionblock": {
+    "TextureName": "questionblock",
+    "Size": [ 16, 16 ],
+    "Frames": [ 0, 0, 20, 0, 40, 0 ]
+  },
 
   "bluebrickblock": {
     "TextureName": "bluebrickblock",
