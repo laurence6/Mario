@@ -169,16 +169,16 @@ namespace MarioPirates
                                     Location = new int[2] { (int)thisBlueBrickBlock.Location.X, (int)thisBlueBrickBlock.Location.Y - Constants.BLOCK_HEIGHT * 2 },
                                     Motion = MotionEnum.Dynamic,
                                 }.ToGameObject();
-                                EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(powerupObj));
+                                EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, thisBlueBrickBlock, new GameObjectCreateEventArgs(powerupObj));
                                 if (thisBlueBrickBlock.Powerup == "Coin")
                                 {
-                                    EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(powerupObj), Constants.BLOCK_COLLISION_EVENT_DT);
+                                    EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, thisBlueBrickBlock, new GameObjectDestroyEventArgs(powerupObj), Constants.BLOCK_COLLISION_EVENT_DT);
                                 }
                                 thisBlueBrickBlock.Powerup = null;
                             }
                             else if (thisBlueBrickBlock.State == BlockState.Normal && !(mario.State.IsSmall || mario.State.IsDead))
                             {
-                                EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(thisBlueBrickBlock));
+                                EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, thisBlueBrickBlock, new GameObjectDestroyEventArgs(thisBlueBrickBlock));
 
                                 for (var i = 0; i < Constants.BRICK_BLOCK_COLLISION_POSITIONS.Length; i++)
                                 {
@@ -190,8 +190,8 @@ namespace MarioPirates
                                         Params = new Dictionary<string, string> { { "Position", Constants.BRICK_BLOCK_COLLISION_POSITIONS[i] } },
                                     }.ToGameObject();
                                     (debris as GameObjectRigidBody).RigidBody.Velocity = Constants.BRICK_BLOCK_COLLISION_VELOCITIES[i];
-                                    EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(debris));
-                                    EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(debris), Constants.BLOCK_COLLISION_EVENT_DT);
+                                    EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, thisBlueBrickBlock, new GameObjectCreateEventArgs(debris));
+                                    EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, thisBlueBrickBlock, new GameObjectDestroyEventArgs(debris), Constants.BLOCK_COLLISION_EVENT_DT);
                                 }
                             }
 
