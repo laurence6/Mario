@@ -338,6 +338,20 @@ namespace MarioPirates
                             Scene.Ins.ResetActive();
                         }), Constants.MARIO_PIPE_COLLISION_EVENT_DT);
                     }
+                    else if (other is LongPipe && side is CollisionSide.Right)
+                    {
+                        @this.UnsubscribeInput();
+                        @this.RigidBody.Motion = MotionEnum.Keyframe;
+                        @this.RigidBody.Velocity = -Constants.MARIO_PIPE_COLLISION_VELOCITY;
+                        Scene.Ins.Active(Constants.LEVEL_1_SCENE);
+                        Scene.Ins.ResetScene(Constants.SECRET_LEVEL_SCENE);
+                        EventManager.Ins.RaiseEvent(EventEnum.Action, @this, new ActionEventArgs(() =>
+                        {
+                            @this.SubscribeInput();
+                            @this.RigidBody.Motion = MotionEnum.Dynamic;
+                            @this.RigidBody.Velocity = Vector2.Zero;
+                        }), Constants.MARIO_PIPE_COLLISION_EVENT_DT);
+                    }
                     else if (other is RedMushroom)
                     {
                         if (@this.State.IsSmall)

@@ -58,6 +58,7 @@ namespace MarioPirates
         {
             unsubscribe();
             unsubscribe = null;
+            State.CancelAccelerated();
         }
 
         private void SubscribeInputMoving()
