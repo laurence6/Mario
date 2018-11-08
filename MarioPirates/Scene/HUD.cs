@@ -7,8 +7,6 @@ namespace MarioPirates
     {
         public static readonly HUD Ins = new HUD();
 
-        public uint Time { get; set; } = 0;
-
         public void Draw(SpriteBatch spriteBatch, SpriteFont font)
         {
             spriteBatch.Begin();

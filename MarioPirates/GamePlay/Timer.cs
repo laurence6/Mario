@@ -1,14 +1,14 @@
 ﻿namespace MarioPirates
 {
-    internal class Timer
+    internal sealed class Timer
     {
-        private float originalTime;
-        private uint timeLimit;
-        private float timeLeft;
-
         public static readonly Timer Ins = new Timer();
 
         private Timer() { }
+
+        private float originalTime;
+        private uint timeLimit;
+        private float timeLeft;
 
         public uint Value => (timeLeft = (timeLimit - Time.Now + originalTime) / 1000) > 0 ? (uint)timeLeft : 0;
 
