@@ -32,6 +32,12 @@ namespace MarioPirates
         {
             graphics.IsFullScreen = false;
             base.Initialize();
+
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+            font = Content.Load<SpriteFont>("hud");
+            SpriteFactory.Ins.LoadContent(Content);
+
+            GameOverReset();
         }
 
         /// <summary>
@@ -40,11 +46,6 @@ namespace MarioPirates
         /// </summary>
         protected override void LoadContent()
         {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            font = Content.Load<SpriteFont>("hud");
-
-            SpriteFactory.Ins.LoadContent(Content);
         }
 
         /// <summary>
@@ -70,7 +71,10 @@ namespace MarioPirates
             }
 
             if (triggerReset)
+            {
                 Reset();
+                return;
+            }
 
             controllers.ForEach(c => c.Update());
             if (!pause)
@@ -93,24 +97,39 @@ namespace MarioPirates
             HUD.Ins.Draw(spriteBatch, font);
         }
 
-        private bool triggerReset = true;
+        private bool triggerReset = false;
 
         public void TriggerReset() => triggerReset = true;
 
         private void Reset()
         {
+            Camera.Ins.Reset();
+            Scene.Ins.ResetActive();
+            triggerReset = false;
+        }
+
+        private bool triggerGameOver = false;
+
+        public void TriggerGameOver() => triggerGameOver = true;
+
+        private void GameOver()
+        {
+            Scene.Ins.Active(Constants.GAMEOVER_SCENE);
+            EventManager.Ins.RaiseEvent(EventEnum.Action, this, new ActionEventArgs(GameOverReset), Constants.RESET_EVENT_DT);
+            triggerGameOver = false;
+        }
+
+        private void GameOverReset()
+        {
             Physics.Reset();
             EventManager.Ins.Reset();
             Camera.Ins.Reset();
             Scene.Ins.Reset();
-            Scene.Ins.ResetActive();
+            Scene.Ins.Active(Constants.DEFAULT_SCENE);
 
             Coins.Ins.Reset();
             Score.Ins.Reset();
-            if (Lives.Ins.Value == 0)
-            {
-                Lives.Ins.Value = Constants.LIVES_RESET;
-            }
+            Lives.Ins.Reset();
 
             EventManager.Ins.Subscribe(EventEnum.GameOver, (s, e) => TriggerGameOver());
 
@@ -174,16 +193,6 @@ namespace MarioPirates
                 Buttons.B
             );
             controllers.Add(gamePadController);
-        }
-
-        private bool triggerGameOver = false;
-
-        public void TriggerGameOver() => triggerGameOver = true;
-
-        private void GameOver()
-        {
-            Scene.Ins.Active(Constants.GAMEOVER_SCENE);
-            //EventManager.Ins.RaiseEvent()
         }
     }
 }

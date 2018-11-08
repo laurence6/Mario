@@ -86,8 +86,9 @@ namespace MarioPirates
         public void Reset()
         {
             scenes.Clear();
+            ActiveScene = null;
+            unsubscribe = null;
             Constants.AVAILABLE_SCENES.ForEach(level => scenes.Add(level, new SceneData(level)));
-            Active(Constants.DEFAULT_SCENE);
         }
 
         public void ResetActive() => ActiveScene.Reset();
@@ -106,6 +107,8 @@ namespace MarioPirates
                 (eventArgs.Object as IDisposable)?.Dispose();
                 ActiveScene.RemoveGameObject(eventArgs.Object);
             });
+
+            ActiveScene.Reset();
         }
 
         public void Update(float dt) => ActiveScene.Update(dt);

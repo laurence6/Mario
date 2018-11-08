@@ -323,7 +323,8 @@
     {
         "TypeName": "PipeTop",
         "Motion": "Static",
-        "Location": [ 600, 389 ]
+        "Location": [ 600, 389 ],
+		"Params": { "ToLevel": "secret" }
     },
     {
         "TypeName": "PipeBottom",
