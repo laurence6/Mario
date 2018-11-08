@@ -21,9 +21,6 @@
         Brake,
         Coast,
 
-        Accelerated,
-        NonAccelerated,
-
         Transiting,
         NonTransiting,
     }

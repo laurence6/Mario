@@ -28,7 +28,6 @@
         KeyHold,
 
         // Others
-        Collide,
         GameObjectCreate,
         GameObjectDestroy,
     }
