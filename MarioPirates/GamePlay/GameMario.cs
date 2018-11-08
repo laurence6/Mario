@@ -176,7 +176,7 @@ namespace MarioPirates
             controllers.Add(gamePadController);
         }
 
-        private bool triggerGameOver = true;
+        private bool triggerGameOver = false;
 
         public void TriggerGameOver() => triggerGameOver = true;
 
