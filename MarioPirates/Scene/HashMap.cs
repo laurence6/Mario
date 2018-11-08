@@ -65,7 +65,7 @@ namespace MarioPirates
             Apply(bound, k => f(buckets[k]));
         }
 
-        private void Apply(Rectangle bound, Action<ulong> f)
+        private static void Apply(Rectangle bound, Action<ulong> f)
         {
             (var minX, var minY) = Hash(bound.Location);
             (var maxX, var maxY) = Hash(bound.Location + bound.Size);

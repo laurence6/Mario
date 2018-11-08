@@ -2,7 +2,7 @@
 
 namespace MarioPirates
 {
-    public static class Constants
+    internal static class Constants
     {
         // Gameplay
         public const int LIVES_RESET = 3;
@@ -123,7 +123,6 @@ namespace MarioPirates
         public const int BACKGROUND_HEIGHT = 480;
 
         public const float VIRTUAL_PLANE_EVENT_DT = 100f;
-        public static readonly Vector2 VIRTUAL_PLANE_COLLISION_VELOCITY = new Vector2(0f, 100f);
 
         public const int VIRTUAL_WALL_WIDTH = 16;
 

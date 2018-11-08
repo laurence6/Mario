@@ -3,15 +3,9 @@ using System.Collections.Generic;
 
 namespace MarioPirates
 {
-    internal sealed class CollisionHandler
+    internal static class CollisionHandler
     {
-        public static readonly CollisionHandler Ins = new CollisionHandler();
-
-        private CollisionHandler()
-        {
-        }
-
-        public void PreCollide(GameObjectRigidBody self, GameObjectRigidBody other, CollisionSide side)
+        public static void PreCollide(GameObjectRigidBody self, GameObjectRigidBody other)
         {
             switch (self)
             {
@@ -99,7 +93,7 @@ namespace MarioPirates
         }
 
 
-        public void PostCollide(GameObjectRigidBody self, GameObjectRigidBody other, CollisionSide side)
+        public static void PostCollide(GameObjectRigidBody self, GameObjectRigidBody other, CollisionSide side)
         {
             switch (self)
             {
