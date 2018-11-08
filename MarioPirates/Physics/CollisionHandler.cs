@@ -262,8 +262,12 @@ namespace MarioPirates
                         if (!@this.Stomped)
                         {
                             @this.Stomped = true;
+                            Score.Ins.Value += Constants.KOOPA_POINTS;
                         }
-                        Score.Ins.Value += Constants.KOOPA_POINTS;
+                        else if(side is CollisionSide.Top)
+                        {
+                            Score.Ins.Value += Constants.KOOPA_POINTS;
+                        }
                     }
                     else if (other is Fireball)
                     {
