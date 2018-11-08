@@ -9,7 +9,7 @@ namespace MarioPirates
         public QuestionBlock(int dstX, int dstY, Dictionary<string, string> Params)
             : base(dstX, dstY, Params, SpriteFactory.Ins.CreateSprite("questionblock"))
         {
-            this.Powerup = Params["Powerup"];
+            Powerup = Params["Powerup"];
         }
     }
 }

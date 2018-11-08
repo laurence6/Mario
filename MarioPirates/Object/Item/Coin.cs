@@ -4,9 +4,9 @@
     {
         public Coin(int dstX, int dstY) : base(dstX, dstY, Constants.COIN_WIDTH * 2, Constants.COIN_HEIGHT * 2)
         {
-            this.Sprite = SpriteFactory.Ins.CreateSprite("coin");
-            this.RigidBody.Mass = Constants.COIN_MASS;
-            this.RigidBody.CollisionLayerMask = CollisionLayer.Coin;
+            Sprite = SpriteFactory.Ins.CreateSprite("coin");
+            RigidBody.Mass = Constants.COIN_MASS;
+            RigidBody.CollisionLayerMask = CollisionLayer.Coin;
         }
     }
 }

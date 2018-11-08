@@ -4,10 +4,10 @@
     {
         public Fireball(int dstX, int dstY) : base(dstX, dstY, Constants.FIREBALL_WIDTH * 2, Constants.FIREBALL_HEIGHT * 2)
         {
-            this.Sprite = SpriteFactory.Ins.CreateSprite("fireball");
-            this.RigidBody.Mass = Constants.FIREBALL_MASS;
-            this.RigidBody.CollisionLayerMask = CollisionLayer.Enemy | CollisionLayer.Static;
-            this.RigidBody.Motion = MotionEnum.Dynamic;
+            Sprite = SpriteFactory.Ins.CreateSprite("fireball");
+            RigidBody.Mass = Constants.FIREBALL_MASS;
+            RigidBody.CollisionLayerMask = CollisionLayer.Enemy | CollisionLayer.Static;
+            RigidBody.Motion = MotionEnum.Dynamic;
         }
     }
 }

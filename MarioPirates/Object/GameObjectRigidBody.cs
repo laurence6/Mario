@@ -1,4 +1,4 @@
-﻿sing Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 
 namespace MarioPirates
 {

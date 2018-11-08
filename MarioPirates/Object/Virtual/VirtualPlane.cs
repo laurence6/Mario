@@ -6,12 +6,12 @@ namespace MarioPirates
     {
         public VirtualPlane(float locX, float locY) : base(locX, locY, Constants.SCREEN_WIDTH, 32)
         {
-            this.IsLocationAbsolute = true;
+            IsLocationAbsolute = true;
         }
 
         public override void Update(float dt)
         {
-            this.RigidBody.UpdateBound();
+            RigidBody.UpdateBound();
         }
 
         public override void Draw(SpriteBatch spriteBatch)

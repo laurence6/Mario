@@ -14,62 +14,62 @@ namespace MarioPirates
 
         public BlockState State
         {
-            get => this.state;
+            get => state;
             set
             {
                 switch (value)
                 {
                     case BlockState.Normal:
-                        this.RigidBody.CollisionSideMask = CollisionSide.All;
-                        this.Sprite = this.normalSprite;
+                        RigidBody.CollisionSideMask = CollisionSide.All;
+                        Sprite = normalSprite;
                         break;
                     case BlockState.Used:
-                        this.RigidBody.CollisionSideMask = CollisionSide.All;
-                        this.Sprite = this.usedSprite;
+                        RigidBody.CollisionSideMask = CollisionSide.All;
+                        Sprite = usedSprite;
                         break;
                     case BlockState.Hidden:
-                        this.RigidBody.CollisionSideMask = CollisionSide.Bottom;
-                        this.Sprite = null;
+                        RigidBody.CollisionSideMask = CollisionSide.Bottom;
+                        Sprite = null;
                         break;
                 }
-                this.state = value;
+                state = value;
             }
         }
 
-        public virtual bool IsUsed => this.State == BlockState.Used;
+        public virtual bool IsUsed => State == BlockState.Used;
 
         private readonly Vector2 origLocation;
 
         protected Block(int dstX, int dstY, Dictionary<string, string> Params, Sprite normalSprite) : base(dstX, dstY, Constants.BLOCK_WIDTH * 2, Constants.BLOCK_HEIGHT * 2)
         {
-            this.usedSprite = SpriteFactory.Ins.CreateSprite("usedblock");
+            usedSprite = SpriteFactory.Ins.CreateSprite("usedblock");
             this.normalSprite = normalSprite;
 
-            this.RigidBody.ApplyForce(WorldForce.Gravity);
+            RigidBody.ApplyForce(WorldForce.Gravity);
 
             Enum.TryParse(Params["State"], out BlockState state);
-            this.State = state;
+            State = state;
 
-            this.origLocation = this.Location;
+            origLocation = Location;
         }
 
         public override void Update(float dt)
         {
-            this.Sprite?.Update(dt);
+            Sprite?.Update(dt);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            this.Sprite.NotNullThen(() => base.Draw(spriteBatch));
+            Sprite.NotNullThen(() => base.Draw(spriteBatch));
         }
 
         public override void Step(float dt)
         {
             base.Step(dt);
-            if (this.Location.Y > this.origLocation.Y)
+            if (Location.Y > origLocation.Y)
             {
-                this.Location = this.origLocation;
-                this.RigidBody.Motion = MotionEnum.Static;
+                Location = origLocation;
+                RigidBody.Motion = MotionEnum.Static;
             }
         }
     }

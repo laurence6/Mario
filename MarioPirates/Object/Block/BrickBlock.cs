@@ -10,7 +10,7 @@ namespace MarioPirates
             : base(dstX, dstY, Params, SpriteFactory.Ins.CreateSprite("brickblock"))
         {
             if (Params.ContainsKey("Powerup"))
-                this.Powerup = Params["Powerup"];
+                Powerup = Params["Powerup"];
         }
     }
 }

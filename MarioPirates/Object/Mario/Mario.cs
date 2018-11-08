@@ -26,126 +26,126 @@ namespace MarioPirates
 
         public Mario(int dstX, int dstY) : base(dstX, dstY, 0, 0)
         {
-            this.Sprites = new Dictionary<string, Sprite>();
+            Sprites = new Dictionary<string, Sprite>();
             new JavaScriptSerializer().Deserialize<List<string>>(ReadAllText("Content\\MarioSpritesList.json"))
-                 .ForEach(s => this.Sprites.Add(s, SpriteFactory.Ins.CreateSprite(s)));
+                 .ForEach(s => Sprites.Add(s, SpriteFactory.Ins.CreateSprite(s)));
 
-            this.RigidBody.CoR = Constants.MARIO_CO_R;
+            RigidBody.CoR = Constants.MARIO_CO_R;
 
-            this.State = new MarioState(this);
+            State = new MarioState(this);
 
-            this.SubscribeInput();
+            SubscribeInput();
 
-            this.JumpHoldCount = 0;
-            this.TransitionToBigCount = Constants.MARIO_TRANSITION_COUNT_MAX;
-            this.TransitionToSmallCount = Constants.MARIO_TRANSITION_COUNT_MAX;
+            JumpHoldCount = 0;
+            TransitionToBigCount = Constants.MARIO_TRANSITION_COUNT_MAX;
+            TransitionToSmallCount = Constants.MARIO_TRANSITION_COUNT_MAX;
         }
 
         public void SubscribeInput()
         {
-            this.SubscribeInputMoving();
-            this.SubscribeInputTransition();
-            this.SubscribeInputX();
+            SubscribeInputMoving();
+            SubscribeInputTransition();
+            SubscribeInputX();
         }
 
         public void UnsubscribeInput()
         {
-            this.unsubscribe();
-            this.unsubscribe = null;
+            unsubscribe();
+            unsubscribe = null;
         }
 
         private void SubscribeInputMoving()
         {
-            this.unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyUpHold, (s, e) =>
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyUpHold, (s, e) =>
             {
-                if (this.JumpHoldCount < Constants.MARIO_JUMP_HOLD_COUNT_LIMIT)
+                if (JumpHoldCount < Constants.MARIO_JUMP_HOLD_COUNT_LIMIT)
                 {
-                    this.RigidBody.ApplyForce(new Vector2(0, Constants.MARIO_JUMP_FORCE_Y + this.JumpHoldCount * Constants.MARIO_JUMP_HOLD_COUNT_MULTIPLIER));
-                    this.JumpHoldCount += 1;
+                    RigidBody.ApplyForce(new Vector2(0, Constants.MARIO_JUMP_FORCE_Y + JumpHoldCount * Constants.MARIO_JUMP_HOLD_COUNT_MULTIPLIER));
+                    JumpHoldCount += 1;
                 }
             });
-            this.unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyUpDown, (s, e) =>
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyUpDown, (s, e) =>
             {
-                if (this.RigidBody.Grounded)
+                if (RigidBody.Grounded)
                 {
-                    this.RigidBody.ApplyForce(new Vector2(0, Constants.MARIO_JUMP_FORCE_Y + this.JumpHoldCount * Constants.MARIO_JUMP_HOLD_COUNT_MULTIPLIER));
-                    this.JumpHoldCount = 1;
+                    RigidBody.ApplyForce(new Vector2(0, Constants.MARIO_JUMP_FORCE_Y + JumpHoldCount * Constants.MARIO_JUMP_HOLD_COUNT_MULTIPLIER));
+                    JumpHoldCount = 1;
                 }
             });
-            this.unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyDownHold, (s, e) =>
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyDownHold, (s, e) =>
             {
-                this.State.Crouch();
+                State.Crouch();
             });
-            this.unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyLeftHold, (s, e) =>
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyLeftHold, (s, e) =>
             {
-                if (!this.State.IsCrouch)
+                if (!State.IsCrouch)
                 {
-                    this.RigidBody.ApplyForce(new Vector2(-Constants.MARIO_RUN_FORCE_X * this.State.VelocityMultipler, 0));
+                    RigidBody.ApplyForce(new Vector2(-Constants.MARIO_RUN_FORCE_X * State.VelocityMultipler, 0));
                 }
             });
-            this.unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyRightHold, (s, e) =>
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyRightHold, (s, e) =>
             {
-                if (!this.State.IsCrouch)
+                if (!State.IsCrouch)
                 {
-                    this.RigidBody.ApplyForce(new Vector2(Constants.MARIO_RUN_FORCE_X * this.State.VelocityMultipler, 0));
+                    RigidBody.ApplyForce(new Vector2(Constants.MARIO_RUN_FORCE_X * State.VelocityMultipler, 0));
                 }
             });
 
-            this.unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyRightHold, (s, e) => this.State.Right());
-            this.unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyLeftHold, (s, e) => this.State.Left());
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyRightHold, (s, e) => State.Right());
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyLeftHold, (s, e) => State.Left());
 
-            this.unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyRightDown, (s, e) =>
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyRightDown, (s, e) =>
             {
-                if (this.RigidBody.Velocity.X < -0)
+                if (RigidBody.Velocity.X < -0)
                 {
-                    this.State.Brake();
+                    State.Brake();
                 }
                 else
                 {
-                    this.State.Coast();
+                    State.Coast();
                 }
             });
-            this.unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyLeftDown, (s, e) =>
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyLeftDown, (s, e) =>
             {
-                if (this.RigidBody.Velocity.X > 0)
+                if (RigidBody.Velocity.X > 0)
                 {
-                    this.State.Brake();
+                    State.Brake();
                 }
                 else
                 {
-                    this.State.Coast();
+                    State.Coast();
                 }
             });
 
-            this.unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyUpUp, (s, e) => this.JumpHoldCount = Constants.MARIO_JUMP_HOLD_COUNT_LIMIT);
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyUpUp, (s, e) => JumpHoldCount = Constants.MARIO_JUMP_HOLD_COUNT_LIMIT);
         }
 
         private void SubscribeInputTransition()
         {
-            this.unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyDown, (s, e) =>
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyDown, (s, e) =>
             {
                 switch ((e as KeyDownEventArgs).key)
                 {
                     case Keys.Y:
-                        if (!this.State.IsSmall)
-                            this.TransitionToSmallCount = 0;
-                        this.State.Small();
+                        if (!State.IsSmall)
+                            TransitionToSmallCount = 0;
+                        State.Small();
                         break;
                     case Keys.U:
-                        if (this.State.IsSmall)
-                            this.TransitionToBigCount = 0;
-                        this.State.Big();
+                        if (State.IsSmall)
+                            TransitionToBigCount = 0;
+                        State.Big();
                         break;
                     case Keys.I:
-                        if (this.State.IsSmall)
-                            this.TransitionToBigCount = 0;
-                        this.State.Fire();
+                        if (State.IsSmall)
+                            TransitionToBigCount = 0;
+                        State.Fire();
                         break;
                     case Keys.O:
-                        this.State.Dead();
+                        State.Dead();
                         break;
                     case Keys.P:
-                        this.State.Invincible();
+                        State.Invincible();
                         break;
                 }
             });
@@ -153,14 +153,14 @@ namespace MarioPirates
 
         private void SubscribeInputX()
         {
-            this.unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyXDown, (s, e) => this.State.Accelerated());
-            this.unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyXUp, (s, e) => this.State.CancelAccelerated());
-            this.unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyXDown, (s, e) =>
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyXDown, (s, e) => State.Accelerated());
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyXUp, (s, e) => State.CancelAccelerated());
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyXDown, (s, e) =>
             {
-                if (this.State.IsFire)
+                if (State.IsFire)
                 {
-                    var fireball = new Fireball((int)this.Location.X + (this.State.IsLeft ? -Constants.FIREBALL_WIDTH : Constants.FIREBALL_WIDTH + this.Size.X), (int)this.Location.Y + Constants.FIREBALL_HEIGHT); //16, 16, 16
-                    fireball.RigidBody.Velocity = new Vector2(this.State.IsLeft ? -Constants.FIREBALL_COLLISION_VELOCITY.X : Constants.FIREBALL_COLLISION_VELOCITY.X, 0f);
+                    var fireball = new Fireball((int)Location.X + (State.IsLeft ? -Constants.FIREBALL_WIDTH : Constants.FIREBALL_WIDTH + Size.X), (int)Location.Y + Constants.FIREBALL_HEIGHT); //16, 16, 16
+                    fireball.RigidBody.Velocity = new Vector2(State.IsLeft ? -Constants.FIREBALL_COLLISION_VELOCITY.X : Constants.FIREBALL_COLLISION_VELOCITY.X, 0f);
                     EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, this, new GameObjectCreateEventArgs(fireball));
                     EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(fireball), Constants.FIRE_MARIO_FIREBALL_EVENT_DT);
                 }
@@ -169,48 +169,48 @@ namespace MarioPirates
 
         public override void Update(float dt)
         {
-            if (this.RigidBody.Velocity.Y != 0f)
-                this.State.Jump();
-            else if (this.RigidBody.Velocity.X != 0f)
-                this.State.Run();
+            if (RigidBody.Velocity.Y != 0f)
+                State.Jump();
+            else if (RigidBody.Velocity.X != 0f)
+                State.Run();
             else
-                this.State.Idle();
-            if (this.RigidBody.Velocity.X < Constants.MARIO_TRANSITION_COUNT_MAX && this.RigidBody.Velocity.X > -Constants.MARIO_TRANSITION_COUNT_MAX)
-                this.State.Coast();
+                State.Idle();
+            if (RigidBody.Velocity.X < Constants.MARIO_TRANSITION_COUNT_MAX && RigidBody.Velocity.X > -Constants.MARIO_TRANSITION_COUNT_MAX)
+                State.Coast();
 
-            if (this.TransitionToBigCount < Constants.MARIO_TRANSITION_COUNT_MAX)
+            if (TransitionToBigCount < Constants.MARIO_TRANSITION_COUNT_MAX)
             {
-                if (this.TransitionToBigCount % Constants.MARIO_TRANSITION_COUNT == 0)
+                if (TransitionToBigCount % Constants.MARIO_TRANSITION_COUNT == 0)
                 {
-                    this.StoredToBigLocation = new Vector2(this.Location.X, this.Location.Y + this.Size.Y);
-                    var targetHeight = (int)(Constants.BIG_MARIO_HEIGHT / Constants.MARIO_TRANSITION_ZOOM[this.TransitionToBigCount / Constants.MARIO_TRANSITION_COUNT]);
-                    this.Location = new Vector2(this.StoredToBigLocation.X, this.StoredToBigLocation.Y - targetHeight);
-                    this.Size = new Point(Constants.BIG_MARIO_WIDTH, targetHeight);
+                    StoredToBigLocation = new Vector2(Location.X, Location.Y + Size.Y);
+                    var targetHeight = (int)(Constants.BIG_MARIO_HEIGHT / Constants.MARIO_TRANSITION_ZOOM[TransitionToBigCount / Constants.MARIO_TRANSITION_COUNT]);
+                    Location = new Vector2(StoredToBigLocation.X, StoredToBigLocation.Y - targetHeight);
+                    Size = new Point(Constants.BIG_MARIO_WIDTH, targetHeight);
                 }
-                this.TransitionToBigCount++;
+                TransitionToBigCount++;
             }
 
-            if (this.TransitionToSmallCount < Constants.MARIO_TRANSITION_COUNT_MAX)
+            if (TransitionToSmallCount < Constants.MARIO_TRANSITION_COUNT_MAX)
             {
-                if (this.TransitionToSmallCount % Constants.MARIO_TRANSITION_COUNT == 0)
+                if (TransitionToSmallCount % Constants.MARIO_TRANSITION_COUNT == 0)
                 {
-                    this.StoredToSmallLocation = new Vector2(this.Location.X, this.Location.Y + this.Size.Y);
-                    var targetHeight = (int)(Constants.SMALL_MARIO_HEIGHT * Constants.MARIO_TRANSITION_ZOOM[this.TransitionToSmallCount / Constants.MARIO_TRANSITION_COUNT]);
-                    this.Location = new Vector2(this.StoredToSmallLocation.X, this.StoredToSmallLocation.Y - targetHeight);
-                    this.Size = new Point(Constants.SMALL_MARIO_WIDTH, targetHeight);
+                    StoredToSmallLocation = new Vector2(Location.X, Location.Y + Size.Y);
+                    var targetHeight = (int)(Constants.SMALL_MARIO_HEIGHT * Constants.MARIO_TRANSITION_ZOOM[TransitionToSmallCount / Constants.MARIO_TRANSITION_COUNT]);
+                    Location = new Vector2(StoredToSmallLocation.X, StoredToSmallLocation.Y - targetHeight);
+                    Size = new Point(Constants.SMALL_MARIO_WIDTH, targetHeight);
                 }
 
-                this.TransitionToSmallCount++;
+                TransitionToSmallCount++;
             }
 
-            Camera.Ins.LookAt(this.Location);
+            Camera.Ins.LookAt(Location);
 
             base.Update(dt);
         }
 
         public void Dispose()
         {
-            this.UnsubscribeInput();
+            UnsubscribeInput();
             EventManager.Ins.RaiseEvent(EventEnum.KeyDown, this, new KeyDownEventArgs(Keys.R), Constants.MARIO_DISPOSE_EVENT_DT);
         }
     }

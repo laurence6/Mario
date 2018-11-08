@@ -6,10 +6,10 @@ namespace MarioPirates
     {
         public Goomba(int x, int y) : base(x, y, Constants.GOOMBA_WIDTH * 2, Constants.GOOMBA_HEIGHT * 2)
         {
-            this.Sprite = SpriteFactory.Ins.CreateSprite("goomba");
-            this.RigidBody.Mass = Constants.GOOMBA_MASS;
-            this.RigidBody.CollisionLayerMask = CollisionLayer.Enemy;
-            this.RigidBody.Velocity = Constants.GOOMBA_INITIAL_VELOCITY;
+            Sprite = SpriteFactory.Ins.CreateSprite("goomba");
+            RigidBody.Mass = Constants.GOOMBA_MASS;
+            RigidBody.CollisionLayerMask = CollisionLayer.Enemy;
+            RigidBody.Velocity = Constants.GOOMBA_INITIAL_VELOCITY;
         }
 
         public void Dispose()
