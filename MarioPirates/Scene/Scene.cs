@@ -15,7 +15,7 @@ namespace MarioPirates
             private readonly Mario player;
 
             public bool HasPlayer { get; private set; }
-            public Vector2 playerLastLocation { get; private set; } = Constants.MARIO_DEFAULT_LOCATION;
+            public Vector2 PlayerLastLocation { get; private set; } = Constants.MARIO_DEFAULT_LOCATION;
             private HashMap gameObjectContainer = new HashMap();
             private List<IGameObject> gameObjectsNoRigidBody = new List<IGameObject>();
 
@@ -29,7 +29,7 @@ namespace MarioPirates
             {
                 gameObjectContainer.Reset();
                 gameObjectsNoRigidBody.Clear();
-                playerLastLocation = Constants.MARIO_DEFAULT_LOCATION;
+                PlayerLastLocation = Constants.MARIO_DEFAULT_LOCATION;
 
                 AddGameObject(new VirtualPlane(0f, Constants.SCREEN_HEIGHT - 1));
                 AddGameObject(new VirtualWall(0f, 0f));
@@ -92,13 +92,13 @@ namespace MarioPirates
             public void Active()
             {
                 if (HasPlayer)
-                    player.Location = playerLastLocation;
+                    player.Location = PlayerLastLocation;
             }
 
             public void Deactive()
             {
                 if (HasPlayer)
-                    playerLastLocation = player.Location;
+                    PlayerLastLocation = player.Location;
             }
         }
 
@@ -136,7 +136,7 @@ namespace MarioPirates
         public void ResetActive()
         {
             ActiveScene.Reset();
-            Player.Location = ActiveScene.playerLastLocation;
+            Player.Location = ActiveScene.PlayerLastLocation;
         }
 
         public void ResetScene(string level) => scenes[level].Reset();
