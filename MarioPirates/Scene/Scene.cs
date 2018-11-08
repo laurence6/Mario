@@ -25,7 +25,7 @@ namespace MarioPirates
                 gameObjectsNoRigidBody.Clear();
 
                 AddGameObject(new Background());
-                AddGameObject(new VirtualPlane(0f, Constants.SCREEN_HEIGHT + 1));
+                AddGameObject(new VirtualPlane(0f, Constants.SCREEN_HEIGHT - 1));
                 AddGameObject(new VirtualWall(0f, 0f));
                 AddGameObject(new VirtualWall(Constants.SCREEN_WIDTH - Constants.VIRTUAL_WALL_WIDTH, 0f));
                 new JavaScriptSerializer().Deserialize<List<GameObjectParam>>(ReadAllText("Content\\LevelData_" + level + ".json"))
@@ -42,16 +42,16 @@ namespace MarioPirates
 
             public void AddGameObject(IGameObject o)
             {
-                if (o is GameObjectRigidBody or)
-                    gameObjectContainer.Add(or);
+                if (o is GameObjectRigidBody objectRigidBody)
+                    gameObjectContainer.Add(objectRigidBody);
                 else
                     gameObjectsNoRigidBody.Add(o);
             }
 
             public void RemoveGameObject(IGameObject o)
             {
-                if (o is GameObjectRigidBody or)
-                    gameObjectContainer.Remove(or);
+                if (o is GameObjectRigidBody objectRigidBody)
+                    gameObjectContainer.Remove(objectRigidBody);
                 else
                     gameObjectsNoRigidBody.Remove(o);
             }

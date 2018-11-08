@@ -4,7 +4,7 @@ namespace MarioPirates
 {
     internal class VirtualPlane : GameObjectRigidBody
     {
-        public VirtualPlane(float locX, float locY) : base(locX, locY, Constants.SCREEN_WIDTH, 1)
+        public VirtualPlane(float locX, float locY) : base(locX, locY, Constants.SCREEN_WIDTH, 32)
         {
             IsLocationAbsolute = true;
         }
@@ -22,13 +22,7 @@ namespace MarioPirates
         {
             base.PostCollide(other, side);
             other.RigidBody.CollisionLayerMask = CollisionLayer.None;
-            EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(other), Constants.VIRTUAL_PLANE_EVENT_DT);
-        }
-
-        public override void PostCollide(GameObjectRigidBody other, CollisionSide side)
-        {
-            base.PostCollide(other, side);
-            other.RigidBody.Velocity = Constants.VIRTUAL_PLANE_COLLISION_VELOCITY;
+            EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, this, new GameObjectDestroyEventArgs(other));
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace MarioPirates
 {
@@ -11,14 +10,12 @@ namespace MarioPirates
 
         private HashSet<GameObjectRigidBody> objects = new HashSet<GameObjectRigidBody>();
 
-        private HashSet<ulong> bucketKeys = new HashSet<ulong>();
         private Dictionary<ulong, HashSet<GameObjectRigidBody>> buckets = new Dictionary<ulong, HashSet<GameObjectRigidBody>>();
         private HashSet<GameObjectRigidBody> objectsVisible = new HashSet<GameObjectRigidBody>();
 
         public void Reset()
         {
             objects.Clear();
-            bucketKeys.Clear();
             buckets.Clear();
             objectsVisible.Clear();
         }
@@ -30,28 +27,32 @@ namespace MarioPirates
 
         public void Remove(GameObjectRigidBody o)
         {
+            Apply(o.RigidBody.Bound, k => buckets.ContainsKey(k).Then(() => buckets[k].Remove(o)));
             objects.Remove(o);
-            Apply(o.RigidBody.Bound, s => s.Remove(o));
         }
 
         public void Rebuild()
         {
-            bucketKeys.Clear();
+            Apply(Camera.Ins.VisibleArea, k => buckets.AddIfNotExist(k));
+
             objectsVisible.Clear();
 
-            Apply(Camera.Ins.VisibleArea, k => bucketKeys.Add(k));
-
-            buckets.Keys.ToList().ForEach(k => (!bucketKeys.Contains(k)).Then(() => buckets.Remove(k)));
             buckets.ForEach((k, s) => s.Clear());
-            bucketKeys.ForEach(k => buckets.AddIfNotExist(k));
 
-            ForEach(o => o.RigidBody.Bound.Intersects(Camera.Ins.VisibleArea)
-                .Then(() => { objectsVisible.Add(o); Apply(o.RigidBody.Bound, s => s.Add(o)); }));
+            foreach (var o in objects)
+            {
+                var visiblePart = Rectangle.Intersect(o.RigidBody.Bound, Camera.Ins.VisibleArea);
+                if (!visiblePart.IsEmpty)
+                {
+                    objectsVisible.Add(o);
+                    Apply(visiblePart, s => s.Add(o));
+                }
+            }
         }
 
         public void Find(Rectangle bound, HashSet<GameObjectRigidBody> objectsNearby)
         {
-            Apply(bound, s => objectsNearby.UnionWith(s));
+            Apply(bound, k => buckets.ContainsKey(k).Then(() => objectsNearby.UnionWith(buckets[k])));
         }
 
         public void ForEachVisible(Action<GameObjectRigidBody> f)
@@ -59,14 +60,9 @@ namespace MarioPirates
             objectsVisible.ForEach(f);
         }
 
-        public void ForEach(Action<GameObjectRigidBody> f)
-        {
-            objects.ForEach(f);
-        }
-
         private void Apply(Rectangle bound, Action<HashSet<GameObjectRigidBody>> f)
         {
-            Apply(bound, k => buckets.ContainsKey(k).Then(() => f(buckets[k])));
+            Apply(bound, k => f(buckets[k]));
         }
 
         private void Apply(Rectangle bound, Action<ulong> f)

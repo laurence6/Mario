@@ -117,7 +117,7 @@ namespace MarioPirates
         public const int BACKGROUND_WIDTH = 800;
         public const int BACKGROUND_HEIGHT = 480;
 
-        public const float VIRTUAL_PLANE_EVENT_DT = 1000f;
+        public const float VIRTUAL_PLANE_EVENT_DT = 100f;
         public static readonly Vector2 VIRTUAL_PLANE_COLLISION_VELOCITY = new Vector2(0f, 100f);
 
         public const int VIRTUAL_WALL_WIDTH = 16;
