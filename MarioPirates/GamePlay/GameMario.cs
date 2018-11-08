@@ -63,6 +63,12 @@ namespace MarioPirates
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            if (triggerGameOver)
+            {
+                GameOver();
+                return;
+            }
+
             if (triggerReset)
                 Reset();
 
@@ -105,6 +111,8 @@ namespace MarioPirates
             {
                 Lives.Ins.Value = 3;
             }
+
+            EventManager.Ins.Subscribe(EventEnum.GameOver, (s, e) => TriggerGameOver());
 
             EventManager.Ins.Subscribe(EventEnum.KeyDown, (s, e) =>
             {
@@ -167,6 +175,10 @@ namespace MarioPirates
             );
             controllers.Add(gamePadController);
         }
+
+        private bool triggerGameOver = true;
+
+        public void TriggerGameOver() => triggerGameOver = true;
 
         private void GameOver()
         {

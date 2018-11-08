@@ -6,7 +6,8 @@
 
         private Lives() { }
 
-        public long Value { get; set; }
+        private long _value;
+        public long Value { get => _value; set { _value = value; if (value == 0) { EventManager.Ins.RaiseEvent(EventEnum.GameOver, this, null); } } }
 
         public void Reset()
         {

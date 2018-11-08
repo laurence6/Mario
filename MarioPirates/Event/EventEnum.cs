@@ -30,5 +30,6 @@
         // Others
         GameObjectCreate,
         GameObjectDestroy,
+        GameOver,
     }
 }
