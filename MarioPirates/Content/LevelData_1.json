@@ -1,4 +1,10 @@
 [
+	{
+		"TypeName": "Background",
+		"Location": [ 0, 0 ],
+		"Params": { "Background": "background" }
+	},
+
     {
         "TypeName": "Mario",
         "Location": [ 16, 300 ],

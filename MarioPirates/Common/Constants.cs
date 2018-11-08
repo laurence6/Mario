@@ -4,6 +4,8 @@ namespace MarioPirates
 {
     internal static class Constants
     {
+        public const string NAMESPACE_NAME = "MarioPirates.";
+
         // Gameplay
         public const int LIVES_RESET = 3;
 
