@@ -51,6 +51,7 @@ namespace MarioPirates
             font = Content.Load<SpriteFont>("hud");
 
             SpriteFactory.Ins.LoadContent(Content);
+            AudioManager.Ins.LoadContent(Content);
         }
 
         /// <summary>
@@ -201,6 +202,7 @@ namespace MarioPirates
                 Buttons.B
             );
             controllers.Add(gamePadController);
+            AudioManager.Ins.StartTheme();
         }
     }
 }

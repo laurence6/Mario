@@ -76,6 +76,7 @@ namespace MarioPirates
                 {
                     RigidBody.ApplyForce(new Vector2(0, Constants.MARIO_JUMP_FORCE_Y + JumpHoldCount * Constants.MARIO_JUMP_HOLD_COUNT_MULTIPLIER));
                     JumpHoldCount = 1;
+                    AudioManager.Ins.SmallMarioJump();
                 }
             });
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyDownHold, (s, e) =>

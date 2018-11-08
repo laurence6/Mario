@@ -404,3 +404,15 @@
 /processorParam:TextureFormat=Color
 /build:gameover.png
 
+#begin OverworldTheme.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:OverworldTheme.mp3
+
+#begin jumpsmall.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:jumpsmall.wav
+

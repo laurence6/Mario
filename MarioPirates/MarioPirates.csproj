@@ -48,6 +48,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
     <Compile Include="Common\Common.cs" />
     <Compile Include="Common\Time.cs" />
     <Compile Include="Common\Constants.cs" />
