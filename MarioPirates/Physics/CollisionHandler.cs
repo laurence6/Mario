@@ -38,7 +38,7 @@ namespace MarioPirates
                     {
                         @this.RigidBody.Mass = Constants.OBJECT_TINY_MASS;
                         Coins.Ins.Value++;
-                        Score.Ins.Value += 200;
+                        Score.Ins.Value += Constants.COIN_POINTS;
                         EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, @this, new GameObjectDestroyEventArgs(@this));
                     }
 
@@ -206,25 +206,25 @@ namespace MarioPirates
                                 {
                                     thisQuestionBlock.State = BlockState.Used;
 
-                                    if (thisQuestionBlock.Powerup != null)
+                                if (thisQuestionBlock.Powerup != null)
+                                {
+                                    var powerupObj = new GameObjectParam
                                     {
-                                        var powerupObj = new GameObjectParam
-                                        {
-                                            TypeName = thisQuestionBlock.Powerup,
-                                            Location = new int[2] { (int)thisQuestionBlock.Location.X, (int)thisQuestionBlock.Location.Y - 2 * Constants.BLOCK_HEIGHT },
-                                            Motion = MotionEnum.Dynamic,
-                                        }.ToGameObject();
-                                        EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, thisQuestionBlock, new GameObjectCreateEventArgs(powerupObj));
-                                        if (thisQuestionBlock.Powerup == "Coin")
-                                        {
-                                            Coins.Ins.Value++;
-                                            Score.Ins.Value += 200;
-                                            EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, thisQuestionBlock, new GameObjectDestroyEventArgs(powerupObj), Constants.BLOCK_COLLISION_EVENT_DT);
-                                        }
+                                        TypeName = thisQuestionBlock.Powerup,
+                                        Location = new int[2] { (int)thisQuestionBlock.Location.X, (int)thisQuestionBlock.Location.Y - 2 * Constants.BLOCK_HEIGHT },
+                                        Motion = MotionEnum.Dynamic,
+                                    }.ToGameObject();
+                                    EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, thisQuestionBlock, new GameObjectCreateEventArgs(powerupObj));
+                                    if (thisQuestionBlock.Powerup == "Coin")
+                                    {
+                                        Coins.Ins.Value++;
+                                        Score.Ins.Value += Constants.COIN_POINTS;
+                                        EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, thisQuestionBlock, new GameObjectDestroyEventArgs(powerupObj), Constants.BLOCK_COLLISION_EVENT_DT);
                                     }
                                 }
                             }
                         }
+                    }
 
                     break;
                 }
@@ -238,7 +238,7 @@ namespace MarioPirates
                         @this.Sprite = SpriteFactory.Ins.CreateSprite("goomba_stomped");
                         @this.RigidBody.CollisionLayerMask = CollisionLayer.None;
                         @this.RigidBody.Velocity = Vector2.Zero;
-                        Score.Ins.Value += 100;
+                        Score.Ins.Value += Constants.GOOMBA_POINTS;
                         EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, @this, new GameObjectDestroyEventArgs(@this), Constants.ENEMY_COLLISION_EVENT_DT);
                     }
                     else if (other is Koopa koopa && koopa.Stomped)
@@ -260,10 +260,9 @@ namespace MarioPirates
                         @this.RigidBody.Velocity = new Vector2(!@this.Stomped || @this.RigidBody.Velocity.X.DeEPS() != 0f ? 0f : other.RigidBody.Bound.Center.X > @this.RigidBody.Bound.Center.X ? -Constants.KOOPA_MARIO_COLLISION_VELOCITY.X : Constants.KOOPA_MARIO_COLLISION_VELOCITY.X, 0f);
                         if (!@this.Stomped)
                         {
-                            Score.Ins.Value += Constants.KOOPA_POINTS;
                             @this.Stomped = true;
                         }
-                        Score.Ins.Value += 100;
+                        Score.Ins.Value += Constants.KOOPA_POINTS;
                     }
                     else if (other is Fireball)
                     {
