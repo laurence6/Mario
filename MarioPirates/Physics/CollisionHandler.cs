@@ -329,7 +329,14 @@ namespace MarioPirates
                         @this.Location = new Vector2(pipe.Location.X + Constants.MARIO_LOCATION_IN_PIPE, @this.Location.Y);
                         @this.RigidBody.Motion = MotionEnum.Keyframe;
                         @this.RigidBody.Velocity = Constants.MARIO_PIPE_COLLISION_VELOCITY;
-                        EventManager.Ins.RaiseEvent(EventEnum.Action, @this, new ActionEventArgs(() => Scene.Ins.Active(pipe.ToLevel)), Constants.MARIO_PIPE_COLLISION_EVENT_DT);
+                        EventManager.Ins.RaiseEvent(EventEnum.Action, @this, new ActionEventArgs(() =>
+                        {
+                            Scene.Ins.Active(pipe.ToLevel);
+                            Scene.Ins.ResetActive();
+                            @this.SubscribeInput();
+                            @this.RigidBody.Motion = MotionEnum.Dynamic;
+                            @this.RigidBody.Velocity = Vector2.Zero;
+                        }), Constants.MARIO_PIPE_COLLISION_EVENT_DT);
                     }
                     else if (other is RedMushroom)
                     {

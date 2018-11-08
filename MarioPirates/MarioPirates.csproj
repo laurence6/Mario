@@ -131,6 +131,7 @@
     <Compile Include="Scene\Camera.cs" />
     <Compile Include="Scene\HashMap.cs" />
     <Compile Include="Scene\Scene.cs" />
+    <Compile Include="Scene\LevelData.cs" />
     <Compile Include="Sprite\Sprite.cs" />
     <Compile Include="Object\Item\Star.cs" />
     <Compile Include="Sprite\SpriteFactory.cs" />

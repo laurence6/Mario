@@ -110,6 +110,7 @@ namespace MarioPirates
         {
             Camera.Ins.Reset();
             Scene.Ins.ResetActive();
+            Scene.Ins.Player.Reset();
             triggerReset = false;
         }
 
@@ -120,6 +121,7 @@ namespace MarioPirates
         private void GameOver()
         {
             Scene.Ins.Active(Constants.GAMEOVER_SCENE);
+            Scene.Ins.ResetActive();
             EventManager.Ins.RaiseEvent(EventEnum.Action, this, new ActionEventArgs(GameOverReset), Constants.RESET_EVENT_DT);
             triggerGameOver = false;
         }
@@ -131,6 +133,7 @@ namespace MarioPirates
             Camera.Ins.Reset();
             Scene.Ins.Reset();
             Scene.Ins.Active(Constants.DEFAULT_SCENE);
+            Scene.Ins.ResetActive();
 
             Coins.Ins.Reset();
             Score.Ins.Reset();

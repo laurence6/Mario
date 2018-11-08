@@ -154,6 +154,7 @@ namespace MarioPirates
         public const float MARIO_STAR_COLLISION_EVENT_DT = 3000f;
         public const float MARIO_ENEMY_COLLISION_EVENT_DT = 1000f;
         public static readonly Vector2 MARIO_ENEMY_COLLISION_VELOCITY = new Vector2(0f, -250f);
+        public static Vector2 MARIO_DEFAULT_LOCATION = new Vector2(48, 400);
         public const float RESET_EVENT_DT = 4000f;
 
         public static readonly string MARIO_STATE_EXTEND = "_";

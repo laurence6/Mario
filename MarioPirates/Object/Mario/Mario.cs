@@ -11,7 +11,7 @@ namespace MarioPirates
     {
         public readonly Dictionary<string, Sprite> Sprites;
 
-        public readonly MarioState State;
+        public MarioState State;
 
         private Action unsubscribe;
 
@@ -32,13 +32,19 @@ namespace MarioPirates
 
             RigidBody.CoR = Constants.MARIO_CO_R;
 
-            State = new MarioState(this);
+            Reset();
 
             SubscribeInput();
+        }
 
+        public void Reset()
+        {
+            RigidBody.CollisionLayerMask = CollisionLayer.All;
+            RigidBody.Velocity = Vector2.Zero;
             JumpHoldCount = 0;
             TransitionToBigCount = Constants.MARIO_TRANSITION_COUNT_MAX;
             TransitionToSmallCount = Constants.MARIO_TRANSITION_COUNT_MAX;
+            State = new MarioState(this);
         }
 
         public void SubscribeInput()
@@ -210,7 +216,6 @@ namespace MarioPirates
 
         public void Dispose()
         {
-            UnsubscribeInput();
             EventManager.Ins.RaiseEvent(EventEnum.KeyDown, this, new KeyDownEventArgs(Keys.R), Constants.RESET_EVENT_DT);
         }
     }
