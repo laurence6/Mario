@@ -114,6 +114,8 @@ namespace MarioPirates
             Scene.Ins.Player.Reset();
             triggerReset = false;
 
+            Coins.Ins.Reset();
+            Score.Ins.Reset();
             Timer.Ins.Reset(Time.Now);
         }
 
