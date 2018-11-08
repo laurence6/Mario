@@ -1,4 +1,6 @@
-{ "Objects": [
+{
+"HasPlayer": true,
+"Objects": [
 	{
 		"TypeName": "Background",
 		"Location": [ 0, 0 ],

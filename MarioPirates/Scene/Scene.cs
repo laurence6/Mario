@@ -131,6 +131,7 @@ namespace MarioPirates
             ActiveScene = null;
             unsubscribe = null;
             Constants.AVAILABLE_SCENES.ForEach(level => scenes.Add(level, new SceneData(level, Player)));
+            scenes.ForEach((name, scene) => scene.Reset());
         }
 
         public void ResetActive() => ActiveScene.Reset();
