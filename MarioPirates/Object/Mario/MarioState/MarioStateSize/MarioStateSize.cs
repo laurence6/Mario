@@ -12,7 +12,11 @@ namespace MarioPirates
 
         public virtual void Fire() => state.Size = new MarioStateFire(state);
 
-        public virtual void Dead() => state.Size = new MarioStateDead(state);
+        public virtual void Dead()
+        {
+            state.Size = new MarioStateDead(state);
+            Lives.Ins.Value--;
+        }
 
         public virtual bool IsDead => false;
 

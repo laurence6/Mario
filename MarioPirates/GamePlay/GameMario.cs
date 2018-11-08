@@ -101,8 +101,7 @@ namespace MarioPirates
 
             Coins.Ins.Reset();
             Score.Ins.Reset();
-            Lives.Ins.Value--;
-            if (Lives.Ins.Value < 0)
+            if (Lives.Ins.Value <= 0)
             {
                 Lives.Ins.Value = 3;
             }
