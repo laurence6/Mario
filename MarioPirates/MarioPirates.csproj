@@ -62,6 +62,7 @@
     <Compile Include="GamePlay\Lives.cs" />
     <Compile Include="GamePlay\Coins.cs" />
     <Compile Include="GamePlay\Score.cs" />
+    <Compile Include="GamePlay\Timer.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Object\Block\BlueBrickBlock.cs" />
     <Compile Include="Object\Block\BlueBrickDebris.cs" />
