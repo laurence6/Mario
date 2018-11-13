@@ -41,44 +41,44 @@ namespace MarioPirates
         private static void SimulateGrounded(HashMap container)
         {
             container.Rebuild();
-            container.ForEachVisible(o1 =>
+            container.ForEachVisible(object1 =>
             {
-                if (o1.RigidBody.Motion != MotionEnum.Dynamic)
+                if (object1.RigidBody.Motion != MotionEnum.Dynamic)
                     return;
 
-                o1.RigidBody.Grounded = false;
+                object1.RigidBody.Grounded = false;
 
-                if (o1.RigidBody.Velocity.Y < 0f)
+                if (object1.RigidBody.Velocity.Y < 0f)
                     return;
 
-                var bound = o1.RigidBody.Bound;
+                var bound = object1.RigidBody.Bound;
                 var potentialSupportUpper = new Rectangle(bound.Left, bound.Bottom + 1, bound.Width, 1);
                 container.Find(potentialSupportUpper, potentialSupport);
-                foreach (var o2 in potentialSupport)
+                foreach (var object2 in potentialSupport)
                 {
-                    if (o1.RigidBody.CollisionLayerMask.HasOne(o2.RigidBody.CollisionLayerMask)
-                        && o1.RigidBody.CollisionSideMask.HasOne(CollisionSide.Bottom) && o2.RigidBody.CollisionSideMask.HasOne(CollisionSide.Top)
-                        && o2.RigidBody.Bound.Intersects(potentialSupportUpper))
+                    if (object1.RigidBody.CollisionLayerMask.HasOne(object2.RigidBody.CollisionLayerMask)
+                        && object1.RigidBody.CollisionSideMask.HasOne(CollisionSide.Bottom) && object2.RigidBody.CollisionSideMask.HasOne(CollisionSide.Top)
+                        && object2.RigidBody.Bound.Intersects(potentialSupportUpper))
                     {
-                        o1.RigidBody.Grounded = true;
-                        collisions.Add(new CollideEventArgs(o1, o2, CollisionSide.Bottom, 0f));
+                        object1.RigidBody.Grounded = true;
+                        collisions.Add(new CollideEventArgs(object1, object2, CollisionSide.Bottom, 0f));
                     }
                 }
                 potentialSupport.Clear();
             });
-            collisions.ForEach(ce =>
+            collisions.ForEach(collision =>
             {
-                CollisionHandler.PreCollide(ce.object1, ce.object2);
-                CollisionHandler.PreCollide(ce.object2, ce.object1);
+                CollisionHandler.PreCollide(collision.object1, collision.object2);
+                CollisionHandler.PreCollide(collision.object2, collision.object1);
             });
-            collisions.ForEach(ce =>
+            collisions.ForEach(collision =>
             {
-                ce.object1.RigidBody.Velocity = new Vector2(ce.object1.RigidBody.Velocity.X, 0f);
+                collision.object1.RigidBody.Velocity = new Vector2(collision.object1.RigidBody.Velocity.X, 0f);
             });
-            collisions.Consume(ce =>
+            collisions.Consume(collision =>
             {
-                CollisionHandler.PostCollide(ce.object1, ce.object2, ce.side);
-                CollisionHandler.PostCollide(ce.object2, ce.object1, ce.side.Invert());
+                CollisionHandler.PostCollide(collision.object1, collision.object2, collision.side);
+                CollisionHandler.PostCollide(collision.object2, collision.object1, collision.side.Invert());
             });
 
         }
@@ -86,58 +86,58 @@ namespace MarioPirates
         private static void SimulateCollision(HashMap container)
         {
             container.Rebuild();
-            container.ForEachVisible(o1 =>
+            container.ForEachVisible(object1 =>
             {
-                if (o1.RigidBody.Motion != MotionEnum.Dynamic)
+                if (object1.RigidBody.Motion != MotionEnum.Dynamic)
                     return;
 
-                container.Find(o1.RigidBody.Bound, objectsNearby);
-                objectsNearby.Consume(o2 =>
+                container.Find(object1.RigidBody.Bound, objectsNearby);
+                objectsNearby.Consume(object2 =>
                 {
-                    if (o1 != o2 && !objectsChecked.Contains(o2))
-                        RigidBody.DetectCollide(o1, o2, collisions);
+                    if (object1 != object2 && !objectsChecked.Contains(object2))
+                        RigidBody.DetectCollide(object1, object2, collisions);
                 });
-                objectsChecked.Add(o1);
+                objectsChecked.Add(object1);
             });
             objectsChecked.Clear();
-            collisions.ForEach(ce =>
+            collisions.ForEach(collision =>
             {
-                CollisionHandler.PreCollide(ce.object1, ce.object2);
-                CollisionHandler.PreCollide(ce.object2, ce.object1);
+                CollisionHandler.PreCollide(collision.object1, collision.object2);
+                CollisionHandler.PreCollide(collision.object2, collision.object1);
             });
-            collisions.ForEach(ce =>
+            collisions.ForEach(collision =>
             {
-                RigidBody r1 = ce.object1.RigidBody, r2 = ce.object2.RigidBody;
-                (var v1, var v2) = RigidBody.ResolveCollide(ce);
+                RigidBody rigidbody1 = collision.object1.RigidBody, rigidbody2 = collision.object2.RigidBody;
+                (var velocityfix1, var velocityfix2) = RigidBody.ResolveCollide(collision);
 
-                velocityFix.AddIfNotExistStruct(r1, Vector3.Zero);
-                velocityFix[r1] += new Vector3(v1, 1);
+                velocityFix.AddIfNotExistStruct(rigidbody1, Vector3.Zero);
+                velocityFix[rigidbody1] += new Vector3(velocityfix1, 1);
 
-                velocityFix.AddIfNotExistStruct(r2, Vector3.Zero);
-                velocityFix[r2] += new Vector3(v2, 1);
+                velocityFix.AddIfNotExistStruct(rigidbody2, Vector3.Zero);
+                velocityFix[rigidbody2] += new Vector3(velocityfix2, 1);
 
-                locationFix.AddIfNotExistStruct(r1, Vector3.Zero);
-                var f1 = ce.side.Select(v1.DivS(v1.Abs() + v2.Abs()) * ce.depth);
-                locationFix[r1] += new Vector3(f1, 1);
+                locationFix.AddIfNotExistStruct(rigidbody1, Vector3.Zero);
+                var f1 = collision.side.Select(velocityfix1.DivS(velocityfix1.Abs() + velocityfix2.Abs()) * collision.depth);
+                locationFix[rigidbody1] += new Vector3(f1, 1);
 
-                locationFix.AddIfNotExistStruct(r2, Vector3.Zero);
-                var f2 = ce.side.Select(v2.DivS(v1.Abs() + v2.Abs()) * ce.depth);
-                locationFix[r2] += new Vector3(f2, 1);
+                locationFix.AddIfNotExistStruct(rigidbody2, Vector3.Zero);
+                var f2 = collision.side.Select(velocityfix2.DivS(velocityfix1.Abs() + velocityfix2.Abs()) * collision.depth);
+                locationFix[rigidbody2] += new Vector3(f2, 1);
             });
-            locationFix.Consume((rb, dp) =>
+            locationFix.Consume((rigidbody, dp) =>
             {
                 dp /= dp.Z;
-                rb.Object.Location += new Vector2(dp.X, dp.Y);
+                rigidbody.Object.Location += new Vector2(dp.X, dp.Y);
             });
-            velocityFix.Consume((rb, dv) =>
+            velocityFix.Consume((rigidbody, dv) =>
             {
                 dv /= dv.Z;
-                rb.Velocity += new Vector2(dv.X, dv.Y);
+                rigidbody.Velocity += new Vector2(dv.X, dv.Y);
             });
-            collisions.Consume(ce =>
+            collisions.Consume(collision =>
             {
-                CollisionHandler.PostCollide(ce.object1, ce.object2, ce.side);
-                CollisionHandler.PostCollide(ce.object2, ce.object1, ce.side.Invert());
+                CollisionHandler.PostCollide(collision.object1, collision.object2, collision.side);
+                CollisionHandler.PostCollide(collision.object2, collision.object1, collision.side.Invert());
             });
         }
     }

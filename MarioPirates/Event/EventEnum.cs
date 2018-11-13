@@ -4,7 +4,6 @@
     {
         Action,
 
-        // Common input
         KeyUpDown,
         KeyDownDown,
         KeyLeftDown,
@@ -22,12 +21,10 @@
         KeyXUp,
         KeyXHold,
 
-        // Generic keyboard input
         KeyDown,
         KeyUp,
         KeyHold,
 
-        // Others
         GameObjectCreate,
         GameObjectDestroy,
         GameOver,

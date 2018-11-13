@@ -4,7 +4,6 @@ namespace MarioPirates
 {
     internal static class Constants
     {
-        // Content
         public static readonly string CONTENT_PATH_ROOT = "Content\\";
         public static readonly string CONTENT_FILE_TYPE = ".json";
         public static readonly string LEVEL_DATA_PREFIX = "LevelData_";
@@ -12,10 +11,8 @@ namespace MarioPirates
         public static readonly string MARIO_SPRITES_LIST_FILE = "MarioSpritesList.json";
         public static readonly string SPRITE_DATA_FILE = "SpritesData.json";
 
-        // Controller
         public static readonly string KEYBOARD_EVENT_PREFIX = "Key";
 
-        // Gameplay
         public static readonly string CONTENT_ROOT = "Content";
         public static readonly string HUD_SPRITE_FONT = "hud";
 
@@ -23,12 +20,10 @@ namespace MarioPirates
 
         public static readonly string SCORE_STRING = "Score ";
 
-        // Object
         public const float OBJECT_TINY_MASS = 1e-6f;
 
         public static readonly string GAME_NAMESPACE = "MarioPirates.";
 
-        // Block
         public const int BLOCK_WIDTH = 16;
         public const int BLOCK_HEIGHT = 16;
         public static readonly Vector2 BLOCK_MARIO_COLLISION_VELOCITY = new Vector2(0f, -150f);
@@ -60,7 +55,6 @@ namespace MarioPirates
 
         public static readonly string QUESTION_BLOCK_SPRITE = "questionblock";
 
-        // Enemy
         public const float ENEMY_COLLISION_EVENT_DT = 3000f;
 
         public static readonly string GOOMBA_SPRITE = "goomba";
@@ -82,7 +76,6 @@ namespace MarioPirates
         public const int KOOPA_POINTS = 100;
         public static readonly Vector2 KOOPA_FIREBALL_COLLISION_VELOCITY = new Vector2(20f, -250f);
 
-        // Item
         public static readonly string CASTLE_SPRITE = "castle";
         public const int CASTLE_WIDTH = 80;
         public const int CASTLE_HEIGHT = 80;
@@ -136,7 +129,6 @@ namespace MarioPirates
         public const float STAR_COLLISION_VELOCITY_Y = -200f;
 
 
-        // Mario
         public const int MARIO_JUMP_HOLD_COUNT_LIMIT = 30;
         public const int MARIO_TRANSITION_COUNT_MAX = 30;
         public static readonly float[] MARIO_TRANSITION_ZOOM = { 2f, 1.67f, 1.33f, 1.67f, 1.33f, 1f };
@@ -178,7 +170,6 @@ namespace MarioPirates
         public const int SMALL_MARIO_WIDTH = 34;
         public const int SMALL_MARIO_HEIGHT = 30;
 
-        // Virtual
         public const int BACKGROUND_WIDTH = 800;
         public const int BACKGROUND_HEIGHT = 480;
         public static readonly string BACKGROUND_PARAM = "Background";
@@ -188,7 +179,6 @@ namespace MarioPirates
 
         public const int VIRTUAL_WALL_WIDTH = 16;
 
-        // Physics
         public static readonly string COIN_TYPE_NAME = "Coin";
         public static readonly string BRICK_DEBRIS_TYPE_NAME = "BrickDebris";
         public static readonly string BLUE_BRICK_DEBRIS_TYPE_NAME = "BlueBrickDebris";
@@ -203,7 +193,6 @@ namespace MarioPirates
         public const float RIGID_BODY_GRAVITY_VELOCITY_Y = 6f;
         public const float RIGID_BODY_RESOLVE_COLLIDE_NORMAL = 1f;
 
-        // Scene
         public const string LEVEL_1_SCENE = "1";
         public const string SECRET_LEVEL_SCENE = "secret";
         public const string GAMEOVER_SCENE = "gameover";
@@ -233,7 +222,6 @@ namespace MarioPirates
         public static readonly Vector2 TIME_VALUE_POSITION = new Vector2(7f * 800f / 11f, 96f);
         public static readonly Vector2 LIVES_VALUE_POSITION = new Vector2(9f * 800f / 11f, 96f);
 
-        // Sprite
         public const float FRAME_UPDATE_INTERVAL = 15f * 0.016f;
     }
 }

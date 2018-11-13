@@ -14,26 +14,26 @@ namespace MarioPirates
 
         public IGameObject ToGameObject()
         {
-            var t = Type.GetType(Constants.GAME_NAMESPACE + TypeName);
+            var objectType = Type.GetType(Constants.GAME_NAMESPACE + TypeName);
             var param = Params != null
                 ? (new object[] { Location[0], Location[1], Params })
                 : (new object[] { Location[0], Location[1] });
-            var obj = (IGameObject)Activator.CreateInstance(t, param);
+            var gameObject = (IGameObject)Activator.CreateInstance(objectType, param);
 
-            if (obj is GameObjectRigidBody or)
-                SetRigidBodyParam(or);
+            if (gameObject is GameObjectRigidBody gameObjectRigidBody)
+                SetRigidBodyParam(gameObjectRigidBody);
 
-            return obj;
+            return gameObject;
         }
 
-        private void SetRigidBodyParam(GameObjectRigidBody obj)
+        private void SetRigidBodyParam(GameObjectRigidBody gameObject)
         {
             if (Motion.HasValue)
-                obj.RigidBody.Motion = Motion.Value;
+                gameObject.RigidBody.Motion = Motion.Value;
             if (Force.HasValue)
-                obj.RigidBody.ApplyForce(Force.Value);
+                gameObject.RigidBody.ApplyForce(Force.Value);
             if (Mass.HasValue)
-                obj.RigidBody.Mass = Mass.Value;
+                gameObject.RigidBody.Mass = Mass.Value;
         }
     }
 }

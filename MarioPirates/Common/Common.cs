@@ -18,17 +18,14 @@ namespace MarioPirates
                 f();
         }
 
-        // Enum
         public static T[] EnumValues<T>() => (T[])Enum.GetValues(typeof(T));
 
-        // Array
         public static void ForEach<T>(this T[] a, Action<T> f)
         {
             foreach (var e in a)
                 f(e);
         }
 
-        // List
         public static void AddIfNotExist<T>(this List<T> l, T val)
         {
             if (!l.Contains(val))
@@ -41,7 +38,6 @@ namespace MarioPirates
             l.Clear();
         }
 
-        // Dictionary
         public static void AddIfNotExistStruct<T, U>(this Dictionary<T, U> d, T key, U val) where U : struct
         {
             if (!d.ContainsKey(key))
@@ -71,7 +67,6 @@ namespace MarioPirates
             d.Clear();
         }
 
-        // HashSet
         public static void ForEach<T>(this HashSet<T> s, Action<T> f)
         {
             foreach (var e in s)
@@ -84,17 +79,14 @@ namespace MarioPirates
             s.Clear();
         }
 
-        // int
         public static int Abs(this int x) => Math.Abs(x);
         public static float Abs(this float x) => Math.Abs(x);
 
-        // float
         public static float Max(this float x, float y) => Math.Max(x, y);
         public static float Pow(this float x, float y) => (float)Math.Pow(x, y);
         public static float DeEPS(this float x) => x.Abs() < 1f ? 0f : x;
         public static float Clamp(this float x, float lower, float upper) => x < lower ? lower : x > upper ? upper : x;
 
-        // Vector2
         public static Vector2 Abs(this Vector2 v) => new Vector2(Math.Abs(v.X), Math.Abs(v.Y));
 
         public static Vector2 DivS(this Vector2 v1, Vector2 v2) =>

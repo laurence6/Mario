@@ -124,25 +124,13 @@ namespace MarioPirates
             UpdateSprite();
         }
 
-        public void Accelerated()
-        {
-            accelerated.SetAccelerated(true);
-        }
+        public void Accelerated() => accelerated.IsAccelerated = true;
 
-        public void CancelAccelerated()
-        {
-            accelerated.SetAccelerated(false);
-        }
+        public void CancelAccelerated() => accelerated.IsAccelerated = false;
 
-        public void Transiting()
-        {
-            transiting.SetTransiting(true);
-        }
+        public void Transiting() => transiting.IsTransiting = true;
 
-        public void CancelTransiting()
-        {
-            transiting.SetTransiting(false);
-        }
+        public void CancelTransiting() => transiting.IsTransiting = false;
 
         public bool IsInvincible => invincible.IsInvincible;
 
