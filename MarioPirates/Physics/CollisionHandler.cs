@@ -221,6 +221,7 @@ namespace MarioPirates
                                         Coins.Ins.Value++;
                                         Score.Ins.Value += Constants.COIN_POINTS;
                                         EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, thisQuestionBlock, new GameObjectDestroyEventArgs(powerupObj), Constants.BLOCK_COLLISION_EVENT_DT);
+                                            AudioManager.Ins.PowerupCoin();
                                     }
                                 }
                             }
