@@ -244,7 +244,6 @@ namespace MarioPirates
                     }
                     else if (other is Koopa koopa && koopa.Stomped)
                     {
-                        // TODO: flip
                         @this.RigidBody.CollisionLayerMask = CollisionLayer.None;
                         @this.RigidBody.Velocity = Constants.GOOMBA_STOMPED_KOOPA_COLLISION_VELOCITY;
                         EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, @this, new GameObjectDestroyEventArgs(@this), Constants.ENEMY_COLLISION_EVENT_DT);
@@ -311,7 +310,6 @@ namespace MarioPirates
                     var @this = self as Mario;
                     if (other is Coin)
                     {
-                        // Score up
                     }
                     else if (other is Flower)
                     {
@@ -325,7 +323,6 @@ namespace MarioPirates
                     }
                     else if (other is GreenMushroom)
                     {
-                        // Life up
                     }
                     else if (other is PipeTop pipe && pipe.ToLevel != null && side is CollisionSide.Bottom && @this.State.Action.State == MarioStateEnum.Crouch)
                     {
@@ -372,7 +369,6 @@ namespace MarioPirates
                         EventManager.Ins.RaiseEvent(EventEnum.Action, @this, new ActionEventArgs(() => @this.State.CancelInvincible()), Constants.MARIO_STAR_COLLISION_EVENT_DT);
                     }
 
-                    // Response to collsion with enemies
                     if (other is Goomba || other is Koopa)
                     {
                         if (!(side is CollisionSide.Bottom) && !@this.State.IsInvincible && !@this.State.IsTransiting)
