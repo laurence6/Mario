@@ -68,6 +68,7 @@
     <Compile Include="Object\Block\BlueBrickBlock.cs" />
     <Compile Include="Object\Block\BlueBrickDebris.cs" />
     <Compile Include="Object\Block\BlueBrokenBlock.cs" />
+    <Compile Include="Object\Block\Ground.cs" />
     <Compile Include="Physics\CollisionHandler.cs" />
     <Compile Include="Object\Item\LongPipe.cs" />
     <Compile Include="Scene\HUD.cs" />
