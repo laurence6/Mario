@@ -216,6 +216,7 @@ namespace MarioPirates
                                         Motion = MotionEnum.Dynamic,
                                     }.ToGameObject();
                                     EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, thisQuestionBlock, new GameObjectCreateEventArgs(powerupObj));
+                                        
                                     if (thisQuestionBlock.Powerup == Constants.COIN_TYPE_NAME)
                                     {
                                         Coins.Ins.Value++;
@@ -223,6 +224,10 @@ namespace MarioPirates
                                         EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, thisQuestionBlock, new GameObjectDestroyEventArgs(powerupObj), Constants.BLOCK_COLLISION_EVENT_DT);
                                             AudioManager.Ins.PowerupCoin();
                                     }
+                                   else
+                                        {
+                                            AudioManager.Ins.ItemAppear();
+                                        }
                                 }
                             }
                         }
@@ -361,6 +366,7 @@ namespace MarioPirates
                             @this.TransitionToBigCount = 0;
                             @this.State.Transiting();
                             EventManager.Ins.RaiseEvent(EventEnum.Action, @this, new ActionEventArgs(() => @this.State.CancelTransiting()), Constants.MARIO_MUSHROOM_COLLISION_EVENT_DT);
+                                AudioManager.Ins.GetPower();
                         }
                         @this.State.Big();
                     }

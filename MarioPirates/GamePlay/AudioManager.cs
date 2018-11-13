@@ -16,12 +16,17 @@ namespace MarioPirates
         public Song OverworldTheme { get; private set; }
         public SoundEffect JumpSmall { get; private set; }
         public SoundEffect CollectCoin { get; private set; }
+        public SoundEffect PowerUp { get; private set; }
+        public SoundEffect PowerUpAppear { get; private set; }
+
 
         public void LoadContent(ContentManager content)
         {
             OverworldTheme = content.Load<Song>("OverworldTheme");
             JumpSmall = content.Load<SoundEffect>("jumpsmall");
             CollectCoin = content.Load<SoundEffect>("collectcoin");
+            PowerUp = content.Load<SoundEffect>("powerup");
+            PowerUpAppear = content.Load<SoundEffect>("powerupappear");
         }
 
         public void StartTheme()
@@ -38,6 +43,16 @@ namespace MarioPirates
         public void PowerupCoin()
         {
             CollectCoin.Play();
+        }
+
+        public void ItemAppear()
+        {
+            PowerUpAppear.Play();
+        }
+
+        public void GetPower()
+        {
+            PowerUp.Play();
         }
     }
 }

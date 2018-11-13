@@ -434,3 +434,15 @@
 /processorParam:Quality=Best
 /build:jumpsmall.wav
 
+#begin powerup.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:powerup.wav
+
+#begin powerupappear.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:powerupappear.wav
+
