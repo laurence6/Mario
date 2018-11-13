@@ -4,7 +4,8 @@ using Microsoft.Xna.Framework.Media;
 
 namespace MarioPirates
 {
-    internal sealed class AudioManager
+    internal sealed class 
+        AudioManager
     {
         public static readonly AudioManager Ins = new AudioManager();
 
@@ -14,11 +15,13 @@ namespace MarioPirates
 
         public Song OverworldTheme { get; private set; }
         public SoundEffect JumpSmall { get; private set; }
+        public SoundEffect CollectCoin { get; private set; }
 
         public void LoadContent(ContentManager content)
         {
             OverworldTheme = content.Load<Song>("OverworldTheme");
             JumpSmall = content.Load<SoundEffect>("jumpsmall");
+            CollectCoin = content.Load<SoundEffect>("collectcoin");
         }
 
         public void StartTheme()
@@ -30,6 +33,11 @@ namespace MarioPirates
         public void SmallMarioJump()
         {
             JumpSmall.Play();
+        }
+
+        public void PowerupCoin()
+        {
+            CollectCoin.Play();
         }
     }
 }

@@ -10,6 +10,7 @@ namespace MarioPirates
             : base(dstX, dstY, Params, SpriteFactory.Ins.CreateSprite(Constants.QUESTION_BLOCK_SPRITE))
         {
             Powerup = Params[Constants.POWERUP_PARAM];
+            
         }
     }
 }

@@ -85,6 +85,7 @@ namespace MarioPirates
         public const int COIN_HEIGHT = 14;
         public const float COIN_MASS = 0.05f;
         public const int COIN_POINTS = 200;
+        
 
         public static readonly string FIREBALL_SPRITE = "fireball";
         public const int FIREBALL_WIDTH = 10;

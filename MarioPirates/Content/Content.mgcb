@@ -410,12 +410,6 @@
 /processorParam:Quality=Best
 /build:OverworldTheme.mp3
 
-#begin jumpsmall.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:jumpsmall.wav
-
 #begin win.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -427,4 +421,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:win.png
+
+#begin collectcoin.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:collectcoin.wav
+
+#begin jumpsmall.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:jumpsmall.wav
 
