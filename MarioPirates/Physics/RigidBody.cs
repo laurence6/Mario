@@ -93,26 +93,26 @@ namespace MarioPirates
             Force = Vector2.Zero;
         }
 
-        public static void DetectCollide(GameObjectRigidBody o1, GameObjectRigidBody o2, List<CollideEventArgs> collisions)
+        public static void DetectCollide(GameObjectRigidBody object1, GameObjectRigidBody object2, List<CollideEventArgs> collisions)
         {
-            RigidBody r1 = o1.RigidBody, r2 = o2.RigidBody;
-            if ((r1.CollisionLayerMask & r2.CollisionLayerMask) != 0)
+            RigidBody rigidbody1 = object1.RigidBody, rigidbody2 = object2.RigidBody;
+            if ((rigidbody1.CollisionLayerMask & rigidbody2.CollisionLayerMask) != 0)
             {
-                Rectangle b1 = r1.Bound, b2 = r2.Bound;
-                Rectangle.Intersect(ref b1, ref b2, out var ints);
+                Rectangle bound1 = rigidbody1.Bound, bound2 = rigidbody2.Bound;
+                Rectangle.Intersect(ref bound1, ref bound2, out var ints);
                 if (!ints.IsEmpty)
                 {
                     var side = CollisionSide.All;
                     var depth = 0f;
 
-                    var relVel = r2.Velocity - r1.Velocity;
-                    if (b1.Right > b2.Right || relVel.X >= 0)
+                    var relVel = rigidbody2.Velocity - rigidbody1.Velocity;
+                    if (bound1.Right > bound2.Right || relVel.X >= 0)
                         side &= ~CollisionSide.Right;
-                    if (b1.Left < b2.Left || relVel.X <= 0)
+                    if (bound1.Left < bound2.Left || relVel.X <= 0)
                         side &= ~CollisionSide.Left;
-                    if (b1.Top < b2.Top || relVel.Y <= 0)
+                    if (bound1.Top < bound2.Top || relVel.Y <= 0)
                         side &= ~CollisionSide.Top;
-                    if (b1.Bottom > b2.Bottom || relVel.Y >= 0)
+                    if (bound1.Bottom > bound2.Bottom || relVel.Y >= 0)
                         side &= ~CollisionSide.Bottom;
 
                     if (side != CollisionSide.None)
@@ -128,20 +128,20 @@ namespace MarioPirates
                             depth = ints.Width.Abs();
                         }
 
-                        if (r1.CollisionSideMask.HasOne(side) && r2.CollisionSideMask.HasOne(side.Invert()))
+                        if (rigidbody1.CollisionSideMask.HasOne(side) && rigidbody2.CollisionSideMask.HasOne(side.Invert()))
                         {
-                            collisions.Add(new CollideEventArgs(o1, o2, side, depth));
+                            collisions.Add(new CollideEventArgs(object1, object2, side, depth));
                         }
                     }
                 }
             }
         }
 
-        public static (Vector2, Vector2) ResolveCollide(in CollideEventArgs ce)
+        public static (Vector2, Vector2) ResolveCollide(in CollideEventArgs collision)
         {
-            RigidBody o1 = ce.object1.RigidBody, o2 = ce.object2.RigidBody;
+            RigidBody object1 = collision.object1.RigidBody, object2 = collision.object2.RigidBody;
             var normal = Vector2.Zero;
-            switch (ce.side)
+            switch (collision.side)
             {
                 case CollisionSide.Top:
                     normal.Y = Constants.RIGID_BODY_RESOLVE_COLLIDE_NORMAL;
@@ -156,10 +156,10 @@ namespace MarioPirates
                     normal.X = -Constants.RIGID_BODY_RESOLVE_COLLIDE_NORMAL;
                     break;
             }
-            var dp = (o2.Velocity * normal - o1.Velocity * normal)
-                .DivS(o1.InvMass + o2.InvMass)
+            var dp = (object2.Velocity * normal - object1.Velocity * normal)
+                .DivS(object1.InvMass + object2.InvMass)
                 * normal;
-            return ((o1.CoR + 1f) * o1.InvMass * dp, (o2.CoR + 1f) * o2.InvMass * -dp);
+            return ((object1.CoR + 1f) * object1.InvMass * dp, (object2.CoR + 1f) * object2.InvMass * -dp);
         }
     }
 }
