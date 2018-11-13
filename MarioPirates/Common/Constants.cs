@@ -207,6 +207,7 @@ namespace MarioPirates
         public const string LEVEL_1_SCENE = "1";
         public const string SECRET_LEVEL_SCENE = "secret";
         public const string GAMEOVER_SCENE = "gameover";
+        public const string WIN_SCENE = "win";
         public const string DEFAULT_SCENE = LEVEL_1_SCENE;
         public static readonly string[] AVAILABLE_SCENES = new string[] { LEVEL_1_SCENE, SECRET_LEVEL_SCENE, GAMEOVER_SCENE };
         public const int SCREEN_WIDTH = 800;

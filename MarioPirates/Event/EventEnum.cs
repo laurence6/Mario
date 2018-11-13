@@ -31,5 +31,6 @@
         GameObjectCreate,
         GameObjectDestroy,
         GameOver,
+        Win
     }
 }
