@@ -20,7 +20,6 @@ namespace MarioPirates
 
         public virtual void Update(float dt)
         {
-            Sprite.Update(dt);
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)

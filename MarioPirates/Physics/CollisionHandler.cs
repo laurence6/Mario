@@ -25,7 +25,7 @@ namespace MarioPirates
                     var @this = self as Goomba;
                     if (other is Koopa koopa && koopa.Stomped)
                     {
-                        @this.RigidBody.Mass = Constants.OBJECT_TINY_MASS;
+                        @this.RigidBody.CollisionLayerMask = CollisionLayer.None;
                     }
 
                     break;
@@ -36,7 +36,7 @@ namespace MarioPirates
                     var @this = self as Coin;
                     if (other is Mario)
                     {
-                        @this.RigidBody.Mass = Constants.OBJECT_TINY_MASS;
+                        @this.RigidBody.CollisionLayerMask = CollisionLayer.None;
                         Coins.Ins.Value++;
                         Score.Ins.Value += Constants.COIN_POINTS;
                         EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, @this, new GameObjectDestroyEventArgs(@this));
@@ -48,7 +48,7 @@ namespace MarioPirates
                 case Fireball _:
                 {
                     var @this = self as Fireball;
-                    @this.RigidBody.Mass = Constants.OBJECT_TINY_MASS;
+                    @this.RigidBody.CollisionLayerMask = CollisionLayer.None;
                     break;
                 }
 
@@ -57,7 +57,7 @@ namespace MarioPirates
                     var @this = self as Flower;
                     if (other is Mario)
                     {
-                        @this.RigidBody.Mass = Constants.OBJECT_TINY_MASS;
+                        @this.RigidBody.CollisionLayerMask = CollisionLayer.None;
                         Score.Ins.Value += Constants.FLOWER_SCORE;
                         EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, @this, new GameObjectDestroyEventArgs(@this));
                     }
@@ -70,7 +70,7 @@ namespace MarioPirates
                     var @this = self as GreenMushroom;
                     if (other is Mario)
                     {
-                        @this.RigidBody.Mass = Constants.OBJECT_TINY_MASS;
+                        @this.RigidBody.CollisionLayerMask = CollisionLayer.None;
                         Lives.Ins.Value++;
                         EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, @this, new GameObjectDestroyEventArgs(@this));
                     }
@@ -83,7 +83,7 @@ namespace MarioPirates
                     var @this = self as RedMushroom;
                     if (other is Mario)
                     {
-                        @this.RigidBody.Mass = Constants.OBJECT_TINY_MASS;
+                        @this.RigidBody.CollisionLayerMask = CollisionLayer.None;
                         Score.Ins.Value += Constants.REDMUSHROOM_SCORE;
                         EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, @this, new GameObjectDestroyEventArgs(@this));
                     }

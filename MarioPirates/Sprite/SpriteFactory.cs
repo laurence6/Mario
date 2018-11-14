@@ -16,6 +16,7 @@ namespace MarioPirates
             public string TextureName = null;
             public int[] Size = null;
             public int[] Frames = null;
+            public int Depth = 0;
             public int AccelerateRate = 1;
 
             public SpriteTexture ToSprite(Dictionary<string, Texture2D> textures)
@@ -23,7 +24,7 @@ namespace MarioPirates
                 var frames = new Point[Frames.Length / 2];
                 for (var i = 0; i < frames.Length; i++)
                     frames[i] = new Point(Frames[i * 2], Frames[i * 2 + 1]);
-                return new SpriteTexture(textures[TextureName], new Point(Size[0], Size[1]), frames, AccelerateRate);
+                return new SpriteTexture(textures[TextureName], new Point(Size[0], Size[1]), frames, Depth, AccelerateRate);
             }
         }
 

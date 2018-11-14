@@ -96,7 +96,7 @@ namespace MarioPirates
         public static void DetectCollide(GameObjectRigidBody object1, GameObjectRigidBody object2, List<CollideEventArgs> collisions)
         {
             RigidBody rigidbody1 = object1.RigidBody, rigidbody2 = object2.RigidBody;
-            if ((rigidbody1.CollisionLayerMask & rigidbody2.CollisionLayerMask) != 0)
+            if (rigidbody1.CollisionLayerMask.HasOne(rigidbody2.CollisionLayerMask))
             {
                 Rectangle bound1 = rigidbody1.Bound, bound2 = rigidbody2.Bound;
                 Rectangle.Intersect(ref bound1, ref bound2, out var ints);

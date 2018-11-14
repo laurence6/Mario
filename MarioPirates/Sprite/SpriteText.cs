@@ -17,10 +17,6 @@ namespace MarioPirates
             color = Color.White;
         }
 
-        public void Update(float dt)
-        {
-        }
-
         public void Draw(SpriteBatch spriteBatch, float dstX, float dstY, int? sizeX, int? sizeY)
         {
             spriteBatch.DrawString(font, getString(), new Vector2(dstX, dstY), color);
