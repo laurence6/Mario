@@ -410,18 +410,6 @@
 /processorParam:Quality=Best
 /build:OverworldTheme.mp3
 
-#begin win.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:win.png
-
 #begin collectcoin.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -445,4 +433,16 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:powerupappear.wav
+
+#begin win.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:win.png
 
