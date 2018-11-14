@@ -6,11 +6,11 @@ namespace MarioPirates
     {
         public bool Stomped { get; set; } = false;
 
-        private readonly Sprite[] sprites;
+        private readonly ISprite[] sprites;
 
         public Koopa(int x, int y) : base(x, y, Constants.KOOPA_WIDTH * 2, Constants.KOOPA_HEIGHT * 2)
         {
-            sprites = new Sprite[3] {
+            sprites = new ISprite[3] {
                 SpriteFactory.Ins.CreateSprite(Constants.KOOPA_LEFT_SPRITE),
                 SpriteFactory.Ins.CreateSprite(Constants.KOOPA_RIGHT_SPRITE),
                 SpriteFactory.Ins.CreateSprite(Constants.KOOPA_STOMPED_SPRITE),

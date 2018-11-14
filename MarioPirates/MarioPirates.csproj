@@ -135,7 +135,9 @@
     <Compile Include="Scene\HashMap.cs" />
     <Compile Include="Scene\Scene.cs" />
     <Compile Include="Scene\LevelData.cs" />
-    <Compile Include="Sprite\Sprite.cs" />
+    <Compile Include="Sprite\ISprite.cs" />
+    <Compile Include="Sprite\SpriteText.cs" />
+    <Compile Include="Sprite\SpriteTexture.cs" />
     <Compile Include="Object\Item\Star.cs" />
     <Compile Include="Sprite\SpriteFactory.cs" />
   </ItemGroup>

@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace MarioPirates
 {
-    internal class Sprite
+    internal class SpriteTexture : ISprite
     {
         private Texture2D texture;
         private Point size;
@@ -12,7 +12,7 @@ namespace MarioPirates
 
         private float elpased = 0;
 
-        public Sprite(Texture2D texture, Point size, Point[] frames, float accelerateRate)
+        public SpriteTexture(Texture2D texture, Point size, Point[] frames, float accelerateRate)
         {
             this.texture = texture;
             this.size = size;
@@ -27,11 +27,15 @@ namespace MarioPirates
 
         public void Draw(SpriteBatch spriteBatch, Rectangle drawDst)
         {
+        }
+
+        public void Draw(SpriteBatch spriteBatch, float dstX, float dstY, int? sizeX, int? sizeY)
+        {
             if (frames.Length > 0)
             {
                 spriteBatch.Draw(
                     texture,
-                    drawDst,
+                    new Rectangle((int)dstX, (int)dstY, sizeX.Value, sizeY.Value),
                     new Rectangle(frames[(int)(elpased / Constants.FRAME_UPDATE_INTERVAL * accelerateRate) % frames.Length], size),
                     Color.White);
             }

@@ -7,8 +7,8 @@ namespace MarioPirates
 {
     internal abstract class Block : GameObjectRigidBody
     {
-        private readonly Sprite usedSprite;
-        private readonly Sprite normalSprite;
+        private readonly ISprite usedSprite;
+        private readonly ISprite normalSprite;
 
         private BlockState state = BlockState.Normal;
 
@@ -40,7 +40,7 @@ namespace MarioPirates
 
         private readonly Vector2 origLocation;
 
-        protected Block(int dstX, int dstY, Dictionary<string, string> Params, Sprite normalSprite) : base(dstX, dstY, Constants.BLOCK_WIDTH * 2, Constants.BLOCK_HEIGHT * 2)
+        protected Block(int dstX, int dstY, Dictionary<string, string> Params, ISprite normalSprite) : base(dstX, dstY, Constants.BLOCK_WIDTH * 2, Constants.BLOCK_HEIGHT * 2)
         {
             usedSprite = SpriteFactory.Ins.CreateSprite(Constants.USED_BLOCK_SPRITE);
             this.normalSprite = normalSprite;

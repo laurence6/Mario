@@ -9,7 +9,7 @@ namespace MarioPirates
         bool IsLocationAbsolute { get; set; }
         Point Size { get; set; }
 
-        Sprite Sprite { get; set; }
+        ISprite Sprite { get; set; }
 
         void Update(float dt);
         void Draw(SpriteBatch spriteBatch);

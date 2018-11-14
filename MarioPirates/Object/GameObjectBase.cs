@@ -10,7 +10,7 @@ namespace MarioPirates
 
         public abstract Point Size { get; set; }
 
-        public Sprite Sprite { get; set; }
+        public ISprite Sprite { get; set; }
 
         protected GameObjectBase(float locX, float locY, int sizeX, int sizeY)
         {
@@ -25,7 +25,7 @@ namespace MarioPirates
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            Sprite.Draw(spriteBatch, new Rectangle((int)Location.X, (int)Location.Y, Size.X, Size.Y));
+            Sprite.Draw(spriteBatch, Location.X, Location.Y, Size.X, Size.Y);
         }
     }
 }

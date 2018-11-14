@@ -10,7 +10,6 @@ namespace MarioPirates
     {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
-        private SpriteFont font;
 
         private List<IController> controllers = new List<IController>();
 
@@ -35,7 +34,6 @@ namespace MarioPirates
             base.Initialize();
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            font = Content.Load<SpriteFont>("hud");
             SpriteFactory.Ins.LoadContent(Content);
 
             GameOverReset();
@@ -48,8 +46,6 @@ namespace MarioPirates
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            font = Content.Load<SpriteFont>("hud");
 
             SpriteFactory.Ins.LoadContent(Content);
             AudioManager.Ins.LoadContent(Content);
@@ -102,7 +98,7 @@ namespace MarioPirates
 
             Scene.Ins.Draw(spriteBatch);
             if (!gameOver)
-                HUD.Draw(spriteBatch, font);
+                HUD.Ins.Draw(spriteBatch);
         }
 
         private bool triggerReset = false;
@@ -148,6 +144,7 @@ namespace MarioPirates
             Score.Ins.Reset();
             Lives.Ins.Reset();
             Timer.Ins.Reset(Time.Now, 400000);
+            HUD.Ins.Reset();
 
             EventManager.Ins.Subscribe(EventEnum.GameOver, (s, e) => TriggerGameOver());
 

@@ -9,7 +9,7 @@ namespace MarioPirates
 {
     internal class Mario : GameObjectRigidBody, IDisposable
     {
-        public readonly Dictionary<string, Sprite> Sprites;
+        public readonly Dictionary<string, ISprite> Sprites;
 
         public MarioState State;
 
@@ -26,7 +26,7 @@ namespace MarioPirates
 
         public Mario(int dstX, int dstY) : base(dstX, dstY, 0, 0)
         {
-            Sprites = new Dictionary<string, Sprite>();
+            Sprites = new Dictionary<string, ISprite>();
             new JavaScriptSerializer().Deserialize<List<string>>(ReadAllText(Constants.CONTENT_PATH_ROOT + Constants.MARIO_SPRITES_LIST_FILE))
                  .ForEach(s => Sprites.Add(s, SpriteFactory.Ins.CreateSprite(s)));
 
