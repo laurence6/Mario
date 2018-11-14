@@ -15,6 +15,7 @@ namespace MarioPirates
         private List<IController> controllers = new List<IController>();
 
         private bool pause;
+        private bool gameOver;
 
         public GameMario()
         {
@@ -100,7 +101,8 @@ namespace MarioPirates
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             Scene.Ins.Draw(spriteBatch);
-            HUD.Draw(spriteBatch, font);
+            if (!gameOver)
+                HUD.Draw(spriteBatch, font);
         }
 
         private bool triggerReset = false;
@@ -127,6 +129,7 @@ namespace MarioPirates
         {
             Scene.Ins.Active(Constants.GAMEOVER_SCENE);
             Scene.Ins.ResetActive();
+            gameOver = true;
             EventManager.Ins.RaiseEvent(EventEnum.Action, this, new ActionEventArgs(GameOverReset), Constants.RESET_EVENT_DT);
             triggerGameOver = false;
             triggerReset = false;
@@ -168,6 +171,7 @@ namespace MarioPirates
             triggerGameOver = false;
             triggerReset = false;
             pause = false;
+            gameOver = false;
         var keyboardController = new KeyboardController();
             keyboardController.SetKeyMapping(Keys.LeftShift, Keys.X);
             keyboardController.SetKeyMapping(Keys.RightShift, Keys.X);
