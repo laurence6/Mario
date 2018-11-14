@@ -93,7 +93,6 @@ namespace MarioPirates
             }
         }
 
-
         public static void PostCollide(GameObjectRigidBody self, GameObjectRigidBody other, CollisionSide side)
         {
             switch (self)
@@ -195,7 +194,6 @@ namespace MarioPirates
                                     EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, thisBlueBrickBlock, new GameObjectDestroyEventArgs(debris), Constants.BLOCK_COLLISION_EVENT_DT);
                                 }
                             }
-
                         }
                     }
 
@@ -216,18 +214,18 @@ namespace MarioPirates
                                         Motion = MotionEnum.Dynamic,
                                     }.ToGameObject();
                                     EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, thisQuestionBlock, new GameObjectCreateEventArgs(powerupObj));
-                                        
+
                                     if (thisQuestionBlock.Powerup == Constants.COIN_TYPE_NAME)
                                     {
                                         Coins.Ins.Value++;
                                         Score.Ins.Value += Constants.COIN_POINTS;
                                         EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, thisQuestionBlock, new GameObjectDestroyEventArgs(powerupObj), Constants.BLOCK_COLLISION_EVENT_DT);
-                                            AudioManager.Ins.PowerupCoin();
+                                        AudioManager.Ins.PowerupCoin();
                                     }
-                                   else
-                                        {
-                                            AudioManager.Ins.ItemAppear();
-                                        }
+                                    else
+                                    {
+                                        AudioManager.Ins.ItemAppear();
+                                    }
                                 }
                             }
                         }
@@ -365,7 +363,7 @@ namespace MarioPirates
                             @this.TransitionToBigCount = 0;
                             @this.State.Transiting();
                             EventManager.Ins.RaiseEvent(EventEnum.Action, @this, new ActionEventArgs(() => @this.State.CancelTransiting()), Constants.MARIO_MUSHROOM_COLLISION_EVENT_DT);
-                                AudioManager.Ins.GetPower();
+                            AudioManager.Ins.GetPower();
                         }
                         @this.State.TurnBig();
                     }

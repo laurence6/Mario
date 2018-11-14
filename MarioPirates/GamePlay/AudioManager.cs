@@ -13,7 +13,8 @@ namespace MarioPirates
         private AudioManager(bool isMuted = true)
         {
             IsMuted = isMuted;
-            if (!isMuted) {
+            if (!isMuted)
+            {
                 StartTheme();
             }
         }

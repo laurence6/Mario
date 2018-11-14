@@ -9,5 +9,4 @@ namespace MarioPirates
 
         public KeyDownEventArgs(Keys key) => this.key = key;
     }
-
 }

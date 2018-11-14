@@ -80,7 +80,6 @@ namespace MarioPirates
                 CollisionHandler.PostCollide(collision.object1, collision.object2, collision.side);
                 CollisionHandler.PostCollide(collision.object2, collision.object1, collision.side.Invert());
             });
-
         }
 
         private static void SimulateCollision(HashMap container)

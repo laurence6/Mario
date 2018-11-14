@@ -85,7 +85,6 @@ namespace MarioPirates
         public const int COIN_HEIGHT = 14;
         public const float COIN_MASS = 0.05f;
         public const int COIN_POINTS = 200;
-        
 
         public static readonly string FIREBALL_SPRITE = "fireball";
         public const int FIREBALL_WIDTH = 10;
@@ -128,7 +127,6 @@ namespace MarioPirates
         public const float STAR_MASS = 0.05f;
         public static readonly Vector2 STAR_INITIAL_VELOCITY = new Vector2(100f, 0f);
         public const float STAR_COLLISION_VELOCITY_Y = -200f;
-
 
         public const int MARIO_JUMP_HOLD_COUNT_LIMIT = 30;
         public const int MARIO_TRANSITION_COUNT_MAX = 30;
@@ -205,7 +203,6 @@ namespace MarioPirates
 
         public const ulong HASH_MAP_SIZE = 128;
         public const int INT_SIZE = 32;
-
 
         public static readonly string SCORE_TITLE = "SCORE";
         public static readonly string COINS_TITLE = "COINS";

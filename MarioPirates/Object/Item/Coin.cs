@@ -7,8 +7,6 @@
             Sprite = SpriteFactory.Ins.CreateSprite(Constants.COIN_SPRITE);
             RigidBody.Mass = Constants.COIN_MASS;
             RigidBody.CollisionLayerMask = CollisionLayer.Coin;
-            
         }
-        
     }
 }
