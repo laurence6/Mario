@@ -264,14 +264,13 @@ namespace MarioPirates
                     if (other is Mario mario && (side == CollisionSide.Top || mario.State.IsInvincible))
                     {
                         @this.RigidBody.Velocity = new Vector2(!@this.Stomped || @this.RigidBody.Velocity.X.DeEPS() != 0f ? 0f : other.RigidBody.Bound.Center.X > @this.RigidBody.Bound.Center.X ? -Constants.KOOPA_MARIO_COLLISION_VELOCITY.X : Constants.KOOPA_MARIO_COLLISION_VELOCITY.X, 0f);
-                        if (!@this.Stomped)
+                        @this.Stomped = true;
+                        Score.Ins.Value += Constants.KOOPA_POINTS;
+                        if (mario.State.IsInvincible)
                         {
-                            @this.Stomped = true;
-                            Score.Ins.Value += Constants.KOOPA_POINTS;
-                        }
-                        else if(side is CollisionSide.Top)
-                        {
-                            Score.Ins.Value += Constants.KOOPA_POINTS;
+                            @this.RigidBody.CollisionLayerMask = CollisionLayer.None;
+                            @this.RigidBody.Velocity = Vector2.Zero;
+                            EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, @this, new GameObjectDestroyEventArgs(@this), Constants.ENEMY_COLLISION_EVENT_DT);
                         }
                     }
                     else if (other is Fireball)
