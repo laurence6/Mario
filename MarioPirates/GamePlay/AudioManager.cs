@@ -4,13 +4,18 @@ using Microsoft.Xna.Framework.Media;
 
 namespace MarioPirates
 {
-    internal sealed class 
-        AudioManager
+    internal sealed class AudioManager
     {
         public static readonly AudioManager Ins = new AudioManager();
 
-        private AudioManager()
+        public bool IsMuted { get; private set; }
+
+        private AudioManager(bool isMuted = true)
         {
+            IsMuted = isMuted;
+            if (!isMuted) {
+                StartTheme();
+            }
         }
 
         public Song OverworldTheme { get; private set; }
@@ -18,7 +23,6 @@ namespace MarioPirates
         public SoundEffect CollectCoin { get; private set; }
         public SoundEffect PowerUp { get; private set; }
         public SoundEffect PowerUpAppear { get; private set; }
-
 
         public void LoadContent(ContentManager content)
         {
@@ -29,7 +33,7 @@ namespace MarioPirates
             PowerUpAppear = content.Load<SoundEffect>("powerupappear");
         }
 
-        public void StartTheme()
+        private void StartTheme()
         {
             MediaPlayer.Play(OverworldTheme);
             MediaPlayer.IsRepeating = true;
@@ -37,22 +41,45 @@ namespace MarioPirates
 
         public void SmallMarioJump()
         {
-            JumpSmall.Play();
+            if (!IsMuted)
+            {
+                JumpSmall.Play();
+            }
         }
 
         public void PowerupCoin()
         {
-            CollectCoin.Play();
+            if (!IsMuted)
+            {
+                CollectCoin.Play();
+            }
         }
 
         public void ItemAppear()
         {
-            PowerUpAppear.Play();
+            if (!IsMuted)
+            {
+                PowerUpAppear.Play();
+            }
         }
 
         public void GetPower()
         {
-            PowerUp.Play();
+            if (!IsMuted)
+            {
+                PowerUp.Play();
+            }
+        }
+
+        public void Mute()
+        {
+            IsMuted = true;
+            MediaPlayer.Stop();
+        }
+        public void Unmute()
+        {
+            IsMuted = false;
+            StartTheme();
         }
     }
 }

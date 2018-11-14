@@ -164,6 +164,16 @@ namespace MarioPirates
                     case Keys.Escape:
                         pause = !pause;
                         break;
+                    case Keys.M:
+                        if (AudioManager.Ins.IsMuted)
+                        {
+                            AudioManager.Ins.Unmute();
+                        }
+                        else
+                        {
+                            AudioManager.Ins.Mute();
+                        }
+                        break;
                 }
             });
 
@@ -181,7 +191,7 @@ namespace MarioPirates
             keyboardController.SetKeyMapping(Keys.S, Keys.Down);
             keyboardController.SetKeyMapping(Keys.A, Keys.Left);
             keyboardController.SetKeyMapping(Keys.D, Keys.Right);
-            keyboardController.EnableKeyEvent(InputState.Down, Keys.Q, Keys.R, Keys.Escape);
+            keyboardController.EnableKeyEvent(InputState.Down, Keys.Q, Keys.R, Keys.Escape, Keys.M);
             keyboardController.EnableKeyEvent(InputState.Down, Keys.Up, Keys.Down, Keys.Left, Keys.Right, Keys.X);
             keyboardController.EnableKeyEvent(InputState.Up, Keys.Up, Keys.Down, Keys.Left, Keys.Right, Keys.X);
             keyboardController.EnableKeyEvent(InputState.Hold, Keys.Up, Keys.Down, Keys.Left, Keys.Right, Keys.X);
@@ -212,7 +222,6 @@ namespace MarioPirates
                 Buttons.B
             );
             controllers.Add(gamePadController);
-            AudioManager.Ins.StartTheme();
         }
     }
 }
