@@ -9,22 +9,22 @@ namespace MarioPirates
             state.mario.Size = new Point(Constants.BIG_MARIO_WIDTH, Constants.BIG_MARIO_HEIGHT);
         }
 
-        public override void Big()
+        public override void TurnBig()
         {
         }
 
-        public override void Small()
+        public override void TurnSmall()
         {
-            base.Small();
+            base.TurnSmall();
             state.mario.Location =
                 new Vector2(
                 state.mario.Location.X - (Constants.BIG_MARIO_WIDTH - Constants.SMALL_MARIO_WIDTH) / 2,
                 state.mario.Location.Y + Constants.BIG_MARIO_HEIGHT - Constants.SMALL_MARIO_HEIGHT);
         }
 
-        public override void Dead()
+        public override void TurnDead()
         {
-            base.Dead();
+            base.TurnDead();
             state.mario.Location =
                 new Vector2(
                 state.mario.Location.X - (Constants.BIG_MARIO_WIDTH - Constants.DEAD_MARIO_WIDTH) / 2,

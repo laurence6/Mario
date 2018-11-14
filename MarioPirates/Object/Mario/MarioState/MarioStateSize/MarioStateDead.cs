@@ -10,7 +10,7 @@ namespace MarioPirates
             state.mario.RigidBody.CollisionLayerMask = CollisionLayer.None;
         }
 
-        public override void Dead()
+        public override void TurnDead()
         {
         }
 

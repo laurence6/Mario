@@ -44,63 +44,63 @@ namespace MarioPirates
             mario.Sprite = mario.Sprites[s];
         }
 
-        public void Left()
+        public void TurnLeft()
         {
             direction.Left();
             UpdateSprite();
         }
 
-        public void Right()
+        public void TurnRight()
         {
             direction.Right();
             UpdateSprite();
         }
 
-        public void Idle()
+        public void TurnIdle()
         {
-            Action.Idle();
+            Action.TurnIdle();
         }
 
-        public void Run()
+        public void TurnRun()
         {
-            Action.Run();
+            Action.TurnRun();
         }
 
-        public void Jump()
+        public void TurnJump()
         {
-            Action.Jump();
+            Action.TurnJump();
         }
 
-        public void Crouch()
+        public void TurnCrouch()
         {
-            Action.Crouch();
+            Action.TurnCrouch();
         }
 
-        public void Small()
+        public void TurnSmall()
         {
-            Size.Small();
+            Size.TurnSmall();
         }
 
-        public void Big()
+        public void TurnBig()
         {
-            Size.Big();
+            Size.TurnBig();
         }
 
-        public void Fire()
+        public void TurnFire()
         {
             if (IsInvincible)
-                Size.Big();
+                Size.TurnBig();
             else
-                Size.Fire();
+                Size.TurnFire();
         }
 
-        public void Dead()
+        public void TurnDead()
         {
             mario.Dispose();
-            Size.Dead();
+            Size.TurnDead();
         }
 
-        public void Invincible()
+        public void TurnInvincible()
         {
             invincible.SetInvincible(true);
             UpdateSprite();

@@ -6,7 +6,7 @@ namespace MarioPirates
         {
         }
 
-        public override void Jump()
+        public override void TurnJump()
         {
         }
 

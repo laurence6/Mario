@@ -6,7 +6,7 @@ namespace MarioPirates
         {
         }
 
-        public override void Idle()
+        public override void TurnIdle()
         {
         }
 

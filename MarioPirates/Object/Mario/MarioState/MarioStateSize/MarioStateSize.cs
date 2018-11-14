@@ -6,13 +6,13 @@ namespace MarioPirates
 
         protected MarioStateSize(MarioState state) => this.state = state;
 
-        public virtual void Small() => state.Size = new MarioStateSmall(state);
+        public virtual void TurnSmall() => state.Size = new MarioStateSmall(state);
 
-        public virtual void Big() => state.Size = new MarioStateBig(state);
+        public virtual void TurnBig() => state.Size = new MarioStateBig(state);
 
-        public virtual void Fire() => state.Size = new MarioStateFire(state);
+        public virtual void TurnFire() => state.Size = new MarioStateFire(state);
 
-        public virtual void Dead()
+        public virtual void TurnDead()
         {
             state.Size = new MarioStateDead(state);
             Lives.Ins.Value--;

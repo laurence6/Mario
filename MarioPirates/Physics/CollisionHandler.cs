@@ -325,7 +325,7 @@ namespace MarioPirates
                             @this.State.Transiting();
                             EventManager.Ins.RaiseEvent(EventEnum.Action, @this, new ActionEventArgs(() => @this.State.CancelTransiting()), Constants.SMALL_MARIO_FLOWER_COLLISION_EVENT_DT);
                         }
-                        @this.State.Fire();
+                        @this.State.TurnFire();
                     }
                     else if (other is GreenMushroom)
                     {
@@ -368,11 +368,11 @@ namespace MarioPirates
                             EventManager.Ins.RaiseEvent(EventEnum.Action, @this, new ActionEventArgs(() => @this.State.CancelTransiting()), Constants.MARIO_MUSHROOM_COLLISION_EVENT_DT);
                                 AudioManager.Ins.GetPower();
                         }
-                        @this.State.Big();
+                        @this.State.TurnBig();
                     }
                     else if (other is Star)
                     {
-                        @this.State.Invincible();
+                        @this.State.TurnInvincible();
                         EventManager.Ins.RaiseEvent(EventEnum.Action, @this, new ActionEventArgs(() => @this.State.CancelInvincible()), Constants.MARIO_STAR_COLLISION_EVENT_DT);
                     }
 
@@ -383,14 +383,14 @@ namespace MarioPirates
                             if (@this.State.IsSmall)
                             {
                                 @this.RigidBody.Velocity = Constants.MARIO_ENEMY_COLLISION_VELOCITY;
-                                @this.State.Dead();
+                                @this.State.TurnDead();
                             }
                             else
                             {
                                 @this.TransitionToSmallCount = 0;
                                 @this.State.Transiting();
                                 EventManager.Ins.RaiseEvent(EventEnum.Action, @this, new ActionEventArgs(() => @this.State.CancelTransiting()), Constants.MARIO_ENEMY_COLLISION_EVENT_DT);
-                                @this.State.Small();
+                                @this.State.TurnSmall();
                             }
                         }
                         else if (side is CollisionSide.Bottom)

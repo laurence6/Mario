@@ -6,11 +6,11 @@ namespace MarioPirates
         {
         }
 
-        public override void Crouch()
+        public override void TurnCrouch()
         {
         }
 
-        public override void Run()
+        public override void TurnRun()
         {
         }
 

@@ -82,7 +82,7 @@ namespace MarioPirates
             });
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyDownHold, (s, e) =>
             {
-                State.Crouch();
+                State.TurnCrouch();
             });
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyLeftHold, (s, e) =>
             {
@@ -99,8 +99,8 @@ namespace MarioPirates
                 }
             });
 
-            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyRightHold, (s, e) => State.Right());
-            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyLeftHold, (s, e) => State.Left());
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyRightHold, (s, e) => State.TurnRight());
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyLeftHold, (s, e) => State.TurnLeft());
 
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyRightHold, (s, e) =>
             {
@@ -137,23 +137,23 @@ namespace MarioPirates
                     case Keys.Y:
                         if (!State.IsSmall)
                             TransitionToSmallCount = 0;
-                        State.Small();
+                        State.TurnSmall();
                         break;
                     case Keys.U:
                         if (State.IsSmall)
                             TransitionToBigCount = 0;
-                        State.Big();
+                        State.TurnBig();
                         break;
                     case Keys.I:
                         if (State.IsSmall)
                             TransitionToBigCount = 0;
-                        State.Fire();
+                        State.TurnFire();
                         break;
                     case Keys.O:
-                        State.Dead();
+                        State.TurnDead();
                         break;
                     case Keys.P:
-                        State.Invincible();
+                        State.TurnInvincible();
                         break;
                 }
             });
@@ -178,14 +178,14 @@ namespace MarioPirates
         public override void Update(float dt)
         {
             if (Timer.Ins.Value <= 0)
-                State.Dead();
+                State.TurnDead();
 
             if (RigidBody.Velocity.Y != 0f)
-                State.Jump();
+                State.TurnJump();
             else if (RigidBody.Velocity.X != 0f)
-                State.Run();
+                State.TurnRun();
             else
-                State.Idle();
+                State.TurnIdle();
             if (RigidBody.Velocity.X < Constants.MARIO_TRANSITION_COUNT_MAX && RigidBody.Velocity.X > -Constants.MARIO_TRANSITION_COUNT_MAX)
                 State.Coast();
 

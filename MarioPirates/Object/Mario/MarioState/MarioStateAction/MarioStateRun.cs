@@ -6,7 +6,7 @@ namespace MarioPirates
         {
         }
 
-        public override void Run()
+        public override void TurnRun()
         {
         }
 
