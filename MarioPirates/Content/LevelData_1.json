@@ -87,8 +87,6 @@
 { "TypeName": "OrangeBlock", "IsStatic": true, "Location": [ 4928, 386 ], "Params": { "State": "Normal" }, "Motion": "Static" }, 
 { "TypeName": "OrangeBlock", "IsStatic": true, "Location": [ 4928, 354 ], "Params": { "State": "Normal" }, "Motion": "Static" }, 
 { "TypeName": "OrangeBlock", "IsStatic": true, "Location": [ 4928, 322 ], "Params": { "State": "Normal" }, "Motion": "Static" }, 
-{ "TypeName": "PipeTop", "Motion": "Static", "Location": [ 5056, 373 ] }, 
-{ "TypeName": "PipeBottom", "Motion": "Static", "Location": [ 5056, 403 ], "Params": { "Height": "33" } }, 
 { "TypeName": "OrangeBlock", "IsStatic": true, "Location": [ 5056, 418 ], "Params": { "State": "Normal" }, "Motion": "Static" }, 
 { "TypeName": "OrangeBlock", "IsStatic": true, "Location": [ 5056, 386 ], "Params": { "State": "Normal" }, "Motion": "Static" }, 
 { "TypeName": "OrangeBlock", "IsStatic": true, "Location": [ 5056, 354 ], "Params": { "State": "Normal" }, "Motion": "Static" }, 
@@ -161,4 +159,4 @@
 { "TypeName": "Ground", "Location": [ 2000, 450 ], "Params": { "BlockType": "BrokenBlock", "Count": "60" } }, 
 { "TypeName": "Ground", "Location": [ 4000, 450 ], "Params": { "BlockType": "BrokenBlock", "Count": "100" } }
 
- ] }
+] }

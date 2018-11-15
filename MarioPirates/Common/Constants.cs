@@ -21,8 +21,6 @@ namespace MarioPirates
 
         public static readonly string SCORE_STRING = "Score ";
 
-        public const float OBJECT_TINY_MASS = 1e-6f;
-
         public static readonly string GAME_NAMESPACE = "MarioPirates.";
 
         public const int BLOCK_WIDTH = 16;

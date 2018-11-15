@@ -107,6 +107,10 @@ namespace MarioPirates
             collisions.ForEach(collision =>
             {
                 RigidBody rigidbody1 = collision.object1.RigidBody, rigidbody2 = collision.object2.RigidBody;
+
+                if (!rigidbody1.CollisionLayerMask.HasOne(rigidbody2.CollisionLayerMask))
+                    return;
+
                 (var velocityfix1, var velocityfix2) = RigidBody.ResolveCollide(collision);
 
                 velocityFix.AddIfNotExistStruct(rigidbody1, Vector3.Zero);
