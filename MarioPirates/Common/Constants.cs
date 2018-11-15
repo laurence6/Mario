@@ -220,5 +220,6 @@ namespace MarioPirates
         public static readonly Vector2 LIVES_VALUE_POSITION = new Vector2(9f * 800f / 11f, 96f);
 
         public const float FRAME_UPDATE_INTERVAL = 250f;
+        public const float MAX_DEPTH = 10f;
     }
 }

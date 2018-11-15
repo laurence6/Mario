@@ -23,7 +23,6 @@ namespace MarioPirates
 
             Scene.Ins.Draw(spriteBatch);
             HUD.Ins.Draw(spriteBatch);
-            PromptingPoints.Ins.Draw(spriteBatch);
         }
     }
 }

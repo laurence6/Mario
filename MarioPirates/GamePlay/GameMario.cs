@@ -111,7 +111,6 @@ namespace MarioPirates
             Coins.Ins.Reset();
             Score.Ins.Reset();
             Timer.Ins.Reset(Time.Now);
-            PromptingPoints.Ins.Reset();
 
             triggerReset = false;
         }
