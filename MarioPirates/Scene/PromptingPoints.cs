@@ -19,6 +19,11 @@ namespace MarioPirates
             components.Add((SpriteFactory.Ins.CreatePromptingPointsSprite(() => points.ToString()), pos));
         }
 
+        public void Reset()
+        {
+            components.RemoveRange(0, components.Count);
+        }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp, transformMatrix: Camera.Ins.Transform);
