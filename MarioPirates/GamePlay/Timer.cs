@@ -16,13 +16,7 @@
         public void Reset()
         {
             OriginalTime = Time.Now;
-            isFreeze = false;
-        }
-
-        public void Reset(float timeLimit)
-        {
-            OriginalTime = Time.Now;
-            TimeLimit = timeLimit;
+            TimeLimit = Constants.DEFAULT_TIME_LIMIT;
             isFreeze = false;
         }
 

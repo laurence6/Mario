@@ -223,5 +223,7 @@ namespace MarioPirates
 
         public const float FRAME_UPDATE_INTERVAL = 250f;
         public const float MAX_DEPTH = 10f;
+
+        public const float DEFAULT_TIME_LIMIT = 400000f;
     }
 }
