@@ -46,13 +46,6 @@ namespace MarioPirates
                     break;
                 }
 
-                case Fireball _:
-                {
-                    var @this = self as Fireball;
-                    @this.RigidBody.CollisionLayerMask = CollisionLayer.None;
-                    break;
-                }
-
                 case Flag _:
                 {
                     var @this = self as Flag;

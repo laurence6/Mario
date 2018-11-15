@@ -88,7 +88,7 @@ namespace MarioPirates
         public static readonly string FIREBALL_SPRITE = "fireball";
         public const int FIREBALL_WIDTH = 10;
         public const int FIREBALL_HEIGHT = 10;
-        public const float FIREBALL_MASS = 0.05f;
+        public const float FIREBALL_MASS = 0.0005f;
         public static readonly Vector2 FIREBALL_COLLISION_VELOCITY = new Vector2(200f, -200f);
 
         public static readonly string FLAG_SPRITE = "flag";
