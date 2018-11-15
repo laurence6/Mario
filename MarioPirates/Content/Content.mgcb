@@ -434,6 +434,13 @@
 /processorParam:Quality=Best
 /build:powerupappear.wav
 
+#begin promptingpoints.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:promptingpoints.spritefont
+
 #begin win.png
 /importer:TextureImporter
 /processor:TextureProcessor

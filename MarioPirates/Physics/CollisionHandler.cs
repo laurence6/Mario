@@ -39,6 +39,7 @@ namespace MarioPirates
                         @this.RigidBody.CollisionLayerMask = CollisionLayer.None;
                         Coins.Ins.Value++;
                         Score.Ins.Value += Constants.COIN_POINTS;
+                        PromptingPoints.Ins.Add(Constants.COIN_POINTS, @this.Location);
                         EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, @this, new GameObjectDestroyEventArgs(@this));
                     }
 
@@ -69,6 +70,7 @@ namespace MarioPirates
                     {
                         @this.RigidBody.CollisionLayerMask = CollisionLayer.None;
                         Score.Ins.Value += Constants.FLOWER_SCORE;
+                        PromptingPoints.Ins.Add(Constants.FLOWER_SCORE, @this.Location);
                         EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, @this, new GameObjectDestroyEventArgs(@this));
                     }
 
@@ -95,6 +97,7 @@ namespace MarioPirates
                     {
                         @this.RigidBody.CollisionLayerMask = CollisionLayer.None;
                         Score.Ins.Value += Constants.REDMUSHROOM_SCORE;
+                        PromptingPoints.Ins.Add(Constants.REDMUSHROOM_SCORE, @this.Location);
                         EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, @this, new GameObjectDestroyEventArgs(@this));
                     }
 
@@ -229,6 +232,7 @@ namespace MarioPirates
                                     {
                                         Coins.Ins.Value++;
                                         Score.Ins.Value += Constants.COIN_POINTS;
+                                        PromptingPoints.Ins.Add(Constants.COIN_POINTS, @this.Location);
                                         EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, thisQuestionBlock, new GameObjectDestroyEventArgs(powerupObj), Constants.BLOCK_COLLISION_EVENT_DT);
                                         AudioManager.Ins.PowerupCoin();
                                     }
@@ -254,6 +258,7 @@ namespace MarioPirates
                         @this.RigidBody.CollisionLayerMask = CollisionLayer.None;
                         @this.RigidBody.Velocity = Vector2.Zero;
                         Score.Ins.Value += Constants.GOOMBA_POINTS;
+                        PromptingPoints.Ins.Add(Constants.GOOMBA_POINTS, @this.Location);
                         EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, @this, new GameObjectDestroyEventArgs(@this), Constants.ENEMY_COLLISION_EVENT_DT);
                     }
                     else if (other is Koopa koopa && koopa.Stomped)
@@ -274,6 +279,7 @@ namespace MarioPirates
                         @this.RigidBody.Velocity = new Vector2(!@this.Stomped || @this.RigidBody.Velocity.X.DeEPS() != 0f ? 0f : other.RigidBody.Bound.Center.X > @this.RigidBody.Bound.Center.X ? -Constants.KOOPA_MARIO_COLLISION_VELOCITY.X : Constants.KOOPA_MARIO_COLLISION_VELOCITY.X, 0f);
                         @this.Stomped = true;
                         Score.Ins.Value += Constants.KOOPA_POINTS;
+                        PromptingPoints.Ins.Add(Constants.KOOPA_POINTS, @this.Location);
                         if (mario.State.IsInvincible)
                         {
                             @this.RigidBody.CollisionLayerMask = CollisionLayer.None;

@@ -71,6 +71,7 @@
     <Compile Include="Object\Block\Ground.cs" />
     <Compile Include="Physics\CollisionHandler.cs" />
     <Compile Include="Object\Item\LongPipe.cs" />
+    <Compile Include="Scene\PromptingPoints.cs" />
     <Compile Include="Scene\HUD.cs" />
     <Compile Include="Object\Block\BlockState.cs" />
     <Compile Include="Object\Block\BrickDebris.cs" />

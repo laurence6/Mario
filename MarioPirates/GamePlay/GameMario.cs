@@ -105,7 +105,10 @@ namespace MarioPirates
 
             Scene.Ins.Draw(spriteBatch);
             if (!gameOver && !gameWin)
+            {
                 HUD.Ins.Draw(spriteBatch);
+                PromptingPoints.Ins.Draw(spriteBatch);
+            }
         }
 
         private bool triggerReset = false;
