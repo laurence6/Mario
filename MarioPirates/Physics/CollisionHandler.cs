@@ -336,11 +336,13 @@ namespace MarioPirates
                             @this.Location = new Vector2(pipe.Location.X + Constants.MARIO_LOCATION_IN_PIPE, @this.Location.Y);
                             @this.RigidBody.Motion = MotionEnum.Keyframe;
                             @this.RigidBody.Velocity = Constants.MARIO_PIPE_COLLISION_VELOCITY;
+                            @this.RigidBody.ApplyForce(WorldForce.None);
                             EventManager.Ins.RaiseEvent(EventEnum.Action, @this, new ActionEventArgs(() =>
                             {
                                 @this.SubscribeInput();
                                 @this.RigidBody.Motion = MotionEnum.Dynamic;
                                 @this.RigidBody.Velocity = Vector2.Zero;
+                                @this.RigidBody.ApplyForce(WorldForce.Friction | WorldForce.Gravity);
                                 Scene.Ins.Active(pipe.ToLevel);
                                 Scene.Ins.ResetActive();
                             }), Constants.MARIO_PIPE_COLLISION_EVENT_DT);
@@ -349,6 +351,7 @@ namespace MarioPirates
                             @this.UnsubscribeInput();
                             @this.RigidBody.Motion = MotionEnum.Keyframe;
                             @this.RigidBody.Velocity = -Constants.MARIO_PIPE_COLLISION_VELOCITY;
+                            @this.RigidBody.ApplyForce(WorldForce.None);
                             Scene.Ins.Active(Constants.LEVEL_1_SCENE);
                             Scene.Ins.ResetScene(Constants.SECRET_LEVEL_SCENE);
                             EventManager.Ins.RaiseEvent(EventEnum.Action, @this, new ActionEventArgs(() =>
@@ -356,6 +359,7 @@ namespace MarioPirates
                                 @this.SubscribeInput();
                                 @this.RigidBody.Motion = MotionEnum.Dynamic;
                                 @this.RigidBody.Velocity = Vector2.Zero;
+                                @this.RigidBody.ApplyForce(WorldForce.Friction | WorldForce.Gravity);
                             }), Constants.MARIO_PIPE_COLLISION_EVENT_DT);
                             break;
                         case Flag _:
