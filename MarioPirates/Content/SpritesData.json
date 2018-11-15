@@ -89,4 +89,6 @@
 "dead_star": { "TextureName": "smallstarpowermario", "AccelerateRate": 3, "Depth": 8, "Size": [ 16, 16 ], "Frames": [ 80, 0, 80, 48, 80, 96 ] }, 
 
 "background": { "TextureName": "background", "Depth": 0, "Size": [ 800, 480 ], "Frames": [ 0, 0 ] }, 
-"gameover": { "TextureName": "gameover", "Depth": 0, "Size": [ 800, 480 ], "Frames": [ 0, 0 ] } }
+"gameover": { "TextureName": "gameover", "Depth": 0, "Size": [ 800, 480 ], "Frames": [ 0, 0 ] }, 
+"win": { "TextureName": "win", "Depth": 0, "Size": [ 800, 480 ], "Frames": [ 0, 0 ] }
+}

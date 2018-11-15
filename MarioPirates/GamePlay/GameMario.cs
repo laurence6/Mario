@@ -15,6 +15,7 @@ namespace MarioPirates
 
         private bool pause;
         private bool gameOver;
+        private bool gameWin;
 
         public GameMario()
         {
@@ -79,6 +80,12 @@ namespace MarioPirates
                 return;
             }
 
+            if (triggerGameWin)
+            {
+                GameWin();
+                return;
+            }
+
             controllers.ForEach(c => c.Update());
             if (!pause)
             {
@@ -97,7 +104,7 @@ namespace MarioPirates
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             Scene.Ins.Draw(spriteBatch);
-            if (!gameOver)
+            if (!gameOver && !gameWin)
                 HUD.Ins.Draw(spriteBatch);
         }
 
@@ -148,6 +155,8 @@ namespace MarioPirates
 
             EventManager.Ins.Subscribe(EventEnum.GameOver, (s, e) => TriggerGameOver());
 
+            EventManager.Ins.Subscribe(EventEnum.Win, (s, e) => TriggerGameWin());
+
             EventManager.Ins.Subscribe(EventEnum.KeyDown, (s, e) =>
             {
                 switch ((e as KeyDownEventArgs).key)
@@ -179,6 +188,7 @@ namespace MarioPirates
             triggerReset = false;
             pause = false;
             gameOver = false;
+            gameWin = false;
             var keyboardController = new KeyboardController();
             keyboardController.SetKeyMapping(Keys.LeftShift, Keys.X);
             keyboardController.SetKeyMapping(Keys.RightShift, Keys.X);
@@ -219,6 +229,18 @@ namespace MarioPirates
                 Buttons.B
             );
             controllers.Add(gamePadController);
+        }
+        
+        private bool triggerGameWin = false;
+
+        public void TriggerGameWin() => triggerGameWin = true;
+
+        private void GameWin()
+        {
+            Scene.Ins.Active(Constants.WIN_SCENE);
+            Scene.Ins.ResetActive();
+            triggerGameWin = false;
+            gameWin = true;
         }
     }
 }

@@ -52,6 +52,16 @@ namespace MarioPirates
                     break;
                 }
 
+                case Flag _:
+                {
+                    var @this = self as Flag;
+                    if (other is Mario)
+                    {
+                        EventManager.Ins.RaiseEvent(EventEnum.Win, @this, null);
+                    }
+                    break;
+                }
+
                 case Flower _:
                 {
                     var @this = self as Flower;

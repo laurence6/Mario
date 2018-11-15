@@ -48,7 +48,6 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="Content\LevelData_win.json" />
     <Compile Include="Audio\AudioManager.cs" />
     <Compile Include="Common\Common.cs" />
     <Compile Include="Common\Time.cs" />
@@ -165,6 +164,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\LevelData_secret.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\LevelData_win.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
