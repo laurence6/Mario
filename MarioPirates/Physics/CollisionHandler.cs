@@ -376,7 +376,6 @@ namespace MarioPirates
                             break;
                         case Star _:
                             @this.State.TurnInvincible();
-                            EventManager.Ins.RaiseEvent(EventEnum.Action, @this, new ActionEventArgs(() => @this.State.CancelInvincible()), Constants.MARIO_STAR_COLLISION_EVENT_DT);
                             break;
                         case Goomba _:
                         case Koopa _:
