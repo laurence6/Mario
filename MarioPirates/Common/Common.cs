@@ -52,7 +52,8 @@ namespace MarioPirates
 
         public static void AddIfNotExist<T, U>(this Dictionary<T, U> d, T key) where U : class, new()
         {
-            d.AddIfNotExist(key, new U());
+            if (!d.ContainsKey(key))
+                d.Add(key, new U());
         }
 
         public static void ForEach<T, U>(this Dictionary<T, U> d, Action<T, U> f)
@@ -99,7 +100,8 @@ namespace MarioPirates
         public static Vector2 Clamp(this Vector2 v, float lower, float upper) =>
             new Vector2(v.X.Clamp(lower, upper), v.Y.Clamp(lower, upper));
 
-        public static bool HasOne<T>(this T e, T f) where T : struct, IConvertible =>
-            (Convert.ToUInt64(e) & Convert.ToUInt64(f)) != 0;
+        public static bool HasOne(this CollisionLayer e, CollisionLayer f) => (e & f) != 0;
+        public static bool HasOne(this CollisionSide e, CollisionSide f) => (e & f) != 0;
+        public static bool HasOne(this WorldForce e, WorldForce f) => (e & f) != 0;
     }
 }

@@ -11,13 +11,16 @@ namespace MarioPirates
         private HashSet<GameObjectRigidBody> objects = new HashSet<GameObjectRigidBody>();
 
         private Dictionary<ulong, HashSet<GameObjectRigidBody>> buckets = new Dictionary<ulong, HashSet<GameObjectRigidBody>>();
-        private HashSet<GameObjectRigidBody> objectsVisible = new HashSet<GameObjectRigidBody>();
+        private List<GameObjectRigidBody> objectsVisible = new List<GameObjectRigidBody>();
+
+        private List<ulong> keys = new List<ulong>();
 
         public void Reset()
         {
             objects.Clear();
             buckets.Clear();
             objectsVisible.Clear();
+            keys.Clear();
         }
 
         public void Add(GameObjectRigidBody o)
@@ -33,11 +36,12 @@ namespace MarioPirates
 
         public void Rebuild()
         {
-            Apply(Camera.Ins.VisibleArea, k => buckets.AddIfNotExist(k));
+            Apply(Camera.Ins.VisibleArea, buckets.AddIfNotExist);
 
             objectsVisible.Clear();
 
-            buckets.ForEach((k, s) => s.Clear());
+            foreach (var pair in buckets)
+                pair.Value.Clear();
 
             foreach (var o in objects)
             {
@@ -45,7 +49,10 @@ namespace MarioPirates
                 if (!visiblePart.IsEmpty)
                 {
                     objectsVisible.Add(o);
-                    Apply(visiblePart, s => s.Add(o));
+                    Apply(visiblePart, keys.Add);
+                    foreach (var k in keys)
+                        buckets[k].Add(o);
+                    keys.Clear();
                 }
             }
         }
@@ -58,11 +65,6 @@ namespace MarioPirates
         public void ForEachVisible(Action<GameObjectRigidBody> f)
         {
             objectsVisible.ForEach(f);
-        }
-
-        private void Apply(Rectangle bound, Action<HashSet<GameObjectRigidBody>> f)
-        {
-            Apply(bound, k => f(buckets[k]));
         }
 
         private static void Apply(Rectangle bound, Action<ulong> f)
