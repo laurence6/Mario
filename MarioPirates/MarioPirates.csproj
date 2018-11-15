@@ -60,6 +60,10 @@
     <Compile Include="Event\Scene\GameObjectDestroyEventArgs.cs" />
     <Compile Include="Controller\InputState.cs" />
     <Compile Include="Event\Input\KeyDownEventArgs.cs" />
+    <Compile Include="GamePlay\GameMarioState\GameMarioState.cs" />
+    <Compile Include="GamePlay\GameMarioState\GameMarioStateEnd.cs" />
+    <Compile Include="GamePlay\GameMarioState\GameMarioStatePause.cs" />
+    <Compile Include="GamePlay\GameMarioState\GameMarioStateNormal.cs" />
     <Compile Include="GamePlay\Lives.cs" />
     <Compile Include="GamePlay\Coins.cs" />
     <Compile Include="GamePlay\Score.cs" />

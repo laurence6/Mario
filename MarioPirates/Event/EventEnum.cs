@@ -28,6 +28,6 @@
         GameObjectCreate,
         GameObjectDestroy,
         GameOver,
-        Win
+        Win,
     }
 }

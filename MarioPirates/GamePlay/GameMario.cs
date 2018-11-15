@@ -11,11 +11,9 @@ namespace MarioPirates
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
-        private List<IController> controllers = new List<IController>();
+        public List<IController> Controllers { get; } = new List<IController>();
 
-        private bool pause;
-        private bool gameOver;
-        private bool gameWin;
+        public GameMarioState State { get; set; }
 
         public GameMario()
         {
@@ -36,6 +34,8 @@ namespace MarioPirates
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
             SpriteFactory.Ins.LoadContent(Content);
+
+            State = new GameMarioStateNormal(this);
 
             GameOverReset();
         }
@@ -74,25 +74,19 @@ namespace MarioPirates
                 return;
             }
 
-            if (triggerReset)
-            {
-                Reset();
-                return;
-            }
-
             if (triggerGameWin)
             {
                 GameWin();
                 return;
             }
 
-            controllers.ForEach(c => c.Update());
-            if (!pause)
+            if (triggerReset)
             {
-                Time.Update(gameTime);
-                EventManager.Ins.Update();
-                Scene.Ins.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
+                Reset();
+                return;
             }
+
+            State.Update(gameTime);
         }
 
         /// <summary>
@@ -101,14 +95,7 @@ namespace MarioPirates
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            Scene.Ins.Draw(spriteBatch);
-            if (!gameOver && !gameWin)
-            {
-                HUD.Ins.Draw(spriteBatch);
-                PromptingPoints.Ins.Draw(spriteBatch);
-            }
+            State.Draw(spriteBatch);
         }
 
         private bool triggerReset = false;
@@ -120,12 +107,13 @@ namespace MarioPirates
             Camera.Ins.Reset();
             Scene.Ins.ResetActive();
             Scene.Ins.Player.Reset();
-            triggerReset = false;
 
             Coins.Ins.Reset();
             Score.Ins.Reset();
             Timer.Ins.Reset(Time.Now);
             PromptingPoints.Ins.Reset();
+
+            triggerReset = false;
         }
 
         private bool triggerGameOver = false;
@@ -136,10 +124,10 @@ namespace MarioPirates
         {
             Scene.Ins.Active(Constants.GAMEOVER_SCENE);
             Scene.Ins.ResetActive();
-            gameOver = true;
-            EventManager.Ins.RaiseEvent(EventEnum.Action, this, new ActionEventArgs(GameOverReset), Constants.RESET_EVENT_DT);
             triggerGameOver = false;
             triggerReset = false;
+            State = new GameMarioStateEnd(this);
+            EventManager.Ins.RaiseEvent(EventEnum.Action, this, new ActionEventArgs(GameOverReset), Constants.RESET_EVENT_DT);
         }
 
         private void GameOverReset()
@@ -172,27 +160,24 @@ namespace MarioPirates
                         TriggerReset();
                         break;
                     case Keys.Escape:
-                        pause = !pause;
+                        State.Pause();
                         break;
                     case Keys.M:
                         if (AudioManager.Ins.IsMuted)
-                        {
                             AudioManager.Ins.Unmute();
-                        }
                         else
-                        {
                             AudioManager.Ins.Mute();
-                        }
                         break;
                 }
             });
 
-            controllers.Clear();
             triggerGameOver = false;
             triggerReset = false;
-            pause = false;
-            gameOver = false;
-            gameWin = false;
+            triggerGameWin = false;
+
+            State = new GameMarioStateNormal(this);
+
+            Controllers.Clear();
             var keyboardController = new KeyboardController();
             keyboardController.SetKeyMapping(Keys.LeftShift, Keys.X);
             keyboardController.SetKeyMapping(Keys.RightShift, Keys.X);
@@ -207,7 +192,7 @@ namespace MarioPirates
             keyboardController.EnableKeyEvent(InputState.Up, Keys.Up, Keys.Down, Keys.Left, Keys.Right, Keys.X);
             keyboardController.EnableKeyEvent(InputState.Hold, Keys.Up, Keys.Down, Keys.Left, Keys.Right, Keys.X);
             keyboardController.EnableKeyEvent(InputState.Down, Keys.Y, Keys.U, Keys.I, Keys.O, Keys.P);
-            controllers.Add(keyboardController);
+            Controllers.Add(keyboardController);
 
             var gamePadController = new GamePadController();
             gamePadController.EnableButtonEvent(InputState.Down, Buttons.Start);
@@ -232,7 +217,7 @@ namespace MarioPirates
                 Buttons.A,
                 Buttons.B
             );
-            controllers.Add(gamePadController);
+            Controllers.Add(gamePadController);
         }
 
         private bool triggerGameWin = false;
@@ -244,7 +229,8 @@ namespace MarioPirates
             Scene.Ins.Active(Constants.WIN_SCENE);
             Scene.Ins.ResetActive();
             triggerGameWin = false;
-            gameWin = true;
+            State = new GameMarioStateEnd(this);
+            EventManager.Ins.RaiseEvent(EventEnum.KeyDown, this, new KeyDownEventArgs(Keys.Q), Constants.RESET_EVENT_DT);
         }
     }
 }
