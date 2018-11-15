@@ -19,8 +19,8 @@ namespace MarioPirates
             game.GraphicsDevice.Clear(Color.CornflowerBlue);
 
             Scene.Ins.Draw(spriteBatch);
-            HUD.Ins.Draw(spriteBatch);
             PromptingPoints.Ins.Draw(spriteBatch);
+            HUD.Ins.Draw(spriteBatch);
         }
 
         public override void Pause()
