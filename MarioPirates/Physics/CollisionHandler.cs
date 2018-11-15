@@ -51,7 +51,7 @@ namespace MarioPirates
                     var @this = self as Flag;
                     if (other is Mario)
                     {
-                        EventManager.Ins.RaiseEvent(EventEnum.Win, @this, null);
+                        @this.RigidBody.CollisionLayerMask = CollisionLayer.None;
                     }
                     break;
                 }
@@ -320,89 +320,90 @@ namespace MarioPirates
                 case Mario _:
                 {
                     var @this = self as Mario;
-                    if (other is Coin)
+                    switch (other)
                     {
-                    }
-                    else if (other is Flower)
-                    {
-                        if (@this.State.IsSmall)
-                        {
-                            @this.TransitionToBigCount = 0;
-                            @this.State.Transiting();
-                            EventManager.Ins.RaiseEvent(EventEnum.Action, @this, new ActionEventArgs(() => @this.State.CancelTransiting()), Constants.SMALL_MARIO_FLOWER_COLLISION_EVENT_DT);
-                        }
-                        @this.State.TurnFire();
-                    }
-                    else if (other is GreenMushroom)
-                    {
-                    }
-                    else if (other is PipeTop pipe && pipe.ToLevel != null && side is CollisionSide.Bottom && @this.State.Action.State == MarioStateEnum.Crouch)
-                    {
-                        @this.UnsubscribeInput();
-                        @this.Location = new Vector2(pipe.Location.X + Constants.MARIO_LOCATION_IN_PIPE, @this.Location.Y);
-                        @this.RigidBody.Motion = MotionEnum.Keyframe;
-                        @this.RigidBody.Velocity = Constants.MARIO_PIPE_COLLISION_VELOCITY;
-                        EventManager.Ins.RaiseEvent(EventEnum.Action, @this, new ActionEventArgs(() =>
-                        {
-                            @this.SubscribeInput();
-                            @this.RigidBody.Motion = MotionEnum.Dynamic;
-                            @this.RigidBody.Velocity = Vector2.Zero;
-                            Scene.Ins.Active(pipe.ToLevel);
-                            Scene.Ins.ResetActive();
-                        }), Constants.MARIO_PIPE_COLLISION_EVENT_DT);
-                    }
-                    else if (other is LongPipe && side is CollisionSide.Right)
-                    {
-                        @this.UnsubscribeInput();
-                        @this.RigidBody.Motion = MotionEnum.Keyframe;
-                        @this.RigidBody.Velocity = -Constants.MARIO_PIPE_COLLISION_VELOCITY;
-                        Scene.Ins.Active(Constants.LEVEL_1_SCENE);
-                        Scene.Ins.ResetScene(Constants.SECRET_LEVEL_SCENE);
-                        EventManager.Ins.RaiseEvent(EventEnum.Action, @this, new ActionEventArgs(() =>
-                        {
-                            @this.SubscribeInput();
-                            @this.RigidBody.Motion = MotionEnum.Dynamic;
-                            @this.RigidBody.Velocity = Vector2.Zero;
-                        }), Constants.MARIO_PIPE_COLLISION_EVENT_DT);
-                    }
-                    else if (other is RedMushroom)
-                    {
-                        if (@this.State.IsSmall)
-                        {
-                            @this.TransitionToBigCount = 0;
-                            @this.State.Transiting();
-                            EventManager.Ins.RaiseEvent(EventEnum.Action, @this, new ActionEventArgs(() => @this.State.CancelTransiting()), Constants.MARIO_MUSHROOM_COLLISION_EVENT_DT);
-                            AudioManager.Ins.GetPower();
-                        }
-                        @this.State.TurnBig();
-                    }
-                    else if (other is Star)
-                    {
-                        @this.State.TurnInvincible();
-                        EventManager.Ins.RaiseEvent(EventEnum.Action, @this, new ActionEventArgs(() => @this.State.CancelInvincible()), Constants.MARIO_STAR_COLLISION_EVENT_DT);
-                    }
-
-                    if (other is Goomba || other is Koopa)
-                    {
-                        if (!(side is CollisionSide.Bottom) && !@this.State.IsInvincible && !@this.State.IsTransiting)
-                        {
+                        case Flower _:
                             if (@this.State.IsSmall)
                             {
-                                @this.RigidBody.Velocity = Constants.MARIO_ENEMY_COLLISION_VELOCITY;
-                                @this.State.TurnDead();
+                                @this.TransitionToBigCount = 0;
+                                @this.State.Transiting();
+                                EventManager.Ins.RaiseEvent(EventEnum.Action, @this, new ActionEventArgs(() => @this.State.CancelTransiting()), Constants.SMALL_MARIO_FLOWER_COLLISION_EVENT_DT);
+                            }
+                            @this.State.TurnFire();
+                            break;
+                        case PipeTop pipe when pipe.ToLevel != null && side is CollisionSide.Bottom:
+                            @this.UnsubscribeInput();
+                            @this.Location = new Vector2(pipe.Location.X + Constants.MARIO_LOCATION_IN_PIPE, @this.Location.Y);
+                            @this.RigidBody.Motion = MotionEnum.Keyframe;
+                            @this.RigidBody.Velocity = Constants.MARIO_PIPE_COLLISION_VELOCITY;
+                            EventManager.Ins.RaiseEvent(EventEnum.Action, @this, new ActionEventArgs(() =>
+                            {
+                                @this.SubscribeInput();
+                                @this.RigidBody.Motion = MotionEnum.Dynamic;
+                                @this.RigidBody.Velocity = Vector2.Zero;
+                                Scene.Ins.Active(pipe.ToLevel);
+                                Scene.Ins.ResetActive();
+                            }), Constants.MARIO_PIPE_COLLISION_EVENT_DT);
+                            break;
+                        case LongPipe _ when side is CollisionSide.Right:
+                            @this.UnsubscribeInput();
+                            @this.RigidBody.Motion = MotionEnum.Keyframe;
+                            @this.RigidBody.Velocity = -Constants.MARIO_PIPE_COLLISION_VELOCITY;
+                            Scene.Ins.Active(Constants.LEVEL_1_SCENE);
+                            Scene.Ins.ResetScene(Constants.SECRET_LEVEL_SCENE);
+                            EventManager.Ins.RaiseEvent(EventEnum.Action, @this, new ActionEventArgs(() =>
+                            {
+                                @this.SubscribeInput();
+                                @this.RigidBody.Motion = MotionEnum.Dynamic;
+                                @this.RigidBody.Velocity = Vector2.Zero;
+                            }), Constants.MARIO_PIPE_COLLISION_EVENT_DT);
+                            break;
+                        case Flag _:
+                            @this.UnsubscribeInput();
+                            @this.RigidBody.ApplyForce(WorldForce.Gravity);
+                            @this.RigidBody.Velocity = Constants.MARIO_WALKING_VELOCITY;
+                            EventManager.Ins.RaiseEvent(EventEnum.Win, @this, null, Constants.MARIO_WALKING_DT);
+                            break;
+                        case RedMushroom _:
+                            if (@this.State.IsSmall)
+                            {
+                                @this.TransitionToBigCount = 0;
+                                @this.State.Transiting();
+                                EventManager.Ins.RaiseEvent(EventEnum.Action, @this, new ActionEventArgs(() => @this.State.CancelTransiting()), Constants.MARIO_MUSHROOM_COLLISION_EVENT_DT);
+                                AudioManager.Ins.GetPower();
+                            }
+                            @this.State.TurnBig();
+                            break;
+                        case Star _:
+                            @this.State.TurnInvincible();
+                            EventManager.Ins.RaiseEvent(EventEnum.Action, @this, new ActionEventArgs(() => @this.State.CancelInvincible()), Constants.MARIO_STAR_COLLISION_EVENT_DT);
+                            break;
+                        case Goomba _:
+                        case Koopa _:
+                            if ((side is CollisionSide.Bottom) || @this.State.IsInvincible || @this.State.IsTransiting)
+                            {
+                                if (side is CollisionSide.Bottom)
+                                {
+                                    @this.RigidBody.Velocity = Constants.MARIO_ENEMY_COLLISION_VELOCITY;
+                                }
                             }
                             else
                             {
-                                @this.TransitionToSmallCount = 0;
-                                @this.State.Transiting();
-                                EventManager.Ins.RaiseEvent(EventEnum.Action, @this, new ActionEventArgs(() => @this.State.CancelTransiting()), Constants.MARIO_ENEMY_COLLISION_EVENT_DT);
-                                @this.State.TurnSmall();
+                                if (!@this.State.IsSmall)
+                                {
+                                    @this.TransitionToSmallCount = 0;
+                                    @this.State.Transiting();
+                                    EventManager.Ins.RaiseEvent(EventEnum.Action, @this, new ActionEventArgs(() => @this.State.CancelTransiting()), Constants.MARIO_ENEMY_COLLISION_EVENT_DT);
+                                    @this.State.TurnSmall();
+                                }
+                                else
+                                {
+                                    @this.RigidBody.Velocity = Constants.MARIO_ENEMY_COLLISION_VELOCITY;
+                                    @this.State.TurnDead();
+                                }
                             }
-                        }
-                        else if (side is CollisionSide.Bottom)
-                        {
-                            @this.RigidBody.Velocity = Constants.MARIO_ENEMY_COLLISION_VELOCITY;
-                        }
+
+                            break;
                     }
 
                     break;

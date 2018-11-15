@@ -139,6 +139,8 @@ namespace MarioPirates
         public const float SMALL_MARIO_FLOWER_COLLISION_EVENT_DT = 1000f;
         public const float MARIO_LOCATION_IN_PIPE = 32f / 4f;
         public static readonly Vector2 MARIO_PIPE_COLLISION_VELOCITY = new Vector2(0f, 50f);
+        public static readonly Vector2 MARIO_WALKING_VELOCITY = new Vector2(180f, -250f);
+        public const float MARIO_WALKING_DT = 2000f;
         public const float MARIO_PIPE_COLLISION_EVENT_DT = 1000f;
         public const float MARIO_MUSHROOM_COLLISION_EVENT_DT = 1000f;
         public const float MARIO_STAR_COLLISION_EVENT_DT = 3000f;
