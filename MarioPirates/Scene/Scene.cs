@@ -34,7 +34,6 @@ namespace MarioPirates
                 AddGameObject(new VirtualPlane(0f, Constants.SCREEN_HEIGHT - 1));
                 AddGameObject(new VirtualWall(0f, 0f));
                 AddGameObject(new VirtualWall(Constants.SCREEN_WIDTH - Constants.VIRTUAL_WALL_WIDTH, 0f));
-                AddGameObject(player);
 
                 var sceneData = new JavaScriptSerializer().Deserialize<LevelData>(ReadAllText(Constants.CONTENT_PATH_ROOT + Constants.LEVEL_DATA_PREFIX + level + Constants.DATA_FILE_TYPE));
                 HasPlayer = sceneData.HasPlayer;
@@ -54,6 +53,7 @@ namespace MarioPirates
                 {
                     IsLocationAbsolute = false
                 };
+
                 AddGameObject(endWall);
             }
 
@@ -83,7 +83,7 @@ namespace MarioPirates
 
             public void Draw(SpriteBatch spriteBatch)
             {
-                spriteBatch.Begin(samplerState: SamplerState.PointClamp, transformMatrix: Camera.Ins.Transform);
+                spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp, transformMatrix: Camera.Ins.Transform);
                 gameObjectsNoRigidBody.ForEach(o => o.Draw(spriteBatch));
                 gameObjectContainer.ForEachVisible(o => o.Draw(spriteBatch));
                 spriteBatch.End();

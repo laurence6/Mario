@@ -49,7 +49,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="Content\LevelData_win.json" />
-    <Compile Include="GamePlay\AudioManager.cs" />
+    <Compile Include="Audio\AudioManager.cs" />
     <Compile Include="Common\Common.cs" />
     <Compile Include="Common\Time.cs" />
     <Compile Include="Common\Constants.cs" />

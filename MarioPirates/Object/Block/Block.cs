@@ -53,11 +53,6 @@ namespace MarioPirates
             origLocation = Location;
         }
 
-        public override void Update(float dt)
-        {
-            Sprite?.Update(dt);
-        }
-
         public override void Draw(SpriteBatch spriteBatch)
         {
             Sprite.NotNullThen(() => base.Draw(spriteBatch));

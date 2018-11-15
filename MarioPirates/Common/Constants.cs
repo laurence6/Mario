@@ -10,6 +10,7 @@ namespace MarioPirates
         public static readonly string DATA_FILE_TYPE = ".json";
         public static readonly string MARIO_SPRITES_LIST_FILE = "MarioSpritesList.json";
         public static readonly string SPRITE_DATA_FILE = "SpritesData.json";
+        public static readonly float SPRITE_DEPTH_MUL = 0.1f;
 
         public static readonly string KEYBOARD_EVENT_PREFIX = "Key";
 
@@ -220,6 +221,6 @@ namespace MarioPirates
         public static readonly Vector2 TIME_VALUE_POSITION = new Vector2(7f * 800f / 11f, 96f);
         public static readonly Vector2 LIVES_VALUE_POSITION = new Vector2(9f * 800f / 11f, 96f);
 
-        public const float FRAME_UPDATE_INTERVAL = 15f * 0.016f;
+        public const float FRAME_UPDATE_INTERVAL = 250f;
     }
 }
