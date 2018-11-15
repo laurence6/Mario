@@ -21,7 +21,7 @@ namespace MarioPirates
 
         public void Reset()
         {
-            components.RemoveRange(0, components.Count);
+            components.Clear();
         }
 
         public void Draw(SpriteBatch spriteBatch)
