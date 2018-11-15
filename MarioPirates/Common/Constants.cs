@@ -88,7 +88,7 @@ namespace MarioPirates
         public static readonly string FIREBALL_SPRITE = "fireball";
         public const int FIREBALL_WIDTH = 10;
         public const int FIREBALL_HEIGHT = 10;
-        public const float FIREBALL_MASS = 0.05f;
+        public const float FIREBALL_MASS = 0.0005f;
         public static readonly Vector2 FIREBALL_COLLISION_VELOCITY = new Vector2(200f, -200f);
 
         public static readonly string FLAG_SPRITE = "flag";
@@ -220,5 +220,6 @@ namespace MarioPirates
         public static readonly Vector2 LIVES_VALUE_POSITION = new Vector2(9f * 800f / 11f, 96f);
 
         public const float FRAME_UPDATE_INTERVAL = 250f;
+        public const float MAX_DEPTH = 10f;
     }
 }

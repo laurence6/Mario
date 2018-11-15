@@ -60,6 +60,10 @@
     <Compile Include="Event\Scene\GameObjectDestroyEventArgs.cs" />
     <Compile Include="Controller\InputState.cs" />
     <Compile Include="Event\Input\KeyDownEventArgs.cs" />
+    <Compile Include="GamePlay\GameMarioState\GameMarioState.cs" />
+    <Compile Include="GamePlay\GameMarioState\GameMarioStateEnd.cs" />
+    <Compile Include="GamePlay\GameMarioState\GameMarioStatePause.cs" />
+    <Compile Include="GamePlay\GameMarioState\GameMarioStateNormal.cs" />
     <Compile Include="GamePlay\Lives.cs" />
     <Compile Include="GamePlay\Coins.cs" />
     <Compile Include="GamePlay\Score.cs" />
@@ -71,7 +75,7 @@
     <Compile Include="Object\Block\Ground.cs" />
     <Compile Include="Physics\CollisionHandler.cs" />
     <Compile Include="Object\Item\LongPipe.cs" />
-    <Compile Include="Scene\PromptingPoints.cs" />
+    <Compile Include="Object\Virtual\PromptingPoints.cs" />
     <Compile Include="Scene\HUD.cs" />
     <Compile Include="Object\Block\BlockState.cs" />
     <Compile Include="Object\Block\BrickDebris.cs" />
