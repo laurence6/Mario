@@ -230,7 +230,7 @@ namespace MarioPirates
             );
             controllers.Add(gamePadController);
         }
-        
+
         private bool triggerGameWin = false;
 
         public void TriggerGameWin() => triggerGameWin = true;
