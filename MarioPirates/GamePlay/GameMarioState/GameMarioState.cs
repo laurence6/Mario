@@ -19,6 +19,7 @@ namespace MarioPirates
         public virtual void Pause()
         {
             game.State = new GameMarioStatePause(game);
+            Timer.Ins.Freeze();
         }
     }
 }

@@ -110,7 +110,7 @@ namespace MarioPirates
 
             Coins.Ins.Reset();
             Score.Ins.Reset();
-            Timer.Ins.Reset(Time.Now);
+            Timer.Ins.Reset();
 
             triggerReset = false;
         }
@@ -141,7 +141,7 @@ namespace MarioPirates
             Coins.Ins.Reset();
             Score.Ins.Reset();
             Lives.Ins.Reset();
-            Timer.Ins.Reset(Time.Now, 400000);
+            Timer.Ins.Reset(400000f);
             HUD.Ins.Reset();
 
             EventManager.Ins.Subscribe(EventEnum.GameOver, (s, e) => TriggerGameOver());

@@ -7,20 +7,41 @@
         private Timer() { }
 
         private float OriginalTime;
-        private uint TimeLimit;
+        private float TimeLimit;
         private float TimeLeft;
+        private bool isFreeze;
 
-        public uint Value => (TimeLeft = (TimeLimit - Time.Now + OriginalTime) / 1000) > 0 ? (uint)TimeLeft : 0;
+        public uint Value => isFreeze ? (uint)TimeLimit / 1000 : ((TimeLeft = (TimeLimit - Time.Now + OriginalTime) / 1000) > 0 ? (uint)TimeLeft : 0);
 
-        public void Reset(float originalTime)
+        public void Reset()
         {
-            OriginalTime = originalTime;
+            OriginalTime = Time.Now;
+            isFreeze = false;
         }
 
-        public void Reset(float originalTime, uint timeLimit)
+        public void Reset(float timeLimit)
         {
-            OriginalTime = originalTime;
+            OriginalTime = Time.Now;
             TimeLimit = timeLimit;
+            isFreeze = false;
+        }
+
+        public void Freeze()
+        {
+            if (!isFreeze)
+            {
+                isFreeze = true;
+                TimeLimit = TimeLimit - Time.Now + OriginalTime;
+            }
+        }
+
+        public void Unfreeze()
+        {
+            if (isFreeze)
+            {
+                isFreeze = false;
+                OriginalTime = Time.Now;
+            }
         }
     }
 }

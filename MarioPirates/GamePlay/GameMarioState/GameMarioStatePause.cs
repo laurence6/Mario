@@ -25,6 +25,7 @@ namespace MarioPirates
         public override void Pause()
         {
             game.State = new GameMarioStateNormal(game);
+            Timer.Ins.Unfreeze();
         }
     }
 }
