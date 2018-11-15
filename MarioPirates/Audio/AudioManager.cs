@@ -8,15 +8,10 @@ namespace MarioPirates
     {
         public static readonly AudioManager Ins = new AudioManager();
 
-        public bool IsMuted { get; private set; }
+        public bool IsMuted { get; private set; } = false;
 
-        private AudioManager(bool isMuted = true)
+        private AudioManager()
         {
-            IsMuted = isMuted;
-            if (!isMuted)
-            {
-                StartTheme();
-            }
         }
 
         public Song OverworldTheme { get; private set; }
@@ -32,6 +27,7 @@ namespace MarioPirates
             CollectCoin = content.Load<SoundEffect>("collectcoin");
             PowerUp = content.Load<SoundEffect>("powerup");
             PowerUpAppear = content.Load<SoundEffect>("powerupappear");
+            StartTheme();
         }
 
         private void StartTheme()
@@ -77,6 +73,7 @@ namespace MarioPirates
             IsMuted = true;
             MediaPlayer.Stop();
         }
+
         public void Unmute()
         {
             IsMuted = false;

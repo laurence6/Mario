@@ -331,7 +331,7 @@ namespace MarioPirates
                             }
                             @this.State.TurnFire();
                             break;
-                        case PipeTop pipe when pipe.ToLevel != null && side is CollisionSide.Bottom:
+                        case PipeTop pipe when pipe.ToLevel != null && side is CollisionSide.Bottom && @this.State.IsCrouch:
                             @this.UnsubscribeInput();
                             @this.Location = new Vector2(pipe.Location.X + Constants.MARIO_LOCATION_IN_PIPE, @this.Location.Y);
                             @this.RigidBody.Motion = MotionEnum.Keyframe;
