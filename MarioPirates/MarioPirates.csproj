@@ -72,8 +72,9 @@
     <Compile Include="Object\Block\BlueBrickBlock.cs" />
     <Compile Include="Object\Block\BlueBrickDebris.cs" />
     <Compile Include="Object\Block\BlueBrokenBlock.cs" />
+    <Compile Include="Object\Block\UnderwaterBlock.cs" />
     <Compile Include="Object\Block\Ground.cs" />
-    <Compile Include="Object\Virtual\UnderwaterBackground.cs" />
+    <Compile Include="Object\Item\Coral.cs" />
     <Compile Include="Physics\CollisionHandler.cs" />
     <Compile Include="Object\Item\LongPipe.cs" />
     <Compile Include="Object\Virtual\PromptingPoints.cs" />

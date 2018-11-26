@@ -50,6 +50,8 @@ namespace MarioPirates
 
         public static readonly string BROKEN_BLOCK_SPRITE = "brokenblock";
 
+        public static readonly string UNDERWATER_BLOCK_SPRITE = "underwaterblock";
+
         public static readonly string ORANGE_BLOCK_SPRITE = "orangeblock";
 
         public static readonly string QUESTION_BLOCK_SPRITE = "questionblock";
@@ -126,6 +128,10 @@ namespace MarioPirates
         public const float STAR_MASS = 0.05f;
         public static readonly Vector2 STAR_INITIAL_VELOCITY = new Vector2(100f, 0f);
         public const float STAR_COLLISION_VELOCITY_Y = -200f;
+
+        public static readonly string CORAL_SPRITE = "coral";
+        public const int CORAL_WIDTH = 16;
+        public const int CORAL_HEIGHT = 16;
 
         public const int MARIO_JUMP_HOLD_COUNT_LIMIT = 30;
         public const int MARIO_TRANSITION_COUNT_MAX = 30;
