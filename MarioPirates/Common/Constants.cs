@@ -174,6 +174,10 @@ namespace MarioPirates
         public const int BACKGROUND_HEIGHT = 480;
         public static readonly string BACKGROUND_PARAM = "Background";
 
+        public const int UNDERWATERBACKGROUND_WIDTH = 800;
+        public const int UNDERWATERBACKGROUND_HEIGHT = 480;
+        public static readonly string UNDERWATERBACKGROUND_PARAM = "UnderWaterBackground";
+
         public const int VIRTUAL_PLANE_HEIGHT = 32;
         public const float VIRTUAL_PLANE_EVENT_DT = 100f;
 
