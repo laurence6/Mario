@@ -9,14 +9,14 @@ namespace MarioPirates
         {
         }
 
-        public override void Update(GameTime gameTime)
+        protected override void Update(GameTime gameTime)
         {
             Time.Update(gameTime);
             EventManager.Ins.Update();
             Scene.Ins.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        protected override void Draw(SpriteBatch spriteBatch)
         {
             game.GraphicsDevice.Clear(Color.CornflowerBlue);
 

@@ -9,7 +9,7 @@ namespace MarioPirates
         {
         }
 
-        public override void Update(GameTime gameTime)
+        protected override void Update(GameTime gameTime)
         {
             game.Controllers.ForEach(c => c.Update());
             Time.Update(gameTime);
@@ -17,7 +17,7 @@ namespace MarioPirates
             Scene.Ins.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        protected override void Draw(SpriteBatch spriteBatch)
         {
             game.GraphicsDevice.Clear(Color.CornflowerBlue);
 

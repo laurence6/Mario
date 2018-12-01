@@ -9,12 +9,12 @@ namespace MarioPirates
         {
         }
 
-        public override void Update(GameTime gameTime)
+        protected override void Update(GameTime gameTime)
         {
             game.Controllers.ForEach(c => c.Update());
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        protected override void Draw(SpriteBatch spriteBatch)
         {
             game.GraphicsDevice.Clear(Color.CornflowerBlue);
 
