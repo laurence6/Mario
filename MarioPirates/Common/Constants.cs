@@ -8,7 +8,7 @@ namespace MarioPirates
         public static readonly string CONTENT_FILE_TYPE = ".json";
         public static readonly string LEVEL_DATA_PREFIX = "LevelData_";
         public static readonly string DATA_FILE_TYPE = ".json";
-        public static readonly string MARIO_SPRITES_LIST_FILE = "MarioSpritesList.json";
+        public static readonly string MARIO_SPRITES_LIST_FILE = "MarioSpritesData.json";
         public static readonly string SPRITE_DATA_FILE = "SpritesData.json";
         public static readonly float SPRITE_DEPTH_MUL = 0.1f;
 
