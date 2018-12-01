@@ -168,7 +168,7 @@
     <None Include="Content\SpritesData.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\MarioSpritesList.json">
+    <None Include="Content\MarioSpritesData.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\LevelData_secret.json">

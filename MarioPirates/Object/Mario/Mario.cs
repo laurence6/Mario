@@ -27,7 +27,7 @@ namespace MarioPirates
         public Mario(int dstX, int dstY) : base(dstX, dstY, 0, 0)
         {
             Sprites = new Dictionary<string, ISprite>();
-            new JavaScriptSerializer().Deserialize<List<string>>(ReadAllText(Constants.CONTENT_PATH_ROOT + Constants.MARIO_SPRITES_LIST_FILE))
+            new JavaScriptSerializer().Deserialize<List<string>>(ReadAllText(Constants.CONTENT_PATH_ROOT + Constants.MARIO_SPRITES_DATA_FILE))
                  .ForEach(s => Sprites.Add(s, SpriteFactory.Ins.CreateSprite(s)));
 
             RigidBody.CoR = Constants.MARIO_CO_R;
