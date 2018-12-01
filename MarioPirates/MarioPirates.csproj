@@ -158,6 +158,9 @@
   <ItemGroup>
     <Content Include="Icon.ico" />
     <None Include=".editorconfig" />
+    <None Include="Content\LevelData_underwater.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\LevelData_1.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
