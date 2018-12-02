@@ -5,7 +5,13 @@ VisualStudioVersion = 15.0.28010.2016
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarioPirates", "MarioPirates\MarioPirates.csproj", "{02BA8B5E-1C80-4746-8708-7CD7259C2405}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "LibMarioPirates", "LibMarioPirates\LibMarioPirates.shproj", "{6BBCA39B-5BAA-439A-B539-86AC536E255A}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		LibMarioPirates\LibMarioPirates.projitems*{02ba8b5e-1c80-4746-8708-7cd7259c2405}*SharedItemsImports = 4
+		LibMarioPirates\LibMarioPirates.projitems*{6bbca39b-5baa-439a-b539-86ac536e255a}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x86 = Debug|x86

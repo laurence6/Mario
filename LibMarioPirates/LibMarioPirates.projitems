@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>6bbca39b-5baa-439a-b539-86ac536e255a</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>MarioPirates</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Audio\AudioManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\Common.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\Constants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\Time.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controller\GamePadController.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controller\IController.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controller\InputEventFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controller\InputState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controller\KeyboardController.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Event\Action\ActionEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Event\EventEnum.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Event\EventManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Event\Input\KeyDownEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Event\Physics\CollideEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Event\Scene\GameObjectCreateEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Event\Scene\GameObjectDestroyEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GamePlay\Coins.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GamePlay\GameMario.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GamePlay\GameMarioState\GameMarioState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GamePlay\GameMarioState\GameMarioStateEnd.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GamePlay\GameMarioState\GameMarioStateNormal.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GamePlay\GameMarioState\GameMarioStatePause.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GamePlay\GameMarioState\GameMarioStatePending.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GamePlay\Lives.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GamePlay\Score.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GamePlay\Timer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Block\Block.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Block\BlockState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Block\BlueBrickBlock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Block\BlueBrickDebris.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Block\BlueBrokenBlock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Block\BrickBlock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Block\BrickDebris.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Block\BrokenBlock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Block\Ground.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Block\OrangeBlock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Block\QuestionBlock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Block\UnderwaterBlock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Block\UsedBlock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Enemy\Goomba.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Enemy\Koopa.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\GameObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\GameObjectBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\GameObjectParam.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\GameObjectRigidBody.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\IGameObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Item\Castle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Item\Coin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Item\Coral.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Item\Fireball.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Item\Flag.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Item\Flower.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Item\GreenMushroom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Item\LongPipe.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Item\PipeBottom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Item\PipeTop.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Item\RedMushroom.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Item\Star.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Mario\Mario.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Mario\MarioState\MarioState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Mario\MarioState\MarioStateAccelerated.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Mario\MarioState\MarioStateAction\MarioStateAction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Mario\MarioState\MarioStateAction\MarioStateCrouch.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Mario\MarioState\MarioStateAction\MarioStateIdle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Mario\MarioState\MarioStateAction\MarioStateJump.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Mario\MarioState\MarioStateAction\MarioStateRun.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Mario\MarioState\MarioStateBrake.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Mario\MarioState\MarioStateDirection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Mario\MarioState\MarioStateEnum.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Mario\MarioState\MarioStateInvincible.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Mario\MarioState\MarioStateSize\MarioStateBig.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Mario\MarioState\MarioStateSize\MarioStateDead.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Mario\MarioState\MarioStateSize\MarioStateFire.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Mario\MarioState\MarioStateSize\MarioStateSize.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Mario\MarioState\MarioStateSize\MarioStateSmall.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Mario\MarioState\MarioStateTransiting.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Virtual\Background.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Virtual\PromptingPoints.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Virtual\VirtualPlane.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Virtual\VirtualWall.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Physics\CollisionHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Physics\CollisionLayer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Physics\CollisionSide.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Physics\Motion.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Physics\Physics.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Physics\RigidBody.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Physics\WorldForce.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scene\Camera.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scene\HashMap.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scene\HUD.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scene\LevelData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scene\Scene.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Sprite\ISprite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Sprite\SpriteFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Sprite\SpriteText.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Sprite\SpriteTexture.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <MonoGameContentReference Include="$(MSBuildThisFileDirectory)Content\Content.mgcb" />
+    <None Include="$(MSBuildThisFileDirectory)Content\LevelData_1.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Content\LevelData_gameover.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Content\LevelData_secret.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Content\LevelData_underwater.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Content\LevelData_win.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Content\MarioSpritesData.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)Content\SpritesData.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>
