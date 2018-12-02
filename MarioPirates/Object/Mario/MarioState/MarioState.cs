@@ -103,7 +103,7 @@ namespace MarioPirates
         public void TurnInvincible()
         {
             invincible.SetInvincible(true);
-            EventManager.Ins.RaiseEvent(EventEnum.Action, this, new ActionEventArgs(() => CancelInvincible()), Constants.MARIO_STAR_COLLISION_EVENT_DT);
+            EventManager.Ins.RaiseEvent(EventEnum.Action, this, new ActionEventArgs(CancelInvincible), Constants.MARIO_STAR_COLLISION_EVENT_DT);
             UpdateSprite();
         }
 

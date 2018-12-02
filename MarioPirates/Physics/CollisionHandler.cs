@@ -327,7 +327,7 @@ namespace MarioPirates
                             {
                                 @this.TransitionToBigCount = 0;
                                 @this.State.Transiting();
-                                EventManager.Ins.RaiseEvent(EventEnum.Action, @this, new ActionEventArgs(() => @this.State.CancelTransiting()), Constants.SMALL_MARIO_FLOWER_COLLISION_EVENT_DT);
+                                EventManager.Ins.RaiseEvent(EventEnum.Action, @this, new ActionEventArgs(@this.State.CancelTransiting), Constants.SMALL_MARIO_FLOWER_COLLISION_EVENT_DT);
                             }
                             @this.State.TurnFire();
                             break;
@@ -373,7 +373,7 @@ namespace MarioPirates
                             {
                                 @this.TransitionToBigCount = 0;
                                 @this.State.Transiting();
-                                EventManager.Ins.RaiseEvent(EventEnum.Action, @this, new ActionEventArgs(() => @this.State.CancelTransiting()), Constants.MARIO_MUSHROOM_COLLISION_EVENT_DT);
+                                EventManager.Ins.RaiseEvent(EventEnum.Action, @this, new ActionEventArgs(@this.State.CancelTransiting), Constants.MARIO_MUSHROOM_COLLISION_EVENT_DT);
                                 AudioManager.Ins.GetPower();
                             }
                             @this.State.TurnBig();
@@ -396,7 +396,7 @@ namespace MarioPirates
                                 {
                                     @this.TransitionToSmallCount = 0;
                                     @this.State.Transiting();
-                                    EventManager.Ins.RaiseEvent(EventEnum.Action, @this, new ActionEventArgs(() => @this.State.CancelTransiting()), Constants.MARIO_ENEMY_COLLISION_EVENT_DT);
+                                    EventManager.Ins.RaiseEvent(EventEnum.Action, @this, new ActionEventArgs(@this.State.CancelTransiting), Constants.MARIO_ENEMY_COLLISION_EVENT_DT);
                                     @this.State.TurnSmall();
                                 }
                                 else
