@@ -34,10 +34,6 @@ namespace MarioPirates
             GameMarioStatePendingHandler.GameOverReset(this);
         }
 
-        protected override void LoadContent()
-        {
-        }
-
         protected override void UnloadContent()
         {
             Content.Unload();
