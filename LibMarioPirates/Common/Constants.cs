@@ -4,17 +4,17 @@ namespace MarioPirates
 {
     internal static class Constants
     {
-        public static readonly string CONTENT_PATH_ROOT = "Content\\";
+        public static readonly string CONTENT_ROOT = "Content";
+        public static readonly string CONTENT_ROOT_PATH = CONTENT_ROOT + "\\";
         public static readonly string CONTENT_FILE_TYPE = ".json";
         public static readonly string LEVEL_DATA_PREFIX = "LevelData_";
         public static readonly string DATA_FILE_TYPE = ".json";
-        public static readonly string MARIO_SPRITES_DATA_FILE = "MarioSpritesData.json";
-        public static readonly string SPRITE_DATA_FILE = "SpritesData.json";
+        public static readonly string MARIO_SPRITES_DATA_FILE = "MarioSpritesData" + DATA_FILE_TYPE;
+        public static readonly string SPRITE_DATA_FILE = "SpritesData" + DATA_FILE_TYPE;
         public static readonly float SPRITE_DEPTH_MUL = 0.1f;
 
         public static readonly string KEYBOARD_EVENT_PREFIX = "Key";
 
-        public static readonly string CONTENT_ROOT = "Content";
         public static readonly string HUD_SPRITE_FONT = "hud";
 
         public const int LIVES_RESET = 3;
@@ -235,5 +235,7 @@ namespace MarioPirates
         public const float MAX_DEPTH = 10f;
 
         public const float DEFAULT_TIME_LIMIT = 400000f;
+
+        public const float MAPEDITOR_MOVING_SPEED = 5f;
     }
 }

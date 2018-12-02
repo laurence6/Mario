@@ -26,14 +26,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Event\Scene\GameObjectCreateEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\Scene\GameObjectDestroyEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GamePlay\Coins.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GamePlay\GameMario\GameMario.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GamePlay\GameMario\GameMarioState\GameMarioState.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GamePlay\GameMario\GameMarioState\GameMarioStateEnd.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GamePlay\GameMario\GameMarioState\GameMarioStateNormal.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GamePlay\GameMario\GameMarioState\GameMarioStatePause.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GamePlay\GameMario\GameMarioState\GameMarioStatePending.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GamePlay\Lives.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GamePlay\MapEditor\MapEditor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GamePlay\Score.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GamePlay\Timer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Object\Block\Block.cs" />
@@ -90,18 +83,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Object\Virtual\PromptingPoints.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Object\Virtual\VirtualPlane.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Object\Virtual\VirtualWall.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Physics\CollisionHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Physics\CollisionLayer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Physics\CollisionSide.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Physics\Motion.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Physics\Physics.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Physics\RigidBody.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Physics\WorldForce.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Scene\Camera.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Scene\HashMap.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Scene\HUD.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Scene\LevelData.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Scene\Scene.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Sprite\ISprite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Sprite\SpriteFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Sprite\SpriteText.cs" />
@@ -130,9 +118,5 @@
     <None Include="$(MSBuildThisFileDirectory)Content\SpritesData.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)GamePlay\GameMario\" />
-    <Folder Include="$(MSBuildThisFileDirectory)GamePlay\MapEditor\" />
   </ItemGroup>
 </Project>

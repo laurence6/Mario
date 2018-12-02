@@ -48,8 +48,19 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Game\GameMario.cs" />
+    <Compile Include="Game\GameMarioState.cs" />
+    <Compile Include="Game\GameMarioStateEnd.cs" />
+    <Compile Include="Game\GameMarioStateNormal.cs" />
+    <Compile Include="Game\GameMarioStatePause.cs" />
+    <Compile Include="Game\GameMarioStatePending.cs" />
+    <Compile Include="Physics\CollisionHandler.cs" />
+    <Compile Include="Physics\Physics.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scene\HashMap.cs" />
+    <Compile Include="Scene\HUD.cs" />
+    <Compile Include="Scene\Scene.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
