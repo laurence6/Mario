@@ -7,10 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarioPirates", "MarioPirate
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "LibMarioPirates", "LibMarioPirates\LibMarioPirates.shproj", "{6BBCA39B-5BAA-439A-B539-86AC536E255A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapEditor", "MapEditor\MapEditor.csproj", "{BBE5A112-DBA0-4ADA-9FB0-E915A1D4FA7A}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		LibMarioPirates\LibMarioPirates.projitems*{02ba8b5e-1c80-4746-8708-7cd7259c2405}*SharedItemsImports = 4
 		LibMarioPirates\LibMarioPirates.projitems*{6bbca39b-5baa-439a-b539-86ac536e255a}*SharedItemsImports = 13
+		LibMarioPirates\LibMarioPirates.projitems*{bbe5a112-dba0-4ada-9fb0-e915a1d4fa7a}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,9 +26,18 @@ Global
 		{02BA8B5E-1C80-4746-8708-7CD7259C2405}.Debug|Any CPU.Build.0 = Debug|x86
 		{02BA8B5E-1C80-4746-8708-7CD7259C2405}.Debug|x86.ActiveCfg = Debug|x86
 		{02BA8B5E-1C80-4746-8708-7CD7259C2405}.Debug|x86.Build.0 = Debug|x86
-		{02BA8B5E-1C80-4746-8708-7CD7259C2405}.Release|Any CPU.ActiveCfg = Release|x86
-		{02BA8B5E-1C80-4746-8708-7CD7259C2405}.Release|x86.ActiveCfg = Release|x86
-		{02BA8B5E-1C80-4746-8708-7CD7259C2405}.Release|x86.Build.0 = Release|x86
+		{02BA8B5E-1C80-4746-8708-7CD7259C2405}.Release|Any CPU.ActiveCfg = Debug|x86
+		{02BA8B5E-1C80-4746-8708-7CD7259C2405}.Release|Any CPU.Build.0 = Debug|x86
+		{02BA8B5E-1C80-4746-8708-7CD7259C2405}.Release|x86.ActiveCfg = Debug|x86
+		{02BA8B5E-1C80-4746-8708-7CD7259C2405}.Release|x86.Build.0 = Debug|x86
+		{BBE5A112-DBA0-4ADA-9FB0-E915A1D4FA7A}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{BBE5A112-DBA0-4ADA-9FB0-E915A1D4FA7A}.Debug|Any CPU.Build.0 = Debug|x86
+		{BBE5A112-DBA0-4ADA-9FB0-E915A1D4FA7A}.Debug|x86.ActiveCfg = Debug|x86
+		{BBE5A112-DBA0-4ADA-9FB0-E915A1D4FA7A}.Debug|x86.Build.0 = Debug|x86
+		{BBE5A112-DBA0-4ADA-9FB0-E915A1D4FA7A}.Release|Any CPU.ActiveCfg = Debug|x86
+		{BBE5A112-DBA0-4ADA-9FB0-E915A1D4FA7A}.Release|Any CPU.Build.0 = Debug|x86
+		{BBE5A112-DBA0-4ADA-9FB0-E915A1D4FA7A}.Release|x86.ActiveCfg = Debug|x86
+		{BBE5A112-DBA0-4ADA-9FB0-E915A1D4FA7A}.Release|x86.Build.0 = Debug|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

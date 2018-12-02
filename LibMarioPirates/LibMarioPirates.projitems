@@ -26,13 +26,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)Event\Scene\GameObjectCreateEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\Scene\GameObjectDestroyEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GamePlay\Coins.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GamePlay\GameMario.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GamePlay\GameMarioState\GameMarioState.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GamePlay\GameMarioState\GameMarioStateEnd.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GamePlay\GameMarioState\GameMarioStateNormal.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GamePlay\GameMarioState\GameMarioStatePause.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GamePlay\GameMarioState\GameMarioStatePending.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GamePlay\GameMario\GameMario.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GamePlay\GameMario\GameMarioState\GameMarioState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GamePlay\GameMario\GameMarioState\GameMarioStateEnd.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GamePlay\GameMario\GameMarioState\GameMarioStateNormal.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GamePlay\GameMario\GameMarioState\GameMarioStatePause.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GamePlay\GameMario\GameMarioState\GameMarioStatePending.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GamePlay\Lives.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GamePlay\MapEditor\MapEditor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GamePlay\Score.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GamePlay\Timer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Object\Block\Block.cs" />
@@ -129,5 +130,9 @@
     <None Include="$(MSBuildThisFileDirectory)Content\SpritesData.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)GamePlay\GameMario\" />
+    <Folder Include="$(MSBuildThisFileDirectory)GamePlay\MapEditor\" />
   </ItemGroup>
 </Project>
