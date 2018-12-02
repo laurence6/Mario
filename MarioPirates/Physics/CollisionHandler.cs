@@ -405,7 +405,9 @@ namespace MarioPirates
                                     @this.State.TurnDead();
                                 }
                             }
-
+                            break;
+                        case VirtualPlane _:
+                            @this.State.TurnDead();
                             break;
                     }
 
