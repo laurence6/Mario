@@ -47,6 +47,7 @@ namespace MarioPirates
 
         protected override void Draw(GameTime gameTime)
         {
+            GraphicsDevice.Clear(Color.CornflowerBlue);
             State.DoDraw(spriteBatch);
         }
 
