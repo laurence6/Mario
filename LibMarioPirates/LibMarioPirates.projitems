@@ -44,6 +44,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Object\Block\QuestionBlock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Object\Block\UnderwaterBlock.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Object\Block\UsedBlock.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Enemy\Fish.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Object\Enemy\Octopus.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Object\Enemy\Goomba.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Object\Enemy\Koopa.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Object\GameObject.cs" />

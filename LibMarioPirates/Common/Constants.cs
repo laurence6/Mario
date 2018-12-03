@@ -77,6 +77,22 @@ namespace MarioPirates
         public const int KOOPA_POINTS = 100;
         public static readonly Vector2 KOOPA_FIREBALL_COLLISION_VELOCITY = new Vector2(20f, -250f);
 
+        public static readonly string OCTOPUS_SPRITE = "octopus";
+        public const int OCTOPUS_WIDTH = 16;
+        public const int OCTOPUS_HEIGHT = 24;
+        public const float OCTOPUS_MASS = 0.1f;
+        public static readonly Vector2 OCTOPUS_INITIAL_VELOCITY = new Vector2(-25f, 0f);
+        public static readonly Vector2 OCTOPUS_STOMPED_OCTOPUS_COLLISION_VELOCITY = new Vector2(0f, -250f);
+        public const int OCTOPUS_POINTS = 100;
+
+        public static readonly string FISH_SPRITE = "fish";
+        public const int FISH_WIDTH = 16;
+        public const int FISH_HEIGHT = 16;
+        public const float FISH_MASS = 0.1f;
+        public static readonly Vector2 FISH_INITIAL_VELOCITY = new Vector2(-25f, 0f);
+        public static readonly Vector2 FISH_STOMPED_FISH_COLLISION_VELOCITY = new Vector2(0f, -250f);
+        public const int FISH_POINTS = 100;
+
         public static readonly string CASTLE_SPRITE = "castle";
         public const int CASTLE_WIDTH = 80;
         public const int CASTLE_HEIGHT = 80;
@@ -208,7 +224,7 @@ namespace MarioPirates
         public const string GAMEOVER_SCENE = "gameover";
         public const string WIN_SCENE = "win";
         public const string UNDERWATER_SCENE = "underwater";
-        public const string DEFAULT_SCENE = UNDERWATER_SCENE;
+        public const string DEFAULT_SCENE = LEVEL_1_SCENE;
         public static readonly string[] AVAILABLE_SCENES = new string[] { LEVEL_1_SCENE, SECRET_LEVEL_SCENE, GAMEOVER_SCENE, WIN_SCENE, UNDERWATER_SCENE };
         public const int SCREEN_WIDTH = 800;
         public const int SCREEN_HEIGHT = 480;

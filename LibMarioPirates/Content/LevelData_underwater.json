@@ -1,7 +1,16 @@
 {
   "HasPlayer": true,
     "Objects": [
-
+        {
+            "TypeName": "Octopus",
+            "Motion": "Dynamic",
+            "Location": [ 50, 300 ]
+        },
+        {
+            "TypeName": "Fish",
+            "Motion": "Dynamic",
+            "Location": [ 100, 300 ]
+        },
         {
             "TypeName": "UnderwaterBlock",
             "Location": [ 0, 450 ],
