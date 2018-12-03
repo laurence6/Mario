@@ -6,7 +6,7 @@ namespace MarioPirates
     {
         public PromptingPoints(float locX, float locY, int value) : base(locX, locY, 0, 0)
         {
-            Sprite = SpriteFactory.Ins.CreatePromptingPointsSprite(() => value.ToString());
+            Sprite = SpriteFactory.Ins.CreateSmallFontSprite(() => value.ToString());
             RigidBody.Motion = MotionEnum.Keyframe;
             RigidBody.Velocity = new Vector2(0f, -25f);
             RigidBody.CollisionLayerMask = CollisionLayer.None;

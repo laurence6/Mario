@@ -17,8 +17,8 @@ namespace MarioPirates
 
         public void Reset()
         {
-            text = "> ";
-            sprite = SpriteFactory.Ins.CreateHUDSprite(() => text);
+            text = "";
+            sprite = SpriteFactory.Ins.CreateSmallFontSprite(() => "> " + text);
         }
 
         public void Update()
@@ -28,7 +28,7 @@ namespace MarioPirates
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
-            sprite.Draw(spriteBatch, Constants.SCORE_TITLE_POSITION.X, Constants.SCORE_TITLE_POSITION.Y);
+            sprite.Draw(spriteBatch, Constants.CONSOLE_POSITION.X, Constants.CONSOLE_POSITION.Y);
             spriteBatch.End();
         }
 
@@ -38,6 +38,8 @@ namespace MarioPirates
             {
                 case Keys k when (Keys.A <= k && k <= Keys.Z):
                     text += k;
+                    break;
+                case Keys.Enter:
                     break;
             }
         }

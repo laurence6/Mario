@@ -44,12 +44,12 @@ namespace MarioPirates
             spriteTextureParam.ForEach((name, param) => param.TextureName.NotNullThen(() => textures.AddIfNotExist(param.TextureName, null)));
             textures.Keys.ToList().ForEach(name => textures[name] = content.Load<Texture2D>(name));
 
-            hudFont = content.Load<SpriteFont>("hud");
-            promptingPointsFont = content.Load<SpriteFont>("promptingpoints");
+            hudFont = content.Load<SpriteFont>(Constants.HUD_FONT_SPRITE);
+            promptingPointsFont = content.Load<SpriteFont>(Constants.SMALL_FONT_SPRITE);
         }
 
         public SpriteTexture CreateSprite(string spriteName) => spriteTextureParam[spriteName].ToSprite(textures);
         public SpriteText CreateHUDSprite(Func<string> getString) => new SpriteText(hudFont, getString);
-        public SpriteText CreatePromptingPointsSprite(Func<string> getString) => new SpriteText(promptingPointsFont, getString);
+        public SpriteText CreateSmallFontSprite(Func<string> getString) => new SpriteText(promptingPointsFont, getString);
     }
 }

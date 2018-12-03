@@ -15,11 +15,10 @@ namespace MarioPirates
 
         public static readonly string KEYBOARD_EVENT_PREFIX = "Key";
 
-        public static readonly string HUD_SPRITE_FONT = "hud";
+        public static readonly string HUD_FONT_SPRITE = "hud";
+        public static readonly string SMALL_FONT_SPRITE = "small";
 
         public const int LIVES_RESET = 3;
-
-        public static readonly string SCORE_STRING = "Score ";
 
         public static readonly string GAME_NAMESPACE = "MarioPirates.";
 
@@ -237,5 +236,8 @@ namespace MarioPirates
         public const float DEFAULT_TIME_LIMIT = 400000f;
 
         public const float MAPEDITOR_MOVING_SPEED = 5f;
+
+        public static readonly Vector2 CONSOLE_POSITION = new Vector2(12f, 12f);
+        public const float CONSOLE_LINE_HEIGHT = 24f;
     }
 }
