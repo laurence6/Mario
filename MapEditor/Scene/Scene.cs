@@ -24,14 +24,12 @@ namespace MarioPirates
 
         public void Update(float dt)
         {
-
+            model.Update();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp, transformMatrix: Camera.Ins.Transform);
-            model.Data.ForEach(o => o.Draw(spriteBatch));
-            spriteBatch.End();
+            model.Draw(spriteBatch);
         }
     }
 }

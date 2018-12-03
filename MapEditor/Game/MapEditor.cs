@@ -14,6 +14,8 @@ namespace MarioPirates
 
         public List<IController> Controllers { get; } = new List<IController>();
 
+        public MapEditorState State { get; set; }
+
         public MapEditor()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -40,13 +42,12 @@ namespace MarioPirates
 
         protected override void Update(GameTime gameTime)
         {
-            Controllers.ForEach(c => c.Update());
-            EventManager.Ins.Update();
+            State.DoUpdate(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            Scene.Ins.Draw(spriteBatch);
+            State.DoDraw(spriteBatch);
         }
 
         private void Reset()
@@ -55,14 +56,11 @@ namespace MarioPirates
             Camera.Ins.Reset();
             Scene.Ins.Reset();
 
+            State = new MapEditorStateNormal(this);
+
             EventManager.Ins.Subscribe(EventEnum.KeyDown, (s, e) =>
             {
-                switch ((e as KeyDownEventArgs).key)
-                {
-                    case Keys.Q:
-                        Exit();
-                        break;
-                }
+                State.HandleKeyDown(e as KeyDownEventArgs);
             });
 
             Controllers.Clear();
@@ -72,7 +70,7 @@ namespace MarioPirates
             keyboardController.SetKeyMapping(Keys.S, Keys.Down);
             keyboardController.SetKeyMapping(Keys.A, Keys.Left);
             keyboardController.SetKeyMapping(Keys.D, Keys.Right);
-            keyboardController.EnableKeyEvent(InputState.Down, Keys.Q);
+            keyboardController.EnableKeyEvent(InputState.Down, Keys.Escape, Keys.F4, Keys.Q);
             keyboardController.EnableKeyEvent(InputState.Hold, Keys.Up, Keys.Down, Keys.Left, Keys.Right);
             Controllers.Add(keyboardController);
         }

@@ -38,14 +38,6 @@ namespace MarioPirates
             l.Clear();
         }
 
-        public static List<U> Map<T, U>(this List<T> l, Func<T, U> f)
-        {
-            var res = new List<U>();
-            foreach (var e in l)
-                res.Add(f(e));
-            return res;
-        }
-
         public static void AddIfNotExistStruct<T, U>(this Dictionary<T, U> d, T key, U val) where U : struct
         {
             if (!d.ContainsKey(key))

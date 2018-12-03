@@ -50,6 +50,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Game\MapEditor.cs" />
+    <Compile Include="Game\MapEditorStateConsole.cs" />
+    <Compile Include="Game\MapEditorStateNormal.cs" />
+    <Compile Include="Game\MapEditorState.cs" />
     <Compile Include="Scene\Model.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

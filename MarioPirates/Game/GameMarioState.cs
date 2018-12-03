@@ -5,7 +5,7 @@ namespace MarioPirates
 {
     internal abstract class GameMarioState
     {
-        protected GameMario game;
+        protected readonly GameMario game;
 
         private GameMarioStatePending pending = GameMarioStatePending.None;
 

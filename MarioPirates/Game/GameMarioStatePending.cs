@@ -42,7 +42,6 @@ namespace MarioPirates
 
         public static void GameOverReset(this GameMario game)
         {
-
             Physics.Reset();
             EventManager.Ins.Reset();
             Camera.Ins.Reset();
@@ -55,6 +54,8 @@ namespace MarioPirates
             Lives.Ins.Reset();
             Timer.Ins.Reset();
             HUD.Ins.Reset();
+
+            game.State = new GameMarioStateNormal(game);
 
             EventManager.Ins.Subscribe(EventEnum.GameOver, (s, e) => game.State.TriggerGameOver());
 
@@ -81,8 +82,6 @@ namespace MarioPirates
                         break;
                 }
             });
-
-            game.State = new GameMarioStateNormal(game);
 
             game.Controllers.Clear();
             var keyboardController = new KeyboardController();

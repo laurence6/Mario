@@ -89,6 +89,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Physics\RigidBody.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Physics\WorldForce.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Scene\Camera.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Scene\HashMap.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Scene\LevelData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Sprite\ISprite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Sprite\SpriteFactory.cs" />
