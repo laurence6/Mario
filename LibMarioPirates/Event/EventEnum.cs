@@ -17,10 +17,6 @@
         KeyLeftHold,
         KeyRightHold,
 
-        KeyXDown,
-        KeyXUp,
-        KeyXHold,
-
         KeyDown,
         KeyUp,
         KeyHold,

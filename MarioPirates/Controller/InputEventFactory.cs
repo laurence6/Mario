@@ -15,6 +15,10 @@ namespace MarioPirates.Controller
             {
                 case InputState.Down:
                     return (EventEnum.KeyDown, new KeyDownEventArgs(key));
+                case InputState.Up:
+                    return (EventEnum.KeyUp, new KeyUpEventArgs(key));
+                case InputState.Hold:
+                    return (EventEnum.KeyHold, new KeyHoldEventArgs(key));
             }
             return (0, null);
         }
@@ -35,9 +39,9 @@ namespace MarioPirates.Controller
                         case Buttons.A:
                             return (EventEnum.KeyUpDown, EventArgs.Empty);
                         case Buttons.B:
-                            return (EventEnum.KeyXDown, EventArgs.Empty);
+                            return (EventEnum.KeyDown, new KeyDownEventArgs(Keys.X));
                         case Buttons.Start:
-                            return (EventEnum.KeyDown, EventArgs.Empty);
+                            return (EventEnum.KeyDown, new KeyDownEventArgs(Keys.Q));
                     }
                     break;
                 case InputState.Hold:
@@ -52,7 +56,7 @@ namespace MarioPirates.Controller
                         case Buttons.A:
                             return (EventEnum.KeyUpHold, EventArgs.Empty);
                         case Buttons.B:
-                            return (EventEnum.KeyXHold, EventArgs.Empty);
+                            return (EventEnum.KeyHold, new KeyDownEventArgs(Keys.X));
                     }
                     break;
                 case InputState.Up:
@@ -67,7 +71,7 @@ namespace MarioPirates.Controller
                         case Buttons.A:
                             return (EventEnum.KeyUpUp, EventArgs.Empty);
                         case Buttons.B:
-                            return (EventEnum.KeyXUp, EventArgs.Empty);
+                            return (EventEnum.KeyUp, new KeyDownEventArgs(Keys.X));
                     }
                     break;
             }

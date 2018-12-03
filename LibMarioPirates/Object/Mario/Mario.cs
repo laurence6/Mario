@@ -161,11 +161,11 @@ namespace MarioPirates
 
         private void SubscribeInputX()
         {
-            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyXDown, () => State.Accelerated());
-            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyXUp, () => State.CancelAccelerated());
-            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyXDown, () =>
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyDown, (s, e) => ((e as KeyDownEventArgs).key is Keys.X).Then(() => State.Accelerated()));
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyUp, (s, e) => ((e as KeyUpEventArgs).key is Keys.X).Then(() => State.CancelAccelerated()));
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyDown, (s, e) =>
             {
-                if (State.IsFire)
+                if ((e as KeyDownEventArgs).key is Keys.X && State.IsFire)
                 {
                     var fireball = new Fireball((int)Location.X + (State.IsLeft ? -Constants.FIREBALL_WIDTH : Constants.FIREBALL_WIDTH + Size.X), (int)Location.Y + Constants.FIREBALL_HEIGHT); //16, 16, 16
                     fireball.RigidBody.Velocity = new Vector2(State.IsLeft ? -Constants.FIREBALL_COLLISION_VELOCITY.X : Constants.FIREBALL_COLLISION_VELOCITY.X, 0f);
