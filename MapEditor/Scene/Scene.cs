@@ -15,6 +15,9 @@ namespace MarioPirates
 
         public Model Model { get; private set; }
 
+        public readonly HashMap gameObjectContainer = new HashMap();
+        public readonly List<IGameObject> gameObjectsNoRigidBody = new List<IGameObject>();
+
         private HashSet<GameObjectRigidBody> objectsFound = new HashSet<GameObjectRigidBody>();
         private IGameObject objectSelected = null;
         private Vector2 objectSelectedOffset = Vector2.Zero;
@@ -22,6 +25,8 @@ namespace MarioPirates
         public void Reset()
         {
             Model = new Model(Constants.DEFAULT_SCENE);
+            Model.Objects.ForEach(AddGameObject);
+
             objectsFound.Clear();
             objectSelected = null;
 
@@ -45,15 +50,33 @@ namespace MarioPirates
             EventManager.Ins.Subscribe(EventEnum.MouseButtonUp, (s, e) => HandleMouseButtonUp((e as MouseButtonUpEventArgs).mousePosition));
             EventManager.Ins.Subscribe(EventEnum.MouseButtonHold, (s, e) => HandleMouseButtonHold((e as MouseButtonHoldEventArgs).mousePosition));
         }
+        public void AddGameObject(IGameObject o)
+        {
+            if (o is GameObjectRigidBody objectRigidBody)
+                gameObjectContainer.Add(objectRigidBody);
+            else
+                gameObjectsNoRigidBody.Add(o);
+        }
+
+        public void RemoveGameObject(IGameObject o)
+        {
+            if (o is GameObjectRigidBody objectRigidBody)
+                gameObjectContainer.Remove(objectRigidBody);
+            else
+                gameObjectsNoRigidBody.Remove(o);
+        }
 
         public void Update()
         {
-            Model.Update();
+            gameObjectContainer.Rebuild();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Model.Draw(spriteBatch);
+            spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp, transformMatrix: Camera.Ins.Transform);
+            gameObjectsNoRigidBody.ForEach(o => o.Draw(spriteBatch));
+            gameObjectContainer.ForEachVisible(o => o.Draw(spriteBatch));
+            spriteBatch.End();
         }
 
         private void HandleMouseButtonDown(Point pos)
@@ -61,7 +84,7 @@ namespace MarioPirates
             var point = new Rectangle(Camera.Ins.ScreenToWorld(pos), Point.Zero);
             objectsFound.Clear();
             objectSelected = null;
-            Model.gameObjectContainer.Find(point, objectsFound);
+            gameObjectContainer.Find(point, objectsFound);
             foreach (var o in objectsFound)
                 if (o.RigidBody.Bound.Intersects(point))
                 {
@@ -83,8 +106,8 @@ namespace MarioPirates
 
         private static Point Align(Point pos)
         {
-            pos.X &= ~0b1111;
-            pos.Y &= ~0b1111;
+            pos.X &= Constants.MAPEDITOR_ALIGNMENT_MASK;
+            pos.Y &= Constants.MAPEDITOR_ALIGNMENT_MASK;
             return pos;
         }
     }
