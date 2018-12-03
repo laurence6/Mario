@@ -20,7 +20,17 @@ namespace MarioPirates
                     editor.State = new MapEditorStateNormal(editor);
                     break;
                 default:
-                    Console.Ins.HandleKey(key);
+                    Console.Ins.HandleKeyDown(key);
+                    break;
+            }
+        }
+
+        public override void HandleKeyUp(Keys key)
+        {
+            switch (key)
+            {
+                default:
+                    Console.Ins.HandleKeyUp(key);
                     break;
             }
         }

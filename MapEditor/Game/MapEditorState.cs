@@ -23,7 +23,12 @@ namespace MarioPirates
             Draw(spriteBatch);
         }
 
-        public abstract void HandleKeyDown(Keys key);
+        public virtual void HandleKeyDown(Keys key)
+        {
+        }
+        public virtual void HandleKeyUp(Keys key)
+        {
+        }
 
         protected virtual void Update(GameTime gameTime)
         {

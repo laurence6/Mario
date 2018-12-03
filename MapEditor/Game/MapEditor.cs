@@ -59,6 +59,7 @@ namespace MarioPirates
             State = new MapEditorStateNormal(this);
 
             EventManager.Ins.Subscribe(EventEnum.KeyDown, (s, e) => State.HandleKeyDown((e as KeyDownEventArgs).key));
+            EventManager.Ins.Subscribe(EventEnum.KeyUp, (s, e) => State.HandleKeyUp((e as KeyUpEventArgs).key));
 
             Controllers.Clear();
 
