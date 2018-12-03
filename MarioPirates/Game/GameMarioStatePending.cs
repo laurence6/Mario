@@ -57,9 +57,9 @@ namespace MarioPirates
 
             game.State = new GameMarioStateNormal(game);
 
-            EventManager.Ins.Subscribe(EventEnum.GameOver, (s, e) => game.State.TriggerGameOver());
+            EventManager.Ins.Subscribe(EventEnum.GameOver, () => game.State.TriggerGameOver());
 
-            EventManager.Ins.Subscribe(EventEnum.Win, (s, e) => game.State.TriggerGameWin());
+            EventManager.Ins.Subscribe(EventEnum.Win, () => game.State.TriggerGameWin());
 
             EventManager.Ins.Subscribe(EventEnum.KeyDown, (s, e) =>
             {

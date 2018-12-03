@@ -63,7 +63,7 @@ namespace MarioPirates
 
         private void SubscribeInputMoving()
         {
-            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyUpHold, (s, e) =>
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyUpHold, () =>
             {
                 if (JumpHoldCount < Constants.MARIO_JUMP_HOLD_COUNT_LIMIT)
                 {
@@ -71,7 +71,7 @@ namespace MarioPirates
                     JumpHoldCount += 1;
                 }
             });
-            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyUpDown, (s, e) =>
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyUpDown, () =>
             {
                 if (RigidBody.Grounded)
                 {
@@ -80,18 +80,18 @@ namespace MarioPirates
                     AudioManager.Ins.SmallMarioJump();
                 }
             });
-            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyDownHold, (s, e) =>
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyDownHold, () =>
             {
                 State.TurnCrouch();
             });
-            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyLeftHold, (s, e) =>
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyLeftHold, () =>
             {
                 if (!State.IsCrouch)
                 {
                     RigidBody.ApplyForce(new Vector2(-Constants.MARIO_RUN_FORCE_X * State.VelocityMultipler, 0));
                 }
             });
-            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyRightHold, (s, e) =>
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyRightHold, () =>
             {
                 if (!State.IsCrouch)
                 {
@@ -99,10 +99,10 @@ namespace MarioPirates
                 }
             });
 
-            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyRightHold, (s, e) => State.TurnRight());
-            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyLeftHold, (s, e) => State.TurnLeft());
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyRightHold, () => State.TurnRight());
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyLeftHold, () => State.TurnLeft());
 
-            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyRightHold, (s, e) =>
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyRightHold, () =>
             {
                 if (RigidBody.Velocity.X < -0)
                 {
@@ -113,7 +113,7 @@ namespace MarioPirates
                     State.Coast();
                 }
             });
-            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyLeftHold, (s, e) =>
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyLeftHold, () =>
             {
                 if (RigidBody.Velocity.X > 0)
                 {
@@ -125,7 +125,7 @@ namespace MarioPirates
                 }
             });
 
-            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyUpUp, (s, e) => JumpHoldCount = Constants.MARIO_JUMP_HOLD_COUNT_LIMIT);
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyUpUp, () => JumpHoldCount = Constants.MARIO_JUMP_HOLD_COUNT_LIMIT);
         }
 
         private void SubscribeInputTransition()
@@ -161,9 +161,9 @@ namespace MarioPirates
 
         private void SubscribeInputX()
         {
-            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyXDown, (s, e) => State.Accelerated());
-            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyXUp, (s, e) => State.CancelAccelerated());
-            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyXDown, (s, e) =>
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyXDown, () => State.Accelerated());
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyXUp, () => State.CancelAccelerated());
+            unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyXDown, () =>
             {
                 if (State.IsFire)
                 {

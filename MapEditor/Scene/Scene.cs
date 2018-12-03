@@ -18,8 +18,8 @@ namespace MarioPirates
             model = new Model(Constants.DEFAULT_SCENE);
             offset = Constants.SCREEN_WIDTH / 2;
 
-            EventManager.Ins.Subscribe(EventEnum.KeyLeftHold, (s, e) => { offset = (offset - Constants.MAPEDITOR_MOVING_SPEED).Max(0f); Camera.Ins.LookAt(offset, true); });
-            EventManager.Ins.Subscribe(EventEnum.KeyRightHold, (s, e) => { offset = (offset + Constants.MAPEDITOR_MOVING_SPEED).Max(0f); Camera.Ins.LookAt(offset, true); });
+            EventManager.Ins.Subscribe(EventEnum.KeyLeftHold, () => { offset = (offset - Constants.MAPEDITOR_MOVING_SPEED).Max(0f); Camera.Ins.LookAt(offset, true); });
+            EventManager.Ins.Subscribe(EventEnum.KeyRightHold, () => { offset = (offset + Constants.MAPEDITOR_MOVING_SPEED).Max(0f); Camera.Ins.LookAt(offset, true); });
         }
 
         public void Update(float dt)

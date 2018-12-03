@@ -29,6 +29,8 @@ namespace MarioPirates
             return () => handlerList[(int)type] -= h;
         }
 
+        public Action Subscribe(EventEnum type, Action h) => Subscribe(type, (s, e) => h());
+
         public void RaiseEvent(EventEnum type, object s, EventArgs e)
         {
             handlerList[(int)type]?.Invoke(s, e);
