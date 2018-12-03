@@ -38,7 +38,6 @@ namespace MarioPirates
         protected override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            Console.Ins.Update();
         }
 
         protected override void Draw(SpriteBatch spriteBatch)

@@ -8,7 +8,6 @@ namespace MarioPirates
     {
         public static readonly string CONTENT_ROOT = "Content";
         public static readonly string CONTENT_ROOT_PATH = CONTENT_ROOT + "\\";
-        public static readonly string CONTENT_FILE_TYPE = ".json";
         public static readonly string LEVEL_DATA_PREFIX = "LevelData_";
         public static readonly string DATA_FILE_TYPE = ".json";
         public static readonly string MARIO_SPRITES_DATA_FILE = "MarioSpritesData" + DATA_FILE_TYPE;
@@ -244,6 +243,7 @@ namespace MarioPirates
         public const int CONSOLE_NUM_LINES = 17;
         public const float CONSOLE_LINE_HEIGHT = 24f;
         public static readonly string CONSOLE_PROMOT = "> ";
+        public static readonly string CONSOLE_ERROR = "ERROR: ";
         public static readonly Dictionary<Keys, string> KeyMapping = new Dictionary<Keys, string>
         {
             { Keys.Space, " " },
