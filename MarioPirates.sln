@@ -9,6 +9,17 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "LibMarioPirates", "LibMario
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapEditor", "MapEditor\MapEditor.csproj", "{BBE5A112-DBA0-4ADA-9FB0-E915A1D4FA7A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataFiles", "DataFiles", "{D713BD47-411E-4D38-BBE2-17589EBC7AE5}"
+	ProjectSection(SolutionItems) = preProject
+		DataFiles\LevelData_1.json = DataFiles\LevelData_1.json
+		DataFiles\LevelData_gameover.json = DataFiles\LevelData_gameover.json
+		DataFiles\LevelData_secret.json = DataFiles\LevelData_secret.json
+		DataFiles\LevelData_underwater.json = DataFiles\LevelData_underwater.json
+		DataFiles\LevelData_win.json = DataFiles\LevelData_win.json
+		DataFiles\MarioSpritesData.json = DataFiles\MarioSpritesData.json
+		DataFiles\SpritesData.json = DataFiles\SpritesData.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		LibMarioPirates\LibMarioPirates.projitems*{02ba8b5e-1c80-4746-8708-7cd7259c2405}*SharedItemsImports = 4

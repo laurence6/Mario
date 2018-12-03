@@ -35,7 +35,7 @@ namespace MarioPirates
                 AddGameObject(new VirtualWall(0f, 0f));
                 AddGameObject(new VirtualWall(Constants.SCREEN_WIDTH - Constants.VIRTUAL_WALL_WIDTH, 0f));
 
-                var levelData = new JavaScriptSerializer().Deserialize<LevelData>(ReadAllText(Constants.CONTENT_ROOT_PATH + Constants.LEVEL_DATA_PREFIX + level + Constants.DATA_FILE_TYPE));
+                var levelData = new JavaScriptSerializer().Deserialize<LevelData>(ReadAllText(Constants.DATA_FILES_PATH + Constants.LEVEL_DATA_PREFIX + level + Constants.DATA_FILE_TYPE));
                 HasPlayer = levelData.HasPlayer;
                 if (HasPlayer)
                 {
