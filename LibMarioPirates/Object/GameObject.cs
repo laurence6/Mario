@@ -7,8 +7,8 @@ namespace MarioPirates
         private Vector2 location;
         public override Vector2 Location
         {
-            get => IsLocationAbsolute ? location + Camera.Ins.Offset : location;
-            set => location = IsLocationAbsolute ? value - Camera.Ins.Offset : value;
+            get => IsLocationAbsolute ? new Vector2(location.X + Camera.Ins.Offset, location.Y) : location;
+            set { location = value; location.X -= IsLocationAbsolute ? Camera.Ins.Offset : 0f; }
         }
 
         public override Point Size { get; set; }

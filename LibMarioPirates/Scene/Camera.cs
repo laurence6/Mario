@@ -10,7 +10,8 @@ namespace MarioPirates
         {
         }
 
-        public Vector2 Offset { get; private set; } = Vector2.Zero;
+        private float offset = 0f;
+        public float Offset { get => offset; set { offset = value.Max(0f); } }
 
         public Matrix Transform { get; private set; }
 
@@ -18,21 +19,25 @@ namespace MarioPirates
 
         public void Reset()
         {
-            Offset = Vector2.Zero;
-            LookAt(Vector2.Zero);
-        }
-
-        public void LookAt(Vector2 location, bool backward = false)
-        {
-            LookAt(location.X, backward);
+            offset = 0f;
+            Update();
         }
 
         public void LookAt(float x, bool backward = false)
         {
-            x = (x - Constants.SCREEN_WIDTH / 2).Max(backward ? 0f : Offset.X);
-            Offset = new Vector2(x, 0f);
-            Transform = Matrix.CreateTranslation(new Vector3(-Offset, 0f));
-            VisibleArea = new Rectangle((int)Offset.X, (int)Offset.Y, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
+            x -= Constants.SCREEN_WIDTH / 2;
+            if (!backward)
+                x = x.Max(Offset);
+            Offset = x;
+            Update();
+        }
+
+        public void LookAt(Vector2 location, bool backward = false) => LookAt(location.X, backward);
+
+        public void Update()
+        {
+            Transform = Matrix.CreateTranslation(new Vector3(-Offset, 0f, 0f));
+            VisibleArea = new Rectangle((int)Offset, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
         }
     }
 }

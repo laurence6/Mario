@@ -11,15 +11,13 @@ namespace MarioPirates
         }
 
         private Model model;
-        private float offset;
 
         public void Reset()
         {
             model = new Model(Constants.DEFAULT_SCENE);
-            offset = Constants.SCREEN_WIDTH / 2;
 
-            EventManager.Ins.Subscribe(EventEnum.KeyLeftHold, () => { offset = (offset - Constants.MAPEDITOR_MOVING_SPEED).Max(0f); Camera.Ins.LookAt(offset, true); });
-            EventManager.Ins.Subscribe(EventEnum.KeyRightHold, () => { offset = (offset + Constants.MAPEDITOR_MOVING_SPEED).Max(0f); Camera.Ins.LookAt(offset, true); });
+            EventManager.Ins.Subscribe(EventEnum.KeyLeftHold, () => { Camera.Ins.Offset -= Constants.MAPEDITOR_MOVING_SPEED; Camera.Ins.Update(); });
+            EventManager.Ins.Subscribe(EventEnum.KeyRightHold, () => { Camera.Ins.Offset += Constants.MAPEDITOR_MOVING_SPEED; Camera.Ins.Update(); });
         }
 
         public void Update(float dt)
