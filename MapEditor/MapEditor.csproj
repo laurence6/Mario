@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Console\Commands.cs" />
     <Compile Include="Console\Console.cs" />
+    <Compile Include="Controller\MouseController.cs" />
     <Compile Include="Controller\KeyboardController.cs" />
     <Compile Include="Game\MapEditor.cs" />
     <Compile Include="Game\MapEditorStateConsole.cs" />

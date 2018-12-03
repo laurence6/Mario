@@ -25,6 +25,10 @@
         KeyUp,
         KeyHold,
 
+        MouseButtonDown,
+        MouseButtonUp,
+        MouseButtonHold,
+
         GameObjectCreate,
         GameObjectDestroy,
         GameOver,

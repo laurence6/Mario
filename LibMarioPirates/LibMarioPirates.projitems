@@ -18,6 +18,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Event\Action\ActionEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\EventEnum.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\EventManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Event\Input\MouseButtonDownEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Event\Input\MouseButtonHoldEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Event\Input\MouseButtonUpEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\Input\KeyUpEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\Input\KeyHoldEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Event\Input\KeyDownEventArgs.cs" />

@@ -26,6 +26,7 @@ namespace MarioPirates
             base.Initialize();
 
             graphics.IsFullScreen = false;
+            IsMouseVisible = true;
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
             SpriteFactory.Ins.LoadContent(Content);
