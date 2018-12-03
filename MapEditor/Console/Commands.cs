@@ -4,7 +4,7 @@ namespace MarioPirates
 {
     internal static class Commands
     {
-        public static void Exit()
+        public static void Exit(string param)
         {
             EventManager.Ins.RaiseEvent(EventEnum.KeyDown, null, new KeyDownEventArgs(Keys.Escape));
             EventManager.Ins.RaiseEvent(EventEnum.KeyDown, null, new KeyDownEventArgs(Keys.Escape));

@@ -14,7 +14,7 @@ namespace MarioPirates
             {
                 var line = new Line();
                 lines[i] = line;
-                sprite[i] = SpriteFactory.Ins.CreateSmallFontSprite(() => ((i & 1) == 0 ? Constants.CONSOLE_PROMOT : "") + line.text);
+                sprite[i] = SpriteFactory.Ins.CreateSmallFontSprite(() => line.Prefix + line.Text);
             }
         }
 
@@ -22,9 +22,10 @@ namespace MarioPirates
 
         private class Line
         {
-            public string text = "";
+            public string Prefix { get; set; } = "";
+            public string Text { get; set; } = "";
 
-            public bool IsEmpty => text.Trim(sepChars) == "";
+            public bool IsEmpty => Text.Trim(sepChars) == "";
         }
 
         private SpriteText[] sprite = new SpriteText[Constants.CONSOLE_NUM_LINES];
@@ -48,9 +49,10 @@ namespace MarioPirates
 
         public void Reset()
         {
-            lines.ForEach(line => line.text = "");
-            CurrLine = 0;
             upperCase = false;
+            lines.ForEach(line => line.Text = "");
+            CurrLine = 0;
+            lines[CurrLine].Prefix = Constants.CONSOLE_PROMOT;
         }
 
         public void Update()
@@ -90,17 +92,28 @@ namespace MarioPirates
                 case Keys.Enter:
                     if (!lines[CurrLine].IsEmpty)
                     {
-                        var cmd = lines[CurrLine].text.Split(sepChars, 2, StringSplitOptions.RemoveEmptyEntries);
+                        var cmd = lines[CurrLine].Text.Split(sepChars, 2, StringSplitOptions.RemoveEmptyEntries);
+                        if (cmd.Length == 1)
+                            cmd = new string[] { cmd[0], "" };
                         CurrLine++;
+
+                        var found = false;
                         foreach (var f in typeof(Commands).GetMethods())
                         {
                             if (cmd[0].ToLower() == f.Name.ToLower())
                             {
-                                f.Invoke(null, new object[] { });
+                                found = true;
+                                f.Invoke(null, new object[] { cmd[1] });
+                                break;
                             }
                         }
+                        if (!found)
+                            Input("Could not find command: " + cmd[0]);
+
                         if (!lines[CurrLine].IsEmpty)
                             CurrLine++;
+
+                        lines[CurrLine].Prefix = Constants.CONSOLE_PROMOT;
                     }
                     break;
             }
@@ -117,16 +130,19 @@ namespace MarioPirates
 
         public void Input(string s)
         {
-            lines[CurrLine].text += s;
+            lines[CurrLine].Text += s;
         }
 
         private void Scroll()
         {
             var i = 0;
             for (; i < Constants.CONSOLE_NUM_LINES - 1; i++)
-                lines[i].text = lines[i + 1].text;
+            {
+                lines[i].Prefix = lines[i + 1].Prefix;
+                lines[i].Text = lines[i + 1].Text;
+            }
             CurrLine = i;
-            lines[CurrLine].text = "";
+            lines[CurrLine].Text = "";
         }
     }
 }
