@@ -206,6 +206,17 @@
       "Motion": "Static"
     },
 
+    {
+      "TypeName": "Coin",
+      "Motion": "Static",
+      "Location": [ 1312, 418 ]
+    },
+    {
+      "TypeName": "Coin",
+      "Motion": "Static",
+      "Location": [ 1344, 418 ]
+    },
+
 
     {
       "TypeName": "UnderwaterBlock",
@@ -582,8 +593,30 @@
     },
 
     {
+      "TypeName": "Coin",
+      "Motion": "Static",
+      "Location": [ 1632, 318 ]
+    },
+    {
+      "TypeName": "Coin",
+      "Motion": "Static",
+      "Location": [ 1664, 318 ]
+    },
+    {
+      "TypeName": "Coin",
+      "Motion": "Static",
+      "Location": [ 1696, 318 ]
+    },
+    {
+      "TypeName": "Coin",
+      "Motion": "Static",
+      "Location": [ 1728, 318 ]
+    },
+
+
+    {
       "TypeName": "UnderwaterBlock",
-      "Location": [ 1760, 286 ],
+      "Location": [ 1792, 286 ],
       "Params": { "State": "Normal" },
       "Motion": "Static"
     },
@@ -604,7 +637,30 @@
       "Location": [ 1888, 286 ],
       "Params": { "State": "Normal" },
       "Motion": "Static"
+    },
+
+    {
+      "TypeName": "Coin",
+      "Motion": "Static",
+      "Location": [ 1792, 254 ]
+    },
+    {
+      "TypeName": "Coin",
+      "Motion": "Static",
+      "Location": [ 1824, 254 ]
+    },
+    {
+      "TypeName": "Coin",
+      "Motion": "Static",
+      "Location": [ 1856, 254 ]
+    },
+    {
+      "TypeName": "Coin",
+      "Motion": "Static",
+      "Location": [ 1888, 254 ]
     }
+
+
 
   ]
 }
