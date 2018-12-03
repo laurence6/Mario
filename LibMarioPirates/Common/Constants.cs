@@ -1,4 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 
 namespace MarioPirates
 {
@@ -242,5 +244,14 @@ namespace MarioPirates
         public const int CONSOLE_NUM_LINES = 16;
         public const float CONSOLE_LINE_HEIGHT = 24f;
         public static readonly string CONSOLE_PROMOT = "> ";
+        public static readonly Dictionary<Keys, string> KeyMapping = new Dictionary<Keys, string>
+        {
+            { Keys.Space, " " },
+            { Keys.OemSemicolon, ":" },
+            { Keys.OemQuotes, "\"" },
+            { Keys.OemComma, "," },
+            { Keys.OemOpenBrackets, "{" },
+            { Keys.OemCloseBrackets, "}" },
+        };
     }
 }

@@ -83,11 +83,14 @@ namespace MarioPirates
                     s = (k - Keys.D0).ToString();
                     Input(s);
                     break;
-                case Keys.Space:
-                    Input(" ");
+                case Keys k when (Constants.KeyMapping.ContainsKey(key)):
+                    Input(Constants.KeyMapping[k]);
                     break;
                 case Keys.LeftShift:
                     upperCase = true;
+                    break;
+                case Keys.Back:
+                    lines[currLine].Text = lines[currLine].Text.Substring(0, (lines[currLine].Text.Length - 1).Max(0));
                     break;
                 case Keys.Enter:
                     if (!lines[CurrLine].IsEmpty)
@@ -130,7 +133,7 @@ namespace MarioPirates
 
         public void Input(string s)
         {
-            lines[CurrLine].Text += s;
+            lines[CurrLine].Text += s.Replace('\n', ' ');
         }
 
         private void Scroll()

@@ -39,6 +39,12 @@ namespace MarioPirates
                 gameObjectsNoRigidBody.Remove(o);
         }
 
+        public void AddGameObjectParam(GameObjectParam param)
+        {
+            AddGameObject(param.ToGameObject());
+            Data.Objects.Add(param);
+        }
+
         public void Write()
         {
 

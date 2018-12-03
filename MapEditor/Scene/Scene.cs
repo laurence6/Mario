@@ -11,11 +11,11 @@ namespace MarioPirates
         {
         }
 
-        private Model model;
+        public Model Model { get; private set; }
 
         public void Reset()
         {
-            model = new Model(Constants.DEFAULT_SCENE);
+            Model = new Model(Constants.DEFAULT_SCENE);
 
             EventManager.Ins.Subscribe(EventEnum.KeyHold, (s, e) =>
             {
@@ -36,12 +36,12 @@ namespace MarioPirates
 
         public void Update(float dt)
         {
-            model.Update();
+            Model.Update();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            model.Draw(spriteBatch);
+            Model.Draw(spriteBatch);
         }
     }
 }
