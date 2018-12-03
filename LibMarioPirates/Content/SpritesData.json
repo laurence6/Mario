@@ -162,6 +162,14 @@
     },
 
 
+    "underwaterblock": {
+        "TextureName": "underwaterblock",
+        "Depth": 5,
+        "Size": [ 16, 16 ],
+        "Frames": [ 0, 0 ]
+    },
+
+
     "goomba": {
         "TextureName": "goomba",
         "Depth": 8,
@@ -542,6 +550,12 @@
     },
     "win": {
         "TextureName": "win",
+        "Depth": 0,
+        "Size": [ 800, 480 ],
+        "Frames": [ 0, 0 ]
+    },
+    "underwaterbackground": {
+        "TextureName": "underwaterbackground",
         "Depth": 0,
         "Size": [ 800, 480 ],
         "Frames": [ 0, 0 ]
