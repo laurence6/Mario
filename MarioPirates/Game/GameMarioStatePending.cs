@@ -84,7 +84,7 @@ namespace MarioPirates
             });
 
             game.Controllers.Clear();
-            var keyboardController = new KeyboardController();
+            var keyboardController = new GameKeyboardController();
             keyboardController.SetKeyMapping(Keys.LeftShift, Keys.X);
             keyboardController.SetKeyMapping(Keys.RightShift, Keys.X);
             keyboardController.SetKeyMapping(Keys.Space, Keys.Up);

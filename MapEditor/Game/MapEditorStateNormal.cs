@@ -8,11 +8,11 @@ namespace MarioPirates
         {
         }
 
-        public override void HandleKeyDown(KeyDownEventArgs e)
+        public override void HandleKeyDown(Keys key)
         {
-            switch (e.key)
+            switch (key)
             {
-                case Keys.Q:
+                case Keys.Escape:
                     editor.Exit();
                     break;
                 case Keys.F4:

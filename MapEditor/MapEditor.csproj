@@ -49,6 +49,8 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Console\Console.cs" />
+    <Compile Include="Controller\KeyboardController.cs" />
     <Compile Include="Game\MapEditor.cs" />
     <Compile Include="Game\MapEditorStateConsole.cs" />
     <Compile Include="Game\MapEditorStateNormal.cs" />

@@ -20,7 +20,7 @@ namespace MarioPirates
             this.accelerateRate = accelerateRate;
         }
 
-        public void Draw(SpriteBatch spriteBatch, float dstX, float dstY, int? sizeX, int? sizeY)
+        public void Draw(SpriteBatch spriteBatch, float dstX, float dstY, int? sizeX = null, int? sizeY = null)
         {
             if (frames.Length > 0)
             {

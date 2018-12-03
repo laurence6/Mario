@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace MarioPirates
 {
@@ -6,20 +8,33 @@ namespace MarioPirates
     {
         public MapEditorStateConsole(MapEditor editor) : base(editor)
         {
+            Console.Ins.Reset();
         }
 
-        public override void HandleKeyDown(KeyDownEventArgs e)
+        public override void HandleKeyDown(Keys key)
         {
-            switch (e.key)
+            switch (key)
             {
-                case Keys.Q:
-                    editor.Exit();
-                    break;
                 case Keys.F4:
                 case Keys.Escape:
                     editor.State = new MapEditorStateNormal(editor);
                     break;
+                default:
+                    Console.Ins.HandleKey(key);
+                    break;
             }
+        }
+
+        protected override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+            Console.Ins.Update();
+        }
+
+        protected override void Draw(SpriteBatch spriteBatch)
+        {
+            base.Draw(spriteBatch);
+            Console.Ins.Draw(spriteBatch);
         }
     }
 }

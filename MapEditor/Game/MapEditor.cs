@@ -5,7 +5,6 @@ using System.Collections.Generic;
 namespace MarioPirates
 {
     using Controller;
-    using Microsoft.Xna.Framework.Input;
 
     internal class MapEditor : Game
     {
@@ -59,21 +58,11 @@ namespace MarioPirates
 
             State = new MapEditorStateNormal(this);
 
-            EventManager.Ins.Subscribe(EventEnum.KeyDown, (s, e) =>
-            {
-                State.HandleKeyDown(e as KeyDownEventArgs);
-            });
+            EventManager.Ins.Subscribe(EventEnum.KeyDown, (s, e) => State.HandleKeyDown((e as KeyDownEventArgs).key));
 
             Controllers.Clear();
 
-            var keyboardController = new KeyboardController();
-            keyboardController.SetKeyMapping(Keys.W, Keys.Up);
-            keyboardController.SetKeyMapping(Keys.S, Keys.Down);
-            keyboardController.SetKeyMapping(Keys.A, Keys.Left);
-            keyboardController.SetKeyMapping(Keys.D, Keys.Right);
-            keyboardController.EnableKeyEvent(InputState.Down, Keys.Escape, Keys.F4, Keys.Q);
-            keyboardController.EnableKeyEvent(InputState.Hold, Keys.Up, Keys.Down, Keys.Left, Keys.Right);
-            Controllers.Add(keyboardController);
+            Controllers.Add(new KeyboardController());
         }
     }
 }

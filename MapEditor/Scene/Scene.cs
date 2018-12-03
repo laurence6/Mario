@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace MarioPirates
 {
@@ -16,8 +17,21 @@ namespace MarioPirates
         {
             model = new Model(Constants.DEFAULT_SCENE);
 
-            EventManager.Ins.Subscribe(EventEnum.KeyLeftHold, () => { Camera.Ins.Offset -= Constants.MAPEDITOR_MOVING_SPEED; Camera.Ins.Update(); });
-            EventManager.Ins.Subscribe(EventEnum.KeyRightHold, () => { Camera.Ins.Offset += Constants.MAPEDITOR_MOVING_SPEED; Camera.Ins.Update(); });
+            EventManager.Ins.Subscribe(EventEnum.KeyHold, (s, e) =>
+            {
+                var k = (e as KeyHoldEventArgs).key;
+                switch (k)
+                {
+                    case Keys.Left:
+                        Camera.Ins.Offset -= Constants.MAPEDITOR_MOVING_SPEED;
+                        Camera.Ins.Update();
+                        break;
+                    case Keys.Right:
+                        Camera.Ins.Offset += Constants.MAPEDITOR_MOVING_SPEED;
+                        Camera.Ins.Update();
+                        break;
+                }
+            });
         }
 
         public void Update(float dt)

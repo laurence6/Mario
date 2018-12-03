@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace MarioPirates
 {
@@ -14,17 +15,27 @@ namespace MarioPirates
 
         public void DoUpdate(GameTime gameTime)
         {
+            Update(gameTime);
+        }
+
+        public void DoDraw(SpriteBatch spriteBatch)
+        {
+            Draw(spriteBatch);
+        }
+
+        public abstract void HandleKeyDown(Keys key);
+
+        protected virtual void Update(GameTime gameTime)
+        {
             editor.Controllers.ForEach(c => c.Update());
             Time.Update(gameTime);
             EventManager.Ins.Update();
             Scene.Ins.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
         }
 
-        public void DoDraw(SpriteBatch spriteBatch)
+        protected virtual void Draw(SpriteBatch spriteBatch)
         {
             Scene.Ins.Draw(spriteBatch);
         }
-
-        public abstract void HandleKeyDown(KeyDownEventArgs e);
     }
 }

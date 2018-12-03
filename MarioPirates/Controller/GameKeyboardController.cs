@@ -6,7 +6,7 @@ namespace MarioPirates.Controller
 {
     using static Common;
 
-    internal class KeyboardController : IController
+    internal class GameKeyboardController : IController
     {
         private Dictionary<Keys, List<Keys>> inputMapping;
         private Dictionary<Keys, (EventEnum, EventArgs)>[] eventMapping;
@@ -14,7 +14,7 @@ namespace MarioPirates.Controller
 
         private KeyboardState prevState, currState;
 
-        public KeyboardController()
+        public GameKeyboardController()
         {
             inputMapping = new Dictionary<Keys, List<Keys>>();
             eventMapping = new Dictionary<Keys, (EventEnum, EventArgs)>[EnumValues<InputState>().Length];

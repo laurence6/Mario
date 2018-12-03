@@ -48,6 +48,9 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Controller\GameKeyboardController.cs" />
+    <Compile Include="Controller\GamePadController.cs" />
+    <Compile Include="Controller\InputEventFactory.cs" />
     <Compile Include="Game\GameMario.cs" />
     <Compile Include="Game\GameMarioState.cs" />
     <Compile Include="Game\GameMarioStateEnd.cs" />
