@@ -16,6 +16,7 @@ namespace MarioPirates
                     editor.Exit();
                     break;
                 case Keys.F4:
+                case Keys.OemSemicolon:
                     editor.State = new MapEditorStateConsole(editor);
                     break;
             }

@@ -24,6 +24,7 @@ namespace MarioPirates
         {
             var obj = param.ToGameObject();
             Data.Objects.Add(param);
+            Objects.Add(obj);
             return obj;
         }
 
