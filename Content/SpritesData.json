@@ -169,6 +169,26 @@
         "Frames": [ 0, 0 ]
     },
 
+    "coral": {
+        "TextureName": "coral",
+        "Depth": 5,
+        "Size": [ 16, 16 ],
+        "Frames": [ 0, 0 ]
+    },
+
+    "fish": {
+        "TextureName": "fish",
+        "Depth": 5,
+        "Size": [ 16, 16 ],
+        "Frames": [ 0, 0, 16, 0 ]
+    },
+
+    "octopus": {
+        "TextureName": "octopus",
+        "Depth": 5,
+        "Size": [ 16, 24 ],
+        "Frames": [0, 0, 16, 0]
+    },
 
     "goomba": {
         "TextureName": "goomba",

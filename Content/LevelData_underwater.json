@@ -1,6 +1,7 @@
 {
-    "HasPlayer": true,
+  "HasPlayer": true,
     "Objects": [
+
         {
             "TypeName": "UnderwaterBlock",
             "Location": [ 0, 450 ],
