@@ -101,7 +101,14 @@ namespace MarioPirates
                             if (cmd[0].ToLower() == f.Name.ToLower())
                             {
                                 found = true;
-                                f.Invoke(null, new object[] { cmd[1] });
+                                try
+                                {
+                                    f.Invoke(null, new object[] { cmd[1] });
+                                }
+                                catch (Exception e)
+                                {
+                                    Input(Constants.CONSOLE_ERROR + e.ToString());
+                                }
                                 break;
                             }
                         }

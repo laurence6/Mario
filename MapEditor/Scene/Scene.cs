@@ -20,12 +20,10 @@ namespace MarioPirates
 
         private HashSet<GameObjectRigidBody> objectsFound = new HashSet<GameObjectRigidBody>();
         private IGameObject objectSelected = null;
-        private Vector2 objectSelectedOffset = Vector2.Zero;
 
         public void Reset()
         {
-            Model = new Model(Constants.DEFAULT_SCENE);
-            Model.Objects.ForEach(AddGameObject);
+            UseScene(Constants.DEFAULT_SCENE);
 
             objectsFound.Clear();
             objectSelected = null;
@@ -50,6 +48,15 @@ namespace MarioPirates
             EventManager.Ins.Subscribe(EventEnum.MouseButtonUp, (s, e) => HandleMouseButtonUp((e as MouseButtonUpEventArgs).mousePosition));
             EventManager.Ins.Subscribe(EventEnum.MouseButtonHold, (s, e) => HandleMouseButtonHold((e as MouseButtonHoldEventArgs).mousePosition));
         }
+
+        public void UseScene(string scene)
+        {
+            gameObjectContainer.Reset();
+            gameObjectsNoRigidBody.Clear();
+            Model = new Model(scene);
+            Model.Objects.ForEach(AddGameObject);
+        }
+
         public void AddGameObject(IGameObject o)
         {
             if (o is GameObjectRigidBody objectRigidBody)

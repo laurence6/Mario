@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework.Input;
-using System;
 using System.Web.Script.Serialization;
 
 namespace MarioPirates
@@ -14,21 +13,19 @@ namespace MarioPirates
 
         public static void New(string param)
         {
-            try
-            {
-                var objectParam = new JavaScriptSerializer().Deserialize<GameObjectParam>(param);
-                objectParam.Location = new int[] { (int)Camera.Ins.Offset, 0 };
-                Scene.Ins.AddGameObject(Scene.Ins.Model.AddGameObjectParam(objectParam));
-            }
-            catch (Exception e)
-            {
-                Console.Ins.Input(Constants.CONSOLE_ERROR + e.ToString());
-            }
+            var objectParam = new JavaScriptSerializer().Deserialize<GameObjectParam>(param);
+            objectParam.Location = new int[] { (int)Camera.Ins.Offset, 0 };
+            Scene.Ins.AddGameObject(Scene.Ins.Model.AddGameObjectParam(objectParam));
         }
 
         public static void Write(string param)
         {
             Scene.Ins.Model.Write();
+        }
+
+        public static void Use(string param)
+        {
+            Scene.Ins.UseScene(param);
         }
     }
 }
