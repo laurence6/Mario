@@ -46,7 +46,7 @@ namespace MarioPirates
             EventManager.Ins.Subscribe(EventEnum.MouseButtonHold, (s, e) => HandleMouseButtonHold((e as MouseButtonHoldEventArgs).mousePosition));
         }
 
-        public void Update(float dt)
+        public void Update()
         {
             Model.Update();
         }
@@ -81,7 +81,7 @@ namespace MarioPirates
                 objectSelected.Location = Align(Camera.Ins.ScreenToWorld(pos)).ToVector2();
         }
 
-        private Point Align(Point pos)
+        private static Point Align(Point pos)
         {
             pos.X &= ~0b1111;
             pos.Y &= ~0b1111;

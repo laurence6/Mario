@@ -25,7 +25,7 @@ namespace MarioPirates
             public string Prefix { get; set; } = "";
             public string Text { get; set; } = "";
 
-            public bool IsEmpty => Text.Trim(sepChars) == "";
+            public bool IsEmpty => string.IsNullOrWhiteSpace(Text);
         }
 
         private SpriteText[] sprite = new SpriteText[Constants.CONSOLE_NUM_LINES];
@@ -44,7 +44,6 @@ namespace MarioPirates
             set => currLine = value;
         }
 
-
         private bool upperCase = false;
 
         public void Reset()
@@ -53,10 +52,6 @@ namespace MarioPirates
             lines.ForEach(line => line.Text = "");
             CurrLine = 0;
             lines[CurrLine].Prefix = Constants.CONSOLE_PROMOT;
-        }
-
-        public void Update()
-        {
         }
 
         public void Draw(SpriteBatch spriteBatch)

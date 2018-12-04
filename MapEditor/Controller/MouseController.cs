@@ -5,11 +5,11 @@ namespace MarioPirates.Controller
     internal class MouseController : IController
     {
         private MouseState prevState, currState;
-        
+
         public void Update()
         {
             currState = Mouse.GetState();
-            var state = GetPrevButtonState(prevState.LeftButton) | GetCurrButtonState(currState.LeftButton);
+            var state = GetPrevButtonState() | GetCurrButtonState();
             switch (state)
             {
                 case InputState.Down:
@@ -26,7 +26,7 @@ namespace MarioPirates.Controller
             prevState = currState;
         }
 
-        private InputState GetPrevButtonState(ButtonState k) => k is ButtonState.Pressed ? InputState.Up : InputState.None;
-        private InputState GetCurrButtonState(ButtonState k) => k is ButtonState.Pressed ? InputState.Down : InputState.None;
+        private InputState GetPrevButtonState() => prevState.LeftButton is ButtonState.Pressed ? InputState.Up : InputState.None;
+        private InputState GetCurrButtonState() => currState.LeftButton is ButtonState.Pressed ? InputState.Down : InputState.None;
     }
 }

@@ -35,7 +35,7 @@ namespace MarioPirates
             editor.Controllers.ForEach(c => c.Update());
             Time.Update(gameTime);
             EventManager.Ins.Update();
-            Scene.Ins.Update((float)gameTime.ElapsedGameTime.TotalSeconds);
+            Scene.Ins.Update();
         }
 
         protected virtual void Draw(SpriteBatch spriteBatch)
