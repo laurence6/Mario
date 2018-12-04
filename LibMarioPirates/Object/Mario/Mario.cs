@@ -15,7 +15,8 @@ namespace MarioPirates
 
         private Action unsubscribe;
 
-        public bool AllowJumpInAir;
+        public bool AllowJumpInAir { get; set; }
+
         private int JumpHoldCount;
 
         public int TransitionToBigCount { get; set; }
