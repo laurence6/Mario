@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Web.Script.Serialization;
 using static System.IO.File;
 
@@ -10,57 +9,33 @@ namespace MarioPirates
         public readonly string level;
         public readonly string dataFilePath;
 
-        private LevelData Data;
-
-        public readonly HashMap gameObjectContainer = new HashMap();
-        public readonly List<IGameObject> gameObjectsNoRigidBody = new List<IGameObject>();
+        public readonly LevelData Data;
+        public readonly List<IGameObject> Objects = new List<IGameObject>();
 
         public Model(string level)
         {
             this.level = level;
             dataFilePath = Constants.CONTENT_ROOT_PATH + Constants.LEVEL_DATA_PREFIX + level + Constants.DATA_FILE_TYPE;
             Data = new JavaScriptSerializer().Deserialize<LevelData>(ReadAllText(dataFilePath));
-            Data.Objects.ForEach(o => AddGameObject(o.ToGameObject()));
+            Data.Objects.ForEach(o => Objects.Add(o.ToGameObject()));
         }
 
-        public void AddGameObject(IGameObject o)
+        public IGameObject AddGameObjectParam(GameObjectParam param)
         {
-            if (o is GameObjectRigidBody objectRigidBody)
-                gameObjectContainer.Add(objectRigidBody);
-            else
-                gameObjectsNoRigidBody.Add(o);
-        }
-
-        public void RemoveGameObject(IGameObject o)
-        {
-            if (o is GameObjectRigidBody objectRigidBody)
-                gameObjectContainer.Remove(objectRigidBody);
-            else
-                gameObjectsNoRigidBody.Remove(o);
-        }
-
-        public void AddGameObjectParam(GameObjectParam param)
-        {
-            AddGameObject(param.ToGameObject());
+            var obj = param.ToGameObject();
             Data.Objects.Add(param);
+            return obj;
         }
 
         public void Write()
         {
-
-        }
-
-        public void Update()
-        {
-            gameObjectContainer.Rebuild();
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp, transformMatrix: Camera.Ins.Transform);
-            gameObjectsNoRigidBody.ForEach(o => o.Draw(spriteBatch));
-            gameObjectContainer.ForEachVisible(o => o.Draw(spriteBatch));
-            spriteBatch.End();
+            for (var i = 0; i < Objects.Count; i++)
+            {
+                Data.Objects[i].Location[0] = (int)Objects[i].Location.X;
+                Data.Objects[i].Location[1] = (int)Objects[i].Location.Y;
+            }
+            var json = new JavaScriptSerializer().Serialize(Data);
+            WriteAllText(dataFilePath, json);
         }
     }
 }
