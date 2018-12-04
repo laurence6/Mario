@@ -261,6 +261,7 @@ namespace MarioPirates
         public const float CONSOLE_LINE_HEIGHT = 24f;
         public static readonly string CONSOLE_PROMOT = "> ";
         public static readonly string CONSOLE_ERROR = "ERROR: ";
+        public static readonly string CONSOLE_COMMANDS_PREFIX = "Cmd";
         public static readonly Dictionary<Keys, string> KeyMapping = new Dictionary<Keys, string>
         {
             { Keys.Space, " " },

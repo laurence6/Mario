@@ -95,24 +95,7 @@ namespace MarioPirates
                             cmd = new string[] { cmd[0], string.Empty };
                         CurrLine++;
 
-                        var found = false;
-                        foreach (var f in typeof(Commands).GetMethods())
-                        {
-                            if (cmd[0].ToLower() == f.Name.ToLower())
-                            {
-                                found = true;
-                                try
-                                {
-                                    f.Invoke(null, new object[] { cmd[1] });
-                                }
-                                catch (Exception e)
-                                {
-                                    Input(Constants.CONSOLE_ERROR + e.ToString());
-                                }
-                                break;
-                            }
-                        }
-                        if (!found)
+                        if (!Commands.Execute(cmd[0], cmd[1]))
                             Input(Constants.CONSOLE_ERROR + cmd[0]);
 
                         if (!lines[CurrLine].IsEmpty)
