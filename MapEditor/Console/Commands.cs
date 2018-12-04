@@ -22,7 +22,7 @@ namespace MarioPirates
             }
             catch (Exception e)
             {
-                Console.Ins.Input("ERROR: " + e.ToString());
+                Console.Ins.Input(Constants.CONSOLE_ERROR + e.ToString());
             }
         }
     }

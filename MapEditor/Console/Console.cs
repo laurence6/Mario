@@ -22,8 +22,8 @@ namespace MarioPirates
 
         private class Line
         {
-            public string Prefix { get; set; } = "";
-            public string Text { get; set; } = "";
+            public string Prefix { get; set; } = string.Empty;
+            public string Text { get; set; } = string.Empty;
 
             public bool IsEmpty => string.IsNullOrWhiteSpace(Text);
         }
@@ -49,7 +49,7 @@ namespace MarioPirates
         public void Reset()
         {
             upperCase = false;
-            lines.ForEach(line => line.Text = "");
+            lines.ForEach(line => line.Text = string.Empty);
             CurrLine = 0;
             lines[CurrLine].Prefix = Constants.CONSOLE_PROMOT;
         }
@@ -65,7 +65,7 @@ namespace MarioPirates
 
         public void HandleKeyDown(Keys key)
         {
-            var s = "";
+            var s = string.Empty;
             switch (key)
             {
                 case Keys k when (Keys.A <= k && k <= Keys.Z):
@@ -92,7 +92,7 @@ namespace MarioPirates
                     {
                         var cmd = lines[CurrLine].Text.Split(sepChars, 2, StringSplitOptions.RemoveEmptyEntries);
                         if (cmd.Length == 1)
-                            cmd = new string[] { cmd[0], "" };
+                            cmd = new string[] { cmd[0], string.Empty };
                         CurrLine++;
 
                         var found = false;
@@ -106,7 +106,7 @@ namespace MarioPirates
                             }
                         }
                         if (!found)
-                            Input("Could not find command: " + cmd[0]);
+                            Input(Constants.CONSOLE_ERROR + cmd[0]);
 
                         if (!lines[CurrLine].IsEmpty)
                             CurrLine++;
@@ -140,8 +140,8 @@ namespace MarioPirates
                 lines[i].Text = lines[i + 1].Text;
             }
             CurrLine = i;
-            lines[CurrLine].Text = "";
-            lines[CurrLine].Prefix = "";
+            lines[CurrLine].Text = string.Empty;
+            lines[CurrLine].Prefix = string.Empty;
         }
     }
 }
