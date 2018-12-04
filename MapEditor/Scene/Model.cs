@@ -32,8 +32,8 @@ namespace MarioPirates
         {
             for (var i = 0; i < Objects.Count; i++)
             {
-                Data.Objects[i].Location[0] = (int)Objects[i].Location.X;
-                Data.Objects[i].Location[1] = (int)Objects[i].Location.Y;
+                Data.Objects[i].Location[0] = (int)Objects[i].RelLocation.X;
+                Data.Objects[i].Location[1] = (int)Objects[i].RelLocation.Y;
             }
             var json = new JavaScriptSerializer().Serialize(Data);
             WriteAllText(dataFilePath, json);

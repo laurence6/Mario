@@ -4,11 +4,10 @@ namespace MarioPirates
 {
     internal abstract class GameObject : GameObjectBase
     {
-        private Vector2 location;
         public override Vector2 Location
         {
-            get => IsLocationAbsolute ? Camera.Ins.ScreenToWorld(location) : location;
-            set => location = IsLocationAbsolute ? Camera.Ins.WorldToScreen(value) : value;
+            get => IsLocationAbsolute ? Camera.Ins.ScreenToWorld(RelLocation) : RelLocation;
+            set => RelLocation = IsLocationAbsolute ? Camera.Ins.WorldToScreen(value) : value;
         }
 
         public override Point Size { get; set; }

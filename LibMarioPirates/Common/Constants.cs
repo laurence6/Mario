@@ -273,7 +273,7 @@ namespace MarioPirates
         public const float DEFAULT_TIME_LIMIT = 400000f;
 
         public const float MAPEDITOR_MOVING_SPEED = 5f;
-        public const int MAPEDITOR_ALIGNMENT_MASK = ~0xf;
+        public const int MAPEDITOR_ALIGNMENT_MASK = ~7;
 
         public static readonly Vector2 CONSOLE_POSITION = new Vector2(12f, 12f);
         public const int CONSOLE_NUM_LINES = 17;

@@ -5,6 +5,7 @@ namespace MarioPirates
 {
     internal abstract class GameObjectBase : IGameObject
     {
+        public Vector2 RelLocation { get; protected set; }
         public abstract Vector2 Location { get; set; }
         public bool IsLocationAbsolute { get; set; } = false;
 
