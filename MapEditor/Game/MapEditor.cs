@@ -63,8 +63,8 @@ namespace MarioPirates
             EventManager.Ins.Subscribe(EventEnum.KeyUp, (s, e) => State.HandleKeyUp((e as KeyUpEventArgs).key));
 
             Controllers.Clear();
-
             Controllers.Add(new KeyboardController());
+            Controllers.Add(new MouseController());
         }
     }
 }

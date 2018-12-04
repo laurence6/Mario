@@ -39,5 +39,29 @@ namespace MarioPirates
             Transform = Matrix.CreateTranslation(new Vector3(-Offset, 0f, 0f));
             VisibleArea = new Rectangle((int)Offset, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
         }
+
+        public Vector2 ScreenToWorld(Vector2 p)
+        {
+            p.X += Offset;
+            return p;
+        }
+
+        public Point ScreenToWorld(Point p)
+        {
+            p.X += (int)Offset;
+            return p;
+        }
+
+        public Vector2 WorldToScreen(Vector2 p)
+        {
+            p.X -= Offset;
+            return p;
+        }
+
+        public Point WorldToScreen(Point p)
+        {
+            p.X -= (int)Offset;
+            return p;
+        }
     }
 }

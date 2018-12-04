@@ -12,8 +12,8 @@ namespace MarioPirates
 
         private LevelData Data;
 
-        private HashMap gameObjectContainer = new HashMap();
-        private List<IGameObject> gameObjectsNoRigidBody = new List<IGameObject>();
+        public readonly HashMap gameObjectContainer = new HashMap();
+        public readonly List<IGameObject> gameObjectsNoRigidBody = new List<IGameObject>();
 
         public Model(string level)
         {
