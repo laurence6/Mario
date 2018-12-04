@@ -108,8 +108,8 @@ namespace MarioPirates
             {
                 RemoveGameObject(objectSelected);
                 Model.RemoveGameObject(objectSelected);
-                objectSelected = null;
             }
+            objectSelected = null;
         }
 
         private void HandleMouseButtonHold(Point pos)
