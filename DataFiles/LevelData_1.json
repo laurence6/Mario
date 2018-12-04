@@ -1256,7 +1256,7 @@
         },
         {
             "TypeName": "Koopa",
-            "Location": [ 704, 304 ],
+            "Location": [ 688, 400 ],
             "Motion": 2,
             "Force": null,
             "Mass": null,
@@ -1264,7 +1264,7 @@
         },
         {
             "TypeName": "Goomba",
-            "Location": [ 800, 320 ],
+            "Location": [ 808, 408 ],
             "Motion": 2,
             "Force": null,
             "Mass": null,
@@ -1272,7 +1272,7 @@
         },
         {
             "TypeName": "Koopa",
-            "Location": [ 1696, 304 ],
+            "Location": [ 1656, 400 ],
             "Motion": 2,
             "Force": null,
             "Mass": null,
@@ -1280,7 +1280,7 @@
         },
         {
             "TypeName": "Goomba",
-            "Location": [ 1800, 320 ],
+            "Location": [ 1784, 408 ],
             "Motion": 2,
             "Force": null,
             "Mass": null,
