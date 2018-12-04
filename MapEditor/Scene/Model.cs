@@ -20,12 +20,19 @@ namespace MarioPirates
             Data.Objects.ForEach(o => Objects.Add(o.ToGameObject()));
         }
 
-        public IGameObject AddGameObjectParam(GameObjectParam param)
+        public IGameObject AddGameObject(GameObjectParam param)
         {
             var obj = param.ToGameObject();
             Data.Objects.Add(param);
             Objects.Add(obj);
             return obj;
+        }
+
+        public void RemoveGameObject(IGameObject obj)
+        {
+            var idx = Objects.FindIndex(o => o == obj);
+            Data.Objects.RemoveAt(idx);
+            Objects.RemoveAt(idx);
         }
 
         public void Write()

@@ -102,7 +102,14 @@ namespace MarioPirates
 
         private void HandleMouseButtonUp(Point pos)
         {
-            objectSelected = null;
+            if (objectSelected == null)
+                return;
+            if (pos.Y < 0 || pos.Y > Constants.SCREEN_HEIGHT)
+            {
+                RemoveGameObject(objectSelected);
+                Model.RemoveGameObject(objectSelected);
+                objectSelected = null;
+            }
         }
 
         private void HandleMouseButtonHold(Point pos)

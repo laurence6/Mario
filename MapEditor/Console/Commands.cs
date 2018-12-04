@@ -16,7 +16,7 @@ namespace MarioPirates
         {
             var objectParam = new JavaScriptSerializer().Deserialize<GameObjectParam>(param);
             objectParam.Location = new int[] { (int)Camera.Ins.Offset, 0 };
-            Scene.Ins.AddGameObject(Scene.Ins.Model.AddGameObjectParam(objectParam));
+            Scene.Ins.AddGameObject(Scene.Ins.Model.AddGameObject(objectParam));
         }
 
         public static void CmdWrite(string param)
