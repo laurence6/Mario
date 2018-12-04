@@ -29,7 +29,6 @@ namespace MarioPirates
 
         public virtual void Step(float dt)
         {
-            RigidBody.Step(dt);
         }
     }
 }

@@ -15,6 +15,7 @@ namespace MarioPirates
 
         private Action unsubscribe;
 
+        public bool AllowJumpInAir;
         private int JumpHoldCount;
 
         public int TransitionToBigCount { get; set; }
@@ -65,7 +66,11 @@ namespace MarioPirates
         {
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyUpHold, () =>
             {
-                if (JumpHoldCount < Constants.MARIO_JUMP_HOLD_COUNT_LIMIT)
+                if (AllowJumpInAir)
+                {
+                    RigidBody.ApplyForce(new Vector2(0, Constants.MARIO_JUMP_FORCE_Y));
+                }
+                else if (JumpHoldCount < Constants.MARIO_JUMP_HOLD_COUNT_LIMIT)
                 {
                     RigidBody.ApplyForce(new Vector2(0, Constants.MARIO_JUMP_FORCE_Y + JumpHoldCount * Constants.MARIO_JUMP_HOLD_COUNT_MULTIPLIER));
                     JumpHoldCount += 1;
@@ -73,7 +78,7 @@ namespace MarioPirates
             });
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyUpDown, () =>
             {
-                if (RigidBody.Grounded)
+                if (AllowJumpInAir || RigidBody.Grounded)
                 {
                     RigidBody.ApplyForce(new Vector2(0, Constants.MARIO_JUMP_FORCE_Y + JumpHoldCount * Constants.MARIO_JUMP_HOLD_COUNT_MULTIPLIER));
                     JumpHoldCount = 1;
@@ -87,16 +92,12 @@ namespace MarioPirates
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyLeftHold, () =>
             {
                 if (!State.IsCrouch)
-                {
                     RigidBody.ApplyForce(new Vector2(-Constants.MARIO_RUN_FORCE_X * State.VelocityMultipler, 0));
-                }
             });
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyRightHold, () =>
             {
                 if (!State.IsCrouch)
-                {
                     RigidBody.ApplyForce(new Vector2(Constants.MARIO_RUN_FORCE_X * State.VelocityMultipler, 0));
-                }
             });
 
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyRightHold, () => State.TurnRight());
@@ -105,24 +106,16 @@ namespace MarioPirates
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyRightHold, () =>
             {
                 if (RigidBody.Velocity.X < -0)
-                {
                     State.Brake();
-                }
                 else
-                {
                     State.Coast();
-                }
             });
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyLeftHold, () =>
             {
                 if (RigidBody.Velocity.X > 0)
-                {
                     State.Brake();
-                }
                 else
-                {
                     State.Coast();
-                }
             });
 
             unsubscribe += EventManager.Ins.Subscribe(EventEnum.KeyUpUp, () => JumpHoldCount = Constants.MARIO_JUMP_HOLD_COUNT_LIMIT);

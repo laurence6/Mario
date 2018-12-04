@@ -92,7 +92,10 @@ namespace MarioPirates
             public void Active()
             {
                 if (HasPlayer)
+                {
                     player.Location = PlayerLastLocation;
+                    player.AllowJumpInAir = Constants.ALLOW_JUMP_IN_AIR[level];
+                }
             }
 
             public void Deactive()
@@ -104,15 +107,15 @@ namespace MarioPirates
 
         public static readonly Scene Ins = new Scene();
 
+        private Scene()
+        {
+        }
+
         private Dictionary<string, SceneData> scenes = new Dictionary<string, SceneData>();
         public SceneData ActiveScene { get; private set; }
         internal Mario Player { get; set; }
 
         private Action unsubscribe = null;
-
-        private Scene()
-        {
-        }
 
         public void Reset()
         {

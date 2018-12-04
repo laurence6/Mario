@@ -213,18 +213,37 @@ namespace MarioPirates
         public const int N_STEPS = 4;
 
         public const float RIGID_BODY_MASS = 1e24f;
-        public const float RIGID_BODY_CO_R = 1f;
+        public const float RIGID_BODY_COR = 1f;
         public const float RIGID_BODY_VELOCITY_MAGNITUDE_BOUND = 480f;
-        public const float RIGID_BODY_FRICTION_MULTIPLIER = 0.0001f;
-        public const float RIGID_BODY_GRAVITY_VELOCITY_Y = 6f;
         public const float RIGID_BODY_RESOLVE_COLLIDE_NORMAL = 1f;
 
         public const string LEVEL_1_SCENE = "1";
         public const string SECRET_LEVEL_SCENE = "secret";
+        public const string UNDERWATER_SCENE = "underwater";
         public const string GAMEOVER_SCENE = "gameover";
         public const string WIN_SCENE = "win";
-        public const string UNDERWATER_SCENE = "underwater";
-        public const string DEFAULT_SCENE = LEVEL_1_SCENE;
+
+        public static readonly Dictionary<string, float> GRAVITY = new Dictionary<string, float>
+        {
+            { LEVEL_1_SCENE, 6f },
+            { SECRET_LEVEL_SCENE, 6f },
+            { UNDERWATER_SCENE, 8f },
+        };
+        public static readonly Dictionary<string, float> FRICTION = new Dictionary<string, float>
+        {
+            { LEVEL_1_SCENE, 0.0001f },
+            { SECRET_LEVEL_SCENE, 0.0001f },
+            { UNDERWATER_SCENE, 0.00001f },
+        };
+
+        public static readonly Dictionary<string, bool> ALLOW_JUMP_IN_AIR = new Dictionary<string, bool>
+        {
+            { LEVEL_1_SCENE, false },
+            { SECRET_LEVEL_SCENE, false },
+            { UNDERWATER_SCENE, true },
+        };
+
+        public const string DEFAULT_SCENE = UNDERWATER_SCENE;
         public static readonly string[] AVAILABLE_SCENES = new string[] { LEVEL_1_SCENE, SECRET_LEVEL_SCENE, GAMEOVER_SCENE, WIN_SCENE, UNDERWATER_SCENE };
         public const int SCREEN_WIDTH = 800;
         public const int SCREEN_HEIGHT = 480;

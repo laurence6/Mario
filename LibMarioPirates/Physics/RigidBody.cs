@@ -27,7 +27,7 @@ namespace MarioPirates
         public float Mass { get; set; } = Constants.RIGID_BODY_MASS;
         public float InvMass => Motion == MotionEnum.Dynamic ? 1f / Mass : 0f;
 
-        public float CoR { get; set; } = Constants.RIGID_BODY_CO_R;
+        public float CoR { get; set; } = Constants.RIGID_BODY_COR;
 
         public Vector2 Force { get; private set; }
         private Vector2 velocity;
@@ -36,11 +36,11 @@ namespace MarioPirates
             get => velocity;
             set => velocity = value.DeEPS().Clamp(-Constants.RIGID_BODY_VELOCITY_MAGNITUDE_BOUND, Constants.RIGID_BODY_VELOCITY_MAGNITUDE_BOUND);
         }
-        private Vector2 Accel => Force * InvMass;
+        public Vector2 Accel => Force * InvMass;
 
         public bool Grounded { get; set; } = false;
 
-        private WorldForce worldForce = WorldForce.Gravity;
+        public WorldForce WorldForce { get; set; } = WorldForce.Gravity;
 
         public RigidBody(GameObjectRigidBody gameObject)
         {
@@ -55,37 +55,12 @@ namespace MarioPirates
 
         public void ApplyForce(WorldForce force)
         {
-            worldForce = force;
+            WorldForce = force;
         }
 
         public void ApplyForce(Vector2 force)
         {
             Force += force;
-        }
-
-        public void Step(float dt)
-        {
-            if (Motion == MotionEnum.Static)
-                return;
-
-            var nextVelocity = Velocity + dt * Accel;
-
-            // XXX: a hacky approx to simulate friction
-            if (worldForce.HasOne(WorldForce.Friction))
-            {
-                if (worldForce.HasOne(WorldForce.Gravity))
-                    nextVelocity.X *= Constants.RIGID_BODY_FRICTION_MULTIPLIER.Pow(dt);
-                else
-                    nextVelocity *= Constants.RIGID_BODY_FRICTION_MULTIPLIER.Pow(dt);
-            }
-
-            // XXX: another hacky approx to simulate gravity
-            if (worldForce.HasOne(WorldForce.Gravity))
-                if (!Grounded)
-                    nextVelocity.Y += Constants.RIGID_BODY_GRAVITY_VELOCITY_Y;
-
-            Object.Location += dt * (nextVelocity + Velocity) / 2;
-            Velocity = nextVelocity;
         }
 
         public void Update()

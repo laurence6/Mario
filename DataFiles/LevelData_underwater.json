@@ -2,11 +2,11 @@
   "HasPlayer": true,
   "Objects": [
 
-    {
-      "TypeName": "Background",
-      "Location": [ 0, 0 ],
-      "Params": { "Background": "underwaterbackground" }
-    },
+        {
+            "TypeName": "Background",
+            "Location": [ 0, 0 ],
+            "Params": { "Background": "underwaterbackground" }
+        },
         {
             "TypeName": "Octopus",
             "Motion": "Dynamic",

@@ -27,13 +27,10 @@ namespace MarioPirates
         public static void Simulate(float dt, HashMap container)
         {
             var ddt = dt / Constants.N_STEPS;
-
             for (var s = 0; s < Constants.N_STEPS; s++)
             {
                 SimulateGrounded(container);
-
-                container.ForEachVisible(o => o.Step(ddt));
-
+                container.ForEachVisible(o => Step(o.RigidBody, ddt));
                 SimulateCollision(container);
             }
         }
@@ -142,6 +139,33 @@ namespace MarioPirates
                 CollisionHandler.PostCollide(collision.object1, collision.object2, collision.side);
                 CollisionHandler.PostCollide(collision.object2, collision.object1, collision.side.Invert());
             });
+        }
+
+        public static void Step(RigidBody @this, float dt)
+        {
+            if (@this.Motion == MotionEnum.Static)
+                return;
+
+            var nextVelocity = @this.Velocity + dt * @this.Accel;
+
+            // XXX: a hacky approx to simulate friction
+            if (@this.WorldForce.HasOne(WorldForce.Friction))
+            {
+                if (@this.WorldForce.HasOne(WorldForce.Gravity))
+                    nextVelocity.X *= Constants.FRICTION[Scene.Ins.ActiveScene.level].Pow(dt);
+                else
+                    nextVelocity *= Constants.FRICTION[Scene.Ins.ActiveScene.level].Pow(dt);
+            }
+
+            // XXX: another hacky approx to simulate gravity
+            if (@this.WorldForce.HasOne(WorldForce.Gravity))
+                if (!@this.Grounded)
+                    nextVelocity.Y += Constants.GRAVITY[Scene.Ins.ActiveScene.level];
+
+            @this.Object.Location += dt * (nextVelocity + @this.Velocity) / 2;
+            @this.Velocity = nextVelocity;
+
+            @this.Object.Step(dt);
         }
     }
 }
