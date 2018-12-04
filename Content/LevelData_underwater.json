@@ -4,12 +4,14 @@
         {
             "TypeName": "Octopus",
             "Motion": "Dynamic",
-            "Location": [ 50, 300 ]
+            "Location": [ 50, 300 ],
+	    "Force": "None"
         },
         {
             "TypeName": "Fish",
             "Motion": "Dynamic",
-            "Location": [ 100, 300 ]
+            "Location": [ 100, 300 ],
+	    "Force": "None"
         },
         {
             "TypeName": "UnderwaterBlock",
