@@ -40,7 +40,7 @@ namespace MarioPirates
 
         public void LoadContent(ContentManager content)
         {
-            spriteTextureParam = new JavaScriptSerializer().Deserialize<Dictionary<string, SpriteTextureParam>>(ReadAllText(Constants.CONTENT_ROOT_PATH + Constants.SPRITE_DATA_FILE));
+            spriteTextureParam = new JavaScriptSerializer().Deserialize<Dictionary<string, SpriteTextureParam>>(ReadAllText(Constants.DATA_FILES_PATH + Constants.SPRITE_DATA_FILE));
             spriteTextureParam.ForEach((name, param) => param.TextureName.NotNullThen(() => textures.AddIfNotExist(param.TextureName, null)));
             textures.Keys.ToList().ForEach(name => textures[name] = content.Load<Texture2D>(name));
 

@@ -15,7 +15,7 @@ namespace MarioPirates
         public Model(string level)
         {
             this.level = level;
-            dataFilePath = Constants.CONTENT_ROOT_PATH + Constants.LEVEL_DATA_PREFIX + level + Constants.DATA_FILE_TYPE;
+            dataFilePath = Constants.DATA_FILES_PATH + Constants.LEVEL_DATA_PREFIX + level + Constants.DATA_FILE_TYPE;
             Data = new JavaScriptSerializer().Deserialize<LevelData>(ReadAllText(dataFilePath));
             Data.Objects.ForEach(o => Objects.Add(o.ToGameObject()));
         }
