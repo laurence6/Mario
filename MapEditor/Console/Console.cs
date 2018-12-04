@@ -146,6 +146,7 @@ namespace MarioPirates
             }
             CurrLine = i;
             lines[CurrLine].Text = "";
+            lines[CurrLine].Prefix = "";
         }
     }
 }

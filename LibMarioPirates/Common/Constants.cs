@@ -241,7 +241,7 @@ namespace MarioPirates
         public const float MAPEDITOR_MOVING_SPEED = 5f;
 
         public static readonly Vector2 CONSOLE_POSITION = new Vector2(12f, 12f);
-        public const int CONSOLE_NUM_LINES = 16;
+        public const int CONSOLE_NUM_LINES = 17;
         public const float CONSOLE_LINE_HEIGHT = 24f;
         public static readonly string CONSOLE_PROMOT = "> ";
         public static readonly Dictionary<Keys, string> KeyMapping = new Dictionary<Keys, string>
