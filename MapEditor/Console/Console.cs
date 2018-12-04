@@ -28,9 +28,9 @@ namespace MarioPirates
             public bool IsEmpty => string.IsNullOrWhiteSpace(Text);
         }
 
-        private SpriteText[] sprite = new SpriteText[Constants.CONSOLE_NUM_LINES];
+        private readonly SpriteText[] sprite = new SpriteText[Constants.CONSOLE_NUM_LINES];
 
-        private Line[] lines = new Line[Constants.CONSOLE_NUM_LINES];
+        private readonly Line[] lines = new Line[Constants.CONSOLE_NUM_LINES];
 
         private int currLine = 0;
         public int CurrLine
