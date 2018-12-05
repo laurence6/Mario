@@ -21,6 +21,8 @@ Drag and drop to create, move, and delete objects in the scene.
 
 A console is included, which supports multiple commands and enables users to control more details. It can evaluate JSON input at runtime.
 
+For more details on the command, please type help and hit enter in the console.
+
 
 - Left/Right arrow: move map
 - F4: Open/Close console
