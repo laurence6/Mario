@@ -11,9 +11,9 @@ namespace MarioPirates
         private static readonly Dictionary<string, (Action<string>, string)> Cmds = new Dictionary<string, (Action<string>, string)>
         {
             { "exit",  (CmdExit, "exit map editor ( exit )") },
-            { "use", (CmdUse, "switch levels ( use underwater )") },
+            { "open", (CmdOpen, "switch levels ( open underwater )") },
             { "new",  (CmdNew, "create new object ( new { \"TypeName\": \"Koopa\" } )") },
-            { "write", (CmdWrite, "write to data file ( write )") },
+            { "save", (CmdSave, "save to data file ( save )") },
             { "help", (CmdHelp, "help") }
         };
 
@@ -30,12 +30,12 @@ namespace MarioPirates
             Scene.Ins.AddGameObject(Scene.Ins.Model.AddGameObject(objectParam));
         }
 
-        public static void CmdWrite(string param)
+        public static void CmdSave(string param)
         {
             Scene.Ins.Model.Write();
         }
 
-        public static void CmdUse(string param)
+        public static void CmdOpen(string param)
         {
             if (Constants.AVAILABLE_SCENES.Contains(param))
                 Scene.Ins.UseScene(param);
