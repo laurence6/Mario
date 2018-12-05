@@ -6,6 +6,8 @@ namespace MarioPirates
     {
         public MapEditorStateNormal(MapEditor editor) : base(editor)
         {
+            Console.Ins.Reset();
+            Console.Ins.Input("Left/Right arrow: move map; F4: open console");
         }
 
         public override void HandleKeyDown(Keys key)

@@ -115,7 +115,7 @@ namespace MarioPirates
         private void HandleMouseButtonHold(Point pos)
         {
             if (objectSelected != null)
-                objectSelected.Location = Align(Camera.Ins.ScreenToWorld(pos)).ToVector2();
+                objectSelected.Location = Align(Camera.Ins.ScreenToWorld(pos - objectSelected.Size.Div(2))).ToVector2();
         }
 
         private static Point Align(Point pos)

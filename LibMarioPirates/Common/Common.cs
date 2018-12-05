@@ -90,6 +90,8 @@ namespace MarioPirates
         public static float DeEPS(this float x) => x.Abs() < 1f ? 0f : x;
         public static float Clamp(this float x, float lower, float upper) => x < lower ? lower : x > upper ? upper : x;
 
+        public static Point Div(this Point p, int d) => new Point(p.X / d, p.Y / d);
+
         public static Vector2 Abs(this Vector2 v) => new Vector2(Math.Abs(v.X), Math.Abs(v.Y));
 
         public static Vector2 DivS(this Vector2 v1, Vector2 v2) =>

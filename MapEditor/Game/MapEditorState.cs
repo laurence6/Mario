@@ -41,6 +41,7 @@ namespace MarioPirates
         protected virtual void Draw(SpriteBatch spriteBatch)
         {
             Scene.Ins.Draw(spriteBatch);
+            Console.Ins.Draw(spriteBatch);
         }
     }
 }

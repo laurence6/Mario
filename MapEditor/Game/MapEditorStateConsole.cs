@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace MarioPirates
@@ -38,12 +37,6 @@ namespace MarioPirates
         protected override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-        }
-
-        protected override void Draw(SpriteBatch spriteBatch)
-        {
-            base.Draw(spriteBatch);
-            Console.Ins.Draw(spriteBatch);
         }
     }
 }
