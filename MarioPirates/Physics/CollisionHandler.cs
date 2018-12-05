@@ -291,6 +291,38 @@ namespace MarioPirates
                     break;
                 }
 
+                case Octopus _:
+                    {
+                        var @this = self as Octopus;
+
+                        if ((other is Mario mario && (side == CollisionSide.Top || mario.State.IsInvincible)) || other is Fireball)
+                        {
+                            @this.RigidBody.CollisionLayerMask = CollisionLayer.None;
+                            @this.RigidBody.Velocity = Vector2.Zero;
+                            Score.Ins.Value += Constants.OCTOPUS_POINTS;
+                            EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, @this, new GameObjectCreateEventArgs(new PromptingPoints(@this.Location.X, @this.Location.Y, Constants.OCTOPUS_POINTS)));
+                            EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, @this, new GameObjectDestroyEventArgs(@this), Constants.ENEMY_COLLISION_EVENT_DT);
+                        }
+
+                        break;
+                    }
+
+                case Fish _:
+                    {
+                        var @this = self as Fish;
+
+                        if ((other is Mario mario && (side == CollisionSide.Top || mario.State.IsInvincible)) || other is Fireball)
+                        {
+                            @this.RigidBody.CollisionLayerMask = CollisionLayer.None;
+                            @this.RigidBody.Velocity = Vector2.Zero;
+                            Score.Ins.Value += Constants.FISH_POINTS;
+                            EventManager.Ins.RaiseEvent(EventEnum.GameObjectCreate, @this, new GameObjectCreateEventArgs(new PromptingPoints(@this.Location.X, @this.Location.Y, Constants.FISH_POINTS)));
+                            EventManager.Ins.RaiseEvent(EventEnum.GameObjectDestroy, @this, new GameObjectDestroyEventArgs(@this), Constants.ENEMY_COLLISION_EVENT_DT);
+                        }
+
+                        break;
+                    }
+
                 case Fireball _:
                 {
                     var @this = self as Fireball;
@@ -383,6 +415,8 @@ namespace MarioPirates
                             @this.State.TurnInvincible();
                             break;
                         case Goomba _:
+                        case Octopus _:
+                        case Fish _:
                         case Koopa _:
                             if ((side is CollisionSide.Bottom) || @this.State.IsInvincible || @this.State.IsTransiting)
                             {
@@ -407,7 +441,8 @@ namespace MarioPirates
                                 }
                             }
                             break;
-                        case VirtualPlane _:
+         
+                            case VirtualPlane _:
                             @this.State.TurnDead();
                             break;
                     }
