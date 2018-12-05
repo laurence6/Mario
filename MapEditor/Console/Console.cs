@@ -94,6 +94,7 @@ namespace MarioPirates
                     break;
             }
         }
+
         public void HandleKeyUp(Keys key)
         {
             switch (key)
