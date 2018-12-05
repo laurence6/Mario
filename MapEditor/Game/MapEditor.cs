@@ -30,7 +30,6 @@ namespace MarioPirates
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
             SpriteFactory.Ins.LoadContent(Content);
-            AudioManager.Ins.LoadContent(Content);
 
             Reset();
         }
