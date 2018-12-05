@@ -45,7 +45,7 @@ namespace MarioPirates
 
         private bool shiftPressed = false;
 
-        private bool Caps => System.Windows.Forms.Control.IsKeyLocked(System.Windows.Forms.Keys.CapsLock);
+        private static bool Caps => System.Windows.Forms.Control.IsKeyLocked(System.Windows.Forms.Keys.CapsLock);
 
         private bool UpperCase => Caps != shiftPressed;
 
