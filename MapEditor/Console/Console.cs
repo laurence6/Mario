@@ -14,7 +14,7 @@ namespace MarioPirates
             {
                 var line = new Line();
                 lines[i] = line;
-                sprite[i] = SpriteFactory.Ins.CreateSmallFontSprite(() => line.Prefix + line.Text);
+                sprite[i] = SpriteFactory.Ins.CreateConsoleFontSprite(() => line.Prefix + line.Text);
             }
         }
 

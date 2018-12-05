@@ -18,6 +18,7 @@ namespace MarioPirates
 
         public static readonly string HUD_FONT_SPRITE = "hud";
         public static readonly string SMALL_FONT_SPRITE = "small";
+        public static readonly string CONSOLE_FONT_SPRITE = "console";
 
         public const int LIVES_RESET = 3;
 

@@ -63,9 +63,9 @@ namespace MarioPirates
                     {
                         p.Value.Item1(param);
                     }
-                    catch (Exception e)
+                    catch (ArgumentException)
                     {
-                        Console.Ins.Input(Constants.CONSOLE_ERROR + e.ToString());
+                        Console.Ins.Input(Constants.CONSOLE_ERROR + " unavailable argument");
                     }
                     return;
                 }

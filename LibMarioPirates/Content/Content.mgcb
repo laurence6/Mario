@@ -513,3 +513,10 @@
 /processorParam:TextureFormat=Color
 /build:fish.png
 
+#begin console.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:console.spritefont
+

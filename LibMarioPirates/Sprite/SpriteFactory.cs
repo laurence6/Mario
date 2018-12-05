@@ -35,6 +35,7 @@ namespace MarioPirates
         private Dictionary<string, Texture2D> textures = new Dictionary<string, Texture2D>();
         private SpriteFont hudFont;
         private SpriteFont promptingPointsFont;
+        private SpriteFont consoleFont;
 
         private Dictionary<string, SpriteTextureParam> spriteTextureParam;
 
@@ -46,10 +47,12 @@ namespace MarioPirates
 
             hudFont = content.Load<SpriteFont>(Constants.HUD_FONT_SPRITE);
             promptingPointsFont = content.Load<SpriteFont>(Constants.SMALL_FONT_SPRITE);
+            consoleFont = content.Load<SpriteFont>(Constants.CONSOLE_FONT_SPRITE);
         }
 
         public SpriteTexture CreateSprite(string spriteName) => spriteTextureParam[spriteName].ToSprite(textures);
         public SpriteText CreateHUDSprite(Func<string> getString) => new SpriteText(hudFont, getString);
         public SpriteText CreateSmallFontSprite(Func<string> getString) => new SpriteText(promptingPointsFont, getString);
+        public SpriteText CreateConsoleFontSprite(Func<string> getString) => new SpriteText(consoleFont, getString);
     }
 }
