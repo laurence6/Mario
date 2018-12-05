@@ -277,7 +277,7 @@ namespace MarioPirates
         public const int MAPEDITOR_ALIGNMENT_MASK = ~7;
         public static readonly string MAPEDITOR_DATA_FILE = "MapEditor" + DATA_FILE_TYPE;
         public static readonly string MAPEDITOR_UI_TEXT = "Add Object: ";
-        public static readonly Vector2 MAPEDITOR_UI_POSITION = new Vector2(650f, 10f);
+        public static readonly Vector2 MAPEDITOR_UI_POSITION = new Vector2(550f, 10f);
         public static readonly string[] MAPEDITOR_HELP = new string[] { "Left/Right arrow: move map", "F4: Open/Close console; Esc: exit", "Drag to move objects", "Drag out of screen to delete" };
 
         public static readonly Vector2 CONSOLE_POSITION = new Vector2(12f, 12f);
