@@ -11,7 +11,7 @@ namespace MarioPirates
         private static readonly Dictionary<string, (Action<string>, string)> Cmds = new Dictionary<string, (Action<string>, string)>
         {
             { "exit",  (CmdExit, "         exit map editor ( exit )") },
-            { "open", (CmdOpen, "         switch levels ( open underwater )") },
+            { "open", (CmdOpen, "         switch levels ( open uw )") },
             { "new",  (CmdNew, "          create new object ( new { \"TypeName\": \"Koopa\" } )") },
             { "save", (CmdSave, "         save to data file ( save )") },
             { "help", (CmdHelp, "         help") }

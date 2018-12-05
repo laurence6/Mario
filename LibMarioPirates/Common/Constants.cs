@@ -220,7 +220,7 @@ namespace MarioPirates
 
         public const string LEVEL_1_SCENE = "1";
         public const string SECRET_LEVEL_SCENE = "secret";
-        public const string UNDERWATER_SCENE = "underwater";
+        public const string UNDERWATER_SCENE = "uw";
         public const string GAMEOVER_SCENE = "gameover";
         public const string WIN_SCENE = "win";
 

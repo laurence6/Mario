@@ -425,7 +425,7 @@
             "Motion": 0,
             "Force": null,
             "Mass": null,
-            "Params": { "ToLevel": "underwater" }
+            "Params": { "ToLevel": "uw" }
         },
         {
             "TypeName": "PipeBottom",
