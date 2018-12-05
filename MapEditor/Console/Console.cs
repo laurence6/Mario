@@ -39,6 +39,8 @@ namespace MarioPirates
         private readonly Line[] lines = new Line[Constants.CONSOLE_NUM_LINES];
         public int CurrLine { get; set; } = 0;
 
+        private int insertionPoint;
+
         private bool shiftPressed = false;
 
         private bool Caps => System.Windows.Forms.Control.IsKeyLocked(System.Windows.Forms.Keys.CapsLock);
@@ -50,6 +52,7 @@ namespace MarioPirates
             shiftPressed = false;
             lines.ForEach(line => line.Reset());
             CurrLine = 0;
+            insertionPoint = 0;
             lines[CurrLine].Prefix = Constants.CONSOLE_PROMOT;
         }
 
@@ -84,7 +87,11 @@ namespace MarioPirates
                     shiftPressed = true;
                     break;
                 case Keys.Back:
-                    lines[CurrLine].Text = lines[CurrLine].Text.Substring(0, (lines[CurrLine].Text.Length - 1).Max(0));
+                    lines[CurrLine].Text = lines[CurrLine].Text.Substring(0, (insertionPoint - 1).Max(0)) + lines[CurrLine].Text.Substring(insertionPoint);
+                    insertionPoint -= insertionPoint > 0 ? 1 : 0;
+                    break;
+                case Keys.Delete:
+                    lines[CurrLine].Text = lines[CurrLine].Text.Substring(0, insertionPoint) + lines[CurrLine].Text.Substring((insertionPoint + 1).Min(lines[CurrLine].Text.Length));
                     break;
                 case Keys.Enter:
                     if (!lines[CurrLine].IsEmpty)
@@ -101,6 +108,12 @@ namespace MarioPirates
                         lines[CurrLine].Prefix = Constants.CONSOLE_PROMOT;
                     }
                     break;
+                case Keys.Left:
+                    insertionPoint -= insertionPoint > 0 ? 1 : 0;
+                    break;
+                case Keys.Right:
+                    insertionPoint += insertionPoint < lines[CurrLine].Text.Length ? 1 : 0;
+                    break;
             }
         }
 
@@ -116,12 +129,14 @@ namespace MarioPirates
 
         public void Input(string s)
         {
-            lines[CurrLine].Text += s.Replace('\n', ' ');
+            lines[CurrLine].Text = lines[CurrLine].Text.Substring(0, insertionPoint) + s.Replace('\n', ' ') + lines[CurrLine].Text.Substring(insertionPoint);
+            insertionPoint += s.Length;
         }
 
         public void NextLine()
         {
             CurrLine++;
+            insertionPoint = 0;
             if (CurrLine >= Constants.CONSOLE_NUM_LINES)
                 Scroll();
         }
