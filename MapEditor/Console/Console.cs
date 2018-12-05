@@ -84,8 +84,7 @@ namespace MarioPirates
                             cmd = new string[] { cmd[0], string.Empty };
                         NextLine();
 
-                        if (!Commands.Execute(cmd[0], cmd[1]))
-                            Input(Constants.CONSOLE_ERROR + cmd[0]);
+                        Commands.Execute(cmd[0], cmd[1]);
 
                         if (!lines[CurrLine].IsEmpty)
                             NextLine();

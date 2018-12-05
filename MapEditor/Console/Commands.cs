@@ -53,7 +53,7 @@ namespace MarioPirates
             }
         }
 
-        public static bool Execute(string name, string param)
+        public static void Execute(string name, string param)
         {
             foreach (var p in Cmds)
                 if (name.ToLower() == p.Key)
@@ -66,9 +66,9 @@ namespace MarioPirates
                     {
                         Console.Ins.Input(Constants.CONSOLE_ERROR + e.ToString());
                     }
-                    return true;
+                    return;
                 }
-            return false;
+            CmdHelp(param);
         }
     }
 }
