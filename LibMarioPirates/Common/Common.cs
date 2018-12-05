@@ -23,7 +23,7 @@ namespace MarioPirates
         public static bool Contains<T>(this T[] a, T obj) where T : class
         {
             foreach (var o in a)
-                if (o == obj)
+                if (o.Equals(obj))
                     return true;
             return false;
         }
