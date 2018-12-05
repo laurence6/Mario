@@ -275,6 +275,7 @@ namespace MarioPirates
 
         public const float MAPEDITOR_MOVING_SPEED = 5f;
         public const int MAPEDITOR_ALIGNMENT_MASK = ~7;
+        public static readonly string MAPEDITOR_DATA_FILE = "MapEditor" + DATA_FILE_TYPE;
 
         public static readonly Vector2 CONSOLE_POSITION = new Vector2(12f, 12f);
         public const int CONSOLE_NUM_LINES = 17;

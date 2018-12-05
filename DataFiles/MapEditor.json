@@ -1,0 +1,45 @@
+[
+    {
+        "TypeName": "QuestionBlock",
+        "Location": [ 0, 0 ],
+        "Motion": 0,
+        "Force": null,
+        "Mass": null,
+        "Params": {
+            "State": "Normal",
+            "Powerup": "GreenMushroom"
+        }
+    },
+    {
+        "TypeName": "BrickBlock",
+        "Location": [ 0, 0 ],
+        "Motion": 0,
+        "Force": null,
+        "Mass": null,
+        "Params": { "State": "Normal" }
+    },
+    {
+        "TypeName": "OrangeBlock",
+        "Location": [ 0, 0 ],
+        "Motion": 0,
+        "Force": null,
+        "Mass": null,
+        "Params": { "State": "Normal" }
+    },
+    {
+        "TypeName": "Goomba",
+        "Location": [ 0, 0 ],
+        "Motion": 2,
+        "Force": null,
+        "Mass": null,
+        "Params": null
+    },
+    {
+        "TypeName": "Koopa",
+        "Location": [ 0, 0 ],
+        "Motion": 2,
+        "Force": null,
+        "Mass": null,
+        "Params": null
+    }
+]
