@@ -1,583 +1,583 @@
 ﻿{
-    "fireball": {
-        "TextureName": "fireball",
-        "Depth": 5,
-        "Size": [ 18, 18 ],
-        "Frames": [ 0, 0, 18, 0, 36, 0, 54, 0 ]
-    },
-    "coin": {
-        "TextureName": "coin",
-        "Depth": 5,
-        "Size": [ 16, 14 ],
-        "Frames": [ 6, 0, 36, 0, 66, 0, 96, 0 ]
-    },
-    "flower": {
-        "TextureName": "flower",
-        "Depth": 5,
-        "Size": [ 16, 16 ],
-        "Frames": [ 0, 0, 30, 0, 60, 0, 90, 0 ]
-    },
-    "greenmushroom": {
-        "TextureName": "greenmushroom",
-        "Depth": 5,
-        "Size": [ 16, 16 ],
-        "Frames": [ 0, 0 ]
-    },
-    "pipelinetop": {
-        "TextureName": "pipelinetop",
-        "Depth": 9,
-        "Size": [ 32, 15 ],
-        "Frames": [ 0, 0 ]
-    },
-    "pipelinebottom": {
-        "TextureName": "pipelinebottom",
-        "Depth": 9,
-        "Size": [ 32, 16 ],
-        "Frames": [ 0, 0 ]
-    },
-    "longpipe": {
-        "TextureName": "longpipe",
-        "Depth": 9,
-        "Size": [ 62, 128 ],
-        "Frames": [ 0, 0 ]
-    },
-    "redmushroom": {
-        "TextureName": "redmushroom",
-        "Depth": 5,
-        "Size": [ 16, 16 ],
-        "Frames": [ 0, 0 ]
-    },
-    "star": {
-        "TextureName": "star",
-        "Depth": 5,
-        "Size": [ 14, 16 ],
-        "Frames": [ 0, 0, 30, 0, 60, 0, 90, 0 ]
-    },
-    "flag": {
-        "TextureName": "flag",
-        "Depth": 5,
-        "Size": [ 33, 168 ],
-        "Frames": [ 0, 0, 33, 0, 66, 0, 100, 0, 133, 0 ]
-    },
-    "brickblock": {
-        "TextureName": "brickblock",
-        "Depth": 5,
-        "Size": [ 16, 16 ],
-        "Frames": [ 0, 0 ]
-    },
-    "brokenblock": {
-        "TextureName": "brokenblock",
-        "Depth": 5,
-        "Size": [ 16, 16 ],
-        "Frames": [ 0, 0 ]
-    },
-    "usedblock": {
-        "TextureName": "usedblock",
-        "Depth": 5,
-        "Size": [ 16, 16 ],
-        "Frames": [ 0, 0 ]
-    },
-    "brickdebrisupperleft": {
-        "TextureName": "brickdebris",
-        "Depth": 5,
-        "Size": [ 8, 8 ],
-        "Frames": [ 0, 0 ]
-    },
-    "brickdebrisupperright": {
-        "TextureName": "brickdebris",
-        "Depth": 5,
-        "Size": [ 8, 8 ],
-        "Frames": [ 8, 0 ]
-    },
-    "brickdebrislowerleft": {
-        "TextureName": "brickdebris",
-        "Depth": 5,
-        "Size": [ 8, 8 ],
-        "Frames": [ 0, 8 ]
-    },
-    "brickdebrislowerright": {
-        "TextureName": "brickdebris",
-        "Depth": 5,
-        "Size": [ 8, 8 ],
-        "Frames": [ 8, 8 ]
-    },
-    "hiddenblock": {
-        "Depth": 5,
-        "Size": [ 16, 16 ],
-        "Frames": [ 0, 0 ]
-    },
-    "orangeblock": {
-        "TextureName": "orangeblock",
-        "Depth": 5,
-        "Size": [ 16, 16 ],
-        "Frames": [ 0, 0 ]
-    },
-    "questionblock": {
-        "TextureName": "questionblock",
-        "Depth": 5,
-        "Size": [ 16, 16 ],
-        "Frames": [ 0, 0, 20, 0, 40, 0 ]
-    },
-    "bluebrickblock": {
-        "TextureName": "bluebrickblock",
-        "Depth": 5,
-        "Size": [ 16, 16 ],
-        "Frames": [ 0, 0 ]
-    },
-    "bluebrokenblock": {
-        "TextureName": "bluebrokenblock",
-        "Depth": 5,
-        "Size": [ 16, 16 ],
-        "Frames": [ 0, 0 ]
-    },
-    "bluebrickdebrisupperleft": {
-        "TextureName": "bluebrickdebris",
-        "Depth": 5,
-        "Size": [ 8, 8 ],
-        "Frames": [ 0, 0 ]
-    },
-    "bluebrickdebrisupperright": {
-        "TextureName": "bluebrickdebris",
-        "Depth": 5,
-        "Size": [ 8, 8 ],
-        "Frames": [ 8, 0 ]
-    },
-    "bluebrickdebrislowerleft": {
-        "TextureName": "bluebrickdebris",
-        "Depth": 5,
-        "Size": [ 8, 8 ],
-        "Frames": [ 0, 8 ]
-    },
-    "bluebrickdebrislowerright": {
-        "TextureName": "bluebrickdebris",
-        "Depth": 5,
-        "Size": [ 8, 8 ],
-        "Frames": [ 8, 8 ]
-    },
-    "castle": {
-        "TextureName": "castle",
-        "Depth": 5,
-        "Size": [ 80, 80 ],
-        "Frames": [ 0, 0 ]
-    },
+  "fireball": {
+    "TextureName": "fireball",
+    "Depth": 5,
+    "Size": [ 18, 18 ],
+    "Frames": [ 0, 0, 18, 0, 36, 0, 54, 0 ]
+  },
+  "coin": {
+    "TextureName": "coin",
+    "Depth": 5,
+    "Size": [ 16, 14 ],
+    "Frames": [ 6, 0, 36, 0, 66, 0, 96, 0 ]
+  },
+  "flower": {
+    "TextureName": "flower",
+    "Depth": 5,
+    "Size": [ 16, 16 ],
+    "Frames": [ 0, 0, 30, 0, 60, 0, 90, 0 ]
+  },
+  "greenmushroom": {
+    "TextureName": "greenmushroom",
+    "Depth": 5,
+    "Size": [ 16, 16 ],
+    "Frames": [ 0, 0 ]
+  },
+  "pipelinetop": {
+    "TextureName": "pipelinetop",
+    "Depth": 9,
+    "Size": [ 32, 15 ],
+    "Frames": [ 0, 0 ]
+  },
+  "pipelinebottom": {
+    "TextureName": "pipelinebottom",
+    "Depth": 9,
+    "Size": [ 32, 16 ],
+    "Frames": [ 0, 0 ]
+  },
+  "longpipe": {
+    "TextureName": "longpipe",
+    "Depth": 9,
+    "Size": [ 62, 128 ],
+    "Frames": [ 0, 0 ]
+  },
+  "redmushroom": {
+    "TextureName": "redmushroom",
+    "Depth": 5,
+    "Size": [ 16, 16 ],
+    "Frames": [ 0, 0 ]
+  },
+  "star": {
+    "TextureName": "star",
+    "Depth": 5,
+    "Size": [ 14, 16 ],
+    "Frames": [ 0, 0, 30, 0, 60, 0, 90, 0 ]
+  },
+  "flag": {
+    "TextureName": "flag",
+    "Depth": 5,
+    "Size": [ 33, 168 ],
+    "Frames": [ 0, 0, 33, 0, 66, 0, 100, 0, 133, 0 ]
+  },
+  "brickblock": {
+    "TextureName": "brickblock",
+    "Depth": 5,
+    "Size": [ 16, 16 ],
+    "Frames": [ 0, 0 ]
+  },
+  "brokenblock": {
+    "TextureName": "brokenblock",
+    "Depth": 5,
+    "Size": [ 16, 16 ],
+    "Frames": [ 0, 0 ]
+  },
+  "usedblock": {
+    "TextureName": "usedblock",
+    "Depth": 5,
+    "Size": [ 16, 16 ],
+    "Frames": [ 0, 0 ]
+  },
+  "brickdebrisupperleft": {
+    "TextureName": "brickdebris",
+    "Depth": 5,
+    "Size": [ 8, 8 ],
+    "Frames": [ 0, 0 ]
+  },
+  "brickdebrisupperright": {
+    "TextureName": "brickdebris",
+    "Depth": 5,
+    "Size": [ 8, 8 ],
+    "Frames": [ 8, 0 ]
+  },
+  "brickdebrislowerleft": {
+    "TextureName": "brickdebris",
+    "Depth": 5,
+    "Size": [ 8, 8 ],
+    "Frames": [ 0, 8 ]
+  },
+  "brickdebrislowerright": {
+    "TextureName": "brickdebris",
+    "Depth": 5,
+    "Size": [ 8, 8 ],
+    "Frames": [ 8, 8 ]
+  },
+  "hiddenblock": {
+    "Depth": 5,
+    "Size": [ 16, 16 ],
+    "Frames": [ 0, 0 ]
+  },
+  "orangeblock": {
+    "TextureName": "orangeblock",
+    "Depth": 5,
+    "Size": [ 16, 16 ],
+    "Frames": [ 0, 0 ]
+  },
+  "questionblock": {
+    "TextureName": "questionblock",
+    "Depth": 5,
+    "Size": [ 16, 16 ],
+    "Frames": [ 0, 0, 20, 0, 40, 0 ]
+  },
+  "bluebrickblock": {
+    "TextureName": "bluebrickblock",
+    "Depth": 5,
+    "Size": [ 16, 16 ],
+    "Frames": [ 0, 0 ]
+  },
+  "bluebrokenblock": {
+    "TextureName": "bluebrokenblock",
+    "Depth": 5,
+    "Size": [ 16, 16 ],
+    "Frames": [ 0, 0 ]
+  },
+  "bluebrickdebrisupperleft": {
+    "TextureName": "bluebrickdebris",
+    "Depth": 5,
+    "Size": [ 8, 8 ],
+    "Frames": [ 0, 0 ]
+  },
+  "bluebrickdebrisupperright": {
+    "TextureName": "bluebrickdebris",
+    "Depth": 5,
+    "Size": [ 8, 8 ],
+    "Frames": [ 8, 0 ]
+  },
+  "bluebrickdebrislowerleft": {
+    "TextureName": "bluebrickdebris",
+    "Depth": 5,
+    "Size": [ 8, 8 ],
+    "Frames": [ 0, 8 ]
+  },
+  "bluebrickdebrislowerright": {
+    "TextureName": "bluebrickdebris",
+    "Depth": 5,
+    "Size": [ 8, 8 ],
+    "Frames": [ 8, 8 ]
+  },
+  "castle": {
+    "TextureName": "castle",
+    "Depth": 5,
+    "Size": [ 80, 80 ],
+    "Frames": [ 0, 0 ]
+  },
 
 
-    "underwaterblock": {
-        "TextureName": "underwaterblock",
-        "Depth": 5,
-        "Size": [ 16, 16 ],
-        "Frames": [ 0, 0 ]
-    },
+  "underwaterblock": {
+    "TextureName": "underwaterblock",
+    "Depth": 5,
+    "Size": [ 16, 16 ],
+    "Frames": [ 0, 0 ]
+  },
 
-    "coral": {
-        "TextureName": "coral",
-        "Depth": 5,
-        "Size": [ 16, 16 ],
-        "Frames": [ 0, 0 ]
-    },
+  "coral": {
+    "TextureName": "coral",
+    "Depth": 5,
+    "Size": [ 16, 16 ],
+    "Frames": [ 0, 0 ]
+  },
 
-    "fish": {
-        "TextureName": "fish",
-        "Depth": 5,
-        "Size": [ 16, 16 ],
-        "Frames": [ 0, 0, 16, 0 ]
-    },
+  "fish": {
+    "TextureName": "fish",
+    "Depth": 5,
+    "Size": [ 16, 16 ],
+    "Frames": [ 0, 0, 16, 0 ]
+  },
 
-    "octopus": {
-        "TextureName": "octopus",
-        "Depth": 5,
-        "Size": [ 16, 24 ],
-        "Frames": [0, 0, 16, 0]
-    },
+  "octopus": {
+    "TextureName": "octopus",
+    "Depth": 5,
+    "Size": [ 16, 24 ],
+    "Frames": [ 0, 0, 16, 0 ]
+  },
 
-    "goomba": {
-        "TextureName": "goomba",
-        "Depth": 8,
-        "Size": [ 16, 16 ],
-        "Frames": [ 0, 0, 30, 0 ]
-    },
-    "goomba_stomped": {
-        "TextureName": "goomba",
-        "Depth": 8,
-        "Size": [ 16, 16 ],
-        "Frames": [ 60, 0 ]
-    },
-    "koopa_left": {
-        "TextureName": "koopa",
-        "Depth": 8,
-        "Size": [ 16, 23 ],
-        "Frames": [ 30, 0, 60, 0 ]
-    },
-    "koopa_right": {
-        "TextureName": "koopa",
-        "Depth": 8,
-        "Size": [ 16, 23 ],
-        "Frames": [ 90, 0, 120, 0 ]
-    },
-    "koopa_stomped": {
-        "TextureName": "koopa",
-        "Depth": 8,
-        "Size": [ 16, 23 ],
-        "Frames": [ 240, 0 ]
-    },
+  "goomba": {
+    "TextureName": "goomba",
+    "Depth": 8,
+    "Size": [ 16, 16 ],
+    "Frames": [ 0, 0, 30, 0 ]
+  },
+  "goomba_stomped": {
+    "TextureName": "goomba",
+    "Depth": 8,
+    "Size": [ 16, 16 ],
+    "Frames": [ 60, 0 ]
+  },
+  "koopa_left": {
+    "TextureName": "koopa",
+    "Depth": 8,
+    "Size": [ 16, 23 ],
+    "Frames": [ 30, 0, 60, 0 ]
+  },
+  "koopa_right": {
+    "TextureName": "koopa",
+    "Depth": 8,
+    "Size": [ 16, 23 ],
+    "Frames": [ 90, 0, 120, 0 ]
+  },
+  "koopa_stomped": {
+    "TextureName": "koopa",
+    "Depth": 8,
+    "Size": [ 16, 23 ],
+    "Frames": [ 240, 0 ]
+  },
 
 
-    "small_crouch_left": {
-        "TextureName": "smallmario",
-        "Depth": 8,
-        "Size": [ 17, 15 ],
-        "Frames": [ 0, 0 ]
-    },
-    "small_jump_left": {
-        "TextureName": "smallmario",
-        "Depth": 8,
-        "Size": [ 17, 15 ],
-        "Frames": [ 0, 0 ]
-    },
-    "small_run_left": {
-        "TextureName": "smallmario",
-        "Depth": 8,
-        "Size": [ 17, 15 ],
-        "Frames": [ 120, 0, 90, 0, 60, 0, 90, 0 ]
-    },
-    "small_run_left_brake": {
-        "TextureName": "smallmario",
-        "Depth": 8,
-        "Size": [ 17, 15 ],
-        "Frames": [ 30, 0 ]
-    },
-    "small_idle_left": {
-        "TextureName": "smallmario",
-        "Depth": 8,
-        "Size": [ 17, 15 ],
-        "Frames": [ 150, 0 ]
-    },
-    "small_idle_right": {
-        "TextureName": "smallmario",
-        "Depth": 8,
-        "Size": [ 17, 15 ],
-        "Frames": [ 180, 0 ]
-    },
-    "small_run_right": {
-        "TextureName": "smallmario",
-        "Depth": 8,
-        "Size": [ 17, 15 ],
-        "Frames": [ 210, 0, 240, 0, 270, 0, 240, 0 ]
-    },
-    "small_run_right_brake": {
-        "TextureName": "smallmario",
-        "Depth": 8,
-        "Size": [ 17, 15 ],
-        "Frames": [ 300, 0 ]
-    },
-    "small_jump_right": {
-        "TextureName": "smallmario",
-        "Depth": 8,
-        "Size": [ 17, 15 ],
-        "Frames": [ 330, 0 ]
-    },
-    "small_crouch_right": {
-        "TextureName": "smallmario",
-        "Depth": 8,
-        "Size": [ 17, 15 ],
-        "Frames": [ 330, 0 ]
-    },
-    "big_crouch_left": {
-        "TextureName": "bigmario",
-        "Depth": 8,
-        "Size": [ 16, 32 ],
-        "Frames": [ 360, 0 ]
-    },
-    "big_jump_left": {
-        "TextureName": "bigmario",
-        "Depth": 8,
-        "Size": [ 16, 32 ],
-        "Frames": [ 0, 0 ]
-    },
-    "big_run_left": {
-        "TextureName": "bigmario",
-        "Depth": 8,
-        "Size": [ 16, 32 ],
-        "Frames": [ 120, 0, 90, 0, 60, 0, 90, 0 ]
-    },
-    "big_run_left_brake": {
-        "TextureName": "bigmario",
-        "Depth": 8,
-        "Size": [ 16, 32 ],
-        "Frames": [ 30, 0 ]
-    },
-    "big_idle_left": {
-        "TextureName": "bigmario",
-        "Depth": 8,
-        "Size": [ 16, 32 ],
-        "Frames": [ 150, 0 ]
-    },
-    "big_idle_right": {
-        "TextureName": "bigmario",
-        "Depth": 8,
-        "Size": [ 16, 32 ],
-        "Frames": [ 180, 0 ]
-    },
-    "big_run_right": {
-        "TextureName": "bigmario",
-        "Depth": 8,
-        "Size": [ 16, 32 ],
-        "Frames": [ 210, 0, 240, 0, 270, 0, 240, 0 ]
-    },
-    "big_run_right_brake": {
-        "TextureName": "bigmario",
-        "Depth": 8,
-        "Size": [ 16, 32 ],
-        "Frames": [ 300, 0 ]
-    },
-    "big_jump_right": {
-        "TextureName": "bigmario",
-        "Depth": 8,
-        "Size": [ 16, 32 ],
-        "Frames": [ 330, 0 ]
-    },
-    "big_crouch_right": {
-        "TextureName": "bigmario",
-        "Depth": 8,
-        "Size": [ 16, 32 ],
-        "Frames": [ 390, 0 ]
-    },
-    "fire_crouch_left": {
-        "TextureName": "firemario",
-        "Depth": 8,
-        "Size": [ 16, 32 ],
-        "Frames": [ 360, 0 ]
-    },
-    "fire_jump_left": {
-        "TextureName": "firemario",
-        "Depth": 8,
-        "Size": [ 16, 32 ],
-        "Frames": [ 0, 0 ]
-    },
-    "fire_run_left": {
-        "TextureName": "firemario",
-        "Depth": 8,
-        "Size": [ 16, 32 ],
-        "Frames": [ 120, 0, 90, 0, 60, 0, 90, 0 ]
-    },
-    "fire_run_left_brake": {
-        "TextureName": "firemario",
-        "Depth": 8,
-        "Size": [ 16, 32 ],
-        "Frames": [ 30, 0 ]
-    },
-    "fire_idle_left": {
-        "TextureName": "firemario",
-        "Depth": 8,
-        "Size": [ 16, 32 ],
-        "Frames": [ 150, 0 ]
-    },
-    "fire_idle_right": {
-        "TextureName": "firemario",
-        "Depth": 8,
-        "Size": [ 16, 32 ],
-        "Frames": [ 180, 0 ]
-    },
-    "fire_run_right": {
-        "TextureName": "firemario",
-        "Depth": 8,
-        "Size": [ 16, 32 ],
-        "Frames": [ 210, 0, 240, 0, 270, 0, 240, 0 ]
-    },
-    "fire_run_right_brake": {
-        "TextureName": "firemario",
-        "Depth": 8,
-        "Size": [ 16, 32 ],
-        "Frames": [ 300, 0 ]
-    },
-    "fire_jump_right": {
-        "TextureName": "firemario",
-        "Depth": 8,
-        "Size": [ 16, 32 ],
-        "Frames": [ 330, 0 ]
-    },
-    "fire_crouch_right": {
-        "TextureName": "firemario",
-        "Depth": 8,
-        "Size": [ 16, 32 ],
-        "Frames": [ 390, 0 ]
-    },
-    "small_idle_left_star": {
-        "TextureName": "smallstarpowermario",
-        "AccelerateRate": 3,
-        "Depth": 8,
-        "Size": [ 16, 16 ],
-        "Frames": [ 112, 0, 112, 48, 112, 96 ]
-    },
-    "small_run_left_star": {
-        "TextureName": "smallstarpowermario",
-        "AccelerateRate": 3,
-        "Depth": 8,
-        "Size": [ 16, 16 ],
-        "Frames": [ 208, 0, 208, 48, 208, 96, 192, 0, 192, 48, 192, 96, 176, 0, 176, 48, 176, 96, 192, 0, 192, 48, 192, 96 ]
-    },
-    "small_run_left_star_brake": {
-        "TextureName": "smallstarpowermario",
-        "AccelerateRate": 3,
-        "Depth": 8,
-        "Size": [ 16, 16 ],
-        "Frames": [ 128, 0, 128, 48, 128, 96 ]
-    },
-    "small_jump_left_star": {
-        "TextureName": "smallstarpowermario",
-        "AccelerateRate": 3,
-        "Depth": 8,
-        "Size": [ 16, 16 ],
-        "Frames": [ 144, 0, 144, 48, 144, 96 ]
-    },
-    "small_crouch_left_star": {
-        "TextureName": "smallstarpowermario",
-        "AccelerateRate": 3,
-        "Depth": 8,
-        "Size": [ 16, 16 ],
-        "Frames": [ 144, 0, 144, 48, 144, 96 ]
-    },
-    "small_idle_right_star": {
-        "TextureName": "smallstarpowermario",
-        "AccelerateRate": 3,
-        "Depth": 8,
-        "Size": [ 16, 16 ],
-        "Frames": [ 96, 0, 96, 48, 96, 96 ]
-    },
-    "small_run_right_star": {
-        "TextureName": "smallstarpowermario",
-        "AccelerateRate": 3,
-        "Depth": 8,
-        "Size": [ 16, 16 ],
-        "Frames": [ 0, 0, 0, 48, 0, 96, 16, 0, 16, 48, 16, 96, 32, 0, 32, 48, 32, 96, 16, 0, 16, 48, 16, 96 ]
-    },
-    "small_run_right_star_brake": {
-        "TextureName": "smallstarpowermario",
-        "AccelerateRate": 3,
-        "Depth": 8,
-        "Size": [ 16, 16 ],
-        "Frames": [ 48, 0, 48, 48, 48, 96 ]
-    },
-    "small_jump_right_star": {
-        "TextureName": "smallstarpowermario",
-        "AccelerateRate": 3,
-        "Depth": 8,
-        "Size": [ 16, 16 ],
-        "Frames": [ 64, 0, 64, 48, 64, 96 ]
-    },
-    "small_crouch_right_star": {
-        "TextureName": "smallstarpowermario",
-        "AccelerateRate": 3,
-        "Depth": 8,
-        "Size": [ 16, 16 ],
-        "Frames": [ 64, 0, 64, 48, 64, 96 ]
-    },
-    "big_idle_left_star": {
-        "TextureName": "bigstarpowermario",
-        "AccelerateRate": 3,
-        "Depth": 8,
-        "Size": [ 16, 32 ],
-        "Frames": [ 112, 0, 112, 48, 112, 96 ]
-    },
-    "big_run_left_star": {
-        "TextureName": "bigstarpowermario",
-        "AccelerateRate": 3,
-        "Depth": 8,
-        "Size": [ 16, 32 ],
-        "Frames": [ 208, 0, 208, 48, 208, 96, 192, 0, 192, 48, 192, 96, 176, 0, 176, 48, 176, 96, 192, 0, 192, 48, 192, 96 ]
-    },
-    "big_run_left_star_brake": {
-        "TextureName": "bigstarpowermario",
-        "AccelerateRate": 3,
-        "Depth": 8,
-        "Size": [ 16, 32 ],
-        "Frames": [ 128, 0, 128, 48, 128, 96 ]
-    },
-    "big_jump_left_star": {
-        "TextureName": "bigstarpowermario",
-        "AccelerateRate": 3,
-        "Depth": 8,
-        "Size": [ 16, 32 ],
-        "Frames": [ 144, 0, 144, 48, 144, 96 ]
-    },
-    "big_crouch_left_star": {
-        "TextureName": "bigstarpowermario",
-        "AccelerateRate": 3,
-        "Depth": 8,
-        "Size": [ 16, 32 ],
-        "Frames": [ 128, 0, 128, 48, 128, 96 ]
-    },
-    "big_idle_right_star": {
-        "TextureName": "bigstarpowermario",
-        "AccelerateRate": 3,
-        "Depth": 8,
-        "Size": [ 16, 32 ],
-        "Frames": [ 96, 0, 96, 48, 96, 96 ]
-    },
-    "big_run_right_star": {
-        "TextureName": "bigstarpowermario",
-        "AccelerateRate": 3,
-        "Depth": 8,
-        "Size": [ 16, 32 ],
-        "Frames": [ 0, 0, 0, 48, 0, 96, 16, 0, 16, 48, 16, 96, 32, 0, 32, 48, 32, 96, 16, 0, 16, 48, 16, 96 ]
-    },
-    "big_run_right_star_brake": {
-        "TextureName": "bigstarpowermario",
-        "AccelerateRate": 3,
-        "Depth": 8,
-        "Size": [ 16, 32 ],
-        "Frames": [ 48, 0, 48, 48, 48, 96 ]
-    },
-    "big_jump_right_star": {
-        "TextureName": "bigstarpowermario",
-        "AccelerateRate": 3,
-        "Depth": 8,
-        "Size": [ 16, 32 ],
-        "Frames": [ 64, 0, 64, 48, 64, 96 ]
-    },
-    "big_crouch_right_star": {
-        "TextureName": "bigstarpowermario",
-        "AccelerateRate": 3,
-        "Depth": 8,
-        "Size": [ 16, 32 ],
-        "Frames": [ 80, 0, 80, 48, 80, 96 ]
-    },
-    "dead": {
-        "TextureName": "deadmario",
-        "Depth": 8,
-        "Size": [ 15, 14 ],
-        "Frames": [ 0, 0 ]
-    },
-    "dead_star": {
-        "TextureName": "smallstarpowermario",
-        "AccelerateRate": 3,
-        "Depth": 8,
-        "Size": [ 16, 16 ],
-        "Frames": [ 80, 0, 80, 48, 80, 96 ]
-    },
+  "small_crouch_left": {
+    "TextureName": "smallmario",
+    "Depth": 8,
+    "Size": [ 17, 15 ],
+    "Frames": [ 0, 0 ]
+  },
+  "small_jump_left": {
+    "TextureName": "smallmario",
+    "Depth": 8,
+    "Size": [ 17, 15 ],
+    "Frames": [ 0, 0 ]
+  },
+  "small_run_left": {
+    "TextureName": "smallmario",
+    "Depth": 8,
+    "Size": [ 17, 15 ],
+    "Frames": [ 120, 0, 90, 0, 60, 0, 90, 0 ]
+  },
+  "small_run_left_brake": {
+    "TextureName": "smallmario",
+    "Depth": 8,
+    "Size": [ 17, 15 ],
+    "Frames": [ 30, 0 ]
+  },
+  "small_idle_left": {
+    "TextureName": "smallmario",
+    "Depth": 8,
+    "Size": [ 17, 15 ],
+    "Frames": [ 150, 0 ]
+  },
+  "small_idle_right": {
+    "TextureName": "smallmario",
+    "Depth": 8,
+    "Size": [ 17, 15 ],
+    "Frames": [ 180, 0 ]
+  },
+  "small_run_right": {
+    "TextureName": "smallmario",
+    "Depth": 8,
+    "Size": [ 17, 15 ],
+    "Frames": [ 210, 0, 240, 0, 270, 0, 240, 0 ]
+  },
+  "small_run_right_brake": {
+    "TextureName": "smallmario",
+    "Depth": 8,
+    "Size": [ 17, 15 ],
+    "Frames": [ 300, 0 ]
+  },
+  "small_jump_right": {
+    "TextureName": "smallmario",
+    "Depth": 8,
+    "Size": [ 17, 15 ],
+    "Frames": [ 330, 0 ]
+  },
+  "small_crouch_right": {
+    "TextureName": "smallmario",
+    "Depth": 8,
+    "Size": [ 17, 15 ],
+    "Frames": [ 330, 0 ]
+  },
+  "big_crouch_left": {
+    "TextureName": "bigmario",
+    "Depth": 8,
+    "Size": [ 16, 32 ],
+    "Frames": [ 360, 0 ]
+  },
+  "big_jump_left": {
+    "TextureName": "bigmario",
+    "Depth": 8,
+    "Size": [ 16, 32 ],
+    "Frames": [ 0, 0 ]
+  },
+  "big_run_left": {
+    "TextureName": "bigmario",
+    "Depth": 8,
+    "Size": [ 16, 32 ],
+    "Frames": [ 120, 0, 90, 0, 60, 0, 90, 0 ]
+  },
+  "big_run_left_brake": {
+    "TextureName": "bigmario",
+    "Depth": 8,
+    "Size": [ 16, 32 ],
+    "Frames": [ 30, 0 ]
+  },
+  "big_idle_left": {
+    "TextureName": "bigmario",
+    "Depth": 8,
+    "Size": [ 16, 32 ],
+    "Frames": [ 150, 0 ]
+  },
+  "big_idle_right": {
+    "TextureName": "bigmario",
+    "Depth": 8,
+    "Size": [ 16, 32 ],
+    "Frames": [ 180, 0 ]
+  },
+  "big_run_right": {
+    "TextureName": "bigmario",
+    "Depth": 8,
+    "Size": [ 16, 32 ],
+    "Frames": [ 210, 0, 240, 0, 270, 0, 240, 0 ]
+  },
+  "big_run_right_brake": {
+    "TextureName": "bigmario",
+    "Depth": 8,
+    "Size": [ 16, 32 ],
+    "Frames": [ 300, 0 ]
+  },
+  "big_jump_right": {
+    "TextureName": "bigmario",
+    "Depth": 8,
+    "Size": [ 16, 32 ],
+    "Frames": [ 330, 0 ]
+  },
+  "big_crouch_right": {
+    "TextureName": "bigmario",
+    "Depth": 8,
+    "Size": [ 16, 32 ],
+    "Frames": [ 390, 0 ]
+  },
+  "fire_crouch_left": {
+    "TextureName": "firemario",
+    "Depth": 8,
+    "Size": [ 16, 32 ],
+    "Frames": [ 360, 0 ]
+  },
+  "fire_jump_left": {
+    "TextureName": "firemario",
+    "Depth": 8,
+    "Size": [ 16, 32 ],
+    "Frames": [ 0, 0 ]
+  },
+  "fire_run_left": {
+    "TextureName": "firemario",
+    "Depth": 8,
+    "Size": [ 16, 32 ],
+    "Frames": [ 120, 0, 90, 0, 60, 0, 90, 0 ]
+  },
+  "fire_run_left_brake": {
+    "TextureName": "firemario",
+    "Depth": 8,
+    "Size": [ 16, 32 ],
+    "Frames": [ 30, 0 ]
+  },
+  "fire_idle_left": {
+    "TextureName": "firemario",
+    "Depth": 8,
+    "Size": [ 16, 32 ],
+    "Frames": [ 150, 0 ]
+  },
+  "fire_idle_right": {
+    "TextureName": "firemario",
+    "Depth": 8,
+    "Size": [ 16, 32 ],
+    "Frames": [ 180, 0 ]
+  },
+  "fire_run_right": {
+    "TextureName": "firemario",
+    "Depth": 8,
+    "Size": [ 16, 32 ],
+    "Frames": [ 210, 0, 240, 0, 270, 0, 240, 0 ]
+  },
+  "fire_run_right_brake": {
+    "TextureName": "firemario",
+    "Depth": 8,
+    "Size": [ 16, 32 ],
+    "Frames": [ 300, 0 ]
+  },
+  "fire_jump_right": {
+    "TextureName": "firemario",
+    "Depth": 8,
+    "Size": [ 16, 32 ],
+    "Frames": [ 330, 0 ]
+  },
+  "fire_crouch_right": {
+    "TextureName": "firemario",
+    "Depth": 8,
+    "Size": [ 16, 32 ],
+    "Frames": [ 390, 0 ]
+  },
+  "small_idle_left_star": {
+    "TextureName": "smallstarpowermario",
+    "AccelerateRate": 3,
+    "Depth": 8,
+    "Size": [ 16, 16 ],
+    "Frames": [ 112, 0, 112, 48, 112, 96 ]
+  },
+  "small_run_left_star": {
+    "TextureName": "smallstarpowermario",
+    "AccelerateRate": 3,
+    "Depth": 8,
+    "Size": [ 16, 16 ],
+    "Frames": [ 208, 0, 208, 48, 208, 96, 192, 0, 192, 48, 192, 96, 176, 0, 176, 48, 176, 96, 192, 0, 192, 48, 192, 96 ]
+  },
+  "small_run_left_star_brake": {
+    "TextureName": "smallstarpowermario",
+    "AccelerateRate": 3,
+    "Depth": 8,
+    "Size": [ 16, 16 ],
+    "Frames": [ 128, 0, 128, 48, 128, 96 ]
+  },
+  "small_jump_left_star": {
+    "TextureName": "smallstarpowermario",
+    "AccelerateRate": 3,
+    "Depth": 8,
+    "Size": [ 16, 16 ],
+    "Frames": [ 144, 0, 144, 48, 144, 96 ]
+  },
+  "small_crouch_left_star": {
+    "TextureName": "smallstarpowermario",
+    "AccelerateRate": 3,
+    "Depth": 8,
+    "Size": [ 16, 16 ],
+    "Frames": [ 144, 0, 144, 48, 144, 96 ]
+  },
+  "small_idle_right_star": {
+    "TextureName": "smallstarpowermario",
+    "AccelerateRate": 3,
+    "Depth": 8,
+    "Size": [ 16, 16 ],
+    "Frames": [ 96, 0, 96, 48, 96, 96 ]
+  },
+  "small_run_right_star": {
+    "TextureName": "smallstarpowermario",
+    "AccelerateRate": 3,
+    "Depth": 8,
+    "Size": [ 16, 16 ],
+    "Frames": [ 0, 0, 0, 48, 0, 96, 16, 0, 16, 48, 16, 96, 32, 0, 32, 48, 32, 96, 16, 0, 16, 48, 16, 96 ]
+  },
+  "small_run_right_star_brake": {
+    "TextureName": "smallstarpowermario",
+    "AccelerateRate": 3,
+    "Depth": 8,
+    "Size": [ 16, 16 ],
+    "Frames": [ 48, 0, 48, 48, 48, 96 ]
+  },
+  "small_jump_right_star": {
+    "TextureName": "smallstarpowermario",
+    "AccelerateRate": 3,
+    "Depth": 8,
+    "Size": [ 16, 16 ],
+    "Frames": [ 64, 0, 64, 48, 64, 96 ]
+  },
+  "small_crouch_right_star": {
+    "TextureName": "smallstarpowermario",
+    "AccelerateRate": 3,
+    "Depth": 8,
+    "Size": [ 16, 16 ],
+    "Frames": [ 64, 0, 64, 48, 64, 96 ]
+  },
+  "big_idle_left_star": {
+    "TextureName": "bigstarpowermario",
+    "AccelerateRate": 3,
+    "Depth": 8,
+    "Size": [ 16, 32 ],
+    "Frames": [ 112, 0, 112, 48, 112, 96 ]
+  },
+  "big_run_left_star": {
+    "TextureName": "bigstarpowermario",
+    "AccelerateRate": 3,
+    "Depth": 8,
+    "Size": [ 16, 32 ],
+    "Frames": [ 208, 0, 208, 48, 208, 96, 192, 0, 192, 48, 192, 96, 176, 0, 176, 48, 176, 96, 192, 0, 192, 48, 192, 96 ]
+  },
+  "big_run_left_star_brake": {
+    "TextureName": "bigstarpowermario",
+    "AccelerateRate": 3,
+    "Depth": 8,
+    "Size": [ 16, 32 ],
+    "Frames": [ 128, 0, 128, 48, 128, 96 ]
+  },
+  "big_jump_left_star": {
+    "TextureName": "bigstarpowermario",
+    "AccelerateRate": 3,
+    "Depth": 8,
+    "Size": [ 16, 32 ],
+    "Frames": [ 144, 0, 144, 48, 144, 96 ]
+  },
+  "big_crouch_left_star": {
+    "TextureName": "bigstarpowermario",
+    "AccelerateRate": 3,
+    "Depth": 8,
+    "Size": [ 16, 32 ],
+    "Frames": [ 128, 0, 128, 48, 128, 96 ]
+  },
+  "big_idle_right_star": {
+    "TextureName": "bigstarpowermario",
+    "AccelerateRate": 3,
+    "Depth": 8,
+    "Size": [ 16, 32 ],
+    "Frames": [ 96, 0, 96, 48, 96, 96 ]
+  },
+  "big_run_right_star": {
+    "TextureName": "bigstarpowermario",
+    "AccelerateRate": 3,
+    "Depth": 8,
+    "Size": [ 16, 32 ],
+    "Frames": [ 0, 0, 0, 48, 0, 96, 16, 0, 16, 48, 16, 96, 32, 0, 32, 48, 32, 96, 16, 0, 16, 48, 16, 96 ]
+  },
+  "big_run_right_star_brake": {
+    "TextureName": "bigstarpowermario",
+    "AccelerateRate": 3,
+    "Depth": 8,
+    "Size": [ 16, 32 ],
+    "Frames": [ 48, 0, 48, 48, 48, 96 ]
+  },
+  "big_jump_right_star": {
+    "TextureName": "bigstarpowermario",
+    "AccelerateRate": 3,
+    "Depth": 8,
+    "Size": [ 16, 32 ],
+    "Frames": [ 64, 0, 64, 48, 64, 96 ]
+  },
+  "big_crouch_right_star": {
+    "TextureName": "bigstarpowermario",
+    "AccelerateRate": 3,
+    "Depth": 8,
+    "Size": [ 16, 32 ],
+    "Frames": [ 80, 0, 80, 48, 80, 96 ]
+  },
+  "dead": {
+    "TextureName": "deadmario",
+    "Depth": 8,
+    "Size": [ 15, 14 ],
+    "Frames": [ 0, 0 ]
+  },
+  "dead_star": {
+    "TextureName": "smallstarpowermario",
+    "AccelerateRate": 3,
+    "Depth": 8,
+    "Size": [ 16, 16 ],
+    "Frames": [ 80, 0, 80, 48, 80, 96 ]
+  },
 
-    "background": {
-        "TextureName": "background",
-        "Depth": 0,
-        "Size": [ 800, 480 ],
-        "Frames": [ 0, 0 ]
-    },
-    "gameover": {
-        "TextureName": "gameover",
-        "Depth": 0,
-        "Size": [ 800, 480 ],
-        "Frames": [ 0, 0 ]
-    },
-    "win": {
-        "TextureName": "win",
-        "Depth": 0,
-        "Size": [ 800, 480 ],
-        "Frames": [ 0, 0 ]
-    },
-    "underwaterbackground": {
-        "TextureName": "underwaterbackground",
-        "Depth": 0,
-        "Size": [ 800, 480 ],
-        "Frames": [ 0, 0 ]
-    }
+  "background": {
+    "TextureName": "background",
+    "Depth": 0,
+    "Size": [ 800, 480 ],
+    "Frames": [ 0, 0 ]
+  },
+  "gameover": {
+    "TextureName": "gameover",
+    "Depth": 0,
+    "Size": [ 800, 480 ],
+    "Frames": [ 0, 0 ]
+  },
+  "win": {
+    "TextureName": "win",
+    "Depth": 0,
+    "Size": [ 800, 480 ],
+    "Frames": [ 0, 0 ]
+  },
+  "underwaterbackground": {
+    "TextureName": "underwaterbackground",
+    "Depth": 0,
+    "Size": [ 800, 480 ],
+    "Frames": [ 0, 0 ]
+  }
 }
