@@ -7,7 +7,12 @@ namespace MarioPirates
         public MapEditorStateNormal(MapEditor editor) : base(editor)
         {
             Console.Ins.Reset();
-            Console.Ins.Input("Left/Right arrow: move map; F4: open console");
+
+            Constants.MAPEDITOR_HELP.ForEach(s =>
+            {
+                Console.Ins.Input(s);
+                Console.Ins.NextLine();
+            });
         }
 
         public override void HandleKeyDown(Keys key)
