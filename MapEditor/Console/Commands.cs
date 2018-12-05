@@ -10,32 +10,32 @@ namespace MarioPirates
         private static readonly string HelpTitle = "Command      Description";
         private static readonly Dictionary<string, (Action<string>, string)> Cmds = new Dictionary<string, (Action<string>, string)>
         {
-            { "exit",  (CmdExit, "exit map editor ( exit )") },
-            { "open", (CmdOpen, "switch levels ( open underwater )") },
-            { "new",  (CmdNew, "create new object ( new { \"TypeName\": \"Koopa\" } )") },
-            { "save", (CmdSave, "save to data file ( save )") },
-            { "help", (CmdHelp, "help") }
+            { "exit",  (CmdExit, "         exit map editor ( exit )") },
+            { "open", (CmdOpen, "         switch levels ( open underwater )") },
+            { "new",  (CmdNew, "          create new object ( new { \"TypeName\": \"Koopa\" } )") },
+            { "save", (CmdSave, "         save to data file ( save )") },
+            { "help", (CmdHelp, "         help") }
         };
 
-        public static void CmdExit(string param)
+        private static void CmdExit(string param)
         {
             EventManager.Ins.RaiseEvent(EventEnum.KeyDown, null, new KeyDownEventArgs(Keys.Escape));
             EventManager.Ins.RaiseEvent(EventEnum.KeyDown, null, new KeyDownEventArgs(Keys.Escape));
         }
 
-        public static void CmdNew(string param)
+        private static void CmdNew(string param)
         {
             var objectParam = new JavaScriptSerializer().Deserialize<GameObjectParam>(param);
             objectParam.Location = new int[] { (int)Camera.Ins.Offset, 0 };
             Scene.Ins.AddGameObject(Scene.Ins.Model.AddGameObject(objectParam));
         }
 
-        public static void CmdSave(string param)
+        private static void CmdSave(string param)
         {
             Scene.Ins.Model.Write();
         }
 
-        public static void CmdOpen(string param)
+        private static void CmdOpen(string param)
         {
             if (Constants.AVAILABLE_SCENES.Contains(param))
                 Scene.Ins.UseScene(param);
@@ -48,7 +48,6 @@ namespace MarioPirates
             foreach (var p in Cmds)
             {
                 Console.Ins.Input(p.Key);
-                Console.Ins.Input("             ");
                 Console.Ins.Input(p.Value.Item2);
                 Console.Ins.NextLine();
             }
