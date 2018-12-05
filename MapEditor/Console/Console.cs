@@ -34,6 +34,8 @@ namespace MarioPirates
             }
         }
 
+        private readonly SpriteText ui = SpriteFactory.Ins.CreateConsoleFontSprite(() => "UI");
+
         private readonly SpriteText[] sprite = new SpriteText[Constants.CONSOLE_NUM_LINES];
 
         private readonly Line[] lines = new Line[Constants.CONSOLE_NUM_LINES];
@@ -62,6 +64,7 @@ namespace MarioPirates
             for (var i = 0; i < Constants.CONSOLE_NUM_LINES; i++)
                 if (i == CurrLine || !lines[i].IsEmpty)
                     sprite[i].Draw(spriteBatch, Constants.CONSOLE_POSITION.X, Constants.CONSOLE_POSITION.Y + Constants.CONSOLE_LINE_HEIGHT * i);
+            ui.Draw(spriteBatch, Constants.UI_POSITION.X, Constants.UI_POSITION.Y);
             spriteBatch.End();
         }
 

@@ -292,5 +292,7 @@ namespace MarioPirates
             { Keys.OemOpenBrackets, "{" },
             { Keys.OemCloseBrackets, "}" },
         };
+
+        public static readonly Vector2 UI_POSITION = new Vector2(450f, 50f);
     }
 }
