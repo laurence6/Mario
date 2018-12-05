@@ -26,6 +26,12 @@ namespace MarioPirates
             public string Text { get; set; } = string.Empty;
 
             public bool IsEmpty => string.IsNullOrWhiteSpace(Text);
+
+            public void Reset()
+            {
+                Prefix = string.Empty;
+                Text = string.Empty;
+            }
         }
 
         private readonly SpriteText[] sprite = new SpriteText[Constants.CONSOLE_NUM_LINES];
@@ -38,7 +44,7 @@ namespace MarioPirates
         public void Reset()
         {
             upperCase = false;
-            lines.ForEach(line => line.Text = string.Empty);
+            lines.ForEach(line => line.Reset());
             CurrLine = 0;
             lines[CurrLine].Prefix = Constants.CONSOLE_PROMOT;
         }
@@ -86,8 +92,7 @@ namespace MarioPirates
 
                         Commands.Execute(cmd[0], cmd[1]);
 
-                        if (!lines[CurrLine].IsEmpty)
-                            NextLine();
+                        NextLine();
 
                         lines[CurrLine].Prefix = Constants.CONSOLE_PROMOT;
                     }
