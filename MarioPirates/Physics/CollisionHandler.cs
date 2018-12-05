@@ -352,8 +352,9 @@ namespace MarioPirates
                             @this.RigidBody.Motion = MotionEnum.Keyframe;
                             @this.RigidBody.Velocity = -Constants.MARIO_PIPE_COLLISION_VELOCITY;
                             @this.RigidBody.ApplyForce(WorldForce.None);
+                            var currLevel = Scene.Ins.ActiveScene.level;
                             Scene.Ins.Active(Constants.LEVEL_1_SCENE);
-                            Scene.Ins.ResetScene(Constants.SECRET_LEVEL_SCENE);
+                            Scene.Ins.ResetScene(currLevel);
                             EventManager.Ins.RaiseEvent(EventEnum.Action, @this, new ActionEventArgs(() =>
                             {
                                 @this.SubscribeInput();
