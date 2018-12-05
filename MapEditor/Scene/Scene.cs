@@ -97,6 +97,7 @@ namespace MarioPirates
         public void Update()
         {
             gameObjectContainer.Rebuild();
+            objectsAvailable.ForEach(o => o.RigidBody.UpdateBound());
         }
 
         public void Draw(SpriteBatch spriteBatch)
