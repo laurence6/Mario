@@ -117,7 +117,7 @@ namespace MarioPirates
             for (var i = 0; i < objectsAvailable.Count; i++)
                 if (objectsAvailable[i].RigidBody.Bound.Intersects(point))
                 {
-                    var obj = Model.AddGameObject(objectParamsAvailable[i]);
+                    var obj = Model.AddGameObject(objectParamsAvailable[i].Copy());
                     obj.Location = Camera.Ins.ScreenToWorld(obj.Location);
                     AddGameObject(obj);
                     objectSelected = obj;

@@ -1,11 +1,19 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
+using System.Web.Script.Serialization;
 
 namespace MarioPirates
 {
     internal static class Common
     {
+        public static T Copy<T>(this T self) where T : class
+        {
+            var serializer = new JavaScriptSerializer();
+            var data = serializer.Serialize(self);
+            return serializer.Deserialize<T>(data);
+        }
+
         public static void NotNullThen<T>(this T self, Action f) where T : class
         {
             if (self != null)
