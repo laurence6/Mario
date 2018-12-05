@@ -16,6 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataFiles", "DataFiles", "{
 		DataFiles\LevelData_secret.json = DataFiles\LevelData_secret.json
 		DataFiles\LevelData_underwater.json = DataFiles\LevelData_underwater.json
 		DataFiles\LevelData_win.json = DataFiles\LevelData_win.json
+		DataFiles\MapEditor.json = DataFiles\MapEditor.json
 		DataFiles\MarioSpritesData.json = DataFiles\MarioSpritesData.json
 		DataFiles\SpritesData.json = DataFiles\SpritesData.json
 	EndProjectSection
