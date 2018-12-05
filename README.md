@@ -9,6 +9,7 @@ This is a clone of Super Mario Bros.
 - Added an underwater level.
   - New enemies: fish & octopus.
   - Mario can swim in water.
+  - Mario beat enemies by shooting fireball.
 
 ## MapEditor
 
