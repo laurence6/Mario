@@ -31,18 +31,7 @@ namespace MarioPirates
         private readonly SpriteText[] sprite = new SpriteText[Constants.CONSOLE_NUM_LINES];
 
         private readonly Line[] lines = new Line[Constants.CONSOLE_NUM_LINES];
-
-        private int currLine = 0;
-        public int CurrLine
-        {
-            get
-            {
-                if (currLine >= Constants.CONSOLE_NUM_LINES)
-                    Scroll();
-                return currLine;
-            }
-            set => currLine = value;
-        }
+        public int CurrLine { get; set; } = 0;
 
         private bool upperCase = false;
 
@@ -85,7 +74,7 @@ namespace MarioPirates
                     upperCase = true;
                     break;
                 case Keys.Back:
-                    lines[currLine].Text = lines[currLine].Text.Substring(0, (lines[currLine].Text.Length - 1).Max(0));
+                    lines[CurrLine].Text = lines[CurrLine].Text.Substring(0, (lines[CurrLine].Text.Length - 1).Max(0));
                     break;
                 case Keys.Enter:
                     if (!lines[CurrLine].IsEmpty)
@@ -93,13 +82,13 @@ namespace MarioPirates
                         var cmd = lines[CurrLine].Text.Split(sepChars, 2, StringSplitOptions.RemoveEmptyEntries);
                         if (cmd.Length == 1)
                             cmd = new string[] { cmd[0], string.Empty };
-                        CurrLine++;
+                        NextLine();
 
                         if (!Commands.Execute(cmd[0], cmd[1]))
                             Input(Constants.CONSOLE_ERROR + cmd[0]);
 
                         if (!lines[CurrLine].IsEmpty)
-                            CurrLine++;
+                            NextLine();
 
                         lines[CurrLine].Prefix = Constants.CONSOLE_PROMOT;
                     }
@@ -119,6 +108,13 @@ namespace MarioPirates
         public void Input(string s)
         {
             lines[CurrLine].Text += s.Replace('\n', ' ');
+        }
+
+        public void NextLine()
+        {
+            CurrLine++;
+            if (CurrLine >= Constants.CONSOLE_NUM_LINES)
+                Scroll();
         }
 
         private void Scroll()

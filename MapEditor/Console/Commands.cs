@@ -1,11 +1,22 @@
 ﻿using Microsoft.Xna.Framework.Input;
 using System;
+using System.Collections.Generic;
 using System.Web.Script.Serialization;
 
 namespace MarioPirates
 {
     internal static class Commands
     {
+        private static readonly string HelpTitle = "Command      Description";
+        private static readonly Dictionary<string, (Action<string>, string)> Cmds = new Dictionary<string, (Action<string>, string)>
+        {
+            { "exit",  (CmdExit, "exit map editor ( exit )") },
+            { "use", (CmdUse, "switch levels ( use underwater )") },
+            { "new",  (CmdNew, "create new object ( new { \"TypeName\": \"Koopa\" } )") },
+            { "write", (CmdWrite, "write to data file ( write )") },
+            { "help", (CmdHelp, "help") }
+        };
+
         public static void CmdExit(string param)
         {
             EventManager.Ins.RaiseEvent(EventEnum.KeyDown, null, new KeyDownEventArgs(Keys.Escape));
@@ -31,21 +42,25 @@ namespace MarioPirates
 
         public static void CmdHelp(string param)
         {
-            var str = string.Empty;
-            foreach (var m in typeof(Commands).GetMethods())
-                if (m.Name.StartsWith(Constants.CONSOLE_COMMANDS_PREFIX))
-                    str += m.Name.Substring(Constants.CONSOLE_COMMANDS_PREFIX.Length) + " ";
-            Console.Ins.Input(str);
+            Console.Ins.Input(HelpTitle);
+            Console.Ins.NextLine();
+            foreach (var p in Cmds)
+            {
+                Console.Ins.Input(p.Key);
+                Console.Ins.Input("             ");
+                Console.Ins.Input(p.Value.Item2);
+                Console.Ins.NextLine();
+            }
         }
 
         public static bool Execute(string name, string param)
         {
-            foreach (var m in typeof(Commands).GetMethods())
-                if ((Constants.CONSOLE_COMMANDS_PREFIX + name).ToLower() == m.Name.ToLower())
+            foreach (var p in Cmds)
+                if (name.ToLower() == p.Key)
                 {
                     try
                     {
-                        m.Invoke(null, new object[] { param });
+                        p.Value.Item1(param);
                     }
                     catch (Exception e)
                     {
