@@ -20,6 +20,14 @@ namespace MarioPirates
 
         public static T[] EnumValues<T>() => (T[])Enum.GetValues(typeof(T));
 
+        public static bool Contains<T>(this T[] a, T obj) where T : class
+        {
+            foreach (var o in a)
+                if (o == obj)
+                    return true;
+            return false;
+        }
+
         public static void ForEach<T>(this T[] a, Action<T> f)
         {
             foreach (var e in a)

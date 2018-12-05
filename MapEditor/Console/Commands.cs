@@ -37,7 +37,8 @@ namespace MarioPirates
 
         public static void CmdUse(string param)
         {
-            Scene.Ins.UseScene(param);
+            if (Constants.AVAILABLE_SCENES.Contains(param))
+                Scene.Ins.UseScene(param);
         }
 
         public static void CmdHelp(string param)
