@@ -9,8 +9,6 @@ This is a clone of Super Mario Bros.
 - Added an underwater level.
   - New enemies: fish & octopus.
   - Mario can swim in water.
-  - 
-
 
 ## MapEditor
 
@@ -18,9 +16,9 @@ A tool used to edit level data files.
 
 Use keyboard and mouse to edit maps.
 
-Drag and drop to create and move objects in the scene.
+Drag and drop to create, move, and delete objects in the scene.
 
-A console is included, which supports multiple commands and enables users to control more details.
+A console is included, which supports multiple commands and enables users to control more details. It can evaluate JSON input at runtime.
 
 
 - Left/Right arrow: move map
