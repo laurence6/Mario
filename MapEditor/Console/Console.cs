@@ -39,11 +39,15 @@ namespace MarioPirates
         private readonly Line[] lines = new Line[Constants.CONSOLE_NUM_LINES];
         public int CurrLine { get; set; } = 0;
 
-        private bool upperCase = false;
+        private bool shiftPressed = false;
+
+        private bool Caps => System.Windows.Forms.Control.IsKeyLocked(System.Windows.Forms.Keys.CapsLock);
+
+        private bool UpperCase => Caps ^ shiftPressed;
 
         public void Reset()
         {
-            upperCase = false;
+            shiftPressed = false;
             lines.ForEach(line => line.Reset());
             CurrLine = 0;
             lines[CurrLine].Prefix = Constants.CONSOLE_PROMOT;
@@ -65,7 +69,7 @@ namespace MarioPirates
             {
                 case Keys k when (Keys.A <= k && k <= Keys.Z):
                     s = k.ToString();
-                    if (!upperCase)
+                    if (!UpperCase)
                         s = s.ToLower();
                     Input(s);
                     break;
@@ -77,7 +81,7 @@ namespace MarioPirates
                     Input(Constants.KeyMapping[k]);
                     break;
                 case Keys.LeftShift:
-                    upperCase = true;
+                    shiftPressed = true;
                     break;
                 case Keys.Back:
                     lines[CurrLine].Text = lines[CurrLine].Text.Substring(0, (lines[CurrLine].Text.Length - 1).Max(0));
@@ -105,7 +109,7 @@ namespace MarioPirates
             switch (key)
             {
                 case Keys.LeftShift:
-                    upperCase = false;
+                    shiftPressed = false;
                     break;
             }
         }
